@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name"> CASI REGISTER </string>
+    <string name="sectionn_mainheading">Section N: Section N</string>
+
+    <string name="btnSync">Download Data</string>
+    <string name="btnUpload">Upload Data</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="splashText"> </string>
+    <string name="splashText2">  </string>
+    <string name="check_pending_forms">CHECK PENDING FORMS</string>
+    <string name="open_new_form">OPEN NEW FORM</string>
+    <string name="records_summary">Records Summary</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="only_for_testing">ONLY FOR TESTING</string>
+    <string name="database">Database</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+
+    <string name="yes"> Yes </string>
+    <string name="no"> No </string>
+    <string name="dkn"> Dont Know </string>
+    <string name="none"> None </string>
+    <string name="ref"> Refused </string>
+    <string name="other"> Other </string>
+    <string name="specify"> Other Specify </string>
+    <string name="year"> Year </string>
+    <string name="month"> Month </string>
+    <string name="weeks"> Week </string>
+    <string name="days"> Day </string>
+
+
+    <string name="elc7">گھراڻي جي انٽريو جو نتيجو (جيڪڏھن انٽريو مڪمل نه  ٿيو ھجي ته  صحيع آپشن لاءِ سپروائزر سان مشورو ڪريو)</string>
+    <string name="elc701">مڪمل ٿيو </string>
+    <string name="elc702">گھر ۾ ڪوبه ماڻھو يا صحيع انٽريو ڏيڻ وارو ماڻھو موجود نه  آھي </string>
+    <string name="elc703">گھراڻي جا فرد ڊگھي عرصي لاءِ گھر مان غير حاضر ھئا </string>
+    <string name="elc704">انٽرويو ڏيڻ کان انڪار ڪيو ويو </string>
+    <string name="elc705">گھر خالي آھي غير رھائشي آھي </string>
+    <string name="elc706">گھر نه  مليو </string>
+    <string name="elc707">5 سالن کان گهٽ عمر جو ٻار نه آهي </string>
+    <string name="elc708">گھر عارضي طور بند آھي </string>
+    <string name="elc796"> ٻيو ڪجهه (وضاحت ڪريو)</string>
+    <string name="elc801">گھر ڀاتين جو ٽوٽل تعداد</string>
+    <string name="elc802">مرد</string>
+    <string name="elc803">عورتون</string>
+    <string name="elc804"> 0 کان 28 ڏينهن جا نوان ڄاول ٻار </string>
+    <string name="elc805">هڪ مهيني کان 5 سالن جا ٻار </string>
+    <string name="elc806"> 5 کان 14 سالن جا ٻار </string>
+    <string name="elc807"> 15 کان 49 سالن  واريون غير شادي شده عورتون </string>
+    <string name="elc808"> 15 کان 49 سالن  واريون شادي شده عورتون </string>
+
+
+    <string name="cr_tittle">Anthropometry Section</string>
+    <string name='cr01'>Date and Time of Entry</string>
+    <string name='cr02'>District</string>
+    <string name='cr03'>UC</string>
+    <string name='cr04'>Village</string>
+    <string name='cr05'>Child Name</string>
+    <string name='cr06'>Father Name</string>
+    <string name='cr07'>Age / DOB</string>
+    <string name='cr08'>Height</string>
+    <string name='cr09'>Weight</string>
+    <string name='cr10'>MAUC</string>
+
+    <string name='Q_cr01'>cr01</string>
+    <string name='Q_cr02'>cr02</string>
+    <string name='Q_cr03'>cr03</string>
+    <string name='Q_cr04'>cr04</string>
+    <string name='Q_cr05'>cr05</string>
+    <string name='Q_cr06'>cr06</string>
+    <string name='Q_cr07'>cr07</string>
+    <string name='Q_cr08'>cr08</string>
+    <string name='Q_cr09'>cr09</string>
+    <string name='Q_cr10'>cr10</string>
+
+    <string name='Q_elc7'>elc7</string>
+
+</resources>
