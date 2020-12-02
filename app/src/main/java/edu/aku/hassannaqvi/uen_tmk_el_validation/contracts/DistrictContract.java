@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public class DistrictContract {
 
-    private static final String TAG = "UC_CONTRACT";
+    private static final String TAG = "DISTRICT_CONTRACT";
     String district_code;
     String district_name;
     String district_type;
@@ -19,16 +19,16 @@ public class DistrictContract {
     }
 
     public DistrictContract Sync(JSONObject jsonObject) throws JSONException {
-        this.district_code = jsonObject.getString(UCTable.COLUMN_DISTRICT_CODE);
-        this.district_name = jsonObject.getString(UCTable.COLUMN_DISTRICT_NAME);
-        this.district_type = jsonObject.getString(UCTable.COLUMN_DISTRICT_TYPE);
+        this.district_code = jsonObject.getString(DISTRICTSTable.COLUMN_DISTRICT_CODE);
+        this.district_name = jsonObject.getString(DISTRICTSTable.COLUMN_DISTRICT_NAME);
+        this.district_type = jsonObject.getString(DISTRICTSTable.COLUMN_DISTRICT_TYPE);
         return this;
     }
 
     public DistrictContract Hydrate(Cursor cursor) {
-        this.district_code = cursor.getString(cursor.getColumnIndex(UCTable.COLUMN_DISTRICT_CODE));
-        this.district_name = cursor.getString(cursor.getColumnIndex(UCTable.COLUMN_DISTRICT_NAME));
-        this.district_type = cursor.getString(cursor.getColumnIndex(UCTable.COLUMN_DISTRICT_TYPE));
+        this.district_code = cursor.getString(cursor.getColumnIndex(DISTRICTSTable.COLUMN_DISTRICT_CODE));
+        this.district_name = cursor.getString(cursor.getColumnIndex(DISTRICTSTable.COLUMN_DISTRICT_NAME));
+        this.district_type = cursor.getString(cursor.getColumnIndex(DISTRICTSTable.COLUMN_DISTRICT_TYPE));
         return this;
     }
 
@@ -59,14 +59,14 @@ public class DistrictContract {
     public JSONObject toJSONObject() throws JSONException {
 
         JSONObject json = new JSONObject();
-        json.put(UCTable.COLUMN_DISTRICT_CODE, this.district_code == null ? JSONObject.NULL : this.district_code);
-        json.put(UCTable.COLUMN_DISTRICT_NAME, this.district_name == null ? JSONObject.NULL : this.district_name);
-        json.put(UCTable.COLUMN_DISTRICT_TYPE, this.district_type == null ? JSONObject.NULL : this.district_type);
+        json.put(DISTRICTSTable.COLUMN_DISTRICT_CODE, this.district_code == null ? JSONObject.NULL : this.district_code);
+        json.put(DISTRICTSTable.COLUMN_DISTRICT_NAME, this.district_name == null ? JSONObject.NULL : this.district_name);
+        json.put(DISTRICTSTable.COLUMN_DISTRICT_TYPE, this.district_type == null ? JSONObject.NULL : this.district_type);
         return json;
     }
 
 
-    public static abstract class UCTable implements BaseColumns {
+    public static abstract class DISTRICTSTable implements BaseColumns {
 
         public static final String TABLE_NAME = "districts";
         public static final String COLUMN_DISTRICT_CODE = "district_code";
