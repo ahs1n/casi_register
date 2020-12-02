@@ -19,8 +19,6 @@ import edu.aku.hassannaqvi.uen_tmk_el_validation.databinding.ActivitySectionN02B
 import edu.aku.hassannaqvi.uen_tmk_el_validation.models.MWRA_CHILD;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.utils.EndSectionActivity;
 
-import static edu.aku.hassannaqvi.uen_tmk_el_validation.CONSTANTS.CHILD_ANTHRO_TYPE;
-
 public class SectionN02Activity extends AppCompatActivity implements EndSectionActivity {
 
     ActivitySectionN02Binding bi;
@@ -74,7 +72,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     private void SaveDraft(boolean flag) throws JSONException {
 
-        anthro = new MWRA_CHILD();
+       /* anthro = new MWRA_CHILD();
         anthro.setUsername(MainApp.userName);
         anthro.setDeviceID(MainApp.appInfo.getDeviceID());
         anthro.setDevicetagID(MainApp.appInfo.getTagName());
@@ -83,7 +81,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         anthro.setElb11(MainApp.form.getElb11());
         anthro.setType(CHILD_ANTHRO_TYPE);
         anthro.setSysdate(MainApp.form.getSysdate());
-        anthro.setUUID(MainApp.form.get_UID());
+        anthro.setUUID(MainApp.form.get_UID());*/
 
         JSONObject json = new JSONObject();
 

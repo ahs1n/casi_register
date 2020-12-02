@@ -116,7 +116,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 values.put(UCTable.COLUMN_UC_CODE, dist.getUc_code());
                 values.put(UCTable.COLUMN_UC_NAME, dist.getUc_name());
-                values.put(UCTable.COLUMN_TALUKA_CODE, dist.getTaluka_code());
+                values.put(UCTable.COLUMN_TEHSIL_CODE, dist.getTehsil_code());
                 long rowID = db.insert(UCTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
@@ -825,7 +825,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 UCTable._ID,
                 UCTable.COLUMN_UC_CODE,
                 UCTable.COLUMN_UC_NAME,
-                UCTable.COLUMN_TALUKA_CODE
+                UCTable.COLUMN_TEHSIL_CODE
         };
 
         String whereClause = null;

@@ -26,16 +26,12 @@ import android.text.format.DateFormat;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
-import com.validatorcrawler.aliazaz.Validator;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -55,8 +51,6 @@ import edu.aku.hassannaqvi.uen_tmk_el_validation.core.AppInfo;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.core.MainApp;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.databinding.ActivityLoginBinding;
-import kotlin.Unit;
-import kotlin.coroutines.CoroutineContext;
 
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.CONSTANTS.MINIMUM_DISTANCE_CHANGE_FOR_UPDATES;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.CONSTANTS.MINIMUM_TIME_BETWEEN_UPDATES;
@@ -67,8 +61,9 @@ import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.AppUtilsKt.getPerm
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.DB_NAME;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.PROJECT_NAME;
-import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.SplashRepositoryKt.populatingSpinners;
 import static java.lang.Thread.sleep;
+
+//import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.SplashRepositoryKt.populatingSpinners;
 
 public class LoginActivity extends Activity {
 
@@ -115,7 +110,7 @@ public class LoginActivity extends Activity {
         db = new DatabaseHelper(this);
 //        DB backup
         dbBackup();
-        setListeners();
+//        setListeners();
     }
 
     private void gettingDeviceIMEI() {
@@ -251,8 +246,8 @@ public class LoginActivity extends Activity {
                 // form field with an error.
                 focusView.requestFocus();
             } else {
-                if (!Validator.emptyCheckingContainer(this, bi.spinners))
-                    return;
+//                if (!Validator.emptyCheckingContainer(this, bi.spinners))
+//                    return;
                 showProgress(true);
                 mAuthTask = new UserLoginTask(this, username, password);
                 mAuthTask.execute((Void) null);
@@ -481,7 +476,7 @@ public class LoginActivity extends Activity {
         return provider1.equals(provider2);
     }
 
-    private void setListeners() {
+/*    private void setListeners() {
         ucsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SplashscreenActivity.ucs);
         bi.spUCs.setAdapter(ucsAdapter);
         bi.spUCs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -497,11 +492,11 @@ public class LoginActivity extends Activity {
 
             }
         });
-    }
+    }*/
 
     private void callingCoroutine() {
         //To call coroutine here
-        populatingSpinners(getApplicationContext(), ucsAdapter, new SplashscreenActivity.Continuation<Unit>() {
+       /* populatingSpinners(getApplicationContext(), ucsAdapter, new SplashscreenActivity.Continuation<Unit>() {
             @Override
             public void resume(Unit value) {
 
@@ -517,7 +512,7 @@ public class LoginActivity extends Activity {
             public CoroutineContext getContext() {
                 return null;
             }
-        });
+        });*/
     }
 
     @Override

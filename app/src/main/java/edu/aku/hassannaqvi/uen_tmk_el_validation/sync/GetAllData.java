@@ -20,7 +20,6 @@ import java.net.URL;
 import java.util.List;
 
 import edu.aku.hassannaqvi.uen_tmk_el_validation.adapter.SyncListAdapter;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UsersContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VersionAppContract;
@@ -58,7 +57,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
         TAG = "Get" + syncClass;
         switch (syncClass) {
             case "User":
-            case "BLRandom":
+//            case "BLRandom":
                 position = 0;
                 break;
             case "VersionApp":
@@ -140,11 +139,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     tableName = UCContract.UCTable.TABLE_NAME;
                     position = 3;
                     break;
-                case "BLRandom":
+                /*case "BLRandom":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
                     tableName = BLRandomContract.BLRandomTable.TABLE_NAME;
                     position = 0;
-                    break;
+                    break;*/
             }
 
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -262,11 +261,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             insertCount = db.syncUCs(jsonArray);
                             position = 3;
                             break;
-                        case "BLRandom":
+                        /*case "BLRandom":
                             jsonArray = new JSONArray(result);
                             insertCount = db.syncBLRandom(jsonArray);
                             position = 0;
-                            break;
+                            break;*/
                     }
 
                     pd.setMessage("Received: " + jsonArray.length());

@@ -12,7 +12,7 @@ public class UCContract {
     private static final String TAG = "UC_CONTRACT";
     String uc_code;
     String uc_name;
-    String taluka_code;
+    String tehsil_code;
 
     public UCContract() {
         // Default Constructor
@@ -21,14 +21,14 @@ public class UCContract {
     public UCContract Sync(JSONObject jsonObject) throws JSONException {
         this.uc_code = jsonObject.getString(UCTable.COLUMN_UC_CODE);
         this.uc_name = jsonObject.getString(UCTable.COLUMN_UC_NAME);
-        this.taluka_code = jsonObject.getString(UCTable.COLUMN_TALUKA_CODE);
+        this.tehsil_code = jsonObject.getString(UCTable.COLUMN_TEHSIL_CODE);
         return this;
     }
 
     public UCContract Hydrate(Cursor cursor) {
         this.uc_code = cursor.getString(cursor.getColumnIndex(UCTable.COLUMN_UC_CODE));
         this.uc_name = cursor.getString(cursor.getColumnIndex(UCTable.COLUMN_UC_NAME));
-        this.taluka_code = cursor.getString(cursor.getColumnIndex(UCTable.COLUMN_TALUKA_CODE));
+        this.tehsil_code = cursor.getString(cursor.getColumnIndex(UCTable.COLUMN_TEHSIL_CODE));
         return this;
     }
 
@@ -48,12 +48,12 @@ public class UCContract {
         this.uc_name = uc_name;
     }
 
-    public String getTaluka_code() {
-        return taluka_code;
+    public String getTehsil_code() {
+        return tehsil_code;
     }
 
-    public void setTaluka_code(String taluka_code) {
-        this.taluka_code = taluka_code;
+    public void setTehsil_code(String tehsil_code) {
+        this.tehsil_code = tehsil_code;
     }
 
     public JSONObject toJSONObject() throws JSONException {
@@ -61,7 +61,7 @@ public class UCContract {
         JSONObject json = new JSONObject();
         json.put(UCTable.COLUMN_UC_CODE, this.uc_code == null ? JSONObject.NULL : this.uc_code);
         json.put(UCTable.COLUMN_UC_NAME, this.uc_name == null ? JSONObject.NULL : this.uc_name);
-        json.put(UCTable.COLUMN_TALUKA_CODE, this.taluka_code == null ? JSONObject.NULL : this.taluka_code);
+        json.put(UCTable.COLUMN_TEHSIL_CODE, this.tehsil_code == null ? JSONObject.NULL : this.tehsil_code);
         return json;
     }
 
@@ -71,6 +71,6 @@ public class UCContract {
         public static final String TABLE_NAME = "ucs";
         public static final String COLUMN_UC_CODE = "uc_code";
         public static final String COLUMN_UC_NAME = "uc_name";
-        public static final String COLUMN_TALUKA_CODE = "taluka_code";
+        public static final String COLUMN_TEHSIL_CODE = "tehsil_code";
     }
 }

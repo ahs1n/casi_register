@@ -72,7 +72,7 @@ public final class CreateTable {
             + UCTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UCTable.COLUMN_UC_CODE + " TEXT,"
             + UCTable.COLUMN_UC_NAME + " TEXT,"
-            + UCTable.COLUMN_TALUKA_CODE + " TEXT );";
+            + UCTable.COLUMN_TEHSIL_CODE + " TEXT );";
 
 
     public static final String SQL_CREATE_VILLAGE_TABLE = "CREATE TABLE " + VillageTable.TABLE_NAME + " (" +
