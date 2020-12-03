@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.DistrictContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract.UCTable;
@@ -766,6 +767,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             c = db.query(
                     UCTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allEB.add(new UCContract().Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allEB;
+    }
+
+    //Get All DISTRICTS
+    public List<UCContract> getDistrics() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                DistrictContract.DISTRICTSTable._ID,
+                DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_CODE,
+                DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_NAME,
+                DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_TYPE
+        };
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = DistrictContract.DISTRICTSTable._ID + " ASC";
+        List<UCContract> allEB = new ArrayList<>();
+        try {
+            c = db.query(
+                    DistrictContract.DISTRICTSTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
