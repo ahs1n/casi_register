@@ -37,7 +37,6 @@ import edu.aku.hassannaqvi.uen_tmk_el_validation.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.core.MainApp;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.databinding.ActivitySyncBinding;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.models.Form;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.models.MWRA_CHILD;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.models.SyncModel;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.sync.GetAllData;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.sync.SyncAllData;
@@ -155,7 +154,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     uploadmodel.setstatusID(0);
                     uploadlist.add(uploadmodel);
                 }
-                new SyncAllData(
+               /* new SyncAllData(
                         this,
                         String.format("Forms - %s", syncValues[k][0]),
                         "updateSyncedMWRACHILD",
@@ -163,7 +162,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         MainApp._HOST_URL + MainApp._SERVER_URL,
                         syncValues[k][0],
                         syncValues[k][1].contains("-") ? db.getUnsyncedMWRAChild(syncValues[k][1].split("-")) : db.getUnsyncedMWRAChild(syncValues[k][1]), i, syncListAdapter, uploadlist
-                ).execute();
+                ).execute();*/
             }
 
             uploadlistActivityCreated = false;

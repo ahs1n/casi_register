@@ -1,8 +1,6 @@
 package edu.aku.hassannaqvi.uen_tmk_el_validation.utils;
 
-import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.BLRandomContract.BLRandomTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.Mwra_ChildrenContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract.UCTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VersionAppContract.VersionAppTable;
@@ -89,37 +87,5 @@ public final class CreateTable {
             VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
-
-    public static final String SQL_CREATE_BL_RANDOM = "CREATE TABLE " + BLRandomTable.TABLE_NAME + "("
-            + BLRandomTable.COLUMN_ID + " TEXT,"
-            + BLRandomTable.COLUMN_CLUSTER_CODE + " TEXT,"
-            + BLRandomTable.COLUMN_VILLAGE_CODE + " TEXT,"
-            + BLRandomTable.COLUMN_LUID + " TEXT,"
-            + BLRandomTable.COLUMN_HH + " TEXT,"
-            + BLRandomTable.COLUMN_STRUCTURE_NO + " TEXT,"
-            + BLRandomTable.COLUMN_FAMILY_EXT_CODE + " TEXT,"
-            + BLRandomTable.COLUMN_HH_HEAD + " TEXT,"
-            + BLRandomTable.COLUMN_RANDDT + " TEXT,"
-            + BLRandomTable.COLUMN_HH_SELECTED_UC + " TEXT,"
-            + BLRandomTable.COLUMN_SYSDT + " TEXT,"
-            + BLRandomTable.COLUMN_SNO_HH + " TEXT );";
-
-    public static final String SQL_CREATE_MWRA = "CREATE TABLE " + Mwra_ChildrenContract.MWRAChildTable.TABLE_NAME + "("
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_UID + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_UUID + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_ELB1 + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_ELB11 + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_FMUID + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_USERNAME + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYSDATE + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_TYPE + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SC + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SB + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_DEVICEID + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_DEVICETAGID + " TEXT, "
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYNCED + " TEXT, "
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYNCED_DATE + " TEXT, "
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_APPVERSION + " TEXT );";
 
 }

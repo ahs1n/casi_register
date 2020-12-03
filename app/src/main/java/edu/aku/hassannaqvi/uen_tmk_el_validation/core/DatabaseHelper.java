@@ -18,9 +18,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.BLRandomContract.BLRandomTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.Mwra_ChildrenContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract.UCTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UsersContract;
@@ -29,18 +27,14 @@ import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VillageContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VillageContract.VillageTable;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.models.BLRandom;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.models.Form;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.models.MWRA_CHILD;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.models.Users;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.models.VersionApp;
 
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.DATABASE_VERSION;
-import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_BL_RANDOM;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_DISTRICTS;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_FORMS;
-import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_MWRA;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_VILLAGE_TABLE;
@@ -60,9 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_VILLAGE_TABLE);
         db.execSQL(SQL_CREATE_DISTRICTS);
-        db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_VERSIONAPP);
-        db.execSQL(SQL_CREATE_MWRA);
     }
 
     @Override
@@ -165,40 +157,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
-    public int syncBLRandom(JSONArray blList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(BLRandomTable.TABLE_NAME, null, null);
-        int insertCount = 0;
-        for (int i = 0; i < blList.length(); i++) {
-            JSONObject jsonObjectCC = null;
-            try {
-                jsonObjectCC = blList.getJSONObject(i);
-                BLRandom Vc = new BLRandom();
-                Vc.Sync(jsonObjectCC);
-                Log.d(TAG, "syncBLRandom: " + Vc.get_ID());
-                ContentValues values = new ContentValues();
-
-                values.put(BLRandomTable.COLUMN_ID, Vc.get_ID());
-                values.put(BLRandomTable.COLUMN_LUID, Vc.getLUID());
-                values.put(BLRandomTable.COLUMN_STRUCTURE_NO, Vc.getStructure());
-                values.put(BLRandomTable.COLUMN_FAMILY_EXT_CODE, Vc.getExtension());
-                values.put(BLRandomTable.COLUMN_HH, Vc.getHh());
-                values.put(BLRandomTable.COLUMN_VILLAGE_CODE, Vc.getEbcode());
-                values.put(BLRandomTable.COLUMN_CLUSTER_CODE, Vc.getpCode());
-                values.put(BLRandomTable.COLUMN_SYSDT, Vc.getSysDT());
-                values.put(BLRandomTable.COLUMN_HH_HEAD, Vc.getHhhead());
-                values.put(BLRandomTable.COLUMN_RANDDT, Vc.getRandDT());
-                values.put(BLRandomTable.COLUMN_HH_SELECTED_UC, Vc.getSelUC());
-                values.put(BLRandomTable.COLUMN_SNO_HH, Vc.getSno());
-
-                long row = db.insert(BLRandomTable.TABLE_NAME, null, values);
-                if (row != -1) insertCount++;
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return insertCount;
-    }
 
     public int syncVersionApp(JSONObject VersionList) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -279,36 +237,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         newRowId = db.insert(
                 FormsTable.TABLE_NAME,
                 FormsTable.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
-    public Long addMWRACHILD(MWRA_CHILD mwraChild) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-// Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_UID, mwraChild.get_UID());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_UUID, mwraChild.getUUID());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_ELB1, mwraChild.getElb1());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_ELB11, mwraChild.getElb11());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_FMUID, mwraChild.getFmuid());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_USERNAME, mwraChild.getUsername());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYSDATE, mwraChild.getSysdate());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_TYPE, mwraChild.getType());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_SC, mwraChild.getsC());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_SB, mwraChild.getsB());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_DEVICETAGID, mwraChild.getDevicetagID());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_DEVICEID, mwraChild.getDeviceID());
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_APPVERSION, mwraChild.getAppversion());
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                Mwra_ChildrenContract.MWRAChildTable.TABLE_NAME,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -986,122 +914,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
-    public Collection<MWRA_CHILD> getUnsyncedMWRAChild(String... type) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                Mwra_ChildrenContract.MWRAChildTable._ID,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_UID,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_UUID,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_ELB1,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_ELB11,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_FMUID,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_USERNAME,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYSDATE,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_DEVICEID,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_DEVICETAGID,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_APPVERSION,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_TYPE,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_SC,
-                Mwra_ChildrenContract.MWRAChildTable.COLUMN_SB,
-        };
-
-        String whereClause = "(" + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYNCED + " is null OR " + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYNCED + " = '') ";
-        String[] whereArgs = null;
-
-        if (type != null) {
-            if (type.length == 1) {
-                whereClause += "AND " + Mwra_ChildrenContract.MWRAChildTable.COLUMN_TYPE + "=?";
-                whereArgs = new String[]{type[0]};
-            } else if (type.length == 2) {
-                whereClause += "AND (" + Mwra_ChildrenContract.MWRAChildTable.COLUMN_TYPE + "=?" + " OR " + Mwra_ChildrenContract.MWRAChildTable.COLUMN_TYPE + "=?)";
-                whereArgs = new String[]{type[0], type[1]};
-            }
-        }
-
-        String groupBy = null;
-        String having = null;
-        String orderBy = Mwra_ChildrenContract.MWRAChildTable.COLUMN_ID + " ASC";
-
-        Collection<MWRA_CHILD> allMWRACHILDREN = new ArrayList<>();
-        try {
-            c = db.query(
-                    Mwra_ChildrenContract.MWRAChildTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                MWRA_CHILD mwraChild = new MWRA_CHILD();
-                allMWRACHILDREN.add(mwraChild.Hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allMWRACHILDREN;
-    }
-
-
-    //Get BLRandom data
-    public BLRandom getHHFromBLRandom(String cluster, String subcluster, String hh) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-
-        String[] columns = {
-                BLRandomTable.COLUMN_ID,
-                BLRandomTable.COLUMN_LUID,
-                BLRandomTable.COLUMN_STRUCTURE_NO,
-                BLRandomTable.COLUMN_FAMILY_EXT_CODE,
-                BLRandomTable.COLUMN_HH,
-                BLRandomTable.COLUMN_CLUSTER_CODE,
-                BLRandomTable.COLUMN_VILLAGE_CODE,
-                BLRandomTable.COLUMN_SYSDT,
-                BLRandomTable.COLUMN_HH_SELECTED_UC,
-                BLRandomTable.COLUMN_RANDDT,
-                BLRandomTable.COLUMN_HH_HEAD,
-                BLRandomTable.COLUMN_SNO_HH
-        };
-
-        String whereClause = BLRandomTable.COLUMN_CLUSTER_CODE + "=? AND " + BLRandomTable.COLUMN_VILLAGE_CODE + "=? AND " + BLRandomTable.COLUMN_HH + "=?";
-        String[] whereArgs = new String[]{cluster, subcluster, hh};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                BLRandomTable.COLUMN_ID + " ASC";
-
-        BLRandom allBL = null;
-        try {
-            c = db.query(
-                    BLRandomTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                allBL = new BLRandom().hydrate(c);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allBL;
-    }
 
     //Get Form already exist
     public Form getFilledForm(String district, String refno) {
@@ -1191,21 +1003,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.form.get_ID())};
 
         return db.update(FormsTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-    }
-
-    public int updatesMWRAChildColumn(String column, String value, String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(column, value);
-
-        String selection = Mwra_ChildrenContract.MWRAChildTable.COLUMN_ID + " =? ";
-        String[] selectionArgs = {id};
-
-        return db.update(Mwra_ChildrenContract.MWRAChildTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -1356,24 +1153,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
-
-    public void updateSyncedMWRACHILD(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYNCED, true);
-        values.put(Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYNCED_DATE, new Date().toString());
-
-// Which row to update, based on the title
-        String where = Mwra_ChildrenContract.MWRAChildTable.COLUMN_ID + " = ?";
-        String[] whereArgs = {id};
-
-        int count = db.update(
-                Mwra_ChildrenContract.MWRAChildTable.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
-
 }

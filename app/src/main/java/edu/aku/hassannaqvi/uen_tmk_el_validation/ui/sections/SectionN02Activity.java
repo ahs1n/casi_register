@@ -12,17 +12,13 @@ import org.json.JSONObject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.R;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.Mwra_ChildrenContract;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.core.MainApp;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.databinding.ActivitySectionN02Binding;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.models.MWRA_CHILD;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.utils.EndSectionActivity;
 
 public class SectionN02Activity extends AppCompatActivity implements EndSectionActivity {
 
     ActivitySectionN02Binding bi;
-    MWRA_CHILD anthro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +53,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
     }
 
     private boolean UpdateDB() {
-        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addMWRACHILD(anthro);
         anthro.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
@@ -66,8 +62,9 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
             return true;
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+
+        }*/
+        return false;
     }
 
     private void SaveDraft(boolean flag) throws JSONException {
@@ -102,7 +99,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
         json.put("status", flag);
 
-        anthro.setsB(json.toString());
+//        anthro.setsB(json.toString());
     }
 
     private boolean formValidation() {
