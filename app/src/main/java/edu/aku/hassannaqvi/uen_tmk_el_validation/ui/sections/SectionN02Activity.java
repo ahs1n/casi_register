@@ -16,6 +16,8 @@ import java.util.Locale;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.R;
+import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.FormsContract;
+import edu.aku.hassannaqvi.uen_tmk_el_validation.core.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.core.MainApp;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.databinding.ActivitySectionN02Binding;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.models.Form;
@@ -60,18 +62,17 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
     }
 
     private boolean UpdateDB() {
-        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addMWRACHILD(anthro);
-        anthro.set_ID(String.valueOf(updcount));
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        long updcount = db.addForm(form);
+        form.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
-            anthro.set_UID(anthro.getDeviceID() + anthro.get_ID());
-            db.updatesMWRAChildColumn(Mwra_ChildrenContract.MWRAChildTable.COLUMN_UID, anthro.get_UID(), anthro.get_ID());
+            form.set_UID(form.getDeviceID() + form.get_ID());
+            db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             return true;
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-
-        }*/
-        return false;
+            return false;
+        }
     }
 
     private void SaveDraft(boolean flag) throws JSONException {
