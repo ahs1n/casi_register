@@ -9,12 +9,19 @@ import com.validatorcrawler.aliazaz.Validator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.R;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.core.MainApp;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.databinding.ActivitySectionN02Binding;
+import edu.aku.hassannaqvi.uen_tmk_el_validation.models.Form;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.utils.EndSectionActivity;
+
+import static edu.aku.hassannaqvi.uen_tmk_el_validation.core.MainApp.form;
 
 public class SectionN02Activity extends AppCompatActivity implements EndSectionActivity {
 
@@ -80,6 +87,13 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         anthro.setSysdate(MainApp.form.getSysdate());
         anthro.setUUID(MainApp.form.get_UID());*/
 
+        form = new Form();
+        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
+        form.setUsername(MainApp.userName);
+        form.setDeviceID(MainApp.appInfo.getDeviceID());
+        form.setDevicetagID(MainApp.appInfo.getTagName());
+        form.setAppversion(MainApp.appInfo.getAppVersion());
+
         JSONObject json = new JSONObject();
 
         json.put("elb8a", MainApp.form.getElb8a());
@@ -99,7 +113,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
         json.put("status", flag);
 
-//        anthro.setsB(json.toString());
+        form.setsC(json.toString());
     }
 
     private boolean formValidation() {
