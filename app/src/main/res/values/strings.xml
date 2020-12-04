@@ -123,11 +123,23 @@
     <string name='cr27c'>Iron Supplement</string>
     <string name='cr28'>Any illnesses/complications reported in last one month</string>
     <string name='cr28a'>Diarrhea</string>
+    <string name='cr28a01'>Yes</string>
+    <string name='cr28a02'>No</string>
     <string name='cr28b'>Cough/Flu</string>
+    <string name='cr28b01'>Yes</string>
+    <string name='cr28b02'>No</string>
     <string name='cr28c'>Fever</string>
+    <string name='cr28c01'>Yes</string>
+    <string name='cr28c02'>No</string>
     <string name='cr28d'>Chest in drawing</string>
+    <string name='cr28d01'>Yes</string>
+    <string name='cr28d02'>No</string>
     <string name='cr28e'>Worms in stool</string>
+    <string name='cr28e01'>Yes</string>
+    <string name='cr28e02'>No</string>
     <string name='cr28f'>Any other complication</string>
+    <string name='cr28f01'>Yes</string>
+    <string name='cr28f02'>No</string>
     <string name='cr28fx'>other</string>
 
 
