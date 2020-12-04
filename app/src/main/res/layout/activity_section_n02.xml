@@ -87,13 +87,12 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center"
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/textView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
                                 android:text="@string/cr01d" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -117,9 +116,9 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/textView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
                                 android:text="@string/cr01m" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -143,9 +142,9 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/textView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
                                 android:text="@string/cr01y" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
