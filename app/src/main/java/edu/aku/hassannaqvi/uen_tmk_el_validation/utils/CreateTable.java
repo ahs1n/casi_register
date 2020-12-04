@@ -1,9 +1,7 @@
 package edu.aku.hassannaqvi.uen_tmk_el_validation.utils;
 
-import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.BLRandomContract.BLRandomTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.DistrictContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.Mwra_ChildrenContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract.UCTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UsersContract.UsersTable;
@@ -12,9 +10,9 @@ import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VillageContract.Villa
 
 public final class CreateTable {
 
-    public static final String DATABASE_NAME = "uenTMKel2020V.db";
-    public static final String DB_NAME = "uenTMKel2020V_copy.db";
-    public static final String PROJECT_NAME = "uenTMKel2020/validation";
+    public static final String DATABASE_NAME = "casiRegister2020.db";
+    public static final String DB_NAME = "casiRegister2020_copy.db";
+    public static final String PROJECT_NAME = "casiRegister2020";
     public static final int DATABASE_VERSION = 1;
 
     public static final String SQL_CREATE_FORMS = "CREATE TABLE "

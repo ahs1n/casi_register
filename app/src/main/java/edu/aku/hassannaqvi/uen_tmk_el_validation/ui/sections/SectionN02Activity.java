@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.R;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.FormsContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.core.DatabaseHelper;
@@ -95,26 +95,18 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        JSONObject json = new JSONObject();
-
-        json.put("elb8a", MainApp.form.getElb8a());
-        json.put("name", bi.cr05.getText().toString());
-
-        json.put("cr06", bi.cr06.getText().toString());
-
-        json.put("cr07", bi.cr07.getText().toString());
-
-        json.put("cr08", bi.cr08.getText().toString());
-
-        json.put("cr09", bi.cr09.getText().toString());
-
-        json.put("cr10", bi.cr10.getText().toString());
+        form.setCr01d(bi.cr01d.getText().toString());
+        form.setCr01m(bi.cr01m.getText().toString());
+        form.setCr01y(bi.cr01y.getText().toString());
+        form.setCr05(bi.cr05.getText().toString());
+        form.setCr05(bi.cr06.getText().toString());
+        form.setCr05(bi.cr07.getText().toString());
+        form.setCr05(bi.cr08.getText().toString());
+        form.setCr05(bi.cr09.getText().toString());
+        form.setCr05(bi.cr10.getText().toString());
 
         MainApp.setGPS(this);
 
-        json.put("status", flag);
-
-        form.setsC(json.toString());
     }
 
     private boolean formValidation() {
