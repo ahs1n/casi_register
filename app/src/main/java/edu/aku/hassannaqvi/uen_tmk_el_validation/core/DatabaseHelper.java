@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.BLRandomContract.BLRandomTable;
+import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.DistrictContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.Mwra_ChildrenContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract;
@@ -41,6 +42,7 @@ import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CR
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_DISTRICTS;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_MWRA;
+import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_UCs;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.uen_tmk_el_validation.utils.CreateTable.SQL_CREATE_VILLAGE_TABLE;
@@ -60,6 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_VILLAGE_TABLE);
         db.execSQL(SQL_CREATE_DISTRICTS);
+        db.execSQL(SQL_CREATE_UCs);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_MWRA);
@@ -101,7 +104,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
-    public int syncUCs(JSONArray distList) {
+
+    public int syncDistricts(JSONArray distList) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(UCTable.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -109,6 +113,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             for (int i = 0; i < distList.length(); i++) {
 
                 JSONObject jsonObjectUser = distList.getJSONObject(i);
+
+                DistrictContract dist = new DistrictContract();
+                dist.Sync(jsonObjectUser);
+                ContentValues values = new ContentValues();
+
+                values.put(DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_CODE, dist.getDistrict_code());
+                values.put(DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_NAME, dist.getDistrict_name());
+                values.put(DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_TYPE, dist.getDistrict_type());
+                long rowID = db.insert(DistrictContract.DISTRICTSTable.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncDist(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+
+    public int syncUCs(JSONArray ucList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(UCTable.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+            for (int i = 0; i < ucList.length(); i++) {
+
+                JSONObject jsonObjectUser = ucList.getJSONObject(i);
 
                 UCContract dist = new UCContract();
                 dist.Sync(jsonObjectUser);

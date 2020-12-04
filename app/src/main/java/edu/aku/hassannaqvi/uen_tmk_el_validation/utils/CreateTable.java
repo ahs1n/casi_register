@@ -1,8 +1,10 @@
 package edu.aku.hassannaqvi.uen_tmk_el_validation.utils;
 
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.BLRandomContract.BLRandomTable;
+import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.DistrictContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.Mwra_ChildrenContract;
+import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract.UCTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VersionAppContract.VersionAppTable;
@@ -68,11 +70,18 @@ public final class CreateTable {
             + " );";
 
 
-    public static final String SQL_CREATE_DISTRICTS = "CREATE TABLE " + UCTable.TABLE_NAME + "("
-            + UCTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+    public static final String SQL_CREATE_DISTRICTS = "CREATE TABLE " + DistrictContract.DISTRICTSTable.TABLE_NAME + "("
+            + DistrictContract.DISTRICTSTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_CODE + " TEXT,"
+            + DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_NAME + " TEXT,"
+            + DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_TYPE + " TEXT );";
+
+
+    public static final String SQL_CREATE_UCs = "CREATE TABLE " + UCContract.UCTable.TABLE_NAME + "("
+            + UCContract.UCTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + UCTable.COLUMN_TEHSIL_CODE + " TEXT,"
             + UCTable.COLUMN_UC_CODE + " TEXT,"
-            + UCTable.COLUMN_UC_NAME + " TEXT,"
-            + UCTable.COLUMN_TEHSIL_CODE + " TEXT );";
+            + UCTable.COLUMN_UC_NAME + " TEXT );";
 
 
     public static final String SQL_CREATE_VILLAGE_TABLE = "CREATE TABLE " + VillageTable.TABLE_NAME + " (" +

@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.List;
 
 import edu.aku.hassannaqvi.uen_tmk_el_validation.adapter.SyncListAdapter;
+import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.DistrictContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UCContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.UsersContract;
 import edu.aku.hassannaqvi.uen_tmk_el_validation.contracts.VersionAppContract;
@@ -69,6 +70,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "UCs":
                 position = 3;
                 break;
+            case "Districts":
+                position = 4;
+                break;
         }
         list.get(position).settableName(syncClass);
     }
@@ -92,7 +96,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
         super.onProgressUpdate(values);
         switch (values[0]) {
             case "User":
-            case "BLRandom":
+            /*case "BLRandom":*/
                 position = 0;
                 break;
             case "VersionApp":
@@ -103,6 +107,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 break;
             case "UCs":
                 position = 3;
+                break;
+            case "Districts":
+                position = 4;
                 break;
         }
         list.get(position).setstatus("Syncing");
@@ -139,11 +146,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     tableName = UCContract.UCTable.TABLE_NAME;
                     position = 3;
                     break;
-                /*case "BLRandom":
+                case "Districts":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = BLRandomContract.BLRandomTable.TABLE_NAME;
-                    position = 0;
-                    break;*/
+                    tableName = DistrictContract.DISTRICTSTable.TABLE_NAME;
+                    position = 4;
+                    break;
             }
 
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -154,6 +161,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 case "User":
                 case "Villages":
                 case "UCs":
+                case "Districts":
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setDoOutput(true);
                     urlConnection.setDoInput(true);
@@ -261,11 +269,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             insertCount = db.syncUCs(jsonArray);
                             position = 3;
                             break;
-                        /*case "BLRandom":
+                        case "Districts":
                             jsonArray = new JSONArray(result);
-                            insertCount = db.syncBLRandom(jsonArray);
-                            position = 0;
-                            break;*/
+                            insertCount = db.syncDistricts(jsonArray);
+                            position = 4;
+                            break;
                     }
 
                     pd.setMessage("Received: " + jsonArray.length());
