@@ -107,7 +107,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
         MainApp.setGPS(this);
 
-        json.put("status", flag);
+        //json.put("status", flag);
 
         //  form.setsC(json.toString());
     }

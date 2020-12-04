@@ -29,6 +29,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.databinding.DataBindingUtil;
+
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
@@ -42,9 +46,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AppInfo;
@@ -503,6 +504,11 @@ public class LoginActivity extends Activity {
     protected void onResume() {
         super.onResume();
         callingCoroutine();
+    }
+
+    public void openZScoreCalc(View view) {
+        startActivity(new Intent(LoginActivity.this, ZScoreCalculator.class));
+
     }
 
     public class GPSLocationListener implements LocationListener {
