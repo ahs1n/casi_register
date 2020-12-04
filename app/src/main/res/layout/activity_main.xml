@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.uen_tmk_el_validation.ui.other.MainActivity" />
+            type="edu.aku.hassannaqvi.casi_register.ui.other.MainActivity" />
     </data>
 
     <LinearLayout
