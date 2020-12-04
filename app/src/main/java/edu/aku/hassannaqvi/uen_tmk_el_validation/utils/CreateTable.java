@@ -28,7 +28,7 @@ public final class CreateTable {
             + FormsTable.COLUMN_CR08 + " TEXT,"
             + FormsTable.COLUMN_CR09 + " TEXT,"
             + FormsTable.COLUMN_CR10 + " TEXT,"
-            + FormsTable.COLUMN_ELB7 + " TEXT,"
+            /*+ FormsTable.COLUMN_ELB7 + " TEXT,"
             + FormsTable.COLUMN_ELB8 + " TEXT,"
             + FormsTable.COLUMN_ELB8a + " TEXT,"
             + FormsTable.COLUMN_ELB09 + " TEXT,"
@@ -45,7 +45,7 @@ public final class CreateTable {
             + FormsTable.COLUMN_SJ + " TEXT,"
             + FormsTable.COLUMN_SK + " TEXT,"
             + FormsTable.COLUMN_SL + " TEXT,"
-            + FormsTable.COLUMN_SN + " TEXT,"
+            + FormsTable.COLUMN_SN + " TEXT,"*/
             + FormsTable.COLUMN_GPSLAT + " TEXT,"
             + FormsTable.COLUMN_GPSLNG + " TEXT,"
             + FormsTable.COLUMN_GPSDATE + " TEXT,"

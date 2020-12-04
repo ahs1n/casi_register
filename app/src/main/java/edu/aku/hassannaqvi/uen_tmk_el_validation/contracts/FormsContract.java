@@ -27,7 +27,7 @@ public class FormsContract {
         public static final String COLUMN_CR08 = "elb4";
         public static final String COLUMN_CR09 = "elb5";
         public static final String COLUMN_CR10 = "elb6";
-        public static final String COLUMN_ELB7 = "elb7";
+        /*public static final String COLUMN_ELB7 = "elb7";
         public static final String COLUMN_ELB8 = "elb8";
         public static final String COLUMN_ELB8a = "elb8a";
         public static final String COLUMN_ELB09 = "elb09";
@@ -44,7 +44,7 @@ public class FormsContract {
         public static final String COLUMN_SJ = "sJ";
         public static final String COLUMN_SK = "sK";
         public static final String COLUMN_SL = "sL";
-        public static final String COLUMN_SN = "sN";
+        public static final String COLUMN_SN = "sN";*/
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS96x = "istatus96x";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
