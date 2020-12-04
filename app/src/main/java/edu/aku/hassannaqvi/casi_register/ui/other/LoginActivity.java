@@ -29,10 +29,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.databinding.DataBindingUtil;
-
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
@@ -46,6 +42,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AppInfo;
@@ -477,23 +476,7 @@ public class LoginActivity extends Activity {
         return provider1.equals(provider2);
     }
 
-/*    private void setListeners() {
-        ucsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SplashscreenActivity.ucs);
-        bi.spUCs.setAdapter(ucsAdapter);
-        bi.spUCs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) return;
-                MainApp.UC_ID = Objects.requireNonNull(SplashscreenActivity.ucsMap.get(bi.spUCs.getSelectedItem().toString())).getUc_code();
-                MainApp.SELECTED_UC = Objects.requireNonNull(SplashscreenActivity.ucsMap.get(bi.spUCs.getSelectedItem().toString()));
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }*/
 
     private void callingCoroutine() {
         //To call coroutine here
