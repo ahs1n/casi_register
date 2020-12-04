@@ -26,13 +26,13 @@ public final class CreateTable {
             + FormsTable.COLUMN_SYSDATE + " TEXT,"
             + FormsTable.COLUMN_UID + " TEXT,"
             + FormsTable.COLUMN_USERNAME + " TEXT,"
-            + FormsTable.COLUMN_ELB1 + " TEXT,"
-            + FormsTable.COLUMN_ELB2 + " TEXT,"
-            + FormsTable.COLUMN_ELB3 + " TEXT,"
-            + FormsTable.COLUMN_ELB4 + " TEXT,"
-            + FormsTable.COLUMN_ELB5 + " TEXT,"
-            + FormsTable.COLUMN_ELB6 + " TEXT,"
-            + FormsTable.COLUMN_ELB7 + " TEXT,"
+            + FormsTable.COLUMN_CR05 + " TEXT,"
+            + FormsTable.COLUMN_CR06 + " TEXT,"
+            + FormsTable.COLUMN_CR07 + " TEXT,"
+            + FormsTable.COLUMN_CR08 + " TEXT,"
+            + FormsTable.COLUMN_CR09 + " TEXT,"
+            + FormsTable.COLUMN_CR10 + " TEXT,"
+            /*+ FormsTable.COLUMN_ELB7 + " TEXT,"
             + FormsTable.COLUMN_ELB8 + " TEXT,"
             + FormsTable.COLUMN_ELB8a + " TEXT,"
             + FormsTable.COLUMN_ELB09 + " TEXT,"
@@ -49,7 +49,7 @@ public final class CreateTable {
             + FormsTable.COLUMN_SJ + " TEXT,"
             + FormsTable.COLUMN_SK + " TEXT,"
             + FormsTable.COLUMN_SL + " TEXT,"
-            + FormsTable.COLUMN_SN + " TEXT,"
+            + FormsTable.COLUMN_SN + " TEXT,"*/
             + FormsTable.COLUMN_GPSLAT + " TEXT,"
             + FormsTable.COLUMN_GPSLNG + " TEXT,"
             + FormsTable.COLUMN_GPSDATE + " TEXT,"
@@ -98,37 +98,5 @@ public final class CreateTable {
             VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
             ");";
-
-    public static final String SQL_CREATE_BL_RANDOM = "CREATE TABLE " + BLRandomTable.TABLE_NAME + "("
-            + BLRandomTable.COLUMN_ID + " TEXT,"
-            + BLRandomTable.COLUMN_CLUSTER_CODE + " TEXT,"
-            + BLRandomTable.COLUMN_VILLAGE_CODE + " TEXT,"
-            + BLRandomTable.COLUMN_LUID + " TEXT,"
-            + BLRandomTable.COLUMN_HH + " TEXT,"
-            + BLRandomTable.COLUMN_STRUCTURE_NO + " TEXT,"
-            + BLRandomTable.COLUMN_FAMILY_EXT_CODE + " TEXT,"
-            + BLRandomTable.COLUMN_HH_HEAD + " TEXT,"
-            + BLRandomTable.COLUMN_RANDDT + " TEXT,"
-            + BLRandomTable.COLUMN_HH_SELECTED_UC + " TEXT,"
-            + BLRandomTable.COLUMN_SYSDT + " TEXT,"
-            + BLRandomTable.COLUMN_SNO_HH + " TEXT );";
-
-    public static final String SQL_CREATE_MWRA = "CREATE TABLE " + Mwra_ChildrenContract.MWRAChildTable.TABLE_NAME + "("
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_UID + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_UUID + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_ELB1 + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_ELB11 + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_FMUID + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_USERNAME + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYSDATE + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_TYPE + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SC + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SB + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_DEVICEID + " TEXT,"
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_DEVICETAGID + " TEXT, "
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYNCED + " TEXT, "
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_SYNCED_DATE + " TEXT, "
-            + Mwra_ChildrenContract.MWRAChildTable.COLUMN_APPVERSION + " TEXT );";
 
 }
