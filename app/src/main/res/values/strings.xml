@@ -56,7 +56,10 @@
 
 
     <string name="cr_tittle">Anthropometry Section</string>
-    <string name='cr01'>Date and Time of Entry</string>
+    <string name='cr01'> Date and Time of Entry </string>
+    <string name='cr01d'> Date </string>
+    <string name='cr01m'> Month </string>
+    <string name='cr01y'> Year </string>
     <string name='cr02'>District</string>
     <string name='cr03'>UC</string>
     <string name='cr04'>Village</string>

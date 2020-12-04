@@ -8,13 +8,6 @@
     <!-- Base application theme. -->
     <style name="AppThemeEnglish" parent="Theme.AppCompat.Light.DarkActionBar">
 
-        <item name="android:spinnerStyle">@style/spinner</item>
-        <!--
-                      Customize your theme here. -->
-    </style>
-
-    <style name="AppThemeUrdu" parent="Theme.AppCompat.Light.DarkActionBar">
-
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -32,8 +25,15 @@
         <item name="android:fillAfter">true</item>
         <item name="android:enterFadeDuration">600</item>
         <item name="android:exitFadeDuration">200</item>
-        <item name="android:layoutDirection">rtl</item>
+        <item name="android:layoutDirection">ltr</item>
         <item name="android:animateLayoutChanges">false</item>
+    </style>
+
+    <style name="AppThemeUrdu" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="android:spinnerStyle">@style/spinner</item>
+        <!--
+                      Customize your theme here. -->
 
     </style>
 
