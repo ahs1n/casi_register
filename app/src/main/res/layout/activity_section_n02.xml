@@ -1511,6 +1511,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:textColor="@color/black"
                             style="@style/textView"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -1542,6 +1543,7 @@
 
                         <TextView
                             style="@style/textView"
+                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -1571,6 +1573,7 @@
 
                         <TextView
                             style="@style/textView"
+                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -1601,6 +1604,7 @@
 
                         <TextView
                             style="@style/textView"
+                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -1631,6 +1635,7 @@
 
                         <TextView
                             style="@style/textView"
+                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -1661,6 +1666,7 @@
 
                         <TextView
                             style="@style/textView"
+                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
