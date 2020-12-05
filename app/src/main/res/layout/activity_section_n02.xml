@@ -434,6 +434,7 @@
                         android:maxLength="30" />
 
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <!-- CR10 -->
