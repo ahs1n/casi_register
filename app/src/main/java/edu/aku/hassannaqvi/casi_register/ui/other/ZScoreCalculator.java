@@ -18,6 +18,9 @@ public class ZScoreCalculator extends AppCompatActivity {
     private String cat;
     private float zScore;
     private ZScore zs;
+    private float L;
+    private float M;
+    private float S;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,12 @@ public class ZScoreCalculator extends AppCompatActivity {
                 bi.wa.isChecked() ? Double.parseDouble(bi.height.getText().toString()) :
                         bi.wh.isChecked() ? Double.parseDouble(bi.weight.getText().toString()) : 00.00);
 
+        this.L = Float.parseFloat(bi.txtL.getText().toString());
+        this.M = Float.parseFloat(bi.txtM.getText().toString());
+        this.S = Float.parseFloat(bi.txtS.getText().toString());
+
         this.zs = new ZScore();
-        this.zScore = (float) zs.calcZS(this.age, this.gender, this.measurement, this.cat);
+        this.zScore = (float) zs.calcZS(this.age, this.gender, this.measurement, this.cat, this.L, this.M, this.S);
 
         bi.zsResult.setText((String.valueOf(this.zScore)));
     }
