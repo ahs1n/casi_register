@@ -601,6 +601,7 @@
                             android:layout_alignTop="@id/qtxt_cr13"
                             android:layout_alignBottom="@id/qtxt_cr13"
                             android:text="@string/Q_cr13" />
+
                     </RelativeLayout>
 
                     <RadioGroup
@@ -624,8 +625,11 @@
                             android:text="@string/cr13F" />
 
                     </RadioGroup>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
+
 
             <!-- CR14 -->
             <androidx.cardview.widget.CardView
@@ -870,8 +874,11 @@
                             android:text="@string/cr17b" />
 
                     </RadioGroup>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
+
 
             <!-- cr18  Radio   -->
             <androidx.cardview.widget.CardView
@@ -1471,28 +1478,28 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                        <RelativeLayout
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_cr28"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bottom">
+                            android:layout_toEndOf="@id/q_cr28"
+                            android:text="@string/cr28" />
 
-                            <TextView
-                                android:id="@+id/qtxt_cr28"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_toEndOf="@id/q_cr28"
-                                android:text="@string/cr28" />
+                        <TextView
+                            android:id="@+id/q_cr28"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_cr28"
+                            android:layout_alignBottom="@id/qtxt_cr28"
+                            android:text="@string/Q_cr28" />
 
-                            <TextView
-                                android:id="@+id/q_cr28"
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignTop="@id/qtxt_cr28"
-                                android:layout_alignBottom="@id/qtxt_cr28"
-                                android:text="@string/Q_cr28" />
-
-                        </RelativeLayout>
+                    </RelativeLayout>
 
                     <RadioGroup
                         android:id="@+id/cr28a"
@@ -1516,12 +1523,12 @@
 
                         <RadioButton
                             android:id="@+id/cr28a02"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/cr28a02" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cr28a02" />
 
-                        </RadioGroup>
+                    </RadioGroup>
 
 
                     <RadioGroup
@@ -1546,12 +1553,12 @@
 
                         <RadioButton
                             android:id="@+id/cr28b02"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/cr28b02" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cr28b02" />
 
-                        </RadioGroup>
+                    </RadioGroup>
 
                     <RadioGroup
                         android:id="@+id/cr28c"
@@ -1575,12 +1582,12 @@
 
                         <RadioButton
                             android:id="@+id/cr28c02"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/cr28c02" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cr28c02" />
 
-                        </RadioGroup>
+                    </RadioGroup>
 
 
                     <RadioGroup
@@ -1601,16 +1608,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/cr28d02" />
+                            android:text="@string/cr28d01" />
 
                         <RadioButton
                             android:id="@+id/cr28d02"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/cr28d02" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cr28d02" />
 
-                        </RadioGroup>
+                    </RadioGroup>
 
 
                     <RadioGroup
@@ -1635,12 +1642,12 @@
 
                         <RadioButton
                             android:id="@+id/cr28g02"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/cr28e02" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cr28e02" />
 
-                        </RadioGroup>
+                    </RadioGroup>
 
 
                     <RadioGroup
@@ -1661,16 +1668,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/cr28f02" />
+                            android:text="@string/cr28f01" />
 
                         <RadioButton
                             android:id="@+id/cr28f02"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/cr28f02" />
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cr28f02" />
 
-                        </RadioGroup>
+                    </RadioGroup>
 
                     <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/cr28fx"
