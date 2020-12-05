@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -12,8 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -154,12 +155,12 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
         form.setCr23(bi.cr23.getText().toString());
 
-/*        form.setCr24(bi.cr24a.isChecked() ? "1" : "-1");
-        form.setCr24(bi.cr24b.isChecked() ? "2" : "-1");
-        form.setCr24(bi.cr24c.isChecked() ? "3" : "-1");
-        form.setCr24(bi.cr24d.isChecked() ? "4" : "-1");
-        form.setCr24(bi.cr24e.isChecked() ? "5" : "-1");
-        form.setCr24(bi.cr24f.isChecked() ? "6" : "-1");*/
+        form.setCr24a(bi.cr24a.isChecked() ? "1" : "-1");
+        form.setCr24b(bi.cr24b.isChecked() ? "2" : "-1");
+        form.setCr24c(bi.cr24c.isChecked() ? "3" : "-1");
+        form.setCr24d(bi.cr24d.isChecked() ? "4" : "-1");
+        form.setCr24e(bi.cr24e.isChecked() ? "5" : "-1");
+        form.setCr24f(bi.cr24f.isChecked() ? "6" : "-1");
 
         form.setCr25(bi.cr25a.isChecked() ? "1"
                 : bi.cr25b.isChecked() ? "2"
