@@ -154,12 +154,12 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
         form.setCr23(bi.cr23.getText().toString());
 
-/*        form.setCr24(bi.cr24a.isChecked() ? "1" : "-1");
-        form.setCr24(bi.cr24b.isChecked() ? "2" : "-1");
-        form.setCr24(bi.cr24c.isChecked() ? "3" : "-1");
-        form.setCr24(bi.cr24d.isChecked() ? "4" : "-1");
-        form.setCr24(bi.cr24e.isChecked() ? "5" : "-1");
-        form.setCr24(bi.cr24f.isChecked() ? "6" : "-1");*/
+        form.setCr24a(bi.cr24a.isChecked() ? "1" : "-1");
+        form.setCr24b(bi.cr24b.isChecked() ? "2" : "-1");
+        form.setCr24c(bi.cr24c.isChecked() ? "3" : "-1");
+        form.setCr24d(bi.cr24d.isChecked() ? "4" : "-1");
+        form.setCr24e(bi.cr24e.isChecked() ? "5" : "-1");
+        form.setCr24f(bi.cr24f.isChecked() ? "6" : "-1");
 
         form.setCr25(bi.cr25a.isChecked() ? "1"
                 : bi.cr25b.isChecked() ? "2"
@@ -176,6 +176,26 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 : bi.cr27b.isChecked() ? "2"
                 : bi.cr27c.isChecked() ? "3"
                 : "-1");
+
+        form.setCr28A(bi.cr28a01.isChecked() ? "1"
+                : bi.cr28a02.isChecked() ? "2"
+                : "-1");
+        form.setCr28B(bi.cr28b01.isChecked() ? "1"
+                : bi.cr28b02.isChecked() ? "2"
+                : "-1");
+        form.setCr28C(bi.cr28c01.isChecked() ? "1"
+                : bi.cr28c02.isChecked() ? "2"
+                : "-1");
+        form.setCr28D(bi.cr28d01.isChecked() ? "1"
+                : bi.cr28d02.isChecked() ? "2"
+                : "-1");
+        form.setCr28E(bi.cr28e01.isChecked() ? "1"
+                : bi.cr28e02.isChecked() ? "2"
+                : "-1");
+        form.setCr28F(bi.cr28f01.isChecked() ? "1"
+                : bi.cr28f02.isChecked() ? "2"
+                : "-1");
+        form.setCr28FX(bi.cr28fx.getText().toString());
 
         MainApp.setGPS(this);
 

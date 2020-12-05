@@ -28,9 +28,11 @@ import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract.VillageTable;
+import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.Users;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
+import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
@@ -40,6 +42,7 @@ import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_UCs
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGE_TABLE;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZSTANDARD;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -58,6 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_UCs);
         db.execSQL(SQL_CREATE_VILLAGE_TABLE);
         db.execSQL(SQL_CREATE_VERSIONAPP);
+        db.execSQL(SQL_CREATE_ZSTANDARD);
     }
 
     @Override
@@ -156,6 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+
     public int syncVillages(JSONArray enumList) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(VillageTable.TABLE_NAME, null, null);
@@ -219,6 +224,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public int syncZStandard(JSONArray zsList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ZStandardContract.Table.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+            for (int i = 0; i < zsList.length(); i++) {
+
+                JSONObject jsonObjectzs = zsList.getJSONObject(i);
+
+                ZStandard Zstandard = new ZStandard();
+                Zstandard.Sync(jsonObjectzs);
+                ContentValues values = new ContentValues();
+
+                values.put(ZStandardContract.Table.COLUMN_SEX, Zstandard.getSex());
+                values.put(ZStandardContract.Table.COLUMN_AGE, Zstandard.getAge());
+                values.put(ZStandardContract.Table.COLUMN_MEASURE, Zstandard.getMeasure());
+                values.put(ZStandardContract.Table.COLUMN_L, Zstandard.getL());
+                values.put(ZStandardContract.Table.COLUMN_M, Zstandard.getM());
+                values.put(ZStandardContract.Table.COLUMN_S, Zstandard.getS());
+                values.put(ZStandardContract.Table.COLUMN_CAT, Zstandard.getCat());
+                long rowID = db.insert(ZStandardContract.Table.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncZStandard(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+
     //Add Functions
     public Long addForm(Form form) {
 
@@ -231,18 +270,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UID, form.get_UID());
         values.put(FormsTable.COLUMN_USERNAME, form.getUsername());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysdate());
-        values.put(FormsTable.COLUMN_CR08D, form.getCr08d());
-        values.put(FormsTable.COLUMN_CR08M, form.getCr08m());
-        values.put(FormsTable.COLUMN_CR08Y, form.getCr08y());
+        values.put(FormsTable.COLUMN_CR01, form.getCr01());
         values.put(FormsTable.COLUMN_CR02, form.getCr02());
         values.put(FormsTable.COLUMN_CR03, form.getCr03());
         values.put(FormsTable.COLUMN_CR04, form.getCr04());
         values.put(FormsTable.COLUMN_CR05, form.getCr05());
         values.put(FormsTable.COLUMN_CR06, form.getCr06());
         values.put(FormsTable.COLUMN_CR07, form.getCr07());
-        values.put(FormsTable.COLUMN_CR01, form.getCr01());
+        values.put(FormsTable.COLUMN_CR08D, form.getCr08d());
+        values.put(FormsTable.COLUMN_CR08M, form.getCr08m());
+        values.put(FormsTable.COLUMN_CR08Y, form.getCr08y());
         values.put(FormsTable.COLUMN_CR09, form.getCr09());
         values.put(FormsTable.COLUMN_CR10, form.getCr10());
+        values.put(FormsTable.COLUMN_CR11, form.getCr10());
+        values.put(FormsTable.COLUMN_CR12, form.getCr10());
+        values.put(FormsTable.COLUMN_CR13, form.getCr10());
+        values.put(FormsTable.COLUMN_CR14, form.getCr10());
+        values.put(FormsTable.COLUMN_CR15M, form.getCr10());
+        values.put(FormsTable.COLUMN_CR15Y, form.getCr10());
+        values.put(FormsTable.COLUMN_CR16, form.getCr10());
+        values.put(FormsTable.COLUMN_CR17, form.getCr10());
+        values.put(FormsTable.COLUMN_CR18, form.getCr10());
+        values.put(FormsTable.COLUMN_CR19, form.getCr10());
+        values.put(FormsTable.COLUMN_CR20, form.getCr10());
+        values.put(FormsTable.COLUMN_CR21, form.getCr10());
+        values.put(FormsTable.COLUMN_CR22, form.getCr10());
+        values.put(FormsTable.COLUMN_CR23, form.getCr10());
+        values.put(FormsTable.COLUMN_CR24A, form.getCr10());
+        values.put(FormsTable.COLUMN_CR24B, form.getCr10());
+        values.put(FormsTable.COLUMN_CR24C, form.getCr10());
+        values.put(FormsTable.COLUMN_CR24D, form.getCr10());
+        values.put(FormsTable.COLUMN_CR24E, form.getCr10());
+        values.put(FormsTable.COLUMN_CR24F, form.getCr10());
+        values.put(FormsTable.COLUMN_CR25, form.getCr10());
+        values.put(FormsTable.COLUMN_CR26, form.getCr10());
+        values.put(FormsTable.COLUMN_CR27, form.getCr10());
+        values.put(FormsTable.COLUMN_CR28A, form.getCr10());
+        values.put(FormsTable.COLUMN_CR28B, form.getCr10());
+        values.put(FormsTable.COLUMN_CR28C, form.getCr10());
+        values.put(FormsTable.COLUMN_CR28D, form.getCr10());
+        values.put(FormsTable.COLUMN_CR28E, form.getCr10());
+        values.put(FormsTable.COLUMN_CR28F, form.getCr10());
+        values.put(FormsTable.COLUMN_CR28FX, form.getCr10());
         values.put(FormsTable.COLUMN_ISTATUS, form.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getIstatus96x());
         values.put(FormsTable.COLUMN_ENDINGDATETIME, form.getEndingdatetime());
@@ -262,6 +331,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
+
 
     public VersionApp getVersionApp() {
 
@@ -306,6 +376,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allVC;
     }
 
+
     public boolean Login(String username, String password) throws SQLException {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -321,6 +392,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+
 
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -348,18 +420,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_CR08D,
-                FormsTable.COLUMN_CR08M,
-                FormsTable.COLUMN_CR08Y,
+                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
                 FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR08D,
+                FormsTable.COLUMN_CR08M,
+                FormsTable.COLUMN_CR08Y,
                 FormsTable.COLUMN_CR09,
                 FormsTable.COLUMN_CR10,
+                FormsTable.COLUMN_CR11,
+                FormsTable.COLUMN_CR12,
+                FormsTable.COLUMN_CR13,
+                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR15M,
+                FormsTable.COLUMN_CR15Y,
+                FormsTable.COLUMN_CR16,
+                FormsTable.COLUMN_CR17,
+                FormsTable.COLUMN_CR18,
+                FormsTable.COLUMN_CR19,
+                FormsTable.COLUMN_CR20,
+                FormsTable.COLUMN_CR21,
+                FormsTable.COLUMN_CR22,
+                FormsTable.COLUMN_CR23,
+                FormsTable.COLUMN_CR24A,
+                FormsTable.COLUMN_CR24B,
+                FormsTable.COLUMN_CR24C,
+                FormsTable.COLUMN_CR24D,
+                FormsTable.COLUMN_CR24E,
+                FormsTable.COLUMN_CR24F,
+                FormsTable.COLUMN_CR25,
+                FormsTable.COLUMN_CR26,
+                FormsTable.COLUMN_CR27,
+                FormsTable.COLUMN_CR28A,
+                FormsTable.COLUMN_CR28B,
+                FormsTable.COLUMN_CR28C,
+                FormsTable.COLUMN_CR28D,
+                FormsTable.COLUMN_CR28E,
+                FormsTable.COLUMN_CR28F,
+                FormsTable.COLUMN_CR28FX,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -412,18 +514,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_CR08D,
-                FormsTable.COLUMN_CR08M,
-                FormsTable.COLUMN_CR08Y,
+                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
                 FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR08D,
+                FormsTable.COLUMN_CR08M,
+                FormsTable.COLUMN_CR08Y,
                 FormsTable.COLUMN_CR09,
                 FormsTable.COLUMN_CR10,
+                FormsTable.COLUMN_CR11,
+                FormsTable.COLUMN_CR12,
+                FormsTable.COLUMN_CR13,
+                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR15M,
+                FormsTable.COLUMN_CR15Y,
+                FormsTable.COLUMN_CR16,
+                FormsTable.COLUMN_CR17,
+                FormsTable.COLUMN_CR18,
+                FormsTable.COLUMN_CR19,
+                FormsTable.COLUMN_CR20,
+                FormsTable.COLUMN_CR21,
+                FormsTable.COLUMN_CR22,
+                FormsTable.COLUMN_CR23,
+                FormsTable.COLUMN_CR24A,
+                FormsTable.COLUMN_CR24B,
+                FormsTable.COLUMN_CR24C,
+                FormsTable.COLUMN_CR24D,
+                FormsTable.COLUMN_CR24E,
+                FormsTable.COLUMN_CR24F,
+                FormsTable.COLUMN_CR25,
+                FormsTable.COLUMN_CR26,
+                FormsTable.COLUMN_CR27,
+                FormsTable.COLUMN_CR28A,
+                FormsTable.COLUMN_CR28B,
+                FormsTable.COLUMN_CR28C,
+                FormsTable.COLUMN_CR28D,
+                FormsTable.COLUMN_CR28E,
+                FormsTable.COLUMN_CR28F,
+                FormsTable.COLUMN_CR28FX,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -478,18 +610,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_CR08D,
-                FormsTable.COLUMN_CR08M,
-                FormsTable.COLUMN_CR08Y,
+                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
                 FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR08D,
+                FormsTable.COLUMN_CR08M,
+                FormsTable.COLUMN_CR08Y,
                 FormsTable.COLUMN_CR09,
                 FormsTable.COLUMN_CR10,
+                FormsTable.COLUMN_CR11,
+                FormsTable.COLUMN_CR12,
+                FormsTable.COLUMN_CR13,
+                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR15M,
+                FormsTable.COLUMN_CR15Y,
+                FormsTable.COLUMN_CR16,
+                FormsTable.COLUMN_CR17,
+                FormsTable.COLUMN_CR18,
+                FormsTable.COLUMN_CR19,
+                FormsTable.COLUMN_CR20,
+                FormsTable.COLUMN_CR21,
+                FormsTable.COLUMN_CR22,
+                FormsTable.COLUMN_CR23,
+                FormsTable.COLUMN_CR24A,
+                FormsTable.COLUMN_CR24B,
+                FormsTable.COLUMN_CR24C,
+                FormsTable.COLUMN_CR24D,
+                FormsTable.COLUMN_CR24E,
+                FormsTable.COLUMN_CR24F,
+                FormsTable.COLUMN_CR25,
+                FormsTable.COLUMN_CR26,
+                FormsTable.COLUMN_CR27,
+                FormsTable.COLUMN_CR28A,
+                FormsTable.COLUMN_CR28B,
+                FormsTable.COLUMN_CR28C,
+                FormsTable.COLUMN_CR28D,
+                FormsTable.COLUMN_CR28E,
+                FormsTable.COLUMN_CR28F,
+                FormsTable.COLUMN_CR28FX,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
 
@@ -520,18 +682,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
-                form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
-                form.setCr08y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08Y)));
+                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
                 form.setCr05(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR05)));
                 form.setCr06(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06)));
                 form.setCr07(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR07)));
-                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
+                form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
+                form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
+                form.setCr08y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08Y)));
                 form.setCr09(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR09)));
                 form.setCr10(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR10)));
+                form.setCr11(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR11)));
+                form.setCr12(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR12)));
+                form.setCr13(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR13)));
+                form.setCr14(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14)));
+                form.setCr15m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15M)));
+                form.setCr15y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15Y)));
+                form.setCr16(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR16)));
+                form.setCr17(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR17)));
+                form.setCr18(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR18)));
+                form.setCr19(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR19)));
+                form.setCr20(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR20)));
+                form.setCr21(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR21)));
+                form.setCr22(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR22)));
+                form.setCr23(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR23)));
+                form.setCr24a(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24A)));
+                form.setCr24b(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24B)));
+                form.setCr24c(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24C)));
+                form.setCr24d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24D)));
+                form.setCr24e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24E)));
+                form.setCr24f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24F)));
+                form.setCr25(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR25)));
+                form.setCr26(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR26)));
+                form.setCr27(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR27)));
+                form.setCr28A(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
+                form.setCr28B(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
+                form.setCr28C(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
+                form.setCr28D(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
+                form.setCr28E(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
+                form.setCr28F(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
+                form.setCr28FX(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -547,6 +739,146 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
+
+    public Collection<ZStandard> getZStandard() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                ZStandardContract.Table.COLUMN_SEX,
+                ZStandardContract.Table.COLUMN_AGE,
+                ZStandardContract.Table.COLUMN_MEASURE,
+                ZStandardContract.Table.COLUMN_L,
+                ZStandardContract.Table.COLUMN_M,
+                ZStandardContract.Table.COLUMN_S,
+                ZStandardContract.Table.COLUMN_CAT
+        };
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                ZStandardContract.Table.COLUMN_SEX + " ASC";
+
+        Collection<ZStandard> allZs = new ArrayList<ZStandard>();
+        try {
+            c = db.query(
+                    ZStandardContract.Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                ZStandard zs = new ZStandard();
+                allZs.add(zs.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allZs;
+    }
+
+
+    public Collection<ZStandard> getZStandardL() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                "DISTINCT " + ZStandardContract.Table.COLUMN_SEX,
+                ZStandardContract.Table.COLUMN_AGE,
+                ZStandardContract.Table.COLUMN_MEASURE,
+                ZStandardContract.Table.COLUMN_L,
+                ZStandardContract.Table.COLUMN_M,
+                ZStandardContract.Table.COLUMN_S,
+                ZStandardContract.Table.COLUMN_CAT
+        };
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = ZStandardContract.Table.COLUMN_SEX;
+        String having = null;
+
+        String orderBy =
+                ZStandardContract.Table.COLUMN_SEX + " ASC";
+
+        Collection<ZStandard> allzs = new ArrayList<ZStandard>();
+        try {
+            c = db.query(
+                    ZStandardContract.Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                ZStandard zs = new ZStandard();
+                allzs.add(zs.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allzs;
+    }
+
+
+    public Collection<ZStandard> getZStandardByL(String uc) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                ZStandardContract.Table.COLUMN_SEX,
+                ZStandardContract.Table.COLUMN_MEASURE
+        };
+
+        String whereClause = ZStandardContract.Table.COLUMN_SEX + "=?";
+        String[] whereArgs = new String[]{uc};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                ZStandardContract.Table.COLUMN_SEX + " ASC";
+
+        Collection<ZStandard> allzs = new ArrayList<ZStandard>();
+        try {
+            c = db.query(
+                    ZStandardContract.Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                ZStandard zs = new ZStandard();
+                allzs.add(zs.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allzs;
+    }
+
+
     //TODO: Commented for TESTING APP
 
     public Collection<Form> getFormsByCluster(String cluster) {
@@ -558,18 +890,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable._ID,
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_CR08D,
-                FormsTable.COLUMN_CR08M,
-                FormsTable.COLUMN_CR08Y,
+                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
                 FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR08D,
+                FormsTable.COLUMN_CR08M,
+                FormsTable.COLUMN_CR08Y,
                 FormsTable.COLUMN_CR09,
                 FormsTable.COLUMN_CR10,
+                FormsTable.COLUMN_CR11,
+                FormsTable.COLUMN_CR12,
+                FormsTable.COLUMN_CR13,
+                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR15M,
+                FormsTable.COLUMN_CR15Y,
+                FormsTable.COLUMN_CR16,
+                FormsTable.COLUMN_CR17,
+                FormsTable.COLUMN_CR18,
+                FormsTable.COLUMN_CR19,
+                FormsTable.COLUMN_CR20,
+                FormsTable.COLUMN_CR21,
+                FormsTable.COLUMN_CR22,
+                FormsTable.COLUMN_CR23,
+                FormsTable.COLUMN_CR24A,
+                FormsTable.COLUMN_CR24B,
+                FormsTable.COLUMN_CR24C,
+                FormsTable.COLUMN_CR24D,
+                FormsTable.COLUMN_CR24E,
+                FormsTable.COLUMN_CR24F,
+                FormsTable.COLUMN_CR25,
+                FormsTable.COLUMN_CR26,
+                FormsTable.COLUMN_CR27,
+                FormsTable.COLUMN_CR28A,
+                FormsTable.COLUMN_CR28B,
+                FormsTable.COLUMN_CR28C,
+                FormsTable.COLUMN_CR28D,
+                FormsTable.COLUMN_CR28E,
+                FormsTable.COLUMN_CR28F,
+                FormsTable.COLUMN_CR28FX,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
 
@@ -599,18 +961,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
                 form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
-                form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
-                form.setCr08y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08Y)));
+                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
                 form.setCr05(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR05)));
                 form.setCr06(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06)));
                 form.setCr07(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR07)));
-                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
+                form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
+                form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
+                form.setCr08y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08Y)));
                 form.setCr09(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR09)));
                 form.setCr10(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR10)));
+                form.setCr11(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR11)));
+                form.setCr12(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR12)));
+                form.setCr13(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR13)));
+                form.setCr14(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14)));
+                form.setCr15m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15M)));
+                form.setCr15y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15Y)));
+                form.setCr16(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR16)));
+                form.setCr17(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR17)));
+                form.setCr18(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR18)));
+                form.setCr19(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR19)));
+                form.setCr20(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR20)));
+                form.setCr21(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR21)));
+                form.setCr22(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR22)));
+                form.setCr23(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR23)));
+                form.setCr24a(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24A)));
+                form.setCr24b(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24B)));
+                form.setCr24c(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24C)));
+                form.setCr24d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24D)));
+                form.setCr24e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24E)));
+                form.setCr24f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24F)));
+                form.setCr25(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR25)));
+                form.setCr26(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR26)));
+                form.setCr27(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR27)));
+                form.setCr28A(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
+                form.setCr28B(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
+                form.setCr28C(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
+                form.setCr28D(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
+                form.setCr28E(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
+                form.setCr28F(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
+                form.setCr28FX(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -633,18 +1025,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable._ID,
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_CR08D,
-                FormsTable.COLUMN_CR08M,
-                FormsTable.COLUMN_CR08Y,
+                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
                 FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR08D,
+                FormsTable.COLUMN_CR08M,
+                FormsTable.COLUMN_CR08Y,
                 FormsTable.COLUMN_CR09,
                 FormsTable.COLUMN_CR10,
+                FormsTable.COLUMN_CR11,
+                FormsTable.COLUMN_CR12,
+                FormsTable.COLUMN_CR13,
+                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR15M,
+                FormsTable.COLUMN_CR15Y,
+                FormsTable.COLUMN_CR16,
+                FormsTable.COLUMN_CR17,
+                FormsTable.COLUMN_CR18,
+                FormsTable.COLUMN_CR19,
+                FormsTable.COLUMN_CR20,
+                FormsTable.COLUMN_CR21,
+                FormsTable.COLUMN_CR22,
+                FormsTable.COLUMN_CR23,
+                FormsTable.COLUMN_CR24A,
+                FormsTable.COLUMN_CR24B,
+                FormsTable.COLUMN_CR24C,
+                FormsTable.COLUMN_CR24D,
+                FormsTable.COLUMN_CR24E,
+                FormsTable.COLUMN_CR24F,
+                FormsTable.COLUMN_CR25,
+                FormsTable.COLUMN_CR26,
+                FormsTable.COLUMN_CR27,
+                FormsTable.COLUMN_CR28A,
+                FormsTable.COLUMN_CR28B,
+                FormsTable.COLUMN_CR28C,
+                FormsTable.COLUMN_CR28D,
+                FormsTable.COLUMN_CR28E,
+                FormsTable.COLUMN_CR28F,
+                FormsTable.COLUMN_CR28FX,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
         };
@@ -670,18 +1092,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
                 form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
-                form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
-                form.setCr08y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08Y)));
+                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
                 form.setCr05(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR05)));
                 form.setCr06(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06)));
                 form.setCr07(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR07)));
-                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
+                form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
+                form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
+                form.setCr08y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08Y)));
                 form.setCr09(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR09)));
                 form.setCr10(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR10)));
+                form.setCr11(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR11)));
+                form.setCr12(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR12)));
+                form.setCr13(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR13)));
+                form.setCr14(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14)));
+                form.setCr15m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15M)));
+                form.setCr15y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15Y)));
+                form.setCr16(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR16)));
+                form.setCr17(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR17)));
+                form.setCr18(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR18)));
+                form.setCr19(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR19)));
+                form.setCr20(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR20)));
+                form.setCr21(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR21)));
+                form.setCr22(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR22)));
+                form.setCr23(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR23)));
+                form.setCr24a(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24A)));
+                form.setCr24b(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24B)));
+                form.setCr24c(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24C)));
+                form.setCr24d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24D)));
+                form.setCr24e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24E)));
+                form.setCr24f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR24F)));
+                form.setCr25(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR25)));
+                form.setCr26(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR26)));
+                form.setCr27(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR27)));
+                form.setCr28A(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
+                form.setCr28B(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
+                form.setCr28C(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
+                form.setCr28D(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
+                form.setCr28E(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
+                form.setCr28F(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
+                form.setCr28FX(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -696,6 +1148,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allForms;
     }
+
 
     public int updateEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -715,6 +1168,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
     }
+
 
     public Collection<Users> getUsers() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -896,30 +1350,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR02,
+                FormsTable.COLUMN_CR03,
+                FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
                 FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR08D,
+                FormsTable.COLUMN_CR08M,
+                FormsTable.COLUMN_CR08Y,
                 FormsTable.COLUMN_CR09,
                 FormsTable.COLUMN_CR10,
-                /*FormsTable.COLUMN_ELB7,
-                FormsTable.COLUMN_ELB8,
-                FormsTable.COLUMN_ELB8a,
-                FormsTable.COLUMN_ELB09,
-                FormsTable.COLUMN_ELB10,
-                FormsTable.COLUMN_ELB11,
-                FormsTable.COLUMN_ELB12,
-                FormsTable.COLUMN_SC,
-                FormsTable.COLUMN_SD,
-                FormsTable.COLUMN_SE,
-                FormsTable.COLUMN_SF,
-                FormsTable.COLUMN_SG,
-                FormsTable.COLUMN_SH,
-                FormsTable.COLUMN_SI,
-                FormsTable.COLUMN_SJ,
-                FormsTable.COLUMN_SK,
-                FormsTable.COLUMN_SL,
-                FormsTable.COLUMN_SN,*/
+                FormsTable.COLUMN_CR11,
+                FormsTable.COLUMN_CR12,
+                FormsTable.COLUMN_CR13,
+                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR15M,
+                FormsTable.COLUMN_CR15Y,
+                FormsTable.COLUMN_CR16,
+                FormsTable.COLUMN_CR17,
+                FormsTable.COLUMN_CR18,
+                FormsTable.COLUMN_CR19,
+                FormsTable.COLUMN_CR20,
+                FormsTable.COLUMN_CR21,
+                FormsTable.COLUMN_CR22,
+                FormsTable.COLUMN_CR23,
+                FormsTable.COLUMN_CR24A,
+                FormsTable.COLUMN_CR24B,
+                FormsTable.COLUMN_CR24C,
+                FormsTable.COLUMN_CR24D,
+                FormsTable.COLUMN_CR24E,
+                FormsTable.COLUMN_CR24F,
+                FormsTable.COLUMN_CR25,
+                FormsTable.COLUMN_CR26,
+                FormsTable.COLUMN_CR27,
+                FormsTable.COLUMN_CR28A,
+                FormsTable.COLUMN_CR28B,
+                FormsTable.COLUMN_CR28C,
+                FormsTable.COLUMN_CR28D,
+                FormsTable.COLUMN_CR28E,
+                FormsTable.COLUMN_CR28F,
+                FormsTable.COLUMN_CR28FX,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,
@@ -979,18 +1451,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_CR08D,
-                FormsTable.COLUMN_CR08M,
-                FormsTable.COLUMN_CR08Y,
+                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
                 FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR08D,
+                FormsTable.COLUMN_CR08M,
+                FormsTable.COLUMN_CR08Y,
                 FormsTable.COLUMN_CR09,
                 FormsTable.COLUMN_CR10,
+                FormsTable.COLUMN_CR11,
+                FormsTable.COLUMN_CR12,
+                FormsTable.COLUMN_CR13,
+                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR15M,
+                FormsTable.COLUMN_CR15Y,
+                FormsTable.COLUMN_CR16,
+                FormsTable.COLUMN_CR17,
+                FormsTable.COLUMN_CR18,
+                FormsTable.COLUMN_CR19,
+                FormsTable.COLUMN_CR20,
+                FormsTable.COLUMN_CR21,
+                FormsTable.COLUMN_CR22,
+                FormsTable.COLUMN_CR23,
+                FormsTable.COLUMN_CR24A,
+                FormsTable.COLUMN_CR24B,
+                FormsTable.COLUMN_CR24C,
+                FormsTable.COLUMN_CR24D,
+                FormsTable.COLUMN_CR24E,
+                FormsTable.COLUMN_CR24F,
+                FormsTable.COLUMN_CR25,
+                FormsTable.COLUMN_CR26,
+                FormsTable.COLUMN_CR27,
+                FormsTable.COLUMN_CR28A,
+                FormsTable.COLUMN_CR28B,
+                FormsTable.COLUMN_CR28C,
+                FormsTable.COLUMN_CR28D,
+                FormsTable.COLUMN_CR28E,
+                FormsTable.COLUMN_CR28F,
+                FormsTable.COLUMN_CR28FX,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,
@@ -1061,18 +1563,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_CR08D,
-                FormsTable.COLUMN_CR08M,
-                FormsTable.COLUMN_CR08Y,
+                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
                 FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_CR08D,
+                FormsTable.COLUMN_CR08M,
+                FormsTable.COLUMN_CR08Y,
                 FormsTable.COLUMN_CR09,
                 FormsTable.COLUMN_CR10,
+                FormsTable.COLUMN_CR11,
+                FormsTable.COLUMN_CR12,
+                FormsTable.COLUMN_CR13,
+                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR15M,
+                FormsTable.COLUMN_CR15Y,
+                FormsTable.COLUMN_CR16,
+                FormsTable.COLUMN_CR17,
+                FormsTable.COLUMN_CR18,
+                FormsTable.COLUMN_CR19,
+                FormsTable.COLUMN_CR20,
+                FormsTable.COLUMN_CR21,
+                FormsTable.COLUMN_CR22,
+                FormsTable.COLUMN_CR23,
+                FormsTable.COLUMN_CR24A,
+                FormsTable.COLUMN_CR24B,
+                FormsTable.COLUMN_CR24C,
+                FormsTable.COLUMN_CR24D,
+                FormsTable.COLUMN_CR24E,
+                FormsTable.COLUMN_CR24F,
+                FormsTable.COLUMN_CR25,
+                FormsTable.COLUMN_CR26,
+                FormsTable.COLUMN_CR27,
+                FormsTable.COLUMN_CR28A,
+                FormsTable.COLUMN_CR28B,
+                FormsTable.COLUMN_CR28C,
+                FormsTable.COLUMN_CR28D,
+                FormsTable.COLUMN_CR28E,
+                FormsTable.COLUMN_CR28F,
+                FormsTable.COLUMN_CR28FX,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,

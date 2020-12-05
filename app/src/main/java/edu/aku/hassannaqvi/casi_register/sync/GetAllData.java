@@ -25,6 +25,7 @@ import edu.aku.hassannaqvi.casi_register.contracts.UCContract;
 import edu.aku.hassannaqvi.casi_register.contracts.UsersContract;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract;
+import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.models.SyncModel;
@@ -73,6 +74,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "Districts":
                 position = 4;
                 break;
+            case "ZStandard":
+                position = 5;
+                break;
         }
         list.get(position).settableName(syncClass);
     }
@@ -110,6 +114,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 break;
             case "Districts":
                 position = 4;
+                break;
+            case "ZStandard":
+                position = 5;
                 break;
         }
         list.get(position).setstatus("Syncing");
@@ -151,6 +158,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     tableName = DistrictContract.DISTRICTSTable.TABLE_NAME;
                     position = 4;
                     break;
+                case "ZStandard":
+                    url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
+                    tableName = ZStandardContract.Table.TABLE_NAME;
+                    position = 5;
+                    break;
             }
 
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -162,6 +174,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 case "Villages":
                 case "UCs":
                 case "Districts":
+                case "ZStandard":
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setDoOutput(true);
                     urlConnection.setDoInput(true);
@@ -273,6 +286,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             jsonArray = new JSONArray(result);
                             insertCount = db.syncDistricts(jsonArray);
                             position = 4;
+                            break;
+                        case "ZStandard":
+                            jsonArray = new JSONArray(result);
+                            insertCount = db.syncZStandard(jsonArray);
+                            position = 5;
                             break;
                     }
 
