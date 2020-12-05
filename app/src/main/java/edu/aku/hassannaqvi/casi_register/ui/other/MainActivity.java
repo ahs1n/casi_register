@@ -15,7 +15,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,12 +22,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Validator;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -36,14 +37,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
 import edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt;
@@ -115,12 +113,12 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         bi.setCallback(this);
 
-        //bi.txtinstalldate.setText(appInfo.getAppInfo());
+     /*   //bi.txtinstalldate.setText(appInfo.getAppInfo());
         Collection<Form> todaysForms = appInfo.getDbHelper().getTodayForms(sysdateToday);
         Collection<Form> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
 
         //TODO: Commented for testing
-        /* Collection<Form> unclosedForms = appInfo.getDbHelper().getUnclosedForms(); */
+        *//* Collection<Form> unclosedForms = appInfo.getDbHelper().getUnclosedForms(); *//*
 
         StringBuilder rSumText = new StringBuilder()
                 .append("TODAY'S RECORDS SUMMARY\r\n")
@@ -157,8 +155,8 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 }
 
                 rSumText
-                        /*.append((form.getMp101() + "          ").substring(0, 10))
-                        .append((form.getMp102() + "      ").substring(0, 6))*/
+                        *//*.append((form.getMp101() + "          ").substring(0, 10))
+                        .append((form.getMp102() + "      ").substring(0, 6))*//*
                         .append("  \t\t")
                         .append(iStatus)
                         .append("\t\t\t\t")
@@ -172,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 .append("  ========================================================\r\n")
 
                 //TODO: Commented for Testing
-                /* .append("\t|| Open Forms: \t\t\t\t\t\t").append(String.format("%02d", unclosedForms.size())) */
+                *//* .append("\t|| Open Forms: \t\t\t\t\t\t").append(String.format("%02d", unclosedForms.size())) *//*
                 .append("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t||\r\n")
                 .append("\t|| Unsynced Forms: \t\t\t\t").append(String.format("%02d", unsyncedForms.size()))
                 .append("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t||\r\n")
@@ -185,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 .append("\t========================================================\r\n");
         bi.recordSummary.setText(rSumText);
 
-        Log.d(TAG, "onCreate: " + rSumText);
+        Log.d(TAG, "onCreate: " + rSumText);*/
         if (MainApp.admin) {
             bi.databaseBtn.setVisibility(View.VISIBLE);
         } else {

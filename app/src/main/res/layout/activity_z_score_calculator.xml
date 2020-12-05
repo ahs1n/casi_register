@@ -68,7 +68,7 @@
                         android:id="@+id/age"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="10" />
+                        android:text="303" />
 
 
                     <TextView
@@ -85,6 +85,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:checkedButton="@id/male"
                         android:padding="8dp">
 
                         <RadioButton
@@ -131,7 +132,7 @@
                                 android:gravity="center_horizontal"
                                 android:inputType="numberDecimal"
                                 android:maxLength="5"
-                                android:text="100" />
+                                android:text="95.3" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -158,7 +159,7 @@
                                 android:gravity="center_horizontal"
                                 android:inputType="numberDecimal"
                                 android:maxLength="5"
-                                android:text="100" />
+                                android:text="13.2" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -184,7 +185,7 @@
                                 android:gravity="center_horizontal"
                                 android:inputType="numberDecimal"
                                 android:maxLength="4"
-                                android:text="10" />
+                                android:text="13.4" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -202,6 +203,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:checkedButton="@id/wa"
                         android:padding="8dp">
 
                         <RadioButton
@@ -250,6 +252,91 @@
                             android:layout_gravity="end|center"
                             android:onClick="calculateZScore"
                             android:text="Calculate Z-Score" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray_overlay"
+                                android:gravity="center_horizontal"
+                                android:padding="4dp"
+                                android:text="L"
+                                android:textColor="@color/black_overlay"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/txtL"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:inputType="numberDecimal"
+                                android:maxLength="5"
+                                android:text="0.082" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray_overlay"
+                                android:gravity="center_horizontal"
+                                android:padding="4dp"
+                                android:text="M"
+
+                                android:textColor="@color/black_overlay"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/txtM"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:inputType="numberDecimal"
+                                android:maxLength="5"
+                                android:text="9.153" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray_overlay"
+                                android:gravity="center_horizontal"
+                                android:padding="4dp"
+                                android:text="S"
+                                android:textColor="@color/black_overlay"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/txtS"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:inputType="numberDecimal"
+                                android:maxLength="5"
+                                android:text="1.109" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
