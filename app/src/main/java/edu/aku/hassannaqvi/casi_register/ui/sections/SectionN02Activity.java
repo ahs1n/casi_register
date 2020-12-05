@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -15,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -95,19 +94,92 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCr01d(bi.cr01d.getText().toString());
-        form.setCr01m(bi.cr01m.getText().toString());
-        form.setCr01y(bi.cr01y.getText().toString());
-        form.setCr05(bi.cr05.getText().toString());
-        form.setCr05(bi.cr06.getText().toString());
-        form.setCr05(bi.cr07.getText().toString());
-        form.setCr05(bi.cr08.getText().toString());
-        form.setCr05(bi.cr09.getText().toString());
-        form.setCr05(bi.cr10.getText().toString());
+        form.setCr02(bi.cr02.getText().toString());
+
+        form.setCr03(bi.cr03.getText().toString());
+
+        form.setCr06(bi.cr06a.isChecked() ? "1"
+                : bi.cr06b.isChecked() ? "2"
+                : bi.cr06c.isChecked() ? "3"
+                : bi.cr06d.isChecked() ? "4"
+                : bi.cr06e.isChecked() ? "5"
+                : bi.cr06x.isChecked() ? "6"
+                : "-1");
+        form.setCr06(bi.cr06xx.getText().toString());
+
+        form.setCr07(bi.cr07.getText().toString());
+
+        form.setCr08d(bi.cr08d.getText().toString());
+        form.setCr08m(bi.cr08m.getText().toString());
+        form.setCr08y(bi.cr08y.getText().toString());
+
+        form.setCr09(bi.cr09.getText().toString());
+
+        form.setCr10(bi.cr10.getText().toString());
+
+        form.setCr11(bi.cr11.getText().toString());
+
+        form.setCr12(bi.cr12.getText().toString());
+
+        form.setCr13(bi.cr13M.isChecked() ? "1"
+                : bi.cr13F.isChecked() ? "2"
+                : "-1");
+
+        form.setCr14(bi.cr14.getText().toString());
+
+        form.setCr15m(bi.cr15m.getText().toString().trim().isEmpty() ? "-1" : bi.cr15m.getText().toString());
+        form.setCr15y(bi.cr15y.getText().toString().trim().isEmpty() ? "-1" : bi.cr15y.getText().toString());
+
+        form.setCr16(bi.cr16.getText().toString());
+
+        form.setCr17(bi.cr17a.isChecked() ? "1"
+                : bi.cr17b.isChecked() ? "2"
+                : "-1");
+
+        form.setCr18(bi.cr18a.isChecked() ? "1"
+                : bi.cr18b.isChecked() ? "2"
+                : "-1");
+
+        form.setCr19(bi.cr19a.isChecked() ? "1"
+                : bi.cr19b.isChecked() ? "2"
+                : "-1");
+
+        form.setCr20(bi.cr20a.isChecked() ? "1"
+                : bi.cr20b.isChecked() ? "2"
+                : "-1");
+
+        form.setCr21(bi.cr21.getText().toString());
+
+        form.setCr22(bi.cr22.getText().toString());
+
+        form.setCr23(bi.cr23.getText().toString());
+
+/*        form.setCr24(bi.cr24a.isChecked() ? "1" : "-1");
+        form.setCr24(bi.cr24b.isChecked() ? "2" : "-1");
+        form.setCr24(bi.cr24c.isChecked() ? "3" : "-1");
+        form.setCr24(bi.cr24d.isChecked() ? "4" : "-1");
+        form.setCr24(bi.cr24e.isChecked() ? "5" : "-1");
+        form.setCr24(bi.cr24f.isChecked() ? "6" : "-1");*/
+
+        form.setCr25(bi.cr25a.isChecked() ? "1"
+                : bi.cr25b.isChecked() ? "2"
+                : bi.cr25c.isChecked() ? "3"
+                : "-1");
+
+        form.setCr26(bi.cr26a.isChecked() ? "1"
+                : bi.cr26b.isChecked() ? "2"
+                : bi.cr26c.isChecked() ? "3"
+                : bi.cr26d.isChecked() ? "4"
+                : "-1");
+
+        form.setCr27(bi.cr27a.isChecked() ? "1"
+                : bi.cr27b.isChecked() ? "2"
+                : bi.cr27c.isChecked() ? "3"
+                : "-1");
 
         MainApp.setGPS(this);
 
-        json.put("status", flag);
+//        json.put("status", flag);
 
         //  form.setsC(json.toString());
     }

@@ -27,7 +27,7 @@ public final class CreateTable {
             + FormsTable.COLUMN_CR05 + " TEXT,"
             + FormsTable.COLUMN_CR06 + " TEXT,"
             + FormsTable.COLUMN_CR07 + " TEXT,"
-            + FormsTable.COLUMN_CR08 + " TEXT,"
+            + FormsTable.COLUMN_CR01 + " TEXT,"
             + FormsTable.COLUMN_CR09 + " TEXT,"
             + FormsTable.COLUMN_CR10 + " TEXT,"
             /*+ FormsTable.COLUMN_ELB7 + " TEXT,"

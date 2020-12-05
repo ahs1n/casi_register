@@ -1222,48 +1222,51 @@
                             android:text="@string/Q_cr24" />
                     </RelativeLayout>
 
-                    <RadioGroup
+                    <LinearLayout
                         android:id="@+id/cr24"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:tag="0">
 
-                        <RadioButton
+                        <CheckBox
                             android:id="@+id/cr24a"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr24a" />
 
-                        <RadioButton
+                        <CheckBox
                             android:id="@+id/cr24b"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr24b" />
 
-                        <RadioButton
+                        <CheckBox
                             android:id="@+id/cr24c"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr24c" />
 
-                        <RadioButton
+                        <CheckBox
                             android:id="@+id/cr24d"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr24d" />
 
-                        <RadioButton
+                        <CheckBox
                             android:id="@+id/cr24e"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr24e" />
 
-                        <RadioButton
+                        <CheckBox
                             android:id="@+id/cr24f"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr24f" />
 
-                    </RadioGroup>
+                    </LinearLayout>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
