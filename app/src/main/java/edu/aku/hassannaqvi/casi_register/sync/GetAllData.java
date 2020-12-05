@@ -20,11 +20,9 @@ import java.net.URL;
 import java.util.List;
 
 import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
-import edu.aku.hassannaqvi.casi_register.contracts.DistrictContract;
-import edu.aku.hassannaqvi.casi_register.contracts.UCContract;
 import edu.aku.hassannaqvi.casi_register.contracts.UsersContract;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract;
-import edu.aku.hassannaqvi.casi_register.contracts.VillageContract;
+import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
@@ -59,7 +57,6 @@ public class GetAllData extends AsyncTask<String, String, String> {
         TAG = "Get" + syncClass;
         switch (syncClass) {
             case "User":
-//            case "BLRandom":
                 position = 0;
                 break;
             case "VersionApp":
@@ -68,14 +65,8 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "Villages":
                 position = 2;
                 break;
-            case "UCs":
-                position = 3;
-                break;
-            case "Districts":
-                position = 4;
-                break;
             case "ZStandard":
-                position = 5;
+                position = 3;
                 break;
         }
         list.get(position).settableName(syncClass);
@@ -100,7 +91,6 @@ public class GetAllData extends AsyncTask<String, String, String> {
         super.onProgressUpdate(values);
         switch (values[0]) {
             case "User":
-            /*case "BLRandom":*/
                 position = 0;
                 break;
             case "VersionApp":
@@ -109,14 +99,8 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "Villages":
                 position = 2;
                 break;
-            case "UCs":
-                position = 3;
-                break;
-            case "Districts":
-                position = 4;
-                break;
             case "ZStandard":
-                position = 5;
+                position = 3;
                 break;
         }
         list.get(position).setstatus("Syncing");
@@ -145,23 +129,13 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     break;
                 case "Villages":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = VillageContract.VillageTable.TABLE_NAME;
+                    tableName = VillagesContract.Table.TABLE_NAME;
                     position = 2;
-                    break;
-                case "UCs":
-                    url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = UCContract.UCTable.TABLE_NAME;
-                    position = 3;
-                    break;
-                case "Districts":
-                    url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = DistrictContract.DISTRICTSTable.TABLE_NAME;
-                    position = 4;
                     break;
                 case "ZStandard":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
                     tableName = ZStandardContract.Table.TABLE_NAME;
-                    position = 5;
+                    position = 3;
                     break;
             }
 
@@ -172,8 +146,6 @@ public class GetAllData extends AsyncTask<String, String, String> {
             switch (syncClass) {
                 case "User":
                 case "Villages":
-                case "UCs":
-                case "Districts":
                 case "ZStandard":
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setDoOutput(true);
@@ -277,20 +249,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             insertCount = db.syncVillages(jsonArray);
                             position = 2;
                             break;
-                        case "UCs":
-                            jsonArray = new JSONArray(result);
-                            insertCount = db.syncUCs(jsonArray);
-                            position = 3;
-                            break;
-                        case "Districts":
-                            jsonArray = new JSONArray(result);
-                            insertCount = db.syncDistricts(jsonArray);
-                            position = 4;
-                            break;
                         case "ZStandard":
                             jsonArray = new JSONArray(result);
                             insertCount = db.syncZStandard(jsonArray);
-                            position = 5;
+                            position = 3;
                             break;
                     }
 

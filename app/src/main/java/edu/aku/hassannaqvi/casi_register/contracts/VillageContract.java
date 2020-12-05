@@ -17,6 +17,7 @@ public class VillageContract implements Serializable {
     String area_code;
     String cluster_code;
 
+
     public VillageContract() {
         // Default Constructor
     }

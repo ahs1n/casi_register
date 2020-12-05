@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -28,10 +27,12 @@ import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract.VillageTable;
+import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.Users;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
+import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
@@ -41,6 +42,7 @@ import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FOR
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_UCs;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGE_TABLE;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZSTANDARD;
 
@@ -58,6 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_DISTRICTS);
+        db.execSQL(SQL_CREATE_VILLAGES);
         db.execSQL(SQL_CREATE_UCs);
         db.execSQL(SQL_CREATE_VILLAGE_TABLE);
         db.execSQL(SQL_CREATE_VERSIONAPP);
@@ -161,7 +164,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public int syncVillages(JSONArray enumList) {
+   /* public int syncVillages(JSONArray enumList) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(VillageTable.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -194,7 +197,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.close();
         }
         return insertCount;
-    }
+    }*/
 
 
     public int syncVersionApp(JSONObject VersionList) {
@@ -221,6 +224,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return (int) count;
+    }
+
+
+    public int syncVillages(JSONArray vilList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(VillagesContract.Table.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+            for (int i = 0; i < vilList.length(); i++) {
+
+                JSONObject jsonObjectzs = vilList.getJSONObject(i);
+
+                Villages villages = new Villages();
+                villages.Sync(jsonObjectzs);
+                ContentValues values = new ContentValues();
+
+                values.put(VillagesContract.Table.COLUMN_COUNTRY, villages.getCountry());
+                values.put(VillagesContract.Table.COLUMN_DISTRICT, villages.getDistrict());
+                values.put(VillagesContract.Table.COLUMN_UC, villages.getUc());
+                values.put(VillagesContract.Table.COLUMN_VILLAGE, villages.getVillage());
+                values.put(VillagesContract.Table.COLUMN_COUNTRY_CODE, villages.getCountry_code());
+                values.put(VillagesContract.Table.COLUMN_DISTRICT_CODE, villages.getDistrict_code());
+                values.put(VillagesContract.Table.COLUMN_UC_CODE, villages.getUc_code());
+                values.put(VillagesContract.Table.COLUMN_VILLLAGE_CODE, villages.getVilllage_code());
+                values.put(VillagesContract.Table.COLUMN_CLUSTER_NO, villages.getCluster_no());
+                long rowID = db.insert(VillagesContract.Table.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncZStandard(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
     }
 
 

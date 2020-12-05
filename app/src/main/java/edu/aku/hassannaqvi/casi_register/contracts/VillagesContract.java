@@ -9,23 +9,25 @@ import android.provider.BaseColumns;
  * Created by hassan.naqvi on 11/30/2016.
  */
 
-public class ZStandardContract {
+public class VillagesContract {
     public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.casi_register";
 
     public static abstract class Table implements BaseColumns {
 
-        public static final String TABLE_NAME = "zstandards";
+        public static final String TABLE_NAME = "villages";
 
         public static final String _ID = "_id";
-        public static final String COLUMN_SEX = "sex";
-        public static final String COLUMN_AGE = "age";
-        public static final String COLUMN_MEASURE = "measure";
-        public static final String COLUMN_L = "L";
-        public static final String COLUMN_M = "M";
-        public static final String COLUMN_S = "S";
-        public static final String COLUMN_CAT = "cat";
-        public static final String SERVER_URI = "zstandards.php";
-        public static String PATH = "zstandards";
+        public static final String COLUMN_COUNTRY = "country";
+        public static final String COLUMN_DISTRICT = "district";
+        public static final String COLUMN_UC = "uc";
+        public static final String COLUMN_VILLAGE = "village";
+        public static final String COLUMN_COUNTRY_CODE = "country_code";
+        public static final String COLUMN_DISTRICT_CODE = "district_code";
+        public static final String COLUMN_UC_CODE = "uc_code";
+        public static final String COLUMN_VILLLAGE_CODE = "villlage_code";
+        public static final String COLUMN_CLUSTER_NO = "cluster_no";
+        public static final String SERVER_URI = "villages.php";
+        public static String PATH = "villages";
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH;
         public static final String CONTENT_ITEM_TYPE =

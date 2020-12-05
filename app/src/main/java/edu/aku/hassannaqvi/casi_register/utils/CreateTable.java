@@ -7,6 +7,7 @@ import edu.aku.hassannaqvi.casi_register.contracts.UCContract.UCTable;
 import edu.aku.hassannaqvi.casi_register.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract.VillageTable;
+import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 
 public final class CreateTable {
@@ -85,6 +86,19 @@ public final class CreateTable {
             + UsersTable.COLUMN_PASSWORD + " TEXT,"
             + UsersTable.COLUMN_FULL_NAME + " TEXT"
             + " );";
+
+
+    public static final String SQL_CREATE_VILLAGES = "CREATE TABLE " + VillagesContract.Table.TABLE_NAME + "("
+            + VillagesContract.Table._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + VillagesContract.Table.COLUMN_COUNTRY + " TEXT,"
+            + VillagesContract.Table.COLUMN_DISTRICT + " TEXT,"
+            + VillagesContract.Table.COLUMN_UC + " TEXT,"
+            + VillagesContract.Table.COLUMN_VILLAGE + " TEXT,"
+            + VillagesContract.Table.COLUMN_COUNTRY_CODE + " TEXT,"
+            + VillagesContract.Table.COLUMN_DISTRICT_CODE + " TEXT,"
+            + VillagesContract.Table.COLUMN_UC_CODE + " TEXT,"
+            + VillagesContract.Table.COLUMN_VILLLAGE_CODE + " TEXT,"
+            + VillagesContract.Table.COLUMN_CLUSTER_NO + " TEXT );";
 
 
     public static final String SQL_CREATE_DISTRICTS = "CREATE TABLE " + DistrictContract.DISTRICTSTable.TABLE_NAME + "("
