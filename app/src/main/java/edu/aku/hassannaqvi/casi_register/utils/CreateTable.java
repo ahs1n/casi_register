@@ -7,6 +7,7 @@ import edu.aku.hassannaqvi.casi_register.contracts.UCContract.UCTable;
 import edu.aku.hassannaqvi.casi_register.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract.VillageTable;
+import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 
 public final class CreateTable {
 
@@ -95,6 +96,18 @@ public final class CreateTable {
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
+            ");";
+
+
+    public static final String SQL_CREATE_ZSTANDARD = "CREATE TABLE " + ZStandardContract.Table.TABLE_NAME + " (" +
+            ZStandardContract.Table._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            ZStandardContract.Table.COLUMN_SEX + " TEXT, " +
+            ZStandardContract.Table.COLUMN_AGE + " TEXT, " +
+            ZStandardContract.Table.COLUMN_MEASURE + " TEXT, " +
+            ZStandardContract.Table.COLUMN_L + " TEXT, " +
+            ZStandardContract.Table.COLUMN_M + " TEXT, " +
+            ZStandardContract.Table.COLUMN_S + " TEXT, " +
+            ZStandardContract.Table.COLUMN_CAT + " TEXT " +
             ");";
 
 }
