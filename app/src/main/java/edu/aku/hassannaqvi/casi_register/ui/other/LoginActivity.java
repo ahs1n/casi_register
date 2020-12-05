@@ -477,23 +477,7 @@ public class LoginActivity extends Activity {
         return provider1.equals(provider2);
     }
 
-/*    private void setListeners() {
-        ucsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SplashscreenActivity.ucs);
-        bi.spUCs.setAdapter(ucsAdapter);
-        bi.spUCs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) return;
-                MainApp.UC_ID = Objects.requireNonNull(SplashscreenActivity.ucsMap.get(bi.spUCs.getSelectedItem().toString())).getUc_code();
-                MainApp.SELECTED_UC = Objects.requireNonNull(SplashscreenActivity.ucsMap.get(bi.spUCs.getSelectedItem().toString()));
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }*/
 
     private void callingCoroutine() {
         //To call coroutine here
@@ -520,6 +504,11 @@ public class LoginActivity extends Activity {
     protected void onResume() {
         super.onResume();
         callingCoroutine();
+    }
+
+    public void openZScoreCalc(View view) {
+        startActivity(new Intent(LoginActivity.this, ZScoreCalculator.class));
+
     }
 
     public class GPSLocationListener implements LocationListener {

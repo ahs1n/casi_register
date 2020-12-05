@@ -2,13 +2,12 @@ package edu.aku.hassannaqvi.casi_register.models;
 
 import android.database.Cursor;
 
-import androidx.lifecycle.LiveData;
-
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import androidx.lifecycle.LiveData;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -23,18 +22,37 @@ public class Form extends LiveData<Form> {
     private String username;
     private String sysdate = "";
 
-    private String cr01d = "";
-    private String cr01m = "";
-    private String cr01y = "";
+    private String cr01 = "";
     private String cr02 = "";
     private String cr03 = "";
     private String cr04 = "";
     private String cr05 = "";
     private String cr06 = "";
     private String cr07 = "";
-    private String cr08 = "";
+    private String cr08d = "";
+    private String cr08m = "";
+    private String cr08y = "";
     private String cr09 = "";
     private String cr10 = "";
+    private String cr11 = "";
+    private String cr12 = "";
+    private String cr13 = "";
+    private String cr14 = "";
+    private String cr15m = "";
+    private String cr15y = "";
+    private String cr16 = "";
+    private String cr17 = "";
+    private String cr18 = "";
+    private String cr19 = "";
+    private String cr20 = "";
+    private String cr21 = "";
+    private String cr22 = "";
+    private String cr23 = "";
+    private String cr24 = "";
+    private String cr25 = "";
+    private String cr26 = "";
+    private String cr27 = "";
+    private String cr28 = "";
     private String istatus = ""; // Interview Status
     private String istatus96x = ""; // Interview Status
     private String endingdatetime = "";
@@ -61,47 +79,12 @@ public class Form extends LiveData<Form> {
     public Form() {
     }
 
-
-    public String getUsername() {
-        return username;
+    public String getCr01() {
+        return cr01;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
-    public String getSysdate() {
-        return sysdate;
-    }
-
-    public void setSysdate(String sysdate) {
-        this.sysdate = sysdate;
-    }
-
-
-    public String getCr01d() {
-        return cr01d;
-    }
-
-    public void setCr01d(String cr01d) {
-        this.cr01d = cr01d;
-    }
-
-    public String getCr01m() {
-        return cr01m;
-    }
-
-    public void setCr01m(String cr01m) {
-        this.cr01m = cr01m;
-    }
-
-    public String getCr01y() {
-        return cr01y;
-    }
-
-    public void setCr01y(String cr01y) {
-        this.cr01y = cr01y;
+    public void setCr01(String cr01) {
+        this.cr01 = cr01;
     }
 
     public String getCr02() {
@@ -128,7 +111,6 @@ public class Form extends LiveData<Form> {
         this.cr04 = cr04;
     }
 
-
     public String getCr05() {
         return cr05;
     }
@@ -136,7 +118,6 @@ public class Form extends LiveData<Form> {
     public void setCr05(String cr05) {
         this.cr05 = cr05;
     }
-
 
     public String getCr06() {
         return cr06;
@@ -146,7 +127,6 @@ public class Form extends LiveData<Form> {
         this.cr06 = cr06;
     }
 
-
     public String getCr07() {
         return cr07;
     }
@@ -155,15 +135,29 @@ public class Form extends LiveData<Form> {
         this.cr07 = cr07;
     }
 
-
-    public String getCr08() {
-        return cr08;
+    public String getCr08d() {
+        return cr08d;
     }
 
-    public void setCr08(String cr08) {
-        this.cr08 = cr08;
+    public void setCr08d(String cr08d) {
+        this.cr08d = cr08d;
     }
 
+    public String getCr08m() {
+        return cr08m;
+    }
+
+    public void setCr08m(String cr08m) {
+        this.cr08m = cr08m;
+    }
+
+    public String getCr08y() {
+        return cr08y;
+    }
+
+    public void setCr08y(String cr08y) {
+        this.cr08y = cr08y;
+    }
 
     public String getCr09() {
         return cr09;
@@ -173,7 +167,6 @@ public class Form extends LiveData<Form> {
         this.cr09 = cr09;
     }
 
-
     public String getCr10() {
         return cr10;
     }
@@ -182,6 +175,183 @@ public class Form extends LiveData<Form> {
         this.cr10 = cr10;
     }
 
+    public String getCr11() {
+        return cr11;
+    }
+
+    public void setCr11(String cr11) {
+        this.cr11 = cr11;
+    }
+
+    public String getCr12() {
+        return cr12;
+    }
+
+    public void setCr12(String cr12) {
+        this.cr12 = cr12;
+    }
+
+    public String getCr13() {
+        return cr13;
+    }
+
+    public void setCr13(String cr13) {
+        this.cr13 = cr13;
+    }
+
+    public String getCr14() {
+        return cr14;
+    }
+
+    public void setCr14(String cr14) {
+        this.cr14 = cr14;
+    }
+
+    public String getCr15m() {
+        return cr15m;
+    }
+
+    public void setCr15m(String cr15m) {
+        this.cr15m = cr15m;
+    }
+
+    public String getCr15y() {
+        return cr15y;
+    }
+
+    public void setCr15y(String cr15y) {
+        this.cr15y = cr15y;
+    }
+
+    public String getCr16() {
+        return cr16;
+    }
+
+    public void setCr16(String cr16) {
+        this.cr16 = cr16;
+    }
+
+    public String getCr17() {
+        return cr17;
+    }
+
+    public void setCr17(String cr17) {
+        this.cr17 = cr17;
+    }
+
+    public String getCr18() {
+        return cr18;
+    }
+
+    public void setCr18(String cr18) {
+        this.cr18 = cr18;
+    }
+
+    public String getCr19() {
+        return cr19;
+    }
+
+    public void setCr19(String cr19) {
+        this.cr19 = cr19;
+    }
+
+    public String getCr20() {
+        return cr20;
+    }
+
+    public void setCr20(String cr20) {
+        this.cr20 = cr20;
+    }
+
+    public String getCr21() {
+        return cr21;
+    }
+
+    public void setCr21(String cr21) {
+        this.cr21 = cr21;
+    }
+
+    public String getCr22() {
+        return cr22;
+    }
+
+    public void setCr22(String cr22) {
+        this.cr22 = cr22;
+    }
+
+    public String getCr23() {
+        return cr23;
+    }
+
+    public void setCr23(String cr23) {
+        this.cr23 = cr23;
+    }
+
+    public String getCr24() {
+        return cr24;
+    }
+
+    public void setCr24(String cr24) {
+        this.cr24 = cr24;
+    }
+
+    public String getCr25() {
+        return cr25;
+    }
+
+    public void setCr25(String cr25) {
+        this.cr25 = cr25;
+    }
+
+    public String getCr26() {
+        return cr26;
+    }
+
+    public void setCr26(String cr26) {
+        this.cr26 = cr26;
+    }
+
+    public String getCr27() {
+        return cr27;
+    }
+
+    public void setCr27(String cr27) {
+        this.cr27 = cr27;
+    }
+
+    public String getCr28() {
+        return cr28;
+    }
+
+    public void setCr28(String cr28) {
+        this.cr28 = cr28;
+    }
+
+    public SectionSelection getSecSelection() {
+        return secSelection;
+    }
+
+    public void setSecSelection(SectionSelection secSelection) {
+        this.secSelection = secSelection;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
+    public String getSysdate() {
+        return sysdate;
+    }
+
+    public void setSysdate(String sysdate) {
+        this.sysdate = sysdate;
+    }
 
 
     public String getGpslat() {
@@ -385,18 +555,37 @@ public class Form extends LiveData<Form> {
         this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
         this.username = jsonObject.getString(FormsTable.COLUMN_USERNAME);
         this.sysdate = jsonObject.getString(FormsTable.COLUMN_SYSDATE);
-        this.cr01d = jsonObject.getString(FormsTable.COLUMN_CR01D);
-        this.cr01m = jsonObject.getString(FormsTable.COLUMN_CR01M);
-        this.cr01y = jsonObject.getString(FormsTable.COLUMN_CR01Y);
+        this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr02 = jsonObject.getString(FormsTable.COLUMN_CR02);
         this.cr03 = jsonObject.getString(FormsTable.COLUMN_CR03);
         this.cr04 = jsonObject.getString(FormsTable.COLUMN_CR04);
         this.cr05 = jsonObject.getString(FormsTable.COLUMN_CR05);
         this.cr06 = jsonObject.getString(FormsTable.COLUMN_CR06);
         this.cr07 = jsonObject.getString(FormsTable.COLUMN_CR07);
-        this.cr08 = jsonObject.getString(FormsTable.COLUMN_CR08);
+        this.cr08d = jsonObject.getString(FormsTable.COLUMN_CR08D);
+        this.cr08m = jsonObject.getString(FormsTable.COLUMN_CR08M);
+        this.cr08y = jsonObject.getString(FormsTable.COLUMN_CR08Y);
         this.cr09 = jsonObject.getString(FormsTable.COLUMN_CR09);
         this.cr10 = jsonObject.getString(FormsTable.COLUMN_CR10);
+        this.cr11 = jsonObject.getString(FormsTable.COLUMN_CR11);
+        this.cr12 = jsonObject.getString(FormsTable.COLUMN_CR12);
+        this.cr13 = jsonObject.getString(FormsTable.COLUMN_CR13);
+        this.cr14 = jsonObject.getString(FormsTable.COLUMN_CR14);
+        this.cr15m = jsonObject.getString(FormsTable.COLUMN_CR15M);
+        this.cr15y = jsonObject.getString(FormsTable.COLUMN_CR15Y);
+        this.cr16 = jsonObject.getString(FormsTable.COLUMN_CR16);
+        this.cr17 = jsonObject.getString(FormsTable.COLUMN_CR17);
+        this.cr18 = jsonObject.getString(FormsTable.COLUMN_CR18);
+        this.cr19 = jsonObject.getString(FormsTable.COLUMN_CR19);
+        this.cr20 = jsonObject.getString(FormsTable.COLUMN_CR20);
+        this.cr21 = jsonObject.getString(FormsTable.COLUMN_CR21);
+        this.cr22 = jsonObject.getString(FormsTable.COLUMN_CR22);
+        this.cr23 = jsonObject.getString(FormsTable.COLUMN_CR23);
+        this.cr24 = jsonObject.getString(FormsTable.COLUMN_CR24);
+        this.cr25 = jsonObject.getString(FormsTable.COLUMN_CR25);
+        this.cr26 = jsonObject.getString(FormsTable.COLUMN_CR26);
+        this.cr27 = jsonObject.getString(FormsTable.COLUMN_CR27);
+        this.cr28 = jsonObject.getString(FormsTable.COLUMN_CR28);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.istatus96x = jsonObject.getString(FormsTable.COLUMN_ISTATUS96x);
         this.endingdatetime = jsonObject.getString(FormsTable.COLUMN_ENDINGDATETIME);
@@ -426,18 +615,38 @@ public class Form extends LiveData<Form> {
         this.deviceID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
-        this.cr01d = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR01D));
-        this.cr01m = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR01M));
-        this.cr01y = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR01Y));
+        this.cr01 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR01));
         this.cr02 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR02));
         this.cr03 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR03));
         this.cr04 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR04));
         this.cr05 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR05));
         this.cr06 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR06));
         this.cr07 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR07));
-        this.cr08 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR08));
+        this.cr08d = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR08D));
+        this.cr08m = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR08M));
+        this.cr08y = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR08Y));
         this.cr09 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR09));
         this.cr10 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR10));
+        this.cr11 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR11));
+        this.cr12 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR12));
+        this.cr13 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR13));
+        this.cr14 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR14));
+        this.cr15m = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR15M));
+        this.cr15y = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR15Y));
+        this.cr16 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR16));
+        this.cr17 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR17));
+        this.cr18 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR18));
+        this.cr19 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR19));
+        this.cr20 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR20));
+        this.cr21 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR21));
+        this.cr22 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR22));
+        this.cr23 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR23));
+        this.cr24 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR24));
+        this.cr25 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR25));
+        this.cr26 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR26));
+        this.cr27 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR27));
+        this.cr28 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28));
+
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS96x));
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
@@ -532,54 +741,37 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
             json.put(FormsTable.COLUMN_USERNAME, this.username == null ? JSONObject.NULL : this.username);
             json.put(FormsTable.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
+            json.put(FormsTable.COLUMN_CR01, this.cr01 == null ? JSONObject.NULL : this.cr01);
+            json.put(FormsTable.COLUMN_CR02, this.cr02 == null ? JSONObject.NULL : this.cr02);
+            json.put(FormsTable.COLUMN_CR03, this.cr03 == null ? JSONObject.NULL : this.cr03);
+            json.put(FormsTable.COLUMN_CR04, this.cr04 == null ? JSONObject.NULL : this.cr04);
             json.put(FormsTable.COLUMN_CR05, this.cr05 == null ? JSONObject.NULL : this.cr05);
             json.put(FormsTable.COLUMN_CR06, this.cr06 == null ? JSONObject.NULL : this.cr06);
             json.put(FormsTable.COLUMN_CR07, this.cr07 == null ? JSONObject.NULL : this.cr07);
-            json.put(FormsTable.COLUMN_CR08, this.cr08 == null ? JSONObject.NULL : this.cr08);
+            json.put(FormsTable.COLUMN_CR08D, this.cr08d == null ? JSONObject.NULL : this.cr08d);
+            json.put(FormsTable.COLUMN_CR08M, this.cr08m == null ? JSONObject.NULL : this.cr08m);
+            json.put(FormsTable.COLUMN_CR08Y, this.cr08y == null ? JSONObject.NULL : this.cr08y);
             json.put(FormsTable.COLUMN_CR09, this.cr09 == null ? JSONObject.NULL : this.cr09);
             json.put(FormsTable.COLUMN_CR10, this.cr10 == null ? JSONObject.NULL : this.cr10);
-           /* json.put(FormsTable.COLUMN_ELB7, this.elb7 == null ? JSONObject.NULL : this.elb7);
-            json.put(FormsTable.COLUMN_ELB8, this.elb8 == null ? JSONObject.NULL : this.elb8);
-            json.put(FormsTable.COLUMN_ELB8a, this.elb8a == null ? JSONObject.NULL : this.elb8a);
-            json.put(FormsTable.COLUMN_ELB09, this.elb09 == null ? JSONObject.NULL : this.elb09);
-            json.put(FormsTable.COLUMN_ELB10, this.elb10 == null ? JSONObject.NULL : this.elb10);
-            json.put(FormsTable.COLUMN_ELB11, this.elb11 == null ? JSONObject.NULL : this.elb11);
-            json.put(FormsTable.COLUMN_ELB12, this.elb12 == null ? JSONObject.NULL : this.elb12);
-
-            if (this.sC != null && !this.sC.equals("")) {
-                json.put(FormsTable.COLUMN_SC, new JSONObject(this.sC));
-            }
-            if (this.sD != null && !this.sD.equals("")) {
-                json.put(FormsTable.COLUMN_SD, new JSONObject(this.sD));
-            }
-            if (this.sE != null && !this.sE.equals("")) {
-                json.put(FormsTable.COLUMN_SE, new JSONObject(this.sE));
-            }
-            if (this.sF != null && !this.sF.equals("")) {
-                json.put(FormsTable.COLUMN_SF, new JSONObject(this.sF));
-            }
-            if (this.sG != null && !this.sG.equals("")) {
-                json.put(FormsTable.COLUMN_SG, new JSONObject(this.sG));
-            }
-            if (this.sH != null && !this.sH.equals("")) {
-                json.put(FormsTable.COLUMN_SH, new JSONObject(this.sH));
-            }
-            if (this.sI != null && !this.sI.equals("")) {
-                json.put(FormsTable.COLUMN_SI, new JSONObject(this.sI));
-            }
-            if (this.sJ != null && !this.sJ.equals("")) {
-                json.put(FormsTable.COLUMN_SJ, new JSONObject(this.sJ));
-            }
-            if (this.sK != null && !this.sK.equals("")) {
-                json.put(FormsTable.COLUMN_SK, new JSONObject(this.sK));
-            }
-            if (this.sL != null && !this.sL.equals("")) {
-                json.put(FormsTable.COLUMN_SL, new JSONObject(this.sL));
-            }
-            if (this.sN != null && !this.sN.equals("")) {
-                json.put(FormsTable.COLUMN_SN, new JSONObject(this.sN));
-            }*/
-
+            json.put(FormsTable.COLUMN_CR11, this.cr11 == null ? JSONObject.NULL : this.cr11);
+            json.put(FormsTable.COLUMN_CR12, this.cr12 == null ? JSONObject.NULL : this.cr12);
+            json.put(FormsTable.COLUMN_CR13, this.cr13 == null ? JSONObject.NULL : this.cr13);
+            json.put(FormsTable.COLUMN_CR14, this.cr14 == null ? JSONObject.NULL : this.cr14);
+            json.put(FormsTable.COLUMN_CR15M, this.cr15m == null ? JSONObject.NULL : this.cr15m);
+            json.put(FormsTable.COLUMN_CR15Y, this.cr15y == null ? JSONObject.NULL : this.cr15y);
+            json.put(FormsTable.COLUMN_CR16, this.cr16 == null ? JSONObject.NULL : this.cr16);
+            json.put(FormsTable.COLUMN_CR17, this.cr17 == null ? JSONObject.NULL : this.cr17);
+            json.put(FormsTable.COLUMN_CR18, this.cr18 == null ? JSONObject.NULL : this.cr18);
+            json.put(FormsTable.COLUMN_CR19, this.cr19 == null ? JSONObject.NULL : this.cr19);
+            json.put(FormsTable.COLUMN_CR20, this.cr20 == null ? JSONObject.NULL : this.cr20);
+            json.put(FormsTable.COLUMN_CR21, this.cr21 == null ? JSONObject.NULL : this.cr21);
+            json.put(FormsTable.COLUMN_CR22, this.cr22 == null ? JSONObject.NULL : this.cr22);
+            json.put(FormsTable.COLUMN_CR23, this.cr23 == null ? JSONObject.NULL : this.cr23);
+            json.put(FormsTable.COLUMN_CR24, this.cr24 == null ? JSONObject.NULL : this.cr24);
+            json.put(FormsTable.COLUMN_CR25, this.cr25 == null ? JSONObject.NULL : this.cr25);
+            json.put(FormsTable.COLUMN_CR26, this.cr26 == null ? JSONObject.NULL : this.cr26);
+            json.put(FormsTable.COLUMN_CR27, this.cr27 == null ? JSONObject.NULL : this.cr27);
+            json.put(FormsTable.COLUMN_CR28, this.cr28 == null ? JSONObject.NULL : this.cr28);
             json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
             json.put(FormsTable.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);
             json.put(FormsTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);

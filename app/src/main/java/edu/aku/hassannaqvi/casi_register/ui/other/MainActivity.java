@@ -23,9 +23,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.validatorcrawler.aliazaz.Validator;
 
 import java.io.File;
@@ -39,6 +36,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.VillageContract;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     VersionApp versionApp;
     Long refID;
     //Setting Spinner
-    List<String> areaName, villageName;
+    List<String> areaName, villageName, ucName;
     Map<String, VillageContract> villageMap;
     List<VillageContract> areaList;
     VillageContract village;
