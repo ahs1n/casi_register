@@ -1641,7 +1641,7 @@
                             android:text="@string/cr28e01" />
 
                         <RadioButton
-                            android:id="@+id/cr28g02"
+                            android:id="@+id/cr28e02"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
