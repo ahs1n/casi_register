@@ -242,14 +242,19 @@
                         android:textSize="12sp" />
 
                 </LinearLayout>
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="openZScoreCalc"
-    android:text="Z-Score" />
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="openZScoreCalc"
+                    android:text="Z-Score" />
+
             </LinearLayout>
+
 
         </ScrollView>
 
     </LinearLayout>
+
 </layout>
