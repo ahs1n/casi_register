@@ -168,8 +168,8 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 : "-1");
 
         form.setCr27a(bi.cr27a.getText().toString());
-        form.setCr27a(bi.cr27b.getText().toString());
-        form.setCr27a(bi.cr27c.getText().toString());
+        form.setCr27b(bi.cr27b.getText().toString());
+        form.setCr27c(bi.cr27c.getText().toString());
 
 
         form.setCr28a(bi.cr28a01.isChecked() ? "1"
