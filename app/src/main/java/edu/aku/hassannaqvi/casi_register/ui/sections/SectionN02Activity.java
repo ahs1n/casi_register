@@ -2,6 +2,8 @@ package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Toast;
 
 import com.validatorcrawler.aliazaz.Validator;
@@ -42,6 +44,14 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     private void setupSkip() {
 
+        if (TextUtils.isEmpty(bi.cr15m.getText()))
+            bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+        else {
+            if (Integer.parseInt(bi.cr15m.getText().toString()) < 6)
+                bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+            else
+                bi.fldGrpCVcr18.setVisibility(View.GONE);
+        }
     }
 
     public void BtnContinue() {
