@@ -79,6 +79,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr02"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -125,6 +126,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -258,6 +260,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr07"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -516,6 +519,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -561,6 +565,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -760,11 +765,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:hint="####"
+                                android:hint="##"
                                 android:inputType="number"
-                                android:maxLength="4"
-                                app:maxValue="2021"
-                                app:minValue="2020"
+                                android:maxLength="2"
+                                app:maxValue="5"
+                                app:minValue="0"
                                 app:type="range" />
 
                         </LinearLayout>
