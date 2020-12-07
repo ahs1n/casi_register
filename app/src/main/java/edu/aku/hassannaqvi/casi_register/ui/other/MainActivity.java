@@ -553,10 +553,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCr02(bi.spCountry.getSelectedItem().toString());
-        form.setCr02(bi.spDistrict.getSelectedItem().toString());
-        form.setCr02(bi.spUC.getSelectedItem().toString());
-        form.setCr02(bi.spVillage.getSelectedItem().toString());
+        form.setCountry(bi.spCountry.getSelectedItem().toString());
+        form.setDistrict(bi.spDistrict.getSelectedItem().toString());
+        form.setUc(bi.spUC.getSelectedItem().toString());
+        form.setVillage(bi.spVillage.getSelectedItem().toString());
         MainApp.setGPS(this);
     }
 

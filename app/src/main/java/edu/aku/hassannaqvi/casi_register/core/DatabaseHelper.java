@@ -202,6 +202,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UID, form.get_UID());
         values.put(FormsTable.COLUMN_USERNAME, form.getUsername());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysdate());
+        values.put(FormsTable.COLUMN_COUNTRY_CODE, form.getCountryCode());
+        values.put(FormsTable.COLUMN_COUNTRY, form.getCountry());
+        values.put(FormsTable.COLUMN_DISTRICT_CODE, form.getDistrictCode());
+        values.put(FormsTable.COLUMN_DISTRICT, form.getDistrict());
+        values.put(FormsTable.COLUMN_UC_CODE, form.getUcCode());
+        values.put(FormsTable.COLUMN_UC, form.getUc());
+        values.put(FormsTable.COLUMN_VILLAGE_CODE, form.getVillageCode());
+        values.put(FormsTable.COLUMN_VILLAGE, form.getVillage());
         values.put(FormsTable.COLUMN_CR01, form.getCr01());
         values.put(FormsTable.COLUMN_CR02, form.getCr02());
         values.put(FormsTable.COLUMN_CR03, form.getCr03());
@@ -357,6 +365,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
@@ -456,6 +472,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
@@ -557,6 +581,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
@@ -634,6 +666,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
+                form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
+                form.setCountry(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY)));
+                form.setDistrictCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE)));
+                form.setDistrict(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT)));
+                form.setUcCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC_CODE)));
+                form.setUc(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC)));
+                form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
+                form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
                 form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
@@ -890,6 +930,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable._ID,
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
@@ -966,6 +1014,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
                 form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
+                form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
+                form.setCountry(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY)));
+                form.setDistrictCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE)));
+                form.setDistrict(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT)));
+                form.setUcCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC_CODE)));
+                form.setUc(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC)));
+                form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
+                form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
                 form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
@@ -1035,6 +1091,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable._ID,
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
@@ -1107,6 +1171,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
                 form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
+                form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
+                form.setCountry(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY)));
+                form.setDistrictCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE)));
+                form.setDistrict(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT)));
+                form.setUcCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC_CODE)));
+                form.setUc(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC)));
+                form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
+                form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
                 form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
@@ -1430,6 +1502,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
@@ -1536,6 +1616,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
@@ -1653,6 +1741,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
