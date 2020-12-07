@@ -1521,30 +1521,51 @@
 
                     </RelativeLayout>
 
-                    <RadioGroup
-                        android:id="@+id/cr27"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <RadioButton
-                            android:id="@+id/cr27a"
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr27a" />
 
-                        <RadioButton
-                            android:id="@+id/cr27b"
+                        <EditText
+                            android:id="@+id/cr27a"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:hint="##"
+                            android:inputType="number" />
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr27b" />
 
-                        <RadioButton
-                            android:id="@+id/cr27c"
+                        <EditText
+                            android:id="@+id/cr27b"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:hint="##"
+                            android:inputType="number" />
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr27c" />
 
-                    </RadioGroup>
+                        <EditText
+                            android:id="@+id/cr27c"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:hint="##"
+                            android:inputType="number" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

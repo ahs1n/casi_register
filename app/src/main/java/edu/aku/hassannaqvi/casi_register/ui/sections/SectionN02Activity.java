@@ -183,10 +183,10 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 : bi.cr26d.isChecked() ? "4"
                 : "-1");
 
-        form.setCr27(bi.cr27a.isChecked() ? "1"
-                : bi.cr27b.isChecked() ? "2"
-                : bi.cr27c.isChecked() ? "3"
-                : "-1");
+        form.setCr27a(bi.cr27a.getText().toString());
+        form.setCr27a(bi.cr27b.getText().toString());
+        form.setCr27a(bi.cr27c.getText().toString());
+
 
         form.setCr28a(bi.cr28a01.isChecked() ? "1"
                 : bi.cr28a02.isChecked() ? "2"

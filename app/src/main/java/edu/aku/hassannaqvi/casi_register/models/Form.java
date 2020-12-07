@@ -58,7 +58,9 @@ public class Form extends LiveData<Form> {
     private String cr24f = "";
     private String cr25 = "";
     private String cr26 = "";
-    private String cr27 = "";
+    private String cr27a = "";
+    private String cr27b = "";
+    private String cr27c = "";
     private String cr28a = "";
     private String cr28b = "";
     private String cr28c = "";
@@ -387,12 +389,28 @@ public class Form extends LiveData<Form> {
         this.cr26 = cr26;
     }
 
-    public String getCr27() {
-        return cr27;
+    public String getCr27a() {
+        return cr27a;
     }
 
-    public void setCr27(String cr27) {
-        this.cr27 = cr27;
+    public void setCr27a(String cr27a) {
+        this.cr27a = cr27a;
+    }
+
+    public String getCr27b() {
+        return cr27b;
+    }
+
+    public void setCr27b(String cr27b) {
+        this.cr27b = cr27b;
+    }
+
+    public String getCr27c() {
+        return cr27c;
+    }
+
+    public void setCr27c(String cr27c) {
+        this.cr27c = cr27c;
     }
 
     public String getCr28a() {
@@ -674,7 +692,6 @@ public class Form extends LiveData<Form> {
 
     }
 
-
     public Form Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
         this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
@@ -714,7 +731,9 @@ public class Form extends LiveData<Form> {
         this.cr24f = jsonObject.getString(FormsTable.COLUMN_CR24F);
         this.cr25 = jsonObject.getString(FormsTable.COLUMN_CR25);
         this.cr26 = jsonObject.getString(FormsTable.COLUMN_CR26);
-        this.cr27 = jsonObject.getString(FormsTable.COLUMN_CR27);
+        this.cr27a = jsonObject.getString(FormsTable.COLUMN_CR27A);
+        this.cr27b = jsonObject.getString(FormsTable.COLUMN_CR27B);
+        this.cr27c = jsonObject.getString(FormsTable.COLUMN_CR27C);
         this.cr28a = jsonObject.getString(FormsTable.COLUMN_CR28A);
         this.cr28b = jsonObject.getString(FormsTable.COLUMN_CR28B);
         this.cr28c = jsonObject.getString(FormsTable.COLUMN_CR28C);
@@ -785,7 +804,9 @@ public class Form extends LiveData<Form> {
         this.cr24f = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR24F));
         this.cr25 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR25));
         this.cr26 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR26));
-        this.cr27 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR27));
+        this.cr27a = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR27A));
+        this.cr27b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR27B));
+        this.cr27c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR27C));
         this.cr28a = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28A));
         this.cr28b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28B));
         this.cr28c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28C));
@@ -922,7 +943,9 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_CR24F, this.cr24f == null ? JSONObject.NULL : this.cr24f);
             json.put(FormsTable.COLUMN_CR25, this.cr25 == null ? JSONObject.NULL : this.cr25);
             json.put(FormsTable.COLUMN_CR26, this.cr26 == null ? JSONObject.NULL : this.cr26);
-            json.put(FormsTable.COLUMN_CR27, this.cr27 == null ? JSONObject.NULL : this.cr27);
+            json.put(FormsTable.COLUMN_CR27A, this.cr27a == null ? JSONObject.NULL : this.cr27a);
+            json.put(FormsTable.COLUMN_CR27B, this.cr27b == null ? JSONObject.NULL : this.cr27b);
+            json.put(FormsTable.COLUMN_CR27C, this.cr27c == null ? JSONObject.NULL : this.cr27c);
             json.put(FormsTable.COLUMN_CR28A, this.cr28a == null ? JSONObject.NULL : this.cr28a);
             json.put(FormsTable.COLUMN_CR28B, this.cr28b == null ? JSONObject.NULL : this.cr28b);
             json.put(FormsTable.COLUMN_CR28C, this.cr28c == null ? JSONObject.NULL : this.cr28c);
