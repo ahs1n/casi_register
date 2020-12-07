@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         switch (v.getId()) {
             case R.id.formA:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
-                SaveDraft(true);
+                //SaveDraft(true);
                 oF = new Intent(this, SectionN02Activity.class);
                 break;
             case R.id.databaseBtn:

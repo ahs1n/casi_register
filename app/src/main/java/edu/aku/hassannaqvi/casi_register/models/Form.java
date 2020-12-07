@@ -2,12 +2,13 @@ package edu.aku.hassannaqvi.casi_register.models;
 
 import android.database.Cursor;
 
+import androidx.lifecycle.LiveData;
+
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import androidx.lifecycle.LiveData;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -95,12 +96,22 @@ public class Form extends LiveData<Form> {
     private String gpsacc = "";
     private String deviceid = "";
     private String tagid = "";
+    private String sA = "";
 
     //For section selection
     private SectionSelection secSelection;
 
 
     public Form() {
+    }
+
+
+    public String getsA() {
+        return sA;
+    }
+
+    public void setsA(String sA) {
+        this.sA = sA;
     }
 
 
@@ -797,6 +808,8 @@ public class Form extends LiveData<Form> {
         this.uc = jsonObject.getString(FormsTable.COLUMN_UC);
         this.villageCode = jsonObject.getString(FormsTable.COLUMN_VILLAGE_CODE);
         this.village = jsonObject.getString(FormsTable.COLUMN_VILLAGE);
+        this.sA = jsonObject.getString(FormsTable.COLUMN_CR01);
+        this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr02 = jsonObject.getString(FormsTable.COLUMN_CR02);
         this.cr03 = jsonObject.getString(FormsTable.COLUMN_CR03);
