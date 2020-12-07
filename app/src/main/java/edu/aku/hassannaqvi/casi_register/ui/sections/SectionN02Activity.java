@@ -6,14 +6,17 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Validator;
+
+import org.json.JSONException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -54,13 +57,17 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     public void BtnContinue() {
         if (!formValidation()) return;
+        try {
             SaveDraft(true);
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionN02Activity.class));
-            } else {
-                Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            startActivity(new Intent(this, SectionN02Activity.class));
+        } else {
+            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean UpdateDB() {
@@ -77,7 +84,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         }
     }
 
-    private void SaveDraft(boolean flag) {
+    private void SaveDraft(boolean flag) throws JSONException {
 
         form = new Form();
         form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
@@ -208,12 +215,16 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     @Override
     public void endSecActivity(boolean flag) {
+        try {
             SaveDraft(false);
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, EndSectionActivity.class));
-            } else {
-                Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            startActivity(new Intent(this, EndSectionActivity.class));
+        } else {
+            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+        }
     }
 }

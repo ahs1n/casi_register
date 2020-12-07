@@ -1795,9 +1795,9 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/cr28fx"
                         android:inputType="text"
-                        android:tag="cr28f"
-                        android:text='@{cr28f01.checked ? cr06xx.getText().toString() : ""}'
-                        android:visibility='@{cr28f01.checked? View.VISIBLE : View.GONE}' />
+                        android:tag="cr28f01"
+                        android:text='@{cr28f01.checked ? cr28fx.getText().toString() : ""}'
+                        android:visibility='@{cr28f01.checked ? View.VISIBLE : View.GONE}' />
 
                 </LinearLayout>
 
