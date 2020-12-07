@@ -61,7 +61,7 @@
             android:name=".ui.sections.SectionN02Activity"
             android:label="SECTION N: ANTHROPOMETRIC MEASURMENTS"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".ui.other.EndingActivity"
             android:screenOrientation="portrait"

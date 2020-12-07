@@ -17,16 +17,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import edu.aku.hassannaqvi.casi_register.contracts.DistrictContract;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.casi_register.contracts.UCContract;
-import edu.aku.hassannaqvi.casi_register.contracts.UCContract.UCTable;
 import edu.aku.hassannaqvi.casi_register.contracts.UsersContract;
 import edu.aku.hassannaqvi.casi_register.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract.VersionAppTable;
-import edu.aku.hassannaqvi.casi_register.contracts.VillageContract;
-import edu.aku.hassannaqvi.casi_register.contracts.VillageContract.VillageTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.models.Form;
@@ -37,13 +32,10 @@ import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_DISTRICTS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_UCs;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGE_TABLE;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZSTANDARD;
 
 
@@ -59,10 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
-        db.execSQL(SQL_CREATE_DISTRICTS);
         db.execSQL(SQL_CREATE_VILLAGES);
-        db.execSQL(SQL_CREATE_UCs);
-        db.execSQL(SQL_CREATE_VILLAGE_TABLE);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ZSTANDARD);
     }
@@ -102,102 +91,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return insertCount;
     }
-
-
-    public int syncDistricts(JSONArray distList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(UCTable.TABLE_NAME, null, null);
-        int insertCount = 0;
-        try {
-            for (int i = 0; i < distList.length(); i++) {
-
-                JSONObject jsonObjectUser = distList.getJSONObject(i);
-
-                DistrictContract dist = new DistrictContract();
-                dist.Sync(jsonObjectUser);
-                ContentValues values = new ContentValues();
-
-                values.put(DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_CODE, dist.getDistrict_code());
-                values.put(DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_NAME, dist.getDistrict_name());
-                values.put(DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_TYPE, dist.getDistrict_type());
-                long rowID = db.insert(DistrictContract.DISTRICTSTable.TABLE_NAME, null, values);
-                if (rowID != -1) insertCount++;
-            }
-
-        } catch (Exception e) {
-            Log.d(TAG, "syncDist(e): " + e);
-            db.close();
-        } finally {
-            db.close();
-        }
-        return insertCount;
-    }
-
-
-    public int syncUCs(JSONArray ucList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(UCTable.TABLE_NAME, null, null);
-        int insertCount = 0;
-        try {
-            for (int i = 0; i < ucList.length(); i++) {
-
-                JSONObject jsonObjectUser = ucList.getJSONObject(i);
-
-                UCContract dist = new UCContract();
-                dist.Sync(jsonObjectUser);
-                ContentValues values = new ContentValues();
-
-                values.put(UCTable.COLUMN_UC_CODE, dist.getUc_code());
-                values.put(UCTable.COLUMN_UC_NAME, dist.getUc_name());
-                values.put(UCTable.COLUMN_TEHSIL_CODE, dist.getTehsil_code());
-                long rowID = db.insert(UCTable.TABLE_NAME, null, values);
-                if (rowID != -1) insertCount++;
-            }
-
-        } catch (Exception e) {
-            Log.d(TAG, "syncDist(e): " + e);
-            db.close();
-        } finally {
-            db.close();
-        }
-        return insertCount;
-    }
-
-
-   /* public int syncVillages(JSONArray enumList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(VillageTable.TABLE_NAME, null, null);
-        int insertCount = 0;
-        try {
-            for (int i = 0; i < enumList.length(); i++) {
-                JSONObject jsonObjectCC;
-                try {
-                    jsonObjectCC = enumList.getJSONObject(i);
-                    VillageContract Vc = new VillageContract();
-                    Vc.Sync(jsonObjectCC);
-
-                    ContentValues values = new ContentValues();
-
-                    values.put(VillageTable.COLUMN_VILLAGE_CODE, Vc.getVillage_code());
-                    values.put(VillageTable.COLUMN_VILLAGE_NAME, Vc.getVillage_name());
-                    values.put(VillageTable.COLUMN_AREA_CODE, Vc.getArea_code());
-                    values.put(VillageTable.COLUMN_CLUSTER_CODE, Vc.getCluster_code());
-
-                    long rowID = db.insert(VillageTable.TABLE_NAME, null, values);
-                    if (rowID != -1) insertCount++;
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        } catch (Exception e) {
-            Log.d(TAG, "syncEnumBlocks(e): " + e);
-            db.close();
-        } finally {
-            db.close();
-        }
-        return insertCount;
-    }*/
 
 
     public int syncVersionApp(JSONObject VersionList) {
@@ -875,6 +768,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public Collection<Villages> getCountri() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                "DISTINCT " + VillagesContract.Table.COLUMN_COUNTRY,
+                VillagesContract.Table.COLUMN_COUNTRY_CODE
+        };
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = VillagesContract.Table.COLUMN_COUNTRY;
+        String having = null;
+
+        String orderBy =
+                VillagesContract.Table.COLUMN_COUNTRY + " ASC";
+
+        Collection<Villages> allvil = new ArrayList<Villages>();
+        try {
+            c = db.query(
+                    VillagesContract.Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                Villages zs = new Villages();
+                allvil.add(zs.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allvil;
+    }
+
+
     public Collection<ZStandard> getZStandardByL(String uc) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1249,16 +1185,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return alluser;
     }
 
+
     //Get All UC
-    public List<UCContract> getUCs() {
+    //TODO: Need list of Districts, UCs, Villages
+
+    public List<Villages> getUCs() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                UCTable._ID,
-                UCTable.COLUMN_UC_CODE,
-                UCTable.COLUMN_UC_NAME,
-                UCTable.COLUMN_TEHSIL_CODE
+                VillagesContract.Table._ID,
+                VillagesContract.Table.COLUMN_UC_CODE,
+                VillagesContract.Table.COLUMN_UC,
+                VillagesContract.Table.COLUMN_DISTRICT_CODE
         };
 
         String whereClause = null;
@@ -1266,11 +1205,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
 
-        String orderBy = UCTable._ID + " ASC";
-        List<UCContract> allEB = new ArrayList<>();
+        String orderBy = VillagesContract.Table.COLUMN_UC_CODE + " ASC";
+        List<Villages> allEB = new ArrayList<>();
         try {
             c = db.query(
-                    UCTable.TABLE_NAME,  // The table to query
+                    VillagesContract.Table.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -1279,7 +1218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allEB.add(new UCContract().Hydrate(c));
+                allEB.add(new Villages().Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -1293,15 +1232,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Get All DISTRICTS
-    public List<UCContract> getDistrics() {
+    public List<Villages> getDistrics() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                DistrictContract.DISTRICTSTable._ID,
-                DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_CODE,
-                DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_NAME,
-                DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_TYPE
+                VillagesContract.Table._ID,
+                VillagesContract.Table.COLUMN_DISTRICT_CODE,
+                VillagesContract.Table.COLUMN_DISTRICT,
+                VillagesContract.Table.COLUMN_COUNTRY_CODE
         };
 
         String whereClause = null;
@@ -1309,11 +1248,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
 
-        String orderBy = DistrictContract.DISTRICTSTable._ID + " ASC";
-        List<UCContract> allEB = new ArrayList<>();
+        String orderBy = VillagesContract.Table.COLUMN_COUNTRY_CODE + " ASC";
+        List<Villages> allEB = new ArrayList<>();
         try {
             c = db.query(
-                    DistrictContract.DISTRICTSTable.TABLE_NAME,  // The table to query
+                    VillagesContract.Table.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -1322,7 +1261,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allEB.add(new UCContract().Hydrate(c));
+                allEB.add(new Villages().Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -1335,29 +1274,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allEB;
     }
 
+
     //Get All EnumBlock
-    public List<VillageContract> getEnumBlock(String uc_id) {
+    public List<Villages> getEnumBlock(String dist_id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                VillageTable._ID,
-                VillageTable.COLUMN_VILLAGE_CODE,
-                VillageTable.COLUMN_VILLAGE_NAME,
-                VillageTable.COLUMN_AREA_CODE,
-                VillageTable.COLUMN_CLUSTER_CODE,
+                VillagesContract.Table._ID,
+                VillagesContract.Table.COLUMN_COUNTRY,
+                VillagesContract.Table.COLUMN_DISTRICT,
+                VillagesContract.Table.COLUMN_UC,
+                VillagesContract.Table.COLUMN_VILLAGE,
+                VillagesContract.Table.COLUMN_COUNTRY_CODE,
+                VillagesContract.Table.COLUMN_DISTRICT_CODE,
+                VillagesContract.Table.COLUMN_UC_CODE,
+                VillagesContract.Table.COLUMN_VILLLAGE_CODE,
+                VillagesContract.Table.COLUMN_CLUSTER_NO
         };
 
-        String whereClause = VillageTable.COLUMN_AREA_CODE + " LIKE ? ";
-        String[] whereArgs = {"" + uc_id + "%"};
+        String whereClause = VillagesContract.Table.COLUMN_DISTRICT_CODE + " LIKE ? ";
+        String[] whereArgs = {"" + dist_id + "%"};
         String groupBy = null;
         String having = null;
 
-        String orderBy = VillageTable._ID + " ASC";
-        List<VillageContract> allEB = new ArrayList<>();
+        String orderBy = VillagesContract.Table.COLUMN_DISTRICT_CODE + " ASC";
+        List<Villages> allEB = new ArrayList<>();
         try {
             c = db.query(
-                    VillageTable.TABLE_NAME,  // The table to query
+                    VillagesContract.Table.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -1366,7 +1311,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allEB.add(new VillageContract().HydrateEnum(c));
+                allEB.add(new Villages().Hydrate(c));
+                //allEB.add(new Villages.HydrateEnum(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allEB;
+    }
+
+
+    public List<Villages> getCountry() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                "DISTINCT " + VillagesContract.Table._ID,
+                VillagesContract.Table.COLUMN_COUNTRY,
+                VillagesContract.Table.COLUMN_DISTRICT,
+                VillagesContract.Table.COLUMN_UC,
+                VillagesContract.Table.COLUMN_VILLAGE,
+                VillagesContract.Table.COLUMN_COUNTRY_CODE,
+                VillagesContract.Table.COLUMN_DISTRICT_CODE,
+                VillagesContract.Table.COLUMN_UC_CODE,
+                VillagesContract.Table.COLUMN_VILLLAGE_CODE,
+                VillagesContract.Table.COLUMN_CLUSTER_NO
+        };
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = VillagesContract.Table._ID + " ASC";
+        List<Villages> allEB = new ArrayList<>();
+        try {
+            c = db.query(
+                    VillagesContract.Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allEB.add(new Villages().Hydrate(c));
+                //allEB.add(new Villages.HydrateEnum(c));
             }
         } finally {
             if (c != null) {

@@ -127,7 +127,6 @@ public class ZStandard {
         json.put(ZStandardContract.Table.COLUMN_M, this.M == null ? JSONObject.NULL : this.M);
         json.put(ZStandardContract.Table.COLUMN_S, this.S == null ? JSONObject.NULL : this.S);
         json.put(ZStandardContract.Table.COLUMN_CAT, this.cat == null ? JSONObject.NULL : this.cat);
-//        json.put(singleUser.REGION_DSS, this.REGION_DSS == null ? JSONObject.NULL : this.REGION_DSS);
         return json;
     }
 

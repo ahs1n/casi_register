@@ -20,9 +20,9 @@ public class ZStandardContract {
         public static final String COLUMN_SEX = "sex";
         public static final String COLUMN_AGE = "age";
         public static final String COLUMN_MEASURE = "measure";
-        public static final String COLUMN_L = "L";
-        public static final String COLUMN_M = "M";
-        public static final String COLUMN_S = "S";
+        public static final String COLUMN_L = "l";
+        public static final String COLUMN_M = "m";
+        public static final String COLUMN_S = "s";
         public static final String COLUMN_CAT = "cat";
         public static final String SERVER_URI = "zstandards.php";
         public static String PATH = "zstandards";

@@ -1,12 +1,8 @@
 package edu.aku.hassannaqvi.casi_register.utils;
 
-import edu.aku.hassannaqvi.casi_register.contracts.DistrictContract;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.casi_register.contracts.UCContract;
-import edu.aku.hassannaqvi.casi_register.contracts.UCContract.UCTable;
 import edu.aku.hassannaqvi.casi_register.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract.VersionAppTable;
-import edu.aku.hassannaqvi.casi_register.contracts.VillageContract.VillageTable;
 import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 
@@ -99,28 +95,6 @@ public final class CreateTable {
             + VillagesContract.Table.COLUMN_UC_CODE + " TEXT,"
             + VillagesContract.Table.COLUMN_VILLLAGE_CODE + " TEXT,"
             + VillagesContract.Table.COLUMN_CLUSTER_NO + " TEXT );";
-
-
-    public static final String SQL_CREATE_DISTRICTS = "CREATE TABLE " + DistrictContract.DISTRICTSTable.TABLE_NAME + "("
-            + DistrictContract.DISTRICTSTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_CODE + " TEXT,"
-            + DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_NAME + " TEXT,"
-            + DistrictContract.DISTRICTSTable.COLUMN_DISTRICT_TYPE + " TEXT );";
-
-
-    public static final String SQL_CREATE_UCs = "CREATE TABLE " + UCContract.UCTable.TABLE_NAME + "("
-            + UCContract.UCTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + UCTable.COLUMN_TEHSIL_CODE + " TEXT,"
-            + UCTable.COLUMN_UC_CODE + " TEXT,"
-            + UCTable.COLUMN_UC_NAME + " TEXT );";
-
-
-    public static final String SQL_CREATE_VILLAGE_TABLE = "CREATE TABLE " + VillageTable.TABLE_NAME + " (" +
-            VillageTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            VillageTable.COLUMN_VILLAGE_CODE + " TEXT, " +
-            VillageTable.COLUMN_VILLAGE_NAME + " TEXT, " +
-            VillageTable.COLUMN_AREA_CODE + " TEXT, " +
-            VillageTable.COLUMN_CLUSTER_CODE + " TEXT );";
 
 
     public static final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +

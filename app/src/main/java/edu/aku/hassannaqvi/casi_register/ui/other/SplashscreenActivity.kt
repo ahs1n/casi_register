@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import edu.aku.hassannaqvi.casi_register.CONSTANTS
 import edu.aku.hassannaqvi.casi_register.R
-import edu.aku.hassannaqvi.casi_register.contracts.UCContract
+import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract
 import kotlinx.coroutines.*
 
 /**
@@ -16,8 +16,8 @@ class SplashscreenActivity : Activity() {
     private val activityScope = CoroutineScope(Dispatchers.Main)
 
     init {
-        ucs = mutableListOf("....")
-        ucsMap = mutableMapOf()
+        villages = mutableListOf("....")
+        villagesMap = mutableMapOf()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +32,8 @@ class SplashscreenActivity : Activity() {
 
     companion object {
         private const val SPLASH_TIME_OUT = 500
-        lateinit var ucs: MutableList<String>
-        lateinit var ucsMap: MutableMap<String, UCContract>
+        lateinit var villages: MutableList<String>
+        lateinit var villagesMap: MutableMap<String, VillagesContract>
     }
 
     override fun onPause() {

@@ -38,12 +38,13 @@ import java.util.Map;
 import java.util.Objects;
 
 import edu.aku.hassannaqvi.casi_register.R;
-import edu.aku.hassannaqvi.casi_register.contracts.VillageContract;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
+import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
+import edu.aku.hassannaqvi.casi_register.ui.sections.SectionN02Activity;
 import edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable;
@@ -69,10 +70,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     VersionApp versionApp;
     Long refID;
     //Setting Spinner
-    List<String> areaName, villageName, ucName;
-    Map<String, VillageContract> villageMap;
-    List<VillageContract> areaList;
-    VillageContract village;
+    List<String> countryName, districtName, ucName, villageName;
+    Map<String, Villages> villageMap;
+    List<Villages> areaList;
+    Villages village;
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -316,6 +317,8 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         switch (v.getId()) {
             case R.id.formA:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
+                oF = new Intent(this, SectionN02Activity.class);
+                break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);
                 break;
@@ -351,7 +354,60 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
 
     //Other Dependent Functions
     private void setUIContent() {
-        bi.spArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        //spProvince
+        bi.spCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                onSettingDropDownContent(false);
+                if (i == 0) {
+                    bi.spDistrict.setEnabled(false);
+                    bi.spDistrict.setSelection(0);
+                    return;
+                }
+                initializingDistrictVariables();
+                for (Villages item : areaList) {
+                    if (item.getCountry().equals(bi.spCountry.getSelectedItem().toString())) {
+                        districtName.add(item.getDistrict());
+                        villageMap.put(item.getDistrict(), item);
+                    }
+                }
+                bi.spDistrict.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, districtName));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //spDistrict
+        bi.spDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                onSettingDropDownContent(false);
+                if (i == 0) {
+                    bi.spUC.setEnabled(false);
+                    bi.spUC.setSelection(0);
+                    return;
+                }
+                initializingUcVariables();
+                for (Villages item : areaList) {
+                    if (item.getDistrict().equals(bi.spDistrict.getSelectedItem().toString())) {
+                        ucName.add(item.getUc());
+                        //villageMap.put(item.getUc(), item);
+                    }
+                }
+                bi.spUC.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, ucName));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        bi.spUC.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 onSettingDropDownContent(false);
@@ -361,10 +417,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     return;
                 }
                 initializingVillageVariables();
-                for (VillageContract item : areaList) {
-                    if (item.getArea_code().equals(bi.spArea.getSelectedItem().toString())) {
-                        villageName.add(item.getVillage_name());
-                        villageMap.put(item.getVillage_name(), item);
+                for (Villages item : areaList) {
+                    if (item.getUc().equals(bi.spUC.getSelectedItem().toString())) {
+                        villageName.add(item.getVillage());
+                        villageMap.put(item.getVillage(), item);
                     }
                 }
                 bi.spVillage.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, villageName));
@@ -401,12 +457,32 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     }
 
     private void initializingAreaVariables() {
-        areaName = new ArrayList<String>() {
+        countryName = new ArrayList<String>() {
             {
                 add("....");
             }
         };
         areaList = new ArrayList<>();
+    }
+
+    private void initializingDistrictVariables() {
+        districtName = new ArrayList<String>() {
+            {
+                add("....");
+            }
+        };
+        villageMap = new HashMap<>();
+        bi.spDistrict.setEnabled(true);
+    }
+
+    private void initializingUcVariables() {
+        ucName = new ArrayList<String>() {
+            {
+                add("....");
+            }
+        };
+        villageMap = new HashMap<>();
+        bi.spUC.setEnabled(true);
     }
 
     private void initializingVillageVariables() {
@@ -420,9 +496,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     }
 
     //Reactive Streams
-    private Observable<List<VillageContract>> getAreas() {
+    private Observable<List<Villages>> getAreas() {
         return Observable.create(emitter -> {
-            emitter.onNext(appInfo.getDbHelper().getEnumBlock(MainApp.UC_ID));
+            //emitter.onNext(appInfo.getDbHelper().getEnumBlock(MainApp.UC_ID));
+            emitter.onNext(appInfo.getDbHelper().getCountry());
             emitter.onComplete();
         });
     }
@@ -430,12 +507,12 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     //Getting data from db
     public void gettingAreaData() {
         initializingAreaVariables();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, areaName);
-        bi.spArea.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, countryName);
+        bi.spCountry.setAdapter(adapter);
         getAreas()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<VillageContract>>() {
+                .subscribe(new Observer<List<Villages>>() {
                     Disposable disposable;
 
                     @Override
@@ -444,10 +521,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     }
 
                     @Override
-                    public void onNext(List<VillageContract> vContract) {
-                        for (VillageContract village : vContract) {
-                            if (!areaName.contains(village.getArea_code()))
-                                areaName.add(village.getArea_code());
+                    public void onNext(List<Villages> vContract) {
+                        for (Villages village : vContract) {
+                            if (!countryName.contains(village.getCountry()))
+                                countryName.add(village.getCountry());
                             areaList.add(village);
                         }
                         adapter.notifyDataSetChanged();
@@ -463,4 +540,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     }
                 });
     }
+
+
 }

@@ -132,13 +132,13 @@
                 </LinearLayout>
 
 
-                <!--Area Village Spinners-->
+                <!-- SPINNERS -->
                 <LinearLayout
                     android:id="@+id/fldGrpna10"
                     style="@style/vlinearlayout"
                     android:layout_marginTop="20dp">
 
-                    <!--District-->
+                    <!--spProvince-->
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -155,13 +155,13 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="@string/cr01"
+                                android:text="COUNTRY"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
 
                             <Spinner
-                                android:id="@+id/spArea"
+                                android:id="@+id/spCountry"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
@@ -171,7 +171,7 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <!--UC-->
+                    <!--spDistrict-->
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -189,13 +189,13 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="Select UC"
+                                android:text="DISTRICT"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
 
                             <Spinner
-                                android:id="@+id/spUCs"
+                                android:id="@+id/spDistrict"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
@@ -205,7 +205,7 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <!--Village-->
+                    <!--spUC-->
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -223,7 +223,41 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="@string/cr04"
+                                android:text="UC"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                            <Spinner
+                                android:id="@+id/spUC"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="2" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!--spVillages-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layoutDirection="ltr"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@color/colorPrimaryDark"
+                                android:gravity="center"
+                                android:text="VILLAGE"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
