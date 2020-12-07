@@ -636,53 +636,6 @@
 
             </androidx.cardview.widget.CardView>
 
-
-<!--            &lt;!&ndash; CR14 &ndash;&gt;
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVcr14"
-                style="@style/cardView">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_cr14"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_cr14"
-                            android:text="@string/cr14" />
-
-                        <TextView
-                            android:id="@+id/q_cr14"
-                            style="@style/quesNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_cr14"
-                            android:layout_alignBottom="@id/qtxt_cr14"
-                            android:text="@string/Q_cr14" />
-
-                    </RelativeLayout>
-
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                        android:id="@+id/cr14"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:hint="DD/MM/YYYY"
-                        app:dateFormat="dd-MM-yyyy"
-                        app:maxDate="CR_DATE" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>-->
-
             <!-- cr14  Title   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVcr14"
@@ -793,8 +746,8 @@
                                 android:hint="####"
                                 android:inputType="number"
                                 android:maxLength="4"
-                                app:maxValue="2021"
-                                app:minValue="2020"
+                                app:maxValue="2020"
+                                app:minValue="2015"
                                 app:type="range" />
 
                         </LinearLayout>
@@ -1568,30 +1521,51 @@
 
                     </RelativeLayout>
 
-                    <RadioGroup
-                        android:id="@+id/cr27"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <RadioButton
-                            android:id="@+id/cr27a"
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr27a" />
 
-                        <RadioButton
-                            android:id="@+id/cr27b"
+                        <EditText
+                            android:id="@+id/cr27a"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:hint="##"
+                            android:inputType="number" />
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr27b" />
 
-                        <RadioButton
-                            android:id="@+id/cr27c"
+                        <EditText
+                            android:id="@+id/cr27b"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:hint="##"
+                            android:inputType="number" />
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cr27c" />
 
-                    </RadioGroup>
+                        <EditText
+                            android:id="@+id/cr27c"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:hint="##"
+                            android:inputType="number" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

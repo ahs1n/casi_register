@@ -2,6 +2,8 @@ package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +43,14 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     private void setupSkip() {
 
+        if (TextUtils.isEmpty(bi.cr15m.getText()))
+            bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+        else {
+            if (Integer.parseInt(bi.cr15m.getText().toString()) < 6)
+                bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+            else
+                bi.fldGrpCVcr18.setVisibility(View.GONE);
+        }
     }
 
     public void BtnContinue() {
@@ -157,10 +167,10 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 : bi.cr26d.isChecked() ? "4"
                 : "-1");
 
-        form.setCr27(bi.cr27a.isChecked() ? "1"
-                : bi.cr27b.isChecked() ? "2"
-                : bi.cr27c.isChecked() ? "3"
-                : "-1");
+        form.setCr27a(bi.cr27a.getText().toString());
+        form.setCr27a(bi.cr27b.getText().toString());
+        form.setCr27a(bi.cr27c.getText().toString());
+
 
         form.setCr28a(bi.cr28a01.isChecked() ? "1"
                 : bi.cr28a02.isChecked() ? "2"
