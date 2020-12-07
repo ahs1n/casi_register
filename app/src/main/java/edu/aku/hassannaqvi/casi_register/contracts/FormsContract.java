@@ -36,7 +36,9 @@ public class FormsContract {
         public static final String COLUMN_CR11 = "cr11";
         public static final String COLUMN_CR12 = "cr12";
         public static final String COLUMN_CR13 = "cr13";
-        public static final String COLUMN_CR14 = "cr14";
+        public static final String COLUMN_CR14D = "cr14d";
+        public static final String COLUMN_CR14M = "cr14m";
+        public static final String COLUMN_CR14Y = "cr14y";
         public static final String COLUMN_CR15M = "cr15m";
         public static final String COLUMN_CR15Y = "cr15y";
         public static final String COLUMN_CR16 = "cr16";

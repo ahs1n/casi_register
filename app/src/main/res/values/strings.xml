@@ -72,6 +72,9 @@ Growth Monitoring - Screening Log for Children Under 5
     <string name='cr13M'>Male</string>
     <string name='cr13F'>Female</string>
     <string name='cr14'>Child date of birth</string>
+    <string name='cr14d'> Date </string>
+    <string name='cr14m'> Month </string>
+    <string name='cr14y'> Year </string>
     <string name='cr15'>How old is (name)?</string>
     <string name='cr15m'> Month </string>
     <string name='cr15y'> Year </string>
