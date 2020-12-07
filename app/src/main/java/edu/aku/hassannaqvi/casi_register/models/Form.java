@@ -808,7 +808,7 @@ public class Form extends LiveData<Form> {
         this.uc = jsonObject.getString(FormsTable.COLUMN_UC);
         this.villageCode = jsonObject.getString(FormsTable.COLUMN_VILLAGE_CODE);
         this.village = jsonObject.getString(FormsTable.COLUMN_VILLAGE);
-        this.sA = jsonObject.getString(FormsTable.COLUMN_CR01);
+        //this.sA = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr02 = jsonObject.getString(FormsTable.COLUMN_CR02);
