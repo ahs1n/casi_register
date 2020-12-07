@@ -22,19 +22,7 @@
     <string name="error_field_required">This field is required</string>
     <string name="error_incorrect_password">This password is incorrect</string>
 
-    <string name="yes"> Yes </string>
-    <string name="no"> No </string>
-    <string name="dkn"> Dont Know </string>
-    <string name="none"> None </string>
-    <string name="ref"> Refused </string>
-    <string name="other"> Other </string>
-    <string name="specify"> Other Specify </string>
-    <string name="year"> Year </string>
-    <string name="month"> Month </string>
-    <string name="weeks"> Week </string>
-    <string name="days"> Day </string>
-
-
+<!--EndActivity Strings-->
     <string name="elc7">گھراڻي جي انٽريو جو نتيجو (جيڪڏھن انٽريو مڪمل نه  ٿيو ھجي ته  صحيع آپشن لاءِ سپروائزر سان مشورو ڪريو)</string>
     <string name="elc701">مڪمل ٿيو </string>
     <string name="elc702">گھر ۾ ڪوبه ماڻھو يا صحيع انٽريو ڏيڻ وارو ماڻھو موجود نه  آھي </string>
@@ -84,6 +72,9 @@ Growth Monitoring - Screening Log for Children Under 5
     <string name='cr13M'>Male</string>
     <string name='cr13F'>Female</string>
     <string name='cr14'>Child date of birth</string>
+    <string name='cr14d'> Date </string>
+    <string name='cr14m'> Month </string>
+    <string name='cr14y'> Year </string>
     <string name='cr15'>How old is (name)?</string>
     <string name='cr15m'> Month </string>
     <string name='cr15y'> Year </string>

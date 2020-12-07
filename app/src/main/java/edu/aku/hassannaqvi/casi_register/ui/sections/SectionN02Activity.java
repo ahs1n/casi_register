@@ -38,7 +38,6 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
     }
 
     private void setupContent() {
-
     }
 
     private void setupSkip() {
@@ -125,7 +124,9 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 : bi.cr13F.isChecked() ? "2"
                 : "-1");
 
-        form.setCr14(bi.cr14.getText().toString());
+        form.setCr14d(bi.cr14d.getText().toString().trim().isEmpty() ? "-1" : bi.cr14d.getText().toString());
+        form.setCr14d(bi.cr14m.getText().toString().trim().isEmpty() ? "-1" : bi.cr14m.getText().toString());
+        form.setCr14d(bi.cr14y.getText().toString().trim().isEmpty() ? "-1" : bi.cr14y.getText().toString());
 
         form.setCr15m(bi.cr15m.getText().toString().trim().isEmpty() ? "-1" : bi.cr15m.getText().toString());
         form.setCr15y(bi.cr15y.getText().toString().trim().isEmpty() ? "-1" : bi.cr15y.getText().toString());
@@ -177,25 +178,25 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 : bi.cr27c.isChecked() ? "3"
                 : "-1");
 
-        form.setCr28A(bi.cr28a01.isChecked() ? "1"
+        form.setCr28a(bi.cr28a01.isChecked() ? "1"
                 : bi.cr28a02.isChecked() ? "2"
                 : "-1");
-        form.setCr28B(bi.cr28b01.isChecked() ? "1"
+        form.setCr28b(bi.cr28b01.isChecked() ? "1"
                 : bi.cr28b02.isChecked() ? "2"
                 : "-1");
-        form.setCr28C(bi.cr28c01.isChecked() ? "1"
+        form.setCr28c(bi.cr28c01.isChecked() ? "1"
                 : bi.cr28c02.isChecked() ? "2"
                 : "-1");
-        form.setCr28D(bi.cr28d01.isChecked() ? "1"
+        form.setCr28d(bi.cr28d01.isChecked() ? "1"
                 : bi.cr28d02.isChecked() ? "2"
                 : "-1");
-        form.setCr28E(bi.cr28e01.isChecked() ? "1"
+        form.setCr28e(bi.cr28e01.isChecked() ? "1"
                 : bi.cr28e02.isChecked() ? "2"
                 : "-1");
-        form.setCr28F(bi.cr28f01.isChecked() ? "1"
+        form.setCr28f(bi.cr28f01.isChecked() ? "1"
                 : bi.cr28f02.isChecked() ? "2"
                 : "-1");
-        form.setCr28FX(bi.cr28fx.getText().toString());
+        form.setCr28fx(bi.cr28fx.getText().toString());
 
         MainApp.setGPS(this);
 

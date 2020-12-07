@@ -214,36 +214,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_CR08Y, form.getCr08y());
         values.put(FormsTable.COLUMN_CR09, form.getCr09());
         values.put(FormsTable.COLUMN_CR10, form.getCr10());
-        values.put(FormsTable.COLUMN_CR11, form.getCr10());
-        values.put(FormsTable.COLUMN_CR12, form.getCr10());
-        values.put(FormsTable.COLUMN_CR13, form.getCr10());
-        values.put(FormsTable.COLUMN_CR14, form.getCr10());
-        values.put(FormsTable.COLUMN_CR15M, form.getCr10());
-        values.put(FormsTable.COLUMN_CR15Y, form.getCr10());
-        values.put(FormsTable.COLUMN_CR16, form.getCr10());
-        values.put(FormsTable.COLUMN_CR17, form.getCr10());
-        values.put(FormsTable.COLUMN_CR18, form.getCr10());
-        values.put(FormsTable.COLUMN_CR19, form.getCr10());
-        values.put(FormsTable.COLUMN_CR20, form.getCr10());
-        values.put(FormsTable.COLUMN_CR21, form.getCr10());
-        values.put(FormsTable.COLUMN_CR22, form.getCr10());
-        values.put(FormsTable.COLUMN_CR23, form.getCr10());
-        values.put(FormsTable.COLUMN_CR24A, form.getCr10());
-        values.put(FormsTable.COLUMN_CR24B, form.getCr10());
-        values.put(FormsTable.COLUMN_CR24C, form.getCr10());
-        values.put(FormsTable.COLUMN_CR24D, form.getCr10());
-        values.put(FormsTable.COLUMN_CR24E, form.getCr10());
-        values.put(FormsTable.COLUMN_CR24F, form.getCr10());
-        values.put(FormsTable.COLUMN_CR25, form.getCr10());
-        values.put(FormsTable.COLUMN_CR26, form.getCr10());
-        values.put(FormsTable.COLUMN_CR27, form.getCr10());
-        values.put(FormsTable.COLUMN_CR28A, form.getCr10());
-        values.put(FormsTable.COLUMN_CR28B, form.getCr10());
-        values.put(FormsTable.COLUMN_CR28C, form.getCr10());
-        values.put(FormsTable.COLUMN_CR28D, form.getCr10());
-        values.put(FormsTable.COLUMN_CR28E, form.getCr10());
-        values.put(FormsTable.COLUMN_CR28F, form.getCr10());
-        values.put(FormsTable.COLUMN_CR28FX, form.getCr10());
+        values.put(FormsTable.COLUMN_CR11, form.getCr11());
+        values.put(FormsTable.COLUMN_CR12, form.getCr12());
+        values.put(FormsTable.COLUMN_CR13, form.getCr13());
+        values.put(FormsTable.COLUMN_CR14D, form.getCr14d());
+        values.put(FormsTable.COLUMN_CR14M, form.getCr14m());
+        values.put(FormsTable.COLUMN_CR14Y, form.getCr14y());
+        values.put(FormsTable.COLUMN_CR15M, form.getCr15m());
+        values.put(FormsTable.COLUMN_CR15Y, form.getCr15y());
+        values.put(FormsTable.COLUMN_CR16, form.getCr16());
+        values.put(FormsTable.COLUMN_CR17, form.getCr17());
+        values.put(FormsTable.COLUMN_CR18, form.getCr18());
+        values.put(FormsTable.COLUMN_CR19, form.getCr19());
+        values.put(FormsTable.COLUMN_CR20, form.getCr20());
+        values.put(FormsTable.COLUMN_CR21, form.getCr21());
+        values.put(FormsTable.COLUMN_CR22, form.getCr22());
+        values.put(FormsTable.COLUMN_CR23, form.getCr23());
+        values.put(FormsTable.COLUMN_CR24A, form.getCr24a());
+        values.put(FormsTable.COLUMN_CR24B, form.getCr24b());
+        values.put(FormsTable.COLUMN_CR24C, form.getCr24c());
+        values.put(FormsTable.COLUMN_CR24D, form.getCr24d());
+        values.put(FormsTable.COLUMN_CR24E, form.getCr24e());
+        values.put(FormsTable.COLUMN_CR24F, form.getCr24f());
+        values.put(FormsTable.COLUMN_CR25, form.getCr25());
+        values.put(FormsTable.COLUMN_CR26, form.getCr26());
+        values.put(FormsTable.COLUMN_CR27, form.getCr27());
+        values.put(FormsTable.COLUMN_CR28A, form.getCr28a());
+        values.put(FormsTable.COLUMN_CR28B, form.getCr28b());
+        values.put(FormsTable.COLUMN_CR28C, form.getCr28c());
+        values.put(FormsTable.COLUMN_CR28D, form.getCr28d());
+        values.put(FormsTable.COLUMN_CR28E, form.getCr28e());
+        values.put(FormsTable.COLUMN_CR28F, form.getCr28f());
+        values.put(FormsTable.COLUMN_CR28FX, form.getCr28fx());
         values.put(FormsTable.COLUMN_ISTATUS, form.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getIstatus96x());
         values.put(FormsTable.COLUMN_ENDINGDATETIME, form.getEndingdatetime());
@@ -367,7 +369,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR11,
                 FormsTable.COLUMN_CR12,
                 FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR14D,
+                FormsTable.COLUMN_CR14M,
+                FormsTable.COLUMN_CR14Y,
                 FormsTable.COLUMN_CR15M,
                 FormsTable.COLUMN_CR15Y,
                 FormsTable.COLUMN_CR16,
@@ -461,7 +465,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR11,
                 FormsTable.COLUMN_CR12,
                 FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR14D,
+                FormsTable.COLUMN_CR14M,
+                FormsTable.COLUMN_CR14Y,
                 FormsTable.COLUMN_CR15M,
                 FormsTable.COLUMN_CR15Y,
                 FormsTable.COLUMN_CR16,
@@ -557,7 +563,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR11,
                 FormsTable.COLUMN_CR12,
                 FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR14D,
+                FormsTable.COLUMN_CR14M,
+                FormsTable.COLUMN_CR14Y,
                 FormsTable.COLUMN_CR15M,
                 FormsTable.COLUMN_CR15Y,
                 FormsTable.COLUMN_CR16,
@@ -629,7 +637,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr11(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR11)));
                 form.setCr12(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR12)));
                 form.setCr13(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR13)));
-                form.setCr14(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14)));
+                form.setCr14d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14D)));
+                form.setCr14m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14M)));
+                form.setCr14y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14Y)));
                 form.setCr15m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15M)));
                 form.setCr15y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15Y)));
                 form.setCr16(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR16)));
@@ -649,13 +659,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr25(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR25)));
                 form.setCr26(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR26)));
                 form.setCr27(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR27)));
-                form.setCr28A(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
-                form.setCr28B(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
-                form.setCr28C(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
-                form.setCr28D(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
-                form.setCr28E(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
-                form.setCr28F(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
-                form.setCr28FX(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
+                form.setCr28a(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
+                form.setCr28b(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
+                form.setCr28c(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
+                form.setCr28d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
+                form.setCr28e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
+                form.setCr28f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
+                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -880,7 +890,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR11,
                 FormsTable.COLUMN_CR12,
                 FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR14D,
+                FormsTable.COLUMN_CR14M,
+                FormsTable.COLUMN_CR14Y,
                 FormsTable.COLUMN_CR15M,
                 FormsTable.COLUMN_CR15Y,
                 FormsTable.COLUMN_CR16,
@@ -951,7 +963,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr11(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR11)));
                 form.setCr12(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR12)));
                 form.setCr13(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR13)));
-                form.setCr14(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14)));
+                form.setCr14d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14D)));
+                form.setCr14m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14M)));
+                form.setCr14y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14Y)));
                 form.setCr15m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15M)));
                 form.setCr15y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15Y)));
                 form.setCr16(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR16)));
@@ -971,13 +985,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr25(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR25)));
                 form.setCr26(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR26)));
                 form.setCr27(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR27)));
-                form.setCr28A(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
-                form.setCr28B(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
-                form.setCr28C(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
-                form.setCr28D(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
-                form.setCr28E(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
-                form.setCr28F(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
-                form.setCr28FX(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
+                form.setCr28a(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
+                form.setCr28b(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
+                form.setCr28c(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
+                form.setCr28d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
+                form.setCr28e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
+                form.setCr28f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
+                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -1015,7 +1029,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR11,
                 FormsTable.COLUMN_CR12,
                 FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR14D,
+                FormsTable.COLUMN_CR14M,
+                FormsTable.COLUMN_CR14Y,
                 FormsTable.COLUMN_CR15M,
                 FormsTable.COLUMN_CR15Y,
                 FormsTable.COLUMN_CR16,
@@ -1082,7 +1098,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr11(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR11)));
                 form.setCr12(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR12)));
                 form.setCr13(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR13)));
-                form.setCr14(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14)));
+                form.setCr14d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14D)));
+                form.setCr14m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14M)));
+                form.setCr14y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR14Y)));
                 form.setCr15m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15M)));
                 form.setCr15y(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR15Y)));
                 form.setCr16(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR16)));
@@ -1102,13 +1120,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr25(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR25)));
                 form.setCr26(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR26)));
                 form.setCr27(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR27)));
-                form.setCr28A(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
-                form.setCr28B(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
-                form.setCr28C(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
-                form.setCr28D(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
-                form.setCr28E(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
-                form.setCr28F(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
-                form.setCr28FX(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
+                form.setCr28a(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28A)));
+                form.setCr28b(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28B)));
+                form.setCr28c(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28C)));
+                form.setCr28d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
+                form.setCr28e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
+                form.setCr28f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
+                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -1400,7 +1418,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR11,
                 FormsTable.COLUMN_CR12,
                 FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR14D,
+                FormsTable.COLUMN_CR14M,
+                FormsTable.COLUMN_CR14Y,
                 FormsTable.COLUMN_CR15M,
                 FormsTable.COLUMN_CR15Y,
                 FormsTable.COLUMN_CR16,
@@ -1501,7 +1521,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR11,
                 FormsTable.COLUMN_CR12,
                 FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR14D,
+                FormsTable.COLUMN_CR14M,
+                FormsTable.COLUMN_CR14Y,
                 FormsTable.COLUMN_CR15M,
                 FormsTable.COLUMN_CR15Y,
                 FormsTable.COLUMN_CR16,
@@ -1613,7 +1635,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR11,
                 FormsTable.COLUMN_CR12,
                 FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14,
+                FormsTable.COLUMN_CR14D,
+                FormsTable.COLUMN_CR14M,
+                FormsTable.COLUMN_CR14Y,
                 FormsTable.COLUMN_CR15M,
                 FormsTable.COLUMN_CR15Y,
                 FormsTable.COLUMN_CR16,
