@@ -2,13 +2,12 @@ package edu.aku.hassannaqvi.casi_register.models;
 
 import android.database.Cursor;
 
-import androidx.lifecycle.LiveData;
-
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import androidx.lifecycle.LiveData;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -37,6 +36,7 @@ public class Form extends LiveData<Form> {
     private String cr04 = "";
     private String cr05 = "";
     private String cr06 = "";
+    private String cr06x = "";
     private String cr07 = "";
     private String cr08d = "";
     private String cr08m = "";
@@ -223,6 +223,16 @@ public class Form extends LiveData<Form> {
     public void setCr06(String cr06) {
         this.cr06 = cr06;
     }
+
+
+    public String getCr06x() {
+        return cr06x;
+    }
+
+    public void setCr06x(String cr06x) {
+        this.cr06x = cr06x;
+    }
+
 
     public String getCr07() {
         return cr07;
@@ -793,6 +803,7 @@ public class Form extends LiveData<Form> {
         this.cr04 = jsonObject.getString(FormsTable.COLUMN_CR04);
         this.cr05 = jsonObject.getString(FormsTable.COLUMN_CR05);
         this.cr06 = jsonObject.getString(FormsTable.COLUMN_CR06);
+        this.cr06x = jsonObject.getString(FormsTable.COLUMN_CR06X);
         this.cr07 = jsonObject.getString(FormsTable.COLUMN_CR07);
         this.cr08d = jsonObject.getString(FormsTable.COLUMN_CR08D);
         this.cr08m = jsonObject.getString(FormsTable.COLUMN_CR08M);
@@ -874,6 +885,7 @@ public class Form extends LiveData<Form> {
         this.cr04 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR04));
         this.cr05 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR05));
         this.cr06 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR06));
+        this.cr06x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR06X));
         this.cr07 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR07));
         this.cr08d = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR08D));
         this.cr08m = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR08M));
@@ -1012,7 +1024,7 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_CR03, this.cr03 == null ? JSONObject.NULL : this.cr03);
             json.put(FormsTable.COLUMN_CR04, this.cr04 == null ? JSONObject.NULL : this.cr04);
             json.put(FormsTable.COLUMN_CR05, this.cr05 == null ? JSONObject.NULL : this.cr05);
-            json.put(FormsTable.COLUMN_CR06, this.cr06 == null ? JSONObject.NULL : this.cr06);
+            json.put(FormsTable.COLUMN_CR06X, this.cr06x == null ? JSONObject.NULL : this.cr06x);
             json.put(FormsTable.COLUMN_CR07, this.cr07 == null ? JSONObject.NULL : this.cr07);
             json.put(FormsTable.COLUMN_CR08D, this.cr08d == null ? JSONObject.NULL : this.cr08d);
             json.put(FormsTable.COLUMN_CR08M, this.cr08m == null ? JSONObject.NULL : this.cr08m);

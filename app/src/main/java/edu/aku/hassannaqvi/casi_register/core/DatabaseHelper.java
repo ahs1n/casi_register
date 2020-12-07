@@ -216,6 +216,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_CR04, form.getCr04());
         values.put(FormsTable.COLUMN_CR05, form.getCr05());
         values.put(FormsTable.COLUMN_CR06, form.getCr06());
+        values.put(FormsTable.COLUMN_CR06X, form.getCr06x());
         values.put(FormsTable.COLUMN_CR07, form.getCr07());
         values.put(FormsTable.COLUMN_CR08D, form.getCr08d());
         values.put(FormsTable.COLUMN_CR08M, form.getCr08m());
@@ -378,6 +379,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
+                FormsTable.COLUMN_CR06X,
                 FormsTable.COLUMN_CR07,
                 FormsTable.COLUMN_CR08D,
                 FormsTable.COLUMN_CR08M,
@@ -484,6 +486,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
+                FormsTable.COLUMN_CR06X,
                 FormsTable.COLUMN_CR07,
                 FormsTable.COLUMN_CR08D,
                 FormsTable.COLUMN_CR08M,
@@ -592,6 +595,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
+                FormsTable.COLUMN_CR06X,
                 FormsTable.COLUMN_CR07,
                 FormsTable.COLUMN_CR08D,
                 FormsTable.COLUMN_CR08M,
@@ -676,6 +680,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
                 form.setCr05(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR05)));
                 form.setCr06(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06)));
+                form.setCr06x(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06X)));
                 form.setCr07(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR07)));
                 form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
                 form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
@@ -939,6 +944,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
+                FormsTable.COLUMN_CR06X,
                 FormsTable.COLUMN_CR07,
                 FormsTable.COLUMN_CR08D,
                 FormsTable.COLUMN_CR08M,
@@ -1022,6 +1028,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
                 form.setCr05(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR05)));
                 form.setCr06(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06)));
+                form.setCr06x(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06X)));
                 form.setCr07(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR07)));
                 form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
                 form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
@@ -1098,6 +1105,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
+                FormsTable.COLUMN_CR06X,
                 FormsTable.COLUMN_CR07,
                 FormsTable.COLUMN_CR08D,
                 FormsTable.COLUMN_CR08M,
@@ -1177,6 +1185,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
                 form.setCr05(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR05)));
                 form.setCr06(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06)));
+                form.setCr06x(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR06X)));
                 form.setCr07(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR07)));
                 form.setCr08d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08D)));
                 form.setCr08m(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR08M)));
@@ -1507,6 +1516,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
+                FormsTable.COLUMN_CR06X,
                 FormsTable.COLUMN_CR07,
                 FormsTable.COLUMN_CR08D,
                 FormsTable.COLUMN_CR08M,
@@ -1620,6 +1630,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
+                FormsTable.COLUMN_CR06X,
                 FormsTable.COLUMN_CR07,
                 FormsTable.COLUMN_CR08D,
                 FormsTable.COLUMN_CR08M,
@@ -1744,6 +1755,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR04,
                 FormsTable.COLUMN_CR05,
                 FormsTable.COLUMN_CR06,
+                FormsTable.COLUMN_CR06X,
                 FormsTable.COLUMN_CR07,
                 FormsTable.COLUMN_CR08D,
                 FormsTable.COLUMN_CR08M,
