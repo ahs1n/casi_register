@@ -2,12 +2,13 @@ package edu.aku.hassannaqvi.casi_register.models;
 
 import android.database.Cursor;
 
+import androidx.lifecycle.LiveData;
+
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import androidx.lifecycle.LiveData;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -948,71 +949,5 @@ public class Form extends LiveData<Form> {
         }
     }
 
-    private void sBHydrate(String string) {
 
-        if (string != null) {
-
-            try {
-                JSONObject json = null;
-                json = new JSONObject(string);
-
-                /*this.s2q101 = json.getString("s2q101");
-                this.s2q101x = json.getString("s2q101x");
-                this.s2q102 = json.getString("s2q102");
-                this.s2q102x = json.getString("s2q102x");
-                this.s2q103 = json.getString("s2q103");
-                this.s2q103x = json.getString("s2q103x");
-                this.s2q104 = json.getString("s2q104");
-                this.s2q104x = json.getString("s2q104x");
-                this.s2q105 = json.getString("s2q105");
-                this.s2q105x = json.getString("s2q105x");
-                this.s2q106 = json.getString("s2q106");
-                this.s2q106x = json.getString("s2q106x");
-                this.s2q107 = json.getString("s2q107");
-                this.s2q107x = json.getString("s2q107x");
-                this.s2q108 = json.getString("s2q108");
-                this.s2q108x = json.getString("s2q108x");
-                this.s2q109 = json.getString("s2q109");
-                this.s2q109x = json.getString("s2q109x");
-                this.s2q110 = json.getString("s2q110");
-                this.s2q110x = json.getString("s2q110x");
-                this.s2q111 = json.getString("s2q111");
-                this.s2q111x = json.getString("s2q111x");
-                this.s2q112 = json.getString("s2q112");
-                this.s2q112x = json.getString("s2q112x");
-                this.s2q113 = json.getString("s2q113");
-                this.s2q113x = json.getString("s2q113x");
-                this.s2q114 = json.getString("s2q114");
-                this.s2q114x = json.getString("s2q114x");
-                this.s2q115 = json.getString("s2q115");
-                this.s2q115x = json.getString("s2q115x");
-                this.s2q116 = json.getString("s2q116");
-                this.s2q116x = json.getString("s2q116x");
-                this.s2q2 = json.getString("s2q2");
-                this.s2q3 = json.getString("s2q3");
-                this.s2q31 = json.getString("s2q31");
-                this.s2q32 = json.getString("s2q32");
-                this.s2q33 = json.getString("s2q33");
-                this.s2q4 = json.getString("s2q4");
-                this.s2q501 = json.getString("s2q501");
-                this.s2q502 = json.getString("s2q502");
-                this.s2q503 = json.getString("s2q503");
-                this.s2q504 = json.getString("s2q504");
-                this.s2q505 = json.getString("s2q505");
-                this.s2q506 = json.getString("s2q506");
-                this.s2q507 = json.getString("s2q507");
-                this.s2q508 = json.getString("s2q508");
-                this.s2q509 = json.getString("s2q509");
-                this.s2q596 = json.getString("s2q596");
-                this.s2q596x = json.getString("s2q596x");
-                this.s2q6 = json.getString("s2q6");
-                this.s2q7 = json.getString("s2q7");
-                this.s2q71 = json.getString("s2q71");
-                this.s2q72 = json.getString("s2q72");*/
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

@@ -41,6 +41,7 @@ import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
@@ -56,6 +57,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class MainActivity extends AppCompatActivity implements WarningActivityInterface {
 
@@ -317,6 +319,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         switch (v.getId()) {
             case R.id.formA:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
+                SaveDraft(true);
                 oF = new Intent(this, SectionN02Activity.class);
                 break;
             case R.id.databaseBtn:
@@ -539,6 +542,22 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         disposable.dispose();
                     }
                 });
+    }
+
+
+    private void SaveDraft(boolean flag) {
+        form = new Form();
+        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
+        form.setUsername(MainApp.userName);
+        form.setDeviceID(MainApp.appInfo.getDeviceID());
+        form.setDevicetagID(MainApp.appInfo.getTagName());
+        form.setAppversion(MainApp.appInfo.getAppVersion());
+
+        form.setCr02(bi.spCountry.getSelectedItem().toString());
+        form.setCr02(bi.spDistrict.getSelectedItem().toString());
+        form.setCr02(bi.spUC.getSelectedItem().toString());
+        form.setCr02(bi.spVillage.getSelectedItem().toString());
+        MainApp.setGPS(this);
     }
 
 

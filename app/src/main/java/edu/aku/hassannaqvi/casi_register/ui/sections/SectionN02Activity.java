@@ -4,16 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.validatorcrawler.aliazaz.Validator;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
-import org.json.JSONException;
+import com.validatorcrawler.aliazaz.Validator;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -46,17 +45,13 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     public void BtnContinue() {
         if (!formValidation()) return;
-        try {
             SaveDraft(true);
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, EndSectionActivity.class));
+                startActivity(new Intent(this, SectionN02Activity.class));
             } else {
                 Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     private boolean UpdateDB() {
@@ -73,18 +68,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         }
     }
 
-    private void SaveDraft(boolean flag) throws JSONException {
-
-       /* anthro = new MWRA_CHILD();
-        anthro.setUsername(MainApp.userName);
-        anthro.setDeviceID(MainApp.appInfo.getDeviceID());
-        anthro.setDevicetagID(MainApp.appInfo.getTagName());
-        anthro.setAppversion(MainApp.appInfo.getAppVersion());
-        anthro.setElb1(MainApp.form.getElb1());
-        anthro.setElb11(MainApp.form.getElb11());
-        anthro.setType(CHILD_ANTHRO_TYPE);
-        anthro.setSysdate(MainApp.form.getSysdate());
-        anthro.setUUID(MainApp.form.get_UID());*/
+    private void SaveDraft(boolean flag) {
 
         form = new Form();
         form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
@@ -200,14 +184,13 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
         MainApp.setGPS(this);
 
-//        json.put("status", flag);
-
-        //  form.setsC(json.toString());
     }
+
 
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
+
 
     public void BtnEnd() {
 //        if (!Validator.emptyTextBox(this, bi.can6)) return;
@@ -216,7 +199,6 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     @Override
     public void endSecActivity(boolean flag) {
-        try {
             SaveDraft(false);
             if (UpdateDB()) {
                 finish();
@@ -224,8 +206,5 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
             } else {
                 Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 }
