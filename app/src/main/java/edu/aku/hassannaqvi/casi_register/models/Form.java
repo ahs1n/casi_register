@@ -22,6 +22,14 @@ public class Form extends LiveData<Form> {
     private String _UID = "";
     private String username;
     private String sysdate = "";
+    private String country = "";
+    private String countryCode = "";
+    private String district = "";
+    private String districtCode = "";
+    private String uc = "";
+    private String ucCode = "";
+    private String village = "";
+    private String villageCode = "";
 
     private String cr01 = "";
     private String cr02 = "";
@@ -94,6 +102,79 @@ public class Form extends LiveData<Form> {
 
     public Form() {
     }
+
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+
+    public String getDistrictCode() {
+        return districtCode;
+    }
+
+    public void setDistrictCode(String districtCode) {
+        this.districtCode = districtCode;
+    }
+
+
+    public String getUc() {
+        return uc;
+    }
+
+    public void setUc(String uc) {
+        this.uc = uc;
+    }
+
+
+    public String getUcCode() {
+        return ucCode;
+    }
+
+    public void setUcCode(String ucCode) {
+        this.ucCode = ucCode;
+    }
+
+
+    public String getVillage() {
+        return village;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
+    }
+
+
+    public String getVillageCode() {
+        return villageCode;
+    }
+
+    public void setVillageCode(String villageCode) {
+        this.villageCode = villageCode;
+    }
+
 
     public String getCr01() {
         return cr01;
@@ -698,6 +779,14 @@ public class Form extends LiveData<Form> {
         this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
         this.username = jsonObject.getString(FormsTable.COLUMN_USERNAME);
         this.sysdate = jsonObject.getString(FormsTable.COLUMN_SYSDATE);
+        this.countryCode = jsonObject.getString(FormsTable.COLUMN_COUNTRY_CODE);
+        this.country = jsonObject.getString(FormsTable.COLUMN_COUNTRY);
+        this.districtCode = jsonObject.getString(FormsTable.COLUMN_DISTRICT_CODE);
+        this.district = jsonObject.getString(FormsTable.COLUMN_DISTRICT);
+        this.ucCode = jsonObject.getString(FormsTable.COLUMN_UC_CODE);
+        this.uc = jsonObject.getString(FormsTable.COLUMN_UC);
+        this.villageCode = jsonObject.getString(FormsTable.COLUMN_VILLAGE_CODE);
+        this.village = jsonObject.getString(FormsTable.COLUMN_VILLAGE);
         this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr02 = jsonObject.getString(FormsTable.COLUMN_CR02);
         this.cr03 = jsonObject.getString(FormsTable.COLUMN_CR03);
@@ -771,6 +860,14 @@ public class Form extends LiveData<Form> {
         this.deviceID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
+        this.countryCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE));
+        this.country = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_COUNTRY));
+        this.districtCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE));
+        this.district = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DISTRICT));
+        this.ucCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UC_CODE));
+        this.uc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UC));
+        this.villageCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE));
+        this.village = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGE));
         this.cr01 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR01));
         this.cr02 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR02));
         this.cr03 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR03));

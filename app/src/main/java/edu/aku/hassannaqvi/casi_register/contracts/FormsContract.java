@@ -21,6 +21,14 @@ public class FormsContract {
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";
+        public static final String COLUMN_COUNTRY_CODE = "countryCode";
+        public static final String COLUMN_COUNTRY = "country";
+        public static final String COLUMN_DISTRICT_CODE = "districtCode";
+        public static final String COLUMN_DISTRICT = "district";
+        public static final String COLUMN_UC_CODE = "ucCode";
+        public static final String COLUMN_UC = "uc";
+        public static final String COLUMN_VILLAGE = "village";
+        public static final String COLUMN_VILLAGE_CODE = "villageCode";
         public static final String COLUMN_CR01 = "cr01";
         public static final String COLUMN_CR02 = "cr02";
         public static final String COLUMN_CR03 = "cr03";
