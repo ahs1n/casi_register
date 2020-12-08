@@ -106,15 +106,6 @@ public class Form extends LiveData<Form> {
     }
 
 
-    public String getsA() {
-        return sA;
-    }
-
-    public void setsA(String sA) {
-        this.sA = sA;
-    }
-
-
     public String getCountry() {
         return country;
     }
@@ -808,8 +799,7 @@ public class Form extends LiveData<Form> {
         this.uc = jsonObject.getString(FormsTable.COLUMN_UC);
         this.villageCode = jsonObject.getString(FormsTable.COLUMN_VILLAGE_CODE);
         this.village = jsonObject.getString(FormsTable.COLUMN_VILLAGE);
-        //this.sA = jsonObject.getString(FormsTable.COLUMN_CR01);
-        this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
+        /*this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr01 = jsonObject.getString(FormsTable.COLUMN_CR01);
         this.cr02 = jsonObject.getString(FormsTable.COLUMN_CR02);
         this.cr03 = jsonObject.getString(FormsTable.COLUMN_CR03);
@@ -854,7 +844,7 @@ public class Form extends LiveData<Form> {
         this.cr28d = jsonObject.getString(FormsTable.COLUMN_CR28D);
         this.cr28e = jsonObject.getString(FormsTable.COLUMN_CR28E);
         this.cr28f = jsonObject.getString(FormsTable.COLUMN_CR28F);
-        this.cr28fx = jsonObject.getString(FormsTable.COLUMN_CR28FX);
+        this.cr28fx = jsonObject.getString(FormsTable.COLUMN_CR28FX);*/
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.istatus96x = jsonObject.getString(FormsTable.COLUMN_ISTATUS96x);
         this.endingdatetime = jsonObject.getString(FormsTable.COLUMN_ENDINGDATETIME);
@@ -867,6 +857,7 @@ public class Form extends LiveData<Form> {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_APPVERSION);
+        this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
 
         return this;
 
@@ -892,7 +883,7 @@ public class Form extends LiveData<Form> {
         this.uc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UC));
         this.villageCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE));
         this.village = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGE));
-        this.cr01 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR01));
+        /*this.cr01 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR01));
         this.cr02 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR02));
         this.cr03 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR03));
         this.cr04 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR04));
@@ -936,12 +927,11 @@ public class Form extends LiveData<Form> {
         this.cr28d = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28D));
         this.cr28e = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28E));
         this.cr28f = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28F));
-        this.cr28fx = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28FX));
-
+        this.cr28fx = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CR28FX));*/
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS96x));
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
-
+        sFHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)));
         return this;
     }
 
@@ -952,63 +942,55 @@ public class Form extends LiveData<Form> {
         return new GsonBuilder().create().toJson(this, Form.class);
     }
 
-    public String sBtoString() {
+    public String sAtoString() {
         JSONObject json = new JSONObject();
 
         try {
-            json/*.put("mf101", mf101)*/
-                    /*.put("s2q101x", s2q101x)
-                    .put("s2q102", s2q102)
-                    .put("s2q102x", s2q102x)
-                    .put("s2q103", s2q103)
-                    .put("s2q103x", s2q103x)
-                    .put("s2q104", s2q104)
-                    .put("s2q104x", s2q104x)
-                    .put("s2q105", s2q105)
-                    .put("s2q105x", s2q105x)
-                    .put("s2q106", s2q106)
-                    .put("s2q106x", s2q106x)
-                    .put("s2q107", s2q107)
-                    .put("s2q107x", s2q107x)
-                    .put("s2q108", s2q108)
-                    .put("s2q108x", s2q108x)
-                    .put("s2q109", s2q109)
-                    .put("s2q109x", s2q109x)
-                    .put("s2q110", s2q110)
-                    .put("s2q110x", s2q110x)
-                    .put("s2q111", s2q111)
-                    .put("s2q111x", s2q111x)
-                    .put("s2q112", s2q112)
-                    .put("s2q112x", s2q112x)
-                    .put("s2q113", s2q113)
-                    .put("s2q113x", s2q113x)
-                    .put("s2q114", s2q114)
-                    .put("s2q114x", s2q114x)
-                    .put("s2q115", s2q115)
-                    .put("s2q115x", s2q115x)
-                    .put("s2q116", s2q116)
-                    .put("s2q116x", s2q116x)
-                    .put("s2q2", s2q2)
-                    .put("s2q3", s2q3)
-                    .put("s2q31", s2q31)
-                    .put("s2q32", s2q32)
-                    .put("s2q33", s2q33)
-                    .put("s2q4", s2q4)
-                    .put("s2q501", s2q501)
-                    .put("s2q502", s2q502)
-                    .put("s2q503", s2q503)
-                    .put("s2q504", s2q504)
-                    .put("s2q505", s2q505)
-                    .put("s2q506", s2q506)
-                    .put("s2q507", s2q507)
-                    .put("s2q508", s2q508)
-                    .put("s2q509", s2q509)
-                    .put("s2q596", s2q596)
-                    .put("s2q596x", s2q596x)
-                    .put("s2q6", s2q6)
-                    .put("s2q7", s2q7)
-                    .put("s2q71", s2q71)
-                    .put("s2q72", s2q72)*/
+            json.put("cr01", cr01)
+                    .put("cr02", cr02)
+                    .put("cr03", cr03)
+                    .put("cr04", cr04)
+                    .put("cr05", cr05)
+                    .put("cr06", cr06)
+                    .put("cr06x", cr06x)
+                    .put("cr07", cr07)
+                    .put("cr08d", cr08d)
+                    .put("cr08m", cr08m)
+                    .put("cr08y", cr08y)
+                    .put("cr09", cr09)
+                    .put("cr10", cr10)
+                    .put("cr11", cr11)
+                    .put("cr12", cr12)
+                    .put("cr13", cr13)
+                    .put("cr14d", cr14d)
+                    .put("cr15m", cr15m)
+                    .put("cr15y", cr15y)
+                    .put("cr16", cr16)
+                    .put("cr17", cr17)
+                    .put("cr18", cr18)
+                    .put("cr19", cr19)
+                    .put("cr20", cr20)
+                    .put("cr21", cr21)
+                    .put("cr22", cr22)
+                    .put("cr23", cr23)
+                    .put("cr24a", cr24a)
+                    .put("cr24b", cr24b)
+                    .put("cr24c", cr24c)
+                    .put("cr24d", cr24d)
+                    .put("cr24e", cr24e)
+                    .put("cr24f", cr24f)
+                    .put("cr25", cr25)
+                    .put("cr26", cr26)
+                    .put("cr27a", cr27a)
+                    .put("cr27b", cr27b)
+                    .put("cr27c", cr27c)
+                    .put("cr28a", cr28a)
+                    .put("cr28b", cr28b)
+                    .put("cr28c", cr28c)
+                    .put("cr28d", cr28d)
+                    .put("cr28e", cr28e)
+                    .put("cr28f", cr28f)
+                    .put("cr28fx", cr28fx)
                     .put("gpslat", gpslat)
                     .put("gpslng", gpslng)
                     .put("gpsdate", gpsdate)
