@@ -1533,10 +1533,10 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/textView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="3"
-                                android:gravity="center"
                                 android:text="@string/cr27a" />
 
                             <EditText
@@ -1556,10 +1556,10 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/textView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="3"
-                                android:gravity="center"
                                 android:text="@string/cr27b" />
 
                             <EditText
@@ -1579,10 +1579,10 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                style="@style/textView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="3"
-                                android:gravity="center"
                                 android:text="@string/cr27c" />
 
                             <EditText
