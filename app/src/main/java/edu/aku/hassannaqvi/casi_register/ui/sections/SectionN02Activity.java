@@ -6,23 +6,17 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySectionN02Binding;
-import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
@@ -71,7 +65,17 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
     }
 
     private boolean UpdateDB() {
+
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        int updcount = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString());
+        if (updcount == 1) {
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+/*        DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addForm(form);
         form.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
@@ -81,17 +85,17 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
     }
 
     private void SaveDraft(boolean flag) throws JSONException {
 
-        form = new Form();
+        /*form = new Form();
         form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
         form.setUsername(MainApp.userName);
         form.setDeviceID(MainApp.appInfo.getDeviceID());
         form.setDevicetagID(MainApp.appInfo.getTagName());
-        form.setAppversion(MainApp.appInfo.getAppVersion());
+        form.setAppversion(MainApp.appInfo.getAppVersion());*/
 
         form.setCr02(bi.cr02.getText().toString());
 

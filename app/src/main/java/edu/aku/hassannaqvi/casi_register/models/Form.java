@@ -2,13 +2,12 @@ package edu.aku.hassannaqvi.casi_register.models;
 
 import android.database.Cursor;
 
-import androidx.lifecycle.LiveData;
-
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import androidx.lifecycle.LiveData;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -564,6 +563,15 @@ public class Form extends LiveData<Form> {
     }
 
 
+    public String getsA() {
+        return sA;
+    }
+
+    public void setsA(String sA) {
+        this.sA = sA;
+    }
+
+
     public SectionSelection getSecSelection() {
         return secSelection;
     }
@@ -931,7 +939,7 @@ public class Form extends LiveData<Form> {
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS96x));
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
-        sFHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)));
+        sAHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)));
         return this;
     }
 
@@ -1001,6 +1009,7 @@ public class Form extends LiveData<Form> {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            return "\"error\"" + e.getMessage() + "\"";
         }
         return json.toString();
     }
@@ -1014,7 +1023,9 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
             json.put(FormsTable.COLUMN_USERNAME, this.username == null ? JSONObject.NULL : this.username);
             json.put(FormsTable.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
-            json.put(FormsTable.COLUMN_CR01, this.cr01 == null ? JSONObject.NULL : this.cr01);
+
+            json.put(FormsTable.COLUMN_SA, new JSONObject(sAtoString()));
+            /*json.put(FormsTable.COLUMN_CR01, this.cr01 == null ? JSONObject.NULL : this.cr01);
             json.put(FormsTable.COLUMN_CR02, this.cr02 == null ? JSONObject.NULL : this.cr02);
             json.put(FormsTable.COLUMN_CR03, this.cr03 == null ? JSONObject.NULL : this.cr03);
             json.put(FormsTable.COLUMN_CR04, this.cr04 == null ? JSONObject.NULL : this.cr04);
@@ -1057,7 +1068,7 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_CR28D, this.cr28d == null ? JSONObject.NULL : this.cr28d);
             json.put(FormsTable.COLUMN_CR28E, this.cr28e == null ? JSONObject.NULL : this.cr28e);
             json.put(FormsTable.COLUMN_CR28F, this.cr28f == null ? JSONObject.NULL : this.cr28f);
-            json.put(FormsTable.COLUMN_CR28FX, this.cr28fx == null ? JSONObject.NULL : this.cr28fx);
+            json.put(FormsTable.COLUMN_CR28FX, this.cr28fx == null ? JSONObject.NULL : this.cr28fx);*/
             json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
             json.put(FormsTable.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);
             json.put(FormsTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
@@ -1073,6 +1084,70 @@ public class Form extends LiveData<Form> {
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    private void sAHydrate(String string) {
+        if (string != null) {
+
+            try {
+                this.cr01 = toJSONObject().getString("cr01");
+                this.cr02 = toJSONObject().getString("cr02");
+                this.cr03 = toJSONObject().getString("cr03");
+                this.cr04 = toJSONObject().getString("cr04");
+                this.cr05 = toJSONObject().getString("cr05");
+                this.cr06 = toJSONObject().getString("cr06");
+                this.cr06x = toJSONObject().getString("cr06x");
+                this.cr07 = toJSONObject().getString("cr07");
+                this.cr08d = toJSONObject().getString("cr08d");
+                this.cr08m = toJSONObject().getString("cr08m");
+                this.cr08y = toJSONObject().getString("cr08y");
+                this.cr09 = toJSONObject().getString("cr09");
+                this.cr10 = toJSONObject().getString("cr10");
+                this.cr11 = toJSONObject().getString("cr11");
+                this.cr12 = toJSONObject().getString("cr12");
+                this.cr13 = toJSONObject().getString("cr13");
+                this.cr14d = toJSONObject().getString("cr14d");
+                this.cr15m = toJSONObject().getString("cr15m");
+                this.cr15y = toJSONObject().getString("cr15y");
+                this.cr16 = toJSONObject().getString("cr16");
+                this.cr17 = toJSONObject().getString("cr17");
+                this.cr18 = toJSONObject().getString("cr18");
+                this.cr19 = toJSONObject().getString("cr19");
+                this.cr20 = toJSONObject().getString("cr20");
+                this.cr21 = toJSONObject().getString("cr21");
+                this.cr22 = toJSONObject().getString("cr22");
+                this.cr23 = toJSONObject().getString("cr23");
+                this.cr24a = toJSONObject().getString("cr24a");
+                this.cr24b = toJSONObject().getString("cr24b");
+                this.cr24c = toJSONObject().getString("cr24c");
+                this.cr24d = toJSONObject().getString("cr24d");
+                this.cr24e = toJSONObject().getString("cr24e");
+                this.cr24f = toJSONObject().getString("cr24f");
+                this.cr25 = toJSONObject().getString("cr25");
+                this.cr26 = toJSONObject().getString("cr26");
+                this.cr27a = toJSONObject().getString("cr27a");
+                this.cr27b = toJSONObject().getString("cr27b");
+                this.cr27c = toJSONObject().getString("cr27c");
+                this.cr28a = toJSONObject().getString("cr28a");
+                this.cr28b = toJSONObject().getString("cr28b");
+                this.cr28c = toJSONObject().getString("cr28c");
+                this.cr28d = toJSONObject().getString("cr28d");
+                this.cr28e = toJSONObject().getString("cr28e");
+                this.cr28f = toJSONObject().getString("cr28f");
+                this.cr28fx = toJSONObject().getString("cr28fx");
+                /*this.gpslat = toJSONObject().getString("gpslat");
+                this.gpslng = toJSONObject().getString("gpslng");
+                this.gpsdate = toJSONObject().getString("gpsdate");
+                this.gpsacc = toJSONObject().getString("gpsacc");
+                this.deviceid = toJSONObject().getString("deviceid");
+                this.tagid = toJSONObject().getString("tagid");
+                this.appversion = toJSONObject().getString("appversion");*/
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 

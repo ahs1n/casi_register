@@ -22,9 +22,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.validatorcrawler.aliazaz.Validator;
 
 import java.io.File;
@@ -37,8 +34,12 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
+import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
+import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
@@ -319,7 +320,8 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         switch (v.getId()) {
             case R.id.formA:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
-                //SaveDraft(true);
+                SaveDraft(true);
+                UpdateDB();
                 oF = new Intent(this, SectionN02Activity.class);
                 break;
             case R.id.databaseBtn:
@@ -558,6 +560,20 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         form.setUc(bi.spUC.getSelectedItem().toString());
         form.setVillage(bi.spVillage.getSelectedItem().toString());
         MainApp.setGPS(this);
+    }
+
+    private boolean UpdateDB() {
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        long updcount = db.addForm(form);
+        form.set_ID(String.valueOf(updcount));
+        if (updcount > 0) {
+            form.set_UID(form.getDeviceID() + form.get_ID());
+            db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
+            return true;
+        } else {
+            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
 

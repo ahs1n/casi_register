@@ -210,7 +210,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UC, form.getUc());
         values.put(FormsTable.COLUMN_VILLAGE_CODE, form.getVillageCode());
         values.put(FormsTable.COLUMN_VILLAGE, form.getVillage());
-        values.put(FormsTable.COLUMN_CR01, form.getCr01());
+        values.put(FormsTable.COLUMN_SA, form.getsA());
+
+        /*values.put(FormsTable.COLUMN_CR01, form.getCr01());
         values.put(FormsTable.COLUMN_CR02, form.getCr02());
         values.put(FormsTable.COLUMN_CR03, form.getCr03());
         values.put(FormsTable.COLUMN_CR04, form.getCr04());
@@ -256,7 +258,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_CR28D, form.getCr28d());
         values.put(FormsTable.COLUMN_CR28E, form.getCr28e());
         values.put(FormsTable.COLUMN_CR28F, form.getCr28f());
-        values.put(FormsTable.COLUMN_CR28FX, form.getCr28fx());
+        values.put(FormsTable.COLUMN_CR28FX, form.getCr28fx());*/
         values.put(FormsTable.COLUMN_ISTATUS, form.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getIstatus96x());
         values.put(FormsTable.COLUMN_ENDINGDATETIME, form.getEndingdatetime());
@@ -373,7 +375,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UC,
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_SA,
+                /*FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
@@ -419,7 +422,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR28D,
                 FormsTable.COLUMN_CR28E,
                 FormsTable.COLUMN_CR28F,
-                FormsTable.COLUMN_CR28FX,
+                FormsTable.COLUMN_CR28FX,*/
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -480,7 +483,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UC,
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_SA,
+                /*FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
@@ -526,7 +530,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR28D,
                 FormsTable.COLUMN_CR28E,
                 FormsTable.COLUMN_CR28F,
-                FormsTable.COLUMN_CR28FX,
+                FormsTable.COLUMN_CR28FX,*/
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -589,7 +593,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UC,
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_SA,
+                /*FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
@@ -635,7 +640,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR28D,
                 FormsTable.COLUMN_CR28E,
                 FormsTable.COLUMN_CR28F,
-                FormsTable.COLUMN_CR28FX,
+                FormsTable.COLUMN_CR28FX,*/
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
 
@@ -674,7 +679,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setUc(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC)));
                 form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
                 form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
-                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
+                form.setsA(c.getString(c.getColumnIndex(FormsTable.COLUMN_SA)));
+                /*form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
@@ -720,7 +726,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr28d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
                 form.setCr28e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
                 form.setCr28f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
-                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
+                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));*/
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -938,58 +944,59 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UC,
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CR01,
-                FormsTable.COLUMN_CR02,
-                FormsTable.COLUMN_CR03,
-                FormsTable.COLUMN_CR04,
-                FormsTable.COLUMN_CR05,
-                FormsTable.COLUMN_CR06,
-                FormsTable.COLUMN_CR06X,
-                FormsTable.COLUMN_CR07,
-                FormsTable.COLUMN_CR08D,
-                FormsTable.COLUMN_CR08M,
-                FormsTable.COLUMN_CR08Y,
-                FormsTable.COLUMN_CR09,
-                FormsTable.COLUMN_CR10,
-                FormsTable.COLUMN_CR11,
-                FormsTable.COLUMN_CR12,
-                FormsTable.COLUMN_CR13,
-                FormsTable.COLUMN_CR14D,
-                FormsTable.COLUMN_CR14M,
-                FormsTable.COLUMN_CR14Y,
-                FormsTable.COLUMN_CR15M,
-                FormsTable.COLUMN_CR15Y,
-                FormsTable.COLUMN_CR16,
-                FormsTable.COLUMN_CR17,
-                FormsTable.COLUMN_CR18,
-                FormsTable.COLUMN_CR19,
-                FormsTable.COLUMN_CR20,
-                FormsTable.COLUMN_CR21,
-                FormsTable.COLUMN_CR22,
-                FormsTable.COLUMN_CR23,
-                FormsTable.COLUMN_CR24A,
-                FormsTable.COLUMN_CR24B,
-                FormsTable.COLUMN_CR24C,
-                FormsTable.COLUMN_CR24D,
-                FormsTable.COLUMN_CR24E,
-                FormsTable.COLUMN_CR24F,
-                FormsTable.COLUMN_CR25,
-                FormsTable.COLUMN_CR26,
-                FormsTable.COLUMN_CR27A,
-                FormsTable.COLUMN_CR27B,
-                FormsTable.COLUMN_CR27C,
-                FormsTable.COLUMN_CR28A,
-                FormsTable.COLUMN_CR28B,
-                FormsTable.COLUMN_CR28C,
-                FormsTable.COLUMN_CR28D,
-                FormsTable.COLUMN_CR28E,
-                FormsTable.COLUMN_CR28F,
-                FormsTable.COLUMN_CR28FX,
+                FormsTable.COLUMN_SA,
+                /* FormsTable.COLUMN_CR01,
+                 FormsTable.COLUMN_CR02,
+                 FormsTable.COLUMN_CR03,
+                 FormsTable.COLUMN_CR04,
+                 FormsTable.COLUMN_CR05,
+                 FormsTable.COLUMN_CR06,
+                 FormsTable.COLUMN_CR06X,
+                 FormsTable.COLUMN_CR07,
+                 FormsTable.COLUMN_CR08D,
+                 FormsTable.COLUMN_CR08M,
+                 FormsTable.COLUMN_CR08Y,
+                 FormsTable.COLUMN_CR09,
+                 FormsTable.COLUMN_CR10,
+                 FormsTable.COLUMN_CR11,
+                 FormsTable.COLUMN_CR12,
+                 FormsTable.COLUMN_CR13,
+                 FormsTable.COLUMN_CR14D,
+                 FormsTable.COLUMN_CR14M,
+                 FormsTable.COLUMN_CR14Y,
+                 FormsTable.COLUMN_CR15M,
+                 FormsTable.COLUMN_CR15Y,
+                 FormsTable.COLUMN_CR16,
+                 FormsTable.COLUMN_CR17,
+                 FormsTable.COLUMN_CR18,
+                 FormsTable.COLUMN_CR19,
+                 FormsTable.COLUMN_CR20,
+                 FormsTable.COLUMN_CR21,
+                 FormsTable.COLUMN_CR22,
+                 FormsTable.COLUMN_CR23,
+                 FormsTable.COLUMN_CR24A,
+                 FormsTable.COLUMN_CR24B,
+                 FormsTable.COLUMN_CR24C,
+                 FormsTable.COLUMN_CR24D,
+                 FormsTable.COLUMN_CR24E,
+                 FormsTable.COLUMN_CR24F,
+                 FormsTable.COLUMN_CR25,
+                 FormsTable.COLUMN_CR26,
+                 FormsTable.COLUMN_CR27A,
+                 FormsTable.COLUMN_CR27B,
+                 FormsTable.COLUMN_CR27C,
+                 FormsTable.COLUMN_CR28A,
+                 FormsTable.COLUMN_CR28B,
+                 FormsTable.COLUMN_CR28C,
+                 FormsTable.COLUMN_CR28D,
+                 FormsTable.COLUMN_CR28E,
+                 FormsTable.COLUMN_CR28F,
+                 FormsTable.COLUMN_CR28FX,*/
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
 
         };
-        String whereClause = FormsTable.COLUMN_CR05 + " = ? ";
+        String whereClause = FormsTable.COLUMN_SA + " = ? ";
         String[] whereArgs = new String[]{cluster};
 //        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
         String groupBy = null;
@@ -1022,7 +1029,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setUc(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC)));
                 form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
                 form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
-                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
+                form.setsA(c.getString(c.getColumnIndex(FormsTable.COLUMN_SA)));
+/*                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
@@ -1068,7 +1076,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr28d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
                 form.setCr28e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
                 form.setCr28f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
-                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
+                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));*/
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -1099,7 +1107,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UC,
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_SA,
+/*                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
@@ -1145,7 +1154,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR28D,
                 FormsTable.COLUMN_CR28E,
                 FormsTable.COLUMN_CR28F,
-                FormsTable.COLUMN_CR28FX,
+                FormsTable.COLUMN_CR28FX,*/
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
         };
@@ -1179,7 +1188,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setUc(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC)));
                 form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
                 form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
-                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
+                form.setsA(c.getString(c.getColumnIndex(FormsTable.COLUMN_SA)));
+/*                form.setCr01(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR01)));
                 form.setCr02(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR02)));
                 form.setCr03(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR03)));
                 form.setCr04(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR04)));
@@ -1225,7 +1235,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setCr28d(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28D)));
                 form.setCr28e(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28E)));
                 form.setCr28f(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28F)));
-                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));
+                form.setCr28fx(c.getString(c.getColumnIndex(FormsTable.COLUMN_CR28FX)));*/
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -1510,7 +1520,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UC,
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_SA,
+/*                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
@@ -1556,7 +1567,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR28D,
                 FormsTable.COLUMN_CR28E,
                 FormsTable.COLUMN_CR28F,
-                FormsTable.COLUMN_CR28FX,
+                FormsTable.COLUMN_CR28FX,*/
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,
@@ -1624,7 +1635,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UC,
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_SA,
+/*                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
@@ -1670,7 +1682,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR28D,
                 FormsTable.COLUMN_CR28E,
                 FormsTable.COLUMN_CR28F,
-                FormsTable.COLUMN_CR28FX,
+                FormsTable.COLUMN_CR28FX,*/
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,
@@ -1684,7 +1696,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
 //        String whereClause = "(" + FormsTable.COLUMN_ISTATUS + " is null OR " + FormsTable.COLUMN_ISTATUS + "='') AND " + FormsTable.COLUMN_CLUSTERCODE + "=? AND " + FormsTable.COLUMN_HHNO + "=?";
-        String whereClause = FormsTable.COLUMN_CR05 + "=? AND " + FormsTable.COLUMN_CR06 + "=?";
+        String whereClause = FormsTable.COLUMN_UC + "=? AND " + FormsTable.COLUMN_VILLAGE + "=?";
         String[] whereArgs = {district, refno};
         String groupBy = null;
         String having = null;
@@ -1731,6 +1743,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
+    //Generic update FormColumn
+    public int updatesFormsColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = FormsTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.form.get_ID())};
+
+        return db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
 
     //Get FamilyMembers data for info activity
     public Form getSelectedForm(String cluster, String subcluster, String hhno) {
@@ -1749,7 +1777,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UC,
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CR01,
+                FormsTable.COLUMN_SA,
+/*                FormsTable.COLUMN_CR01,
                 FormsTable.COLUMN_CR02,
                 FormsTable.COLUMN_CR03,
                 FormsTable.COLUMN_CR04,
@@ -1795,7 +1824,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_CR28D,
                 FormsTable.COLUMN_CR28E,
                 FormsTable.COLUMN_CR28F,
-                FormsTable.COLUMN_CR28FX,
+                FormsTable.COLUMN_CR28FX,*/
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,
@@ -1808,7 +1837,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_APPVERSION,
         };
 
-        String whereClause = FormsTable.COLUMN_CR05 + "=? AND " + FormsTable.COLUMN_CR06 + "=? AND " + FormsTable.COLUMN_CR10 + "=? AND " + FormsTable.COLUMN_ISTATUS + "=? ";
+        String whereClause = FormsTable.COLUMN_UC + "=? AND " + FormsTable.COLUMN_VILLAGE + "=? AND " + FormsTable.COLUMN_DISTRICT + "=? AND " + FormsTable.COLUMN_ISTATUS + "=? ";
         String[] whereArgs = new String[]{cluster, subcluster, hhno, "1"};
 
         String groupBy = null;

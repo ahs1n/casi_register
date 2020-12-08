@@ -22,7 +22,8 @@ public final class CreateTable {
             + FormsTable.COLUMN_SYSDATE + " TEXT,"
             + FormsTable.COLUMN_UID + " TEXT,"
             + FormsTable.COLUMN_USERNAME + " TEXT,"
-            + FormsTable.COLUMN_CR01 + " TEXT,"
+            + FormsTable.COLUMN_SA + " TEXT,"
+            /*+ FormsTable.COLUMN_CR01 + " TEXT,"
             + FormsTable.COLUMN_CR02 + " TEXT,"
             + FormsTable.COLUMN_CR03 + " TEXT,"
             + FormsTable.COLUMN_CR04 + " TEXT,"
@@ -67,7 +68,7 @@ public final class CreateTable {
             + FormsTable.COLUMN_CR28D + " TEXT,"
             + FormsTable.COLUMN_CR28E + " TEXT,"
             + FormsTable.COLUMN_CR28F + " TEXT,"
-            + FormsTable.COLUMN_CR28FX + " TEXT,"
+            + FormsTable.COLUMN_CR28FX + " TEXT,"*/
             + FormsTable.COLUMN_GPSLAT + " TEXT,"
             + FormsTable.COLUMN_GPSLNG + " TEXT,"
             + FormsTable.COLUMN_GPSDATE + " TEXT,"

@@ -30,7 +30,7 @@ public class FormsContract {
         public static final String COLUMN_VILLAGE = "village";
         public static final String COLUMN_VILLAGE_CODE = "villageCode";
         public static final String COLUMN_SA = "sA";
-        public static final String COLUMN_CR01 = "cr01";
+        /*public static final String COLUMN_CR01 = "cr01";
         public static final String COLUMN_CR02 = "cr02";
         public static final String COLUMN_CR03 = "cr03";
         public static final String COLUMN_CR04 = "cr04";
@@ -76,7 +76,7 @@ public class FormsContract {
         public static final String COLUMN_CR28D = "cr28d";
         public static final String COLUMN_CR28E = "cr28e";
         public static final String COLUMN_CR28F = "cr28f";
-        public static final String COLUMN_CR28FX = "cr28fx";
+        public static final String COLUMN_CR28FX = "cr28fx";*/
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS96x = "istatus96x";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
