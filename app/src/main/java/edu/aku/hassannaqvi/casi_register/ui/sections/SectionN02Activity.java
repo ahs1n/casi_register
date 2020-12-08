@@ -65,7 +65,6 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
     }
 
     private boolean UpdateDB() {
-
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         int updcount = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString());
         if (updcount == 1) {
