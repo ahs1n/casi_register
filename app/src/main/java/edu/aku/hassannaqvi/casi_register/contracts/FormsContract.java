@@ -11,12 +11,12 @@ import android.provider.BaseColumns;
 
 public class FormsContract {
 
-    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.uen_tmk_el";
+    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.casi_register";
 
     public static abstract class FormsTable implements BaseColumns {
         public static final String TABLE_NAME = "forms";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
-        public static final String COLUMN_PROJECT_NAME = "projectName";
+        public static final String COLUMN_PROJECT_NAME = "casi_register";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_USERNAME = "username";

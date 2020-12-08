@@ -1,13 +1,15 @@
 package edu.aku.hassannaqvi.casi_register.models;
 
 import android.database.Cursor;
+import android.util.Log;
+
+import androidx.lifecycle.LiveData;
 
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import androidx.lifecycle.LiveData;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -1147,6 +1149,7 @@ public class Form extends LiveData<Form> {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                Log.d("Error at Hyderate", "sAHydrate: " + e.getMessage());
             }
         }
     }

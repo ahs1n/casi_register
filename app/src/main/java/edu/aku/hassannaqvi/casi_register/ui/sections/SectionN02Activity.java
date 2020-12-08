@@ -6,12 +6,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
-import com.validatorcrawler.aliazaz.Validator;
-
-import org.json.JSONException;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
+import com.validatorcrawler.aliazaz.Validator;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -51,11 +50,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     public void BtnContinue() {
         if (!formValidation()) return;
-        try {
-            SaveDraft(true);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        SaveDraft();
         if (UpdateDB()) {
             finish();
             startActivity(new Intent(this, SectionN02Activity.class));
@@ -74,12 +69,13 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
             return false;
         }
 
-/*        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+       /* DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addForm(form);
         form.set_ID(String.valueOf(updcount));
-        if (updcount > 0) {
+        if (updcount == 1) {
             form.set_UID(form.getDeviceID() + form.get_ID());
             db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString());
             return true;
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
@@ -87,14 +83,17 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         }*/
     }
 
-    private void SaveDraft(boolean flag) throws JSONException {
+    private void SaveDraft() {
 
-        /*form = new Form();
-        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
+        /*
+        form = new Form();
+        form.setSysdate(new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
         form.setUsername(MainApp.userName);
         form.setDeviceID(MainApp.appInfo.getDeviceID());
         form.setDevicetagID(MainApp.appInfo.getTagName());
-        form.setAppversion(MainApp.appInfo.getAppVersion());*/
+        form.setAppversion(MainApp.appInfo.getAppVersion());
+        MainApp.setGPS(this);
+        */
 
         form.setCr02(bi.cr02.getText().toString());
 
@@ -201,8 +200,6 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 : "-1");
         form.setCr28fx(bi.cr28fx.getText().toString());
 
-        MainApp.setGPS(this);
-
     }
 
 
@@ -218,11 +215,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     @Override
     public void endSecActivity(boolean flag) {
-        try {
-            SaveDraft(false);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        SaveDraft();
         if (UpdateDB()) {
             finish();
             startActivity(new Intent(this, EndSectionActivity.class));

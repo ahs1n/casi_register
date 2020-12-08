@@ -22,6 +22,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Validator;
 
 import java.io.File;
@@ -34,8 +37,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
@@ -320,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         switch (v.getId()) {
             case R.id.formA:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
-                SaveDraft(true);
+                SaveDraft();
                 UpdateDB();
                 oF = new Intent(this, SectionN02Activity.class);
                 break;
@@ -547,7 +548,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     }
 
 
-    private void SaveDraft(boolean flag) {
+    private void SaveDraft() {
         form = new Form();
         form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
         form.setUsername(MainApp.userName);
@@ -569,10 +570,18 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
             db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString());
+            /*db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_SYSDATE, form.getSysdate());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_USERNAME, form.getUsername());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_DEVICEID, form.getDeviceID());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_DEVICETAGID, form.getDevicetagID());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_APPVERSION, form.getAppversion());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_COUNTRY, form.getCountry());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_DISTRICT, form.getDistrict());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UC, form.getUc());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_VILLAGE, form.getVillage());*/
             return true;
         } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
