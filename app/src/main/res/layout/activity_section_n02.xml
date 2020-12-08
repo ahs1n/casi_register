@@ -79,11 +79,11 @@
                     </RelativeLayout>
 
                     <EditText
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr02"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:hint="@string/cr02"
                         android:inputType="textPersonName"
                         android:maxLength="30" />
@@ -126,11 +126,11 @@
                     </RelativeLayout>
 
                     <EditText
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:hint="@string/cr03"
                         android:inputType="textPersonName"
                         android:maxLength="30" />
@@ -260,11 +260,11 @@
                     </RelativeLayout>
 
                     <EditText
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr07"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:hint="@string/cr07"
                         android:inputType="textPersonName"
                         android:maxLength="30" />
@@ -519,11 +519,11 @@
                     </RelativeLayout>
 
                     <EditText
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:hint="@string/cr11"
                         android:inputType="textPersonName"
                         android:maxLength="30" />
@@ -565,11 +565,11 @@
                     </RelativeLayout>
 
                     <EditText
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:id="@+id/cr12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                         android:hint="@string/cr12"
                         android:inputType="textPersonName"
                         android:maxLength="30" />
@@ -1521,49 +1521,80 @@
 
                     </RelativeLayout>
 
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/cr27a" />
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/cr27a"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:hint="##"
-                            android:inputType="number" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:text="@string/cr27a" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cr27b" />
+                            <EditText
+                                android:id="@+id/cr27a"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number" />
 
-                        <EditText
-                            android:id="@+id/cr27b"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:hint="##"
-                            android:inputType="number" />
+                        </LinearLayout>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/cr27c" />
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/cr27c"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:text="@string/cr27b" />
+
+                            <EditText
+                                android:id="@+id/cr27b"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:hint="##"
-                            android:inputType="number" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:text="@string/cr27c" />
+
+                            <EditText
+                                android:id="@+id/cr27c"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -1612,7 +1643,6 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:textColor="@color/black"
                             style="@style/textView"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -1644,7 +1674,6 @@
 
                         <TextView
                             style="@style/textView"
-                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -1674,7 +1703,6 @@
 
                         <TextView
                             style="@style/textView"
-                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -1705,7 +1733,6 @@
 
                         <TextView
                             style="@style/textView"
-                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -1736,7 +1763,6 @@
 
                         <TextView
                             style="@style/textView"
-                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -1767,7 +1793,6 @@
 
                         <TextView
                             style="@style/textView"
-                            android:textColor="@color/black"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
