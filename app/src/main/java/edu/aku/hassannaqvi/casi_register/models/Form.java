@@ -3,13 +3,12 @@ package edu.aku.hassannaqvi.casi_register.models;
 import android.database.Cursor;
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
-
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import androidx.lifecycle.LiveData;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -1000,14 +999,14 @@ public class Form extends LiveData<Form> {
                     .put("cr28d", cr28d)
                     .put("cr28e", cr28e)
                     .put("cr28f", cr28f)
-                    .put("cr28fx", cr28fx)
-                    .put("gpslat", gpslat)
+                    .put("cr28fx", cr28fx);
+/*                    .put("gpslat", gpslat)
                     .put("gpslng", gpslng)
                     .put("gpsdate", gpsdate)
                     .put("gpsacc", gpsacc)
                     .put("deviceid", deviceid)
                     .put("tagid", tagid)
-                    .put("appversion", appversion);
+                    .put("appversion", appversion);*/
 
         } catch (JSONException e) {
             e.printStackTrace();
