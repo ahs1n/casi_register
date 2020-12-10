@@ -570,15 +570,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
             db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            /*db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_SYSDATE, form.getSysdate());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_USERNAME, form.getUsername());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_DEVICEID, form.getDeviceID());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_DEVICETAGID, form.getDevicetagID());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_APPVERSION, form.getAppversion());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_COUNTRY, form.getCountry());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_DISTRICT, form.getDistrict());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UC, form.getUc());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_VILLAGE, form.getVillage());*/
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -586,18 +577,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         }
 
     }
-        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addForm(form);
-        form.set_ID(String.valueOf(updcount));
-        if (updcount > 0) {
-            form.set_UID(form.getDeviceID() + form.get_ID());
-            db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            return true;
-        } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }*/
 
 
 }
