@@ -22,9 +22,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.validatorcrawler.aliazaz.Validator;
 
 import java.io.File;
@@ -37,6 +34,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
@@ -373,7 +372,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 }
                 initializingDistrictVariables();
                 for (Villages item : areaList) {
-                    if (item.getCountry().equals(bi.spCountry.getSelectedItem().toString())) {
+                    if (item.getCountry().equals(bi.spCountry.getSelectedItem().toString()) && !districtName.contains(item.getDistrict())) {
                         districtName.add(item.getDistrict());
                         villageMap.put(item.getDistrict(), item);
                     }
@@ -399,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 }
                 initializingUcVariables();
                 for (Villages item : areaList) {
-                    if (item.getDistrict().equals(bi.spDistrict.getSelectedItem().toString())) {
+                    if (item.getDistrict().equals(bi.spDistrict.getSelectedItem().toString()) && !ucName.contains(item.getUc())) {
                         ucName.add(item.getUc());
                         //villageMap.put(item.getUc(), item);
                     }
