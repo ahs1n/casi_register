@@ -18,6 +18,7 @@ public class ZScore {
     private double SD23neg;
     private double zScore;
     private boolean flag;
+    private double SD;
 
     public ZScore(int age, int gender, float measurement, String cat) {
 
@@ -71,21 +72,19 @@ public class ZScore {
 
         zInd = (Math.pow(y / Mt, Lt)) - 1 / (St * Lt);
 
-        // Calculate SD3neg
+/*        // Calculate SD3neg
         calcSD3neg();
         // Calculate SD3pos
-        calcSD3pos();
+        calcSD3pos();*/
 
     }
 
+    private double calcSD(int num) {
 
-    private void calcSD3pos() {
+        return Mt * Math.pow((1 + Lt * St * num), (1 / Lt));
 
-        SD3pos = (Mt * Math.pow(1 + (Lt * St * 3), (1 / (Lt))));
-
-        // Calculate SD23pos
-        calcSD23pos();
     }
+
 
     private void calcSD3neg() {
 
@@ -99,6 +98,9 @@ public class ZScore {
         p = Math.round(p * 1000000000000000000.0) / 1000000000000000000.0;
         double apow = Math.pow(a, p);
         apow = Math.pow(-25045.780485516327, 0.04024792612003285);
+
+        // Math.exp( p * (log(a) + i*pi) );
+
         Log.d("calcSD3neg", "apow: " + apow);
 
         double powc = Mt * apow;
@@ -109,8 +111,9 @@ public class ZScore {
         Log.d("calcSD3neg", "powb: " + powb);
 
 
-        SD3neg = powa;
+        //SD3neg = powa;
         //SD3neg = (Mt * Math.pow(1 + (Lt  * St * -3), (1 / (Lt ))));
+        SD3neg = Mt * Math.pow((1 + Lt * St * -3), (1 / Lt));
 
         // Calculate SD23neg
         calcSD23neg();
@@ -118,14 +121,14 @@ public class ZScore {
 
     private void calcSD23pos() {
 
-        SD23pos = (SD3pos - (Mt * Math.pow(1 + (Lt * St * 2), (1 / (Lt)))));
+        SD23pos = (calcSD(3) - calcSD(2));
         // Calculate ZIndFinal
         caclZScoreFinal();
     }
 
     private void calcSD23neg() {
 
-        SD23neg = ((Mt * Math.pow(1 + (Lt * St * -3), (1 / (Lt)))) - SD3neg);
+        SD23neg = (calcSD(-2) - calcSD(-3));
 
 
         // Calculate ZIndFinal
@@ -140,7 +143,7 @@ public class ZScore {
             if (zInd <= 3 && zInd >= -3) {
                 zScore = zInd;
             } else if (zInd > 3) {
-                zScore = (3 + ((y - SD3pos) / SD23pos));
+                zScore = (3 + ((y - calcSD(3)) / SD23pos));
             } else if (zInd < -3) {
                 zScore = (-3 + ((y - SD3neg) / SD23neg));
             }

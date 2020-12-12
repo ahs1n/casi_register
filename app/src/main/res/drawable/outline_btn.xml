@@ -8,9 +8,9 @@
 
             <stroke
                 android:width="2dp"
-                android:color="@color/colorPrimaryDark" />
+                android:color="@color/colorSecondaryDark" />
             <corners android:radius="30dp" />
-            <solid android:color="@color/colorPrimaryLight" />
+            <solid android:color="@color/colorSecondaryLight" />
         </shape>
     </item>
 </layer-list>
