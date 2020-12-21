@@ -2,20 +2,24 @@ package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Validator;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySectionN02Binding;
+import edu.aku.hassannaqvi.casi_register.datecollection.AgeModel;
+import edu.aku.hassannaqvi.casi_register.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
@@ -29,24 +33,14 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_n02);
         bi.setCallback(this);
-        setupSkip();
+        setListeners();
         setupContent();
     }
+
 
     private void setupContent() {
     }
 
-    private void setupSkip() {
-
-        if (TextUtils.isEmpty(bi.cr15m.getText()))
-            bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
-        else {
-            if (Integer.parseInt(bi.cr15m.getText().toString()) < 6)
-                bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
-            else
-                bi.fldGrpCVcr18.setVisibility(View.GONE);
-        }
-    }
 
     public void BtnContinue() {
         if (!formValidation()) return;
@@ -58,6 +52,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
@@ -82,6 +77,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
             return false;
         }*/
     }
+
 
     private void SaveDraft() {
 
@@ -213,6 +209,109 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 //        AppUtilsKt.openWarningActivity(this, "Are you sure, you want to end " + bi.can6.getText().toString() + " anthro form?");
     }
 
+    private void setListeners() {
+
+
+        bi.cr15m.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (TextUtils.isEmpty(bi.cr15m.getText()) || TextUtils.isEmpty(bi.cr15y.getText()))
+                    return;
+
+                int age = Integer.parseInt(bi.cr15m.getText().toString()) + (Integer.parseInt(bi.cr15y.getText().toString()) * 12);
+
+                if (age >= 6 || age < 24) {
+                    bi.fldGrpCVcr18.setVisibility(View.GONE);
+                    bi.fldGrpCVcr19.setVisibility(View.VISIBLE);
+                } else if (age < 6 || age >= 24) {
+                    bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+                    bi.fldGrpCVcr19.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        EditText[] txtListener = new EditText[]{bi.cr14d, bi.cr14m};
+        for (EditText txtItem : txtListener) {
+
+            txtItem.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    //Clear.clearAllFields(bi.fldGrpCVcr15);
+                    bi.cr15m.setText(null);
+                    bi.cr15y.setText(null);
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
+        }
+    }
+
+    public void cr15yOnTextChanged(CharSequence s, int start, int before, int count) {
+        if (!bi.cr15m.isRangeTextValidate() || !bi.cr15y.isRangeTextValidate())
+            return;
+
+        int age = Integer.parseInt(bi.cr15m.getText().toString()) + (Integer.parseInt(bi.cr15y.getText().toString()) * 12);
+
+        if (age != 0) {
+            bi.fldGrpCVcr18.setVisibility(View.GONE);
+            bi.fldGrpCVcr19.setVisibility(View.GONE);
+            bi.fldGrpCVcr20.setVisibility(View.GONE);
+            if (age >= 6) {
+                bi.fldGrpCVcr19.setVisibility(View.VISIBLE);
+            } else if (age < 6 || age >= 24) {
+                bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+            }
+        }
+
+            /*if (age < 6 || age >= 24) bi.fldGrpCVcr19.setVisibility(View.GONE);
+            else bi.fldGrpCVcr19.setVisibility(View.VISIBLE);*/
+
+            /*if (age >= 24) bi.fldGrpCVcr19.setVisibility(View.GONE);
+            else bi.fldGrpCVcr19.setVisibility(View.VISIBLE);*/
+    }
+
+    public void cr14yOnTextChanged(CharSequence s, int start, int before, int count) {
+        bi.cr15m.setEnabled(false);
+        bi.cr15m.setText(null);
+        bi.cr15y.setEnabled(false);
+        bi.cr15y.setText(null);
+        if (!bi.cr14d.isRangeTextValidate() || !bi.cr14m.isRangeTextValidate() || !bi.cr14y.isRangeTextValidate())
+            return;
+        if (bi.cr14d.getText().toString().equals("00") && bi.cr14m.getText().toString().equals("00") && bi.cr14y.getText().toString().equals("00")) {
+            bi.cr15m.setEnabled(true);
+            bi.cr15y.setEnabled(true);
+            return;
+        }
+        int day = bi.cr14d.getText().toString().equals("00") ? 0 : Integer.parseInt(bi.cr14d.getText().toString());
+        int month = Integer.parseInt(bi.cr14m.getText().toString());
+        int year = Integer.parseInt(bi.cr14y.getText().toString());
+
+        AgeModel age = DateRepository.Companion.getCalculatedAge(year, month, day);
+        if (age == null) return;
+        bi.cr15m.setText(String.valueOf(age.getMonth()));
+        bi.cr15y.setText(String.valueOf(age.getYear()));
+
+    }
+
     @Override
     public void endSecActivity(boolean flag) {
         SaveDraft();
@@ -222,5 +321,10 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
     }
 }
