@@ -63,19 +63,6 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-       /* DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addForm(form);
-        form.set_ID(String.valueOf(updcount));
-        if (updcount == 1) {
-            form.set_UID(form.getDeviceID() + form.get_ID());
-            db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString());
-            return true;
-        } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-            return false;
-        }*/
     }
 
 
@@ -223,15 +210,24 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 if (TextUtils.isEmpty(bi.cr15m.getText()) || TextUtils.isEmpty(bi.cr15y.getText()))
                     return;
 
-                int age = Integer.parseInt(bi.cr15m.getText().toString()) + (Integer.parseInt(bi.cr15y.getText().toString()) * 12);
+                /*int age = Integer.parseInt(bi.cr15m.getText().toString()) + (Integer.parseInt(bi.cr15y.getText().toString()) * 12);
 
-                if (age >= 6 || age < 24) {
+                bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+                bi.fldGrpCVcr19.setVisibility(View.VISIBLE);
+                bi.fldGrpCVcr20.setVisibility(View.VISIBLE);
+
+                if (age >= 6) {
                     bi.fldGrpCVcr18.setVisibility(View.GONE);
-                    bi.fldGrpCVcr19.setVisibility(View.VISIBLE);
-                } else if (age < 6 || age >= 24) {
-                    bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+                } else bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+                if (age < 6 || age >= 24) {
                     bi.fldGrpCVcr19.setVisibility(View.GONE);
-                }
+                } else bi.fldGrpCVcr19.setVisibility(View.VISIBLE);
+*//*                if (age >= 24) {
+                    bi.fldGrpCVcr19.setVisibility(View.GONE);
+                } else bi.fldGrpCVcr19.setVisibility(View.VISIBLE);*//*
+                if (age >= 24) {
+                    bi.fldGrpCVcr20.setVisibility(View.GONE);
+                } else bi.fldGrpCVcr20.setVisibility(View.VISIBLE);*/
             }
 
             @Override
@@ -276,17 +272,16 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
             bi.fldGrpCVcr19.setVisibility(View.GONE);
             bi.fldGrpCVcr20.setVisibility(View.GONE);
             if (age >= 6) {
-                bi.fldGrpCVcr19.setVisibility(View.VISIBLE);
-            } else if (age < 6 || age >= 24) {
-                bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
-            }
+                bi.fldGrpCVcr18.setVisibility(View.GONE);
+            } else bi.fldGrpCVcr18.setVisibility(View.VISIBLE);
+            if (age < 6 || age >= 24) {
+                bi.fldGrpCVcr19.setVisibility(View.GONE);
+            } else bi.fldGrpCVcr19.setVisibility(View.VISIBLE);
+            if (age >= 24) {
+                bi.fldGrpCVcr20.setVisibility(View.GONE);
+            } else bi.fldGrpCVcr20.setVisibility(View.VISIBLE);
         }
 
-            /*if (age < 6 || age >= 24) bi.fldGrpCVcr19.setVisibility(View.GONE);
-            else bi.fldGrpCVcr19.setVisibility(View.VISIBLE);*/
-
-            /*if (age >= 24) bi.fldGrpCVcr19.setVisibility(View.GONE);
-            else bi.fldGrpCVcr19.setVisibility(View.VISIBLE);*/
     }
 
     public void cr14yOnTextChanged(CharSequence s, int start, int before, int count) {
