@@ -972,6 +972,8 @@ public class Form extends LiveData<Form> {
                     .put("cr12", cr12)
                     .put("cr13", cr13)
                     .put("cr14d", cr14d)
+                    .put("cr14m", cr14m)
+                    .put("cr14y", cr14y)
                     .put("cr15m", cr15m)
                     .put("cr15y", cr15y)
                     .put("cr16", cr16)
@@ -1109,6 +1111,8 @@ public class Form extends LiveData<Form> {
                 this.cr12 = toJSONObject().getString("cr12");
                 this.cr13 = toJSONObject().getString("cr13");
                 this.cr14d = toJSONObject().getString("cr14d");
+                this.cr14m = toJSONObject().getString("cr14m");
+                this.cr14y = toJSONObject().getString("cr14y");
                 this.cr15m = toJSONObject().getString("cr15m");
                 this.cr15y = toJSONObject().getString("cr15y");
                 this.cr16 = toJSONObject().getString("cr16");

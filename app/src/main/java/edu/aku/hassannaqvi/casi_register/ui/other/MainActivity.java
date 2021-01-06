@@ -37,12 +37,10 @@ import java.util.Objects;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
-import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.models.Identification;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
@@ -58,10 +56,10 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class MainActivity extends AppCompatActivity implements WarningActivityInterface {
 
+    public static Identification mainInfo;
     static File file;
     ActivityMainBinding bi;
     String dtToday = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date().getTime());
@@ -321,7 +319,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             case R.id.formA:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
                 SaveDraft();
-                UpdateDB();
                 oF = new Intent(this, SectionN02Activity.class);
                 break;
             case R.id.databaseBtn:
@@ -548,33 +545,11 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
 
 
     private void SaveDraft() {
-        form = new Form();
-        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
-        form.setUsername(MainApp.userName);
-        form.setDeviceID(MainApp.appInfo.getDeviceID());
-        form.setDevicetagID(MainApp.appInfo.getTagName());
-        form.setAppversion(MainApp.appInfo.getAppVersion());
-
-        form.setCountry(bi.spCountry.getSelectedItem().toString());
-        form.setDistrict(bi.spDistrict.getSelectedItem().toString());
-        form.setUc(bi.spUC.getSelectedItem().toString());
-        form.setVillage(bi.spVillage.getSelectedItem().toString());
-        MainApp.setGPS(this);
-    }
-
-    private boolean UpdateDB() {
-        DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addForm(form);
-        form.set_ID(String.valueOf(updcount));
-        if (updcount > 0) {
-            form.set_UID(form.getDeviceID() + form.get_ID());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
+        mainInfo = new Identification(
+                bi.spCountry.getSelectedItem().toString(),
+                bi.spDistrict.getSelectedItem().toString(),
+                bi.spUC.getSelectedItem().toString(),
+                bi.spVillage.getSelectedItem().toString());
     }
 
 

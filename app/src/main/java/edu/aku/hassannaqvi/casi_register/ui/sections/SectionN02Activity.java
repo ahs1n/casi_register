@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import com.validatorcrawler.aliazaz.Validator;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
@@ -20,6 +24,9 @@ import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySectionN02Binding;
 import edu.aku.hassannaqvi.casi_register.datecollection.AgeModel;
 import edu.aku.hassannaqvi.casi_register.datecollection.DateRepository;
+import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.ui.other.MainActivity;
+import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
@@ -56,8 +63,11 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_SA, form.sAtoString());
-        if (updcount == 1) {
+        long updcount = db.addForm(form);
+        form.set_ID(String.valueOf(updcount));
+        if (updcount > 0) {
+            form.set_UID(form.getDeviceID() + form.get_ID());
+            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -77,6 +87,19 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         form.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.setGPS(this);
         */
+
+        form = new Form();
+        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
+        form.setUsername(MainApp.userName);
+        form.setDeviceID(MainApp.appInfo.getDeviceID());
+        form.setDevicetagID(MainApp.appInfo.getTagName());
+        form.setAppversion(MainApp.appInfo.getAppVersion());
+
+        form.setCountry(MainActivity.mainInfo.getCountry());
+        form.setDistrict(MainActivity.mainInfo.getDistrict());
+        form.setUc(MainActivity.mainInfo.getUc());
+        form.setVillage(MainActivity.mainInfo.getVillage());
+        MainApp.setGPS(this);
 
         form.setCr02(bi.cr02.getText().toString());
 
@@ -183,6 +206,8 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
                 : "-1");
         form.setCr28fx(bi.cr28fx.getText().toString());
 
+        form.setsA(form.sAtoString());
+
     }
 
 
@@ -192,8 +217,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
 
 
     public void BtnEnd() {
-//        if (!Validator.emptyTextBox(this, bi.can6)) return;
-//        AppUtilsKt.openWarningActivity(this, "Are you sure, you want to end " + bi.can6.getText().toString() + " anthro form?");
+        AppUtilsKt.contextEndActivity(this);
     }
 
     private void setListeners() {
@@ -312,7 +336,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         SaveDraft();
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, EndSectionActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
