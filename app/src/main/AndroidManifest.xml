@@ -29,7 +29,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".ui.sections.Section03WSActivity"></activity>
+        <activity android:name=".ui.sections.Section04WSFPActivity"></activity>
+        <activity android:name=".ui.sections.Section03WSActivity" />
         <activity android:name=".ui.sections.Section02CSFPActivity" />
         <activity android:name=".ui.other.ZScoreCalculator" />
         <activity
