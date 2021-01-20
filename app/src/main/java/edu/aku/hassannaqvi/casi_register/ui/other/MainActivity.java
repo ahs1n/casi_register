@@ -44,7 +44,7 @@ import edu.aku.hassannaqvi.casi_register.models.Identification;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
-import edu.aku.hassannaqvi.casi_register.ui.sections.SectionN02Activity;
+import edu.aku.hassannaqvi.casi_register.ui.sections.Section01CSActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable;
@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             case R.id.formA:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
                 SaveDraft();
-                oF = new Intent(this, SectionN02Activity.class);
+                oF = new Intent(this, Section01CSActivity.class);
                 break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);

@@ -31,6 +31,7 @@ public class Form extends LiveData<Form> {
     private String village = "";
     private String villageCode = "";
 
+    //    Screening Log U5
     private String cr01 = "";
     private String cr02 = "";
     private String cr03 = "";
@@ -97,6 +98,14 @@ public class Form extends LiveData<Form> {
     private String deviceid = "";
     private String tagid = "";
     private String sA = "";
+
+//    Follow-up U5
+
+
+//    Screening Log WRAs
+
+
+//   Follow-up WRAs
 
     //For section selection
     private SectionSelection secSelection;
@@ -177,7 +186,7 @@ public class Form extends LiveData<Form> {
         this.villageCode = villageCode;
     }
 
-
+    //    Follow-up U5
     public String getCr01() {
         return cr01;
     }
@@ -226,7 +235,6 @@ public class Form extends LiveData<Form> {
         this.cr06 = cr06;
     }
 
-
     public String getCr06x() {
         return cr06x;
     }
@@ -234,7 +242,6 @@ public class Form extends LiveData<Form> {
     public void setCr06x(String cr06x) {
         this.cr06x = cr06x;
     }
-
 
     public String getCr07() {
         return cr07;
@@ -412,7 +419,6 @@ public class Form extends LiveData<Form> {
         this.cr23 = cr23;
     }
 
-
     public String getCr24a() {
         return cr24a;
     }
@@ -562,6 +568,14 @@ public class Form extends LiveData<Form> {
     public void setCr28fx(String cr28fx) {
         this.cr28fx = cr28fx;
     }
+
+    //    Follow-up U5
+
+
+    //    Screening Log WRAs
+
+
+    //   Follow-up WRAs
 
 
     public String getsA() {
@@ -1002,13 +1016,6 @@ public class Form extends LiveData<Form> {
                     .put("cr28e", cr28e)
                     .put("cr28f", cr28f)
                     .put("cr28fx", cr28fx);
-/*                    .put("gpslat", gpslat)
-                    .put("gpslng", gpslng)
-                    .put("gpsdate", gpsdate)
-                    .put("gpsacc", gpsacc)
-                    .put("deviceid", deviceid)
-                    .put("tagid", tagid)
-                    .put("appversion", appversion);*/
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -1028,50 +1035,8 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
 
             json.put(FormsTable.COLUMN_SA, new JSONObject(sAtoString()));
-            /*json.put(FormsTable.COLUMN_CR01, this.cr01 == null ? JSONObject.NULL : this.cr01);
-            json.put(FormsTable.COLUMN_CR02, this.cr02 == null ? JSONObject.NULL : this.cr02);
-            json.put(FormsTable.COLUMN_CR03, this.cr03 == null ? JSONObject.NULL : this.cr03);
-            json.put(FormsTable.COLUMN_CR04, this.cr04 == null ? JSONObject.NULL : this.cr04);
-            json.put(FormsTable.COLUMN_CR05, this.cr05 == null ? JSONObject.NULL : this.cr05);
-            json.put(FormsTable.COLUMN_CR06X, this.cr06x == null ? JSONObject.NULL : this.cr06x);
-            json.put(FormsTable.COLUMN_CR07, this.cr07 == null ? JSONObject.NULL : this.cr07);
-            json.put(FormsTable.COLUMN_CR08D, this.cr08d == null ? JSONObject.NULL : this.cr08d);
-            json.put(FormsTable.COLUMN_CR08M, this.cr08m == null ? JSONObject.NULL : this.cr08m);
-            json.put(FormsTable.COLUMN_CR08Y, this.cr08y == null ? JSONObject.NULL : this.cr08y);
-            json.put(FormsTable.COLUMN_CR09, this.cr09 == null ? JSONObject.NULL : this.cr09);
-            json.put(FormsTable.COLUMN_CR10, this.cr10 == null ? JSONObject.NULL : this.cr10);
-            json.put(FormsTable.COLUMN_CR11, this.cr11 == null ? JSONObject.NULL : this.cr11);
-            json.put(FormsTable.COLUMN_CR12, this.cr12 == null ? JSONObject.NULL : this.cr12);
-            json.put(FormsTable.COLUMN_CR13, this.cr13 == null ? JSONObject.NULL : this.cr13);
-            json.put(FormsTable.COLUMN_CR14D, this.cr14d == null ? JSONObject.NULL : this.cr14d);
-            json.put(FormsTable.COLUMN_CR15M, this.cr15m == null ? JSONObject.NULL : this.cr15m);
-            json.put(FormsTable.COLUMN_CR15Y, this.cr15y == null ? JSONObject.NULL : this.cr15y);
-            json.put(FormsTable.COLUMN_CR16, this.cr16 == null ? JSONObject.NULL : this.cr16);
-            json.put(FormsTable.COLUMN_CR17, this.cr17 == null ? JSONObject.NULL : this.cr17);
-            json.put(FormsTable.COLUMN_CR18, this.cr18 == null ? JSONObject.NULL : this.cr18);
-            json.put(FormsTable.COLUMN_CR19, this.cr19 == null ? JSONObject.NULL : this.cr19);
-            json.put(FormsTable.COLUMN_CR20, this.cr20 == null ? JSONObject.NULL : this.cr20);
-            json.put(FormsTable.COLUMN_CR21, this.cr21 == null ? JSONObject.NULL : this.cr21);
-            json.put(FormsTable.COLUMN_CR22, this.cr22 == null ? JSONObject.NULL : this.cr22);
-            json.put(FormsTable.COLUMN_CR23, this.cr23 == null ? JSONObject.NULL : this.cr23);
-            json.put(FormsTable.COLUMN_CR24A, this.cr24a == null ? JSONObject.NULL : this.cr24a);
-            json.put(FormsTable.COLUMN_CR24B, this.cr24b == null ? JSONObject.NULL : this.cr24b);
-            json.put(FormsTable.COLUMN_CR24C, this.cr24c == null ? JSONObject.NULL : this.cr24c);
-            json.put(FormsTable.COLUMN_CR24D, this.cr24d == null ? JSONObject.NULL : this.cr24d);
-            json.put(FormsTable.COLUMN_CR24E, this.cr24e == null ? JSONObject.NULL : this.cr24e);
-            json.put(FormsTable.COLUMN_CR24F, this.cr24f == null ? JSONObject.NULL : this.cr24f);
-            json.put(FormsTable.COLUMN_CR25, this.cr25 == null ? JSONObject.NULL : this.cr25);
-            json.put(FormsTable.COLUMN_CR26, this.cr26 == null ? JSONObject.NULL : this.cr26);
-            json.put(FormsTable.COLUMN_CR27A, this.cr27a == null ? JSONObject.NULL : this.cr27a);
-            json.put(FormsTable.COLUMN_CR27B, this.cr27b == null ? JSONObject.NULL : this.cr27b);
-            json.put(FormsTable.COLUMN_CR27C, this.cr27c == null ? JSONObject.NULL : this.cr27c);
-            json.put(FormsTable.COLUMN_CR28A, this.cr28a == null ? JSONObject.NULL : this.cr28a);
-            json.put(FormsTable.COLUMN_CR28B, this.cr28b == null ? JSONObject.NULL : this.cr28b);
-            json.put(FormsTable.COLUMN_CR28C, this.cr28c == null ? JSONObject.NULL : this.cr28c);
-            json.put(FormsTable.COLUMN_CR28D, this.cr28d == null ? JSONObject.NULL : this.cr28d);
-            json.put(FormsTable.COLUMN_CR28E, this.cr28e == null ? JSONObject.NULL : this.cr28e);
-            json.put(FormsTable.COLUMN_CR28F, this.cr28f == null ? JSONObject.NULL : this.cr28f);
-            json.put(FormsTable.COLUMN_CR28FX, this.cr28fx == null ? JSONObject.NULL : this.cr28fx);*/
+
+
             json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
             json.put(FormsTable.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);
             json.put(FormsTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
@@ -1141,14 +1106,6 @@ public class Form extends LiveData<Form> {
                 this.cr28e = toJSONObject().getString("cr28e");
                 this.cr28f = toJSONObject().getString("cr28f");
                 this.cr28fx = toJSONObject().getString("cr28fx");
-                /*this.gpslat = toJSONObject().getString("gpslat");
-                this.gpslng = toJSONObject().getString("gpslng");
-                this.gpsdate = toJSONObject().getString("gpsdate");
-                this.gpsacc = toJSONObject().getString("gpsacc");
-                this.deviceid = toJSONObject().getString("deviceid");
-                this.tagid = toJSONObject().getString("tagid");
-                this.appversion = toJSONObject().getString("appversion");*/
-
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -1156,6 +1113,4 @@ public class Form extends LiveData<Form> {
             }
         }
     }
-
-
 }

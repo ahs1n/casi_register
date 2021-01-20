@@ -155,13 +155,13 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="COUNTRY"
+                                android:text="REGION"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
 
                             <Spinner
-                                android:id="@+id/spCountry"
+                                android:id="@+id/spRegion"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
@@ -170,6 +170,7 @@
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
+
 
                     <!--spDistrict-->
                     <androidx.cardview.widget.CardView
@@ -196,6 +197,40 @@
 
                             <Spinner
                                 android:id="@+id/spDistrict"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="2" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!--spProvince-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layoutDirection="ltr"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@color/colorPrimaryDark"
+                                android:gravity="center"
+                                android:text="TEHSIL"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                            <Spinner
+                                android:id="@+id/spCountry"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
@@ -257,7 +292,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="VILLAGE"
+                                android:text="CITY / VILLAGE"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />

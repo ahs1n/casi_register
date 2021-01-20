@@ -21,7 +21,7 @@ import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
-import edu.aku.hassannaqvi.casi_register.databinding.ActivitySectionN02Binding;
+import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01CsBinding;
 import edu.aku.hassannaqvi.casi_register.datecollection.AgeModel;
 import edu.aku.hassannaqvi.casi_register.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.models.Form;
@@ -31,14 +31,14 @@ import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
-public class SectionN02Activity extends AppCompatActivity implements EndSectionActivity {
+public class Section01CSActivity extends AppCompatActivity implements EndSectionActivity {
 
-    ActivitySectionN02Binding bi;
+    ActivitySection01CsBinding bi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_n02);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_cs);
         bi.setCallback(this);
         setListeners();
         setupContent();
@@ -54,7 +54,7 @@ public class SectionN02Activity extends AppCompatActivity implements EndSectionA
         SaveDraft();
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionN02Activity.class));
+            startActivity(new Intent(this, Section01CSActivity.class));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
