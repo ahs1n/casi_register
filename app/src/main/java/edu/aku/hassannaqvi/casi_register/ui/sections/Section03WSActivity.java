@@ -16,26 +16,25 @@ import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
-import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection02CsfpBinding;
+import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection03WsBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.ui.other.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
-public class Section02CSFPActivity extends AppCompatActivity {
+public class Section03WSActivity extends AppCompatActivity {
 
-    ActivitySection02CsfpBinding bi;
+    ActivitySection03WsBinding bi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section02_csfp);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section03_ws);
         bi.setCallback(this);
         setListeners();
         setupContent();
     }
-
 
     private void setupContent() {
     }
@@ -127,5 +126,4 @@ public class Section02CSFPActivity extends AppCompatActivity {
     public void onBackPressed() {
         Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
     }*/
-
 }
