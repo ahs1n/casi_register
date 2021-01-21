@@ -32,53 +32,90 @@ public class Form extends LiveData<Form> {
     private String villageCode = "";
 
     //    Screening Log U5
-    private String cr01 = "";
-    private String cr02 = "";
-    private String cr03 = "";
-    private String cr04 = "";
-    private String cr05 = "";
-    private String cr06 = "";
-    private String cr06x = "";
-    private String cr07 = "";
-    private String cr08d = "";
-    private String cr08m = "";
-    private String cr08y = "";
-    private String cr09 = "";
-    private String cr10 = "";
-    private String cr11 = "";
-    private String cr12 = "";
-    private String cr13 = "";
-    private String cr14d = "";
-    private String cr14m = "";
-    private String cr14y = "";
-    private String cr15m = "";
-    private String cr15y = "";
-    private String cr16 = "";
-    private String cr17 = "";
-    private String cr18 = "";
-    private String cr19 = "";
-    private String cr20 = "";
-    private String cr21 = "";
-    private String cr22 = "";
-    private String cr23 = "";
-    private String cr24a = "";
-    private String cr24b = "";
-    private String cr24c = "";
-    private String cr24d = "";
-    private String cr24e = "";
-    private String cr24f = "";
-    private String cr25 = "";
-    private String cr26 = "";
-    private String cr27a = "";
-    private String cr27b = "";
-    private String cr27c = "";
-    private String cr28a = "";
-    private String cr28b = "";
-    private String cr28c = "";
-    private String cr28d = "";
-    private String cr28e = "";
-    private String cr28f = "";
-    private String cr28fx = "";
+    private String cs01;
+    private String cs01a;
+    private String cs01b;
+    private String cs02;
+    private String cs03;
+    private String cs04;
+    private String cs05;
+    private String cs05a;
+    private String cs06;
+    private String cs06096x;
+    private String cs07;
+    private String cs0801;
+    private String cs0802;
+    private String cs0803;
+    private String cs09;
+    private String cs10;
+    private String cs10a;
+    private String cs11;
+    private String cs11a;
+    private String cs12;
+    private String cs12a;
+    private String cs13;
+    private String cs1401;
+    private String cs1402;
+    private String cs1403;
+    private String cs1501;
+    private String cs1502;
+    private String cs16;
+    private String cs17;
+    private String cs18;
+    private String cs19;
+    private String cs20a;
+    private String cs20b;
+    private String cs21;
+    private String cs22;
+    private String cs23;
+    private String cs24;
+    private String cs2401;
+    private String cs2402;
+    private String cs2403;
+    private String cs2404;
+    private String cs2405;
+    private String cs2406;
+    private String cs25;
+    private String cs25a01;
+    private String cs25b01;
+    private String cs25c;
+    private String cs25c096x;
+    private String cs26;
+    private String cs2601;
+    private String cs2602;
+    private String cs2603;
+    private String cs2604;
+    private String cs2605;
+    private String cs2701;
+    private String cs2702;
+    private String cs2703;
+    private String cs2704;
+    private String cs28a;
+    private String cs28b;
+    private String cs28c;
+    private String cs28d;
+    private String cs28e;
+    private String cs28f;
+    private String cs28f01x;
+    private String cs29;
+    private String cs30a;
+    private String cs30b;
+    private String cs30c;
+    private String cs30d;
+    private String cs30e;
+    private String cs30f;
+    private String cs30f096x;
+    private String cs31;
+    private String cs32a;
+    private String cs32b;
+    private String cs32c;
+    private String cs32d;
+    private String cs32e;
+    private String cs32f;
+    private String cs32g;
+    private String cs32h;
+    private String cs32h096x;
+
     private String istatus = ""; // Interview Status
     private String istatus96x = ""; // Interview Status
     private String endingdatetime = "";
@@ -97,7 +134,14 @@ public class Form extends LiveData<Form> {
     private String gpsacc = "";
     private String deviceid = "";
     private String tagid = "";
-    private String sA = "";
+
+    private String cS = "";
+    //For section selection
+    private SectionSelection secSelection;
+
+    public Form() {
+    }
+
 
 //    Follow-up U5
 
@@ -106,13 +150,6 @@ public class Form extends LiveData<Form> {
 
 
 //   Follow-up WRAs
-
-    //For section selection
-    private SectionSelection secSelection;
-
-
-    public Form() {
-    }
 
 
     public String getCountry() {
@@ -187,386 +224,668 @@ public class Form extends LiveData<Form> {
     }
 
     //    Follow-up U5
-    public String getCr01() {
-        return cr01;
+    public String getCs01() {
+        return cs01;
     }
 
-    public void setCr01(String cr01) {
-        this.cr01 = cr01;
+    public void setCs01(String cs01) {
+        this.cs01 = cs01;
     }
 
-    public String getCr02() {
-        return cr02;
+    public String getCs01a() {
+        return cs01a;
     }
 
-    public void setCr02(String cr02) {
-        this.cr02 = cr02;
+    public void setCs01a(String cs01a) {
+        this.cs01a = cs01a;
     }
 
-    public String getCr03() {
-        return cr03;
+    public String getCs01b() {
+        return cs01b;
     }
 
-    public void setCr03(String cr03) {
-        this.cr03 = cr03;
+    public void setCs01b(String cs01b) {
+        this.cs01b = cs01b;
     }
 
-    public String getCr04() {
-        return cr04;
+    public String getCs02() {
+        return cs02;
     }
 
-    public void setCr04(String cr04) {
-        this.cr04 = cr04;
+    public void setCs02(String cs02) {
+        this.cs02 = cs02;
     }
 
-    public String getCr05() {
-        return cr05;
+    public String getCs03() {
+        return cs03;
     }
 
-    public void setCr05(String cr05) {
-        this.cr05 = cr05;
+    public void setCs03(String cs03) {
+        this.cs03 = cs03;
     }
 
-    public String getCr06() {
-        return cr06;
+    public String getCs04() {
+        return cs04;
     }
 
-    public void setCr06(String cr06) {
-        this.cr06 = cr06;
+    public void setCs04(String cs04) {
+        this.cs04 = cs04;
     }
 
-    public String getCr06x() {
-        return cr06x;
+    public String getCs05() {
+        return cs05;
     }
 
-    public void setCr06x(String cr06x) {
-        this.cr06x = cr06x;
+    public void setCs05(String cs05) {
+        this.cs05 = cs05;
     }
 
-    public String getCr07() {
-        return cr07;
+    public String getCs05a() {
+        return cs05a;
     }
 
-    public void setCr07(String cr07) {
-        this.cr07 = cr07;
+    public void setCs05a(String cs05a) {
+        this.cs05a = cs05a;
     }
 
-    public String getCr08d() {
-        return cr08d;
+    public String getCs06() {
+        return cs06;
     }
 
-    public void setCr08d(String cr08d) {
-        this.cr08d = cr08d;
+    public void setCs06(String cs06) {
+        this.cs06 = cs06;
     }
 
-    public String getCr08m() {
-        return cr08m;
+    public String getCs06096x() {
+        return cs06096x;
     }
 
-    public void setCr08m(String cr08m) {
-        this.cr08m = cr08m;
+    public void setCs06096x(String cs06096x) {
+        this.cs06096x = cs06096x;
     }
 
-    public String getCr08y() {
-        return cr08y;
+    public String getCs07() {
+        return cs07;
     }
 
-    public void setCr08y(String cr08y) {
-        this.cr08y = cr08y;
+    public void setCs07(String cs07) {
+        this.cs07 = cs07;
     }
 
-    public String getCr09() {
-        return cr09;
+    public String getCs0801() {
+        return cs0801;
     }
 
-    public void setCr09(String cr09) {
-        this.cr09 = cr09;
+    public void setCs0801(String cs0801) {
+        this.cs0801 = cs0801;
     }
 
-    public String getCr10() {
-        return cr10;
+    public String getCs0802() {
+        return cs0802;
     }
 
-    public void setCr10(String cr10) {
-        this.cr10 = cr10;
+    public void setCs0802(String cs0802) {
+        this.cs0802 = cs0802;
     }
 
-    public String getCr11() {
-        return cr11;
+    public String getCs0803() {
+        return cs0803;
     }
 
-    public void setCr11(String cr11) {
-        this.cr11 = cr11;
+    public void setCs0803(String cs0803) {
+        this.cs0803 = cs0803;
     }
 
-    public String getCr12() {
-        return cr12;
+    public String getCs09() {
+        return cs09;
     }
 
-    public void setCr12(String cr12) {
-        this.cr12 = cr12;
+    public void setCs09(String cs09) {
+        this.cs09 = cs09;
     }
 
-    public String getCr13() {
-        return cr13;
+    public String getCs10() {
+        return cs10;
     }
 
-    public void setCr13(String cr13) {
-        this.cr13 = cr13;
+    public void setCs10(String cs10) {
+        this.cs10 = cs10;
     }
 
-    public String getCr14d() {
-        return cr14d;
+    public String getCs10a() {
+        return cs10a;
     }
 
-    public void setCr14d(String cr14d) {
-        this.cr14d = cr14d;
+    public void setCs10a(String cs10a) {
+        this.cs10a = cs10a;
     }
 
-    public String getCr14m() {
-        return cr14m;
+    public String getCs11() {
+        return cs11;
     }
 
-    public void setCr14m(String cr14m) {
-        this.cr14m = cr14m;
+    public void setCs11(String cs11) {
+        this.cs11 = cs11;
     }
 
-    public String getCr14y() {
-        return cr14y;
+    public String getCs11a() {
+        return cs11a;
     }
 
-    public void setCr14y(String cr14y) {
-        this.cr14y = cr14y;
+    public void setCs11a(String cs11a) {
+        this.cs11a = cs11a;
     }
 
-    public String getCr15m() {
-        return cr15m;
+    public String getCs12() {
+        return cs12;
     }
 
-    public void setCr15m(String cr15m) {
-        this.cr15m = cr15m;
+    public void setCs12(String cs12) {
+        this.cs12 = cs12;
     }
 
-    public String getCr15y() {
-        return cr15y;
+    public String getCs12a() {
+        return cs12a;
     }
 
-    public void setCr15y(String cr15y) {
-        this.cr15y = cr15y;
+    public void setCs12a(String cs12a) {
+        this.cs12a = cs12a;
     }
 
-    public String getCr16() {
-        return cr16;
+    public String getCs13() {
+        return cs13;
     }
 
-    public void setCr16(String cr16) {
-        this.cr16 = cr16;
+    public void setCs13(String cs13) {
+        this.cs13 = cs13;
     }
 
-    public String getCr17() {
-        return cr17;
+    public String getCs1401() {
+        return cs1401;
     }
 
-    public void setCr17(String cr17) {
-        this.cr17 = cr17;
+    public void setCs1401(String cs1401) {
+        this.cs1401 = cs1401;
     }
 
-    public String getCr18() {
-        return cr18;
+    public String getCs1402() {
+        return cs1402;
     }
 
-    public void setCr18(String cr18) {
-        this.cr18 = cr18;
+    public void setCs1402(String cs1402) {
+        this.cs1402 = cs1402;
     }
 
-    public String getCr19() {
-        return cr19;
+    public String getCs1403() {
+        return cs1403;
     }
 
-    public void setCr19(String cr19) {
-        this.cr19 = cr19;
+    public void setCs1403(String cs1403) {
+        this.cs1403 = cs1403;
     }
 
-    public String getCr20() {
-        return cr20;
+    public String getCs1501() {
+        return cs1501;
     }
 
-    public void setCr20(String cr20) {
-        this.cr20 = cr20;
+    public void setCs1501(String cs1501) {
+        this.cs1501 = cs1501;
     }
 
-    public String getCr21() {
-        return cr21;
+    public String getCs1502() {
+        return cs1502;
     }
 
-    public void setCr21(String cr21) {
-        this.cr21 = cr21;
+    public void setCs1502(String cs1502) {
+        this.cs1502 = cs1502;
     }
 
-    public String getCr22() {
-        return cr22;
+    public String getCs16() {
+        return cs16;
     }
 
-    public void setCr22(String cr22) {
-        this.cr22 = cr22;
+    public void setCs16(String cs16) {
+        this.cs16 = cs16;
     }
 
-    public String getCr23() {
-        return cr23;
+    public String getCs17() {
+        return cs17;
     }
 
-    public void setCr23(String cr23) {
-        this.cr23 = cr23;
+    public void setCs17(String cs17) {
+        this.cs17 = cs17;
     }
 
-    public String getCr24a() {
-        return cr24a;
+    public String getCs18() {
+        return cs18;
     }
 
-    public void setCr24a(String cr24a) {
-        this.cr24a = cr24a;
+    public void setCs18(String cs18) {
+        this.cs18 = cs18;
     }
 
+    public String getCs19() {
+        return cs19;
+    }
+
+    public void setCs19(String cs19) {
+        this.cs19 = cs19;
+    }
+
+    public String getCs20a() {
+        return cs20a;
+    }
+
+    public void setCs20a(String cs20a) {
+        this.cs20a = cs20a;
+    }
+
+    public String getCs20b() {
+        return cs20b;
+    }
+
+    public void setCs20b(String cs20b) {
+        this.cs20b = cs20b;
+    }
+
+    public String getCs21() {
+        return cs21;
+    }
+
+    public void setCs21(String cs21) {
+        this.cs21 = cs21;
+    }
+
+    public String getCs22() {
+        return cs22;
+    }
+
+    public void setCs22(String cs22) {
+        this.cs22 = cs22;
+    }
+
+    public String getCs23() {
+        return cs23;
+    }
+
+    public void setCs23(String cs23) {
+        this.cs23 = cs23;
+    }
+
+    public String getCs24() {
+        return cs24;
+    }
+
+    public void setCs24(String cs24) {
+        this.cs24 = cs24;
+    }
+
+    public String getCs2401() {
+        return cs2401;
+    }
+
+    public void setCs2401(String cs2401) {
+        this.cs2401 = cs2401;
+    }
+
+    public String getCs2402() {
+        return cs2402;
+    }
+
+    public void setCs2402(String cs2402) {
+        this.cs2402 = cs2402;
+    }
+
+    public String getCs2403() {
+        return cs2403;
+    }
+
+    public void setCs2403(String cs2403) {
+        this.cs2403 = cs2403;
+    }
+
+    public String getCs2404() {
+        return cs2404;
+    }
+
+    public void setCs2404(String cs2404) {
+        this.cs2404 = cs2404;
+    }
+
+    public String getCs2405() {
+        return cs2405;
+    }
+
+    public void setCs2405(String cs2405) {
+        this.cs2405 = cs2405;
+    }
+
+    public String getCs2406() {
+        return cs2406;
+    }
+
+    public void setCs2406(String cs2406) {
+        this.cs2406 = cs2406;
+    }
+
+    public String getCs25() {
+        return cs25;
+    }
+
+    public void setCs25(String cs25) {
+        this.cs25 = cs25;
+    }
+
+    public String getCs25a01() {
+        return cs25a01;
+    }
+
+    public void setCs25a01(String cs25a01) {
+        this.cs25a01 = cs25a01;
+    }
+
+    public String getCs25b01() {
+        return cs25b01;
+    }
+
+    public void setCs25b01(String cs25b01) {
+        this.cs25b01 = cs25b01;
+    }
+
+    public String getCs25c() {
+        return cs25c;
+    }
+
+    public void setCs25c(String cs25c) {
+        this.cs25c = cs25c;
+    }
+
+    public String getCs25c096x() {
+        return cs25c096x;
+    }
 
-    public String getCr24b() {
-        return cr24b;
+    public void setCs25c096x(String cs25c096x) {
+        this.cs25c096x = cs25c096x;
     }
 
-    public void setCr24b(String cr24b) {
-        this.cr24b = cr24b;
+    public String getCs26() {
+        return cs26;
     }
 
+    public void setCs26(String cs26) {
+        this.cs26 = cs26;
+    }
+
+    public String getCs2601() {
+        return cs2601;
+    }
+
+    public void setCs2601(String cs2601) {
+        this.cs2601 = cs2601;
+    }
+
+    public String getCs2602() {
+        return cs2602;
+    }
+
+    public void setCs2602(String cs2602) {
+        this.cs2602 = cs2602;
+    }
+
+    public String getCs2603() {
+        return cs2603;
+    }
+
+    public void setCs2603(String cs2603) {
+        this.cs2603 = cs2603;
+    }
+
+    public String getCs2604() {
+        return cs2604;
+    }
+
+    public void setCs2604(String cs2604) {
+        this.cs2604 = cs2604;
+    }
+
+    public String getCs2605() {
+        return cs2605;
+    }
+
+    public void setCs2605(String cs2605) {
+        this.cs2605 = cs2605;
+    }
+
+    public String getCs2701() {
+        return cs2701;
+    }
+
+    public void setCs2701(String cs2701) {
+        this.cs2701 = cs2701;
+    }
+
+    public String getCs2702() {
+        return cs2702;
+    }
+
+    public void setCs2702(String cs2702) {
+        this.cs2702 = cs2702;
+    }
+
+    public String getCs2703() {
+        return cs2703;
+    }
+
+    public void setCs2703(String cs2703) {
+        this.cs2703 = cs2703;
+    }
+
+    public String getCs2704() {
+        return cs2704;
+    }
+
+    public void setCs2704(String cs2704) {
+        this.cs2704 = cs2704;
+    }
+
+    public String getCs28a() {
+        return cs28a;
+    }
+
+    public void setCs28a(String cs28a) {
+        this.cs28a = cs28a;
+    }
+
+    public String getCs28b() {
+        return cs28b;
+    }
+
+    public void setCs28b(String cs28b) {
+        this.cs28b = cs28b;
+    }
+
+    public String getCs28c() {
+        return cs28c;
+    }
+
+    public void setCs28c(String cs28c) {
+        this.cs28c = cs28c;
+    }
+
+    public String getCs28d() {
+        return cs28d;
+    }
 
-    public String getCr24c() {
-        return cr24c;
+    public void setCs28d(String cs28d) {
+        this.cs28d = cs28d;
     }
 
-    public void setCr24c(String cr24c) {
-        this.cr24c = cr24c;
+    public String getCs28e() {
+        return cs28e;
     }
 
+    public void setCs28e(String cs28e) {
+        this.cs28e = cs28e;
+    }
+
+    public String getCs28f() {
+        return cs28f;
+    }
+
+    public void setCs28f(String cs28f) {
+        this.cs28f = cs28f;
+    }
+
+    public String getCs28f01x() {
+        return cs28f01x;
+    }
+
+    public void setCs28f01x(String cs28f01x) {
+        this.cs28f01x = cs28f01x;
+    }
 
-    public String getCr24d() {
-        return cr24d;
+    public String getCs29() {
+        return cs29;
     }
 
-    public void setCr24d(String cr24d) {
-        this.cr24d = cr24d;
+    public void setCs29(String cs29) {
+        this.cs29 = cs29;
     }
 
+    public String getCs30a() {
+        return cs30a;
+    }
+
+    public void setCs30a(String cs30a) {
+        this.cs30a = cs30a;
+    }
+
+    public String getCs30b() {
+        return cs30b;
+    }
+
+    public void setCs30b(String cs30b) {
+        this.cs30b = cs30b;
+    }
 
-    public String getCr24e() {
-        return cr24e;
+    public String getCs30c() {
+        return cs30c;
     }
 
-    public void setCr24e(String cr24e) {
-        this.cr24e = cr24e;
+    public void setCs30c(String cs30c) {
+        this.cs30c = cs30c;
     }
 
+    public String getCs30d() {
+        return cs30d;
+    }
 
-    public String getCr24f() {
-        return cr24f;
+    public void setCs30d(String cs30d) {
+        this.cs30d = cs30d;
     }
 
-    public void setCr24f(String cr24f) {
-        this.cr24f = cr24f;
+    public String getCs30e() {
+        return cs30e;
     }
 
+    public void setCs30e(String cs30e) {
+        this.cs30e = cs30e;
+    }
 
-    public String getCr25() {
-        return cr25;
+    public String getCs30f() {
+        return cs30f;
     }
 
-    public void setCr25(String cr25) {
-        this.cr25 = cr25;
+    public void setCs30f(String cs30f) {
+        this.cs30f = cs30f;
     }
 
-    public String getCr26() {
-        return cr26;
+    public String getCs30f096x() {
+        return cs30f096x;
     }
 
-    public void setCr26(String cr26) {
-        this.cr26 = cr26;
+    public void setCs30f096x(String cs30f096x) {
+        this.cs30f096x = cs30f096x;
     }
 
-    public String getCr27a() {
-        return cr27a;
+    public String getCs31() {
+        return cs31;
     }
 
-    public void setCr27a(String cr27a) {
-        this.cr27a = cr27a;
+    public void setCs31(String cs31) {
+        this.cs31 = cs31;
     }
 
-    public String getCr27b() {
-        return cr27b;
+    public String getCs32a() {
+        return cs32a;
     }
 
-    public void setCr27b(String cr27b) {
-        this.cr27b = cr27b;
+    public void setCs32a(String cs32a) {
+        this.cs32a = cs32a;
     }
 
-    public String getCr27c() {
-        return cr27c;
+    public String getCs32b() {
+        return cs32b;
     }
 
-    public void setCr27c(String cr27c) {
-        this.cr27c = cr27c;
+    public void setCs32b(String cs32b) {
+        this.cs32b = cs32b;
     }
 
-    public String getCr28a() {
-        return cr28a;
+    public String getCs32c() {
+        return cs32c;
     }
 
-    public void setCr28a(String cr28a) {
-        this.cr28a = cr28a;
+    public void setCs32c(String cs32c) {
+        this.cs32c = cs32c;
     }
 
-    public String getCr28b() {
-        return cr28b;
+    public String getCs32d() {
+        return cs32d;
     }
 
-    public void setCr28b(String cr28b) {
-        this.cr28b = cr28b;
+    public void setCs32d(String cs32d) {
+        this.cs32d = cs32d;
     }
 
-    public String getCr28c() {
-        return cr28c;
+    public String getCs32e() {
+        return cs32e;
     }
 
-    public void setCr28c(String cr28c) {
-        this.cr28c = cr28c;
+    public void setCs32e(String cs32e) {
+        this.cs32e = cs32e;
     }
 
-    public String getCr28d() {
-        return cr28d;
+    public String getCs32f() {
+        return cs32f;
     }
 
-    public void setCr28d(String cr28d) {
-        this.cr28d = cr28d;
+    public void setCs32f(String cs32f) {
+        this.cs32f = cs32f;
     }
 
-    public String getCr28e() {
-        return cr28e;
+    public String getCs32g() {
+        return cs32g;
     }
 
-    public void setCr28e(String cr28e) {
-        this.cr28e = cr28e;
+    public void setCs32g(String cs32g) {
+        this.cs32g = cs32g;
     }
 
-    public String getCr28f() {
-        return cr28f;
+    public String getCs32h() {
+        return cs32h;
     }
 
-    public void setCr28f(String cr28f) {
-        this.cr28f = cr28f;
+    public void setCs32h(String cs32h) {
+        this.cs32h = cs32h;
     }
 
-    public String getCr28fx() {
-        return cr28fx;
+    public String getCs32h096x() {
+        return cs32h096x;
     }
 
-    public void setCr28fx(String cr28fx) {
-        this.cr28fx = cr28fx;
+    public void setCs32h096x(String cs32h096x) {
+        this.cs32h096x = cs32h096x;
     }
 
     //    Follow-up U5
@@ -578,12 +897,12 @@ public class Form extends LiveData<Form> {
     //   Follow-up WRAs
 
 
-    public String getsA() {
-        return sA;
+    public String getcS() {
+        return cS;
     }
 
-    public void setsA(String sA) {
-        this.sA = sA;
+    public void setcS(String cS) {
+        this.cS = cS;
     }
 
 
@@ -834,7 +1153,7 @@ public class Form extends LiveData<Form> {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_APPVERSION);
-        this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
+        this.cS = jsonObject.getString(FormsTable.COLUMN_CS);
 
         return this;
 
@@ -863,7 +1182,7 @@ public class Form extends LiveData<Form> {
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS96x));
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
-        sAHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)));
+        cSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CS)));
         return this;
     }
 
@@ -874,57 +1193,93 @@ public class Form extends LiveData<Form> {
         return new GsonBuilder().create().toJson(this, Form.class);
     }
 
-    public String sAtoString() {
+    public String cStoString() {
         JSONObject json = new JSONObject();
 
         try {
-            json.put("cr01", cr01)
-                    .put("cr02", cr02)
-                    .put("cr03", cr03)
-                    .put("cr04", cr04)
-                    .put("cr05", cr05)
-                    .put("cr06", cr06)
-                    .put("cr06x", cr06x)
-                    .put("cr07", cr07)
-                    .put("cr08d", cr08d)
-                    .put("cr08m", cr08m)
-                    .put("cr08y", cr08y)
-                    .put("cr09", cr09)
-                    .put("cr10", cr10)
-                    .put("cr11", cr11)
-                    .put("cr12", cr12)
-                    .put("cr13", cr13)
-                    .put("cr14d", cr14d)
-                    .put("cr14m", cr14m)
-                    .put("cr14y", cr14y)
-                    .put("cr15m", cr15m)
-                    .put("cr15y", cr15y)
-                    .put("cr16", cr16)
-                    .put("cr17", cr17)
-                    .put("cr18", cr18)
-                    .put("cr19", cr19)
-                    .put("cr20", cr20)
-                    .put("cr21", cr21)
-                    .put("cr22", cr22)
-                    .put("cr23", cr23)
-                    .put("cr24a", cr24a)
-                    .put("cr24b", cr24b)
-                    .put("cr24c", cr24c)
-                    .put("cr24d", cr24d)
-                    .put("cr24e", cr24e)
-                    .put("cr24f", cr24f)
-                    .put("cr25", cr25)
-                    .put("cr26", cr26)
-                    .put("cr27a", cr27a)
-                    .put("cr27b", cr27b)
-                    .put("cr27c", cr27c)
-                    .put("cr28a", cr28a)
-                    .put("cr28b", cr28b)
-                    .put("cr28c", cr28c)
-                    .put("cr28d", cr28d)
-                    .put("cr28e", cr28e)
-                    .put("cr28f", cr28f)
-                    .put("cr28fx", cr28fx);
+            json.put("cs01", cs01)
+                    .put("cs01a", cs01a)
+                    .put("cs01b", cs01b)
+                    .put("cs02", cs02)
+                    .put("cs03", cs03)
+                    .put("cs04", cs04)
+                    .put("cs05", cs05)
+                    .put("cs05a", cs05a)
+                    .put("cs06", cs06)
+                    .put("cs06096x", cs06096x)
+                    .put("cs07", cs07)
+                    .put("cs0801", cs0801)
+                    .put("cs0802", cs0802)
+                    .put("cs0803", cs0803)
+                    .put("cs09", cs09)
+                    .put("cs10", cs10)
+                    .put("cs10a", cs10a)
+                    .put("cs11", cs11)
+                    .put("cs11a", cs11a)
+                    .put("cs12", cs12)
+                    .put("cs12a", cs12a)
+                    .put("cs13", cs13)
+                    .put("cs1401", cs1401)
+                    .put("cs1402", cs1402)
+                    .put("cs1403", cs1403)
+                    .put("cs1501", cs1501)
+                    .put("cs1502", cs1502)
+                    .put("cs16", cs16)
+                    .put("cs17", cs17)
+                    .put("cs18", cs18)
+                    .put("cs19", cs19)
+                    .put("cs20a", cs20a)
+                    .put("cs20b", cs20b)
+                    .put("cs21", cs21)
+                    .put("cs22", cs22)
+                    .put("cs23", cs23)
+                    .put("cs24", cs24)
+                    .put("cs2401", cs2401)
+                    .put("cs2402", cs2402)
+                    .put("cs2403", cs2403)
+                    .put("cs2404", cs2404)
+                    .put("cs2405", cs2405)
+                    .put("cs2406", cs2406)
+                    .put("cs25", cs25)
+                    .put("cs25a01", cs25a01)
+                    .put("cs25b01", cs25b01)
+                    .put("cs25c", cs25c)
+                    .put("cs25c096x", cs25c096x)
+                    .put("cs26", cs26)
+                    .put("cs2601", cs2601)
+                    .put("cs2602", cs2602)
+                    .put("cs2603", cs2603)
+                    .put("cs2604", cs2604)
+                    .put("cs2605", cs2605)
+                    .put("cs2701", cs2701)
+                    .put("cs2702", cs2702)
+                    .put("cs2703", cs2703)
+                    .put("cs2704", cs2704)
+                    .put("cs28a", cs28a)
+                    .put("cs28b", cs28b)
+                    .put("cs28c", cs28c)
+                    .put("cs28d", cs28d)
+                    .put("cs28e", cs28e)
+                    .put("cs28f", cs28f)
+                    .put("cs28f01x", cs28f01x)
+                    .put("cs29", cs29)
+                    .put("cs30a", cs30a)
+                    .put("cs30b", cs30b)
+                    .put("cs30c", cs30c)
+                    .put("cs30d", cs30d)
+                    .put("cs30e", cs30e)
+                    .put("cs30f", cs30f)
+                    .put("cs30f096x", cs30f096x)
+                    .put("cs31", cs31)
+                    .put("cs32a", cs32a)
+                    .put("cs32b", cs32b)
+                    .put("cs32c", cs32c)
+                    .put("cs32d", cs32d)
+                    .put("cs32e", cs32e)
+                    .put("cs32f", cs32f)
+                    .put("cs32g", cs32g)
+                    .put("cs32h", cs32h)
+                    .put("cs32h096x", cs32h096x);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -943,7 +1298,7 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_USERNAME, this.username == null ? JSONObject.NULL : this.username);
             json.put(FormsTable.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
 
-            json.put(FormsTable.COLUMN_SA, new JSONObject(sAtoString()));
+            json.put(FormsTable.COLUMN_CS, new JSONObject(cStoString()));
 
 
             json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
@@ -964,61 +1319,98 @@ public class Form extends LiveData<Form> {
         }
     }
 
-    private void sAHydrate(String string) {
+    private void cSHydrate(String string) {
         if (string != null) {
 
             try {
-                this.cr01 = toJSONObject().getString("cr01");
-                this.cr02 = toJSONObject().getString("cr02");
-                this.cr03 = toJSONObject().getString("cr03");
-                this.cr04 = toJSONObject().getString("cr04");
-                this.cr05 = toJSONObject().getString("cr05");
-                this.cr06 = toJSONObject().getString("cr06");
-                this.cr06x = toJSONObject().getString("cr06x");
-                this.cr07 = toJSONObject().getString("cr07");
-                this.cr08d = toJSONObject().getString("cr08d");
-                this.cr08m = toJSONObject().getString("cr08m");
-                this.cr08y = toJSONObject().getString("cr08y");
-                this.cr09 = toJSONObject().getString("cr09");
-                this.cr10 = toJSONObject().getString("cr10");
-                this.cr11 = toJSONObject().getString("cr11");
-                this.cr12 = toJSONObject().getString("cr12");
-                this.cr13 = toJSONObject().getString("cr13");
-                this.cr14d = toJSONObject().getString("cr14d");
-                this.cr14m = toJSONObject().getString("cr14m");
-                this.cr14y = toJSONObject().getString("cr14y");
-                this.cr15m = toJSONObject().getString("cr15m");
-                this.cr15y = toJSONObject().getString("cr15y");
-                this.cr16 = toJSONObject().getString("cr16");
-                this.cr17 = toJSONObject().getString("cr17");
-                this.cr18 = toJSONObject().getString("cr18");
-                this.cr19 = toJSONObject().getString("cr19");
-                this.cr20 = toJSONObject().getString("cr20");
-                this.cr21 = toJSONObject().getString("cr21");
-                this.cr22 = toJSONObject().getString("cr22");
-                this.cr23 = toJSONObject().getString("cr23");
-                this.cr24a = toJSONObject().getString("cr24a");
-                this.cr24b = toJSONObject().getString("cr24b");
-                this.cr24c = toJSONObject().getString("cr24c");
-                this.cr24d = toJSONObject().getString("cr24d");
-                this.cr24e = toJSONObject().getString("cr24e");
-                this.cr24f = toJSONObject().getString("cr24f");
-                this.cr25 = toJSONObject().getString("cr25");
-                this.cr26 = toJSONObject().getString("cr26");
-                this.cr27a = toJSONObject().getString("cr27a");
-                this.cr27b = toJSONObject().getString("cr27b");
-                this.cr27c = toJSONObject().getString("cr27c");
-                this.cr28a = toJSONObject().getString("cr28a");
-                this.cr28b = toJSONObject().getString("cr28b");
-                this.cr28c = toJSONObject().getString("cr28c");
-                this.cr28d = toJSONObject().getString("cr28d");
-                this.cr28e = toJSONObject().getString("cr28e");
-                this.cr28f = toJSONObject().getString("cr28f");
-                this.cr28fx = toJSONObject().getString("cr28fx");
+                this.cs01 = toJSONObject().getString("cs01");
+                this.cs01a = toJSONObject().getString("cs01a");
+                this.cs01b = toJSONObject().getString("cs01b");
+                this.cs02 = toJSONObject().getString("cs02");
+                this.cs03 = toJSONObject().getString("cs03");
+                this.cs04 = toJSONObject().getString("cs04");
+                this.cs05 = toJSONObject().getString("cs05");
+                this.cs05a = toJSONObject().getString("cs05a");
+                this.cs06 = toJSONObject().getString("cs06");
+                this.cs06096x = toJSONObject().getString("cs06096x");
+                this.cs07 = toJSONObject().getString("cs07");
+                this.cs0801 = toJSONObject().getString("cs0801");
+                this.cs0802 = toJSONObject().getString("cs0802");
+                this.cs0803 = toJSONObject().getString("cs0803");
+                this.cs09 = toJSONObject().getString("cs09");
+                this.cs10 = toJSONObject().getString("cs10");
+                this.cs10a = toJSONObject().getString("cs10a");
+                this.cs11 = toJSONObject().getString("cs11");
+                this.cs11a = toJSONObject().getString("cs11a");
+                this.cs12 = toJSONObject().getString("cs12");
+                this.cs12a = toJSONObject().getString("cs12a");
+                this.cs13 = toJSONObject().getString("cs13");
+                this.cs1401 = toJSONObject().getString("cs1401");
+                this.cs1402 = toJSONObject().getString("cs1402");
+                this.cs1403 = toJSONObject().getString("cs1403");
+                this.cs1501 = toJSONObject().getString("cs1501");
+                this.cs1502 = toJSONObject().getString("cs1502");
+                this.cs16 = toJSONObject().getString("cs16");
+                this.cs17 = toJSONObject().getString("cs17");
+                this.cs18 = toJSONObject().getString("cs18");
+                this.cs19 = toJSONObject().getString("cs19");
+                this.cs20a = toJSONObject().getString("cs20a");
+                this.cs20b = toJSONObject().getString("cs20b");
+                this.cs21 = toJSONObject().getString("cs21");
+                this.cs22 = toJSONObject().getString("cs22");
+                this.cs23 = toJSONObject().getString("cs23");
+                this.cs24 = toJSONObject().getString("cs24");
+                this.cs2401 = toJSONObject().getString("cs2401");
+                this.cs2402 = toJSONObject().getString("cs2402");
+                this.cs2403 = toJSONObject().getString("cs2403");
+                this.cs2404 = toJSONObject().getString("cs2404");
+                this.cs2405 = toJSONObject().getString("cs2405");
+                this.cs2406 = toJSONObject().getString("cs2406");
+                this.cs25 = toJSONObject().getString("cs25");
+                this.cs25a01 = toJSONObject().getString("cs25a01");
+                this.cs25b01 = toJSONObject().getString("cs25b01");
+                this.cs25c = toJSONObject().getString("cs25c");
+                this.cs25c096x = toJSONObject().getString("cs25c096x");
+                this.cs26 = toJSONObject().getString("cs26");
+                this.cs2601 = toJSONObject().getString("cs2601");
+                this.cs2602 = toJSONObject().getString("cs2602");
+                this.cs2603 = toJSONObject().getString("cs2603");
+                this.cs2604 = toJSONObject().getString("cs2604");
+                this.cs2605 = toJSONObject().getString("cs2605");
+                this.cs2701 = toJSONObject().getString("cs2701");
+                this.cs2702 = toJSONObject().getString("cs2702");
+                this.cs2703 = toJSONObject().getString("cs2703");
+                this.cs2704 = toJSONObject().getString("cs2704");
+                this.cs28a = toJSONObject().getString("cs28a");
+                this.cs28b = toJSONObject().getString("cs28b");
+                this.cs28c = toJSONObject().getString("cs28c");
+                this.cs28d = toJSONObject().getString("cs28d");
+                this.cs28e = toJSONObject().getString("cs28e");
+                this.cs28f = toJSONObject().getString("cs28f");
+                this.cs28f01x = toJSONObject().getString("cs28f01x");
+                this.cs29 = toJSONObject().getString("cs29");
+                this.cs30a = toJSONObject().getString("cs30a");
+                this.cs30b = toJSONObject().getString("cs30b");
+                this.cs30c = toJSONObject().getString("cs30c");
+                this.cs30d = toJSONObject().getString("cs30d");
+                this.cs30e = toJSONObject().getString("cs30e");
+                this.cs30f = toJSONObject().getString("cs30f");
+                this.cs30f096x = toJSONObject().getString("cs30f096x");
+                this.cs31 = toJSONObject().getString("cs31");
+                this.cs32a = toJSONObject().getString("cs32a");
+                this.cs32b = toJSONObject().getString("cs32b");
+                this.cs32c = toJSONObject().getString("cs32c");
+                this.cs32d = toJSONObject().getString("cs32d");
+                this.cs32e = toJSONObject().getString("cs32e");
+                this.cs32f = toJSONObject().getString("cs32f");
+                this.cs32g = toJSONObject().getString("cs32g");
+                this.cs32h = toJSONObject().getString("cs32h");
+                this.cs32h096x = toJSONObject().getString("cs32h096x");
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                Log.d("Error at Hyderate", "sAHydrate: " + e.getMessage());
+                Log.d("Error at Hyderate", "cSHydrate: " + e.getMessage());
             }
         }
     }
