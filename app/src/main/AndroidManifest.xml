@@ -29,7 +29,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".ui.sections.Section04WSFPActivity"></activity>
+        <activity android:name=".ui.sections.Section01CS2Activity"></activity>
+        <activity android:name=".ui.sections.Section04WSFPActivity" />
         <activity android:name=".ui.sections.Section03WSActivity" />
         <activity android:name=".ui.sections.Section02CSFPActivity" />
         <activity android:name=".ui.other.ZScoreCalculator" />
@@ -60,7 +61,7 @@
             android:name=".ui.other.MainActivity"
             android:theme="@style/AppThemeEnglish" />
         <activity
-            android:name=".ui.sections.Section01CSActivity"
+            android:name=".ui.sections.Section01CS1Activity"
             android:label="Growth Monitoring"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish" />
