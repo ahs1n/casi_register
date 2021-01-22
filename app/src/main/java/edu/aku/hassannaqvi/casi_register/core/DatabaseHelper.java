@@ -211,7 +211,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_VILLAGE_CODE, form.getVillageCode());
         values.put(FormsTable.COLUMN_VILLAGE, form.getVillage());
         values.put(FormsTable.COLUMN_CS, form.getcS());
-
+        values.put(FormsTable.COLUMN_CSFP, form.getcSFP());
+        values.put(FormsTable.COLUMN_WS, form.getwS());
+        values.put(FormsTable.COLUMN_WSFP, form.getwSFP());
 
         values.put(FormsTable.COLUMN_ISTATUS, form.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getIstatus96x());
@@ -330,7 +332,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CS,
-
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -392,7 +396,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CS,
-
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -456,7 +462,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CS,
-
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
 
@@ -496,7 +504,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
                 form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
                 form.setcS(c.getString(c.getColumnIndex(FormsTable.COLUMN_CS)));
-
+                form.setcSFP(c.getString(c.getColumnIndex(FormsTable.COLUMN_CSFP)));
+                form.setwS(c.getString(c.getColumnIndex(FormsTable.COLUMN_WS)));
+                form.setwSFP(c.getString(c.getColumnIndex(FormsTable.COLUMN_WSFP)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -715,7 +725,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CS,
-
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
 
@@ -754,7 +766,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
                 form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
                 form.setcS(c.getString(c.getColumnIndex(FormsTable.COLUMN_CS)));
-
+                form.setcSFP(c.getString(c.getColumnIndex(FormsTable.COLUMN_CSFP)));
+                form.setwS(c.getString(c.getColumnIndex(FormsTable.COLUMN_WS)));
+                form.setwSFP(c.getString(c.getColumnIndex(FormsTable.COLUMN_WSFP)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -786,7 +800,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CS,
-
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
         };
@@ -821,7 +837,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
                 form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
                 form.setcS(c.getString(c.getColumnIndex(FormsTable.COLUMN_CS)));
-
+                form.setcSFP(c.getString(c.getColumnIndex(FormsTable.COLUMN_CSFP)));
+                form.setwS(c.getString(c.getColumnIndex(FormsTable.COLUMN_WS)));
+                form.setwSFP(c.getString(c.getColumnIndex(FormsTable.COLUMN_WSFP)));
                 form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
@@ -1107,7 +1125,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CS,
-
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,
@@ -1176,7 +1196,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CS,
-
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,
@@ -1272,7 +1294,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGE_CODE,
                 FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_CS,
-
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,

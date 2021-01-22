@@ -31,7 +31,9 @@ public final class CreateTable {
             + FormsTable.COLUMN_VILLAGE_CODE + " TEXT,"
             + FormsTable.COLUMN_VILLAGE + " TEXT,"
             + FormsTable.COLUMN_CS + " TEXT,"
-
+            + FormsTable.COLUMN_CSFP + " TEXT,"
+            + FormsTable.COLUMN_WS + " TEXT,"
+            + FormsTable.COLUMN_WSFP + " TEXT,"
             + FormsTable.COLUMN_GPSLAT + " TEXT,"
             + FormsTable.COLUMN_GPSLNG + " TEXT,"
             + FormsTable.COLUMN_GPSDATE + " TEXT,"

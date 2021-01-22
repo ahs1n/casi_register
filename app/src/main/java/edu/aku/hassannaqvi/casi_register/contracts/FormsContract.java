@@ -30,7 +30,9 @@ public class FormsContract {
         public static final String COLUMN_VILLAGE = "village";
         public static final String COLUMN_VILLAGE_CODE = "villageCode";
         public static final String COLUMN_CS = "cS";
-
+        public static final String COLUMN_CSFP = "cSFP";
+        public static final String COLUMN_WS = "wS";
+        public static final String COLUMN_WSFP = "wSFP";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS96x = "istatus96x";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
