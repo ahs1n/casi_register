@@ -45,6 +45,9 @@ import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section01CS1Activity;
+import edu.aku.hassannaqvi.casi_register.ui.sections.Section02CSFPActivity;
+import edu.aku.hassannaqvi.casi_register.ui.sections.Section03WSActivity;
+import edu.aku.hassannaqvi.casi_register.ui.sections.Section04WSFPActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable;
@@ -316,10 +319,25 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     public void openSpecificActivity(View v) {
         Intent oF = null;
         switch (v.getId()) {
-            case R.id.formA:
+            case R.id.formCS:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
                 SaveDraft();
                 oF = new Intent(this, Section01CS1Activity.class);
+                break;
+            case R.id.formCSFP:
+                if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
+                SaveDraft();
+                oF = new Intent(this, Section02CSFPActivity.class);
+                break;
+            case R.id.formWS:
+                if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
+                SaveDraft();
+                oF = new Intent(this, Section03WSActivity.class);
+                break;
+            case R.id.formWSFP:
+                if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
+                SaveDraft();
+                oF = new Intent(this, Section04WSFPActivity.class);
                 break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);
@@ -455,7 +473,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     }
 
     private void onSettingDropDownContent(boolean enable) {
-        bi.formA.setEnabled(enable);
+        bi.formCS.setEnabled(enable);
+        bi.formCSFP.setEnabled(enable);
+        bi.formWS.setEnabled(enable);
+        bi.formWSFP.setEnabled(enable);
     }
 
     private void initializingAreaVariables() {

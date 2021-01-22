@@ -70,10 +70,14 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
 
     private boolean UpdateDB() {
+        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_CS, MainApp.form.getcS());
+        return updcount == 1;*/
+
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addForm(form);
-        form.set_ID(String.valueOf(updcount));
-        if (updcount > 0) {
+        long rowid = db.addForm(form);
+        form.set_ID(String.valueOf(rowid));
+        if (rowid > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
             db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             return true;
@@ -425,7 +429,18 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             });
         }
 
-        bi.cs2401.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fldGrpcs2401));
+        bi.cs2401.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                Clear.clearAllFields(bi.cs24check, false);
+                Clear.clearAllFields(bi.fldGrpcs2401);
+                bi.fldGrpcs2401.setVisibility(View.GONE);
+            } else {
+                Clear.clearAllFields(bi.cs24check, true);
+                bi.fldGrpcs2401.setVisibility(View.VISIBLE);
+            }
+        });
+
+        bi.cs25.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpcs2501));
 
         bi.cs2605.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
