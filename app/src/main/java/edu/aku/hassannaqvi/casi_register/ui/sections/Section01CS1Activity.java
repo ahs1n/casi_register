@@ -14,7 +14,12 @@ import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.threeten.bp.Instant;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.ZoneId;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -38,6 +43,9 @@ import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 public class Section01CS1Activity extends AppCompatActivity implements EndSectionActivity {
 
     ActivitySection01Cs1Binding bi;
+    boolean dtFlag = false;
+    LocalDate calculatedDOB;
+    LocalDate localDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -347,7 +355,14 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName))
+            return false;
+        if (!dtFlag) {
+            return Validator.emptyCustomTextBox(this, bi.cs1403, "Invalid date!");
+        }
+        if (Integer.parseInt(bi.cs1502.getText().toString()) == 0 && Integer.parseInt(bi.cs1501.getText().toString()) == 0)
+            return Validator.emptyCustomTextBox(this, bi.cs1501, "Both Month & Year don't be zero!!", false);
+        return true;
     }
 
 
@@ -442,17 +457,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         bi.cs25.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpcs2501));
 
-        bi.cs2605.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (b) {
-                Clear.clearAllFields(bi.cs26check, false);
-                bi.cs26check.setTag("-1");
-                bi.cs2605.setTag("0");
-            } else {
-                Clear.clearAllFields(bi.cs26check, true);
-                bi.cs26check.setTag("0");
-                bi.cs2605.setTag("-1");
-            }
-        });
+        bi.cs2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.cs26check, !b));
 
     }
 
@@ -479,27 +484,52 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
     }
 
+    public void cs14ddmmOnTextChanged(CharSequence s, int start, int before, int count) {
+        bi.cs1403.setText(null);
+    }
+
     public void cs14yOnTextChanged(CharSequence s, int start, int before, int count) {
         bi.cs1502.setEnabled(false);
         bi.cs1502.setText(null);
         bi.cs1501.setEnabled(false);
         bi.cs1501.setText(null);
+        calculatedDOB = null;
+        if (TextUtils.isEmpty(bi.cs1401.getText()) || TextUtils.isEmpty(bi.cs1402.getText()) || TextUtils.isEmpty(bi.cs1403.getText()))
+            return;
         if (!bi.cs1401.isRangeTextValidate() || !bi.cs1402.isRangeTextValidate() || !bi.cs1403.isRangeTextValidate())
             return;
-        if (bi.cs1401.getText().toString().equals("00") && bi.cs1402.getText().toString().equals("00") && bi.cs1403.getText().toString().equals("00")) {
+        if (bi.cs1401.getText().toString().equals("98") && bi.cs1402.getText().toString().equals("98") && bi.cs1403.getText().toString().equals("9998")) {
             bi.cs1502.setEnabled(true);
             bi.cs1501.setEnabled(true);
+            dtFlag = true;
             return;
         }
         int day = bi.cs1401.getText().toString().equals("00") ? 0 : Integer.parseInt(bi.cs1401.getText().toString());
         int month = Integer.parseInt(bi.cs1402.getText().toString());
         int year = Integer.parseInt(bi.cs1403.getText().toString());
 
-        AgeModel age = DateRepository.Companion.getCalculatedAge(year, month, day);
-        if (age == null) return;
+        AgeModel age;
+        if (localDate != null)
+            age = DateRepository.Companion.getCalculatedAge(form.getLocalDate(), year, month, day);
+        else age = DateRepository.Companion.getCalculatedAge(year, month, day);
+        if (age == null) {
+            bi.cs1403.setError("Invalid date!");
+            dtFlag = false;
+            return;
+        }
+        dtFlag = true;
         bi.cs1502.setText(String.valueOf(age.getMonth()));
         bi.cs1501.setText(String.valueOf(age.getYear()));
 
+        //Setting Date
+        try {
+            Instant instant = Instant.parse(new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd-MM-yyyy").parse(
+                    bi.cs1401.getText().toString() + "-" + bi.cs1402.getText().toString() + "-" + bi.cs1403.getText().toString()
+            )) + "T06:24:01Z");
+            calculatedDOB = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -516,6 +546,17 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+/*    public void hh01OnTextChanged(CharSequence s, int start, int before, int count) {
+        //Setting Screening/today Date
+        try {
+            Instant instant = Instant.parse(new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd-MM-yyyy").parse(bi.cs08.getText().toString())) + "T06:24:01Z");
+            localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }*/
 
 /*    @Override
     public void onBackPressed() {

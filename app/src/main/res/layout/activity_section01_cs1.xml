@@ -467,8 +467,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@drawable/bottom">
+                        android:background="@drawable/bottom"
+                        android:orientation="horizontal">
 
 
                         <TextView
@@ -827,6 +827,8 @@
                                 android:hint="##"
                                 android:inputType="number"
                                 android:maxLength="2"
+                                android:onTextChanged="@{callback::cs14ddmmOnTextChanged}"
+                                app:defaultValue="98"
                                 app:maxValue="31"
                                 app:minValue="1"
                                 app:type="range" />
@@ -852,6 +854,8 @@
                                 android:hint="##"
                                 android:inputType="number"
                                 android:maxLength="2"
+                                android:onTextChanged="@{callback::cs14ddmmOnTextChanged}"
+                                app:defaultValue="98"
                                 app:maxValue="12"
                                 app:minValue="1"
                                 app:type="range" />
@@ -874,10 +878,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:onTextChanged="@{callback.cs14yOnTextChanged}"
                                 android:hint="####"
                                 android:inputType="number"
                                 android:maxLength="4"
+                                android:onTextChanged="@{callback.cs14yOnTextChanged}"
+                                app:defaultValue="9998"
                                 app:maxValue="2021"
                                 app:minValue="2014"
                                 app:type="range" />
@@ -1551,9 +1556,9 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bottom">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom">
 
                             <TextView
                                 android:id="@+id/qtxt_cs25"
@@ -1570,7 +1575,7 @@
                                 android:layout_alignTop="@id/qtxt_cs25"
                                 android:layout_alignBottom="@id/qtxt_cs25"
                                 android:text="@string/Q_cs25" />
-                    </RelativeLayout>
+                        </RelativeLayout>
 
                         <RadioGroup
                             android:id="@+id/cs25"
@@ -1775,79 +1780,79 @@
                 </LinearLayout>
 
                 <!-- cs26  CheckBox   -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVcs26"
-                style="@style/cardView">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_cs26"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_cs26"
-                            android:text="@string/cs26" />
-
-                        <TextView
-                            android:id="@+id/q_cs26"
-                            style="@style/quesNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_cs26"
-                            android:layout_alignBottom="@id/qtxt_cs26"
-                            android:text="@string/Q_cs26" />
-                    </RelativeLayout>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVcs26"
+                    style="@style/cardView">
 
                     <LinearLayout
-                        android:id="@+id/cs26check"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:tag="0">
+                        android:orientation="vertical">
 
-                        <CheckBox
-                            android:id="@+id/cs2601"
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/cs2601" />
+                            android:background="@drawable/bottom">
 
-                        <CheckBox
-                            android:id="@+id/cs2602"
+                            <TextView
+                                android:id="@+id/qtxt_cs26"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/q_cs26"
+                                android:text="@string/cs26" />
+
+                            <TextView
+                                android:id="@+id/q_cs26"
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/qtxt_cs26"
+                                android:layout_alignBottom="@id/qtxt_cs26"
+                                android:text="@string/Q_cs26" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/cs26check"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/cs2602" />
+                            android:orientation="vertical"
+                            android:tag="0">
+
+                            <CheckBox
+                                android:id="@+id/cs2601"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cs2601" />
+
+                            <CheckBox
+                                android:id="@+id/cs2602"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cs2602" />
+
+                            <CheckBox
+                                android:id="@+id/cs2603"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cs2603" />
+
+                            <CheckBox
+                                android:id="@+id/cs2604"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cs2604" />
+
+                        </LinearLayout>
 
                         <CheckBox
-                            android:id="@+id/cs2603"
+                            android:id="@+id/cs2605"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/cs2603" />
-
-                        <CheckBox
-                            android:id="@+id/cs2604"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cs2604" />
+                            android:tag="-1"
+                            android:text="@string/cs2605" />
 
                     </LinearLayout>
-
-                    <CheckBox
-                        android:id="@+id/cs2605"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tag="-1"
-                        android:text="@string/cs2605" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
                 <!-- cs27  Title   -->

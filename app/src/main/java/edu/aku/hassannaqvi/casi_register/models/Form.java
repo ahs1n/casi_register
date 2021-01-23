@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.threeten.bp.LocalDate;
 
 import androidx.lifecycle.LiveData;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
@@ -336,6 +337,27 @@ public class Form extends LiveData<Form> {
     private String fw29k;
     private String fw29k96x;
 
+
+    //Date Settings
+    private LocalDate localDate = null, calculatedDOB = null;
+
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+
+    public LocalDate getCalculatedDOB() {
+        return calculatedDOB;
+    }
+
+    public void setCalculatedDOB(LocalDate calculatedDOB) {
+        this.calculatedDOB = calculatedDOB;
+    }
 
     //For section selection
     private SectionSelection secSelection;
