@@ -444,7 +444,7 @@
                         android:id="@+id/cs09"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/cs09"
+                        android:hint="###"
                         android:inputType="number"
                         android:maxLength="3"
                         app:maxValue="300"
@@ -487,7 +487,7 @@
                         android:id="@+id/cs10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/cs10"
+                        android:hint="#####"
                         android:inputType="number"
                         android:maxLength="5"
                         app:maxValue="99999"
@@ -1865,10 +1865,24 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/cs27" />
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_fc27" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/fc27" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"

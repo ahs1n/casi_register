@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -273,6 +274,8 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
 
     private void setListeners() {
+
+        bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc26check, !b));
     }
 
     /*@Override
