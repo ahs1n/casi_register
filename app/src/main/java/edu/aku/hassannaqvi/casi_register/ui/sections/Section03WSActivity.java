@@ -251,6 +251,10 @@ public class Section03WSActivity extends AppCompatActivity {
 
         bi.ws18.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVws19));
 
+        bi.ws21.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpws21));
+
+        bi.ws14.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpws14));
+
 
     }
 

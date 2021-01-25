@@ -1073,113 +1073,219 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- ws22  CheckBox   -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVws22"
-                style="@style/cardView">
+            <LinearLayout
+                android:id="@+id/fldGrpws21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility='@{ws2104.checked? View.GONE : View.VISIBLE}'>
 
                 <LinearLayout
+                    android:id="@+id/fldGrpws14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility='@{ws1403.checked? View.GONE : View.VISIBLE}'>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bottom">
+                    <!-- ws22  CheckBox   -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fldGrpCVws22"
+                        style="@style/cardView">
 
-                        <TextView
-                            android:id="@+id/qtxt_ws22"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_ws22"
-                            android:text="@string/ws22" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/q_ws22"
-                            style="@style/quesNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_ws22"
-                            android:layout_alignBottom="@id/qtxt_ws22"
-                            android:text="@string/Q_ws22" />
-                    </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bottom">
 
-                    <LinearLayout
-                        android:id="@+id/ws22check"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:tag="0">
+                                <TextView
+                                    android:id="@+id/qtxt_ws22"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@id/q_ws22"
+                                    android:text="@string/ws22" />
 
-                        <CheckBox
-                            android:id="@+id/ws2201"
+                                <TextView
+                                    android:id="@+id/q_ws22"
+                                    style="@style/quesNum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignTop="@id/qtxt_ws22"
+                                    android:layout_alignBottom="@id/qtxt_ws22"
+                                    android:text="@string/Q_ws22" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ws22check"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:tag="0">
+
+                                <CheckBox
+                                    android:id="@+id/ws2201"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ws2201" />
+
+                                <CheckBox
+                                    android:id="@+id/ws2202"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ws2202" />
+
+                                <CheckBox
+                                    android:id="@+id/ws2203"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ws2203" />
+
+                                <CheckBox
+                                    android:id="@+id/ws2296"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ws2296" />
+
+                                <EditText
+                                    android:id="@+id/ws2296x"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:hint="@string/ws2296"
+                                    android:tag="ws2296"
+                                    android:text='@{ws2296.checked ? ws2296x.getText().toString() : ""}'
+                                    android:visibility='@{ws2296.checked? View.VISIBLE : View.GONE}' />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- ws23  Title   -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fldGrpCVws23"
+                        style="@style/cardView">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/ws2201" />
+                            android:orientation="vertical">
 
-                        <CheckBox
-                            android:id="@+id/ws2202"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ws2202" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bottom">
 
-                        <CheckBox
-                            android:id="@+id/ws2203"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ws2203" />
+                                <TextView
+                                    android:id="@+id/qtxt_ws23"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@id/q_ws23"
+                                    android:text="@string/ws23" />
 
-                        <CheckBox
-                            android:id="@+id/ws2296"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ws2296" />
+                                <TextView
+                                    android:id="@+id/q_ws23"
+                                    style="@style/quesNum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignTop="@id/qtxt_ws23"
+                                    android:layout_alignBottom="@id/qtxt_ws23"
+                                    android:text="@string/Q_ws23" />
+                            </RelativeLayout>
 
-                        <EditText
-                            android:id="@+id/ws2296x"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                            android:hint="@string/ws2296"
-                            android:tag="ws2296"
-                            android:text='@{ws2296.checked ? ws2296x.getText().toString() : ""}'
-                            android:visibility='@{ws2296.checked? View.VISIBLE : View.GONE}' />
-                    </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/textView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:text="@string/ws2301" />
+
+                                    <com.edittextpicker.aliazaz.EditTextPicker
+                                        android:id="@+id/ws2301"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:gravity="center"
+                                        android:hint="##"
+                                        android:inputType="number"
+                                        android:maxLength="2"
+                                        app:maxValue="90"
+                                        app:minValue="10"
+                                        app:type="range" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/textView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:text="@string/ws2302" />
+
+                                    <com.edittextpicker.aliazaz.EditTextPicker
+                                        android:id="@+id/ws2302"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:gravity="center"
+                                        android:hint="##"
+                                        android:inputType="number"
+                                        android:maxLength="2"
+                                        app:maxValue="90"
+                                        app:minValue="10"
+                                        app:type="range" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/textView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:text="@string/ws2303" />
+
+                                    <com.edittextpicker.aliazaz.EditTextPicker
+                                        android:id="@+id/ws2303"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:gravity="center"
+                                        android:hint="##"
+                                        android:inputType="number"
+                                        android:maxLength="2"
+                                        app:maxValue="90"
+                                        app:minValue="10"
+                                        app:type="range" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
-            <!-- ws23  Title   -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVws23"
-                style="@style/cardView">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_ws23"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_ws23"
-                            android:text="@string/ws23" />
-
-                        <TextView
-                            android:id="@+id/q_ws23"
-                            style="@style/quesNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_ws23"
-                            android:layout_alignBottom="@id/qtxt_ws23"
-                            android:text="@string/Q_ws23" />
-                    </RelativeLayout>
+                <!-- ws25  Title   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVws25"
+                    style="@style/cardView">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1189,446 +1295,355 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <TextView
-                                style="@style/textView"
-                                android:layout_width="0dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:text="@string/ws2301" />
+                                android:background="@drawable/bottom"
+                                android:orientation="horizontal">
 
-                            <com.edittextpicker.aliazaz.EditTextPicker
-                                android:id="@+id/ws2301"
-                                android:layout_width="0dp"
+                                <TextView
+                                    style="@style/quesNum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/Q_ws25" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25" />
+                            </LinearLayout>
+
+                            <!-- ws25a  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25a"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:gravity="center"
-                                android:hint="##"
-                                android:inputType="number"
-                                android:maxLength="2"
-                                app:maxValue="90"
-                                app:minValue="10"
-                                app:type="range" />
-                        </LinearLayout>
+                                android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/qtxt_ws25a"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25a" />
 
-                            <TextView
-                                style="@style/textView"
-                                android:layout_width="0dp"
+                                <RadioButton
+                                    android:id="@+id/ws25a01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25a01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25a02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25a02" />
+                            </RadioGroup>
+
+                            <!-- ws25b  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25b"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:text="@string/ws2302" />
+                                android:orientation="horizontal">
 
-                            <com.edittextpicker.aliazaz.EditTextPicker
-                                android:id="@+id/ws2302"
-                                android:layout_width="0dp"
+                                <TextView
+                                    android:id="@+id/qtxt_ws25b"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25b" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25b01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25b01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25b02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25b02" />
+                            </RadioGroup>
+
+                            <!-- ws25c  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25c"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:gravity="center"
-                                android:hint="##"
-                                android:inputType="number"
-                                android:maxLength="2"
-                                app:maxValue="90"
-                                app:minValue="10"
-                                app:type="range" />
-                        </LinearLayout>
+                                android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/qtxt_ws25c"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25c" />
 
-                            <TextView
-                                style="@style/textView"
-                                android:layout_width="0dp"
+                                <RadioButton
+                                    android:id="@+id/ws25c01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25c01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25c02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25c02" />
+                            </RadioGroup>
+
+                            <!-- ws25d  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25d"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:text="@string/ws2303" />
+                                android:orientation="horizontal">
 
-                            <com.edittextpicker.aliazaz.EditTextPicker
-                                android:id="@+id/ws2303"
-                                android:layout_width="0dp"
+                                <TextView
+                                    android:id="@+id/qtxt_ws25d"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25d" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25d01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25d01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25d02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25d02" />
+                            </RadioGroup>
+
+                            <!-- ws25e  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25e"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:gravity="center"
-                                android:hint="##"
-                                android:inputType="number"
-                                android:maxLength="2"
-                                app:maxValue="90"
-                                app:minValue="10"
-                                app:type="range" />
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/qtxt_ws25e"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25e" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25e01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25e01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25e02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25e02" />
+                            </RadioGroup>
+
+                            <!-- ws25f  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25f"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/qtxt_ws25f"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25f" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25f01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25f01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25f02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25f02" />
+                            </RadioGroup>
+
+                            <!-- ws25g  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25g"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/qtxt_ws25g"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25g" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25g01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25g01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25g02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25g02" />
+                            </RadioGroup>
+
+                            <!-- ws25h  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25h"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/qtxt_ws25h"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25h" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25h01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25h01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25h02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25h02" />
+                            </RadioGroup>
+
+                            <!-- ws25i  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25i"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/qtxt_ws25i"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25i" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25i01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25i01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25i02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25i02" />
+                            </RadioGroup>
+
+                            <!-- ws25j  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25j"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/qtxt_ws25j"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.5"
+                                    android:text="@string/ws25j" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25j01"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25j01" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25j02"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/ws25j02" />
+                            </RadioGroup>
+
+                            <!-- ws25k  Radio   -->
+                            <RadioGroup
+                                android:id="@+id/ws25k"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/qtxt_ws25k"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ws25k" />
+
+                                <RadioButton
+                                    android:id="@+id/ws25k01"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ws25k01" />
+
+                                <EditText
+                                    android:id="@+id/ws25k01x"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:hint="@string/ws25k01"
+                                    android:tag="ws25k01"
+                                    android:text='@{ws25k01.checked ? ws25k01x.getText().toString() : ""}'
+                                    android:visibility='@{ws25k01.checked? View.VISIBLE : View.GONE}' />
+
+                                <RadioButton
+                                    android:id="@+id/ws25k02"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ws25k02" />
+                            </RadioGroup>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- ws25  Title   -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVws25"
-                style="@style/cardView">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/Q_ws25" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25" />
-                        </LinearLayout>
-
-                        <!-- ws25a  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25a"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25a"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25a" />
-
-                            <RadioButton
-                                android:id="@+id/ws25a01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25a01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25a02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25a02" />
-                        </RadioGroup>
-
-                        <!-- ws25b  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25b"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25b"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25b" />
-
-                            <RadioButton
-                                android:id="@+id/ws25b01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25b01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25b02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25b02" />
-                        </RadioGroup>
-
-                        <!-- ws25c  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25c"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25c"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25c" />
-
-                            <RadioButton
-                                android:id="@+id/ws25c01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25c01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25c02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25c02" />
-                        </RadioGroup>
-
-                        <!-- ws25d  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25d"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25d"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25d" />
-
-                            <RadioButton
-                                android:id="@+id/ws25d01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25d01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25d02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25d02" />
-                        </RadioGroup>
-
-                        <!-- ws25e  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25e"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25e"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25e" />
-
-                            <RadioButton
-                                android:id="@+id/ws25e01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25e01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25e02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25e02" />
-                        </RadioGroup>
-
-                        <!-- ws25f  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25f"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25f"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25f" />
-
-                            <RadioButton
-                                android:id="@+id/ws25f01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25f01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25f02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25f02" />
-                        </RadioGroup>
-
-                        <!-- ws25g  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25g"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25g"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25g" />
-
-                            <RadioButton
-                                android:id="@+id/ws25g01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25g01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25g02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25g02" />
-                        </RadioGroup>
-
-                        <!-- ws25h  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25h"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25h"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25h" />
-
-                            <RadioButton
-                                android:id="@+id/ws25h01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25h01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25h02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25h02" />
-                        </RadioGroup>
-
-                        <!-- ws25i  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25i"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25i"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25i" />
-
-                            <RadioButton
-                                android:id="@+id/ws25i01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25i01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25i02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25i02" />
-                        </RadioGroup>
-
-                        <!-- ws25j  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25j"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25j"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:text="@string/ws25j" />
-
-                            <RadioButton
-                                android:id="@+id/ws25j01"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25j01" />
-
-                            <RadioButton
-                                android:id="@+id/ws25j02"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/ws25j02" />
-                        </RadioGroup>
-
-                        <!-- ws25k  Radio   -->
-                        <RadioGroup
-                            android:id="@+id/ws25k"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/qtxt_ws25k"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ws25k" />
-
-                            <RadioButton
-                                android:id="@+id/ws25k01"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ws25k01" />
-
-                            <EditText
-                                android:id="@+id/ws25k01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/ws25k01"
-                                android:tag="ws25k01"
-                                android:text='@{ws25k01.checked ? ws25k01x.getText().toString() : ""}'
-                                android:visibility='@{ws25k01.checked? View.VISIBLE : View.GONE}' />
-
-                            <RadioButton
-                                android:id="@+id/ws25k02"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ws25k02" />
-                        </RadioGroup>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
             <!--EndButton LinearLayout-->
             <LinearLayout
