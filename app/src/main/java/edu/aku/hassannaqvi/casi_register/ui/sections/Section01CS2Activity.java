@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -32,9 +33,17 @@ public class Section01CS2Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_cs2);
         bi.setCallback(this);
         setupContent();
+        setListeners();
     }
 
     private void setupContent() {
+    }
+
+    private void setListeners() {
+
+        bi.cs29.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpcs29));
+
+        bi.cs31.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpcs31));
     }
 
 

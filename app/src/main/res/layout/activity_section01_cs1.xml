@@ -115,6 +115,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:id="@+id/cs03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -156,6 +157,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,.-/ "
                         android:id="@+id/cs05a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
