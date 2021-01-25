@@ -112,6 +112,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,.-/ "
                         android:id="@+id/ws03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -152,6 +153,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                         android:id="@+id/ws05a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -278,6 +280,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:id="@+id/ws07"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -403,7 +406,7 @@
                         android:id="@+id/ws09"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/ws09"
+                        android:hint="###"
                         android:inputType="number"
                         android:maxLength="3"
                         app:maxValue="300"
@@ -448,7 +451,7 @@
                         android:id="@+id/ws10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/ws10"
+                        android:hint="#####"
                         android:inputType="number"
                         android:maxLength="5"
                         app:maxValue="99999"
@@ -490,6 +493,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:id="@+id/ws11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -530,6 +534,7 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:id="@+id/ws12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -914,11 +919,13 @@
                         android:id="@+id/ws19"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/ws19"
+                        android:hint="##.#"
                         android:inputType="number"
                         android:maxLength="2"
+                        app:mask="##.#"
                         app:maxValue="18"
                         app:minValue="5"
+                        app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
