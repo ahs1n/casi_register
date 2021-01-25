@@ -2,6 +2,11 @@ package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.validatorcrawler.aliazaz.Clear;
@@ -62,10 +67,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_CSFP, MainApp.form.getcS());
-        return updcount == 1;
-*/
+
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long rowid = db.addForm(form);
         form.set_ID(String.valueOf(rowid));
@@ -275,7 +277,62 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
     private void setListeners() {
 
+        bi.fc1702.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (TextUtils.isEmpty(bi.fc1702.getText()) || TextUtils.isEmpty(bi.fc1701.getText()))
+                    return;
+
+                int age = Integer.parseInt(bi.fc1702.getText().toString()) + (Integer.parseInt(bi.fc1701.getText().toString()) * 12);
+
+                bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
+                bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
+                bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
+
+                if (age >= 6) {
+                    bi.fldGrpCVfc19.setVisibility(View.GONE);
+                } else bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
+
+                if (age < 6 || age >= 24) {
+                    bi.fldGrpCVfc20.setVisibility(View.GONE);
+                } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
+
+                if (age >= 24) {
+                    bi.fldGrpCVfc20.setVisibility(View.GONE);
+                } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
+
+                if (age >= 24) {
+                    bi.fldGrpCVfc21.setVisibility(View.GONE);
+                } else bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         bi.fc16b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc16b));
+
+        CompoundButton.OnCheckedChangeListener compound = (compoundButton, b) -> {
+            if (!bi.fc2501.isChecked() && !bi.fc2502.isChecked() && !bi.fc2503.isChecked()) {
+                Clear.clearAllFields(bi.fc25check, false);
+                Clear.clearAllFields(bi.fldGrpCVfc29);
+                bi.fldGrpCVfc29.setVisibility(View.GONE);
+            } else {
+                Clear.clearAllFields(bi.fc25check, true);
+                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
+            }
+        };
+
+        bi.fc2501.setOnCheckedChangeListener(compound);
+        bi.fc2502.setOnCheckedChangeListener(compound);
+        bi.fc2503.setOnCheckedChangeListener(compound);
 
         bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc26check, !b));
 
