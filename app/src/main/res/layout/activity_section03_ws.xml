@@ -866,18 +866,21 @@
                     <RadioGroup
                         android:id="@+id/ws18"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/ws1801"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/ws1801" />
 
                         <RadioButton
                             android:id="@+id/ws1802"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/ws1802" />
                     </RadioGroup>
                 </LinearLayout>
