@@ -582,7 +582,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility='@{cs2901.checked? View.VISIBLE : View.GONE}'>
+                android:visibility='@{cs3101.checked? View.VISIBLE : View.GONE}'>
 
                 <!-- cs32  Title   -->
                 <androidx.cardview.widget.CardView

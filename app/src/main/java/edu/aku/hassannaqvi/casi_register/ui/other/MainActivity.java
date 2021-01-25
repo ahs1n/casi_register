@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi.recordSummary.setText(rSumText);
 
         Log.d(TAG, "onCreate: " + rSumText);*/
+
         if (MainApp.admin) {
             bi.databaseBtn.setVisibility(View.VISIBLE);
         } else {
