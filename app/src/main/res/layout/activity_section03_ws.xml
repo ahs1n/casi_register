@@ -722,12 +722,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="###.#"
+                        android:inputType="number"
                         android:maxLength="4"
                         app:mask="###.#"
-                        app:pattern="^(\\d{3,3}\\.\\d{1,1})$"
-                        android:inputType="number"
                         app:maxValue="220"
                         app:minValue="75"
+                        app:pattern="^(\\d{3,3}\\.\\d{1,1})$"
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -768,11 +768,13 @@
                         android:id="@+id/ws16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/ws16"
+                        android:hint="###.#"
                         android:inputType="number"
-                        android:maxLength="3"
+                        android:maxLength="4"
+                        app:mask="###.#"
                         app:maxValue="130"
                         app:minValue="25"
+                        app:pattern="^(\\d{3,3}\\.\\d{1,1})$"
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -813,11 +815,13 @@
                         android:id="@+id/ws17"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/ws17"
+                        android:hint="##.#"
                         android:inputType="number"
-                        android:maxLength="2"
+                        android:maxLength="3"
+                        app:mask="##.#"
                         app:maxValue="40"
                         app:minValue="15"
+                        app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
