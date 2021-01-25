@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -247,6 +248,10 @@ public class Section03WSActivity extends AppCompatActivity {
 
 
     private void setListeners() {
+
+        bi.ws18.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVws19));
+
+
     }
 
     /*@Override
