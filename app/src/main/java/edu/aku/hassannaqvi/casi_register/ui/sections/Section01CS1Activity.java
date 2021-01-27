@@ -433,8 +433,10 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             if (age < 6 || age >= 24) {
                 bi.fldGrpCVcs19.setVisibility(View.GONE);
                 bi.fldGrpCVcs20b.setVisibility(View.GONE);
-            } else bi.fldGrpCVcs19.setVisibility(View.VISIBLE);
-            bi.fldGrpCVcs20b.setVisibility(View.VISIBLE);
+            } else {
+                bi.fldGrpCVcs19.setVisibility(View.VISIBLE);
+                bi.fldGrpCVcs20b.setVisibility(View.VISIBLE);
+            }
 
             if (age >= 24) {
                 bi.fldGrpCVcs20a.setVisibility(View.GONE);
