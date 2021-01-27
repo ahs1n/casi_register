@@ -230,6 +230,7 @@ public class Form extends LiveData<Form> {
     private String ws06;
     private String ws0696x;
     private String ws07;
+    private String ws08;
     private String ws0801;
     private String ws0802;
     private String ws0803;
@@ -1781,6 +1782,14 @@ public class Form extends LiveData<Form> {
         this.ws07 = ws07;
     }
 
+    public String getWs08() {
+        return ws08;
+    }
+
+    public void setWs08(String ws08) {
+        this.ws08 = ws08;
+    }
+
     public String getWs0801() {
         return ws0801;
     }
@@ -3145,6 +3154,7 @@ public class Form extends LiveData<Form> {
                     .put("ws06", ws06)
                     .put("ws0696x", ws0696x)
                     .put("ws07", ws07)
+                    .put("ws08", ws08)
                     .put("ws0801", ws0801)
                     .put("ws0802", ws0802)
                     .put("ws0803", ws0803)
@@ -3502,6 +3512,7 @@ public class Form extends LiveData<Form> {
                 this.ws06 = toJSONObject().getString("ws06");
                 this.ws0696x = toJSONObject().getString("ws0696x");
                 this.ws07 = toJSONObject().getString("ws07");
+                this.ws08 = toJSONObject().getString("ws08");
                 this.ws0801 = toJSONObject().getString("ws0801");
                 this.ws0802 = toJSONObject().getString("ws0802");
                 this.ws0803 = toJSONObject().getString("ws0803");

@@ -118,6 +118,8 @@ public class Section03WSActivity extends AppCompatActivity {
         wS.put("ws0696x", bi.ws0696x.getText().toString());
         wS.put("ws07", bi.ws07.getText().toString());
 
+        wS.put("ws08", bi.ws08.getText().toString());
+
         wS.put("ws0801", bi.ws0801.getText().toString());
 
         wS.put("ws0802", bi.ws0802.getText().toString());
