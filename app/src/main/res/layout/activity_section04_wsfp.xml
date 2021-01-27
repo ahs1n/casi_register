@@ -320,53 +320,70 @@
                             android:text="@string/Q_fw08" />
                     </RelativeLayout>
 
-                    <TextView
+                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                        android:id="@+id/fw08"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/fw0801" />
+                        android:gravity="center"
+                        android:hint="DD/MM/YYYY"
+                        app:dateFormat="dd-MM-yyyy"
+                        app:maxDate="CR_DATE"
+                        app:minDate="CR_DATE" />
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/fw0801"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/fw0801"
-                        android:inputType="number"
-                        android:maxLength="2"
-                        app:maxValue="31"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/fw0802" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fw0801" />
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/fw0802"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/fw0802"
-                        android:inputType="number"
-                        android:maxLength="2"
-                        app:maxValue="12"
-                        app:minValue="1"
-                        app:type="range" />
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/fw0801"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/fw0801"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            app:maxValue="31"
+                            app:minValue="1"
+                            app:type="range" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/fw0803" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fw0802" />
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/fw0803"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/fw0803"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        app:maxValue="2021"
-                        app:minValue="2019"
-                        app:type="range" />
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/fw0802"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/fw0802"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            app:maxValue="12"
+                            app:minValue="1"
+                            app:type="range" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fw0803" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/fw0803"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/fw0803"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            app:maxValue="2021"
+                            app:minValue="2019"
+                            app:type="range" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

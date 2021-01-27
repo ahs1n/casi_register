@@ -114,6 +114,8 @@ public class Section04WSFPActivity extends AppCompatActivity {
         wSFP.put("fw0696x", bi.fw0696x.getText().toString());
         wSFP.put("fw07", bi.fw07.getText().toString());
 
+        wSFP.put("fw08", bi.fw08.getText().toString());
+
         wSFP.put("fw0801", bi.fw0801.getText().toString());
 
         wSFP.put("fw0802", bi.fw0802.getText().toString());
