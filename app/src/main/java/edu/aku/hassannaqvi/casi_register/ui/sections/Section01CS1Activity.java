@@ -106,6 +106,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setDistrict(MainActivity.mainInfo.getDistrict());
         form.setUc(MainActivity.mainInfo.getUc());
         form.setVillage(MainActivity.mainInfo.getVillage());
+        form.setLocalDate(localDate);
 
         MainApp.setGPS(this);
         JSONObject cS = new JSONObject();
@@ -129,6 +130,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         cS.put("cs06096x", bi.cs06096x.getText().toString());
         cS.put("cs07", bi.cs07.getText().toString());
+
+        cS.put("cs08", bi.cs08.getText().toString());
 
         cS.put("cs0801", bi.cs0801.getText().toString());
 
@@ -369,53 +372,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
     private void setListeners() {
 
-
-        bi.cs1502.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (TextUtils.isEmpty(bi.cs1502.getText()) || TextUtils.isEmpty(bi.cs1501.getText()))
-                    return;
-
-                int age = Integer.parseInt(bi.cs1502.getText().toString()) + (Integer.parseInt(bi.cs1501.getText().toString()) * 12);
-
-                bi.fldGrpCVcs18.setVisibility(View.VISIBLE);
-                bi.fldGrpCVcs19.setVisibility(View.VISIBLE);
-                bi.fldGrpCVcs20a.setVisibility(View.VISIBLE);
-                bi.fldGrpCVcs20b.setVisibility(View.VISIBLE);
-
-                if (age >= 6) {
-                    bi.fldGrpCVcs18.setVisibility(View.GONE);
-                } else bi.fldGrpCVcs18.setVisibility(View.VISIBLE);
-
-                if (age < 6 || age >= 24) {
-                    bi.fldGrpCVcs19.setVisibility(View.GONE);
-                    bi.fldGrpCVcs20b.setVisibility(View.GONE);
-                } else bi.fldGrpCVcs19.setVisibility(View.VISIBLE);
-                bi.fldGrpCVcs19.setVisibility(View.VISIBLE);
-
-                if (age >= 24) {
-                    bi.fldGrpCVcs19.setVisibility(View.GONE);
-                    bi.fldGrpCVcs20b.setVisibility(View.GONE);
-                } else bi.fldGrpCVcs19.setVisibility(View.VISIBLE);
-                bi.fldGrpCVcs20b.setVisibility(View.VISIBLE);
-
-                if (age >= 24) {
-                    bi.fldGrpCVcs20a.setVisibility(View.GONE);
-                } else bi.fldGrpCVcs20a.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
         EditText[] txtListener = new EditText[]{bi.cs1401, bi.cs1402};
         for (EditText txtItem : txtListener) {
 
@@ -457,30 +413,53 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     }
 
     public void cs15yOnTextChanged(CharSequence s, int start, int before, int count) {
-        if (!bi.cs1502.isRangeTextValidate() || !bi.cs1501.isRangeTextValidate())
+        if (TextUtils.isEmpty(bi.cs1501.getText().toString()) || TextUtils.isEmpty(bi.cs1502.getText().toString()))
             return;
 
+        if (!bi.cs1502.isRangeTextValidate() || !bi.cs1501.isRangeTextValidate())
+            return;
         int age = Integer.parseInt(bi.cs1502.getText().toString()) + (Integer.parseInt(bi.cs1501.getText().toString()) * 12);
 
         if (age != 0) {
             bi.fldGrpCVcs18.setVisibility(View.GONE);
             bi.fldGrpCVcs19.setVisibility(View.GONE);
             bi.fldGrpCVcs20a.setVisibility(View.GONE);
+            bi.fldGrpCVcs20b.setVisibility(View.GONE);
+
             if (age >= 6) {
                 bi.fldGrpCVcs18.setVisibility(View.GONE);
             } else bi.fldGrpCVcs18.setVisibility(View.VISIBLE);
+
             if (age < 6 || age >= 24) {
                 bi.fldGrpCVcs19.setVisibility(View.GONE);
+                bi.fldGrpCVcs20b.setVisibility(View.GONE);
             } else bi.fldGrpCVcs19.setVisibility(View.VISIBLE);
+            bi.fldGrpCVcs20b.setVisibility(View.VISIBLE);
+
             if (age >= 24) {
                 bi.fldGrpCVcs20a.setVisibility(View.GONE);
             } else bi.fldGrpCVcs20a.setVisibility(View.VISIBLE);
         }
-
     }
 
     public void cs14ddmmOnTextChanged(CharSequence s, int start, int before, int count) {
         bi.cs1403.setText(null);
+    }
+
+    public void cs08OnTextChanged(CharSequence s, int start, int before, int count) {
+        localDate = null;
+        if (TextUtils.isEmpty(bi.cs08.getText()))
+            return;
+
+        //Setting Date
+        try {
+            Instant instant = Instant.parse(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(
+                    bi.cs08.getText().toString()
+            )) + "T06:24:01Z");
+            localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public void cs14yOnTextChanged(CharSequence s, int start, int before, int count) {
@@ -505,8 +484,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         AgeModel age;
         if (localDate != null)
-            age = DateRepository.Companion.getCalculatedAge(form.getLocalDate(), year, month, day);
-        else age = DateRepository.Companion.getCalculatedAge(year, month, day);
+            age = DateRepository.Companion.getCalculatedAge(localDate, year, month, day);
+        else
+            age = DateRepository.Companion.getCalculatedAge(year, month, day);
         if (age == null) {
             bi.cs1403.setError("Invalid date!");
             dtFlag = false;
@@ -543,7 +523,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     }
 
 
-/*    public void hh01OnTextChanged(CharSequence s, int start, int before, int count) {
+/*    public void cs08OnTextChanged(CharSequence s, int start, int before, int count) {
         //Setting Screening/today Date
         try {
             Instant instant = Instant.parse(new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd-MM-yyyy").parse(bi.cs08.getText().toString())) + "T06:24:01Z");
