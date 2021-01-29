@@ -132,6 +132,8 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         cSFP.put("fc10", bi.fc10.getText().toString());
 
+        cSFP.put("fc10a", bi.fc10a.getText().toString());
+
         cSFP.put("fc15", bi.fc15.getText().toString());
 
         cSFP.put("fc15a", bi.fc15a.getText().toString());

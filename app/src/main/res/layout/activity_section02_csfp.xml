@@ -106,6 +106,7 @@
                     </LinearLayout>
 
                     <EditText
+                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:id="@+id/fc03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
