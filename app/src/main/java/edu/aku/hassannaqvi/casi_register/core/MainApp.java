@@ -18,10 +18,13 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import org.json.JSONArray;
+
+import java.util.List;
+
+import androidx.core.app.ActivityCompat;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 
@@ -32,6 +35,7 @@ import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 
 public class MainApp extends Application {
 
+    public static final String PROJECT_NAME = "Casi Register";
     public static final String TAG = "AppMain";
     //    public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
     public static final String _IP = "http://f38158";// .TEST server
@@ -74,6 +78,9 @@ public class MainApp extends Application {
     public static String IMEI;
     public static SharedPreferences sharedPref;
     public static String UC_ID;
+    public static List<JSONArray> uploadData;
+    SharedPreferences.Editor editor;
+
     public static String[] relationHHLst = {"Head of HH", "Wife/Husband", "Son/Daughters", "Son in law/Daughter in law", "Grand child", "Parents", "Parents in law",
             "Brother/Sister", "Brother in law/Sister in law", "Niece/Nephew", "Grand Parents", "Aunts/Uncle", "Adopted/Step child", "Domestic Servant", "Other"};
     protected static LocationManager locationManager;
