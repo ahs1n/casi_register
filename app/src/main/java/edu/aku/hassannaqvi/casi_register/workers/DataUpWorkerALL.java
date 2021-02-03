@@ -27,12 +27,9 @@ import androidx.work.WorkerParameters;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.PROJECT_NAME;
-
 
 public class DataUpWorkerALL extends Worker {
 
-    private static final Object APP_NAME = PROJECT_NAME;
     private final String TAG = "DataWorkerEN()";
 
     // to be initialised by workParams

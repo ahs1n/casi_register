@@ -9,6 +9,7 @@ import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 public final class CreateTable {
 
     public static final String DATABASE_NAME = "casi_register.db";
+    public static final String DATABASE_COPY = "casi_register_copy.db";
     public static final String DB_NAME = "casi_register_copy.db";
     public static final String PROJECT_NAME = "casi_register";
     public static final int DATABASE_VERSION = 1;

@@ -22,6 +22,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import org.json.JSONArray;
 
+import java.io.File;
 import java.util.List;
 
 import androidx.core.app.ActivityCompat;
@@ -35,7 +36,6 @@ import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 
 public class MainApp extends Application {
 
-    public static final String PROJECT_NAME = "Casi Register";
     public static final String TAG = "AppMain";
     //    public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
     public static final String _IP = "http://f38158";// .TEST server
@@ -79,6 +79,8 @@ public class MainApp extends Application {
     public static SharedPreferences sharedPref;
     public static String UC_ID;
     public static List<JSONArray> uploadData;
+    public static String[] downloadData;
+    public static File sdDir;
     SharedPreferences.Editor editor;
 
     public static String[] relationHHLst = {"Head of HH", "Wife/Husband", "Son/Daughters", "Son in law/Daughter in law", "Grand child", "Parents", "Parents in law",

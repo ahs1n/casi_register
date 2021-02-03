@@ -7,6 +7,9 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
@@ -18,8 +21,63 @@ import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.databinding.ChildEndDialogBinding
 import edu.aku.hassannaqvi.casi_register.databinding.GeneralEndDialogBinding
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity
+import edu.aku.hassannaqvi.casi_register.utils.CreateTable.*
+import java.io.*
+import java.text.SimpleDateFormat
 import java.util.*
 
+fun dbBackup(context: Context) {
+    val sharedPref = context.getSharedPreferences("listingHHSMK", Context.MODE_PRIVATE)
+    val editor = sharedPref.edit()
+    val dt: String = sharedPref.getString("dt", "").toString()
+    if (dt != SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())) {
+        editor.putString("dt", SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date()))
+        editor.apply()
+    }
+
+    var folder: File
+    folder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        File(context.getExternalFilesDir("")?.absolutePath + File.separator + PROJECT_NAME)
+    else
+        File(Environment.getExternalStorageDirectory().toString() + File.separator + PROJECT_NAME)
+
+    var success = true
+    if (!folder.exists()) {
+        success = folder.mkdirs()
+    }
+    if (success) {
+        val directoryName = folder.path + File.separator + sharedPref.getString("dt", "")
+        folder = File(directoryName)
+        if (!folder.exists()) {
+            success = folder.mkdirs()
+        }
+        if (success) {
+            val any = try {
+                val dbFile = File(context.getDatabasePath(DATABASE_NAME).path)
+                val fis = FileInputStream(dbFile)
+                val outFileName: String = directoryName + File.separator + DATABASE_COPY
+                // Open the empty db as the output stream
+                val output: OutputStream = FileOutputStream(outFileName)
+
+                // Transfer bytes from the inputfile to the outputfile
+                val buffer = ByteArray(1024)
+                var length: Int
+                while (fis.read(buffer).also { length = it } > 0) {
+                    output.write(buffer, 0, length)
+                }
+                // Close the streams
+                output.flush()
+                output.close()
+                fis.close()
+            } catch (e: IOException) {
+                e.message?.let { Log.e("dbBackup:", it) }
+            }
+        }
+    } else {
+        Toast.makeText(context, "Not create folder", Toast.LENGTH_SHORT).show()
+    }
+
+}
 
 private fun checkPermission(context: Context): IntArray {
     return intArrayOf(ContextCompat.checkSelfPermission(context,
@@ -218,4 +276,13 @@ fun getMemberIcon(gender: Int, age: String): Int? {
             else -> R.drawable.mem_icon
         }
     }
+}
+
+fun String.convertStringToUpperCase(): String {
+    /*
+     * Program that first convert all uper case into lower case then
+     * convert fist letter into uppercase
+     */
+    val calStr = this.split(" ").map { it.toLowerCase(Locale.ENGLISH).capitalize(Locale.ENGLISH) }
+    return calStr.joinToString(separator = " ")
 }

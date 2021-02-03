@@ -1108,7 +1108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //Synced functions
-    public Collection<Form> getUnsyncedForms() {
+    public JSONArray getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {

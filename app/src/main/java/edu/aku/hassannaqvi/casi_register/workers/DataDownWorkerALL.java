@@ -27,7 +27,7 @@ import androidx.work.WorkerParameters;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.PROJECT_NAME;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.PROJECT_NAME;
 
 
 public class DataDownWorkerALL extends Worker {
@@ -38,15 +38,15 @@ public class DataDownWorkerALL extends Worker {
     // to be initialised by workParams
     private final Context mContext;
     private final int position;
+    private final String nTitle = "Nsaunehal: Data Download";
     private final String uploadTable;
+    HttpURLConnection urlConnection;
     private final String uploadWhere;
     private final URL serverURL = null;
-    private final String nTitle = "Nsaunehal: Data Download";
-    HttpURLConnection urlConnection;
-    private String uploadColumns;
     private ProgressDialog pd;
     private int length;
     private Data data;
+    private String uploadColumns;
 
     public DataDownWorkerALL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -199,19 +199,15 @@ public class DataDownWorkerALL extends Worker {
 
 
             //JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
-            ///BE CAREFULL DATA.BUILDER CAN HAVE ONLY 1024O BYTES. EACH CHAR HAS 8 BYTES
-            if (result.toString().length() > 10240) {
-                data = new Data.Builder()
-                        .putString("data", String.valueOf(result).substring(0, (10240 - 1) / 8))
-                        .putInt("position", this.position)
-                        .build();
-            } else {
+            ///BE CAREFULL DATA.BUILDER CAN HAVE ONLY 1024O BYTES. EACH CHAR HAS 8 bits
 
-                data = new Data.Builder()
-                        .putString("data", String.valueOf(result))
-                        .putInt("position", this.position)
-                        .build();
-            }
+            MainApp.downloadData[this.position] = String.valueOf(result);
+
+            data = new Data.Builder()
+                    //     .putString("data", String.valueOf(result))
+                    .putInt("position", this.position)
+                    .build();
+
 
             //displayNotification(nTitle, "Uploaded successfully");
             Log.d(TAG, "doWork: " + result);
