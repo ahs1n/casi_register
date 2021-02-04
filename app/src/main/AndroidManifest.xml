@@ -90,6 +90,11 @@
             android:parentActivityName=".ui.other.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".sync.SyncActivity"
+            android:parentActivityName=".ui.other.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeEnglish" />
 
         <service android:name=".utils.DownloadFileService" />
     </application>
