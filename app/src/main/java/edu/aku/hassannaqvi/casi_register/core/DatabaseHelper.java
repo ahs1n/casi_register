@@ -147,7 +147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
         } catch (Exception e) {
-            Log.d(TAG, "syncZStandard(e): " + e);
+            Log.d(TAG, "syncVillages(e): " + e);
             db.close();
         } finally {
             db.close();
@@ -1174,7 +1174,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allForms;
+        return (JSONArray) allForms;
     }
 
 

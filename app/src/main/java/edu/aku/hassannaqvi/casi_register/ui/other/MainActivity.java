@@ -43,6 +43,7 @@ import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.casi_register.models.Identification;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
+import edu.aku.hassannaqvi.casi_register.sync.SyncActivity;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section01CS1Activity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section02CSFPActivity;

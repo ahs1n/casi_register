@@ -6,6 +6,13 @@ public class SyncModel {
     int statusID;
     String message;
 
+    public SyncModel(String tableName) {
+        this.tableName = tableName;
+//        this.status = StringUtils.EMPTY;
+        this.statusID = 0;
+//        this.message = StringUtils.EMPTY;
+    }
+
     public String gettableName() {
         return tableName;
     }

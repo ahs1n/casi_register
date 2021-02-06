@@ -17,9 +17,9 @@ public class ZStandard {
     String sex;
     String age;
     String measure;
-    String L;
-    String M;
-    String S;
+    String l;
+    String m;
+    String s;
     String cat;
 //    String REGION_DSS;
 
@@ -56,29 +56,29 @@ public class ZStandard {
 
 
     public String getL() {
-        return L;
+        return l;
     }
 
     public void setL(String l) {
-        L = l;
+        this.l = l;
     }
 
 
     public String getM() {
-        return M;
+        return m;
     }
 
     public void setM(String m) {
-        M = m;
+        this.m = m;
     }
 
 
     public String getS() {
-        return S;
+        return s;
     }
 
     public void setS(String s) {
-        S = s;
+        this.s = s;
     }
 
 
@@ -95,9 +95,9 @@ public class ZStandard {
         this.sex = jsonObject.getString(ZStandardContract.Table.COLUMN_SEX);
         this.age = jsonObject.getString(ZStandardContract.Table.COLUMN_AGE);
         this.measure = jsonObject.getString(ZStandardContract.Table.COLUMN_MEASURE);
-        this.L = jsonObject.getString(ZStandardContract.Table.COLUMN_L);
-        this.M = jsonObject.getString(ZStandardContract.Table.COLUMN_M);
-        this.S = jsonObject.getString(ZStandardContract.Table.COLUMN_S);
+        this.l = jsonObject.getString(ZStandardContract.Table.COLUMN_L);
+        this.m = jsonObject.getString(ZStandardContract.Table.COLUMN_M);
+        this.s = jsonObject.getString(ZStandardContract.Table.COLUMN_S);
         this.cat = jsonObject.getString(ZStandardContract.Table.COLUMN_CAT);
 //        this.REGION_DSS = jsonObject.getString(singleUser.REGION_DSS);
         return this;
@@ -108,9 +108,9 @@ public class ZStandard {
         this.sex = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_SEX));
         this.age = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_AGE));
         this.measure = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_MEASURE));
-        this.L = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_L));
-        this.M = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_M));
-        this.S = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_S));
+        this.l = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_L));
+        this.m = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_M));
+        this.s = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_S));
         this.cat = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_CAT));
         return this;
 
@@ -123,9 +123,9 @@ public class ZStandard {
         json.put(ZStandardContract.Table.COLUMN_SEX, this.sex == null ? JSONObject.NULL : this.sex);
         json.put(ZStandardContract.Table.COLUMN_AGE, this.age == null ? JSONObject.NULL : this.age);
         json.put(ZStandardContract.Table.COLUMN_MEASURE, this.measure == null ? JSONObject.NULL : this.measure);
-        json.put(ZStandardContract.Table.COLUMN_L, this.L == null ? JSONObject.NULL : this.L);
-        json.put(ZStandardContract.Table.COLUMN_M, this.M == null ? JSONObject.NULL : this.M);
-        json.put(ZStandardContract.Table.COLUMN_S, this.S == null ? JSONObject.NULL : this.S);
+        json.put(ZStandardContract.Table.COLUMN_L, this.l == null ? JSONObject.NULL : this.l);
+        json.put(ZStandardContract.Table.COLUMN_M, this.m == null ? JSONObject.NULL : this.m);
+        json.put(ZStandardContract.Table.COLUMN_S, this.s == null ? JSONObject.NULL : this.s);
         json.put(ZStandardContract.Table.COLUMN_CAT, this.cat == null ? JSONObject.NULL : this.cat);
         return json;
     }
