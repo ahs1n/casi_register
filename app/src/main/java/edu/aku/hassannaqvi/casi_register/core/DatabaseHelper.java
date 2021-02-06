@@ -1111,34 +1111,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public JSONArray getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                FormsTable._ID,
-                FormsTable.COLUMN_UID,
-                FormsTable.COLUMN_USERNAME,
-                FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
-                FormsTable.COLUMN_DISTRICT_CODE,
-                FormsTable.COLUMN_DISTRICT,
-                FormsTable.COLUMN_UC_CODE,
-                FormsTable.COLUMN_UC,
-                FormsTable.COLUMN_VILLAGE_CODE,
-                FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CS,
-                FormsTable.COLUMN_CSFP,
-                FormsTable.COLUMN_WS,
-                FormsTable.COLUMN_WSFP,
-                FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_ISTATUS96x,
-                FormsTable.COLUMN_ENDINGDATETIME,
-                FormsTable.COLUMN_GPSLAT,
-                FormsTable.COLUMN_GPSLNG,
-                FormsTable.COLUMN_GPSDATE,
-                FormsTable.COLUMN_GPSACC,
-                FormsTable.COLUMN_DEVICETAGID,
-                FormsTable.COLUMN_DEVICEID,
-                FormsTable.COLUMN_APPVERSION,
-        };
+        String[] columns = null;
 
         String whereClause;
         String[] whereArgs;
@@ -1150,7 +1123,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
         String orderBy = FormsTable.COLUMN_ID + " ASC";
 
-        Collection<Form> allForms = new ArrayList<>();
+        JSONArray allForms = new JSONArray();
         try {
             c = db.query(
                     FormsTable.TABLE_NAME,  // The table to query
@@ -1164,7 +1137,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 Log.d(TAG, "getUnsyncedForms: " + c.getCount());
                 Form form = new Form();
-                allForms.add(form.Hydrate(c));
+                allForms.put(form.Hydrate(c).toJSONObject());
             }
         } finally {
             if (c != null) {
@@ -1174,7 +1147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return (JSONArray) allForms;
+        return allForms;
     }
 
 
@@ -1390,7 +1363,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //Generic Un-Synced Forms
-    public void updateSyncedForms(String id) {
+    public void updateSyncedforms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column

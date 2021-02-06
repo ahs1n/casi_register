@@ -2931,6 +2931,7 @@ public class Form extends LiveData<Form> {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_APPVERSION);
+
         this.cS = jsonObject.getString(FormsTable.COLUMN_CS);
         this.cSFP = jsonObject.getString(FormsTable.COLUMN_CSFP);
         this.wS = jsonObject.getString(FormsTable.COLUMN_WS);
@@ -2963,6 +2964,7 @@ public class Form extends LiveData<Form> {
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS96x));
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
+
         cSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CS)));
         cSFPHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CSFP)));
         wSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_WS)));
@@ -3316,6 +3318,23 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_CSFP, new JSONObject(cSFPtoString()));
             json.put(FormsTable.COLUMN_WS, new JSONObject(wStoString()));
             json.put(FormsTable.COLUMN_WSFP, new JSONObject(wSFPtoString()));
+
+
+            if (this.cS != null && !this.cS.equals("")) {
+                json.put(FormsTable.COLUMN_CS, new JSONObject(this.cS));
+            }
+
+            if (this.cSFP != null && !this.cSFP.equals("")) {
+                json.put(FormsTable.COLUMN_CSFP, new JSONObject(this.cSFP));
+            }
+
+            if (this.wS != null && !this.wS.equals("")) {
+                json.put(FormsTable.COLUMN_WS, new JSONObject(this.wS));
+            }
+
+            if (this.wSFP != null && !this.wSFP.equals("")) {
+                json.put(FormsTable.COLUMN_WSFP, new JSONObject(this.wSFP));
+            }
 
 
             json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);

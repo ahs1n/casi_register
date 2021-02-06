@@ -54,7 +54,6 @@ import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.dbBackup;
 
 public class SyncActivity extends AppCompatActivity {
     private static final String TAG = "SyncActivity";
-    final Handler handler = new Handler();
     DatabaseHelper db;
     SyncListAdapter syncListAdapter;
     ActivitySyncBinding bi;
@@ -66,6 +65,7 @@ public class SyncActivity extends AppCompatActivity {
     private int totalFiles;
     private long tStart;
     private String progress;
+    final Handler handler = new Handler();
     // List<JSONArray> uploadData;
 
     @Override
@@ -447,10 +447,10 @@ public class SyncActivity extends AppCompatActivity {
                                             JSONObject jsonObject = new JSONObject(json.getString(i));
                                             Log.d(TAG, "onChanged: " + json.getString(i));
                                             if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
-                                                method.invoke(db, jsonObject.getString("_id"));
+                                                method.invoke(db, jsonObject.getString("_ID"));
                                                 sSynced++;
                                             } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
-                                                method.invoke(db, jsonObject.getString("_id"));
+                                                method.invoke(db, jsonObject.getString("_ID"));
                                                 sDuplicate++;
                                             } else {
                                                 sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
