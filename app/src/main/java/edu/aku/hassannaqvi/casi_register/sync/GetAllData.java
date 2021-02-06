@@ -134,7 +134,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     break;
                 case "Zstandards":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = ZStandardContract.Table.TABLE_NAME;
+                    tableName = ZStandardContract.ZScoreTable.TABLE_NAME;
                     position = 3;
                     break;
             }

@@ -1471,7 +1471,24 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/ZScore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/checkZScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="CheckZScore"
+                    android:text="GET ZScore" />
+            </LinearLayout>
             <!-- cs24  CheckBox   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVcs24"

@@ -76,15 +76,15 @@ public final class CreateTable {
             ");";
 
 
-    public static final String SQL_CREATE_ZSTANDARD = "CREATE TABLE " + ZStandardContract.Table.TABLE_NAME + " (" +
-            ZStandardContract.Table._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            ZStandardContract.Table.COLUMN_SEX + " TEXT, " +
-            ZStandardContract.Table.COLUMN_AGE + " TEXT, " +
-            ZStandardContract.Table.COLUMN_MEASURE + " TEXT, " +
-            ZStandardContract.Table.COLUMN_L + " TEXT, " +
-            ZStandardContract.Table.COLUMN_M + " TEXT, " +
-            ZStandardContract.Table.COLUMN_S + " TEXT, " +
-            ZStandardContract.Table.COLUMN_CAT + " TEXT " +
+    public static final String SQL_CREATE_ZSTANDARD = "CREATE TABLE " + ZStandardContract.ZScoreTable.TABLE_NAME + " (" +
+            ZStandardContract.ZScoreTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            ZStandardContract.ZScoreTable.COLUMN_SEX + " TEXT, " +
+            ZStandardContract.ZScoreTable.COLUMN_AGE + " TEXT, " +
+            ZStandardContract.ZScoreTable.COLUMN_MEASURE + " TEXT, " +
+            ZStandardContract.ZScoreTable.COLUMN_L + " TEXT, " +
+            ZStandardContract.ZScoreTable.COLUMN_M + " TEXT, " +
+            ZStandardContract.ZScoreTable.COLUMN_S + " TEXT, " +
+            ZStandardContract.ZScoreTable.COLUMN_CAT + " TEXT " +
             ");";
 
 }
