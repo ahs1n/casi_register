@@ -100,7 +100,7 @@ public class ZScore {
         Log.d("TAG", "getZScore_HLAZ s4: " + s4);
         Log.d("TAG", "getZScore_HLAZ s5: " + s5);*/
         // (power((10.2/m),l)-1)/(s*l)
-        return (Math.pow((y / Mt), Lt) - 1) / (St * Lt);
+        return (Math.pow((y / t), Lt) - 1) / (St * Lt);
 
     }
 
@@ -129,7 +129,7 @@ public class ZScore {
         Log.d("TAG", "getZScore_HLAZ s4: " + s4);
         Log.d("TAG", "getZScore_HLAZ s5: " + s5);
         Log.d("TAG", "getZScore_HLAZ WAZ: " + (Math.pow((y / Mt), Lt) - 1) / (St * Lt));
-        return (Math.pow((y / Mt), Lt) - 1) / (St * Lt);
+        return (Math.pow((y / t), Lt) - 1) / (St * Lt);
     }
 
     public double getZScore_WHZ(String weight, String height) {
@@ -139,6 +139,6 @@ public class ZScore {
 
         populateWHLMS();
 
-        return (Math.pow((y / Mt), Lt) - 1) / (St * Lt);
+        return (Math.pow((y / t), Lt) - 1) / (St * Lt);
     }
 }
