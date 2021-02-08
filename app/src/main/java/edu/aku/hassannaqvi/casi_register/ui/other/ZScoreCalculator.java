@@ -1,17 +1,9 @@
 package edu.aku.hassannaqvi.casi_register.ui.other;
 
-import android.os.Bundle;
-import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
-import edu.aku.hassannaqvi.casi_register.R;
-import edu.aku.hassannaqvi.casi_register.core.ZScore;
-import edu.aku.hassannaqvi.casi_register.databinding.ActivityZScoreCalculatorBinding;
 
 public class ZScoreCalculator extends AppCompatActivity {
-    ActivityZScoreCalculatorBinding bi;
+  /*  ActivityZScoreCalculatorBinding bi;
     private int age;
     private int gender;
     private float measurement;
@@ -45,8 +37,8 @@ public class ZScoreCalculator extends AppCompatActivity {
         this.S = Float.parseFloat(bi.txtS.getText().toString());
 
         this.zs = new ZScore();
-        this.zScore = (float) zs.calcZS(this.age, this.gender, this.measurement, this.cat, this.L, this.M, this.S);
+//        this.zScore = (float) zs.calcZS(this.age, this.gender, this.measurement, this.cat, this.L, this.M, this.S);
 
         bi.zsResult.setText((String.valueOf(this.zScore)));
-    }
+    }*/
 }

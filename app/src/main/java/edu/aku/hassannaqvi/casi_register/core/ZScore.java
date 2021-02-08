@@ -4,8 +4,6 @@ import android.util.Log;
 
 import java.util.List;
 
-import static java.lang.Math.abs;
-
 public class ZScore {
 
 
@@ -46,129 +44,17 @@ public class ZScore {
         this.gender = gender;
     }
 
-    public double calcZS(int age, int gender, float measurement, String cat, float L, float M, float S) {
-        Log.d("ZScore", "calcZS: Starting");
-
-
-        this.gender = gender;
-        t = age;
-        y = measurement;
-        this.cat = cat;
-
-        this.Lt = (double) L * t;
-        this.Mt = (double) M * t;
-        this.St = (double) S * t;
-
-        // Fetch L, M, & S from database
-        populateLMS();
-
-        // Calculate Z(ind)
-        calcZind();
-
-        Log.d("TAG", "ZScore: " +
-                "\n t: " + t +
-                "\n y: " + y +
-                "\n L: " + Lt +
-                "\n M: " + Mt +
-                "\n S: " + St +
-                "\n zInd: " + zInd +
-                "\n SD3pos: " + SD3pos +
-                "\n SD3neg: " + SD3neg +
-                "\n SD23pos: " + SD23pos +
-                "\n SD23neg: " + SD23neg +
-                "\n zScore: " + zScore
-
-        );
-
-        return zScore;
-    }
-
-
-    private void calcZind() {
-
-        zInd = (Math.pow(y / Mt, Lt)) - 1 / (St * Lt);
-
-        // Calculate SD3neg
-        calcSD3neg();
-        // Calculate SD3pos
-        calcSD3pos();
-
-    }
-
-    private double calcSD(int num) {
-
-        double sd01 = 1 + Lt * St;
-
-        return num > 0 ? Mt * Math.pow((sd01 * num), (1 / Lt)) : (Mt * Math.pow((sd01 * abs(num)), (1 / Lt))) * -1;
-
-    }
-
-    private void calcSD3pos() {
-
-        SD3pos = (Mt * Math.pow(1 + (Lt * St * 3), (1 / (Lt))));
-
-        // Calculate SD23pos
-        calcSD23pos();
-    }
-
-    private void calcSD3neg() {
-
-        double sd3neg01 = (1 + Lt * St * -3);
-
-        Log.d("TAG", "sd3neg01: " + sd3neg01);
-        //SD3neg = powa;
-        //SD3neg = (Mt * Math.pow(1 + (Lt  * St * -3), (1 / (Lt ))));
-        SD3neg = (Mt * Math.pow(abs(sd3neg01), (1 / Lt)) * -1);
-        Log.d("TAG", "SD3neg: " + SD3neg);
-        // Calculate SD23neg
-        calcSD23neg();
-    }
-
-    private void calcSD23pos() {
-
-        SD23pos = (calcSD(3) - calcSD(2));
-        // Calculate ZIndFinal
-        caclZScoreFinal();
-    }
-
-    private void calcSD23neg() {
-
-        SD23neg = calcSD(-2) - calcSD(-3);
-
-
-        // Calculate ZIndFinal
-        caclZScoreFinal();
-
-    }
-
-
-    private void caclZScoreFinal() {
-        if (flag) {
-
-            if (zInd <= 3 && zInd >= -3) {
-                zScore = zInd;
-            } else if (zInd > 3) {
-                zScore = (3 + ((y - calcSD(3)) / SD23pos));
-            } else if (zInd < -3) {
-                zScore = (-3 + ((y - SD3neg) / SD23neg));
-            }
-            flag = false;
-        } else {
-            flag = true;
-        }
-
-    }
-
     private void populateWHLMS() {
 
         //TODO: Fetch L,M & S from database
         db = MainApp.appInfo.getDbHelper();
 
 
-        whlms = db.getWHLMS(height, gender, catA);
+        lms = db.getWHLMS(Double.valueOf(height), gender, catA);
         if (lms.size() > 0) {
             this.Lt = Double.parseDouble(lms.get(0));
             this.Mt = Double.parseDouble(lms.get(1));
+            this.St = Double.parseDouble(lms.get(2));
         }
     }
 
@@ -177,64 +63,16 @@ public class ZScore {
         //TODO: Fetch L,M & S from database
         db = MainApp.appInfo.getDbHelper();
 
-
         lms = db.getLMS(t, gender, catA, catB);
         if (lms.size() > 0) {
             this.Lt = Double.parseDouble(lms.get(0));
             this.Mt = Double.parseDouble(lms.get(1));
             this.St = Double.parseDouble(lms.get(2));
         }
+       /* this.Lt = -0.0137;
+        this.Mt = 12.1548;
+        this.St = 0.11427;*/
 
-      /*  switch (cat) {
-            case "HA":
-                if (gender == 1) {
-                    this.Lt = 1*t;
-                    this.Mt = 51.6427*t;
-                    this.St = 0.03693*t;
-                } else {
-                    this.Lt = 1*t;
-                    this.Mt = 50.8365*t;
-                    this.St = 0.03722*t;
-                }
-                break;
-            case "WA":
-                if (gender == 1) {
-                    this.Lt = 0.2681*t;
-                    this.Mt = 3.5941*t;
-                    this.St = 0.14339*t;
-
-                } else {
-                    this.Lt = 1*t;
-                    this.Mt = 0.2497*t;
-                    this.St = 3.4314*t;
-                }
-                break;
-            case "WH":
-                if (gender == 1) {
-                    this.Lt = -0.3521*t;
-                    this.Mt = 15.3576*t;
-                    this.St = 0.08229*t;
-
-                } else {
-                    this.Lt = -0.3833*t;
-                    this.Mt = 15.2246*t;
-                    this.St = 0.09088*t;
-                }
-                break;
-            case "WL":
-                if (gender == 1) {
-                    this.Lt = -0.3521*t;
-                    this.Mt = 15.1637*t;
-                    this.St = 0.08198*t;
-
-                } else {
-                    this.Lt = -0.3833*t;
-                    this.Mt = 15.0267*t;
-                    this.St = 0.09069*t;
-                }
-                break;
-
-        }*/
     }
 
     public double getZScore_HLAZ(String measurment) {
@@ -245,7 +83,24 @@ public class ZScore {
 
         populateLMS();
 
-        return ((Math.pow(this.y / Mt, Lt)) - 1 / (St * Lt));
+    /*    double s1 = y / Mt;
+        double s2 = Math.pow(s1, Lt);
+        double s3 = s2 - 1;
+        double s4 = St * Lt;
+        double s5 = s3 / s4;
+
+        Log.d("TAG", "getZScore_HLAZ y: " + y);
+        Log.d("TAG", "getZScore_HLAZ mt: " + Mt);
+        Log.d("TAG", "getZScore_HLAZ lt: " + Lt);
+        Log.d("TAG", "getZScore_HLAZ st: " + St);
+        Log.d("TAG", "getZScore_HLAZ mes: " + measurment);
+        Log.d("TAG", "getZScore_HLAZ s1: " + s1);
+        Log.d("TAG", "getZScore_HLAZ s2: " + s2);
+        Log.d("TAG", "getZScore_HLAZ s3: " + s3);
+        Log.d("TAG", "getZScore_HLAZ s4: " + s4);
+        Log.d("TAG", "getZScore_HLAZ s5: " + s5);*/
+        // (power((10.2/m),l)-1)/(s*l)
+        return (Math.pow((y / Mt), Lt) - 1) / (St * Lt);
 
     }
 
@@ -257,17 +112,33 @@ public class ZScore {
 
         populateLMS();
 
-        return ((Math.pow(this.y / Mt, Lt)) - 1 / (St * Lt));
+        double s1 = y / Mt;
+        double s2 = Math.pow(s1, Lt);
+        double s3 = s2 - 1;
+        double s4 = St * Lt;
+        double s5 = s3 / s4;
+
+        Log.d("TAG", "getZScore_HLAZ y: " + y);
+        Log.d("TAG", "getZScore_HLAZ mt: " + Mt);
+        Log.d("TAG", "getZScore_HLAZ lt: " + Lt);
+        Log.d("TAG", "getZScore_HLAZ st: " + St);
+        Log.d("TAG", "getZScore_HLAZ mes: " + measurment);
+        Log.d("TAG", "getZScore_HLAZ s1: " + s1);
+        Log.d("TAG", "getZScore_HLAZ s2: " + s2);
+        Log.d("TAG", "getZScore_HLAZ s3: " + s3);
+        Log.d("TAG", "getZScore_HLAZ s4: " + s4);
+        Log.d("TAG", "getZScore_HLAZ s5: " + s5);
+        Log.d("TAG", "getZScore_HLAZ WAZ: " + (Math.pow((y / Mt), Lt) - 1) / (St * Lt));
+        return (Math.pow((y / Mt), Lt) - 1) / (St * Lt);
     }
 
     public double getZScore_WHZ(String weight, String height) {
         this.height = height;
         this.catA = "WH";
-        this.catB = "WH";
         this.y = Double.parseDouble(weight);
 
         populateWHLMS();
 
-        return ((Math.pow(this.y / Mt, Lt)) - 1 / (St * Lt));
+        return (Math.pow((y / Mt), Lt) - 1) / (St * Lt);
     }
 }

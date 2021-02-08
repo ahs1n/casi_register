@@ -30,6 +30,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.databinding.DataBindingUtil;
+
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
@@ -43,9 +47,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AppInfo;
@@ -53,6 +54,7 @@ import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityLoginBinding;
 import edu.aku.hassannaqvi.casi_register.sync.SyncActivity;
+import edu.aku.hassannaqvi.casi_register.ui.sections.Section01CS1Activity;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MINIMUM_DISTANCE_CHANGE_FOR_UPDATES;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MINIMUM_TIME_BETWEEN_UPDATES;
@@ -534,6 +536,19 @@ public class LoginActivity extends Activity {
     public void openZScoreCalc(View view) {
         startActivity(new Intent(LoginActivity.this, ZScoreCalculator.class));
 
+    }
+
+    public void calcZ(View view) {
+
+        Intent iLogin = new Intent(LoginActivity.this, Section01CS1Activity.class);
+        startActivity(iLogin);
+        double y = 10.2;
+        double Mt = 12.1548;
+        double Lt = -0.0137;
+        double St = 0.11427;
+
+
+        Toast.makeText(this, String.valueOf((Math.pow((y / Mt), Lt) - 1) / (St * Lt)), Toast.LENGTH_SHORT).show();
     }
 
     public class GPSLocationListener implements LocationListener {

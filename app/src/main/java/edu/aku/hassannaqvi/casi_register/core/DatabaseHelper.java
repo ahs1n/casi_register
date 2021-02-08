@@ -1433,7 +1433,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lms;
     }
 
-    public List<String> getWHLMS(String height, int gender, String catA) {
+    public List<String> getWHLMS(Double height, int gender, String catA) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor c = db.rawQuery("SELECT l,m,s " +
@@ -1444,8 +1444,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "AND "
                         + ZScoreTable.COLUMN_CAT + "=?"
                 ,
-                new String[]{height, String.valueOf(gender), catA});
+                new String[]{String.valueOf(height), String.valueOf(gender), catA});
         List<String> whlms = null;
+        Log.d(TAG, "getWHLMS: height " + height);
+        Log.d(TAG, "getWHLMS: " + c.getCount());
         while (c.moveToNext()) {
             whlms = new ArrayList<>();
             whlms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_L)));

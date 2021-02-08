@@ -538,15 +538,17 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 && (bi.cs1301.isChecked() || bi.cs1302.isChecked())
         ) {
 
+
             int ageinmonths = Integer.parseInt(bi.cs1502.getText().toString()) + Integer.parseInt(bi.cs1501.getText().toString());
             int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
             int gender = bi.cs1301.isChecked() ? 1 : bi.cs1302.isChecked() ? 2 : 0;
 
-            ZScore zs = new ZScore(ageindays, gender);
-
-            HLAZ = zs.getZScore_HLAZ(bi.cs21.getText().toString());
-            WAZ = zs.getZScore_WAZ(bi.cs22.getText().toString());
-            WHZ = zs.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
+            ZScore ha = new ZScore(ageindays, gender);
+            HLAZ = ha.getZScore_HLAZ(bi.cs21.getText().toString());
+            ZScore wa = new ZScore(ageindays, gender);
+            WAZ = wa.getZScore_WAZ(bi.cs22.getText().toString());
+            ZScore wh = new ZScore(ageindays, gender);
+            WHZ = wh.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
 
             bi.ZScore.setText("HLAZ: " + HLAZ + " \r\nWAZ: " + WAZ + " \r\nWHZ: " + WHZ);
         } else {
