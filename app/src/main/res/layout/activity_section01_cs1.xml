@@ -1040,7 +1040,7 @@
                         android:inputType="number"
                         android:maxLength="3"
                         app:mask="#.#"
-                        app:maxValue="5"
+                        app:maxValue="9.9"
                         app:minValue="0.9"
                         app:pattern="^(\\d{1,1}\\.\\d{1,1})$"
                         app:type="range" />
