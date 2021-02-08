@@ -12,7 +12,7 @@ import android.provider.BaseColumns;
 public class ZStandardContract {
     public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.casi_register";
 
-    public static abstract class Table implements BaseColumns {
+    public static abstract class ZScoreTable implements BaseColumns {
 
         public static final String TABLE_NAME = "zstandards";
 

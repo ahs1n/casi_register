@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -24,12 +27,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
+import edu.aku.hassannaqvi.casi_register.core.ZScore;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs1Binding;
 import edu.aku.hassannaqvi.casi_register.datecollection.AgeModel;
 import edu.aku.hassannaqvi.casi_register.datecollection.DateRepository;
@@ -38,6 +40,7 @@ import edu.aku.hassannaqvi.casi_register.ui.other.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
 
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.DAYS_IN_A_MONTH;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class Section01CS1Activity extends AppCompatActivity implements EndSectionActivity {
@@ -46,6 +49,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     boolean dtFlag = false;
     LocalDate calculatedDOB;
     LocalDate localDate;
+    private double HLAZ;
+    private double WAZ;
+    private double WHZ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -522,6 +528,34 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void CheckZScore(View view) {
+        if (!bi.cs1501.getText().toString().equals("")
+                && !bi.cs1502.getText().toString().equals("")
+                && !bi.cs21.getText().toString().equals("")
+                && !bi.cs22.getText().toString().equals("")
+                && (bi.cs1301.isChecked() || bi.cs1302.isChecked())
+        ) {
+
+            int ageinmonths = Integer.parseInt(bi.cs1502.getText().toString()) + Integer.parseInt(bi.cs1501.getText().toString());
+            int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
+            int gender = bi.cs1301.isChecked() ? 1 : bi.cs1302.isChecked() ? 2 : 0;
+
+            ZScore zs = new ZScore(ageindays, gender);
+
+            HLAZ = zs.getZScore_HLAZ(bi.cs21.getText().toString());
+            WAZ = zs.getZScore_WAZ(bi.cs22.getText().toString());
+            WHZ = zs.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
+
+            bi.ZScore.setText("HLAZ: " + HLAZ + " \r\nWAZ: " + WAZ + " \r\nWHZ: " + WHZ);
+        } else {
+
+            Toast.makeText(this, "Z-Score cannot be evaluated with missing values.", Toast.LENGTH_SHORT).show();
+
+        }
+
+
     }
 
 

@@ -30,6 +30,7 @@ import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 
+import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
@@ -158,7 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public int syncZStandard(JSONArray zsList) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(ZStandardContract.Table.TABLE_NAME, null, null);
+        db.delete(ZScoreTable.TABLE_NAME, null, null);
         int insertCount = 0;
         try {
             for (int i = 0; i < zsList.length(); i++) {
@@ -169,14 +170,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Zstandard.Sync(jsonObjectzs);
                 ContentValues values = new ContentValues();
 
-                values.put(ZStandardContract.Table.COLUMN_SEX, Zstandard.getSex());
-                values.put(ZStandardContract.Table.COLUMN_AGE, Zstandard.getAge());
-                values.put(ZStandardContract.Table.COLUMN_MEASURE, Zstandard.getMeasure());
-                values.put(ZStandardContract.Table.COLUMN_L, Zstandard.getL());
-                values.put(ZStandardContract.Table.COLUMN_M, Zstandard.getM());
-                values.put(ZStandardContract.Table.COLUMN_S, Zstandard.getS());
-                values.put(ZStandardContract.Table.COLUMN_CAT, Zstandard.getCat());
-                long rowID = db.insert(ZStandardContract.Table.TABLE_NAME, null, values);
+                values.put(ZStandardContract.ZScoreTable.COLUMN_SEX, Zstandard.getSex());
+                values.put(ZStandardContract.ZScoreTable.COLUMN_AGE, Zstandard.getAge());
+                values.put(ZStandardContract.ZScoreTable.COLUMN_MEASURE, Zstandard.getMeasure());
+                values.put(ZStandardContract.ZScoreTable.COLUMN_L, Zstandard.getL());
+                values.put(ZStandardContract.ZScoreTable.COLUMN_M, Zstandard.getM());
+                values.put(ZStandardContract.ZScoreTable.COLUMN_S, Zstandard.getS());
+                values.put(ZStandardContract.ZScoreTable.COLUMN_CAT, Zstandard.getCat());
+                long rowID = db.insert(ZScoreTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
 
@@ -527,13 +528,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                ZStandardContract.Table.COLUMN_SEX,
-                ZStandardContract.Table.COLUMN_AGE,
-                ZStandardContract.Table.COLUMN_MEASURE,
-                ZStandardContract.Table.COLUMN_L,
-                ZStandardContract.Table.COLUMN_M,
-                ZStandardContract.Table.COLUMN_S,
-                ZStandardContract.Table.COLUMN_CAT
+                ZStandardContract.ZScoreTable.COLUMN_SEX,
+                ZStandardContract.ZScoreTable.COLUMN_AGE,
+                ZStandardContract.ZScoreTable.COLUMN_MEASURE,
+                ZStandardContract.ZScoreTable.COLUMN_L,
+                ZStandardContract.ZScoreTable.COLUMN_M,
+                ZStandardContract.ZScoreTable.COLUMN_S,
+                ZStandardContract.ZScoreTable.COLUMN_CAT
         };
 
         String whereClause = null;
@@ -542,12 +543,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                ZStandardContract.Table.COLUMN_SEX + " ASC";
+                ZStandardContract.ZScoreTable.COLUMN_SEX + " ASC";
 
         Collection<ZStandard> allZs = new ArrayList<ZStandard>();
         try {
             c = db.query(
-                    ZStandardContract.Table.TABLE_NAME,  // The table to query
+                    ZScoreTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -575,27 +576,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                "DISTINCT " + ZStandardContract.Table.COLUMN_SEX,
-                ZStandardContract.Table.COLUMN_AGE,
-                ZStandardContract.Table.COLUMN_MEASURE,
-                ZStandardContract.Table.COLUMN_L,
-                ZStandardContract.Table.COLUMN_M,
-                ZStandardContract.Table.COLUMN_S,
-                ZStandardContract.Table.COLUMN_CAT
+                "DISTINCT " + ZStandardContract.ZScoreTable.COLUMN_SEX,
+                ZStandardContract.ZScoreTable.COLUMN_AGE,
+                ZStandardContract.ZScoreTable.COLUMN_MEASURE,
+                ZStandardContract.ZScoreTable.COLUMN_L,
+                ZStandardContract.ZScoreTable.COLUMN_M,
+                ZStandardContract.ZScoreTable.COLUMN_S,
+                ZStandardContract.ZScoreTable.COLUMN_CAT
         };
 
         String whereClause = null;
         String[] whereArgs = null;
-        String groupBy = ZStandardContract.Table.COLUMN_SEX;
+        String groupBy = ZStandardContract.ZScoreTable.COLUMN_SEX;
         String having = null;
 
         String orderBy =
-                ZStandardContract.Table.COLUMN_SEX + " ASC";
+                ZStandardContract.ZScoreTable.COLUMN_SEX + " ASC";
 
         Collection<ZStandard> allzs = new ArrayList<ZStandard>();
         try {
             c = db.query(
-                    ZStandardContract.Table.TABLE_NAME,  // The table to query
+                    ZScoreTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -666,22 +667,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                ZStandardContract.Table.COLUMN_SEX,
-                ZStandardContract.Table.COLUMN_MEASURE
+                ZStandardContract.ZScoreTable.COLUMN_SEX,
+                ZStandardContract.ZScoreTable.COLUMN_MEASURE
         };
 
-        String whereClause = ZStandardContract.Table.COLUMN_SEX + "=?";
+        String whereClause = ZStandardContract.ZScoreTable.COLUMN_SEX + "=?";
         String[] whereArgs = new String[]{uc};
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                ZStandardContract.Table.COLUMN_SEX + " ASC";
+                ZStandardContract.ZScoreTable.COLUMN_SEX + " ASC";
 
         Collection<ZStandard> allzs = new ArrayList<ZStandard>();
         try {
             c = db.query(
-                    ZStandardContract.Table.TABLE_NAME,  // The table to query
+                    ZScoreTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -1111,7 +1112,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public JSONArray getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = null;
+        String[] columns = {
+                FormsTable._ID,
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_USERNAME,
+                FormsTable.COLUMN_SYSDATE,
+                FormsTable.COLUMN_COUNTRY_CODE,
+                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_DISTRICT_CODE,
+                FormsTable.COLUMN_DISTRICT,
+                FormsTable.COLUMN_UC_CODE,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE_CODE,
+                FormsTable.COLUMN_VILLAGE,
+                FormsTable.COLUMN_CS,
+                FormsTable.COLUMN_CSFP,
+                FormsTable.COLUMN_WS,
+                FormsTable.COLUMN_WSFP,
+                FormsTable.COLUMN_ISTATUS,
+                FormsTable.COLUMN_ISTATUS96x,
+                FormsTable.COLUMN_ENDINGDATETIME,
+                FormsTable.COLUMN_GPSLAT,
+                FormsTable.COLUMN_GPSLNG,
+                FormsTable.COLUMN_GPSDATE,
+                FormsTable.COLUMN_GPSACC,
+                FormsTable.COLUMN_DEVICETAGID,
+                FormsTable.COLUMN_DEVICEID,
+                FormsTable.COLUMN_APPVERSION,
+        };
 
         String whereClause;
         String[] whereArgs;
@@ -1381,4 +1409,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
+    public List<String> getLMS(int age, int gender, String catA, String catB) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor c = db.rawQuery("SELECT l,m,s " +
+                        "FROM " + ZScoreTable.TABLE_NAME + " " +
+                        "WHERE " + ZScoreTable.COLUMN_AGE + "=? " +
+                        "AND "
+                        + ZScoreTable.COLUMN_SEX + "=?" +
+                        "AND "
+                        + ZScoreTable.COLUMN_CAT + " IN (?,?)"
+                ,
+                new String[]{String.valueOf(age), String.valueOf(gender), catA, catB});
+        List<String> lms = null;
+        while (c.moveToNext()) {
+            lms = new ArrayList<>();
+            lms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_L)));
+            lms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_M)));
+            lms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_S)));
+
+        }
+        return lms;
+    }
+
+    public List<String> getWHLMS(String height, int gender, String catA) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor c = db.rawQuery("SELECT l,m,s " +
+                        "FROM " + ZScoreTable.TABLE_NAME + " " +
+                        "WHERE " + ZScoreTable.COLUMN_MEASURE + "=? " +
+                        "AND "
+                        + ZScoreTable.COLUMN_SEX + "=?" +
+                        "AND "
+                        + ZScoreTable.COLUMN_CAT + "=?"
+                ,
+                new String[]{height, String.valueOf(gender), catA});
+        List<String> whlms = null;
+        while (c.moveToNext()) {
+            whlms = new ArrayList<>();
+            whlms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_L)));
+            whlms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_M)));
+            whlms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_S)));
+
+        }
+        return whlms;
+    }
+
+
 }

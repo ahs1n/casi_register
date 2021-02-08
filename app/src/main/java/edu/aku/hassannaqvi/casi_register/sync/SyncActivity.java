@@ -7,18 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -32,6 +20,19 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkContinuation;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
@@ -178,7 +179,7 @@ public class SyncActivity extends AppCompatActivity {
 
                 }*/
                 downloadTables.add(new SyncModel(VillagesContract.Table.TABLE_NAME));
-                downloadTables.add(new SyncModel(ZStandardContract.Table.TABLE_NAME));
+                downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
@@ -273,7 +274,7 @@ public class SyncActivity extends AppCompatActivity {
                                             insertCount = db.syncVillages(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
                                             break;
-                                        case ZStandardContract.Table.TABLE_NAME:
+                                        case ZStandardContract.ZScoreTable.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncZStandard(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));

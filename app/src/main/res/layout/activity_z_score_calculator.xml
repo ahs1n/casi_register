@@ -281,7 +281,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
                                 android:inputType="numberDecimal"
-                                android:maxLength="5"
+                                android:maxLength="9"
                                 android:text="0.082" />
                         </LinearLayout>
 
@@ -308,7 +308,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
                                 android:inputType="numberDecimal"
-                                android:maxLength="5"
+                                android:maxLength="9"
                                 android:text="9.153" />
                         </LinearLayout>
 
@@ -334,7 +334,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
                                 android:inputType="numberDecimal"
-                                android:maxLength="5"
+                                android:maxLength="9"
                                 android:text="1.109" />
                         </LinearLayout>
                     </LinearLayout>

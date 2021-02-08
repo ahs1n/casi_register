@@ -17,9 +17,9 @@ public class ZStandard {
     String sex;
     String age;
     String measure;
-    String l;
-    String m;
-    String s;
+    String L;
+    String M;
+    String S;
     String cat;
 //    String REGION_DSS;
 
@@ -27,6 +27,21 @@ public class ZStandard {
         // Default Constructor
     }
 
+    public ZStandard(String age, String height, String weight, double L, double M, double S) {
+
+
+    }
+
+    public double getHLAZ() {
+        int y = Integer.parseInt(measure);
+        double Lz = Double.parseDouble(L);
+        double Mz = Double.parseDouble(M);
+        double Sz = Double.parseDouble(S);
+
+
+        return (Math.pow(y / Mz, Lz)) - (1 / (Sz * Lz));
+
+    }
 
     public String getSex() {
         return sex;
@@ -56,29 +71,29 @@ public class ZStandard {
 
 
     public String getL() {
-        return l;
+        return L;
     }
 
     public void setL(String l) {
-        this.l = l;
+        L = l;
     }
 
 
     public String getM() {
-        return m;
+        return M;
     }
 
     public void setM(String m) {
-        this.m = m;
+        M = m;
     }
 
 
     public String getS() {
-        return s;
+        return S;
     }
 
     public void setS(String s) {
-        this.s = s;
+        S = s;
     }
 
 
@@ -92,26 +107,26 @@ public class ZStandard {
 
 
     public ZStandard Sync(JSONObject jsonObject) throws JSONException {
-        this.sex = jsonObject.getString(ZStandardContract.Table.COLUMN_SEX);
-        this.age = jsonObject.getString(ZStandardContract.Table.COLUMN_AGE);
-        this.measure = jsonObject.getString(ZStandardContract.Table.COLUMN_MEASURE);
-        this.l = jsonObject.getString(ZStandardContract.Table.COLUMN_L);
-        this.m = jsonObject.getString(ZStandardContract.Table.COLUMN_M);
-        this.s = jsonObject.getString(ZStandardContract.Table.COLUMN_S);
-        this.cat = jsonObject.getString(ZStandardContract.Table.COLUMN_CAT);
+        this.sex = jsonObject.getString(ZStandardContract.ZScoreTable.COLUMN_SEX);
+        this.age = jsonObject.getString(ZStandardContract.ZScoreTable.COLUMN_AGE);
+        this.measure = jsonObject.getString(ZStandardContract.ZScoreTable.COLUMN_MEASURE);
+        this.L = jsonObject.getString(ZStandardContract.ZScoreTable.COLUMN_L);
+        this.M = jsonObject.getString(ZStandardContract.ZScoreTable.COLUMN_M);
+        this.S = jsonObject.getString(ZStandardContract.ZScoreTable.COLUMN_S);
+        this.cat = jsonObject.getString(ZStandardContract.ZScoreTable.COLUMN_CAT);
 //        this.REGION_DSS = jsonObject.getString(singleUser.REGION_DSS);
         return this;
 
     }
 
     public ZStandard Hydrate(Cursor cursor) {
-        this.sex = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_SEX));
-        this.age = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_AGE));
-        this.measure = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_MEASURE));
-        this.l = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_L));
-        this.m = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_M));
-        this.s = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_S));
-        this.cat = cursor.getString(cursor.getColumnIndex(ZStandardContract.Table.COLUMN_CAT));
+        this.sex = cursor.getString(cursor.getColumnIndex(ZStandardContract.ZScoreTable.COLUMN_SEX));
+        this.age = cursor.getString(cursor.getColumnIndex(ZStandardContract.ZScoreTable.COLUMN_AGE));
+        this.measure = cursor.getString(cursor.getColumnIndex(ZStandardContract.ZScoreTable.COLUMN_MEASURE));
+        this.L = cursor.getString(cursor.getColumnIndex(ZStandardContract.ZScoreTable.COLUMN_L));
+        this.M = cursor.getString(cursor.getColumnIndex(ZStandardContract.ZScoreTable.COLUMN_M));
+        this.S = cursor.getString(cursor.getColumnIndex(ZStandardContract.ZScoreTable.COLUMN_S));
+        this.cat = cursor.getString(cursor.getColumnIndex(ZStandardContract.ZScoreTable.COLUMN_CAT));
         return this;
 
     }
@@ -120,13 +135,13 @@ public class ZStandard {
     public JSONObject toJSONObject() throws JSONException {
 
         JSONObject json = new JSONObject();
-        json.put(ZStandardContract.Table.COLUMN_SEX, this.sex == null ? JSONObject.NULL : this.sex);
-        json.put(ZStandardContract.Table.COLUMN_AGE, this.age == null ? JSONObject.NULL : this.age);
-        json.put(ZStandardContract.Table.COLUMN_MEASURE, this.measure == null ? JSONObject.NULL : this.measure);
-        json.put(ZStandardContract.Table.COLUMN_L, this.l == null ? JSONObject.NULL : this.l);
-        json.put(ZStandardContract.Table.COLUMN_M, this.m == null ? JSONObject.NULL : this.m);
-        json.put(ZStandardContract.Table.COLUMN_S, this.s == null ? JSONObject.NULL : this.s);
-        json.put(ZStandardContract.Table.COLUMN_CAT, this.cat == null ? JSONObject.NULL : this.cat);
+        json.put(ZStandardContract.ZScoreTable.COLUMN_SEX, this.sex == null ? JSONObject.NULL : this.sex);
+        json.put(ZStandardContract.ZScoreTable.COLUMN_AGE, this.age == null ? JSONObject.NULL : this.age);
+        json.put(ZStandardContract.ZScoreTable.COLUMN_MEASURE, this.measure == null ? JSONObject.NULL : this.measure);
+        json.put(ZStandardContract.ZScoreTable.COLUMN_L, this.L == null ? JSONObject.NULL : this.L);
+        json.put(ZStandardContract.ZScoreTable.COLUMN_M, this.M == null ? JSONObject.NULL : this.M);
+        json.put(ZStandardContract.ZScoreTable.COLUMN_S, this.S == null ? JSONObject.NULL : this.S);
+        json.put(ZStandardContract.ZScoreTable.COLUMN_CAT, this.cat == null ? JSONObject.NULL : this.cat);
         return json;
     }
 

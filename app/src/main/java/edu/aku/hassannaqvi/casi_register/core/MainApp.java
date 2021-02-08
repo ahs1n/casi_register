@@ -18,6 +18,8 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import org.json.JSONArray;
@@ -25,7 +27,6 @@ import org.json.JSONArray;
 import java.io.File;
 import java.util.List;
 
-import androidx.core.app.ActivityCompat;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 
@@ -68,6 +69,7 @@ public class MainApp extends Application {
     public static final long MILLISECONDS_IN_MONTH = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_MONTH;
     private static final long DAYS_IN_2_YEAR = 365 * 2;
     public static final long MILLISECONDS_IN_2Years = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_2_YEAR;
+    public static final double DAYS_IN_A_MONTH = 30.4375;
     public static String deviceId;
     public static OnItemClick itemClick;
     public static AppInfo appInfo;
