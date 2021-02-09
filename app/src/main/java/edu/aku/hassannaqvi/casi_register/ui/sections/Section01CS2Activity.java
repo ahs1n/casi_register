@@ -12,7 +12,6 @@ import org.json.JSONObject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -89,205 +88,98 @@ public class Section01CS2Activity extends AppCompatActivity {
         JSONObject json = new JSONObject();
 
 
-        json.put("cs28a", bi.cs28a01.isChecked() ? "1"
+        form.setCs28a(bi.cs28a01.isChecked() ? "1"
                 : bi.cs28a02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs28b", bi.cs28b01.isChecked() ? "1"
+        form.setCs28b(bi.cs28b01.isChecked() ? "1"
                 : bi.cs28b02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs28c", bi.cs28c01.isChecked() ? "1"
+        form.setCs28c(bi.cs28c01.isChecked() ? "1"
                 : bi.cs28c02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs28d", bi.cs28d01.isChecked() ? "1"
+        form.setCs28d(bi.cs28d01.isChecked() ? "1"
                 : bi.cs28d02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs28e", bi.cs28e01.isChecked() ? "1"
+        form.setCs28e(bi.cs28e01.isChecked() ? "1"
                 : bi.cs28e02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs28f", bi.cs28f01.isChecked() ? "1"
+        form.setCs28f(bi.cs28f01.isChecked() ? "1"
                 : bi.cs28f02.isChecked() ? "2"
                 : "-1");
+        form.setCs28f01x(bi.cs28f01x.getText().toString());
 
-        json.put("cs28f01x", bi.cs28f01x.getText().toString());
-        json.put("cs29", bi.cs2901.isChecked() ? "1"
+        form.setCs29(bi.cs2901.isChecked() ? "1"
                 : bi.cs2902.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs30a", bi.cs30a01.isChecked() ? "1"
+        form.setCs30a(bi.cs30a01.isChecked() ? "1"
                 : bi.cs30a02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs30b", bi.cs30b01.isChecked() ? "1"
+        form.setCs30b(bi.cs30b01.isChecked() ? "1"
                 : bi.cs30b02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs30c", bi.cs30c01.isChecked() ? "1"
+        form.setCs30c(bi.cs30c01.isChecked() ? "1"
                 : bi.cs30c02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs30d", bi.cs30d01.isChecked() ? "1"
+        form.setCs30d(bi.cs30d01.isChecked() ? "1"
                 : bi.cs30d02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs30e", bi.cs30e01.isChecked() ? "1"
+        form.setCs30e(bi.cs30e01.isChecked() ? "1"
                 : bi.cs30e02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs30f", bi.cs30f096.isChecked() ? "96"
+        form.setCs30f(bi.cs30f096.isChecked() ? "96"
                 : bi.cs30f02.isChecked() ? "2"
                 : "-1");
+        form.setCs30f096x(bi.cs30f096x.getText().toString());
 
-        json.put("cs30f096x", bi.cs30f096x.getText().toString());
-        json.put("cs31", bi.cs3101.isChecked() ? "1"
+        form.setCs31(bi.cs3101.isChecked() ? "1"
                 : bi.cs3102.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs32a", bi.cs32a01.isChecked() ? "1"
+        form.setCs32a(bi.cs32a01.isChecked() ? "1"
                 : bi.cs32a02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs32b", bi.cs32b01.isChecked() ? "1"
+        form.setCs32b(bi.cs32b01.isChecked() ? "1"
                 : bi.cs32b02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs32c", bi.cs32c01.isChecked() ? "1"
+        form.setCs32c(bi.cs32c01.isChecked() ? "1"
                 : bi.cs32c02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs32d", bi.cs32d01.isChecked() ? "1"
+        form.setCs32d(bi.cs32d01.isChecked() ? "1"
                 : bi.cs32d02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs32e", bi.cs32e01.isChecked() ? "1"
+        form.setCs32e(bi.cs32e01.isChecked() ? "1"
                 : bi.cs32e02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs32f", bi.cs32f01.isChecked() ? "1"
+        form.setCs32f(bi.cs32f01.isChecked() ? "1"
                 : bi.cs32f02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs32g", bi.cs32g01.isChecked() ? "1"
+        form.setCs32g(bi.cs32g01.isChecked() ? "1"
                 : bi.cs32g02.isChecked() ? "2"
                 : "-1");
 
-        json.put("cs32h", bi.cs32h096.isChecked() ? "96"
+        form.setCs32h(bi.cs32h096.isChecked() ? "96"
                 : bi.cs32h02.isChecked() ? "2"
                 : "-1");
-
-        json.put("cs32h096x", bi.cs32h096x.getText().toString());
-
-
-//        form.setCs02(bi.cs02.getText().toString());
-
-        /*form.setCs03(bi.cs03.getText().toString());
-
-        form.setCs06(bi.cr06a.isChecked() ? "1"
-                : bi.cr06b.isChecked() ? "2"
-                : bi.cr06c.isChecked() ? "3"
-                : bi.cr06d.isChecked() ? "4"
-                : bi.cr06e.isChecked() ? "5"
-                : bi.cr06x.isChecked() ? "96"
-                : "-1");
-        form.setCr06x(bi.cr06xx.getText().toString());
-
-        form.setCr07(bi.cr07.getText().toString());
-
-        form.setCr08d(bi.cr08d.getText().toString());
-        form.setCr08m(bi.cr08m.getText().toString());
-        form.setCr08y(bi.cr08y.getText().toString());
-
-        form.setCr09(bi.cr09.getText().toString());
-
-        form.setCr10(bi.cr10.getText().toString());
-
-        form.setCr11(bi.cr11.getText().toString());
-
-        form.setCr12(bi.cr12.getText().toString());
-
-        form.setCr13(bi.cr13M.isChecked() ? "1"
-                : bi.cr13F.isChecked() ? "2"
-                : "-1");
-
-        form.setCr14d(bi.cr14d.getText().toString().trim().isEmpty() ? "-1" : bi.cr14d.getText().toString());
-        form.setCr14m(bi.cr14m.getText().toString().trim().isEmpty() ? "-1" : bi.cr14m.getText().toString());
-        form.setCr14y(bi.cr14y.getText().toString().trim().isEmpty() ? "-1" : bi.cr14y.getText().toString());
-
-        form.setCr15m(bi.cr15m.getText().toString().trim().isEmpty() ? "-1" : bi.cr15m.getText().toString());
-        form.setCr15y(bi.cr15y.getText().toString().trim().isEmpty() ? "-1" : bi.cr15y.getText().toString());
-
-        form.setCr16(bi.cr16.getText().toString());
-
-        form.setCr17(bi.cr17a.isChecked() ? "1"
-                : bi.cr17b.isChecked() ? "2"
-                : "-1");
-
-        form.setCr18(bi.cr18a.isChecked() ? "1"
-                : bi.cr18b.isChecked() ? "2"
-                : "-1");
-
-        form.setCr19(bi.cr19a.isChecked() ? "1"
-                : bi.cr19b.isChecked() ? "2"
-                : "-1");
-
-        form.setCr20(bi.cr20a.isChecked() ? "1"
-                : bi.cr20b.isChecked() ? "2"
-                : "-1");
-
-        form.setCr21(bi.cr21.getText().toString());
-
-        form.setCr22(bi.cr22.getText().toString());
-
-        form.setCr23(bi.cr23.getText().toString());
-
-        form.setCr24a(bi.cr24a.isChecked() ? "1" : "-1");
-        form.setCr24b(bi.cr24b.isChecked() ? "2" : "-1");
-        form.setCr24c(bi.cr24c.isChecked() ? "3" : "-1");
-        form.setCr24d(bi.cr24d.isChecked() ? "4" : "-1");
-        form.setCr24e(bi.cr24e.isChecked() ? "5" : "-1");
-        form.setCr24f(bi.cr24f.isChecked() ? "6" : "-1");
-
-        form.setCr25(bi.cr25a.isChecked() ? "1"
-                : bi.cr25b.isChecked() ? "2"
-                : bi.cr25c.isChecked() ? "3"
-                : "-1");
-
-        form.setCr26(bi.cr26a.isChecked() ? "1"
-                : bi.cr26b.isChecked() ? "2"
-                : bi.cr26c.isChecked() ? "3"
-                : bi.cr26d.isChecked() ? "4"
-                : "-1");
-
-        form.setCr27a(bi.cr27a.getText().toString());
-        form.setCr27b(bi.cr27b.getText().toString());
-        form.setCr27c(bi.cr27c.getText().toString());
+        form.setCs32h096x(bi.cs32h096x.getText().toString());
 
 
-        form.setCr28a(bi.cr28a01.isChecked() ? "1"
-                : bi.cr28a02.isChecked() ? "2"
-                : "-1");
-        form.setCr28b(bi.cr28b01.isChecked() ? "1"
-                : bi.cr28b02.isChecked() ? "2"
-                : "-1");
-        form.setCr28c(bi.cr28c01.isChecked() ? "1"
-                : bi.cr28c02.isChecked() ? "2"
-                : "-1");
-        form.setCr28d(bi.cr28d01.isChecked() ? "1"
-                : bi.cr28d02.isChecked() ? "2"
-                : "-1");
-        form.setCr28e(bi.cr28e01.isChecked() ? "1"
-                : bi.cr28e02.isChecked() ? "2"
-                : "-1");
-        form.setCr28f(bi.cr28f01.isChecked() ? "1"
-                : bi.cr28f02.isChecked() ? "2"
-                : "-1");
-        form.setCr28fx(bi.cr28fx.getText().toString());*/
-
-//        form.setsA(form.sAtoString())
         try {
             JSONObject jsonMerge = mergeJSONObjects(new JSONObject(form.getcS()), json);
             form.setcS(String.valueOf(jsonMerge));
