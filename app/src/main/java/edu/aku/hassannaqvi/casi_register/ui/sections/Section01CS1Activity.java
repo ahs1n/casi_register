@@ -9,9 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -27,6 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -117,16 +116,16 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         MainApp.setGPS(this);
         JSONObject cS = new JSONObject();
 
-        cS.put("cs02", bi.cs0201.isChecked() ? "1"
+        form.setCs02(bi.cs0201.isChecked() ? "1"
                 : bi.cs0202.isChecked() ? "2"
                 : bi.cs0203.isChecked() ? "3"
                 : "-1");
 
-        cS.put("cs03", bi.cs03.getText().toString());
+        form.setCs03(bi.cs03.getText().toString());
 
-        cS.put("cs05a", bi.cs05a.getText().toString());
+        form.setCs05a(bi.cs05a.getText().toString());
 
-        cS.put("cs06", bi.cs0601.isChecked() ? "1"
+        form.setCs06(bi.cs0601.isChecked() ? "1"
                 : bi.cs0602.isChecked() ? "2"
                 : bi.cs0603.isChecked() ? "3"
                 : bi.cs0604.isChecked() ? "4"
@@ -134,42 +133,42 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 : bi.cs06096.isChecked() ? "96"
                 : "-1");
 
-        cS.put("cs06096x", bi.cs06096x.getText().toString());
-        cS.put("cs07", bi.cs07.getText().toString());
+        form.setCs06096x(bi.cs06096x.getText().toString());
+        form.setCs07(bi.cs07.getText().toString());
 
-        cS.put("cs08", bi.cs08.getText().toString());
+        form.setCs08(bi.cs08.getText().toString());
 
-        cS.put("cs0801", bi.cs0801.getText().toString());
+        form.setCs0801(bi.cs0801.getText().toString());
 
-        cS.put("cs0802", bi.cs0802.getText().toString());
+        form.setCs0802(bi.cs0802.getText().toString());
 
-        cS.put("cs0803", bi.cs0803.getText().toString());
+        form.setCs0803(bi.cs0803.getText().toString());
 
-        cS.put("cs09", bi.cs09.getText().toString());
+        form.setCs09(bi.cs09.getText().toString());
 
-        cS.put("cs10", bi.cs10.getText().toString());
+        form.setCs10(bi.cs10.getText().toString());
 
-        cS.put("cs10a", bi.cs10a.getText().toString());
+        form.setCs10a(bi.cs10a.getText().toString());
 
-        cS.put("cs11", bi.cs11.getText().toString());
+        form.setCs11(bi.cs11.getText().toString());
 
-        cS.put("cs11a", bi.cs11a.getText().toString());
+        form.setCs11a(bi.cs11a.getText().toString());
 
-        cS.put("cs12", bi.cs12.getText().toString());
+        form.setCs12(bi.cs12.getText().toString());
 
-        cS.put("cs12a", bi.cs12a.getText().toString());
+        form.setCs12a(bi.cs12a.getText().toString());
 
-        cS.put("cs13", bi.cs1301.isChecked() ? "1"
+        form.setCs13(bi.cs1301.isChecked() ? "1"
                 : bi.cs1302.isChecked() ? "2"
                 : "-1");
 
-        cS.put("cs1401", bi.cs1401.getText().toString());
+        form.setCs1401(bi.cs1401.getText().toString());
 
-        cS.put("cs1402", bi.cs1402.getText().toString());
+        form.setCs1402(bi.cs1402.getText().toString());
 
-        cS.put("cs1403", bi.cs1403.getText().toString());
+        form.setCs1403(bi.cs1403.getText().toString());
 
-        cS.put("cs1501", bi.cs1501.getText().toString());
+        form.setCs1501(bi.cs1501.getText().toString());
 
         cS.put("cs1502", bi.cs1502.getText().toString());
 
@@ -246,114 +245,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         cS.put("cs2703", bi.cs2703.getText().toString());
 
         cS.put("cs2704", bi.cs2704.getText().toString());
-
-
-//        form.setCs02(bi.cs02.getText().toString());
-
-        /*form.setCs03(bi.cs03.getText().toString());
-
-        form.setCs06(bi.cr06a.isChecked() ? "1"
-                : bi.cr06b.isChecked() ? "2"
-                : bi.cr06c.isChecked() ? "3"
-                : bi.cr06d.isChecked() ? "4"
-                : bi.cr06e.isChecked() ? "5"
-                : bi.cr06x.isChecked() ? "96"
-                : "-1");
-        form.setCr06x(bi.cr06xx.getText().toString());
-
-        form.setCr07(bi.cr07.getText().toString());
-
-        form.setCr08d(bi.cr08d.getText().toString());
-        form.setCr08m(bi.cr08m.getText().toString());
-        form.setCr08y(bi.cr08y.getText().toString());
-
-        form.setCr09(bi.cr09.getText().toString());
-
-        form.setCr10(bi.cr10.getText().toString());
-
-        form.setCr11(bi.cr11.getText().toString());
-
-        form.setCr12(bi.cr12.getText().toString());
-
-        form.setCr13(bi.cr13M.isChecked() ? "1"
-                : bi.cr13F.isChecked() ? "2"
-                : "-1");
-
-        form.setCr14d(bi.cr14d.getText().toString().trim().isEmpty() ? "-1" : bi.cr14d.getText().toString());
-        form.setCr14m(bi.cr14m.getText().toString().trim().isEmpty() ? "-1" : bi.cr14m.getText().toString());
-        form.setCr14y(bi.cr14y.getText().toString().trim().isEmpty() ? "-1" : bi.cr14y.getText().toString());
-
-        form.setCr15m(bi.cr15m.getText().toString().trim().isEmpty() ? "-1" : bi.cr15m.getText().toString());
-        form.setCr15y(bi.cr15y.getText().toString().trim().isEmpty() ? "-1" : bi.cr15y.getText().toString());
-
-        form.setCr16(bi.cr16.getText().toString());
-
-        form.setCr17(bi.cr17a.isChecked() ? "1"
-                : bi.cr17b.isChecked() ? "2"
-                : "-1");
-
-        form.setCr18(bi.cr18a.isChecked() ? "1"
-                : bi.cr18b.isChecked() ? "2"
-                : "-1");
-
-        form.setCr19(bi.cr19a.isChecked() ? "1"
-                : bi.cr19b.isChecked() ? "2"
-                : "-1");
-
-        form.setCr20(bi.cr20a.isChecked() ? "1"
-                : bi.cr20b.isChecked() ? "2"
-                : "-1");
-
-        form.setCr21(bi.cr21.getText().toString());
-
-        form.setCr22(bi.cr22.getText().toString());
-
-        form.setCr23(bi.cr23.getText().toString());
-
-        form.setCr24a(bi.cr24a.isChecked() ? "1" : "-1");
-        form.setCr24b(bi.cr24b.isChecked() ? "2" : "-1");
-        form.setCr24c(bi.cr24c.isChecked() ? "3" : "-1");
-        form.setCr24d(bi.cr24d.isChecked() ? "4" : "-1");
-        form.setCr24e(bi.cr24e.isChecked() ? "5" : "-1");
-        form.setCr24f(bi.cr24f.isChecked() ? "6" : "-1");
-
-        form.setCr25(bi.cr25a.isChecked() ? "1"
-                : bi.cr25b.isChecked() ? "2"
-                : bi.cr25c.isChecked() ? "3"
-                : "-1");
-
-        form.setCr26(bi.cr26a.isChecked() ? "1"
-                : bi.cr26b.isChecked() ? "2"
-                : bi.cr26c.isChecked() ? "3"
-                : bi.cr26d.isChecked() ? "4"
-                : "-1");
-
-        form.setCr27a(bi.cr27a.getText().toString());
-        form.setCr27b(bi.cr27b.getText().toString());
-        form.setCr27c(bi.cr27c.getText().toString());
-
-
-        form.setCr28a(bi.cr28a01.isChecked() ? "1"
-                : bi.cr28a02.isChecked() ? "2"
-                : "-1");
-        form.setCr28b(bi.cr28b01.isChecked() ? "1"
-                : bi.cr28b02.isChecked() ? "2"
-                : "-1");
-        form.setCr28c(bi.cr28c01.isChecked() ? "1"
-                : bi.cr28c02.isChecked() ? "2"
-                : "-1");
-        form.setCr28d(bi.cr28d01.isChecked() ? "1"
-                : bi.cr28d02.isChecked() ? "2"
-                : "-1");
-        form.setCr28e(bi.cr28e01.isChecked() ? "1"
-                : bi.cr28e02.isChecked() ? "2"
-                : "-1");
-        form.setCr28f(bi.cr28f01.isChecked() ? "1"
-                : bi.cr28f02.isChecked() ? "2"
-                : "-1");
-        form.setCr28fx(bi.cr28fx.getText().toString());*/
-
-//        form.setsA(form.sAtoString());
 
         form.setcS((String.valueOf(cS)));
 

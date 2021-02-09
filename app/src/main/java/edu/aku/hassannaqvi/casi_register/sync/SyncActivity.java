@@ -7,6 +7,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -20,19 +32,6 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkContinuation;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
@@ -256,7 +255,7 @@ public class SyncActivity extends AppCompatActivity {
                             if (result.length() > 0) {
                                 Log.d(TAG, "onChanged: result " + result);
                                 System.out.println("SYSTEM onChanged: result" + result);
-                                DatabaseHelper db = new DatabaseHelper(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this);
+                                DatabaseHelper db = new DatabaseHelper(SyncActivity.this);
                                 try {
                                     JSONArray jsonArray = new JSONArray();
                                     int insertCount = 0;
@@ -439,7 +438,7 @@ public class SyncActivity extends AppCompatActivity {
                                         Log.d(TAG, "onChanged Compare: " + method1.getName().equals("updateSynced" + tableName));
                                         if (method1.getName().equals("updateSynced" + tableName)) {
                                             method = method1;
-                                            Toast.makeText(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this, "updateSynced not found: updateSynced" + tableName, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SyncActivity.this, "updateSynced not found: updateSynced" + tableName, Toast.LENGTH_SHORT).show();
                                             break;
                                         }
                                     }
@@ -457,7 +456,7 @@ public class SyncActivity extends AppCompatActivity {
                                                 sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
                                             }
                                         }
-                                        Toast.makeText(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this, tableName + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SyncActivity.this, tableName + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
                                         if (sSyncedError.toString().equals("")) {
                                             uploadTables.get(position).setmessage(tableName + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
@@ -478,7 +477,7 @@ public class SyncActivity extends AppCompatActivity {
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
-                                    Toast.makeText(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this, "Sync Result:  " + result, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SyncActivity.this, "Sync Result:  " + result, Toast.LENGTH_SHORT).show();
 
                                     if (result.equals("No new records to sync.")) {
                                         uploadTables.get(position).setmessage(result /*+ " Open Forms" + String.format("%02d", unclosedForms.size())*/);
@@ -547,7 +546,7 @@ public class SyncActivity extends AppCompatActivity {
 
                 int fcount = Math.min(files.length, 300);
                 for (int i = 0; i < fcount; i++) {
-                    TextView textView = new TextView(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this);
+                    TextView textView = new TextView(SyncActivity.this);
                     textView.setText("PROCESSING: " + files[i].getName());
                     textView.setId(i);
                     bi.photoLayout.addView(textView);
@@ -588,7 +587,7 @@ public class SyncActivity extends AppCompatActivity {
                             final TextView[] mTextView1 = new TextView[1];
 
                             WorkManager.getInstance().getWorkInfoByIdLiveData(photoUpload.getId())
-                                    .observe(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this, new Observer<WorkInfo>() {
+                                    .observe(SyncActivity.this, new Observer<WorkInfo>() {
 
                                         @Override
                                         public void onChanged(@Nullable WorkInfo workInfo) {
