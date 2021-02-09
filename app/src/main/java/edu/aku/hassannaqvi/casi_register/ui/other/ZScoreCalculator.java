@@ -45,7 +45,7 @@ public class ZScoreCalculator extends AppCompatActivity {
         this.S = Float.parseFloat(bi.txtS.getText().toString());
 
         this.zs = new ZScore();
-        this.zScore = (float) zs.calcZS(this.age, this.gender, this.measurement, this.cat, this.L, this.M, this.S);
+    //    this.zScore = (float) zs.calcZS(this.age, this.gender, this.measurement, this.cat, this.L, this.M, this.S);
 
         bi.zsResult.setText((String.valueOf(this.zScore)));
     }
