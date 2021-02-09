@@ -132,8 +132,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 : bi.cs0605.isChecked() ? "5"
                 : bi.cs06096.isChecked() ? "96"
                 : "-1");
-
         form.setCs06096x(bi.cs06096x.getText().toString());
+
         form.setCs07(bi.cs07.getText().toString());
 
         form.setCs08(bi.cs08.getText().toString());
@@ -170,81 +170,81 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         form.setCs1501(bi.cs1501.getText().toString());
 
-        cS.put("cs1502", bi.cs1502.getText().toString());
+        form.setCs1502(bi.cs1502.getText().toString());
 
-        cS.put("cs16", bi.cs16.getText().toString());
+        form.setCs16(bi.cs16.getText().toString());
 
-        cS.put("cs17", bi.cs1701.isChecked() ? "1"
+        form.setCs17(bi.cs1701.isChecked() ? "1"
                 : bi.cs1702.isChecked() ? "2"
                 : "-1");
 
-        cS.put("cs18", bi.cs1801.isChecked() ? "1"
+        form.setCs18(bi.cs1801.isChecked() ? "1"
                 : bi.cs1802.isChecked() ? "2"
                 : "-1");
 
-        cS.put("cs19", bi.cs1901.isChecked() ? "1"
+        form.setCs19(bi.cs1901.isChecked() ? "1"
                 : bi.cs1902.isChecked() ? "2"
                 : "-1");
 
-        cS.put("cs20a", bi.cs20a01.isChecked() ? "1"
+        form.setCs20a(bi.cs20a01.isChecked() ? "1"
                 : bi.cs20a02.isChecked() ? "2"
                 : "-1");
 
-        cS.put("cs20b", bi.cs20b01.isChecked() ? "1"
+        form.setCs20b(bi.cs20b01.isChecked() ? "1"
                 : bi.cs20b02.isChecked() ? "2"
                 : "-1");
 
-        cS.put("cs21", bi.cs21.getText().toString());
+        form.setCs21(bi.cs21.getText().toString());
 
-        cS.put("cs22", bi.cs22.getText().toString());
+        form.setCs22(bi.cs22.getText().toString());
 
-        cS.put("cs23", bi.cs23.getText().toString());
+        form.setCs23(bi.cs23.getText().toString());
 
-        cS.put("cs2401", bi.cs2401.isChecked() ? "1" : "-1");
+        form.setCs2401(bi.cs2401.isChecked() ? "1" : "-1");
 
-        cS.put("cs2402", bi.cs2402.isChecked() ? "2" : "-1");
+        form.setCs2402(bi.cs2402.isChecked() ? "2" : "-1");
 
-        cS.put("cs2403", bi.cs2403.isChecked() ? "3" : "-1");
+        form.setCs2403(bi.cs2403.isChecked() ? "3" : "-1");
 
-        cS.put("cs2404", bi.cs2404.isChecked() ? "4" : "-1");
+        form.setCs2404(bi.cs2404.isChecked() ? "4" : "-1");
 
-        cS.put("cs2405", bi.cs2405.isChecked() ? "5" : "-1");
+        form.setCs2405(bi.cs2405.isChecked() ? "5" : "-1");
 
-        cS.put("cs2406", bi.cs2406.isChecked() ? "6" : "-1");
+        form.setCs2406(bi.cs2406.isChecked() ? "6" : "-1");
 
-        cS.put("cs25", bi.cs2501.isChecked() ? "1"
+        form.setCs25(bi.cs2501.isChecked() ? "1"
                 : bi.cs2502.isChecked() ? "2"
                 : bi.cs2503.isChecked() ? "3"
                 : bi.cs2504.isChecked() ? "4"
                 : "-1");
 
-        cS.put("cs25a01", bi.cs25a01.getText().toString());
+        form.setCs25a01(bi.cs25a01.getText().toString());
 
-        cS.put("cs25b01", bi.cs25b01.getText().toString());
+        form.setCs25b01(bi.cs25b01.getText().toString());
 
-        cS.put("cs25c", bi.cs25c01.isChecked() ? "1"
+        form.setCs25c(bi.cs25c01.isChecked() ? "1"
                 : bi.cs25c02.isChecked() ? "2"
                 : bi.cs25c096.isChecked() ? "96"
                 : "-1");
+        form.setCs25c096x(bi.cs25c096x.getText().toString());
 
-        cS.put("cs25c096x", bi.cs25c096x.getText().toString());
-        cS.put("cs2601", bi.cs2601.isChecked() ? "1" : "-1");
+        form.setCs2601(bi.cs2601.isChecked() ? "1" : "-1");
 
-        cS.put("cs2602", bi.cs2602.isChecked() ? "2" : "-1");
+        form.setCs2602(bi.cs2602.isChecked() ? "2" : "-1");
 
-        cS.put("cs2603", bi.cs2603.isChecked() ? "3" : "-1");
+        form.setCs2603(bi.cs2603.isChecked() ? "3" : "-1");
 
-        cS.put("cs2604", bi.cs2604.isChecked() ? "4" : "-1");
+        form.setCs2604(bi.cs2604.isChecked() ? "4" : "-1");
 
-        cS.put("cs2605", bi.cs2605.isChecked() ? "5" : "-1");
+        form.setCs2605(bi.cs2605.isChecked() ? "5" : "-1");
 
-        cS.put("cs2701", bi.cs2701.getText().toString());
+        form.setCs2701(bi.cs2701.getText().toString());
 
-        cS.put("cs2702", bi.cs2702.getText().toString());
+        form.setCs2702(bi.cs2702.getText().toString());
 
-        cS.put("cs2703", bi.cs2703.getText().toString());
+        form.setCs2703(bi.cs2703.getText().toString());
 
-        cS.put("cs2704", bi.cs2704.getText().toString());
+        form.setCs2704(bi.cs2704.getText().toString());
 
         form.setcS((String.valueOf(cS)));
 
