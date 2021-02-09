@@ -1,20 +1,18 @@
-package edu.aku.hassannaqvi.casi_register.utils;
+package edu.aku.hassannaqvi.casi_register.utils
 
-import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
-import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable;
-import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable;
-import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable;
+import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable
+import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract
+import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable
+import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable
+import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable
 
-public final class CreateTable {
-
-    public static final String DATABASE_NAME = "casi_register.db";
-    public static final String DATABASE_COPY = "casi_register_copy.db";
-    public static final String DB_NAME = "casi_register_copy.db";
-    public static final String PROJECT_NAME = "casi_register";
-    public static final int DATABASE_VERSION = 1;
-
-    public static final String SQL_CREATE_FORMS = "CREATE TABLE "
+object CreateTable {
+    const val DATABASE_NAME = "casi_register.db"
+    const val DATABASE_COPY = "casi_register_copy.db"
+    const val DB_NAME = "casi_register_copy.db"
+    const val PROJECT_NAME = "casi_register"
+    const val DATABASE_VERSION = 1
+    const val SQL_CREATE_FORMS = ("CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + FormsTable.COLUMN_PROJECT_NAME + " TEXT,"
@@ -45,17 +43,14 @@ public final class CreateTable {
             + FormsTable.COLUMN_ISTATUS96x + " TEXT,"
             + FormsTable.COLUMN_SYNCED + " TEXT,"
             + FormsTable.COLUMN_SYNCED_DATE + " TEXT"
-            + " );";
-
-    public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersTable.TABLE_NAME + "("
+            + " );")
+    const val SQL_CREATE_USERS = ("CREATE TABLE " + UsersTable.TABLE_NAME + "("
             + UsersTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.COLUMN_USERNAME + " TEXT,"
             + UsersTable.COLUMN_PASSWORD + " TEXT,"
             + UsersTable.COLUMN_FULLNAME + " TEXT"
-            + " );";
-
-
-    public static final String SQL_CREATE_VILLAGES = "CREATE TABLE " + VillagesTable.TABLE_NAME + "("
+            + " );")
+    const val SQL_CREATE_VILLAGES = ("CREATE TABLE " + VillagesTable.TABLE_NAME + "("
             + VillagesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + VillagesTable.COLUMN_COUNTRY + " TEXT,"
             + VillagesTable.COLUMN_DISTRICT + " TEXT,"
@@ -65,18 +60,14 @@ public final class CreateTable {
             + VillagesTable.COLUMN_DISTRICT_CODE + " TEXT,"
             + VillagesTable.COLUMN_UC_CODE + " TEXT,"
             + VillagesTable.COLUMN_VILLLAGE_CODE + " TEXT,"
-            + VillagesTable.COLUMN_CLUSTER_NO + " TEXT );";
-
-
-    public static final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
-            VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            + VillagesTable.COLUMN_CLUSTER_NO + " TEXT );")
+    const val SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
+            VersionAppTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
-            ");";
-
-
-    public static final String SQL_CREATE_ZSTANDARD = "CREATE TABLE " + ZStandardContract.ZScoreTable.TABLE_NAME + " (" +
+            ");"
+    const val SQL_CREATE_ZSTANDARD = "CREATE TABLE " + ZStandardContract.ZScoreTable.TABLE_NAME + " (" +
             ZStandardContract.ZScoreTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             ZStandardContract.ZScoreTable.COLUMN_SEX + " TEXT, " +
             ZStandardContract.ZScoreTable.COLUMN_AGE + " TEXT, " +
@@ -85,6 +76,5 @@ public final class CreateTable {
             ZStandardContract.ZScoreTable.COLUMN_M + " TEXT, " +
             ZStandardContract.ZScoreTable.COLUMN_S + " TEXT, " +
             ZStandardContract.ZScoreTable.COLUMN_CAT + " TEXT " +
-            ");";
-
+            ");"
 }

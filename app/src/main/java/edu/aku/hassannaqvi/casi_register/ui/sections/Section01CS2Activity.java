@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -19,9 +20,9 @@ import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs2Binding;
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
-import edu.aku.hassannaqvi.casi_register.utils.JSONUtils;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.utils.JSONUtilsKt.mergeJSONObjects;
 
 public class Section01CS2Activity extends AppCompatActivity {
 
@@ -288,7 +289,7 @@ public class Section01CS2Activity extends AppCompatActivity {
 
 //        form.setsA(form.sAtoString())
         try {
-            JSONObject jsonMerge = JSONUtils.mergeJSONObjects(new JSONObject(form.getcS()), json);
+            JSONObject jsonMerge = mergeJSONObjects(new JSONObject(form.getcS()), json);
             form.setcS(String.valueOf(jsonMerge));
         } catch (JSONException e) {
             e.printStackTrace();

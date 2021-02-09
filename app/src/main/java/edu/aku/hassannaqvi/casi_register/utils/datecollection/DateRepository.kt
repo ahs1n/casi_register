@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.casi_register.datecollection
+package edu.aku.hassannaqvi.casi_register.utils.datecollection
 
 import org.threeten.bp.DateTimeException
 import org.threeten.bp.LocalDate

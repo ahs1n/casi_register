@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.threeten.bp.Instant;
 import org.threeten.bp.LocalDate;
@@ -27,14 +26,15 @@ import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.core.ZScore;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs1Binding;
-import edu.aku.hassannaqvi.casi_register.datecollection.AgeModel;
-import edu.aku.hassannaqvi.casi_register.datecollection.DateRepository;
+import edu.aku.hassannaqvi.casi_register.utils.datecollection.AgeModel;
+import edu.aku.hassannaqvi.casi_register.utils.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
@@ -49,9 +49,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     boolean dtFlag = false;
     LocalDate calculatedDOB;
     LocalDate localDate;
-    private double HLAZ;
-    private double WAZ;
-    private double WHZ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,28 +59,13 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         setupContent();
     }
 
-
     private void setupContent() {
     }
 
-
-    public void BtnContinue() {
-        if (!formValidation()) return;
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
-            finish();
-            startActivity(new Intent(this, Section01CS2Activity.class));
-        } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
-    private boolean UpdateDB() {
+    /*
+     * Save functions
+     * */
+    private boolean updateDB() {
 
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long rowid = db.addForm(form);
@@ -98,8 +80,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         }
     }
 
-
-    private void SaveDraft() throws JSONException {
+    private void saveDraft() {
 
         form = new Form();
         form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
@@ -250,7 +231,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
     }
 
-
     private boolean formValidation() {
         if (!Validator.emptyCheckingContainer(this, bi.GrpName))
             return false;
@@ -263,10 +243,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     }
 
 
-    public void BtnEnd() {
-        AppUtilsKt.contextEndActivity(this);
-    }
-
+    /*
+     * Watch listeners
+     * */
     private void setListeners() {
 
         EditText[] txtListener = new EditText[]{bi.cs1401, bi.cs1402};
@@ -406,21 +385,10 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         }
     }
 
-    @Override
-    public void endSecActivity(boolean flag) {
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-        }
-    }
 
+    /*
+     * Click events
+     * */
     public void CheckZScore(View view) {
         if (!bi.cs1501.getText().toString().equals("")
                 && !bi.cs1502.getText().toString().equals("")
@@ -433,9 +401,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             int gender = bi.cs1301.isChecked() ? 1 : bi.cs1302.isChecked() ? 2 : 0;
 
             ZScore zs = new ZScore(ageindays, gender);
-            HLAZ = zs.getZScore_HLAZ(bi.cs21.getText().toString());
-            WAZ = zs.getZScore_WAZ(bi.cs22.getText().toString());
-            WHZ = zs.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
+            double HLAZ = zs.getZScore_HLAZ(bi.cs21.getText().toString());
+            double WAZ = zs.getZScore_WAZ(bi.cs22.getText().toString());
+            double WHZ = zs.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
 
             bi.ZScore.setText("HLAZ: " + HLAZ + " \r\nWAZ: " + WAZ + " \r\nWHZ: " + WHZ);
         } else {
@@ -445,6 +413,33 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         }
 
 
+    }
+
+    public void BtnEnd() {
+        AppUtilsKt.contextEndActivity(this);
+    }
+
+    public void BtnContinue() {
+        if (!formValidation()) return;
+        saveDraft();
+        if (updateDB()) {
+            finish();
+            startActivity(new Intent(this, Section01CS2Activity.class));
+        } else {
+            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @Override
+    public void endSecActivity(boolean flag) {
+        saveDraft();
+        if (updateDB()) {
+            finish();
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
+            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
