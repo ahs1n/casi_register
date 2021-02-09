@@ -20,16 +20,16 @@ import java.net.URL;
 import java.util.List;
 
 import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
-import edu.aku.hassannaqvi.casi_register.contracts.UsersContract;
-import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract;
-import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.models.SyncModel;
+import edu.aku.hassannaqvi.casi_register.models.Users;
+import edu.aku.hassannaqvi.casi_register.models.VersionApp;
+import edu.aku.hassannaqvi.casi_register.models.Villages;
 
 /**
- * Created by ali.azaz on 7/14/2017.
+ * @author ali.azaz on 7/14/2017.
  */
 
 public class GetAllData extends AsyncTask<String, String, String> {
@@ -120,16 +120,16 @@ public class GetAllData extends AsyncTask<String, String, String> {
             switch (syncClass) {
                 case "User":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = UsersContract.UsersTable.TABLE_NAME;
+                    tableName = Users.UsersTable.TABLE_NAME;
                     position = 0;
                     break;
                 case "VersionApp":
-                    url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable.SERVER_URI);
+                    url = new URL(MainApp._UPDATE_URL + VersionApp.VersionAppTable.SERVER_URI);
                     position = 1;
                     break;
                 case "Villages":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = VillagesContract.Table.TABLE_NAME;
+                    tableName = Villages.VillagesTable.TABLE_NAME;
                     position = 2;
                     break;
                 case "Zstandards":

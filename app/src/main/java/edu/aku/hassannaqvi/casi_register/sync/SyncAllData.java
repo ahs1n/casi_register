@@ -30,7 +30,7 @@ import edu.aku.hassannaqvi.casi_register.models.SyncModel;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * Created by ali.azaz on 3/14/2018.
+ * @author ali.azaz on 3/14/2018.
  */
 
 public class SyncAllData extends AsyncTask<Void, Integer, String> {

@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.casi_register.ui.other.MainActivity" />
+            type="edu.aku.hassannaqvi.casi_register.ui.MainActivity" />
     </data>
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:keepScreenOn="true"
             android:padding="4dp"
             android:text="@string/only_for_testing"
-            android:textColor="@color/white_overlay"
+            android:textColor="@color/whiteOverlay"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:background="@color/white_overlay"
+            android:background="@color/whiteOverlay"
             android:textAlignment="center"
             android:textColor="@color/red"
             android:textStyle="bold"
@@ -54,8 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
-
+                android:padding="5dp">
 
                 <TextView
                     android:id="@+id/lblMainMenu"
@@ -81,16 +80,16 @@
                     android:visibility="gone" />
 
                 <LinearLayout
-                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/summary"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
-                        android:background="@color/white_overlay"
+                        android:background="@color/whiteOverlay"
                         android:orientation="horizontal">
 
                         <TextView
@@ -98,7 +97,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="?attr/actionBarSize"
                             android:layout_gravity="center_horizontal"
-                            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                            android:drawableEnd="@drawable/ic_arroww"
                             android:drawablePadding="24dp"
                             android:gravity="center"
                             android:onClick="toggleSummary"
@@ -146,9 +145,9 @@
                 <LinearLayout
                     android:id="@+id/fldGrpna10"
                     style="@style/vlinearlayout"
-                    android:layout_marginTop="20dp">
+                    android:layout_margin="20dp">
 
-                    <!--spProvince-->
+                    <!--region-->
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -180,6 +179,7 @@
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
+
 
                     <!--spProvince-->
                     <androidx.cardview.widget.CardView

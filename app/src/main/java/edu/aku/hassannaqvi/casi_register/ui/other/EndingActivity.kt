@@ -11,6 +11,7 @@ import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo
 import edu.aku.hassannaqvi.casi_register.core.MainApp.form
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityEndingBinding
+import edu.aku.hassannaqvi.casi_register.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -70,7 +71,7 @@ class EndingActivity : AppCompatActivity() {
         else "-1"
         form.istatus = statusValue
         form.istatus96x = if (bi.istatus96x.text.toString().trim().isEmpty()) "-1" else bi.istatus96x.text.toString()
-        form.endingdatetime = SimpleDateFormat("dd-MM-yyyy HH:mm").format(Date().time)
+        form.endingdatetime = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH).format(Date().time)
 
     }
 

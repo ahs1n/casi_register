@@ -26,6 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
@@ -36,11 +37,11 @@ import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs1Binding
 import edu.aku.hassannaqvi.casi_register.datecollection.AgeModel;
 import edu.aku.hassannaqvi.casi_register.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.models.Form;
-import edu.aku.hassannaqvi.casi_register.ui.other.MainActivity;
+import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
 
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.DAYS_IN_A_MONTH;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class Section01CS1Activity extends AppCompatActivity implements EndSectionActivity {
@@ -102,8 +103,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     private void SaveDraft() throws JSONException {
 
         form = new Form();
-        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
-        form.setUsername(MainApp.userName);
+        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
+        form.setUsername(MainApp.user.getUserName());
         form.setDeviceID(MainApp.appInfo.getDeviceID());
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
@@ -114,7 +115,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setVillage(MainActivity.mainInfo.getVillage());
         form.setLocalDate(localDate);
 
-        MainApp.setGPS(this);
         JSONObject cS = new JSONObject();
 
         cS.put("cs02", bi.cs0201.isChecked() ? "1"
@@ -506,9 +506,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         //Setting Date
         try {
-            Instant instant = Instant.parse(new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd-MM-yyyy").parse(
+            Instant instant = Instant.parse(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(Objects.requireNonNull(new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(
                     bi.cs1401.getText().toString() + "-" + bi.cs1402.getText().toString() + "-" + bi.cs1403.getText().toString()
-            )) + "T06:24:01Z");
+            ))) + "T06:24:01Z");
             calculatedDOB = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
         } catch (ParseException e) {
             e.printStackTrace();
@@ -537,8 +537,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 && !bi.cs22.getText().toString().equals("")
                 && (bi.cs1301.isChecked() || bi.cs1302.isChecked())
         ) {
-
-
             int ageinmonths = Integer.parseInt(bi.cs1502.getText().toString()) + Integer.parseInt(bi.cs1501.getText().toString());
             int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
             int gender = bi.cs1301.isChecked() ? 1 : bi.cs1302.isChecked() ? 2 : 0;
@@ -558,19 +556,4 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
     }
 
-
-/*    public void cs08OnTextChanged(CharSequence s, int start, int before, int count) {
-        //Setting Screening/today Date
-        try {
-            Instant instant = Instant.parse(new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd-MM-yyyy").parse(bi.cs08.getText().toString())) + "T06:24:01Z");
-            localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }*/
-
-/*    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
-    }*/
 }

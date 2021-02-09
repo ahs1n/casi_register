@@ -18,7 +18,7 @@ import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 
 /**
- * Created by hassan.naqvi on 8/1/2016.
+ * @author hassan.naqvi on 8/1/2016.
  */
 public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> {
     Context c;

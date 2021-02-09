@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.casi_register.ui.other;
+package edu.aku.hassannaqvi.casi_register.ui;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -36,6 +36,7 @@ import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
@@ -43,8 +44,8 @@ import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.casi_register.models.Identification;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
-import edu.aku.hassannaqvi.casi_register.sync.SyncActivity;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
+import edu.aku.hassannaqvi.casi_register.ui.login_activity.LoginActivity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section01CS1Activity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section02CSFPActivity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section03WSActivity;
@@ -66,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     public static Identification mainInfo;
     static File file;
     ActivityMainBinding bi;
-    String dtToday = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date().getTime());
-    String sysdateToday = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
+    String dtToday = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH).format(new Date().getTime());
+    String sysdateToday = new SimpleDateFormat("dd-MM-yy", Locale.ENGLISH).format(new Date());
     SharedPreferences sharedPrefDownload;
     SharedPreferences.Editor editorDownload;
     DownloadManager downloadManager;
@@ -281,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     }
 
     @Override
-    public void callWarningActivity() {
+    public void callWarningActivity(int id, Object item) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -291,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     @Override
     public void onBackPressed() {
         if (exit) {
-            finish(); // finish activity
+            finish();
             startActivity(new Intent(this, LoginActivity.class));
         } else {
             Toast.makeText(this, "Press Back again to Exit.",
@@ -310,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     private void showDialog(String newVer, String preVer) {
         AppUtilsKt.openWarningActivity(
                 this,
+                1,
                 getString(R.string.app_name) + " APP is available!",
                 getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\nInstall new version to use this app.",
                 "Install",
@@ -565,7 +567,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     }
                 });
     }
-
 
     private void SaveDraft() {
         mainInfo = new Identification(

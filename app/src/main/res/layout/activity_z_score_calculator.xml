@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
-            android:background="@color/light_gray"
+            android:background="@color/grayLight"
             android:orientation="vertical"
             android:padding="8dp">
 
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:background="@color/light_gray"
+                android:background="@color/grayLight"
                 android:padding="8dp">
 
                 <LinearLayout
@@ -58,10 +58,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/gray_overlay"
+                        android:background="@color/grayOverlay"
                         android:padding="4dp"
                         android:text="Age (in months)"
-                        android:textColor="@color/black_overlay"
+                        android:textColor="@color/blackOverlay"
                         android:textStyle="bold" />
 
                     <EditText
@@ -74,10 +74,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/gray_overlay"
+                        android:background="@color/grayOverlay"
                         android:padding="4dp"
                         android:text="Gender"
-                        android:textColor="@color/black_overlay"
+                        android:textColor="@color/blackOverlay"
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -118,11 +118,11 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray_overlay"
+                                android:background="@color/grayOverlay"
                                 android:gravity="center_horizontal"
                                 android:padding="4dp"
                                 android:text="Height"
-                                android:textColor="@color/black_overlay"
+                                android:textColor="@color/blackOverlay"
                                 android:textStyle="bold" />
 
                             <EditText
@@ -144,12 +144,12 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray_overlay"
+                                android:background="@color/grayOverlay"
                                 android:gravity="center_horizontal"
                                 android:padding="4dp"
                                 android:text="Weight"
 
-                                android:textColor="@color/black_overlay"
+                                android:textColor="@color/blackOverlay"
                                 android:textStyle="bold" />
 
                             <EditText
@@ -171,11 +171,11 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray_overlay"
+                                android:background="@color/grayOverlay"
                                 android:gravity="center_horizontal"
                                 android:padding="4dp"
                                 android:text="MUAC"
-                                android:textColor="@color/black_overlay"
+                                android:textColor="@color/blackOverlay"
                                 android:textStyle="bold" />
 
                             <EditText
@@ -192,10 +192,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/gray_overlay"
+                        android:background="@color/grayOverlay"
                         android:padding="4dp"
                         android:text="Z-Score"
-                        android:textColor="@color/black_overlay"
+                        android:textColor="@color/blackOverlay"
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -268,11 +268,11 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray_overlay"
+                                android:background="@color/grayOverlay"
                                 android:gravity="center_horizontal"
                                 android:padding="4dp"
                                 android:text="L"
-                                android:textColor="@color/black_overlay"
+                                android:textColor="@color/blackOverlay"
                                 android:textStyle="bold" />
 
                             <EditText
@@ -294,12 +294,12 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray_overlay"
+                                android:background="@color/grayOverlay"
                                 android:gravity="center_horizontal"
                                 android:padding="4dp"
                                 android:text="M"
 
-                                android:textColor="@color/black_overlay"
+                                android:textColor="@color/blackOverlay"
                                 android:textStyle="bold" />
 
                             <EditText
@@ -321,11 +321,11 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/gray_overlay"
+                                android:background="@color/grayOverlay"
                                 android:gravity="center_horizontal"
                                 android:padding="4dp"
                                 android:text="S"
-                                android:textColor="@color/black_overlay"
+                                android:textColor="@color/blackOverlay"
                                 android:textStyle="bold" />
 
                             <EditText

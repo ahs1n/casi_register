@@ -8,6 +8,7 @@ class CONSTANTS {
         const val TWO_MINUTES = 1000 * 60 * 2
         const val MINIMUM_DISTANCE_CHANGE_FOR_UPDATES: Long = 1 // in Meters
         const val MINIMUM_TIME_BETWEEN_UPDATES: Long = 1000 // in Milliseconds
+        const val DAYS_IN_A_MONTH = 30.4375
 
 
         const val MEMBER_ITEM = 101

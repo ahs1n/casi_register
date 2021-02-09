@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
- * Created by hassan.naqvi on 11/30/2016.
+ * @author hassan.naqvi.
  */
 
 public class FormsContract {

@@ -20,7 +20,7 @@
         <item name="checkboxStyle">@style/checkbox</item>
         <item name="hintEnabled">false</item>
         <item name="buttonStyle">@style/button</item>
-        <item name="android:textColorHint">@color/gray_overlay</item>
+        <item name="android:textColorHint">@color/grayOverlay</item>
         <item name="android:typeface">sans</item>
         <item name="android:fillAfter">true</item>
         <item name="android:enterFadeDuration">600</item>
@@ -43,7 +43,7 @@
         <item name="checkboxStyle">@style/checkbox</item>
         <item name="hintEnabled">false</item>
         <item name="buttonStyle">@style/button</item>
-        <item name="android:textColorHint">@color/gray_overlay</item>
+        <item name="android:textColorHint">@color/grayOverlay</item>
         <item name="android:typeface">sans</item>
         <item name="android:fillAfter">true</item>
         <item name="android:enterFadeDuration">600</item>
@@ -81,7 +81,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">24dp</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:background">@color/light_gray</item>
+        <item name="android:background">@color/grayLight</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">8dp</item>
@@ -124,7 +124,7 @@
         <item name="android:layout_marginBottom">4dp</item>
         <item name="android:elevation">1dp</item>
         <item name="android:background">@drawable/options_separator</item>
-        <item name="android:textColor">@color/black_overlay</item>
+        <item name="android:textColor">@color/blackOverlay</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">8dp</item>
@@ -150,7 +150,7 @@
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:minHeight">52dp</item>
-        <item name="android:background">@color/white_overlay</item>
+        <item name="android:background">@color/whiteOverlay</item>
     </style>
 
     <style name="checkbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
@@ -184,7 +184,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#ff0000</item>
         <item name="android:background">#efefef</item>
-        <item name="android:drawable">@drawable/arrow</item>
+        <item name="android:drawable">@drawable/ic_arroww</item>
         <item name="android:spinnerItemStyle">@style/spinnerItemStyle</item>
         <item name="android:spinnerDropDownItemStyle">@style/spinnerDropDownItemStyle</item>
     </style>
@@ -264,7 +264,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:background">@color/gray_overlay</item>
+        <item name="android:background">@color/grayOverlay</item>
 
         <!--<item name="android:layout_marginRight">10dp</item>-->
         <!--<item name="android:layout_marginLeft">10dp</item>-->
@@ -279,7 +279,7 @@
     </style>
 
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
+        <item name="android:background">@color/blackOverlay</item>
     </style>
 
     <style name="EditTextAlpha" parent="@style/textInput">
@@ -303,7 +303,7 @@
 
     <style name="quesNum">
         <item name="android:background">@color/colorSecondary</item>
-        <item name="android:textColor">@color/light_gray</item>
+        <item name="android:textColor">@color/grayLight</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:padding">12dp</item>
         <item name="android:textStyle">bold</item>
@@ -351,7 +351,7 @@
         <item name="android:paddingBottom">8dp</item>
         <item name="android:minHeight">52dp</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:background">@color/white_overlay</item>
+        <item name="android:background">@color/whiteOverlay</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
@@ -363,7 +363,7 @@
         <item name="android:paddingBottom">8dp</item>
         <item name="android:minHeight">52dp</item>
         <item name="android:textSize">22sp</item>
-        <item name="android:background">@color/white_overlay</item>
+        <item name="android:background">@color/whiteOverlay</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 

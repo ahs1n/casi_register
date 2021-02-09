@@ -1,9 +1,11 @@
 package edu.aku.hassannaqvi.casi_register.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.telephony.TelephonyManager
 
 
 fun isNetworkConnected(context: Context): Boolean {
@@ -33,4 +35,14 @@ fun isNetworkConnected(context: Context): Boolean {
     }
 
     return result
+}
+
+@SuppressLint("HardwareIds")
+fun getIMEIInfo(context: Context): String {
+    val mTelephony = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        mTelephony.imei
+    } else {
+        mTelephony.deviceId
+    }
 }

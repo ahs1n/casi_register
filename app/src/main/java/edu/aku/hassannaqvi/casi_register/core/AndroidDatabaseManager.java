@@ -1,7 +1,7 @@
 package edu.aku.hassannaqvi.casi_register.core;
 
 /**
- * Created by hassan.naqvi on 11/30/2016.
+ * @author hassan.naqvi.
  */
 
 import android.app.Activity;

@@ -28,7 +28,7 @@ import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.PROJECT_NAME;
 
 /**
- * Created by ali.azaz on 3/14/2018.
+ * @author ali.azaz on 3/14/2018.
  */
 
 public class SyncAllPhotos extends AsyncTask<Void, Integer, String> {

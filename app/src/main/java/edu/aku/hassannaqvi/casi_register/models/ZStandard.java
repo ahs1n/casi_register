@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 
 /**
- * Created by hassan.naqvi on 11/30/2016.
+ * @author hassan.naqvi.
  */
 
 public class ZStandard {

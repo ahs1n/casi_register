@@ -52,10 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.other.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.other.MainActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".ui.sections.Section01CS1Activity"
@@ -88,12 +85,12 @@
             android:theme="@style/AppThemeUrdu" />
         <activity
             android:name=".core.AndroidDatabaseManager"
-            android:parentActivityName=".ui.other.MainActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".sync.SyncActivity"
-            android:parentActivityName=".ui.other.MainActivity"
+            android:name=".ui.SyncActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait" />
 
         <service android:name=".utils.DownloadFileService" />

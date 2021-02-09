@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.casi_register.sync;
+package edu.aku.hassannaqvi.casi_register.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -36,14 +36,14 @@ import java.util.List;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.contracts.UsersContract;
-import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract;
-import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySyncBinding;
 import edu.aku.hassannaqvi.casi_register.models.SyncModel;
+import edu.aku.hassannaqvi.casi_register.models.Users;
+import edu.aku.hassannaqvi.casi_register.models.VersionApp;
+import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.workers.DataDownWorkerALL;
 import edu.aku.hassannaqvi.casi_register.workers.DataUpWorkerALL;
 
@@ -178,7 +178,7 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.add(new SyncModel(UCs.TableUCs.TABLE_NAME));*//*
 
                 }*/
-                downloadTables.add(new SyncModel(VillagesContract.Table.TABLE_NAME));
+                downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
 
                 MainApp.downloadData = new String[downloadTables.size()];
@@ -256,20 +256,20 @@ public class SyncActivity extends AppCompatActivity {
                             if (result.length() > 0) {
                                 Log.d(TAG, "onChanged: result " + result);
                                 System.out.println("SYSTEM onChanged: result" + result);
-                                DatabaseHelper db = new DatabaseHelper(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this);
+                                DatabaseHelper db = new DatabaseHelper(SyncActivity.this);
                                 try {
                                     JSONArray jsonArray = new JSONArray();
                                     int insertCount = 0;
                                     switch (tableName) {
-                                        case UsersContract.UsersTable.TABLE_NAME:
+                                        case Users.UsersTable.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncUser(jsonArray);
                                             break;
-                                        case VersionAppContract.VersionAppTable.TABLE_NAME:
+                                        case VersionApp.VersionAppTable.TABLE_NAME:
                                             insertCount = db.syncVersionApp(new JSONObject(result));
                                             if (insertCount == 1) jsonArray.put("1");
                                             break;
-                                        case VillagesContract.Table.TABLE_NAME:
+                                        case Villages.VillagesTable.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncVillages(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
@@ -279,27 +279,6 @@ public class SyncActivity extends AppCompatActivity {
                                             insertCount = db.syncZStandard(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
                                             break;
-
-/*                                        case UCs.TableUCs.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncUCs(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
-                                        case Districts.TableDistricts.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncDistricts(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
-                                        case Clusters.TableClusters.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncCluster(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
-                                        case BLRandom.TableRandom.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncBLRandom(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;*/
 
                                     }
 
@@ -439,7 +418,7 @@ public class SyncActivity extends AppCompatActivity {
                                         Log.d(TAG, "onChanged Compare: " + method1.getName().equals("updateSynced" + tableName));
                                         if (method1.getName().equals("updateSynced" + tableName)) {
                                             method = method1;
-                                            Toast.makeText(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this, "updateSynced not found: updateSynced" + tableName, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SyncActivity.this, "updateSynced not found: updateSynced" + tableName, Toast.LENGTH_SHORT).show();
                                             break;
                                         }
                                     }
@@ -457,7 +436,7 @@ public class SyncActivity extends AppCompatActivity {
                                                 sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
                                             }
                                         }
-                                        Toast.makeText(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this, tableName + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SyncActivity.this, tableName + " synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
                                         if (sSyncedError.toString().equals("")) {
                                             uploadTables.get(position).setmessage(tableName + " synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
@@ -478,7 +457,7 @@ public class SyncActivity extends AppCompatActivity {
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
-                                    Toast.makeText(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this, "Sync Result:  " + result, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SyncActivity.this, "Sync Result:  " + result, Toast.LENGTH_SHORT).show();
 
                                     if (result.equals("No new records to sync.")) {
                                         uploadTables.get(position).setmessage(result /*+ " Open Forms" + String.format("%02d", unclosedForms.size())*/);
@@ -547,7 +526,7 @@ public class SyncActivity extends AppCompatActivity {
 
                 int fcount = Math.min(files.length, 300);
                 for (int i = 0; i < fcount; i++) {
-                    TextView textView = new TextView(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this);
+                    TextView textView = new TextView(edu.aku.hassannaqvi.casi_register.ui.SyncActivity.this);
                     textView.setText("PROCESSING: " + files[i].getName());
                     textView.setId(i);
                     bi.photoLayout.addView(textView);
@@ -588,7 +567,7 @@ public class SyncActivity extends AppCompatActivity {
                             final TextView[] mTextView1 = new TextView[1];
 
                             WorkManager.getInstance().getWorkInfoByIdLiveData(photoUpload.getId())
-                                    .observe(edu.aku.hassannaqvi.casi_register.sync.SyncActivity.this, new Observer<WorkInfo>() {
+                                    .observe(edu.aku.hassannaqvi.casi_register.ui.SyncActivity.this, new Observer<WorkInfo>() {
 
                                         @Override
                                         public void onChanged(@Nullable WorkInfo workInfo) {
@@ -617,7 +596,7 @@ public class SyncActivity extends AppCompatActivity {
                                             }
 
                                             if (workInfo.getState() == WorkInfo.State.FAILED) {
-                                                Toast.makeText(edu.aku.hassannaqvi.naunehal.ui.SyncActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(edu.aku.hassannaqvi.casi_register.ui.SyncActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                                                 String error = workInfo.getState().name() + ": " + workInfo.getOutputData().getString("error");
                                                 mTextView1[0].setText(error);
                                                 mTextView1[0].setTextColor(Color.RED);

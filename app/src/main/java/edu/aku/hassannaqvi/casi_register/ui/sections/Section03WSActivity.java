@@ -22,7 +22,7 @@ import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection03WsBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
-import edu.aku.hassannaqvi.casi_register.ui.other.MainActivity;
+import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
@@ -82,8 +82,8 @@ public class Section03WSActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
 
         form = new Form();
-        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date().getTime()));
-        form.setUsername(MainApp.userName);
+        form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
+        form.setUsername(MainApp.user.getUserName());
         form.setDeviceID(MainApp.appInfo.getDeviceID());
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
@@ -93,7 +93,6 @@ public class Section03WSActivity extends AppCompatActivity {
         form.setUc(MainActivity.mainInfo.getUc());
         form.setVillage(MainActivity.mainInfo.getVillage());
 
-        MainApp.setGPS(this);
         JSONObject wS = new JSONObject();
 
 

@@ -1,10 +1,10 @@
 package edu.aku.hassannaqvi.casi_register.utils;
 
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.casi_register.contracts.UsersContract.UsersTable;
-import edu.aku.hassannaqvi.casi_register.contracts.VersionAppContract.VersionAppTable;
-import edu.aku.hassannaqvi.casi_register.contracts.VillagesContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
+import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable;
+import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable;
+import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable;
 
 public final class CreateTable {
 
@@ -48,24 +48,24 @@ public final class CreateTable {
             + " );";
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersTable.TABLE_NAME + "("
-            + UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + UsersTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.COLUMN_USERNAME + " TEXT,"
             + UsersTable.COLUMN_PASSWORD + " TEXT,"
-            + UsersTable.COLUMN_FULL_NAME + " TEXT"
+            + UsersTable.COLUMN_FULLNAME + " TEXT"
             + " );";
 
 
-    public static final String SQL_CREATE_VILLAGES = "CREATE TABLE " + VillagesContract.Table.TABLE_NAME + "("
-            + VillagesContract.Table._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + VillagesContract.Table.COLUMN_COUNTRY + " TEXT,"
-            + VillagesContract.Table.COLUMN_DISTRICT + " TEXT,"
-            + VillagesContract.Table.COLUMN_UC + " TEXT,"
-            + VillagesContract.Table.COLUMN_VILLAGE + " TEXT,"
-            + VillagesContract.Table.COLUMN_COUNTRY_CODE + " TEXT,"
-            + VillagesContract.Table.COLUMN_DISTRICT_CODE + " TEXT,"
-            + VillagesContract.Table.COLUMN_UC_CODE + " TEXT,"
-            + VillagesContract.Table.COLUMN_VILLLAGE_CODE + " TEXT,"
-            + VillagesContract.Table.COLUMN_CLUSTER_NO + " TEXT );";
+    public static final String SQL_CREATE_VILLAGES = "CREATE TABLE " + VillagesTable.TABLE_NAME + "("
+            + VillagesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + VillagesTable.COLUMN_COUNTRY + " TEXT,"
+            + VillagesTable.COLUMN_DISTRICT + " TEXT,"
+            + VillagesTable.COLUMN_UC + " TEXT,"
+            + VillagesTable.COLUMN_VILLAGE + " TEXT,"
+            + VillagesTable.COLUMN_COUNTRY_CODE + " TEXT,"
+            + VillagesTable.COLUMN_DISTRICT_CODE + " TEXT,"
+            + VillagesTable.COLUMN_UC_CODE + " TEXT,"
+            + VillagesTable.COLUMN_VILLLAGE_CODE + " TEXT,"
+            + VillagesTable.COLUMN_CLUSTER_NO + " TEXT );";
 
 
     public static final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
