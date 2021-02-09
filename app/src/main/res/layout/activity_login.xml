@@ -64,8 +64,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/glass_boarders"
-                android:gravity="center"
                 android:elevation="4dp"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -193,6 +193,47 @@
                                             android:src="@drawable/ic_red_eye"
                                             android:textSize="20sp" />
                                     </LinearLayout>
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="?attr/actionBarSize"
+                                        android:elevation="1dp"
+                                        android:orientation="horizontal"
+                                        android:radius="2dp">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="2"
+                                            android:gravity="center"
+                                            android:text="Country (Click to change)"
+                                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                            android:textColor="@color/blackOverlay"
+                                            android:textSize="20sp"
+                                            android:textStyle="bold" />
+
+                                        <ToggleButton
+                                            android:id="@+id/countrySwitch"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:padding="12dp"
+                                            android:radius="2dp"
+                                            android:textColor="@color/colorSecondaryDark"
+                                            android:textOff="Pakistan"
+                                            android:textOn="Tajikistan"
+                                            android:textSize="20sp" />
+
+                                    </LinearLayout>
+
                                 </LinearLayout>
 
                                 <androidx.appcompat.widget.AppCompatButton

@@ -37,6 +37,8 @@ import java.util.Objects;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import org.jetbrains.annotations.NotNull;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
@@ -67,8 +69,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     public static Identification mainInfo;
     static File file;
     ActivityMainBinding bi;
-    String dtToday = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH).format(new Date().getTime());
-    String sysdateToday = new SimpleDateFormat("dd-MM-yy", Locale.ENGLISH).format(new Date());
     SharedPreferences sharedPrefDownload;
     SharedPreferences.Editor editorDownload;
     DownloadManager downloadManager;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     VersionApp versionApp;
     Long refID;
     //Setting Spinner
-    List<String> countryName, districtName, ucName, villageName;
+    List<String> regionName, districtName, ucName, villageName;
     Map<String, Villages> villageMap;
     List<Villages> areaList;
     Villages village;
@@ -202,45 +202,44 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         sharedPrefDownload = getSharedPreferences("appDownload", MODE_PRIVATE);
         editorDownload = sharedPrefDownload.edit();
         versionApp = appInfo.getDbHelper().getVersionApp();
-        if (versionApp.getVersioncode() != null) {
+        versionApp.getVersioncode();
 
-            preVer = appInfo.getVersionName() + "." + appInfo.getVersionCode();
-            newVer = versionApp.getVersionname() + "." + versionApp.getVersioncode();
+        preVer = appInfo.getVersionName() + "." + appInfo.getVersionCode();
+        newVer = versionApp.getVersionname() + "." + versionApp.getVersioncode();
 
-            if (appInfo.getVersionCode() < Integer.parseInt(versionApp.getVersioncode())) {
-                bi.lblAppVersion.setVisibility(View.VISIBLE);
+        if (appInfo.getVersionCode() < Integer.parseInt(versionApp.getVersioncode())) {
+            bi.lblAppVersion.setVisibility(View.VISIBLE);
 
-                String fileName = CreateTable.DATABASE_NAME.replace(".db", "-New-Apps");
-                file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
+            String fileName = CreateTable.DATABASE_NAME.replace(".db", "-New-Apps");
+            file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
 
-                if (file.exists()) {
-                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " New Version ").append(newVer).append("  Downloaded"));
-                    showDialog(newVer, preVer);
-                } else {
-                    NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
-                    if (networkInfo != null && networkInfo.isConnected()) {
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Downloading.."));
-                        downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                        Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
-                        DownloadManager.Request request = new DownloadManager.Request(uri);
-                        request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
-                                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                                .setTitle("Downloading " + getString(R.string.app_name) + " App new App ver." + newVer);
-                        refID = downloadManager.enqueue(request);
-
-                        editorDownload.putLong("refID", refID);
-                        editorDownload.putBoolean("flag", false);
-                        editorDownload.apply();
-
-                    } else {
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Available..\n(Can't download.. Internet connectivity issue!!)"));
-                    }
-                }
-
+            if (file.exists()) {
+                bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " New Version ").append(newVer).append("  Downloaded"));
+                showDialog(newVer, preVer);
             } else {
-                bi.lblAppVersion.setVisibility(View.GONE);
-                bi.lblAppVersion.setText(null);
+                NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Downloading.."));
+                    downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                    Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
+                    DownloadManager.Request request = new DownloadManager.Request(uri);
+                    request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
+                            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                            .setTitle("Downloading " + getString(R.string.app_name) + " App new App ver." + newVer);
+                    refID = downloadManager.enqueue(request);
+
+                    editorDownload.putLong("refID", refID);
+                    editorDownload.putBoolean("flag", false);
+                    editorDownload.apply();
+
+                } else {
+                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Available..\n(Can't download.. Internet connectivity issue!!)"));
+                }
             }
+
+        } else {
+            bi.lblAppVersion.setVisibility(View.GONE);
+            bi.lblAppVersion.setText(null);
         }
         registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
@@ -308,17 +307,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         }
     }
 
-    private void showDialog(String newVer, String preVer) {
-        AppUtilsKt.openWarningActivity(
-                this,
-                1,
-                getString(R.string.app_name) + " APP is available!",
-                getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\nInstall new version to use this app.",
-                "Install",
-                "Cancel"
-        );
-    }
-
     @SuppressLint("NonConstantResourceId")
     public void openSpecificActivity(View v) {
         Intent oF = null;
@@ -369,18 +357,19 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         }
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
-        gettingAreaData();
+        gettingRegionData();
     }
 
-    //Other Dependent Functions
+    /*
+     * Other Dependent Functions
+     * */
     private void setUIContent() {
 
-        //spProvince
-        bi.spCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        //spRegion
+        bi.spRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 onSettingDropDownContent(false);
@@ -391,7 +380,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 }
                 initializingDistrictVariables();
                 for (Villages item : areaList) {
-                    if (item.getCountry().equals(bi.spCountry.getSelectedItem().toString()) && !districtName.contains(item.getDistrict())) {
+                    if (item.getCountry().equals(bi.spRegion.getSelectedItem().toString()) && !districtName.contains(item.getDistrict())) {
                         districtName.add(item.getDistrict());
                         villageMap.put(item.getDistrict(), item);
                     }
@@ -431,6 +420,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             }
         });
 
+        //uc
         bi.spUC.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -456,7 +446,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             }
         });
 
-
+        //village
         bi.spVillage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -484,7 +474,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     }
 
     private void initializingAreaVariables() {
-        countryName = new ArrayList<String>() {
+        regionName = new ArrayList<String>() {
             {
                 add("....");
             }
@@ -522,20 +512,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi.spVillage.setEnabled(true);
     }
 
-    //Reactive Streams
-    private Observable<List<Villages>> getAreas() {
-        return Observable.create(emitter -> {
-            //emitter.onNext(appInfo.getDbHelper().getEnumBlock(MainApp.UC_ID));
-            emitter.onNext(appInfo.getDbHelper().getCountry());
-            emitter.onComplete();
-        });
-    }
-
-    //Getting data from db
-    public void gettingAreaData() {
+    private void gettingRegionData() {
         initializingAreaVariables();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, countryName);
-        bi.spCountry.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, regionName);
+        bi.spRegion.setAdapter(adapter);
         getAreas()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -543,15 +523,15 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     Disposable disposable;
 
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NotNull Disposable d) {
                         disposable = d;
                     }
 
                     @Override
-                    public void onNext(List<Villages> vContract) {
+                    public void onNext(@NotNull List<Villages> vContract) {
                         for (Villages village : vContract) {
-                            if (!countryName.contains(village.getCountry()))
-                                countryName.add(village.getCountry());
+                            if (!regionName.contains(village.getCountry()))
+                                regionName.add(village.getCountry());
                             areaList.add(village);
                         }
                         adapter.notifyDataSetChanged();
@@ -568,13 +548,35 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 });
     }
 
+    private void showDialog(String newVer, String preVer) {
+        AppUtilsKt.openWarningActivity(
+                this,
+                1,
+                getString(R.string.app_name) + " APP is available!",
+                getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\nInstall new version to use this app.",
+                "Install",
+                "Cancel"
+        );
+    }
+
+    /*
+     * Reactive Streams
+     * */
+    private Observable<List<Villages>> getAreas() {
+        return Observable.create(emitter -> {
+            //emitter.onNext(appInfo.getDbHelper().getEnumBlock(MainApp.UC_ID));
+            emitter.onNext(appInfo.getDbHelper().getCountry());
+            emitter.onComplete();
+        });
+    }
+
+    //Getting data from db
     private void SaveDraft() {
         mainInfo = new Identification(
-                bi.spCountry.getSelectedItem().toString(),
+                bi.spRegion.getSelectedItem().toString(),
                 bi.spDistrict.getSelectedItem().toString(),
                 bi.spUC.getSelectedItem().toString(),
                 bi.spVillage.getSelectedItem().toString());
     }
-
 
 }

@@ -91,11 +91,7 @@ public class DataUpWorkerALL extends Worker {
 
         URL url = null;
         try {
-            if (serverURL == null) {
-                url = new URL(MainApp._HOST_URL + MainApp._SERVER_URL);
-            } else {
-                url = serverURL;
-            }
+            url = new URL(MainApp._HOST_URL + MainApp._SERVER_URL);
             Log.d(TAG, "doWork: Connecting...");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(100000 /* milliseconds */);

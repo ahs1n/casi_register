@@ -25,7 +25,7 @@ public class MainApp extends Application {
     public static final String _SERVER_URL = "sync.php";
     public static final String _SERVER_GET_URL = "getData.php";
     public static final String _PHOTO_UPLOAD_URL = MainApp._IP + "/casi_gm/api/uploads.php";
-    public static final String _UPDATE_URL = MainApp._IP + "/casi_gm/app/validation/";
+    public static final String _UPDATE_URL = MainApp._IP + "/casi_gm/app/";
     public static AppInfo appInfo;
     public static Boolean admin = false;
     public static Users user;
