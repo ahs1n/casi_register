@@ -74,7 +74,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="12dp"
                     android:onClick="calcZ"
-                    android:text="SIGN IN"
+                    android:text="@string/signin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
                     android:textColor="@color/colorSecondaryLight"
                     android:textSize="20sp"
@@ -111,7 +111,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Username"
+                                    android:text="@string/username"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                                     android:textColor="@color/blackOverlay"
                                     android:textSize="17sp"
@@ -148,7 +148,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Password"
+                                        android:text="@string/password"
                                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                                         android:textColor="@color/blackOverlay"
                                         android:textSize="17sp"
