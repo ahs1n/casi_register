@@ -28,6 +28,7 @@
     <string name="ChildFollowup">Child Follow-up</string>
     <string name="wraScreening">WRAs Screening</string>
     <string name="wraFollowup">WRAs Follow-up</string>
+    <string name="btnSave">Save</string>
 
     <!--EndActivity Strings-->
     <string name="elc7">گھراڻي جي انٽريو جو نتيجو (جيڪڏھن انٽريو مڪمل نه  ٿيو ھجي ته  صحيع آپشن لاءِ سپروائزر سان مشورو ڪريو)</string>

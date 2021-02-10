@@ -285,12 +285,26 @@
                             android:text="@string/Q_cs07" />
                     </RelativeLayout>
 
-                    <EditText
-                        android:id="@+id/cs07"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/cs07" />
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/cs07"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
+                            android:hint="@string/cs07" />
+
+                        <CheckBox
+                            android:id="@+id/cs07User"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@{cs07.equals(`98`)}"
+                            android:tag="-1"
+                            android:text="Same as Login user" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -2060,7 +2074,7 @@
                     android:layout_marginStart="12dp"
                     android:background="@color/greenOverlay"
                     android:onClick="@{() -> callback.BtnContinue()}"
-                    android:text="Save"
+                    android:text="@string/btnSave"
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>

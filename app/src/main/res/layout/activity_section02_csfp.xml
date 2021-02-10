@@ -2253,7 +2253,7 @@
                     android:layout_marginStart="12dp"
                     android:background="@color/greenOverlay"
                     android:onClick="@{() -> callback.BtnContinue()}"
-                    android:text="Save"
+                    android:text="@string/btnSave"
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
