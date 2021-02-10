@@ -21,6 +21,13 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="region">REGION</string>
+    <string name="district">DISTRICT</string>
+    <string name="uc">UC</string>
+    <string name="childScreening">Child Screening</string>
+    <string name="ChildFollowup">Child Follow-up</string>
+    <string name="wraScreening">WRAs Screening</string>
+    <string name="wraFollowup">WRAs Follow-up</string>
 
     <!--EndActivity Strings-->
     <string name="elc7">گھراڻي جي انٽريو جو نتيجو (جيڪڏھن انٽريو مڪمل نه  ٿيو ھجي ته  صحيع آپشن لاءِ سپروائزر سان مشورو ڪريو)</string>

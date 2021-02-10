@@ -164,7 +164,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="REGION"
+                                android:text="@string/region"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
@@ -199,7 +199,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="DISTRICT"
+                                android:text="@string/district"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
@@ -234,7 +234,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="UC"
+                                android:text="@string/uc"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
@@ -268,7 +268,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/colorPrimaryDark"
                                 android:gravity="center"
-                                android:text="CITY / VILLAGE"
+                                android:text="@string/city_village"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />
@@ -326,7 +326,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:background="@color/colorPrimaryDark"
                                     android:drawablePadding="12dp"
-                                    android:text="Child Screening"
+                                    android:text="@string/childScreening"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                                     android:textColor="@color/white"
                                     app:drawableStartCompat="@drawable/open_form" />
@@ -363,7 +363,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:background="@color/colorPrimaryDark"
                                     android:drawablePadding="12dp"
-                                    android:text="Child Follow-up"
+                                    android:text="@string/ChildFollowup"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                                     android:textColor="@color/white"
                                     app:drawableStartCompat="@drawable/open_form" />
@@ -408,7 +408,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:background="@color/colorPrimaryDark"
                                     android:drawablePadding="12dp"
-                                    android:text="WRAs Screening"
+                                    android:text="@string/wraScreening"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                                     android:textColor="@color/white"
                                     app:drawableStartCompat="@drawable/open_form" />
@@ -445,7 +445,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:background="@color/colorPrimaryDark"
                                     android:drawablePadding="12dp"
-                                    android:text="WRAs Follow-up"
+                                    android:text="@string/wraFollowup"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                                     android:textColor="@color/white"
                                     app:drawableStartCompat="@drawable/open_form" />
