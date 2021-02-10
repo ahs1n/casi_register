@@ -21,6 +21,22 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="region">REGION</string>
+    <string name="district">DISTRICT</string>
+    <string name="uc">UC</string>
+    <string name="childScreening">Child Screening</string>
+    <string name="ChildFollowup">Child Follow-up</string>
+    <string name="wraScreening">WRAs Screening</string>
+    <string name="wraFollowup">WRAs Follow-up</string>
+    <string name="btnSave">Save</string>
+    <string name="signin">SIGN IN</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="country">Country (Click to change)</string>
+    <string name="pakistan">Pakistan</string>
+    <string name="tajikistan">Tajikistan</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnDownloadData">Download Data</string>
 
     <!--EndActivity Strings-->
     <string name="elc7">گھراڻي جي انٽريو جو نتيجو (جيڪڏھن انٽريو مڪمل نه  ٿيو ھجي ته  صحيع آپشن لاءِ سپروائزر سان مشورو ڪريو)</string>
