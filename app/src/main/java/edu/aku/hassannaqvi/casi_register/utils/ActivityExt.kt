@@ -11,7 +11,8 @@ import edu.aku.hassannaqvi.casi_register.base.repository.GeneralRepository
 import java.io.Serializable
 
 /*
-* @author Ali Azaz Alam dt. 12.18.20
+* @author Mustufa.Ansari
+* @modified Ali Azaz Alam dt. 12.18.20
 * */
 fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>, generalRepository: GeneralRepository) =
         ViewModelProvider(this, ViewModelFactory(generalRepository)).get(viewModelClass)
@@ -39,7 +40,7 @@ fun <T : AppCompatActivity> Fragment.gotoActivityWithSerializable(targetActivity
     startActivity(intent)
 }
 
-fun AppCompatActivity.gotoActivityWithNoHistory(targetActivityClass: Class<*>) {
+fun <T : AppCompatActivity> AppCompatActivity.gotoActivityWithNoHistory(targetActivityClass: Class<T>) {
     val i = Intent(this, targetActivityClass)
     i.flags =
             Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

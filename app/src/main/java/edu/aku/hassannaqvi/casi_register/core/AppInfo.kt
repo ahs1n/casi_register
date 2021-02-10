@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /*
- * @author Mustufa
+ * @author Mustufa.Ansari
  * @update Ali Azaz Alam dt. 12.16.20
  * */
 class AppInfo {
