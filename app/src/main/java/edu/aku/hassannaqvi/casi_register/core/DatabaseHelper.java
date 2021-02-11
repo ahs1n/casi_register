@@ -136,6 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(VillagesTable.COLUMN_UC, villages.getUc());
                 values.put(VillagesTable.COLUMN_VILLAGE, villages.getVillage());
                 values.put(VillagesTable.COLUMN_COUNTRY_CODE, villages.getCountry_code());
+                values.put(VillagesTable.COLUMN_COUNTRY, villages.getCountry());
                 values.put(VillagesTable.COLUMN_DISTRICT_CODE, villages.getDistrict_code());
                 values.put(VillagesTable.COLUMN_UC_CODE, villages.getUc_code());
                 values.put(VillagesTable.COLUMN_VILLLAGE_CODE, villages.getVillage_code());
@@ -598,49 +599,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Collection<Villages> getCountri() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                "DISTINCT " + VillagesTable.COLUMN_REGION,
-                VillagesTable.COLUMN_COUNTRY_CODE
-        };
-
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = VillagesTable.COLUMN_REGION;
-        String having = null;
-
-        String orderBy =
-                VillagesTable.COLUMN_REGION + " ASC";
-
-        Collection<Villages> allvil = new ArrayList<Villages>();
-        try {
-            c = db.query(
-                    VillagesTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                Villages zs = new Villages();
-                allvil.add(zs.hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allvil;
-    }
-
-
     public Collection<ZStandard> getZStandardByL(String uc) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -899,138 +857,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
      * Get UC, DISTRICT, ENUMBLOCK and COUNTRY
      * */
-    public List<Villages> getUCs() {
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                VillagesTable._ID,
-                VillagesTable.COLUMN_UC_CODE,
-                VillagesTable.COLUMN_UC,
-                VillagesTable.COLUMN_DISTRICT_CODE
-        };
-
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = VillagesTable.COLUMN_UC_CODE + " ASC";
-        List<Villages> allEB = new ArrayList<>();
-        try {
-            c = db.query(
-                    VillagesTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                allEB.add(new Villages().hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allEB;
-    }
-
-    public List<Villages> getDistrics() {
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                VillagesTable._ID,
-                VillagesTable.COLUMN_DISTRICT_CODE,
-                VillagesTable.COLUMN_DISTRICT,
-                VillagesTable.COLUMN_COUNTRY_CODE
-        };
-
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = VillagesTable.COLUMN_COUNTRY_CODE + " ASC";
-        List<Villages> allEB = new ArrayList<>();
-        try {
-            c = db.query(
-                    VillagesTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                allEB.add(new Villages().hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allEB;
-    }
-
-    public List<Villages> getEnumBlock(String dist_id) {
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                VillagesTable._ID,
-                VillagesTable.COLUMN_REGION,
-                VillagesTable.COLUMN_DISTRICT,
-                VillagesTable.COLUMN_UC,
-                VillagesTable.COLUMN_VILLAGE,
-                VillagesTable.COLUMN_COUNTRY_CODE,
-                VillagesTable.COLUMN_DISTRICT_CODE,
-                VillagesTable.COLUMN_UC_CODE,
-                VillagesTable.COLUMN_VILLLAGE_CODE,
-                VillagesTable.COLUMN_REGION_CODE
-        };
-
-        String whereClause = VillagesTable.COLUMN_DISTRICT_CODE + " LIKE ? ";
-        String[] whereArgs = {"" + dist_id + "%"};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = VillagesTable.COLUMN_DISTRICT_CODE + " ASC";
-        List<Villages> allEB = new ArrayList<>();
-        try {
-            c = db.query(
-                    VillagesTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                allEB.add(new Villages().hydrate(c));
-                //allEB.add(new Villages.HydrateEnum(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allEB;
-    }
 
     public List<Villages> getCountry() {
 

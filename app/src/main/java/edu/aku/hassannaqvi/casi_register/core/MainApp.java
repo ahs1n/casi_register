@@ -9,7 +9,9 @@ import org.json.JSONArray;
 import java.util.List;
 
 import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.models.Identification;
 import edu.aku.hassannaqvi.casi_register.models.Users;
+import edu.aku.hassannaqvi.casi_register.models.Villages;
 
 
 /**
@@ -35,6 +37,7 @@ public class MainApp extends Application {
     public static String UC_ID;
     public static List<JSONArray> uploadData;
     public static String[] downloadData;
+    public static Villages mainInfo;
 
 
     @Override

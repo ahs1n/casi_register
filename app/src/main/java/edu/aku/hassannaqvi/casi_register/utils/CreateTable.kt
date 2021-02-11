@@ -57,6 +57,7 @@ object CreateTable {
             + VillagesTable.COLUMN_UC + " TEXT,"
             + VillagesTable.COLUMN_VILLAGE + " TEXT,"
             + VillagesTable.COLUMN_COUNTRY_CODE + " TEXT,"
+            + VillagesTable.COLUMN_COUNTRY + " TEXT,"
             + VillagesTable.COLUMN_DISTRICT_CODE + " TEXT,"
             + VillagesTable.COLUMN_UC_CODE + " TEXT,"
             + VillagesTable.COLUMN_VILLLAGE_CODE + " TEXT,"

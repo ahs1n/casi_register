@@ -88,7 +88,7 @@ public class Section03WSActivity extends AppCompatActivity {
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCountry(MainActivity.mainInfo.getCountry());
+        form.setCountry(MainActivity.mainInfo.getRegion());
         form.setDistrict(MainActivity.mainInfo.getDistrict());
         form.setUc(MainActivity.mainInfo.getUc());
         form.setVillage(MainActivity.mainInfo.getVillage());
