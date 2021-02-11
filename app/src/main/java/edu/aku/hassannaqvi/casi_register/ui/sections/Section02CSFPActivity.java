@@ -33,6 +33,10 @@ import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class Section02CSFPActivity extends AppCompatActivity {
@@ -98,6 +102,8 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.setDistrict(MainApp.mainInfo.getDistrict());
         form.setUc(MainApp.mainInfo.getUc());
         form.setVillage(MainApp.mainInfo.getVillage());
+
+        form.setFormType(CHILD_FOLLOWUP_TYPE);
 
         form.setFc01(item.getCountry_code());
         form.setFc01a(item.getRegion_code());

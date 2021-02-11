@@ -47,7 +47,9 @@ import edu.aku.hassannaqvi.casi_register.utils.datecollection.AgeModel;
 import edu.aku.hassannaqvi.casi_register.utils.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class Section01CS1Activity extends AppCompatActivity implements EndSectionActivity {
@@ -117,6 +119,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setDistrict(MainApp.mainInfo.getDistrict());
         form.setUc(MainApp.mainInfo.getUc());
         form.setVillage(MainApp.mainInfo.getVillage());
+
+        form.setFormType(CHILD_TYPE);
 
         form.setLocalDate(localDate);
 

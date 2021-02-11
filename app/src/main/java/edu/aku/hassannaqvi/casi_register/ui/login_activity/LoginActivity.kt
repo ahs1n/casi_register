@@ -30,6 +30,7 @@ import edu.aku.hassannaqvi.casi_register.ui.login_activity.login_view.LoginUISou
 import edu.aku.hassannaqvi.casi_register.utils.gotoActivity
 import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
 import edu.aku.hassannaqvi.casi_register.utils.isNetworkConnected
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
 import kotlinx.coroutines.*
 
 
@@ -195,6 +196,13 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
             approval = true
         } else
             viewModel.getLoginInfoFromDB(username, password)
+    }
+
+    /*
+    * Setting country code in Shared Preferenmce
+    * */
+    override fun setCountryCode(code: Int) {
+        SharedStorage.setCountryCode(this, code)
     }
 
     /*
