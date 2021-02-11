@@ -201,18 +201,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 JSONObject jsonObjectzs = hfList.getJSONObject(i);
 
                 HealthFacility facility = new HealthFacility();
-                facility.Sync(jsonObjectzs);
+                facility.sync(jsonObjectzs);
                 ContentValues values = new ContentValues();
 
-                values.put(HFContract.HFTable.COLUMN_COUNTRY_CODE, facility.getCountryCode());
-                values.put(HFContract.HFTable.COLUMN_COUNTRY_NAME, facility.getCountryName());
-                values.put(HFContract.HFTable.COLUMN_REGION_CODE, facility.getRegionCode());
+                values.put(HFContract.HFTable.COLUMN_COUNTRY_CODE, facility.getCountry_code());
+                values.put(HFContract.HFTable.COLUMN_COUNTRY_NAME, facility.getCountry_name());
+                values.put(HFContract.HFTable.COLUMN_REGION_CODE, facility.getRegion_code());
                 values.put(HFContract.HFTable.COLUMN_REGION, facility.getRegion());
-                values.put(HFContract.HFTable.COLUMN_DISTRICT_CODE, facility.getDistrictCode());
+                values.put(HFContract.HFTable.COLUMN_DISTRICT_CODE, facility.getDistrict_code());
                 values.put(HFContract.HFTable.COLUMN_DISTRICT, facility.getDistrict());
-                values.put(HFContract.HFTable.COLUMN_UC_CODE, facility.getUcCode());
+                values.put(HFContract.HFTable.COLUMN_UC_CODE, facility.getUc_code());
                 values.put(HFContract.HFTable.COLUMN_UC, facility.getUc());
-                values.put(HFContract.HFTable.COLUMN_VILLAGE_CODE, facility.getVillageCode());
+                values.put(HFContract.HFTable.COLUMN_VILLAGE_CODE, facility.getVillage_code());
                 values.put(HFContract.HFTable.COLUMN_VILLAGE, facility.getVillage());
                 long rowID = db.insert(HFContract.HFTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
@@ -928,6 +928,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 allEB.add(new Villages().hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allEB;
+    }
+
+    public List<HealthFacility> getFacility(String Region) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = null;
+        String[] whereArgs = {Region};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = HealthFacility.HealthFacilityTable._ID + " ASC";
+        List<HealthFacility> allEB = new ArrayList<>();
+        try {
+            c = db.query(
+                    HealthFacility.HealthFacilityTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allEB.add(new HealthFacility().hydrate(c));
             }
         } finally {
             if (c != null) {
