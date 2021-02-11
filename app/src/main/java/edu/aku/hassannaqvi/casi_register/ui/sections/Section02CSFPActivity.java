@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,14 +28,17 @@ import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection02CsfpBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class Section02CSFPActivity extends AppCompatActivity {
 
     ActivitySection02CsfpBinding bi;
+    Villages item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +50,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
     }
 
 
-    private void setupContent() {
-    }
+    private void setupContent() { }
 
 
     public void BtnContinue() {
@@ -91,10 +94,16 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCountry(MainActivity.mainInfo.getRegion());
-        form.setDistrict(MainActivity.mainInfo.getDistrict());
-        form.setUc(MainActivity.mainInfo.getUc());
-        form.setVillage(MainActivity.mainInfo.getVillage());
+        form.setCountry(MainApp.mainInfo.getCountry());
+        form.setDistrict(MainApp.mainInfo.getDistrict());
+        form.setUc(MainApp.mainInfo.getUc());
+        form.setVillage(MainApp.mainInfo.getVillage());
+
+        form.setFc01(item.getCountry_code());
+        form.setFc01a(item.getRegion_code());
+        form.setFc01b(item.getDistrict_code());
+        form.setFc04(item.getUc_code());
+        form.setFc05(item.getVillage_code());
 
         JSONObject cSFP = new JSONObject();
 

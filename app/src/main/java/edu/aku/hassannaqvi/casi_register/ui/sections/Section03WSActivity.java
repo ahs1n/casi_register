@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,6 +17,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -24,6 +26,7 @@ import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection03WsBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
@@ -41,6 +44,12 @@ public class Section03WSActivity extends AppCompatActivity {
     }
 
     private void setupContent() {
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "w-" + MainApp.mainInfo.getVillage_code());
+        if (!regID.equals(StringUtils.EMPTY)) {
+            String substring = regID.substring(regID.length() - 4);
+            String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
+            bi.ws11.setText(result);
+        } else bi.ws11.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
     }
 
 
@@ -61,19 +70,23 @@ public class Section03WSActivity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-/*        DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_WS, MainApp.form.getcS());
-        return updcount == 1;*/
-
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long rowid = db.addForm(form);
-        form.set_ID(String.valueOf(rowid));
-        if (rowid > 0) {
+        long updcount = db.addForm(form);
+        form.set_ID(String.valueOf(updcount));
+        if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            return true;
+            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
+            if (count > 0)
+                count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CS, form.wStoString());
+            if (count > 0) {
+                SharedStorage.INSTANCE.setLastRegistrationID(this, "w-" + MainApp.mainInfo.getVillage_code(), bi.ws11.getText().toString());
+                return true;
+            } else {
+                Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -88,13 +101,18 @@ public class Section03WSActivity extends AppCompatActivity {
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCountry(MainActivity.mainInfo.getRegion());
-        form.setDistrict(MainActivity.mainInfo.getDistrict());
-        form.setUc(MainActivity.mainInfo.getUc());
-        form.setVillage(MainActivity.mainInfo.getVillage());
+        form.setCountry(MainApp.mainInfo.getCountry());
+        form.setDistrict(MainApp.mainInfo.getDistrict());
+        form.setUc(MainApp.mainInfo.getUc());
+        form.setVillage(MainApp.mainInfo.getVillage());
+
+        form.setWs01(MainApp.mainInfo.getCountry_code());
+        form.setWs01a(MainApp.mainInfo.getRegion_code());
+        form.setWs01b(MainApp.mainInfo.getDistrict_code());
+        form.setWs04(MainApp.mainInfo.getUc_code());
+        form.setWs05(MainApp.mainInfo.getVillage_code());
 
         JSONObject wS = new JSONObject();
-
 
         wS.put("ws02", bi.ws0201.isChecked() ? "1"
                 : bi.ws0202.isChecked() ? "2"

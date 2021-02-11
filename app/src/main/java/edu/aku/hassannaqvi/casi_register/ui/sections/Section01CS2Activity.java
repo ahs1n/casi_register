@@ -7,11 +7,9 @@ import android.widget.Toast;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -21,7 +19,6 @@ import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
-import static edu.aku.hassannaqvi.casi_register.utils.JSONUtilsKt.mergeJSONObjects;
 
 public class Section01CS2Activity extends AppCompatActivity {
 
@@ -49,12 +46,8 @@ public class Section01CS2Activity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (!formValidation()) return;
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
+        saveDraft();
+        if (updateDB()) {
             finish();
             startActivity(new Intent(this, MainActivity.class));
         } else {
@@ -63,30 +56,14 @@ public class Section01CS2Activity extends AppCompatActivity {
     }
 
 
-    private boolean UpdateDB() {
+    private boolean updateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_CS, MainApp.form.getcS());
+        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_CS, MainApp.form.cS02toString());
         return updcount == 1;
-
-
-
-        /*long updcount = db.addForm(form);
-        form.set_ID(String.valueOf(updcount));
-        if (updcount > 0) {
-            form.set_UID(form.getDeviceID() + form.get_ID());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
-        }*/
     }
 
 
-    private void SaveDraft() throws JSONException {
-
-        JSONObject json = new JSONObject();
-
+    private void saveDraft() {
 
         form.setCs28a(bi.cs28a01.isChecked() ? "1"
                 : bi.cs28a02.isChecked() ? "2"
@@ -179,13 +156,6 @@ public class Section01CS2Activity extends AppCompatActivity {
                 : "-1");
         form.setCs32h096x(bi.cs32h096x.getText().toString());
 
-
-        try {
-            JSONObject jsonMerge = mergeJSONObjects(new JSONObject(form.getcS()), json);
-            form.setcS(String.valueOf(jsonMerge));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -193,26 +163,10 @@ public class Section01CS2Activity extends AppCompatActivity {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
-
     public void BtnEnd() {
         AppUtilsKt.contextEndActivity(this);
     }
 
-
-    //    @Override
-    public void endSecActivity(boolean flag) {
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     @Override
     public void onBackPressed() {

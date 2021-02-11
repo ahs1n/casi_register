@@ -31,6 +31,7 @@ import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -55,7 +56,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     boolean dtFlag = false;
     LocalDate calculatedDOB;
     LocalDate localDate;
-    List<String> regionName, districtName, ucName, villageName;
+    List<String> districtName;
     List<HealthFacility> facilityList;
     Map<String, HealthFacility> facilityMap;
 
@@ -70,25 +71,35 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     }
 
     private void setupContent() {
-        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "f-" + MainApp.mainInfo.getVillage_code());
-        if (!regID.equals(StringUtils.EMPTY)) bi.cs10.setText(regID);
-        else bi.cs10.setText(MainApp.mainInfo.getVillage_code());
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + MainApp.mainInfo.getVillage_code());
+        if (!regID.equals(StringUtils.EMPTY)) {
+            String substring = regID.substring(regID.length() - 4);
+            String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
+            bi.cs10.setText(result);
+        } else bi.cs10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
     }
 
     /*
      * Save functions
      * */
     private boolean updateDB() {
-
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long rowid = db.addForm(form);
-        form.set_ID(String.valueOf(rowid));
-        if (rowid > 0) {
+        long updcount = db.addForm(form);
+        form.set_ID(String.valueOf(updcount));
+        if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
-            db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            return true;
+            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
+            if (count > 0)
+                count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CS, form.cStoString());
+            if (count > 0) {
+                SharedStorage.INSTANCE.setLastRegistrationID(this, "c-" + MainApp.mainInfo.getVillage_code(), bi.cs10.getText().toString());
+                return true;
+            } else {
+                Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -105,15 +116,15 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setCountry(MainApp.mainInfo.getCountry());
         form.setDistrict(MainApp.mainInfo.getDistrict());
         form.setUc(MainApp.mainInfo.getUc());
-        form.setVillage(MainApp.mainInfo.getVillage_code());
-        form.setCountryCode(MainApp.mainInfo.getCountry_code());
-        form.setDistrictCode(MainApp.mainInfo.getDistrict_code());
-        form.setUcCode(MainApp.mainInfo.getUc_code());
-        form.setVillageCode(MainApp.mainInfo.getVillage_code());
+        form.setVillage(MainApp.mainInfo.getVillage());
 
         form.setLocalDate(localDate);
 
-        JSONObject cS = new JSONObject();
+        form.setCs01(MainApp.mainInfo.getCountry_code());
+        form.setCs01a(MainApp.mainInfo.getRegion_code());
+        form.setCs01b(MainApp.mainInfo.getDistrict_code());
+        form.setCs04(MainApp.mainInfo.getUc_code());
+        form.setCs05(MainApp.mainInfo.getVillage_code());
 
         form.setCs02(bi.cs0201.isChecked() ? "1"
                 : bi.cs0202.isChecked() ? "2"
@@ -248,8 +259,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setCs2703(bi.cs2703.getText().toString());
 
         form.setCs2704(bi.cs2704.getText().toString());
-
-        form.setcS((String.valueOf(cS)));
 
     }
 

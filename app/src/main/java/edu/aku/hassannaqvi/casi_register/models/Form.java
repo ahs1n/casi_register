@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 
 import androidx.lifecycle.LiveData;
+
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -3063,6 +3064,44 @@ public class Form extends LiveData<Form> {
                     .put("cs2702", cs2702)
                     .put("cs2703", cs2703)
                     .put("cs2704", cs2704)
+                    .put("cs28a", cs28a)
+                    .put("cs28b", cs28b)
+                    .put("cs28c", cs28c)
+                    .put("cs28d", cs28d)
+                    .put("cs28e", cs28e)
+                    .put("cs28f", cs28f)
+                    .put("cs28f01x", cs28f01x)
+                    .put("cs29", cs29)
+                    .put("cs30a", cs30a)
+                    .put("cs30b", cs30b)
+                    .put("cs30c", cs30c)
+                    .put("cs30d", cs30d)
+                    .put("cs30e", cs30e)
+                    .put("cs30f", cs30f)
+                    .put("cs30f096x", cs30f096x)
+                    .put("cs31", cs31)
+                    .put("cs32a", cs32a)
+                    .put("cs32b", cs32b)
+                    .put("cs32c", cs32c)
+                    .put("cs32d", cs32d)
+                    .put("cs32e", cs32e)
+                    .put("cs32f", cs32f)
+                    .put("cs32g", cs32g)
+                    .put("cs32h", cs32h)
+                    .put("cs32h096x", cs32h096x);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\"" + e.getMessage() + "\"";
+        }
+        return json.toString();
+    }
+
+    public String cS02toString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json
                     .put("cs28a", cs28a)
                     .put("cs28b", cs28b)
                     .put("cs28c", cs28c)
