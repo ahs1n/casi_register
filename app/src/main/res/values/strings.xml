@@ -24,6 +24,7 @@
     <string name="region">REGION</string>
     <string name="district">DISTRICT</string>
     <string name="uc">UC</string>
+    <string name="cityVillage">City / Village</string>
     <string name="childScreening">Child Screening</string>
     <string name="ChildFollowup">Child Follow-up</string>
     <string name="wraScreening">WRAs Screening</string>
@@ -224,6 +225,7 @@ Growth Monitoring - Screening Log for Children Under 5
     <string name="cs1501">Age in completed years </string>
     <string name="cs1502">Age in completed Months </string>
     <string name="cs16">Birth weight (in Kilo grams) Record 99.9 if birth weight is not available</string>
+    <string name="cs1698">Dont know</string>
     <string name="cs17">Have you ever exclusively breast fed your child?</string>
     <string name="cs1701">YES</string>
     <string name="cs1702">NO</string>

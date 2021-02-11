@@ -39,6 +39,7 @@ import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySyncBinding;
+import edu.aku.hassannaqvi.casi_register.models.HealthFacilitiy;
 import edu.aku.hassannaqvi.casi_register.models.SyncModel;
 import edu.aku.hassannaqvi.casi_register.models.Users;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
@@ -179,6 +180,7 @@ public class SyncActivity extends AppCompatActivity {
                 }*/
                 downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(HealthFacilitiy.HealthFacilityTable.TABLE_NAME));
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);

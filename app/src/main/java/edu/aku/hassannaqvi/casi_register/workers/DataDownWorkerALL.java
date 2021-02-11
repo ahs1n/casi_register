@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.casi_register.workers;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -38,15 +37,12 @@ public class DataDownWorkerALL extends Worker {
     // to be initialised by workParams
     private final Context mContext;
     private final int position;
-    private final String nTitle = "Nsaunehal: Data Download";
     private final String uploadTable;
     HttpURLConnection urlConnection;
     private final String uploadWhere;
     private final URL serverURL = null;
-    private ProgressDialog pd;
     private int length;
     private Data data;
-    private String uploadColumns;
 
     public DataDownWorkerALL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);

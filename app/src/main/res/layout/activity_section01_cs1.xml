@@ -562,7 +562,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!--            app:pattern="^(\\d{3,3}\\-\\d{2,2}-\\d{2,2})$"-->
+
             <!-- cs11  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVcs11"
@@ -910,7 +910,7 @@
                                 android:text="9998"
                                 app:defaultValue="9998"
                                 app:maxValue="2021"
-                                app:minValue="2014"
+                                app:minValue="2016"
                                 app:type="range" />
                         </LinearLayout>
                     </LinearLayout>
@@ -1044,18 +1044,35 @@
                             android:text="@string/Q_cs16" />
                     </RelativeLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/cs16"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="#.#"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        app:mask="#.#"
-                        app:maxValue="9.9"
-                        app:minValue="0.9"
-                        app:pattern="^(\\d{1,1}\\.\\d{1,1})$"
-                        app:type="range" />
+                        android:orientation="horizontal">
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/cs16"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center"
+                            android:hint="#.#"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            app:mask="#.#"
+                            app:maxValue="9.9"
+                            app:minValue="0.9"
+                            app:pattern="^(\\d{1,1}\\.\\d{1,1})$"
+                            app:type="range" />
+
+                        <CheckBox
+                            android:id="@+id/cs1698"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="@{cs16.equals(`98`)}"
+                            android:tag="-1"
+                            android:text="@string/cs1698" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -1428,7 +1445,6 @@
                         android:hint="##.#"
                         android:inputType="number"
                         android:maxLength="3"
-                        android:text="10.2"
                         app:mask="##.#"
                         app:maxValue="25"
                         app:minValue="3"
@@ -1869,11 +1885,41 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/cs2601" />
 
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/cs2701"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:tag="cs2601"
+                                android:text='@{cs2601.checked ? cs2701.getText().toString() : ""}'
+                                android:visibility='@{cs2601.checked? View.VISIBLE : View.GONE}'
+                                app:maxValue="90"
+                                app:minValue="10"
+                                app:type="range" />
+
                             <CheckBox
                                 android:id="@+id/cs2602"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/cs2602" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/cs2702"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:tag="cs2602"
+                                android:text='@{cs2602.checked ? cs2702.getText().toString() : ""}'
+                                android:visibility='@{cs2602.checked? View.VISIBLE : View.GONE}'
+                                app:maxValue="90"
+                                app:minValue="10"
+                                app:type="range" />
 
                             <CheckBox
                                 android:id="@+id/cs2603"
@@ -1881,11 +1927,41 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/cs2603" />
 
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/cs2704"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:tag="cs2603"
+                                android:text='@{cs2603.checked ? cs2704.getText().toString() : ""}'
+                                android:visibility='@{cs2603.checked? View.VISIBLE : View.GONE}'
+                                app:maxValue="90"
+                                app:minValue="10"
+                                app:type="range" />
+
                             <CheckBox
                                 android:id="@+id/cs2604"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/cs2604" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/cs2703"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:tag="cs2604"
+                                android:text='@{cs2604.checked ? cs2703.getText().toString() : ""}'
+                                android:visibility='@{cs2604.checked? View.VISIBLE : View.GONE}'
+                                app:maxValue="90"
+                                app:minValue="10"
+                                app:type="range" />
 
                         </LinearLayout>
 
@@ -1946,18 +2022,7 @@
                                     android:layout_weight="3"
                                     android:text="@string/cs2701" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/cs2701"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:hint="##"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="90"
-                                    app:minValue="10"
-                                    app:type="range" />
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -1972,18 +2037,7 @@
                                     android:layout_weight="3"
                                     android:text="@string/cs2702" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/cs2702"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:hint="##"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="90"
-                                    app:minValue="10"
-                                    app:type="range" />
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -1998,18 +2052,7 @@
                                     android:layout_weight="3"
                                     android:text="@string/cs2703" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/cs2703"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:hint="##"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="90"
-                                    app:minValue="10"
-                                    app:type="range" />
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -2024,18 +2067,7 @@
                                     android:layout_weight="3"
                                     android:text="@string/cs2704" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/cs2704"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:hint="##"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="90"
-                                    app:minValue="10"
-                                    app:type="range" />
+
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
