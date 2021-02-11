@@ -18,7 +18,6 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
-import edu.aku.hassannaqvi.casi_register.contracts.HFContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.FormIndicatorsModel;
@@ -1335,7 +1334,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 UsersTable.COLUMN_USERNAME,
                 UsersTable.COLUMN_PASSWORD,
                 UsersTable.COLUMN_FULLNAME,
-                UsersTable.COLUMN_COUNTRY_ID,
+                UsersTable.COLUMN_COUNTRY_CODE,
         };
         String whereClause = UsersTable.COLUMN_USERNAME + "=? AND " + UsersTable.COLUMN_PASSWORD + "=?";
         String[] whereArgs = {username, password};

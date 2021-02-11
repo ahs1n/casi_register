@@ -49,6 +49,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
         viewModel = obtainViewModel(LoginViewModel::class.java, GeneralRepository(DatabaseHelper(this)))
         showcaseBuilderView()
         checkPermissions()
+        settingCountryCode()
 
         /*
         * Get login confirmation from db. If it's null that means username or password - incorrect -
@@ -201,8 +202,14 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     /*
     * Setting country code in Shared Preferenmce
     * */
-    override fun setCountryCode(code: Int) {
-        SharedStorage.setCountryCode(this, code)
+    override fun settingCountryCode() {
+
+        if (SharedStorage.getCountryCode(this) == 0 || SharedStorage.getCountryCode(this) == 1)
+            bi.countrySwitch.isChecked = true
+
+        bi.countrySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) 1 else 3)
+        }
     }
 
     /*

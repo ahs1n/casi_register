@@ -13,7 +13,7 @@ class Users {
     var userName: String = StringUtils.EMPTY
     var password: String = StringUtils.EMPTY
     var fullname: String = StringUtils.EMPTY
-    var country_id: String = StringUtils.EMPTY
+    var country_code: String = StringUtils.EMPTY
 
     constructor() {
         // Default Constructor
@@ -29,7 +29,7 @@ class Users {
         userName = jsonObject.getString(UsersTable.COLUMN_USERNAME)
         password = jsonObject.getString(UsersTable.COLUMN_PASSWORD)
         fullname = jsonObject.getString(UsersTable.COLUMN_FULLNAME)
-        country_id = jsonObject.getString(UsersTable.COLUMN_COUNTRY_ID)
+        country_code = jsonObject.getString(UsersTable.COLUMN_COUNTRY_CODE)
         return this
     }
 
@@ -38,7 +38,7 @@ class Users {
         userName = cursor.getString(cursor.getColumnIndex(UsersTable.COLUMN_USERNAME))
         password = cursor.getString(cursor.getColumnIndex(UsersTable.COLUMN_PASSWORD))
         fullname = cursor.getString(cursor.getColumnIndex(UsersTable.COLUMN_FULLNAME))
-        country_id = cursor.getString(cursor.getColumnIndex(UsersTable.COLUMN_COUNTRY_ID))
+        country_code = cursor.getString(cursor.getColumnIndex(UsersTable.COLUMN_COUNTRY_CODE))
         return this
     }
 
@@ -48,6 +48,6 @@ class Users {
         const val COLUMN_USERNAME = "username"
         const val COLUMN_PASSWORD = "password"
         const val COLUMN_FULLNAME = "full_name"
-        const val COLUMN_COUNTRY_ID = "country_id"
+        const val COLUMN_COUNTRY_CODE = "country_code"
     }
 }

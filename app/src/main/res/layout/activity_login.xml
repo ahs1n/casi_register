@@ -225,11 +225,12 @@
                                             android:layout_width="0dp"
                                             android:layout_height="match_parent"
                                             android:layout_weight="1"
+                                            android:checked="true"
                                             android:padding="12dp"
                                             android:radius="2dp"
                                             android:textColor="@color/colorSecondaryDark"
-                                            android:textOff="@string/pakistan"
-                                            android:textOn="@string/tajikistan"
+                                            android:textOff="@string/tajikistan"
+                                            android:textOn="@string/pakistan"
                                             android:textSize="20sp" />
 
                                     </LinearLayout>
@@ -244,6 +245,7 @@
                                     android:layout_marginTop="16dp"
                                     android:layout_marginBottom="16dp"
                                     android:background="@drawable/outline_btn"
+                                    android:onClick="onLoginClick"
                                     android:text="@string/btnLogin"
                                     android:textColor="@color/white"
                                     android:textSize="20sp"

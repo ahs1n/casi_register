@@ -21,4 +21,8 @@ object SharedStorage : SharedStorageBase() {
         put(context, COUNTRY_CODE, country)
     }
 
+    fun getCountryCode(context: Context): Int {
+        return get(context, COUNTRY_CODE, 0) as Int
+    }
+
 }

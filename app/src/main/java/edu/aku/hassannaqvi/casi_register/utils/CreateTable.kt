@@ -1,8 +1,8 @@
 package edu.aku.hassannaqvi.casi_register.utils
 
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable
-import edu.aku.hassannaqvi.casi_register.contracts.HFContract
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract
+import edu.aku.hassannaqvi.casi_register.models.HealthFacility
 import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable
 import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable
 import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable
@@ -81,12 +81,12 @@ object CreateTable {
             ZStandardContract.ZScoreTable.COLUMN_CAT + " TEXT " +
             ");"
 
-    const val SQL_CREATE_HEALTHFACILITY = "CREATE TABLE " + HFContract.HFTable.TABLE_NAME + " (" +
-            HFContract.HFTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            HFContract.HFTable.COLUMN_COUNTRY_CODE + " TEXT, " +
-            HFContract.HFTable.COLUMN_REGION_CODE + " TEXT, " +
-            HFContract.HFTable.COLUMN_HF_CODE + " TEXT, " +
-            HFContract.HFTable.COLUMN_HEALTH_FACILITY + " TEXT, " +
-            HFContract.HFTable.COLUMN_FACILITY_TYPE + " TEXT, " +
+    const val SQL_CREATE_HEALTHFACILITY = "CREATE TABLE " + HealthFacility.HealthFacilityTable.TABLE_NAME + " (" +
+            HealthFacility.HealthFacilityTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            HealthFacility.HealthFacilityTable.COLUMN_COUNTRY_CODE + " TEXT, " +
+            HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE + " TEXT, " +
+            HealthFacility.HealthFacilityTable.COLUMN_HF_CODE + " TEXT, " +
+            HealthFacility.HealthFacilityTable.COLUMN_HEALTH_FACILITY + " TEXT, " +
+            HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE + " TEXT " +
             ");"
 }

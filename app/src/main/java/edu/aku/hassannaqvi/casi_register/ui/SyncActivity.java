@@ -32,6 +32,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkContinuation;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
@@ -44,6 +45,7 @@ import edu.aku.hassannaqvi.casi_register.models.SyncModel;
 import edu.aku.hassannaqvi.casi_register.models.Users;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 import edu.aku.hassannaqvi.casi_register.workers.DataDownWorkerALL;
 import edu.aku.hassannaqvi.casi_register.workers.DataUpWorkerALL;
 
@@ -208,14 +210,12 @@ public class SyncActivity extends AppCompatActivity {
                     //.putString("columns", "_id, sysdate")
                     // .putString("where", where)
                     ;
-/*
-            if (downloadTables.get(i).gettableName().equals(BLRandom.TableRandom.TABLE_NAME)) {
-                data.putString("where", BLRandom.TableRandom.COLUMN_DIST_CODE + "='" + distCode + "'");
-            }
-            if (downloadTables.get(i).gettableName().equals(Clusters.TableClusters.TABLE_NAME)) {
+            if (!downloadTables.get(i).gettableName().equals(ZStandardContract.ZScoreTable.TABLE_NAME))
+                data.putString("where", Users.UsersTable.COLUMN_COUNTRY_CODE + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "'");
+
+            /*if (downloadTables.get(i).gettableName().equals(Clusters.TableClusters.TABLE_NAME)) {
                 data.putString("where", Clusters.TableClusters.COLUMN_DIST_CODE + "='" + distCode + "'");
-            }
-*/
+            }*/
 
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DataDownWorkerALL.class)
                     .addTag(String.valueOf(i))
