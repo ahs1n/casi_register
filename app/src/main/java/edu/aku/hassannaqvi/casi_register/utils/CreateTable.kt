@@ -43,7 +43,8 @@ object CreateTable {
             + FormsTable.COLUMN_ISTATUS + " TEXT,"
             + FormsTable.COLUMN_ISTATUS96x + " TEXT,"
             + FormsTable.COLUMN_SYNCED + " TEXT,"
-            + FormsTable.COLUMN_SYNCED_DATE + " TEXT"
+            + FormsTable.COLUMN_SYNCED_DATE + " TEXT,"
+            + FormsTable.COLUMN_FORM_TYPE + " TEXT"
             + " );")
     const val SQL_CREATE_USERS = ("CREATE TABLE " + UsersTable.TABLE_NAME + "("
             + UsersTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"

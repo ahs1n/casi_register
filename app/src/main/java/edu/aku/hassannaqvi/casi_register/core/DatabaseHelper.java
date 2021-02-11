@@ -263,6 +263,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_DEVICETAGID, form.getDevicetagID());
         values.put(FormsTable.COLUMN_DEVICEID, form.getDeviceID());
         values.put(FormsTable.COLUMN_APPVERSION, form.getAppversion());
+        values.put(FormsTable.COLUMN_FORM_TYPE, form.getFormType());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -363,6 +364,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
+                FormsTable.COLUMN_FORM_TYPE
 
         };
         String whereClause = null;
@@ -427,6 +429,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
+                FormsTable.COLUMN_FORM_TYPE
 
         };
         String whereClause = null;
@@ -487,6 +490,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_FORM_TYPE
 
         };
         String whereClause = FormsTable.COLUMN_SYSDATE + " Like ? ";
@@ -707,6 +711,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_FORM_TYPE
 
         };
         String whereClause = FormsTable.COLUMN_CS + " = ? ";
@@ -782,6 +787,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_WSFP,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_FORM_TYPE
         };
         String whereClause = FormsTable.COLUMN_ISTATUS + " = ''";
         String[] whereArgs = null;
@@ -1135,6 +1141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
+                FormsTable.COLUMN_FORM_TYPE
         };
 
         String whereClause = FormsTable.COLUMN_UC + "=? AND " + FormsTable.COLUMN_VILLAGE + "=? AND " + FormsTable.COLUMN_DISTRICT + "=? AND " + FormsTable.COLUMN_ISTATUS + "=? ";
@@ -1343,6 +1350,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_ISTATUS96x,
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_FORM_TYPE
 
         };
         String whereClause = FormsTable.COLUMN_SYSDATE + " Like ? ";

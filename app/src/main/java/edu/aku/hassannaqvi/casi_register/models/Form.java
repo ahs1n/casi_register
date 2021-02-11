@@ -3,13 +3,13 @@ package edu.aku.hassannaqvi.casi_register.models;
 import android.database.Cursor;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
-
-import androidx.lifecycle.LiveData;
 
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
@@ -32,6 +32,7 @@ public class Form extends LiveData<Form> {
     private String ucCode = "";
     private String village = "";
     private String villageCode = "";
+    private String formType = "";
 
     //    Screening Log U5
     private String cs01;
@@ -444,6 +445,16 @@ public class Form extends LiveData<Form> {
     public void setVillageCode(String villageCode) {
         this.villageCode = villageCode;
     }
+
+
+    public String getFormType() {
+        return formType;
+    }
+
+    public void setFormType(String formType) {
+        this.formType = formType;
+    }
+
 
     //    Follow-up U5
     public String getCs01() {
@@ -2951,6 +2962,7 @@ public class Form extends LiveData<Form> {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_APPVERSION);
+        this.formType = jsonObject.getString(FormsTable.COLUMN_FORM_TYPE);
 
         this.cS = jsonObject.getString(FormsTable.COLUMN_CS);
         this.cSFP = jsonObject.getString(FormsTable.COLUMN_CSFP);
@@ -2984,6 +2996,7 @@ public class Form extends LiveData<Form> {
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS96x));
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
+        this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORM_TYPE));
 
         cSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CS)));
         cSFPHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CSFP)));
@@ -3407,6 +3420,7 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
             json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
             json.put(FormsTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
+            json.put(FormsTable.COLUMN_FORM_TYPE, this.formType == null ? JSONObject.NULL : this.formType);
 
             return json;
         } catch (JSONException e) {
