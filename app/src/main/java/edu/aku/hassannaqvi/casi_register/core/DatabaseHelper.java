@@ -18,9 +18,11 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.casi_register.contracts.HFContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.FormIndicatorsModel;
+import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.models.Users;
 import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
@@ -33,6 +35,7 @@ import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZSco
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
@@ -54,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_VILLAGES);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ZSTANDARD);
+        db.execSQL(SQL_CREATE_HEALTHFACILITY);
     }
 
     @Override
@@ -179,6 +183,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         } catch (Exception e) {
             Log.d(TAG, "syncZStandard(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+    public int syncHF(JSONArray hfList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(HFContract.HFTable.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+            for (int i = 0; i < hfList.length(); i++) {
+
+                JSONObject jsonObjectzs = hfList.getJSONObject(i);
+
+                HealthFacility facility = new HealthFacility();
+                facility.Sync(jsonObjectzs);
+                ContentValues values = new ContentValues();
+
+                values.put(HFContract.HFTable.COLUMN_COUNTRY_CODE, facility.getCountryCode());
+                values.put(HFContract.HFTable.COLUMN_COUNTRY_NAME, facility.getCountryName());
+                values.put(HFContract.HFTable.COLUMN_REGION_CODE, facility.getRegionCode());
+                values.put(HFContract.HFTable.COLUMN_REGION, facility.getRegion());
+                values.put(HFContract.HFTable.COLUMN_DISTRICT_CODE, facility.getDistrictCode());
+                values.put(HFContract.HFTable.COLUMN_DISTRICT, facility.getDistrict());
+                values.put(HFContract.HFTable.COLUMN_UC_CODE, facility.getUcCode());
+                values.put(HFContract.HFTable.COLUMN_UC, facility.getUc());
+                values.put(HFContract.HFTable.COLUMN_VILLAGE_CODE, facility.getVillageCode());
+                values.put(HFContract.HFTable.COLUMN_VILLAGE, facility.getVillage());
+                long rowID = db.insert(HFContract.HFTable.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncHF(e): " + e);
             db.close();
         } finally {
             db.close();
