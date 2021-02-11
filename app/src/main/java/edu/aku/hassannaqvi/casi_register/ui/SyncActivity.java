@@ -32,6 +32,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkContinuation;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
@@ -178,6 +179,7 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.add(new SyncModel(UCs.TableUCs.TABLE_NAME));*//*
 
                 }*/
+                downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(HealthFacilitiy.HealthFacilityTable.TABLE_NAME));
@@ -278,6 +280,11 @@ public class SyncActivity extends AppCompatActivity {
                                         case ZStandardContract.ZScoreTable.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncZStandard(jsonArray);
+                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
+                                            break;
+                                        case HealthFacilitiy.HealthFacilityTable.TABLE_NAME:
+                                            jsonArray = new JSONArray(result);
+                                            insertCount = db.syncHF(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
                                             break;
 

@@ -28,7 +28,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:allowBackup">
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup"
+        tools:targetApi="m">
         <activity android:name=".ui.other.ZScoreCalculator" />
         <activity
             android:name=".ui.list_activity.FormsReportCluster"
@@ -94,7 +96,7 @@
             android:name=".ui.SyncActivity"
             android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish"/>
+            android:theme="@style/AppTheme" />
 
         <service android:name=".utils.DownloadFileService" />
     </application>

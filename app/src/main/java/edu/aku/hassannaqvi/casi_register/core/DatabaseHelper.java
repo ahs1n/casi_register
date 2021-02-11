@@ -1297,7 +1297,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 UsersTable.COLUMN_USERNAME,
                 UsersTable.COLUMN_PASSWORD,
                 UsersTable.COLUMN_FULLNAME,
-                UsersTable.COLUMN_DIST_ID,
+                UsersTable.COLUMN_COUNTRY_ID,
         };
         String whereClause = UsersTable.COLUMN_USERNAME + "=? AND " + UsersTable.COLUMN_PASSWORD + "=?";
         String[] whereArgs = {username, password};
