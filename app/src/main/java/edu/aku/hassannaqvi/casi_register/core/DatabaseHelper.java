@@ -135,15 +135,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 villages.sync(jsonObjectzs);
                 ContentValues values = new ContentValues();
 
-                values.put(VillagesTable.COLUMN_COUNTRY, villages.getCountry());
+                values.put(VillagesTable.COLUMN_REGION, villages.getRegion());
                 values.put(VillagesTable.COLUMN_DISTRICT, villages.getDistrict());
                 values.put(VillagesTable.COLUMN_UC, villages.getUc());
                 values.put(VillagesTable.COLUMN_VILLAGE, villages.getVillage());
                 values.put(VillagesTable.COLUMN_COUNTRY_CODE, villages.getCountry_code());
                 values.put(VillagesTable.COLUMN_DISTRICT_CODE, villages.getDistrict_code());
                 values.put(VillagesTable.COLUMN_UC_CODE, villages.getUc_code());
-                values.put(VillagesTable.COLUMN_VILLLAGE_CODE, villages.getVilllage_code());
-                values.put(VillagesTable.COLUMN_CLUSTER_NO, villages.getCluster_no());
+                values.put(VillagesTable.COLUMN_VILLLAGE_CODE, villages.getVillage_code());
+                values.put(VillagesTable.COLUMN_REGION_CODE, villages.getRegion_code());
                 long rowID = db.insert(VillagesTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
@@ -642,17 +642,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                "DISTINCT " + VillagesTable.COLUMN_COUNTRY,
+                "DISTINCT " + VillagesTable.COLUMN_REGION,
                 VillagesTable.COLUMN_COUNTRY_CODE
         };
 
         String whereClause = null;
         String[] whereArgs = null;
-        String groupBy = VillagesTable.COLUMN_COUNTRY;
+        String groupBy = VillagesTable.COLUMN_REGION;
         String having = null;
 
         String orderBy =
-                VillagesTable.COLUMN_COUNTRY + " ASC";
+                VillagesTable.COLUMN_REGION + " ASC";
 
         Collection<Villages> allvil = new ArrayList<Villages>();
         try {
@@ -1029,7 +1029,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 VillagesTable._ID,
-                VillagesTable.COLUMN_COUNTRY,
+                VillagesTable.COLUMN_REGION,
                 VillagesTable.COLUMN_DISTRICT,
                 VillagesTable.COLUMN_UC,
                 VillagesTable.COLUMN_VILLAGE,
@@ -1037,7 +1037,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 VillagesTable.COLUMN_DISTRICT_CODE,
                 VillagesTable.COLUMN_UC_CODE,
                 VillagesTable.COLUMN_VILLLAGE_CODE,
-                VillagesTable.COLUMN_CLUSTER_NO
+                VillagesTable.COLUMN_REGION_CODE
         };
 
         String whereClause = VillagesTable.COLUMN_DISTRICT_CODE + " LIKE ? ";
@@ -1076,19 +1076,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                "DISTINCT " + VillagesTable._ID,
-                VillagesTable.COLUMN_COUNTRY,
-                VillagesTable.COLUMN_DISTRICT,
-                VillagesTable.COLUMN_UC,
-                VillagesTable.COLUMN_VILLAGE,
-                VillagesTable.COLUMN_COUNTRY_CODE,
-                VillagesTable.COLUMN_DISTRICT_CODE,
-                VillagesTable.COLUMN_UC_CODE,
-                VillagesTable.COLUMN_VILLLAGE_CODE,
-                VillagesTable.COLUMN_CLUSTER_NO
-        };
-
+        String[] columns = null;
         String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
@@ -1108,7 +1096,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 allEB.add(new Villages().hydrate(c));
-                //allEB.add(new Villages.HydrateEnum(c));
             }
         } finally {
             if (c != null) {

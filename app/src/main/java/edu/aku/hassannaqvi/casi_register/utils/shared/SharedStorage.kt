@@ -12,8 +12,8 @@ object SharedStorage : SharedStorageBase() {
         put(context, villageCode, currentID)
     }
 
-    fun getLastRegistrationID(context: Context, villageCode: String) {
-        get(context, villageCode, StringUtils.EMPTY)
+    fun getLastRegistrationID(context: Context, villageCode: String): String {
+        return get(context, villageCode, StringUtils.EMPTY) as String
     }
 
 }

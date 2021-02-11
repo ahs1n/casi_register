@@ -25,12 +25,9 @@ import android.widget.Toast;
 import com.validatorcrawler.aliazaz.Validator;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -79,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     List<String> regionName, districtName, ucName, villageName;
     Map<String, Villages> villageMap;
     List<Villages> areaList;
-    Villages village;
+    Boolean exit = false;
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -112,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             }
         }
     };
-    private Boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -307,6 +303,16 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gettingRegionData();
+    }
+
+
+    /*
+     * Clickable buttons
+     * */
     @SuppressLint("NonConstantResourceId")
     public void openSpecificActivity(View v) {
         Intent oF = null;
@@ -357,11 +363,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        gettingRegionData();
-    }
 
     /*
      * Other Dependent Functions
@@ -380,7 +381,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 }
                 initializingDistrictVariables();
                 for (Villages item : areaList) {
-                    if (item.getCountry().equals(bi.spRegion.getSelectedItem().toString()) && !districtName.contains(item.getDistrict())) {
+                    if (item.getRegion().equals(bi.spRegion.getSelectedItem().toString()) && !districtName.contains(item.getDistrict())) {
                         districtName.add(item.getDistrict());
                         villageMap.put(item.getDistrict(), item);
                     }
@@ -454,7 +455,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     onSettingDropDownContent(false);
                     return;
                 }
-                village = villageMap.get(bi.spVillage.getSelectedItem().toString());
                 onSettingDropDownContent(true);
             }
 
@@ -466,6 +466,17 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
 
     }
 
+    private void showDialog(String newVer, String preVer) {
+        AppUtilsKt.openWarningActivity(
+                this,
+                1,
+                getString(R.string.app_name) + " APP is available!",
+                getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\nInstall new version to use this app.",
+                "Install",
+                "Cancel"
+        );
+    }
+
     private void onSettingDropDownContent(boolean enable) {
         bi.formCS.setEnabled(enable);
         bi.formCSFP.setEnabled(enable);
@@ -473,6 +484,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi.formWSFP.setEnabled(enable);
     }
 
+
+    /*
+     * Initializing variables
+     * */
     private void initializingAreaVariables() {
         regionName = new ArrayList<String>() {
             {
@@ -512,6 +527,18 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi.spVillage.setEnabled(true);
     }
 
+
+    /*
+     * Reactive Streams
+     * */
+    private Observable<List<Villages>> getAreas() {
+        return Observable.create(emitter -> {
+            //emitter.onNext(appInfo.getDbHelper().getEnumBlock(MainApp.UC_ID));
+            emitter.onNext(appInfo.getDbHelper().getCountry());
+            emitter.onComplete();
+        });
+    }
+
     private void gettingRegionData() {
         initializingAreaVariables();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, regionName);
@@ -530,15 +557,15 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     @Override
                     public void onNext(@NotNull List<Villages> vContract) {
                         for (Villages village : vContract) {
-                            if (!regionName.contains(village.getCountry()))
-                                regionName.add(village.getCountry());
+                            if (!regionName.contains(village.getRegion()))
+                                regionName.add(village.getRegion());
                             areaList.add(village);
                         }
                         adapter.notifyDataSetChanged();
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NotNull Throwable e) {
                     }
 
                     @Override
@@ -548,29 +575,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 });
     }
 
-    private void showDialog(String newVer, String preVer) {
-        AppUtilsKt.openWarningActivity(
-                this,
-                1,
-                getString(R.string.app_name) + " APP is available!",
-                getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\nInstall new version to use this app.",
-                "Install",
-                "Cancel"
-        );
-    }
 
     /*
-     * Reactive Streams
+     * Setting identification data in variables
      * */
-    private Observable<List<Villages>> getAreas() {
-        return Observable.create(emitter -> {
-            //emitter.onNext(appInfo.getDbHelper().getEnumBlock(MainApp.UC_ID));
-            emitter.onNext(appInfo.getDbHelper().getCountry());
-            emitter.onComplete();
-        });
-    }
-
-    //Getting data from db
     private void SaveDraft() {
         mainInfo = new Identification(
                 bi.spRegion.getSelectedItem().toString(),
