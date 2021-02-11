@@ -63,7 +63,6 @@ import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 
 public class MainActivity extends AppCompatActivity implements WarningActivityInterface {
 
-    public static Identification mainInfo;
     static File file;
     ActivityMainBinding bi;
     SharedPreferences sharedPrefDownload;
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     Long refID;
     //Setting Spinner
     List<String> regionName, districtName, ucName, villageName;
-    Map<String, Villages> villageMap;
+    Map<String, Villages> ucMap, villageMap;
     List<Villages> areaList;
     Boolean exit = false;
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -383,7 +382,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 for (Villages item : areaList) {
                     if (item.getRegion().equals(bi.spRegion.getSelectedItem().toString()) && !districtName.contains(item.getDistrict())) {
                         districtName.add(item.getDistrict());
-                        villageMap.put(item.getDistrict(), item);
                     }
                 }
                 bi.spDistrict.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, districtName));
@@ -409,7 +407,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 for (Villages item : areaList) {
                     if (item.getDistrict().equals(bi.spDistrict.getSelectedItem().toString()) && !ucName.contains(item.getUc())) {
                         ucName.add(item.getUc());
-                        //villageMap.put(item.getUc(), item);
+                        ucMap.put(item.getUc(), item);
                     }
                 }
                 bi.spUC.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, ucName));
@@ -435,7 +433,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 for (Villages item : areaList) {
                     if (item.getUc().equals(bi.spUC.getSelectedItem().toString())) {
                         villageName.add(item.getVillage());
-                        villageMap.put(item.getVillage(), item);
+                        villageMap.put(item.getUc(), item);
                     }
                 }
                 bi.spVillage.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, villageName));
@@ -503,7 +501,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 add("....");
             }
         };
-        villageMap = new HashMap<>();
         bi.spDistrict.setEnabled(true);
     }
 
@@ -513,7 +510,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 add("....");
             }
         };
-        villageMap = new HashMap<>();
+        ucMap = new HashMap<>();
         bi.spUC.setEnabled(true);
     }
 
@@ -533,7 +530,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
      * */
     private Observable<List<Villages>> getAreas() {
         return Observable.create(emitter -> {
-            //emitter.onNext(appInfo.getDbHelper().getEnumBlock(MainApp.UC_ID));
             emitter.onNext(appInfo.getDbHelper().getCountry());
             emitter.onComplete();
         });
@@ -580,11 +576,13 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
      * Setting identification data in variables
      * */
     private void SaveDraft() {
-        mainInfo = new Identification(
-                bi.spRegion.getSelectedItem().toString(),
-                bi.spDistrict.getSelectedItem().toString(),
-                bi.spUC.getSelectedItem().toString(),
-                bi.spVillage.getSelectedItem().toString());
+        Villages item = villageMap.get(bi.spVillage.getSelectedItem().toString());
+        /*MainApp.mainInfo = new Identification(
+                item.getRegion_code(),
+                item.getDistrict_code(),
+                item.getUc_code(),
+                item.getVillage_code());*/
+        MainApp.mainInfo = item;
     }
 
 }

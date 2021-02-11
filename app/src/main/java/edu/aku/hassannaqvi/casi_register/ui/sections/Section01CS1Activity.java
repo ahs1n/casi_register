@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.threeten.bp.Instant;
 import org.threeten.bp.LocalDate;
@@ -69,8 +70,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     }
 
     private void setupContent() {
-        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this,"f-");
-
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "f-" + MainApp.mainInfo.getVillage_code());
+        if (!regID.equals(StringUtils.EMPTY)) bi.cs10.setText(regID);
+        else bi.cs10.setText(MainApp.mainInfo.getVillage_code());
     }
 
     /*
@@ -100,10 +102,15 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCountry(MainActivity.mainInfo.getCountry());
-        form.setDistrict(MainActivity.mainInfo.getDistrict());
-        form.setUc(MainActivity.mainInfo.getUc());
-        form.setVillage(MainActivity.mainInfo.getVillage());
+        form.setCountry(MainApp.mainInfo.getCountry());
+        form.setDistrict(MainApp.mainInfo.getDistrict());
+        form.setUc(MainApp.mainInfo.getUc());
+        form.setVillage(MainApp.mainInfo.getVillage_code());
+        form.setCountryCode(MainApp.mainInfo.getCountry_code());
+        form.setDistrictCode(MainApp.mainInfo.getDistrict_code());
+        form.setUcCode(MainApp.mainInfo.getUc_code());
+        form.setVillageCode(MainApp.mainInfo.getVillage_code());
+
         form.setLocalDate(localDate);
 
         JSONObject cS = new JSONObject();
