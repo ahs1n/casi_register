@@ -327,8 +327,7 @@
                         android:gravity="center"
                         android:hint="DD/MM/YYYY"
                         app:dateFormat="dd-MM-yyyy"
-                        app:maxDate="CR_DATE"
-                        app:minDate="CR_DATE" />
+                        app:maxDate="CR_DATE" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
