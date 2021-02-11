@@ -39,6 +39,7 @@ import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySyncBinding;
+import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.models.SyncModel;
 import edu.aku.hassannaqvi.casi_register.models.Users;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
@@ -280,7 +281,7 @@ public class SyncActivity extends AppCompatActivity {
                                             insertCount = db.syncZStandard(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
                                             break;
-                                        case HealthFacilitiy.HealthFacilityTable.TABLE_NAME:
+                                        case HealthFacility.HealthFacilityTable.TABLE_NAME:
                                             jsonArray = new JSONArray(result);
                                             insertCount = db.syncHF(jsonArray);
                                             Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
