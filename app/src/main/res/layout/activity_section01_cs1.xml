@@ -510,16 +510,11 @@
                             android:text="@string/cs10" />
                     </LinearLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <EditText
                         android:id="@+id/cs10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="#####"
-                        android:inputType="number"
-                        android:maxLength="5"
-                        app:maxValue="99999"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:enabled="false" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -856,8 +851,8 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 android:onTextChanged="@{callback::cs14ddmmOnTextChanged}"
-                                app:defaultValue="98"
                                 android:text="98"
+                                app:defaultValue="98"
                                 app:maxValue="31"
                                 app:minValue="1"
                                 app:type="range" />
@@ -884,8 +879,8 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 android:onTextChanged="@{callback::cs14ddmmOnTextChanged}"
-                                app:defaultValue="98"
                                 android:text="98"
+                                app:defaultValue="98"
                                 app:maxValue="12"
                                 app:minValue="1"
                                 app:type="range" />
@@ -910,9 +905,9 @@
                                 android:gravity="center"
                                 android:hint="####"
                                 android:inputType="number"
-                                android:text="9998"
                                 android:maxLength="4"
                                 android:onTextChanged="@{callback.cs14yOnTextChanged}"
+                                android:text="9998"
                                 app:defaultValue="9998"
                                 app:maxValue="2021"
                                 app:minValue="2014"
@@ -1384,8 +1379,8 @@
                         android:hint="###.#"
                         android:inputType="number"
                         android:maxLength="4"
-                        app:mask="###.#"
                         android:text="087.2"
+                        app:mask="###.#"
                         app:maxValue="120"
                         app:minValue="45"
                         app:pattern="^(\\d{3,3}\\.\\d{1,1})$"

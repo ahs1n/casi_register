@@ -52,7 +52,7 @@ object CreateTable {
             + " );")
     const val SQL_CREATE_VILLAGES = ("CREATE TABLE " + VillagesTable.TABLE_NAME + "("
             + VillagesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + VillagesTable.COLUMN_COUNTRY + " TEXT,"
+            + VillagesTable.COLUMN_REGION + " TEXT,"
             + VillagesTable.COLUMN_DISTRICT + " TEXT,"
             + VillagesTable.COLUMN_UC + " TEXT,"
             + VillagesTable.COLUMN_VILLAGE + " TEXT,"
@@ -60,7 +60,7 @@ object CreateTable {
             + VillagesTable.COLUMN_DISTRICT_CODE + " TEXT,"
             + VillagesTable.COLUMN_UC_CODE + " TEXT,"
             + VillagesTable.COLUMN_VILLLAGE_CODE + " TEXT,"
-            + VillagesTable.COLUMN_CLUSTER_NO + " TEXT );")
+            + VillagesTable.COLUMN_REGION_CODE + " TEXT );")
     const val SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
