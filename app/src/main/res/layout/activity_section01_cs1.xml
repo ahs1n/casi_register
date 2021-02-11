@@ -114,12 +114,10 @@
                             android:text="@string/Q_cs03" />
                     </RelativeLayout>
 
-                    <EditText
+                    <Spinner
                         android:id="@+id/cs03"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/cs03" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

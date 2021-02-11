@@ -6,6 +6,8 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,24 +23,26 @@ import org.threeten.bp.ZoneId;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.core.ZScore;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs1Binding;
-import edu.aku.hassannaqvi.casi_register.utils.datecollection.AgeModel;
-import edu.aku.hassannaqvi.casi_register.utils.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
+import edu.aku.hassannaqvi.casi_register.utils.datecollection.AgeModel;
+import edu.aku.hassannaqvi.casi_register.utils.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
@@ -50,6 +54,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     boolean dtFlag = false;
     LocalDate calculatedDOB;
     LocalDate localDate;
+    List<String> regionName, districtName, ucName, villageName;
+    List<HealthFacility> facilityList;
+    Map<String, HealthFacility> facilityMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +65,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         bi.setCallback(this);
         setListeners();
         setupContent();
+        setUIContent();
     }
 
     private void setupContent() {
@@ -105,7 +113,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 : bi.cs0203.isChecked() ? "3"
                 : "-1");
 
-        form.setCs03(bi.cs03.getText().toString());
+        form.setCs03(bi.cs03.getSelectedItem().toString());
 
         form.setCs05a(bi.cs05a.getText().toString());
 
@@ -119,6 +127,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setCs06096x(bi.cs06096x.getText().toString());
 
         form.setCs07(bi.cs07.getText().toString());
+        form.setCs07User(bi.cs07User.getText().toString());
 
         form.setCs08(bi.cs08.getText().toString());
 
@@ -157,6 +166,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setCs1502(bi.cs1502.getText().toString());
 
         form.setCs16(bi.cs16.getText().toString());
+
+        form.setCs1698(bi.cs1698.isChecked() ? "98" : "-1");
+
 
         form.setCs17(bi.cs1701.isChecked() ? "1"
                 : bi.cs1702.isChecked() ? "2"
@@ -245,6 +257,27 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         return true;
     }
 
+    private void setUIContent() {
+
+        //HealthFacility
+        bi.cs03.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                for (HealthFacility item : facilityList) {
+                    if (item.getRegion().equals(bi.cs03.getSelectedItem().toString()) && !districtName.contains(item.getDistrict())) {
+                        districtName.add(item.getDistrict());
+                        facilityMap.put(item.getDistrict(), item);
+                    }
+                }
+                bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, districtName));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
 
     /*
      * Watch listeners
@@ -289,6 +322,14 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         bi.cs2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.cs26check, !b));
 
+
+        bi.cs07User.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.cs07.setEnabled(false);
+                bi.cs07.setText(null);
+            } else
+                bi.cs07.setEnabled(true);
+        });
     }
 
     public void cs15yOnTextChanged(CharSequence s, int start, int before, int count) {
