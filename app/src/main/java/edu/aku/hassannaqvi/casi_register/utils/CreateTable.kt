@@ -84,14 +84,9 @@ object CreateTable {
     const val SQL_CREATE_HEALTHFACILITY = "CREATE TABLE " + HFContract.HFTable.TABLE_NAME + " (" +
             HFContract.HFTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             HFContract.HFTable.COLUMN_COUNTRY_CODE + " TEXT, " +
-            HFContract.HFTable.COLUMN_COUNTRY_NAME + " TEXT, " +
             HFContract.HFTable.COLUMN_REGION_CODE + " TEXT, " +
-            HFContract.HFTable.COLUMN_REGION + " TEXT, " +
-            HFContract.HFTable.COLUMN_DISTRICT_CODE + " TEXT, " +
-            HFContract.HFTable.COLUMN_DISTRICT + " TEXT, " +
-            HFContract.HFTable.COLUMN_UC_CODE + " TEXT, " +
-            HFContract.HFTable.COLUMN_UC + " TEXT, " +
-            HFContract.HFTable.COLUMN_VILLAGE_CODE + " TEXT, " +
-            HFContract.HFTable.COLUMN_VILLAGE + " TEXT " +
+            HFContract.HFTable.COLUMN_HF_CODE + " TEXT, " +
+            HFContract.HFTable.COLUMN_HEALTH_FACILITY + " TEXT, " +
+            HFContract.HFTable.COLUMN_FACILITY_TYPE + " TEXT, " +
             ");"
 }

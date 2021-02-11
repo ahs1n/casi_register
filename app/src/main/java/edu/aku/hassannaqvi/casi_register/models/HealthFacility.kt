@@ -8,42 +8,27 @@ import org.json.JSONObject
 
 class HealthFacility {
     var country_code: String = StringUtils.EMPTY
-    var country_name: String = StringUtils.EMPTY
     var region_code: String = StringUtils.EMPTY
-    var region: String = StringUtils.EMPTY
-    var district_code: String = StringUtils.EMPTY
-    var district: String = StringUtils.EMPTY
-    var uc_code: String = StringUtils.EMPTY
-    var uc: String = StringUtils.EMPTY
-    var village_code: String = StringUtils.EMPTY
-    var village: String = StringUtils.EMPTY
+    var hf_code: String = StringUtils.EMPTY
+    var health_facility: String = StringUtils.EMPTY
+    var facility_type: String = StringUtils.EMPTY
 
     @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): HealthFacility {
-        country_name = jsonObject.getString(HealthFacilityTable.COLUMN_COUNTRY_NAME)
         country_code = jsonObject.getString(HealthFacilityTable.COLUMN_COUNTRY_CODE)
-        region = jsonObject.getString(HealthFacilityTable.COLUMN_REGION)
         region_code = jsonObject.getString(HealthFacilityTable.COLUMN_REGION_CODE)
-        district = jsonObject.getString(HealthFacilityTable.COLUMN_DISTRICT)
-        district_code = jsonObject.getString(HealthFacilityTable.COLUMN_DISTRICT_CODE)
-        uc = jsonObject.getString(HealthFacilityTable.COLUMN_UC)
-        uc_code = jsonObject.getString(HealthFacilityTable.COLUMN_UC_CODE)
-        village = jsonObject.getString(HealthFacilityTable.COLUMN_VILLAGE)
-        village_code = jsonObject.getString(HealthFacilityTable.COLUMN_VILLAGE_CODE)
+        hf_code = jsonObject.getString(HealthFacilityTable.COLUMN_HF_CODE)
+        health_facility = jsonObject.getString(HealthFacilityTable.COLUMN_HEALTH_FACILITY)
+        facility_type = jsonObject.getString(HealthFacilityTable.COLUMN_FACILITY_TYPE)
         return this
     }
 
     fun hydrate(cursor: Cursor): HealthFacility {
-        country_name = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_COUNTRY_NAME))
         country_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_COUNTRY_CODE))
-        district = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_DISTRICT))
-        district_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_DISTRICT_CODE))
-        uc = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_UC))
-        uc_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_UC_CODE))
-        village = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_VILLAGE))
-        village_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_VILLAGE_CODE))
-        region = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_REGION))
         region_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_REGION_CODE))
+        hf_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_HF_CODE))
+        health_facility = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_HEALTH_FACILITY))
+        facility_type = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_FACILITY_TYPE))
         return this
     }
 
@@ -51,14 +36,9 @@ class HealthFacility {
         const val TABLE_NAME = "healthfacility"
         const val _ID = "_id"
         const val COLUMN_COUNTRY_CODE = "country_code"
-        const val COLUMN_COUNTRY_NAME = "country"
-        const val COLUMN_DISTRICT = "district"
-        const val COLUMN_DISTRICT_CODE = "district_code"
-        const val COLUMN_UC = "uc"
-        const val COLUMN_UC_CODE = "uc_code"
-        const val COLUMN_REGION = "region"
         const val COLUMN_REGION_CODE = "region_code"
-        const val COLUMN_VILLAGE = "village"
-        const val COLUMN_VILLAGE_CODE = "village_code"
+        const val COLUMN_HF_CODE = "hf_code"
+        const val COLUMN_HEALTH_FACILITY = "health_facility"
+        const val COLUMN_FACILITY_TYPE = "facility_type"
     }
 }

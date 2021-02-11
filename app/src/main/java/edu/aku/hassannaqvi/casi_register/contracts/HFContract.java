@@ -15,14 +15,9 @@ public class HFContract {
 
         public static final String _ID = "_id";
         public static final String COLUMN_COUNTRY_CODE = "country_code";
-        public static final String COLUMN_COUNTRY_NAME = "country_name";
         public static final String COLUMN_REGION_CODE = "region_code";
-        public static final String COLUMN_REGION = "region";
-        public static final String COLUMN_DISTRICT_CODE = "district_code";
-        public static final String COLUMN_DISTRICT = "district";
-        public static final String COLUMN_UC_CODE = "uc_code";
-        public static final String COLUMN_UC = "uc";
-        public static final String COLUMN_VILLAGE_CODE = "village_code";
-        public static final String COLUMN_VILLAGE = "village";
+        public static final String COLUMN_HF_CODE = "hf_code";
+        public static final String COLUMN_HEALTH_FACILITY = "health_facility";
+        public static final String COLUMN_FACILITY_TYPE = "facility_type";
     }
 }

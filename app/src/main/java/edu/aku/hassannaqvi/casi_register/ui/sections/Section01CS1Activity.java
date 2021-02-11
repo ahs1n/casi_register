@@ -15,7 +15,6 @@ import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONObject;
 import org.threeten.bp.Instant;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.LocalDateTime;
@@ -31,7 +30,6 @@ import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -56,9 +54,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     boolean dtFlag = false;
     LocalDate calculatedDOB;
     LocalDate localDate;
-    List<String> districtName;
+    List<String> facilityName;
     List<HealthFacility> facilityList;
-    Map<String, HealthFacility> facilityMap;
+    Map<String, String> facilityMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -280,12 +278,11 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 for (HealthFacility item : facilityList) {
-                    if (item.getRegion().equals(bi.cs03.getSelectedItem().toString()) && !districtName.contains(item.getDistrict())) {
-                        districtName.add(item.getDistrict());
-                        facilityMap.put(item.getDistrict(), item);
-                    }
+                    facilityName.add(item.getHealth_facility());
+                    facilityMap.put(item.getHealth_facility(), item.getHf_code());
+
                 }
-                bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, districtName));
+                bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
             }
 
             @Override

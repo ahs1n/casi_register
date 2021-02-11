@@ -205,15 +205,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ContentValues values = new ContentValues();
 
                 values.put(HFContract.HFTable.COLUMN_COUNTRY_CODE, facility.getCountry_code());
-                values.put(HFContract.HFTable.COLUMN_COUNTRY_NAME, facility.getCountry_name());
                 values.put(HFContract.HFTable.COLUMN_REGION_CODE, facility.getRegion_code());
-                values.put(HFContract.HFTable.COLUMN_REGION, facility.getRegion());
-                values.put(HFContract.HFTable.COLUMN_DISTRICT_CODE, facility.getDistrict_code());
-                values.put(HFContract.HFTable.COLUMN_DISTRICT, facility.getDistrict());
-                values.put(HFContract.HFTable.COLUMN_UC_CODE, facility.getUc_code());
-                values.put(HFContract.HFTable.COLUMN_UC, facility.getUc());
-                values.put(HFContract.HFTable.COLUMN_VILLAGE_CODE, facility.getVillage_code());
-                values.put(HFContract.HFTable.COLUMN_VILLAGE, facility.getVillage());
+                values.put(HFContract.HFTable.COLUMN_HF_CODE, facility.getHf_code());
+                values.put(HFContract.HFTable.COLUMN_HEALTH_FACILITY, facility.getHealth_facility());
+                values.put(HFContract.HFTable.COLUMN_FACILITY_TYPE, facility.getFacility_type());
                 long rowID = db.insert(HFContract.HFTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
