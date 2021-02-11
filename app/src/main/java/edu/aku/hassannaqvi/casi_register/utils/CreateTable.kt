@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.casi_register.utils
 
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable
+import edu.aku.hassannaqvi.casi_register.contracts.HFContract
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract
 import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable
 import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable
@@ -76,5 +77,19 @@ object CreateTable {
             ZStandardContract.ZScoreTable.COLUMN_M + " TEXT, " +
             ZStandardContract.ZScoreTable.COLUMN_S + " TEXT, " +
             ZStandardContract.ZScoreTable.COLUMN_CAT + " TEXT " +
+            ");"
+
+    const val SQL_CREATE_HEALTHFACILITY = "CREATE TABLE " + HFContract.HFTable.TABLE_NAME + " (" +
+            HFContract.HFTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            HFContract.HFTable.COLUMN_COUNTRY_CODE + " TEXT, " +
+            HFContract.HFTable.COLUMN_COUNTRY_NAME + " TEXT, " +
+            HFContract.HFTable.COLUMN_REGION_CODE + " TEXT, " +
+            HFContract.HFTable.COLUMN_REGION + " TEXT, " +
+            HFContract.HFTable.COLUMN_DISTRICT_CODE + " TEXT, " +
+            HFContract.HFTable.COLUMN_DISTRICT + " TEXT, " +
+            HFContract.HFTable.COLUMN_UC_CODE + " TEXT, " +
+            HFContract.HFTable.COLUMN_UC + " TEXT, " +
+            HFContract.HFTable.COLUMN_VILLAGE_CODE + " TEXT, " +
+            HFContract.HFTable.COLUMN_VILLAGE + " TEXT " +
             ");"
 }
