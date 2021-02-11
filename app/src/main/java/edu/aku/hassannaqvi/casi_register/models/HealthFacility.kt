@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils
 import org.json.JSONException
 import org.json.JSONObject
 
-class HealthFacilitiy {
+class HealthFacility {
     var country_code: String = StringUtils.EMPTY
     var country_name: String = StringUtils.EMPTY
     var region_code: String = StringUtils.EMPTY
@@ -19,7 +19,7 @@ class HealthFacilitiy {
     var village: String = StringUtils.EMPTY
 
     @Throws(JSONException::class)
-    fun sync(jsonObject: JSONObject): HealthFacilitiy {
+    fun sync(jsonObject: JSONObject): HealthFacility {
         country_name = jsonObject.getString(HealthFacilityTable.COLUMN_COUNTRY_NAME)
         country_code = jsonObject.getString(HealthFacilityTable.COLUMN_COUNTRY_CODE)
         region = jsonObject.getString(HealthFacilityTable.COLUMN_REGION)
@@ -33,7 +33,7 @@ class HealthFacilitiy {
         return this
     }
 
-    fun hydrate(cursor: Cursor): HealthFacilitiy {
+    fun hydrate(cursor: Cursor): HealthFacility {
         country_name = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_COUNTRY_NAME))
         country_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_COUNTRY_CODE))
         district = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_DISTRICT))
