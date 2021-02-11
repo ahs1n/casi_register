@@ -16,6 +16,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -26,6 +27,8 @@ import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class Section04WSFPActivity extends AppCompatActivity {
@@ -91,6 +94,8 @@ public class Section04WSFPActivity extends AppCompatActivity {
         form.setDistrict(item.getDistrict());
         form.setUc(item.getUc());
         form.setVillage(item.getVillage());
+
+        form.setFormType(MWRA_FOLLOWUP_TYPE);
 
         form.setFw01(item.getCountry_code());
         form.setFw01a(item.getRegion_code());

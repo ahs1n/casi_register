@@ -11,4 +11,6 @@ interface LoginUISource {
     fun setPasswordIncorrect(error: String? = null)
 
     suspend fun isLoginApproved(username: String, password: String)
+
+    fun setCountryCode(code: Int)
 }
