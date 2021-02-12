@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.casi_register.utils.shared
 
-import android.app.Application
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import edu.aku.hassannaqvi.casi_register.R

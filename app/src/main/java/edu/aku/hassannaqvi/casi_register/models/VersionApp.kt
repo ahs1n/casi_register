@@ -28,7 +28,7 @@ class VersionApp {
 
     object VersionAppTable : BaseColumns {
         const val TABLE_NAME = "versionApp"
-        const val COLUMN_ID = "id"
+        const val COLUMN_ID = "_id"
         const val COLUMN_VERSION_PATH = "elements"
         const val COLUMN_VERSION_CODE = "versionCode"
         const val COLUMN_VERSION_NAME = "versionName"
