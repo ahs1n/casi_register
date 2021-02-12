@@ -972,6 +972,13 @@
                                 android:text="@string/Q_fw18" />
                         </RelativeLayout>
 
+                        <CheckBox
+                            android:tag="-1"
+                            android:id="@+id/fw1801"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fw1801" />
+
                         <LinearLayout
                             android:id="@+id/fw18check"
                             android:layout_width="match_parent"
@@ -979,11 +986,6 @@
                             android:orientation="vertical"
                             android:tag="0">
 
-                            <CheckBox
-                                android:id="@+id/fw1801"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/fw1801" />
 
                             <CheckBox
                                 android:id="@+id/fw1802"
