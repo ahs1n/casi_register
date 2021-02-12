@@ -1222,7 +1222,15 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:text="@string/fc25" />
+
                         </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/fc2501"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:tag="-1"
+                            android:text="@string/fc2501" />
 
                         <LinearLayout
                             android:id="@+id/fc25check"
@@ -1230,12 +1238,6 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:tag="0">
-
-                            <CheckBox
-                                android:id="@+id/fc2501"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/fc2501" />
 
                             <CheckBox
                                 android:id="@+id/fc2502"
@@ -1266,9 +1268,13 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/fc2506" />
+
                         </LinearLayout>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
+
 
                 <!-- fc26  CheckBox   -->
                 <androidx.cardview.widget.CardView

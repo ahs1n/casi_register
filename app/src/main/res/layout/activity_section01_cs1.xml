@@ -293,18 +293,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                            android:hint="@string/cs07" />
+                            android:enabled='@{cs07User.checked ? false : true}'
+                            android:hint="@string/cs07"
+                            android:text='@{cs07User.checked ? "" : cs07.getText().toString()}' />
 
                         <CheckBox
                             android:id="@+id/cs07User"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:checked="@{cs07.equals(`98`)}"
                             android:tag="-1"
                             android:text="Same as Login user" />
+
                     </LinearLayout>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
+
 
             <!-- cs08  Title   -->
             <androidx.cardview.widget.CardView
@@ -776,7 +781,6 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:checked="true"
                             android:text="@string/cs1301" />
 
                         <RadioButton
@@ -849,7 +853,6 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 android:onTextChanged="@{callback::cs14ddmmOnTextChanged}"
-                                android:text="98"
                                 app:defaultValue="98"
                                 app:maxValue="31"
                                 app:minValue="1"
@@ -877,7 +880,6 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 android:onTextChanged="@{callback::cs14ddmmOnTextChanged}"
-                                android:text="98"
                                 app:defaultValue="98"
                                 app:maxValue="12"
                                 app:minValue="1"
@@ -905,7 +907,6 @@
                                 android:inputType="number"
                                 android:maxLength="4"
                                 android:onTextChanged="@{callback.cs14yOnTextChanged}"
-                                android:text="9998"
                                 app:defaultValue="9998"
                                 app:maxValue="2021"
                                 app:minValue="2016"
@@ -1394,13 +1395,14 @@
                         android:hint="###.#"
                         android:inputType="number"
                         android:maxLength="4"
-                        android:text="087.2"
                         app:mask="###.#"
                         app:maxValue="120"
                         app:minValue="45"
                         app:pattern="^(\\d{3,3}\\.\\d{1,1})$"
                         app:type="range" />
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -1593,9 +1595,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cs2406" />
+
                     </LinearLayout>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
+
 
             <LinearLayout
                 android:id="@+id/fldGrpcs2401"
@@ -1975,7 +1981,7 @@
 
 
                 <!-- cs27  Title   -->
-                <androidx.cardview.widget.CardView
+                <!--<androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVcs27"
                     style="@style/cardView">
 
@@ -2069,7 +2075,9 @@
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
+
+
             </LinearLayout>
 
             <!--EndButton LinearLayout-->

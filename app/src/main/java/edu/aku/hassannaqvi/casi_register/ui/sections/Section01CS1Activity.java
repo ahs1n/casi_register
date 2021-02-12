@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -28,8 +31,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -47,7 +48,6 @@ import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class Section01CS1Activity extends AppCompatActivity implements EndSectionActivity {
@@ -146,8 +146,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 : "-1");
         form.setCs06096x(bi.cs06096x.getText().toString());
 
-        form.setCs07(bi.cs07.getText().toString());
-        form.setCs07User(bi.cs07User.getText().toString());
+        form.setCs07(bi.cs07.getText().toString().trim().isEmpty() ? "-1" : bi.cs07.getText().toString());
+
+        form.setCs07User(bi.cs07User.isChecked() ? form.getUsername() : "98");
 
         form.setCs08(bi.cs08.getText().toString());
 
