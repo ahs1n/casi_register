@@ -1053,10 +1053,12 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
+                            android:enabled="@{cs1698.checked ? false : true}"
                             android:gravity="center"
                             android:hint="#.#"
                             android:inputType="number"
                             android:maxLength="3"
+                            android:text='@{cs1698.checked ? cs16.getText().toString() : ""}'
                             app:mask="#.#"
                             app:maxValue="9.9"
                             app:minValue="0.9"
@@ -1068,7 +1070,6 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:checked="@{cs16.equals(`98`)}"
                             android:tag="-1"
                             android:text="@string/cs1698" />
                     </LinearLayout>
