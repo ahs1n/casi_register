@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,8 +22,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
@@ -31,12 +31,8 @@ import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
-import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_FOLLOWUP_TYPE;
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 
 public class Section02CSFPActivity extends AppCompatActivity {
@@ -49,12 +45,74 @@ public class Section02CSFPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section02_csfp);
         bi.setCallback(this);
-        setListeners();
-        setupContent();
+        setupSkips();
     }
 
 
-    private void setupContent() { }
+    private void setupSkips() {
+
+        bi.fc1702.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (TextUtils.isEmpty(bi.fc1702.getText()) || TextUtils.isEmpty(bi.fc1701.getText()))
+                    return;
+
+                int age = Integer.parseInt(bi.fc1702.getText().toString()) + (Integer.parseInt(bi.fc1701.getText().toString()) * 12);
+
+                bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
+                bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
+                bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
+
+                if (age >= 6) {
+                    bi.fldGrpCVfc19.setVisibility(View.GONE);
+                } else bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
+
+                if (age < 6 || age >= 24) {
+                    bi.fldGrpCVfc20.setVisibility(View.GONE);
+                } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
+
+                if (age >= 24) {
+                    bi.fldGrpCVfc20.setVisibility(View.GONE);
+                } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
+
+                if (age >= 24) {
+                    bi.fldGrpCVfc21.setVisibility(View.GONE);
+                } else bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        bi.fc16b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc16b));
+
+        CompoundButton.OnCheckedChangeListener compound = (compoundButton, b) -> {
+            if (!bi.fc2501.isChecked() && !bi.fc2502.isChecked() && !bi.fc2503.isChecked()) {
+                Clear.clearAllFields(bi.fc25check, false);
+                Clear.clearAllFields(bi.fldGrpCVfc29);
+                bi.fldGrpCVfc29.setVisibility(View.GONE);
+            } else {
+                Clear.clearAllFields(bi.fc25check, true);
+                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
+            }
+        };
+
+        bi.fc2501.setOnCheckedChangeListener(compound);
+        bi.fc2502.setOnCheckedChangeListener(compound);
+        bi.fc2503.setOnCheckedChangeListener(compound);
+
+        bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc26check, !b));
+
+        bi.fc34.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc3401));
+
+    }
 
 
     public void BtnContinue() {
@@ -290,71 +348,6 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         AppUtilsKt.contextEndActivity(this);
-    }
-
-
-    private void setListeners() {
-
-        bi.fc1702.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (TextUtils.isEmpty(bi.fc1702.getText()) || TextUtils.isEmpty(bi.fc1701.getText()))
-                    return;
-
-                int age = Integer.parseInt(bi.fc1702.getText().toString()) + (Integer.parseInt(bi.fc1701.getText().toString()) * 12);
-
-                bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
-                bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
-                bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
-
-                if (age >= 6) {
-                    bi.fldGrpCVfc19.setVisibility(View.GONE);
-                } else bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
-
-                if (age < 6 || age >= 24) {
-                    bi.fldGrpCVfc20.setVisibility(View.GONE);
-                } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
-
-                if (age >= 24) {
-                    bi.fldGrpCVfc20.setVisibility(View.GONE);
-                } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
-
-                if (age >= 24) {
-                    bi.fldGrpCVfc21.setVisibility(View.GONE);
-                } else bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        bi.fc16b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc16b));
-
-        CompoundButton.OnCheckedChangeListener compound = (compoundButton, b) -> {
-            if (!bi.fc2501.isChecked() && !bi.fc2502.isChecked() && !bi.fc2503.isChecked()) {
-                Clear.clearAllFields(bi.fc25check, false);
-                Clear.clearAllFields(bi.fldGrpCVfc29);
-                bi.fldGrpCVfc29.setVisibility(View.GONE);
-            } else {
-                Clear.clearAllFields(bi.fc25check, true);
-                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
-            }
-        };
-
-        bi.fc2501.setOnCheckedChangeListener(compound);
-        bi.fc2502.setOnCheckedChangeListener(compound);
-        bi.fc2503.setOnCheckedChangeListener(compound);
-
-        bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc26check, !b));
-
-        bi.fc34.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc3401));
     }
 
     /*@Override
