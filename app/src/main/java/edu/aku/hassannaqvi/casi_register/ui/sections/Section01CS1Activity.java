@@ -25,7 +25,9 @@ import org.threeten.bp.ZoneId;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -48,7 +50,9 @@ import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
 
 public class Section01CS1Activity extends AppCompatActivity implements EndSectionActivity {
 
@@ -57,7 +61,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     LocalDate calculatedDOB;
     LocalDate localDate;
     List<String> facilityName;
-    List<HealthFacility> facilityList;
     Map<String, String> facilityMap;
 
     @Override
@@ -66,17 +69,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_cs1);
         bi.setCallback(this);
         setListeners();
-        setupContent();
         setUIContent();
-    }
-
-    private void setupContent() {
-        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + MainApp.mainInfo.getVillage_code());
-        if (!regID.equals(StringUtils.EMPTY)) {
-            String substring = regID.substring(regID.length() - 4);
-            String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
-            bi.cs10.setText(result);
-        } else bi.cs10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
     }
 
     /*
@@ -92,7 +85,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             if (count > 0)
                 count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CS, form.cStoString());
             if (count > 0) {
-                SharedStorage.INSTANCE.setLastRegistrationID(this, "c-" + MainApp.mainInfo.getVillage_code(), bi.cs10.getText().toString());
+                SharedStorage.INSTANCE.setLastRegistrationID(this, "c-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.cs10.getText().toString());
                 return true;
             } else {
                 Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
@@ -133,7 +126,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 : bi.cs0203.isChecked() ? "3"
                 : "-1");
 
-        form.setCs03(bi.cs03.getSelectedItem().toString());
+        form.setCs03(facilityMap.get(bi.cs03.getSelectedItem().toString()));
 
         form.setCs05a(bi.cs05a.getText().toString());
 
@@ -278,23 +271,31 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
     private void setUIContent() {
 
-        //HealthFacility
-        bi.cs03.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                for (HealthFacility item : facilityList) {
-                    facilityName.add(item.getHealth_facility());
-                    facilityMap.put(item.getHealth_facility(), item.getHf_code());
-
-                }
-                bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
+        /*
+         * Populating HealthFacilities
+         * */
+        facilityName = new ArrayList<String>() {
+            {
+                add("....");
             }
+        };
+        facilityMap = new HashMap<>();
+        for (HealthFacility item : appInfo.dbHelper.getFacility(mainInfo.getRegion_code())) {
+            facilityName.add(item.getHealth_facility());
+            facilityMap.put(item.getHealth_facility(), item.getHf_code());
+        }
+        bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+        /*
+         * Implementing child registration no
+         * */
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
+        if (!regID.equals(StringUtils.EMPTY)) {
+            String substring = regID.substring(regID.length() - 4);
+            String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
+            bi.cs10.setText(result);
+        } else bi.cs10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
 
-            }
-        });
     }
 
     /*

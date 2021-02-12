@@ -54,7 +54,7 @@
 
 
     <style name="BackgroundStyle" parent="android:Widget.ScrollView">
-        <item name="android:background">@color/whiteOverlay</item>
+        <item name="android:background">@color/white</item>
         <item name="android:padding">20dp</item>
     </style>
 
@@ -76,7 +76,7 @@
             <item name="android:padding">16dp</item>-->
 
     <style name="labels" parent="@android:style/TextAppearance.Widget.TextView">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">24dp</item>
@@ -117,7 +117,7 @@
     </style>
 
     <style name="textInput">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -126,7 +126,7 @@
         <item name="android:background">@drawable/options_separator</item>
         <item name="android:textColor">@color/blackOverlay</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingStart">10dp</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:minHeight">52dp</item>

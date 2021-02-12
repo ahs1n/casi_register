@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +11,17 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
@@ -23,16 +29,21 @@ import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection03WsBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_TYPE;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
 
 public class Section03WSActivity extends AppCompatActivity {
 
     ActivitySection03WsBinding bi;
+    List<String> facilityName;
+    Map<String, String> facilityMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +51,35 @@ public class Section03WSActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section03_ws);
         bi.setCallback(this);
         setListeners();
-        setupContent();
+        setUIContent();
     }
 
-    private void setupContent() {
+    private void setUIContent() {
+        /*
+         * Populating HealthFacilities
+         * */
+        facilityName = new ArrayList<String>() {
+            {
+                add("....");
+            }
+        };
+        facilityMap = new HashMap<>();
+        for (HealthFacility item : appInfo.dbHelper.getFacility(mainInfo.getRegion_code())) {
+            facilityName.add(item.getHealth_facility());
+            facilityMap.put(item.getHealth_facility(), item.getHf_code());
+        }
+        bi.ws03.setAdapter(new ArrayAdapter<>(Section03WSActivity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
+
+        /*
+         * Implementing child registration no
+         * */
         String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "w-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
         if (!regID.equals(StringUtils.EMPTY)) {
             String substring = regID.substring(regID.length() - 4);
             String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
             bi.ws11.setText(result);
         } else bi.ws11.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
+
     }
 
 
@@ -79,7 +109,7 @@ public class Section03WSActivity extends AppCompatActivity {
             if (count > 0)
                 count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CS, form.wStoString());
             if (count > 0) {
-                SharedStorage.INSTANCE.setLastRegistrationID(this, "w-" + MainApp.mainInfo.getVillage_code(), bi.ws11.getText().toString());
+                SharedStorage.INSTANCE.setLastRegistrationID(this, "w-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.ws11.getText().toString());
                 return true;
             } else {
                 Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
@@ -121,7 +151,7 @@ public class Section03WSActivity extends AppCompatActivity {
                 : bi.ws0203.isChecked() ? "3"
                 : "-1");
 
-        wS.put("ws03", bi.ws03.getText().toString());
+        wS.put("ws03", facilityMap.get(bi.ws03.getSelectedItem().toString()));
 
 
         wS.put("ws05a", bi.ws05a.getText().toString());
