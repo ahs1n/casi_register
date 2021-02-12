@@ -192,7 +192,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public int syncHF(JSONArray hfList) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(HFContract.HFTable.TABLE_NAME, null, null);
+        db.delete(HealthFacility.HealthFacilityTable.TABLE_NAME, null, null);
         int insertCount = 0;
         try {
             for (int i = 0; i < hfList.length(); i++) {
@@ -203,12 +203,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 facility.sync(jsonObjectzs);
                 ContentValues values = new ContentValues();
 
-                values.put(HFContract.HFTable.COLUMN_COUNTRY_CODE, facility.getCountry_code());
-                values.put(HFContract.HFTable.COLUMN_REGION_CODE, facility.getRegion_code());
-                values.put(HFContract.HFTable.COLUMN_HF_CODE, facility.getHf_code());
-                values.put(HFContract.HFTable.COLUMN_HEALTH_FACILITY, facility.getHealth_facility());
-                values.put(HFContract.HFTable.COLUMN_FACILITY_TYPE, facility.getFacility_type());
-                long rowID = db.insert(HFContract.HFTable.TABLE_NAME, null, values);
+                values.put(HealthFacility.HealthFacilityTable.COLUMN_COUNTRY_CODE, facility.getCountry_code());
+                values.put(HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE, facility.getRegion_code());
+                values.put(HealthFacility.HealthFacilityTable.COLUMN_HF_CODE, facility.getHf_code());
+                values.put(HealthFacility.HealthFacilityTable.COLUMN_HEALTH_FACILITY, facility.getHealth_facility());
+                values.put(HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE, facility.getFacility_type());
+                long rowID = db.insert(HealthFacility.HealthFacilityTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
 
