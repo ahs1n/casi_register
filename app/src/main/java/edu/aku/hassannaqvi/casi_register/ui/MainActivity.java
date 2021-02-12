@@ -115,78 +115,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         bi.setCallback(this);
 
-     /*   //bi.txtinstalldate.setText(appInfo.getAppInfo());
-        Collection<Form> todaysForms = appInfo.getDbHelper().getTodayForms(sysdateToday);
-        Collection<Form> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
-
-        //TODO: Commented for testing
-        *//* Collection<Form> unclosedForms = appInfo.getDbHelper().getUnclosedForms(); *//*
-
-        StringBuilder rSumText = new StringBuilder()
-                .append("TODAY'S RECORDS SUMMARY\r\n")
-                .append("=======================\r\n")
-                .append("\r\n")
-                .append("Total Forms Today" + "(").append(dtToday).append("): ").append(todaysForms.size()).append("\r\n");
-        String TAG = "MainActivity";
-        if (todaysForms.size() > 0) {
-            String iStatus;
-            rSumText.append("---------------------------------------------------------\r\n")
-                    .append("[  Name  ][Ref. No][Form Status][Sync Status]\r\n")
-                    .append("---------------------------------------------------------\r\n");
-
-            for (Form form : todaysForms) {
-                Log.d(TAG, "onCreate: '" + form.getIstatus() + "'");
-                switch (form.getIstatus()) {
-                    case "1":
-                        iStatus = "Complete   ";
-                        break;
-                    case "2":
-                        iStatus = "Incomplete ";
-                        break;
-                    case "3":
-                        iStatus = "Refused    ";
-                        break;
-                    case "96":
-                        iStatus = "Other    ";
-                        break;
-                    case "":
-                        iStatus = "Open     ";
-                        break;
-                    default:
-                        iStatus = "  -N/A-  " + form.getIstatus();
-                }
-
-                rSumText
-                        *//*.append((form.getMp101() + "          ").substring(0, 10))
-                        .append((form.getMp102() + "      ").substring(0, 6))*//*
-                        .append("  \t\t")
-                        .append(iStatus)
-                        .append("\t\t\t\t")
-                        .append(form.getSynced() == null ? "Not Synced" : "Synced    ")
-                        .append("\r\n")
-                        .append("---------------------------------------------------------\r\n");
-            }
-        }
-        SharedPreferences syncPref = getSharedPreferences("src", Context.MODE_PRIVATE);
-        rSumText.append("\r\nDEVICE INFORMATION\r\n")
-                .append("  ========================================================\r\n")
-
-                //TODO: Commented for Testing
-                *//* .append("\t|| Open Forms: \t\t\t\t\t\t").append(String.format("%02d", unclosedForms.size())) *//*
-                .append("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t||\r\n")
-                .append("\t|| Unsynced Forms: \t\t\t\t").append(String.format("%02d", unsyncedForms.size()))
-                .append("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t||\r\n")
-                .append("\t|| Last Data Download: \t\t").append(syncPref.getString("LastDataDownload", "Never Downloaded   "))
-                .append("\t\t\t\t\t\t||\r\n")
-                .append("\t|| Last Data Upload: \t\t\t").append(syncPref.getString("LastDataUpload", "Never Uploaded     "))
-                .append("\t\t\t\t\t\t||\r\n")
-                .append("\t|| Last Photo Upload: \t\t").append(syncPref.getString("LastPhotoUpload", "Never Uploaded     "))
-                .append("\t\t\t\t\t\t||\r\n")
-                .append("\t========================================================\r\n");
-        bi.recordSummary.setText(rSumText);
-
-        Log.d(TAG, "onCreate: " + rSumText);*/
-
         if (MainApp.admin) {
             bi.databaseBtn.setVisibility(View.VISIBLE);
         } else {
@@ -197,46 +125,47 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         sharedPrefDownload = getSharedPreferences("appDownload", MODE_PRIVATE);
         editorDownload = sharedPrefDownload.edit();
         versionApp = appInfo.getDbHelper().getVersionApp();
-        versionApp.getVersioncode();
 
-        preVer = appInfo.getVersionName() + "." + appInfo.getVersionCode();
-        newVer = versionApp.getVersionname() + "." + versionApp.getVersioncode();
+        if (versionApp != null) {
+            versionApp.getVersioncode();
+            preVer = appInfo.getVersionName() + "." + appInfo.getVersionCode();
+            newVer = versionApp.getVersionname() + "." + versionApp.getVersioncode();
+            if (appInfo.getVersionCode() < Integer.parseInt(versionApp.getVersioncode())) {
+                bi.lblAppVersion.setVisibility(View.VISIBLE);
 
-        if (appInfo.getVersionCode() < Integer.parseInt(versionApp.getVersioncode())) {
-            bi.lblAppVersion.setVisibility(View.VISIBLE);
+                String fileName = CreateTable.DATABASE_NAME.replace(".db", "-New-Apps");
+                file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
 
-            String fileName = CreateTable.DATABASE_NAME.replace(".db", "-New-Apps");
-            file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
-
-            if (file.exists()) {
-                bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " New Version ").append(newVer).append("  Downloaded"));
-                showDialog(newVer, preVer);
-            } else {
-                NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
-                if (networkInfo != null && networkInfo.isConnected()) {
-                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Downloading.."));
-                    downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                    Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
-                    DownloadManager.Request request = new DownloadManager.Request(uri);
-                    request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
-                            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                            .setTitle("Downloading " + getString(R.string.app_name) + " App new App ver." + newVer);
-                    refID = downloadManager.enqueue(request);
-
-                    editorDownload.putLong("refID", refID);
-                    editorDownload.putBoolean("flag", false);
-                    editorDownload.apply();
-
+                if (file.exists()) {
+                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " New Version ").append(newVer).append("  Downloaded"));
+                    showDialog(newVer, preVer);
                 } else {
-                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Available..\n(Can't download.. Internet connectivity issue!!)"));
-                }
-            }
+                    NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
+                    if (networkInfo != null && networkInfo.isConnected()) {
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Downloading.."));
+                        downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                        Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
+                        DownloadManager.Request request = new DownloadManager.Request(uri);
+                        request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
+                                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                                .setTitle("Downloading " + getString(R.string.app_name) + " App new App ver." + newVer);
+                        refID = downloadManager.enqueue(request);
 
-        } else {
-            bi.lblAppVersion.setVisibility(View.GONE);
-            bi.lblAppVersion.setText(null);
+                        editorDownload.putLong("refID", refID);
+                        editorDownload.putBoolean("flag", false);
+                        editorDownload.apply();
+
+                    } else {
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Available..\n(Can't download.. Internet connectivity issue!!)"));
+                    }
+                }
+
+            } else {
+                bi.lblAppVersion.setVisibility(View.GONE);
+                bi.lblAppVersion.setText(null);
+            }
+            registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         }
-        registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
 //        Testing visibility
         if (Integer.parseInt(appInfo.getVersionName().split("\\.")[0]) > 0) {
@@ -246,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         }
 
         setUIContent();
+        gettingRegionData();
     }
 
     @Override
@@ -302,19 +232,13 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        gettingRegionData();
-    }
-
 
     /*
      * Clickable buttons
      * */
     @SuppressLint("NonConstantResourceId")
     public void openSpecificActivity(View v) {
-        Intent oF = null;
+        Intent oF;
         switch (v.getId()) {
             case R.id.formCS:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
@@ -433,7 +357,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 for (Villages item : areaList) {
                     if (item.getUc().equals(bi.spUC.getSelectedItem().toString())) {
                         villageName.add(item.getVillage());
-                        villageMap.put(item.getUc(), item);
+                        villageMap.put(item.getVillage(), item);
                     }
                 }
                 bi.spVillage.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, villageName));
@@ -576,13 +500,12 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
      * Setting identification data in variables
      * */
     private void SaveDraft() {
-        Villages item = villageMap.get(bi.spVillage.getSelectedItem().toString());
         /*MainApp.mainInfo = new Identification(
                 item.getRegion_code(),
                 item.getDistrict_code(),
                 item.getUc_code(),
                 item.getVillage_code());*/
-        MainApp.mainInfo = item;
+        MainApp.mainInfo = villageMap.get(bi.spVillage.getSelectedItem().toString());
     }
 
 }

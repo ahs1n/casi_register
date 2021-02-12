@@ -57,7 +57,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/AppThemeEnglish" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.sections.Section01CS1Activity"
             android:label="Growth Monitoring Screening Log for U5"

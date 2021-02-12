@@ -45,7 +45,7 @@ public class Section03WSActivity extends AppCompatActivity {
     }
 
     private void setupContent() {
-        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "w-" + MainApp.mainInfo.getVillage_code());
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "w-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
         if (!regID.equals(StringUtils.EMPTY)) {
             String substring = regID.substring(regID.length() - 4);
             String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));

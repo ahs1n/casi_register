@@ -286,7 +286,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String orderBy = null;
 
-        VersionApp allVC = new VersionApp();
+        VersionApp allVC = null;
         try {
             c = db.query(
                     VersionAppTable.TABLE_NAME,  // The table to query
@@ -298,7 +298,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allVC.hydrate(c);
+                allVC = new VersionApp().hydrate(c);
             }
         } finally {
             if (c != null) {
@@ -934,13 +934,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allEB;
     }
 
-    public List<HealthFacility> getFacility(String Region) {
+    public List<HealthFacility> getFacility(String region) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
-        String whereClause = null;
-        String[] whereArgs = {Region};
+        String whereClause = HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE + "=?";
+        String[] whereArgs = {region};
         String groupBy = null;
         String having = null;
 

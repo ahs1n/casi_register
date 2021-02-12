@@ -139,18 +139,6 @@ public class SyncActivity extends AppCompatActivity {
                 uploadTables.add(new SyncModel(FormsContract.FormsTable.TABLE_NAME));
                 MainApp.uploadData.add(db.getUnsyncedForms());
 
-/*                // Child Info
-                uploadTables.add(new SyncModel(ChildInformationContract.ChildInfoTable.TABLE_NAME));
-                MainApp.uploadData.add(db.getUnsyncedHHChildrens());
-
-                // Child
-                uploadTables.add(new SyncModel(ChildContract.ChildTable.TABLE_NAME));
-                MainApp.uploadData.add(db.getUnsyncedChild());
-
-                // IM
-                uploadTables.add(new SyncModel(IMContract.IMTable.TABLE_NAME));
-                MainApp.uploadData.add(db.getUnsyncedIM());*/
-
 
                 setAdapter(uploadTables);
                 BeginUpload();
@@ -163,27 +151,13 @@ public class SyncActivity extends AppCompatActivity {
                 bi.mTextViewS.setVisibility(View.GONE);
                 bi.pBar.setVisibility(View.GONE);
                 downloadTables.clear();
-/*                boolean sync_flag = getIntent().getBooleanExtra(CONSTANTS.SYNC_LOGIN, false);
-                if (sync_flag) {
-                    *//*distCode = getIntent().getStringExtra(CONSTANTS.SYNC_DISTRICTID_LOGIN);
-                    downloadTables.add(new SyncModel(BLRandom.TableRandom.TABLE_NAME));
-                    downloadTables.add(new SyncModel(Clusters.TableClusters.TABLE_NAME));*//*
-                    downloadTables.add(new SyncModel(FormsContract.FormsTable.COLUMN_COUNTRY));
-                    downloadTables.add(new SyncModel(FormsContract.FormsTable.COLUMN_DISTRICT));
-                    downloadTables.add(new SyncModel(FormsContract.FormsTable.COLUMN_UC));
-                    downloadTables.add(new SyncModel(FormsContract.FormsTable.COLUMN_VILLAGE));
-                } else {
-                    // Set tables to DOWNLOAD
-                    downloadTables.add(new SyncModel(UsersContract.UsersTable.TABLE_NAME));
-                    downloadTables.add(new SyncModel(VersionAppContract.VersionAppTable.TABLE_NAME));
-*//*                    downloadTables.add(new SyncModel(Districts.TableDistricts.TABLE_NAME));
-                    downloadTables.add(new SyncModel(UCs.TableUCs.TABLE_NAME));*//*
 
-                }*/
+
                 downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(HealthFacility.HealthFacilityTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
