@@ -7,7 +7,7 @@
         android:id="@+id/parentLayout"
         style="@style/cardView"
         android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_110sdp"
+        android:layout_height="@dimen/_115sdp"
         android:layout_margin="@dimen/_6sdp"
         android:elevation="@dimen/_2sdp">
 
@@ -31,7 +31,7 @@
             <ImageView
                 android:id="@+id/childImg"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_70sdp"
+                android:layout_height="@dimen/_80sdp"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="@dimen/_2sdp"
                 android:src="@drawable/ctr_childboy"

@@ -36,17 +36,12 @@ class SelectedChildrenListActivity : AppCompatActivity(), WarningActivityInterfa
         lateinit var viewModel: SelectedChildrenListViewModel
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_selected_children_list)
         viewModel = obtainViewModel(SelectedChildrenListViewModel::class.java, GeneralRepository(DatabaseHelper(this)))
         callingRecyclerView()
-
-        /*
-        * Get childList on resume event
-        * */
-        val villageItem = MainApp.mainInfo
-        viewModel.getChildDataFromDB(SharedStorage.getCountryCode(this).toString(), Identification(villageItem.region_code, villageItem.district_code, villageItem.uc_code, villageItem.village_code))
 
 
         /*
@@ -79,6 +74,7 @@ class SelectedChildrenListActivity : AppCompatActivity(), WarningActivityInterfa
 
     }
 
+
     /*
     * Callback call after pressing Child item in recyclerview
     * */
@@ -99,7 +95,7 @@ class SelectedChildrenListActivity : AppCompatActivity(), WarningActivityInterfa
         adapter = SelectedChildListAdapter(object : SelectedChildListAdapter.OnItemClickListener {
             override fun onItemClick(item: ChildFollowup, position: Int) {
                 openWarningActivity(
-                        id = 2,
+                        id = 1,
                         title = "CONFIRMATION!",
                         message = "Are you sure, you want to continue ${item.cs11.toUpperCase(Locale.ENGLISH)} interview?",
                         item = item)
@@ -108,4 +104,14 @@ class SelectedChildrenListActivity : AppCompatActivity(), WarningActivityInterfa
         bi.childList.adapter = adapter
     }
 
+
+    /*
+    * Get childList on resume event
+    * */
+    override fun onResume() {
+        super.onResume()
+
+        val villageItem = MainApp.mainInfo
+        viewModel.getChildDataFromDB(SharedStorage.getCountryCode(this).toString(), Identification(villageItem.region_code, villageItem.district_code, villageItem.uc_code, villageItem.village_code))
+    }
 }

@@ -88,7 +88,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCountry(item.getCountry());
+        form.setReg_no(item.getCountry());
         form.setDistrict(item.getDistrict());
         form.setUc(item.getUc());
         form.setVillage(item.getVillage());

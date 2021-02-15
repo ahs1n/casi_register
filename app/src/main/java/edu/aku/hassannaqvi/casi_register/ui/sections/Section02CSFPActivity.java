@@ -18,13 +18,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection02CsfpBinding;
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.models.Form;
-import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
@@ -35,13 +36,15 @@ import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivity
 public class Section02CSFPActivity extends AppCompatActivity {
 
     ActivitySection02CsfpBinding bi;
-    Villages item;
+    ChildFollowup item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section02_csfp);
         bi.setCallback(this);
+        item = (ChildFollowup) getIntent().getSerializableExtra(CONSTANTS.ITEM_DATA);
+        bi.setChildInformation(item);
         setupSkips();
     }
 
@@ -154,19 +157,26 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.setDeviceID(MainApp.appInfo.getDeviceID());
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
+        form.setReg_no(bi.fc10.getText().toString());
 
-        form.setCountry(MainApp.mainInfo.getCountry());
         form.setDistrict(MainApp.mainInfo.getDistrict());
         form.setUc(MainApp.mainInfo.getUc());
         form.setVillage(MainApp.mainInfo.getVillage());
 
         form.setFormType(CHILD_FOLLOWUP_TYPE);
 
-        form.setFc01(item.getCountry_code());
-        form.setFc01a(item.getRegion_code());
-        form.setFc01b(item.getDistrict_code());
-        form.setFc04(item.getUc_code());
-        form.setFc05(item.getVillage_code());
+        form.setCountryCode(MainApp.mainInfo.getCountry_code());
+        form.setDistrictCode(MainApp.mainInfo.getDistrict_code());
+        form.setUcCode(MainApp.mainInfo.getUc_code());
+        form.setVillageCode(MainApp.mainInfo.getVillage_code());
+
+        form.setFc01(item.getCs01());
+        form.setFc01a(item.getCs01a());
+        form.setFc01b(item.getCs01b());
+        form.setFc04(item.getCs04());
+        form.setFc05(item.getCs05());
+        form.setScr_date(item.getCs08());
+        form.set_luid(item.getLUID());
 
         /*form.setFc01(bi.fc01.getText().toString());
 

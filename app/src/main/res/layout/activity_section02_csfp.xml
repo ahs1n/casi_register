@@ -432,12 +432,10 @@
                         android:id="@+id/fc09"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:hint="###"
                         android:inputType="number"
-                        android:maxLength="3"
-                        app:maxValue="300"
-                        app:minValue="0"
-                        app:type="range" />
+                        android:text="@{childInformation.cs09}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -473,11 +471,10 @@
                     <EditText
                         android:id="@+id/fc10"
                         android:layout_width="match_parent"
-                        android:enabled="false"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:hint="#####"
-                        android:inputType="number"
-                        android:text="@{childInformation.cs10}"/>
+                        android:text="@{childInformation.cs10}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -513,11 +510,11 @@
                     <EditText
                         android:id="@+id/fc10a"
                         android:layout_width="match_parent"
-                        android:enabled="false"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:gravity="center"
                         android:hint="###-##-##"
-                        android:text="@{childInformation.cs10a}"/>
+                        android:text="@{childInformation.cs10a}" />
 
                 </LinearLayout>
 
@@ -556,11 +553,11 @@
                     <EditText
                         android:id="@+id/fc15"
                         android:layout_width="match_parent"
-                        android:enabled="false"
                         android:layout_height="wrap_content"
-                        android:text="@{childInformation.cs11}"
                         android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/fc15" />
+                        android:enabled="false"
+                        android:hint="@string/fc15"
+                        android:text="@{childInformation.cs11}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -595,12 +592,12 @@
 
                     <EditText
                         android:id="@+id/fc15a"
-                        android:enabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{childInformation.cs11a}"
                         android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/fc15a" />
+                        android:enabled="false"
+                        android:hint="@string/fc15a"
+                        android:text="@{childInformation.cs11a}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -635,12 +632,12 @@
 
                     <EditText
                         android:id="@+id/fc16"
-                        android:enabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{childInformation.cs12}"
                         android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/fc16" />
+                        android:enabled="false"
+                        android:hint="@string/fc16"
+                        android:text="@{childInformation.cs12}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

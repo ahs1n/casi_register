@@ -38,7 +38,7 @@ class SelectedChildrenListViewModel(internal val repository: GeneralRepository) 
 
                     val third = launch {
                         children.forEachIndexed { index, item ->
-                            val form = repository.getLocalDBFollowupFormList(country, identification, CONSTANTS.CHILD_FOLLOWUP_TYPE)
+                            val form = repository.getLocalDBFollowupFormList(country, identification, item.cs10, CONSTANTS.CHILD_FOLLOWUP_TYPE)
                             form?.let {
                                 item.childTableDataExist = true
                                 children[index] = item

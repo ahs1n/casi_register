@@ -17,10 +17,10 @@ class ChildFollowup : Serializable {
     var cs01 = StringUtils.EMPTY //country
     var cs01a = StringUtils.EMPTY //region
     var cs01b = StringUtils.EMPTY //district
-    var cs03 = StringUtils.EMPTY //facility
     var cs04 = StringUtils.EMPTY //uc
     var cs05 = StringUtils.EMPTY //village
     var cs08 = StringUtils.EMPTY //Screening Date
+    var cs09 = StringUtils.EMPTY //LHW No
     var cs10 = StringUtils.EMPTY //child reg
     var cs10a = StringUtils.EMPTY //child mr no
     var cs11 = StringUtils.EMPTY //child name
@@ -37,10 +37,10 @@ class ChildFollowup : Serializable {
         lUID = jsonObject.getString(ChildTable.COLUMN_LUID)
         cs01a = jsonObject.getString(ChildTable.COLUMN_CS01A)
         cs01b = jsonObject.getString(ChildTable.COLUMN_CS01B)
-        cs03 = jsonObject.getString(ChildTable.COLUMN_CS03)
         cs04 = jsonObject.getString(ChildTable.COLUMN_CS04)
         cs05 = jsonObject.getString(ChildTable.COLUMN_CS05)
         cs08 = jsonObject.getString(ChildTable.COLUMN_CS08)
+        cs09 = jsonObject.getString(ChildTable.COLUMN_CS09)
         cs10 = jsonObject.getString(ChildTable.COLUMN_CS10)
         cs10a = jsonObject.getString(ChildTable.COLUMN_CS10A)
         cs11 = jsonObject.getString(ChildTable.COLUMN_CS11)
@@ -55,7 +55,7 @@ class ChildFollowup : Serializable {
         cs01 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS01))
         cs01a = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS01A))
         cs01b = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS01B))
-        cs03 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS03))
+        cs09 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS09))
         cs04 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS04))
         cs05 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS05))
         cs08 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS08))
@@ -77,9 +77,10 @@ class ChildFollowup : Serializable {
         val form = Form()
         form.cSHydrate(cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_CS)))
 
-        cs03 = form.cs03
+        cs09 = form.cs09
         cs08 = form.cs08
         cs10 = form.cs10
+        cs10a = form.cs10a
         cs11 = form.cs11
         cs11a = form.cs11a
         cs12 = form.cs12
@@ -94,10 +95,10 @@ class ChildFollowup : Serializable {
         const val COLUMN_CS01 = "cs01"
         const val COLUMN_CS01A = "cs01a"
         const val COLUMN_CS01B = "cs01b"
-        const val COLUMN_CS03 = "cs03"
         const val COLUMN_CS04 = "cs04"
         const val COLUMN_CS05 = "cs05"
         const val COLUMN_CS08 = "cs08"
+        const val COLUMN_CS09 = "cs09"
         const val COLUMN_CS10 = "cs10"
         const val COLUMN_CS10A = "cs10a"
         const val COLUMN_CS11 = "cs11"

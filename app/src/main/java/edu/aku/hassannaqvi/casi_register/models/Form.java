@@ -24,7 +24,7 @@ public class Form extends LiveData<Form> {
     private String _UID = "";
     private String username;
     private String sysdate = "";
-    private String country = "";
+    private String reg_no = "";
     private String countryCode = "";
     private String district = "";
     private String districtCode = "";
@@ -377,12 +377,12 @@ public class Form extends LiveData<Form> {
     }
 
 
-    public String getCountry() {
-        return country;
+    public String getReg_no() {
+        return reg_no;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setReg_no(String reg_no) {
+        this.reg_no = reg_no;
     }
 
 
@@ -2966,7 +2966,7 @@ public class Form extends LiveData<Form> {
         this.username = jsonObject.getString(FormsTable.COLUMN_USERNAME);
         this.sysdate = jsonObject.getString(FormsTable.COLUMN_SYSDATE);
         this.countryCode = jsonObject.getString(FormsTable.COLUMN_COUNTRY_CODE);
-        this.country = jsonObject.getString(FormsTable.COLUMN_COUNTRY);
+        this.reg_no = jsonObject.getString(FormsTable.COLUMN_REG_NO);
         this.districtCode = jsonObject.getString(FormsTable.COLUMN_DISTRICT_CODE);
         this.district = jsonObject.getString(FormsTable.COLUMN_DISTRICT);
         this.ucCode = jsonObject.getString(FormsTable.COLUMN_UC_CODE);
@@ -3009,7 +3009,7 @@ public class Form extends LiveData<Form> {
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
         this.countryCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE));
-        this.country = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_COUNTRY));
+        this.reg_no = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_REG_NO));
         this.districtCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE));
         this.district = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DISTRICT));
         this.ucCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UC_CODE));
@@ -3248,6 +3248,7 @@ public class Form extends LiveData<Form> {
                     .put("fc37", fc37)
                     .put("fc3796x", fc3796x)
                     .put("fc38", fc38)
+                    .put("scr_date", scr_date)
                     .put("_luid", _luid);
 
         } catch (JSONException e) {
@@ -3391,7 +3392,8 @@ public class Form extends LiveData<Form> {
                     .put("fw29j", fw29j)
                     .put("fw29k", fw29k)
                     .put("fw29k96x", fw29k96x)
-                    .put("scr_date", scr_date);
+                    .put("scr_date", scr_date)
+                    .put("_luid", _luid);
 
 
         } catch (JSONException e) {
@@ -3636,6 +3638,8 @@ public class Form extends LiveData<Form> {
                 this.fc37 = json.getString("fc37");
                 this.fc3796x = json.getString("fc3796x");
                 this.fc38 = json.getString("fc38");
+                this.scr_date = json.getString("scr_date");
+                this._luid = json.getString("_luid");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -3784,6 +3788,8 @@ public class Form extends LiveData<Form> {
                 this.fw29j = json.getString("fw29j");
                 this.fw29k = json.getString("fw29k");
                 this.fw29k96x = json.getString("fw29k96x");
+                this.scr_date = json.getString("scr_date");
+                this._luid = json.getString("_luid");
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -20,7 +20,7 @@ public class FormsContract {
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";
         public static final String COLUMN_COUNTRY_CODE = "countryCode";
-        public static final String COLUMN_COUNTRY = "country";
+        public static final String COLUMN_REG_NO = "reg_no";
         public static final String COLUMN_DISTRICT_CODE = "districtCode";
         public static final String COLUMN_DISTRICT = "district";
         public static final String COLUMN_UC_CODE = "ucCode";

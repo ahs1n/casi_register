@@ -16,8 +16,8 @@ open class GeneralRepository(private val db: DatabaseHelper) : GeneralDataSource
         db.getChildrenFollowupFromFormDB(country, identification)
     }
 
-    override suspend fun getLocalDBFollowupFormList(country: String, identification: Identification, followupType: String): Form? = withContext(Dispatchers.IO) {
-        db.getFollowUpFormStatus(country, identification, followupType)
+    override suspend fun getLocalDBFollowupFormList(country: String, identification: Identification, reg_no: String, followupType: String): Form? = withContext(Dispatchers.IO) {
+        db.getFollowUpFormStatus(country, identification, reg_no, followupType)
     }
 
     override suspend fun getLoginInformation(username: String, password: String): Users? = withContext(Dispatchers.IO) {

@@ -24,7 +24,7 @@ object CreateTable {
             + FormsTable.COLUMN_UID + " TEXT,"
             + FormsTable.COLUMN_USERNAME + " TEXT,"
             + FormsTable.COLUMN_COUNTRY_CODE + " TEXT,"
-            + FormsTable.COLUMN_COUNTRY + " TEXT,"
+            + FormsTable.COLUMN_REG_NO + " TEXT,"
             + FormsTable.COLUMN_DISTRICT_CODE + " TEXT,"
             + FormsTable.COLUMN_DISTRICT + " TEXT,"
             + FormsTable.COLUMN_UC_CODE + " TEXT,"
@@ -97,7 +97,7 @@ object CreateTable {
             ChildFollowup.ChildTable.COLUMN_CS01 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS01A + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS01B + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS03 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS09 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS04 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS05 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS08 + " TEXT, " +
