@@ -62,6 +62,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
                     approval = true
                     MainApp.user = it.data
                     MainApp.admin = it.data!!.userName.contains("@")
+                    finish()
                     gotoActivity(MainActivity::class.java)
                 }
                 ERROR -> {
@@ -204,8 +205,9 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * */
     override fun settingCountryCode() {
 
-        if (SharedStorage.getCountryCode(this) == 0 || SharedStorage.getCountryCode(this) == 1)
-            bi.countrySwitch.isChecked = true
+        bi.countrySwitch.isChecked = SharedStorage.getCountryCode(this) == 0 || SharedStorage.getCountryCode(this) == 1
+        if (SharedStorage.getCountryCode(this) == 0)
+            SharedStorage.setCountryCode(this@LoginActivity, 1)
 
         bi.countrySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) 1 else 3)

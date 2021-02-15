@@ -78,42 +78,6 @@
                             android:text="@string/elc702" />
 
                         <RadioButton
-                            android:id="@+id/istatusc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/elc703" />
-
-                        <RadioButton
-                            android:id="@+id/istatusd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/elc704" />
-
-                        <RadioButton
-                            android:id="@+id/istatuse"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/elc705" />
-
-                        <RadioButton
-                            android:id="@+id/istatusf"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/elc706" />
-
-                        <RadioButton
-                            android:id="@+id/istatusg"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/elc707" />
-
-                        <RadioButton
-                            android:id="@+id/istatush"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/elc708" />
-
-                        <RadioButton
                             android:id="@+id/istatus96"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

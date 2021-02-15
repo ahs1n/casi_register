@@ -3076,32 +3076,7 @@ public class Form extends LiveData<Form> {
                     .put("cs2701", cs2701)
                     .put("cs2702", cs2702)
                     .put("cs2703", cs2703)
-                    .put("cs2704", cs2704)
-                    .put("cs28a", cs28a)
-                    .put("cs28b", cs28b)
-                    .put("cs28c", cs28c)
-                    .put("cs28d", cs28d)
-                    .put("cs28e", cs28e)
-                    .put("cs28f", cs28f)
-                    .put("cs28f01x", cs28f01x)
-                    .put("cs29", cs29)
-                    .put("cs30a", cs30a)
-                    .put("cs30b", cs30b)
-                    .put("cs30c", cs30c)
-                    .put("cs30d", cs30d)
-                    .put("cs30e", cs30e)
-                    .put("cs30f", cs30f)
-                    .put("cs30f096x", cs30f096x)
-                    .put("cs31", cs31)
-                    .put("cs32a", cs32a)
-                    .put("cs32b", cs32b)
-                    .put("cs32c", cs32c)
-                    .put("cs32d", cs32d)
-                    .put("cs32e", cs32e)
-                    .put("cs32f", cs32f)
-                    .put("cs32g", cs32g)
-                    .put("cs32h", cs32h)
-                    .put("cs32h096x", cs32h096x);
+                    .put("cs2704", cs2704);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -3433,92 +3408,95 @@ public class Form extends LiveData<Form> {
         if (string != null) {
 
             try {
-                this.cs01 = toJSONObject().getString("cs01");
-                this.cs01a = toJSONObject().getString("cs01a");
-                this.cs01b = toJSONObject().getString("cs01b");
-                this.cs02 = toJSONObject().getString("cs02");
-                this.cs03 = toJSONObject().getString("cs03");
-                this.cs04 = toJSONObject().getString("cs04");
-                this.cs05 = toJSONObject().getString("cs05");
-                this.cs05a = toJSONObject().getString("cs05a");
-                this.cs06 = toJSONObject().getString("cs06");
-                this.cs06096x = toJSONObject().getString("cs06096x");
-                this.cs07 = toJSONObject().getString("cs07");
-                this.cs07User = toJSONObject().getString("cs07User");
-                this.cs08 = toJSONObject().getString("cs08");
-                this.cs0801 = toJSONObject().getString("cs0801");
-                this.cs0802 = toJSONObject().getString("cs0802");
-                this.cs0803 = toJSONObject().getString("cs0803");
-                this.cs09 = toJSONObject().getString("cs09");
-                this.cs10 = toJSONObject().getString("cs10");
-                this.cs10a = toJSONObject().getString("cs10a");
-                this.cs11 = toJSONObject().getString("cs11");
-                this.cs11a = toJSONObject().getString("cs11a");
-                this.cs12 = toJSONObject().getString("cs12");
-                this.cs12a = toJSONObject().getString("cs12a");
-                this.cs13 = toJSONObject().getString("cs13");
-                this.cs1401 = toJSONObject().getString("cs1401");
-                this.cs1402 = toJSONObject().getString("cs1402");
-                this.cs1403 = toJSONObject().getString("cs1403");
-                this.cs1501 = toJSONObject().getString("cs1501");
-                this.cs1502 = toJSONObject().getString("cs1502");
-                this.cs16 = toJSONObject().getString("cs16");
-                this.cs1698 = toJSONObject().getString("cs1698");
-                this.cs17 = toJSONObject().getString("cs17");
-                this.cs18 = toJSONObject().getString("cs18");
-                this.cs19 = toJSONObject().getString("cs19");
-                this.cs20a = toJSONObject().getString("cs20a");
-                this.cs20b = toJSONObject().getString("cs20b");
-                this.cs21 = toJSONObject().getString("cs21");
-                this.cs22 = toJSONObject().getString("cs22");
-                this.cs23 = toJSONObject().getString("cs23");
-                this.cs24 = toJSONObject().getString("cs24");
-                this.cs2401 = toJSONObject().getString("cs2401");
-                this.cs2402 = toJSONObject().getString("cs2402");
-                this.cs2403 = toJSONObject().getString("cs2403");
-                this.cs2404 = toJSONObject().getString("cs2404");
-                this.cs2405 = toJSONObject().getString("cs2405");
-                this.cs2406 = toJSONObject().getString("cs2406");
-                this.cs25 = toJSONObject().getString("cs25");
-                this.cs25a01 = toJSONObject().getString("cs25a01");
-                this.cs25b01 = toJSONObject().getString("cs25b01");
-                this.cs25c = toJSONObject().getString("cs25c");
-                this.cs25c096x = toJSONObject().getString("cs25c096x");
-                this.cs26 = toJSONObject().getString("cs26");
-                this.cs2601 = toJSONObject().getString("cs2601");
-                this.cs2602 = toJSONObject().getString("cs2602");
-                this.cs2603 = toJSONObject().getString("cs2603");
-                this.cs2604 = toJSONObject().getString("cs2604");
-                this.cs2605 = toJSONObject().getString("cs2605");
-                this.cs2701 = toJSONObject().getString("cs2701");
-                this.cs2702 = toJSONObject().getString("cs2702");
-                this.cs2703 = toJSONObject().getString("cs2703");
-                this.cs2704 = toJSONObject().getString("cs2704");
-                this.cs28a = toJSONObject().getString("cs28a");
-                this.cs28b = toJSONObject().getString("cs28b");
-                this.cs28c = toJSONObject().getString("cs28c");
-                this.cs28d = toJSONObject().getString("cs28d");
-                this.cs28e = toJSONObject().getString("cs28e");
-                this.cs28f = toJSONObject().getString("cs28f");
-                this.cs28f01x = toJSONObject().getString("cs28f01x");
-                this.cs29 = toJSONObject().getString("cs29");
-                this.cs30a = toJSONObject().getString("cs30a");
-                this.cs30b = toJSONObject().getString("cs30b");
-                this.cs30c = toJSONObject().getString("cs30c");
-                this.cs30d = toJSONObject().getString("cs30d");
-                this.cs30e = toJSONObject().getString("cs30e");
-                this.cs30f = toJSONObject().getString("cs30f");
-                this.cs30f096x = toJSONObject().getString("cs30f096x");
-                this.cs31 = toJSONObject().getString("cs31");
-                this.cs32a = toJSONObject().getString("cs32a");
-                this.cs32b = toJSONObject().getString("cs32b");
-                this.cs32c = toJSONObject().getString("cs32c");
-                this.cs32d = toJSONObject().getString("cs32d");
-                this.cs32e = toJSONObject().getString("cs32e");
-                this.cs32f = toJSONObject().getString("cs32f");
-                this.cs32g = toJSONObject().getString("cs32g");
-                this.cs32h = toJSONObject().getString("cs32h");
-                this.cs32h096x = toJSONObject().getString("cs32h096x");
+
+                JSONObject json = new JSONObject(string);
+
+                this.cs01 = json.getString("cs01");
+                this.cs01a = json.getString("cs01a");
+                this.cs01b = json.getString("cs01b");
+                this.cs02 = json.getString("cs02");
+                this.cs03 = json.getString("cs03");
+                this.cs04 = json.getString("cs04");
+                this.cs05 = json.getString("cs05");
+                this.cs05a = json.getString("cs05a");
+                this.cs06 = json.getString("cs06");
+                this.cs06096x = json.getString("cs06096x");
+                this.cs07 = json.getString("cs07");
+                this.cs07User = json.getString("cs07User");
+                this.cs08 = json.getString("cs08");
+                this.cs0801 = json.getString("cs0801");
+                this.cs0802 = json.getString("cs0802");
+                this.cs0803 = json.getString("cs0803");
+                this.cs09 = json.getString("cs09");
+                this.cs10 = json.getString("cs10");
+                this.cs10a = json.getString("cs10a");
+                this.cs11 = json.getString("cs11");
+                this.cs11a = json.getString("cs11a");
+                this.cs12 = json.getString("cs12");
+                this.cs12a = json.getString("cs12a");
+                this.cs13 = json.getString("cs13");
+                this.cs1401 = json.getString("cs1401");
+                this.cs1402 = json.getString("cs1402");
+                this.cs1403 = json.getString("cs1403");
+                this.cs1501 = json.getString("cs1501");
+                this.cs1502 = json.getString("cs1502");
+                this.cs16 = json.getString("cs16");
+                this.cs1698 = json.getString("cs1698");
+                this.cs17 = json.getString("cs17");
+                this.cs18 = json.getString("cs18");
+                this.cs19 = json.getString("cs19");
+                this.cs20a = json.getString("cs20a");
+                this.cs20b = json.getString("cs20b");
+                this.cs21 = json.getString("cs21");
+                this.cs22 = json.getString("cs22");
+                this.cs23 = json.getString("cs23");
+                this.cs24 = json.getString("cs24");
+                this.cs2401 = json.getString("cs2401");
+                this.cs2402 = json.getString("cs2402");
+                this.cs2403 = json.getString("cs2403");
+                this.cs2404 = json.getString("cs2404");
+                this.cs2405 = json.getString("cs2405");
+                this.cs2406 = json.getString("cs2406");
+                this.cs25 = json.getString("cs25");
+                this.cs25a01 = json.getString("cs25a01");
+                this.cs25b01 = json.getString("cs25b01");
+                this.cs25c = json.getString("cs25c");
+                this.cs25c096x = json.getString("cs25c096x");
+                this.cs26 = json.getString("cs26");
+                this.cs2601 = json.getString("cs2601");
+                this.cs2602 = json.getString("cs2602");
+                this.cs2603 = json.getString("cs2603");
+                this.cs2604 = json.getString("cs2604");
+                this.cs2605 = json.getString("cs2605");
+                this.cs2701 = json.getString("cs2701");
+                this.cs2702 = json.getString("cs2702");
+                this.cs2703 = json.getString("cs2703");
+                this.cs2704 = json.getString("cs2704");
+                this.cs28a = json.getString("cs28a");
+                this.cs28b = json.getString("cs28b");
+                this.cs28c = json.getString("cs28c");
+                this.cs28d = json.getString("cs28d");
+                this.cs28e = json.getString("cs28e");
+                this.cs28f = json.getString("cs28f");
+                this.cs28f01x = json.getString("cs28f01x");
+                this.cs29 = json.getString("cs29");
+                this.cs30a = json.getString("cs30a");
+                this.cs30b = json.getString("cs30b");
+                this.cs30c = json.getString("cs30c");
+                this.cs30d = json.getString("cs30d");
+                this.cs30e = json.getString("cs30e");
+                this.cs30f = json.getString("cs30f");
+                this.cs30f096x = json.getString("cs30f096x");
+                this.cs31 = json.getString("cs31");
+                this.cs32a = json.getString("cs32a");
+                this.cs32b = json.getString("cs32b");
+                this.cs32c = json.getString("cs32c");
+                this.cs32d = json.getString("cs32d");
+                this.cs32e = json.getString("cs32e");
+                this.cs32f = json.getString("cs32f");
+                this.cs32g = json.getString("cs32g");
+                this.cs32h = json.getString("cs32h");
+                this.cs32h096x = json.getString("cs32h096x");
 
 
             } catch (JSONException e) {
@@ -3532,79 +3510,82 @@ public class Form extends LiveData<Form> {
         if (string != null) {
 
             try {
-                this.fc01 = toJSONObject().getString("fc01");
-                this.fc01a = toJSONObject().getString("fc01a");
-                this.fc01b = toJSONObject().getString("fc01b");
-                this.fc02 = toJSONObject().getString("fc02");
-                this.fc03 = toJSONObject().getString("fc03");
-                this.fc04 = toJSONObject().getString("fc04");
-                this.fc05 = toJSONObject().getString("fc05");
-                this.fc05a = toJSONObject().getString("fc05a");
-                this.fc06 = toJSONObject().getString("fc06");
-                this.fc0696x = toJSONObject().getString("fc0696x");
-                this.fc07 = toJSONObject().getString("fc07");
-                this.fc08 = toJSONObject().getString("fc08");
-                this.fc0801 = toJSONObject().getString("fc0801");
-                this.fc0802 = toJSONObject().getString("fc0802");
-                this.fc0803 = toJSONObject().getString("fc0803");
-                this.fc09 = toJSONObject().getString("fc09");
-                this.fc10 = toJSONObject().getString("fc10");
-                this.fc10a = toJSONObject().getString("fc10a");
-                this.fc15 = toJSONObject().getString("fc15");
-                this.fc15a = toJSONObject().getString("fc15a");
-                this.fc16 = toJSONObject().getString("fc16");
-                this.fc16a = toJSONObject().getString("fc16a");
-                this.fc16b = toJSONObject().getString("fc16b");
-                this.fc16b96x = toJSONObject().getString("fc16b96x");
-                this.fc1701 = toJSONObject().getString("fc1701");
-                this.fc1702 = toJSONObject().getString("fc1702");
-                this.fc18 = toJSONObject().getString("fc18");
-                this.fc19 = toJSONObject().getString("fc19");
-                this.fc20 = toJSONObject().getString("fc20");
-                this.fc21 = toJSONObject().getString("fc21");
-                this.fc22 = toJSONObject().getString("fc22");
-                this.fc23 = toJSONObject().getString("fc23");
-                this.fc24 = toJSONObject().getString("fc24");
-                this.fc25 = toJSONObject().getString("fc25");
-                this.fc2501 = toJSONObject().getString("fc2501");
-                this.fc2502 = toJSONObject().getString("fc2502");
-                this.fc2503 = toJSONObject().getString("fc2503");
-                this.fc2504 = toJSONObject().getString("fc2504");
-                this.fc2505 = toJSONObject().getString("fc2505");
-                this.fc2506 = toJSONObject().getString("fc2506");
-                this.fc26 = toJSONObject().getString("fc26");
-                this.fc2601 = toJSONObject().getString("fc2601");
-                this.fc2602 = toJSONObject().getString("fc2602");
-                this.fc2603 = toJSONObject().getString("fc2603");
-                this.fc2604 = toJSONObject().getString("fc2604");
-                this.fc2605 = toJSONObject().getString("fc2605");
-                this.fc2701 = toJSONObject().getString("fc2701");
-                this.fc2702 = toJSONObject().getString("fc2702");
-                this.fc2703 = toJSONObject().getString("fc2703");
-                this.fc2704 = toJSONObject().getString("fc2704");
-                this.fc28 = toJSONObject().getString("fc28");
-                this.fc29 = toJSONObject().getString("fc29");
-                this.fc2901 = toJSONObject().getString("fc2901");
-                this.fc2902 = toJSONObject().getString("fc2902");
-                this.fc2903 = toJSONObject().getString("fc2903");
-                this.fc2904 = toJSONObject().getString("fc2904");
-                this.fc2905 = toJSONObject().getString("fc2905");
-                this.fc2996 = toJSONObject().getString("fc2996");
-                this.fc2996x = toJSONObject().getString("fc2996x");
-                this.fc30 = toJSONObject().getString("fc30");
-                this.fc31 = toJSONObject().getString("fc31");
-                this.fc3201 = toJSONObject().getString("fc3201");
-                this.fc3202 = toJSONObject().getString("fc3202");
-                this.fc3203 = toJSONObject().getString("fc3203");
-                this.fc3301 = toJSONObject().getString("fc3301");
-                this.fc3302 = toJSONObject().getString("fc3302");
-                this.fc3303 = toJSONObject().getString("fc3303");
-                this.fc34 = toJSONObject().getString("fc34");
-                this.fc3501 = toJSONObject().getString("fc3501");
-                this.fc3601 = toJSONObject().getString("fc3601");
-                this.fc37 = toJSONObject().getString("fc37");
-                this.fc3796x = toJSONObject().getString("fc3796x");
-                this.fc38 = toJSONObject().getString("fc38");
+
+                JSONObject json = new JSONObject(string);
+
+                this.fc01 = json.getString("fc01");
+                this.fc01a = json.getString("fc01a");
+                this.fc01b = json.getString("fc01b");
+                this.fc02 = json.getString("fc02");
+                this.fc03 = json.getString("fc03");
+                this.fc04 = json.getString("fc04");
+                this.fc05 = json.getString("fc05");
+                this.fc05a = json.getString("fc05a");
+                this.fc06 = json.getString("fc06");
+                this.fc0696x = json.getString("fc0696x");
+                this.fc07 = json.getString("fc07");
+                this.fc08 = json.getString("fc08");
+                this.fc0801 = json.getString("fc0801");
+                this.fc0802 = json.getString("fc0802");
+                this.fc0803 = json.getString("fc0803");
+                this.fc09 = json.getString("fc09");
+                this.fc10 = json.getString("fc10");
+                this.fc10a = json.getString("fc10a");
+                this.fc15 = json.getString("fc15");
+                this.fc15a = json.getString("fc15a");
+                this.fc16 = json.getString("fc16");
+                this.fc16a = json.getString("fc16a");
+                this.fc16b = json.getString("fc16b");
+                this.fc16b96x = json.getString("fc16b96x");
+                this.fc1701 = json.getString("fc1701");
+                this.fc1702 = json.getString("fc1702");
+                this.fc18 = json.getString("fc18");
+                this.fc19 = json.getString("fc19");
+                this.fc20 = json.getString("fc20");
+                this.fc21 = json.getString("fc21");
+                this.fc22 = json.getString("fc22");
+                this.fc23 = json.getString("fc23");
+                this.fc24 = json.getString("fc24");
+                this.fc25 = json.getString("fc25");
+                this.fc2501 = json.getString("fc2501");
+                this.fc2502 = json.getString("fc2502");
+                this.fc2503 = json.getString("fc2503");
+                this.fc2504 = json.getString("fc2504");
+                this.fc2505 = json.getString("fc2505");
+                this.fc2506 = json.getString("fc2506");
+                this.fc26 = json.getString("fc26");
+                this.fc2601 = json.getString("fc2601");
+                this.fc2602 = json.getString("fc2602");
+                this.fc2603 = json.getString("fc2603");
+                this.fc2604 = json.getString("fc2604");
+                this.fc2605 = json.getString("fc2605");
+                this.fc2701 = json.getString("fc2701");
+                this.fc2702 = json.getString("fc2702");
+                this.fc2703 = json.getString("fc2703");
+                this.fc2704 = json.getString("fc2704");
+                this.fc28 = json.getString("fc28");
+                this.fc29 = json.getString("fc29");
+                this.fc2901 = json.getString("fc2901");
+                this.fc2902 = json.getString("fc2902");
+                this.fc2903 = json.getString("fc2903");
+                this.fc2904 = json.getString("fc2904");
+                this.fc2905 = json.getString("fc2905");
+                this.fc2996 = json.getString("fc2996");
+                this.fc2996x = json.getString("fc2996x");
+                this.fc30 = json.getString("fc30");
+                this.fc31 = json.getString("fc31");
+                this.fc3201 = json.getString("fc3201");
+                this.fc3202 = json.getString("fc3202");
+                this.fc3203 = json.getString("fc3203");
+                this.fc3301 = json.getString("fc3301");
+                this.fc3302 = json.getString("fc3302");
+                this.fc3303 = json.getString("fc3303");
+                this.fc34 = json.getString("fc34");
+                this.fc3501 = json.getString("fc3501");
+                this.fc3601 = json.getString("fc3601");
+                this.fc37 = json.getString("fc37");
+                this.fc3796x = json.getString("fc3796x");
+                this.fc38 = json.getString("fc38");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -3617,62 +3598,65 @@ public class Form extends LiveData<Form> {
         if (string != null) {
 
             try {
-                this.ws01 = toJSONObject().getString("ws01");
-                this.ws01a = toJSONObject().getString("ws01a");
-                this.ws01b = toJSONObject().getString("ws01b");
-                this.ws02 = toJSONObject().getString("ws02");
-                this.ws03 = toJSONObject().getString("ws03");
-                this.ws04 = toJSONObject().getString("ws04");
-                this.ws05 = toJSONObject().getString("ws05");
-                this.ws05a = toJSONObject().getString("ws05a");
-                this.ws06 = toJSONObject().getString("ws06");
-                this.ws0696x = toJSONObject().getString("ws0696x");
-                this.ws07 = toJSONObject().getString("ws07");
-                this.ws08 = toJSONObject().getString("ws08");
-                this.ws0801 = toJSONObject().getString("ws0801");
-                this.ws0802 = toJSONObject().getString("ws0802");
-                this.ws0803 = toJSONObject().getString("ws0803");
-                this.ws09 = toJSONObject().getString("ws09");
-                this.ws10 = toJSONObject().getString("ws10");
-                this.ws11 = toJSONObject().getString("ws11");
-                this.ws12 = toJSONObject().getString("ws12");
-                this.ws12a = toJSONObject().getString("ws12a");
-                this.ws13 = toJSONObject().getString("ws13");
-                this.ws14 = toJSONObject().getString("ws14");
-                this.ws15 = toJSONObject().getString("ws15");
-                this.ws16 = toJSONObject().getString("ws16");
-                this.ws17 = toJSONObject().getString("ws17");
-                this.ws18 = toJSONObject().getString("ws18");
-                this.ws19 = toJSONObject().getString("ws19");
-                this.ws20 = toJSONObject().getString("ws20");
-                this.ws2001 = toJSONObject().getString("ws2001");
-                this.ws2002 = toJSONObject().getString("ws2002");
-                this.ws2003 = toJSONObject().getString("ws2003");
-                this.ws2004 = toJSONObject().getString("ws2004");
-                this.ws2005 = toJSONObject().getString("ws2005");
-                this.ws2006 = toJSONObject().getString("ws2006");
-                this.ws21 = toJSONObject().getString("ws21");
-                this.ws22 = toJSONObject().getString("ws22");
-                this.ws2201 = toJSONObject().getString("ws2201");
-                this.ws2202 = toJSONObject().getString("ws2202");
-                this.ws2203 = toJSONObject().getString("ws2203");
-                this.ws2296 = toJSONObject().getString("ws2296");
-                this.ws2296x = toJSONObject().getString("ws2296x");
-                this.ws2301 = toJSONObject().getString("ws2301");
-                this.ws2302 = toJSONObject().getString("ws2302");
-                this.ws2303 = toJSONObject().getString("ws2303");
-                this.ws25a = toJSONObject().getString("ws25a");
-                this.ws25b = toJSONObject().getString("ws25b");
-                this.ws25c = toJSONObject().getString("ws25c");
-                this.ws25d = toJSONObject().getString("ws25d");
-                this.ws25e = toJSONObject().getString("ws25e");
-                this.ws25f = toJSONObject().getString("ws25f");
-                this.ws25g = toJSONObject().getString("ws25g");
-                this.ws25h = toJSONObject().getString("ws25h");
-                this.ws25i = toJSONObject().getString("ws25i");
-                this.ws25j = toJSONObject().getString("ws25j");
-                this.ws25k = toJSONObject().getString("ws25k");
-                this.ws25k01x = toJSONObject().getString("ws25k01x");
+
+                JSONObject json = new JSONObject(string);
+
+                this.ws01 = json.getString("ws01");
+                this.ws01a = json.getString("ws01a");
+                this.ws01b = json.getString("ws01b");
+                this.ws02 = json.getString("ws02");
+                this.ws03 = json.getString("ws03");
+                this.ws04 = json.getString("ws04");
+                this.ws05 = json.getString("ws05");
+                this.ws05a = json.getString("ws05a");
+                this.ws06 = json.getString("ws06");
+                this.ws0696x = json.getString("ws0696x");
+                this.ws07 = json.getString("ws07");
+                this.ws08 = json.getString("ws08");
+                this.ws0801 = json.getString("ws0801");
+                this.ws0802 = json.getString("ws0802");
+                this.ws0803 = json.getString("ws0803");
+                this.ws09 = json.getString("ws09");
+                this.ws10 = json.getString("ws10");
+                this.ws11 = json.getString("ws11");
+                this.ws12 = json.getString("ws12");
+                this.ws12a = json.getString("ws12a");
+                this.ws13 = json.getString("ws13");
+                this.ws14 = json.getString("ws14");
+                this.ws15 = json.getString("ws15");
+                this.ws16 = json.getString("ws16");
+                this.ws17 = json.getString("ws17");
+                this.ws18 = json.getString("ws18");
+                this.ws19 = json.getString("ws19");
+                this.ws20 = json.getString("ws20");
+                this.ws2001 = json.getString("ws2001");
+                this.ws2002 = json.getString("ws2002");
+                this.ws2003 = json.getString("ws2003");
+                this.ws2004 = json.getString("ws2004");
+                this.ws2005 = json.getString("ws2005");
+                this.ws2006 = json.getString("ws2006");
+                this.ws21 = json.getString("ws21");
+                this.ws22 = json.getString("ws22");
+                this.ws2201 = json.getString("ws2201");
+                this.ws2202 = json.getString("ws2202");
+                this.ws2203 = json.getString("ws2203");
+                this.ws2296 = json.getString("ws2296");
+                this.ws2296x = json.getString("ws2296x");
+                this.ws2301 = json.getString("ws2301");
+                this.ws2302 = json.getString("ws2302");
+                this.ws2303 = json.getString("ws2303");
+                this.ws25a = json.getString("ws25a");
+                this.ws25b = json.getString("ws25b");
+                this.ws25c = json.getString("ws25c");
+                this.ws25d = json.getString("ws25d");
+                this.ws25e = json.getString("ws25e");
+                this.ws25f = json.getString("ws25f");
+                this.ws25g = json.getString("ws25g");
+                this.ws25h = json.getString("ws25h");
+                this.ws25i = json.getString("ws25i");
+                this.ws25j = json.getString("ws25j");
+                this.ws25k = json.getString("ws25k");
+                this.ws25k01x = json.getString("ws25k01x");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -3685,68 +3669,71 @@ public class Form extends LiveData<Form> {
         if (string != null) {
 
             try {
-                this.fw01 = toJSONObject().getString("fw01");
-                this.fw01a = toJSONObject().getString("fw01a");
-                this.fw01b = toJSONObject().getString("fw01b");
-                this.fw02 = toJSONObject().getString("fw02");
-                this.fw03 = toJSONObject().getString("fw03");
-                this.fw04 = toJSONObject().getString("fw04");
-                this.fw05 = toJSONObject().getString("fw05");
-                this.fw05a = toJSONObject().getString("fw05a");
-                this.fw06 = toJSONObject().getString("fw06");
-                this.fw0696x = toJSONObject().getString("fw0696x");
-                this.fw07 = toJSONObject().getString("fw07");
-                this.fw08 = toJSONObject().getString("fw08");
-                this.fw0801 = toJSONObject().getString("fw0801");
-                this.fw0802 = toJSONObject().getString("fw0802");
-                this.fw0803 = toJSONObject().getString("fw0803");
-                this.fw09 = toJSONObject().getString("fw09");
-                this.fw10 = toJSONObject().getString("fw10");
-                this.fw11 = toJSONObject().getString("fw11");
-                this.fw12 = toJSONObject().getString("fw12");
-                this.fw12a = toJSONObject().getString("fw12a");
-                this.fw12b = toJSONObject().getString("fw12b");
-                this.fw12b96x = toJSONObject().getString("fw12b96x");
-                this.fw13 = toJSONObject().getString("fw13");
-                this.fw14 = toJSONObject().getString("fw14");
-                this.fw15 = toJSONObject().getString("fw15");
-                this.fw16 = toJSONObject().getString("fw16");
-                this.fw17 = toJSONObject().getString("fw17");
-                this.fw18 = toJSONObject().getString("fw18");
-                this.fw1801 = toJSONObject().getString("fw1801");
-                this.fw1802 = toJSONObject().getString("fw1802");
-                this.fw1803 = toJSONObject().getString("fw1803");
-                this.fw1804 = toJSONObject().getString("fw1804");
-                this.fw1805 = toJSONObject().getString("fw1805");
-                this.fw1806 = toJSONObject().getString("fw1806");
-                this.fw19 = toJSONObject().getString("fw19");
-                this.fw2001 = toJSONObject().getString("fw2001");
-                this.fw21 = toJSONObject().getString("fw21");
-                this.fw22 = toJSONObject().getString("fw22");
-                this.fw2301 = toJSONObject().getString("fw2301");
-                this.fw24 = toJSONObject().getString("fw24");
-                this.fw25 = toJSONObject().getString("fw25");
-                this.fw26 = toJSONObject().getString("fw26");
-                this.fw27 = toJSONObject().getString("fw27");
-                this.fw28 = toJSONObject().getString("fw28");
-                this.fw2801 = toJSONObject().getString("fw2801");
-                this.fw2802 = toJSONObject().getString("fw2802");
-                this.fw2803 = toJSONObject().getString("fw2803");
-                this.fw2804 = toJSONObject().getString("fw2804");
-                this.fw2896 = toJSONObject().getString("fw2896");
-                this.fw2896x = toJSONObject().getString("fw2896x");
-                this.fw29a = toJSONObject().getString("fw29a");
-                this.fw29b = toJSONObject().getString("fw29b");
-                this.fw29c = toJSONObject().getString("fw29c");
-                this.fw29d = toJSONObject().getString("fw29d");
-                this.fw29e = toJSONObject().getString("fw29e");
-                this.fw29f = toJSONObject().getString("fw29f");
-                this.fw29g = toJSONObject().getString("fw29g");
-                this.fw29h = toJSONObject().getString("fw29h");
-                this.fw29i = toJSONObject().getString("fw29i");
-                this.fw29j = toJSONObject().getString("fw29j");
-                this.fw29k = toJSONObject().getString("fw29k");
-                this.fw29k96x = toJSONObject().getString("fw29k96x");
+
+                JSONObject json = new JSONObject(string);
+
+                this.fw01 = json.getString("fw01");
+                this.fw01a = json.getString("fw01a");
+                this.fw01b = json.getString("fw01b");
+                this.fw02 = json.getString("fw02");
+                this.fw03 = json.getString("fw03");
+                this.fw04 = json.getString("fw04");
+                this.fw05 = json.getString("fw05");
+                this.fw05a = json.getString("fw05a");
+                this.fw06 = json.getString("fw06");
+                this.fw0696x = json.getString("fw0696x");
+                this.fw07 = json.getString("fw07");
+                this.fw08 = json.getString("fw08");
+                this.fw0801 = json.getString("fw0801");
+                this.fw0802 = json.getString("fw0802");
+                this.fw0803 = json.getString("fw0803");
+                this.fw09 = json.getString("fw09");
+                this.fw10 = json.getString("fw10");
+                this.fw11 = json.getString("fw11");
+                this.fw12 = json.getString("fw12");
+                this.fw12a = json.getString("fw12a");
+                this.fw12b = json.getString("fw12b");
+                this.fw12b96x = json.getString("fw12b96x");
+                this.fw13 = json.getString("fw13");
+                this.fw14 = json.getString("fw14");
+                this.fw15 = json.getString("fw15");
+                this.fw16 = json.getString("fw16");
+                this.fw17 = json.getString("fw17");
+                this.fw18 = json.getString("fw18");
+                this.fw1801 = json.getString("fw1801");
+                this.fw1802 = json.getString("fw1802");
+                this.fw1803 = json.getString("fw1803");
+                this.fw1804 = json.getString("fw1804");
+                this.fw1805 = json.getString("fw1805");
+                this.fw1806 = json.getString("fw1806");
+                this.fw19 = json.getString("fw19");
+                this.fw2001 = json.getString("fw2001");
+                this.fw21 = json.getString("fw21");
+                this.fw22 = json.getString("fw22");
+                this.fw2301 = json.getString("fw2301");
+                this.fw24 = json.getString("fw24");
+                this.fw25 = json.getString("fw25");
+                this.fw26 = json.getString("fw26");
+                this.fw27 = json.getString("fw27");
+                this.fw28 = json.getString("fw28");
+                this.fw2801 = json.getString("fw2801");
+                this.fw2802 = json.getString("fw2802");
+                this.fw2803 = json.getString("fw2803");
+                this.fw2804 = json.getString("fw2804");
+                this.fw2896 = json.getString("fw2896");
+                this.fw2896x = json.getString("fw2896x");
+                this.fw29a = json.getString("fw29a");
+                this.fw29b = json.getString("fw29b");
+                this.fw29c = json.getString("fw29c");
+                this.fw29d = json.getString("fw29d");
+                this.fw29e = json.getString("fw29e");
+                this.fw29f = json.getString("fw29f");
+                this.fw29g = json.getString("fw29g");
+                this.fw29h = json.getString("fw29h");
+                this.fw29i = json.getString("fw29i");
+                this.fw29j = json.getString("fw29j");
+                this.fw29k = json.getString("fw29k");
+                this.fw29k96x = json.getString("fw29k96x");
 
             } catch (JSONException e) {
                 e.printStackTrace();

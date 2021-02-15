@@ -64,34 +64,24 @@ public class SyncActivity extends AppCompatActivity {
     List<SyncModel> downloadTables;
     Boolean listActivityCreated;
     Boolean uploadlistActivityCreated;
-    String distCode;
-    private int totalFiles;
-    private long tStart;
-    private String progress;
-    final Handler handler = new Handler();
-    // List<JSONArray> uploadData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_sync);
         bi.setCallback(this);
-        //setSupportActionBar(bi.toolbar);
+
         db = MainApp.appInfo.getDbHelper();
         uploadTables = new ArrayList<>();
         downloadTables = new ArrayList<>();
         MainApp.uploadData = new ArrayList<>();
-/*        sdDir = new File(this.getExternalFilesDir(
-                Environment.DIRECTORY_PICTURES), PROJECT_NAME);*/
 
-        //bi.noItem.setVisibility(View.VISIBLE);
         bi.noDataItem.setVisibility(View.VISIBLE);
         listActivityCreated = true;
         uploadlistActivityCreated = true;
 
         db = new DatabaseHelper(this);
         dbBackup(this);
-
 
     }
 
@@ -155,9 +145,9 @@ public class SyncActivity extends AppCompatActivity {
 
                 downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
-                downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(HealthFacility.HealthFacilityTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
@@ -172,11 +162,7 @@ public class SyncActivity extends AppCompatActivity {
 
     private void BeginDownload() {
 
-        Constraints constraints = new Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED)
-                .build();
         List<OneTimeWorkRequest> workRequests = new ArrayList<>();
-
         for (int i = 0; i < downloadTables.size(); i++) {
             Data.Builder data = new Data.Builder()
                     .putString("table", downloadTables.get(i).gettableName())
@@ -203,104 +189,101 @@ public class SyncActivity extends AppCompatActivity {
         WorkContinuation wc = wm.beginWith(workRequests);
         wc.enqueue();
 
-        wc.getWorkInfosLiveData().observe(this, new Observer<List<WorkInfo>>() {
 
+        /*
+         * Getting result back
+         * */
+        wc.getWorkInfosLiveData().observe(this, workInfo -> {
+            Log.d(TAG, "workInfo: " + workInfo.size());
+            for (WorkInfo workItem : workInfo) {
+                Log.d(TAG, "workInfo: getState " + workItem.getState());
+                Log.d(TAG, "workInfo: data " + workItem.getOutputData().getString("data"));
+                Log.d(TAG, "workInfo: error " + workItem.getOutputData().getString("error"));
+                Log.d(TAG, "workInfo: position " + workItem.getOutputData().getInt("position", 0));
+            }
+            for (WorkInfo workItem : workInfo) {
+                int position = workItem.getOutputData().getInt("position", 0);
+                String tableName = downloadTables.get(position).gettableName();
 
-            @Override
-            public void onChanged(List<WorkInfo> workInfos) {
-                Log.d(TAG, "workInfos: " + workInfos.size());
-                for (WorkInfo workInfo : workInfos) {
-                    Log.d(TAG, "workInfo: getState " + workInfo.getState());
-                    Log.d(TAG, "workInfo: data " + workInfo.getOutputData().getString("data"));
-                    Log.d(TAG, "workInfo: error " + workInfo.getOutputData().getString("error"));
-                    Log.d(TAG, "workInfo: position " + workInfo.getOutputData().getInt("position", 0));
-                }
-                for (WorkInfo workInfo : workInfos) {
-                    int position = workInfo.getOutputData().getInt("position", 0);
-                    String tableName = downloadTables.get(position).gettableName();
+                /*String progress = workInfo.getProgress().getString("progress");
+                bi.wmError.setText("Progress: " + progress);*/
 
-                            /*String progress = workInfo.getProgress().getString("progress");
-                            bi.wmError.setText("Progress: " + progress);*/
+                if (workItem.getState() == WorkInfo.State.SUCCEEDED) {
+                    //String result = workInfo.getOutputData().getString("data");
+                    String result = MainApp.downloadData[position];
+                    //Do something with the JSON string
+                    if (result != null) {
+                        if (result.length() > 0) {
+                            Log.d(TAG, "onChanged: result " + result);
+                            System.out.println("SYSTEM onChanged: result" + result);
+                            DatabaseHelper db = new DatabaseHelper(SyncActivity.this);
+                            try {
+                                JSONArray jsonArray = new JSONArray();
+                                int insertCount = 0;
+                                switch (tableName) {
+                                    case Users.UsersTable.TABLE_NAME:
+                                        jsonArray = new JSONArray(result);
+                                        insertCount = db.syncUser(jsonArray);
+                                        break;
+                                    case VersionApp.VersionAppTable.TABLE_NAME:
+                                        insertCount = db.syncVersionApp(new JSONObject(result));
+                                        if (insertCount == 1) jsonArray.put("1");
+                                        break;
+                                    case Villages.VillagesTable.TABLE_NAME:
+                                        jsonArray = new JSONArray(result);
+                                        insertCount = db.syncVillages(jsonArray);
+                                        Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
+                                        break;
+                                    case ZStandardContract.ZScoreTable.TABLE_NAME:
+                                        jsonArray = new JSONArray(result);
+                                        insertCount = db.syncZStandard(jsonArray);
+                                        Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
+                                        break;
+                                    case HealthFacility.HealthFacilityTable.TABLE_NAME:
+                                        jsonArray = new JSONArray(result);
+                                        insertCount = db.syncHF(jsonArray);
+                                        Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
+                                        break;
 
-                    if (workInfo.getState() != null &&
-                            workInfo.getState() == WorkInfo.State.SUCCEEDED) {
+                                }
 
-                        //String result = workInfo.getOutputData().getString("data");
-                        String result = MainApp.downloadData[position];
-//Do something with the JSON string
-                        if (result != null) {
-                            if (result.length() > 0) {
-                                Log.d(TAG, "onChanged: result " + result);
-                                System.out.println("SYSTEM onChanged: result" + result);
-                                DatabaseHelper db = new DatabaseHelper(SyncActivity.this);
-                                try {
-                                    JSONArray jsonArray = new JSONArray();
-                                    int insertCount = 0;
-                                    switch (tableName) {
-                                        case Users.UsersTable.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncUser(jsonArray);
-                                            break;
-                                        case VersionApp.VersionAppTable.TABLE_NAME:
-                                            insertCount = db.syncVersionApp(new JSONObject(result));
-                                            if (insertCount == 1) jsonArray.put("1");
-                                            break;
-                                        case Villages.VillagesTable.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncVillages(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
-                                        case ZStandardContract.ZScoreTable.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncZStandard(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
-                                        case HealthFacility.HealthFacilityTable.TABLE_NAME:
-                                            jsonArray = new JSONArray(result);
-                                            insertCount = db.syncHF(jsonArray);
-                                            Log.d(TAG, "onChanged: " + tableName + " " + workInfo.getOutputData().getInt("position", 0));
-                                            break;
-
-                                    }
-
-                                    downloadTables.get(position).setmessage("Received: " + jsonArray.length() + ", Saved: " + insertCount);
-                                    downloadTables.get(position).setstatus(insertCount == 0 ? "Unsuccessful" : "Successful");
-                                    downloadTables.get(position).setstatusID(insertCount == 0 ? 1 : 3);
-                                    syncListAdapter.updatesyncList(downloadTables);
+                                downloadTables.get(position).setmessage("Received: " + jsonArray.length() + ", Saved: " + insertCount);
+                                downloadTables.get(position).setstatus(insertCount == 0 ? "Unsuccessful" : "Successful");
+                                downloadTables.get(position).setstatusID(insertCount == 0 ? 1 : 3);
+                                syncListAdapter.updatesyncList(downloadTables);
 
 //                    pd.show();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                    downloadTables.get(position).setstatus("Process Failed");
-                                    downloadTables.get(position).setstatusID(1);
-                                    downloadTables.get(position).setmessage(result);
-                                    syncListAdapter.updatesyncList(downloadTables);
-                                }
-                            } else {
-                                downloadTables.get(position).setmessage("Received: " + result.length() + "");
-                                downloadTables.get(position).setstatus("Successful");
-                                downloadTables.get(position).setstatusID(3);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                downloadTables.get(position).setstatus("Process Failed");
+                                downloadTables.get(position).setstatusID(1);
+                                downloadTables.get(position).setmessage(result);
                                 syncListAdapter.updatesyncList(downloadTables);
-//                pd.show();
                             }
                         } else {
-                            downloadTables.get(position).setstatus("Process Failed");
-                            downloadTables.get(position).setstatusID(1);
-                            downloadTables.get(position).setmessage("Server not found!");
+                            downloadTables.get(position).setmessage("Received: " + result.length() + "");
+                            downloadTables.get(position).setstatus("Successful");
+                            downloadTables.get(position).setstatusID(3);
                             syncListAdapter.updatesyncList(downloadTables);
-//            pd.show();
+//                pd.show();
                         }
-                    }
-                    //mTextView1.append("\n" + workInfo.getState().name());
-                    if (workInfo.getState() != null &&
-                            workInfo.getState() == WorkInfo.State.FAILED) {
-                        String message = workInfo.getOutputData().getString("error");
+                    } else {
                         downloadTables.get(position).setstatus("Process Failed");
                         downloadTables.get(position).setstatusID(1);
-                        downloadTables.get(position).setmessage(message);
+                        downloadTables.get(position).setmessage("Server not found!");
                         syncListAdapter.updatesyncList(downloadTables);
-
+//            pd.show();
                     }
+                }
+                //mTextView1.append("\n" + workInfo.getState().name());
+                if (workItem.getState() != null &&
+                        workItem.getState() == WorkInfo.State.FAILED) {
+                    String message = workItem.getOutputData().getString("error");
+                    downloadTables.get(position).setstatus("Process Failed");
+                    downloadTables.get(position).setstatusID(1);
+                    downloadTables.get(position).setmessage(message);
+                    syncListAdapter.updatesyncList(downloadTables);
+
                 }
             }
         });
@@ -489,197 +472,4 @@ public class SyncActivity extends AppCompatActivity {
 
     }
 
-    /*public void UploadPhotos(View view) {
-        bi.dataLayout.setVisibility(View.GONE);
-        bi.photoLayout.setVisibility(View.VISIBLE);
-        bi.mTextViewS.setVisibility(View.VISIBLE);
-        bi.pBar.setVisibility(View.VISIBLE);
-        bi.photoLayout.removeAllViews();
-        *//*File directory = new File(this.getExternalFilesDir(
-                Environment.DIRECTORY_PICTURES), PROJECT_NAME);*//*
-        Log.d("Directory", "uploadPhotos: " + sdDir);
-        if (sdDir.exists()) {
-            File[] files = sdDir.listFiles(file -> (file.getPath().endsWith(".jpg") || file.getPath().endsWith(".jpeg")));
-            sortBySize(files);
-            bi.pBar.setProgress(0);
-            Log.d("Files", "Count: " + files.length);
-            if (files.length > 0) {
-
-                int fcount = Math.min(files.length, 300);
-                for (int i = 0; i < fcount; i++) {
-                    TextView textView = new TextView(edu.aku.hassannaqvi.casi_register.ui.SyncActivity.this);
-                    textView.setText("PROCESSING: " + files[i].getName());
-                    textView.setId(i);
-                    bi.photoLayout.addView(textView);
-                    bi.mTextViewS.setText(i + " Photos found (processing...)");
-
-                    int finalI = i;
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            totalFiles = files.length;
-
-
-                            File fileZero = files[finalI];
-
-                            tStart = System.currentTimeMillis();
-
-                            // Log.d("Files", "FileName:" + fileZero.getName());
-                            // Log.d("Files", "FileName:" + fileZero.getName());
-                            //   SyncAllPhotos syncAllPhotos = new SyncAllPhotos(file.getName(), this);
-
-                            Constraints constraints = new Constraints.Builder()
-                                    .setRequiredNetworkType(NetworkType.CONNECTED)
-                                    .build();
-
-                            Data data = new Data.Builder()
-                                    .putString("filename", fileZero.getName())
-                                    .putInt("fCount", finalI)
-                                    .build();
-
-                            //This is the subclass of our WorkRequest
-
-//                            OneTimeWorkRequest photoUpload = new OneTimeWorkRequest.Builder(PhotoUploadWorker2.class).setInputData(data).setConstraints(constraints).build();
-
-
-                            WorkManager.getInstance().enqueue(photoUpload);
-                            //Listening to the work status
-                            final TextView[] mTextView1 = new TextView[1];
-
-                            WorkManager.getInstance().getWorkInfoByIdLiveData(photoUpload.getId())
-                                    .observe(edu.aku.hassannaqvi.casi_register.ui.SyncActivity.this, new Observer<WorkInfo>() {
-
-                                        @Override
-                                        public void onChanged(@Nullable WorkInfo workInfo) {
-                                            //mTextViewS.append("\n" + workInfo.getState().name());
-                                            //Displaying the status into TextView
-                                            // mTextViewS.append("\n"+workInfo.getState().name());
-                                            mTextView1[0] = findViewById(finalI);
-                                            String message = workInfo.getState().name() + ": " + files[finalI].getName();
-                                            mTextView1[0].setText(message);
-                                            if (workInfo.getState() == WorkInfo.State.SUCCEEDED) {
-                                                message = workInfo.getState().name() + ": " + workInfo.getOutputData().getString("message");
-                                                mTextView1[0].setText(message);
-                                                mTextView1[0].setTextColor(Color.parseColor("#007f00"));
-                                                mTextView1[0].animate()
-                                                        .translationY(-mTextView1[0].getHeight() * finalI)
-                                                        .alpha(0.0f)
-                                                        .setDuration(3500)
-                                                        .setListener(new AnimatorListenerAdapter() {
-                                                            @Override
-                                                            public void onAnimationEnd(Animator animation) {
-                                                                super.onAnimationEnd(animation);
-                                                                mTextView1[0].setVisibility(View.GONE);
-                                                            }
-                                                        });
-                                                upDatePhotoCount();
-                                            }
-
-                                            if (workInfo.getState() == WorkInfo.State.FAILED) {
-                                                Toast.makeText(edu.aku.hassannaqvi.casi_register.ui.SyncActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                                                String error = workInfo.getState().name() + ": " + workInfo.getOutputData().getString("error");
-                                                mTextView1[0].setText(error);
-                                                mTextView1[0].setTextColor(Color.RED);
-
-                                                upDatePhotoCount();
-                                            }
-
-                                            if (workInfo.getState() == WorkInfo.State.CANCELLED) {
-                                                //String message = workInfo.getState().name() + ": " + workInfo.getOutputData().getString("message");
-                                                mTextView1[0].setText("CANCELLED: " + fileZero.getName());
-                                                mTextView1[0].setTextColor(Color.RED);
-
-                                                upDatePhotoCount();
-                                            }
-                                    *//*String fCount = String.valueOf(workInfo.getOutputData().getInt("fCount", 0));
-                                    Toast.makeText(SyncActivity.this, "Files Left: " + fCount, Toast.LENGTH_SHORT).show();*//*
-                                        }
-                                    });
-
-                            if (finalI % 25 == 0) {
-                                try {
-                                    //3000 ms delay to process upload of next file.
-                                    Thread.sleep(14000);
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                    }, 300);
-                }
-
-                bi.mTextViewS.setText(totalFiles + " Photos found (waiting for server...)");
-
-            } else {
-                bi.mTextViewS.setText(files.length + " Photos remaining");
-
-                Toast.makeText(this, "No photos to upload.", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            bi.mTextViewS.setText("No photots were taken.");
-
-            Toast.makeText(this, "No photos were taken", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
-/*    public void upDatePhotoCount() {
-        if (sdDir.exists()) {
-            Log.d("DIR", "onCreate: " + sdDir.getName());
-            File[] files = sdDir.listFiles(file -> (file.getPath().endsWith(".jpg") || file.getPath().endsWith(".jpeg")));
-
-
-            if (files.length < totalFiles) {
-
-                int filesProcessed = totalFiles - files.length;
-                long tEnd = System.currentTimeMillis();
-                long tDelta = tEnd - tStart;
-                String elapsedSeconds = String.format("%dh:%dm %ds",
-                        TimeUnit.MILLISECONDS.toHours(tDelta),
-                        TimeUnit.MILLISECONDS.toMinutes(tDelta),
-                        TimeUnit.MILLISECONDS.toSeconds(tDelta) -
-                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(tDelta))
-                );
-                long tPerFile = tDelta / filesProcessed;
-                long timeRemaining = files.length * tPerFile;
-                long absTimeRemaining = ((timeRemaining / 25) * 14) + timeRemaining;
-                double secRemain = absTimeRemaining / 1000;
-                String tRemain = String.format("%dh:%dm %ds",
-                        TimeUnit.MILLISECONDS.toHours(absTimeRemaining),
-                        TimeUnit.MILLISECONDS.toMinutes(absTimeRemaining),
-                        TimeUnit.MILLISECONDS.toSeconds(absTimeRemaining) -
-                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(absTimeRemaining))
-                );
-
-                // WORK MANAGER
-                progress = files.length + "/" + totalFiles + " Photos remaining \r\nTime remaining: " + tRemain;
-                if (absTimeRemaining > 0 && files.length > 0) {
-                    if (TimeUnit.MILLISECONDS.toMinutes(absTimeRemaining / files.length) > 1) {
-                        progress += "\r\n (!) - slow internet detected";
-                    }
-                }
-                bi.mTextViewS.setText(progress);
-                int fProgress = (int) Math.ceil(((totalFiles - files.length) * 100) / totalFiles);
-                bi.pBar.setProgress(fProgress);
-                //This is for setting Contraints for sync
-
-            } else {
-                bi.mTextViewS.setText(progress + "\r\n DONE!");
-
-            }
-        } else {
-            bi.mTextViewS.setText("No photos found.");
-        }
-    }*/
-
-
-    private void sortBySize(File[] files) {
-        Arrays.sort(files, new Comparator<File>() {
-            @Override
-            public int compare(File t, File t1) {
-                return (int) (t.length() - t1.length());
-            }
-        });
-    }
 }

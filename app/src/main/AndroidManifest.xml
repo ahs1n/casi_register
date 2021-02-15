@@ -10,12 +10,14 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.hardware.location.gps" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" /> -->
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+    <uses-permission
+        android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- TakePhoto Permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -59,7 +61,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/AppThemeEnglish" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.sections.Section01CS1Activity"
             android:label="@string/childScreening"
@@ -67,9 +69,8 @@
             android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".ui.sections.SelectedChildrenListActivity"
-            android:label="@string/childFollowup"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.sections.Section01CS2Activity"
             android:label="@string/childScreening"
@@ -93,7 +94,7 @@
         <activity
             android:name=".ui.other.EndingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".core.AndroidDatabaseManager"
             android:parentActivityName=".ui.MainActivity"

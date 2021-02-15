@@ -54,6 +54,7 @@ import edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable;
 import edu.aku.hassannaqvi.casi_register.utils.WarningActivityInterface;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         bi.setCallback(this);
+        setSupportActionBar(bi.toolbar);
 
         if (MainApp.admin) {
             bi.databaseBtn.setVisibility(View.VISIBLE);
@@ -455,7 +457,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
      * */
     private Observable<List<Villages>> getAreas() {
         return Observable.create(emitter -> {
-            emitter.onNext(appInfo.getDbHelper().getCountry());
+            emitter.onNext(appInfo.getDbHelper().getCountry(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this))));
             emitter.onComplete();
         });
     }

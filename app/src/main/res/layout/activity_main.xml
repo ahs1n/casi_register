@@ -18,6 +18,17 @@
         android:background="@drawable/app_bg_gray"
         android:orientation="vertical">
 
+        <!-- CUSTOM TOOLBAR -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layoutDirection="ltr"
+            android:textAlignment="center"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/black" />
+
         <TextView
             android:id="@+id/testing"
             android:layout_width="match_parent"

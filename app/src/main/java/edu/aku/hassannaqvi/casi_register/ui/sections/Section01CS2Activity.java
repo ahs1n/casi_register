@@ -9,6 +9,9 @@ import com.validatorcrawler.aliazaz.Validator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
@@ -20,6 +23,7 @@ import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivity;
 import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
+import static edu.aku.hassannaqvi.casi_register.utils.JSONUtilsKt.mergeJSONObjects;
 
 public class Section01CS2Activity extends AppCompatActivity {
 
@@ -58,9 +62,15 @@ public class Section01CS2Activity extends AppCompatActivity {
 
 
     private boolean updateDB() {
-        DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_CS, MainApp.form.cS02toString());
-        return updcount == 1;
+        try {
+            DatabaseHelper db = MainApp.appInfo.getDbHelper();
+            JSONObject merge = mergeJSONObjects(new JSONObject(form.cStoString()), new JSONObject(form.cS02toString()));
+            int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_CS, String.valueOf(merge));
+            return updcount == 1;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

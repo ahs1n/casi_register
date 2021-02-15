@@ -46,7 +46,7 @@ class SelectedChildrenListActivity : AppCompatActivity(), WarningActivityInterfa
         * Get childList on resume event
         * */
         val villageItem = MainApp.mainInfo
-        viewModel.getChildDataFromDB(SharedStorage.getCountryCode(this).toString(), Identification(villageItem.region_code, villageItem.district_code, villageItem.uc_code, villageItem.village))
+        viewModel.getChildDataFromDB(SharedStorage.getCountryCode(this).toString(), Identification(villageItem.region_code, villageItem.district_code, villageItem.uc_code, villageItem.village_code))
 
 
         /*

@@ -906,13 +906,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Get UC, DISTRICT, ENUMBLOCK and COUNTRY
      * */
 
-    public List<Villages> getCountry() {
+    public List<Villages> getCountry(String country_id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
-        String whereClause = null;
-        String[] whereArgs = null;
+        String whereClause = VillagesTable.COLUMN_COUNTRY_CODE + "=?";
+        String[] whereArgs = new String[]{country_id};
         String groupBy = null;
         String having = null;
 
@@ -1307,17 +1307,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<String> getWHLMS(Double height, int gender, String catA) {
         SQLiteDatabase db = this.getReadableDatabase();
-
         Cursor c = db.rawQuery("SELECT l,m,s " +
-                        "FROM " + ZScoreTable.TABLE_NAME + " " +
-                        "WHERE " + ZScoreTable.COLUMN_MEASURE + "=? " +
-                        "AND "
-                        + ZScoreTable.COLUMN_SEX + "=?" +
-                        "AND "
-                        + ZScoreTable.COLUMN_CAT + "=?"
+                        "FROM " + ZScoreTable.TABLE_NAME +
+                        " WHERE " + ZScoreTable.COLUMN_MEASURE + "=?" +
+                        " AND " + ZScoreTable.COLUMN_SEX + "=?" +
+                        " AND " + ZScoreTable.COLUMN_CAT + "=?"
                 ,
                 new String[]{String.valueOf(height), String.valueOf(gender), catA});
-        List<String> whlms = null;
+        List<String> whlms = new ArrayList<>();
         Log.d(TAG, "getWHLMS: height " + height);
         Log.d(TAG, "getWHLMS: " + c.getCount());
         while (c.moveToNext()) {
@@ -1327,6 +1324,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             whlms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_S)));
 
         }
+        c.close();
         return whlms;
     }
 
@@ -1493,7 +1491,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 c.close();
             }
             if (db != null) {
-                db.close();
+                if (!db.isOpen()) db.close();
             }
         }
         return allEB;
@@ -1534,7 +1532,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 c.close();
             }
             if (db != null) {
-                db.close();
+                if (!db.isOpen()) db.close();
             }
         }
         return allEB;

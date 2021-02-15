@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.casi_register.viewholder
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -18,18 +19,19 @@ import edu.aku.hassannaqvi.casi_register.utils.shortStringLength
 class SelectedChildViewHolder(private val bi: SelectedChildViewBinding) :
         RecyclerView.ViewHolder(bi.root) {
 
+    @SuppressLint("SetTextI18n")
     fun bind(item: ChildFollowup) {
-        bi.childId.text = item.cs10
+        bi.childId.text = "ID-".plus(item.cs10)
         bi.resName.text = item.cs11a.convertStringToUpperCase().shortStringLength()
-        bi.name.text = item.cs10.convertStringToUpperCase().shortStringLength()
+        bi.name.text = item.cs11.convertStringToUpperCase().shortStringLength()
 //        bi.age.text = String.format("Age: [%d]M", item.cs11.toInt().times(12).plus(item.cb0502.toInt()))
         val imageRes: Int = if (item.cs13 == "1") R.drawable.ctr_childboy else R.drawable.ctr_childgirl
         val flagImage: Int
-        if (item.childTableDataExist == null) {
-            flagImage = R.drawable.ic_incomplete_star
-        } else {
+        if (item.childTableDataExist) {
             bi.parentLayout.isEnabled = false
             flagImage = R.drawable.ic_complete_star
+        } else {
+            flagImage = R.drawable.ic_incomplete_star
         }
         Glide.with(this.itemView.context)
                 .asBitmap()

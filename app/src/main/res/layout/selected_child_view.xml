@@ -7,7 +7,7 @@
         android:id="@+id/parentLayout"
         style="@style/cardView"
         android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_107sdp"
+        android:layout_height="@dimen/_110sdp"
         android:layout_margin="@dimen/_6sdp"
         android:elevation="@dimen/_2sdp">
 
@@ -48,7 +48,7 @@
                 android:text="Child Namejjjjjj"
                 android:textAlignment="center"
                 android:textColor="#009688"
-                android:textSize="20sp"
+                android:textSize="23sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/childImg"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,6 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/age"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -69,6 +68,7 @@
                 android:textColor="#FF5722"
                 android:textSize="16sp"
                 android:textStyle="normal"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
                 android:text="Child ID"
                 android:textAlignment="center"
                 android:textColor="#FF5722"
-                android:textSize="16sp"
+                android:textSize="19sp"
                 android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -117,11 +117,12 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="monospace"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_1sdp"
                     android:text="Mother Name"
-                    android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#FF5722"
-                    android:textSize="16sp"
+                    android:textSize="19sp"
                     android:textStyle="normal"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
