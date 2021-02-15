@@ -23,6 +23,7 @@ import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup.ChildTable;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
@@ -33,7 +34,6 @@ import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable;
-import edu.aku.hassannaqvi.casi_register.models.ChildFollowup.ChildTable;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 
 import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
@@ -239,7 +239,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_PROJECT_NAME, form.getProjectName());
-        values.put(FormsTable.COLUMN_LUID, form.get_UID());
+        values.put(FormsTable.COLUMN_UID, form.get_UID());
         values.put(FormsTable.COLUMN_USERNAME, form.getUsername());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysdate());
         values.put(FormsTable.COLUMN_COUNTRY_CODE, form.getCountryCode());
@@ -325,7 +325,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_LUID, MainApp.form.get_UID());
+        values.put(FormsTable.COLUMN_UID, MainApp.form.get_UID());
 
 // Which row to update, based on the ID
         String selection = FormsTable._ID + " = ?";
@@ -343,7 +343,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
@@ -408,7 +408,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
@@ -475,7 +475,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
@@ -518,7 +518,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 Form form = new Form();
                 form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_LUID)));
+                form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
                 form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
@@ -697,7 +697,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
                 FormsTable.COLUMN_COUNTRY,
@@ -739,7 +739,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 Form form = new Form();
                 form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_LUID)));
+                form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
                 form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
                 form.setCountry(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY)));
@@ -773,7 +773,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
                 FormsTable.COLUMN_COUNTRY,
@@ -811,7 +811,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 Form form = new Form();
                 form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_LUID)));
+                form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
                 form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
                 form.setCountry(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY)));
@@ -985,7 +985,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
@@ -1056,7 +1056,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
@@ -1154,7 +1154,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
@@ -1379,7 +1379,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                FormsTable.COLUMN_LUID,
+                FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_ISTATUS,
@@ -1408,7 +1408,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 Form forms = new Form();
                 forms.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                forms.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_LUID)));
+                forms.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 forms.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
                 forms.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
                 allForms.add(forms);

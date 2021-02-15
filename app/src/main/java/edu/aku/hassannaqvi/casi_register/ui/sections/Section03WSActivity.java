@@ -22,8 +22,8 @@ import java.util.Map;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection03WsBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
@@ -99,7 +99,7 @@ public class Section03WSActivity extends AppCompatActivity {
         form.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
-            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_LUID, form.get_UID());
+            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             if (count > 0)
                 count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_WS, form.wStoString());
             if (count > 0) {
