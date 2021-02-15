@@ -143,8 +143,10 @@ public class Form extends LiveData<Form> {
 
     private String cS = "";
     private String cSFP = "";
+    private String _luid = "";
     private String wS = "";
     private String wSFP = "";
+    private String scr_date = "";
 
 
     //    Follow-up U5
@@ -2690,6 +2692,7 @@ public class Form extends LiveData<Form> {
         this.cS = cS;
     }
 
+
     public String getcSFP() {
         return cSFP;
     }
@@ -2697,6 +2700,16 @@ public class Form extends LiveData<Form> {
     public void setcSFP(String cSFP) {
         this.cSFP = cSFP;
     }
+
+
+    public String get_luid() {
+        return _luid;
+    }
+
+    public void set_luid(String _luid) {
+        this._luid = _luid;
+    }
+
 
     public String getwS() {
         return wS;
@@ -2706,12 +2719,22 @@ public class Form extends LiveData<Form> {
         this.wS = wS;
     }
 
+
     public String getwSFP() {
         return wSFP;
     }
 
     public void setwSFP(String wSFP) {
         this.wSFP = wSFP;
+    }
+
+
+    public String getScr_date() {
+        return scr_date;
+    }
+
+    public void setScr_date(String scr_date) {
+        this.scr_date = scr_date;
     }
 
 
@@ -2939,7 +2962,7 @@ public class Form extends LiveData<Form> {
 
     public Form Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
-        this._UID = jsonObject.getString(FormsTable.COLUMN_LUID);
+        this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
         this.username = jsonObject.getString(FormsTable.COLUMN_USERNAME);
         this.sysdate = jsonObject.getString(FormsTable.COLUMN_SYSDATE);
         this.countryCode = jsonObject.getString(FormsTable.COLUMN_COUNTRY_CODE);
@@ -2975,7 +2998,7 @@ public class Form extends LiveData<Form> {
 
     public Form Hydrate(Cursor cursor) {
         this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
-        this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LUID));
+        this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
         this.username = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USERNAME));
         this.sysdate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYSDATE));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
@@ -3224,7 +3247,8 @@ public class Form extends LiveData<Form> {
                     .put("fc3601", fc3601)
                     .put("fc37", fc37)
                     .put("fc3796x", fc3796x)
-                    .put("fc38", fc38);
+                    .put("fc38", fc38)
+                    .put("_luid", _luid);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -3366,7 +3390,8 @@ public class Form extends LiveData<Form> {
                     .put("fw29i", fw29i)
                     .put("fw29j", fw29j)
                     .put("fw29k", fw29k)
-                    .put("fw29k96x", fw29k96x);
+                    .put("fw29k96x", fw29k96x)
+                    .put("scr_date", scr_date);
 
 
         } catch (JSONException e) {
@@ -3383,7 +3408,7 @@ public class Form extends LiveData<Form> {
 
         try {
             json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
-            json.put(FormsTable.COLUMN_LUID, this._UID == null ? JSONObject.NULL : this._UID);
+            json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
             json.put(FormsTable.COLUMN_USERNAME, this.username == null ? JSONObject.NULL : this.username);
             json.put(FormsTable.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
 
@@ -3605,6 +3630,7 @@ public class Form extends LiveData<Form> {
                 this.fc37 = toJSONObject().getString("fc37");
                 this.fc3796x = toJSONObject().getString("fc3796x");
                 this.fc38 = toJSONObject().getString("fc38");
+                this._luid = toJSONObject().getString("_luid");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -3747,6 +3773,7 @@ public class Form extends LiveData<Form> {
                 this.fw29j = toJSONObject().getString("fw29j");
                 this.fw29k = toJSONObject().getString("fw29k");
                 this.fw29k96x = toJSONObject().getString("fw29k96x");
+                this.scr_date = toJSONObject().getString("scr_date");
 
             } catch (JSONException e) {
                 e.printStackTrace();

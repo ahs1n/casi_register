@@ -34,9 +34,9 @@ import java.util.Objects;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.core.ZScore;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs1Binding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
@@ -80,7 +80,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
-            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_LUID, form.get_UID());
+            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             if (count > 0)
                 count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CS, form.cStoString());
             if (count > 0) {

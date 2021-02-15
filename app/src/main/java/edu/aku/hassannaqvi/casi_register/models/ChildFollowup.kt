@@ -68,7 +68,7 @@ class ChildFollowup : Serializable {
     }
 
     fun hydrateForm(cursor: Cursor): ChildFollowup {
-        lUID = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_LUID))
+        lUID = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UID))
         cs01 = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_COUNTRY_CODE))
         cs01b = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_DISTRICT_CODE))
         cs04 = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UC_CODE))

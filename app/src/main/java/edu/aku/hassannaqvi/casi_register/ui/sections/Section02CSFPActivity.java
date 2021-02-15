@@ -20,8 +20,8 @@ import java.util.Locale;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection02CsfpBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
@@ -131,7 +131,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.set_ID(String.valueOf(rowid));
         if (rowid > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
-            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_LUID, form.get_UID());
+            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             if (count > 0) {
                 db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CSFP, form.cSFPtoString());
                 return true;

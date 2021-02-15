@@ -18,7 +18,7 @@ public class FormsContract {
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "casi_register";
         public static final String COLUMN_ID = "_id";
-        public static final String COLUMN_LUID = "_uid";
+        public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";
         public static final String COLUMN_COUNTRY_CODE = "countryCode";
