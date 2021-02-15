@@ -10,11 +10,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.hardware.location.gps" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" /> -->
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- TakePhoto Permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -57,30 +59,35 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".ui.sections.Section01CS1Activity"
-            android:label="Growth Monitoring Screening Log for U5"
+            android:label="@string/childScreening"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeEnglish" />
+        <activity
+            android:name=".ui.sections.SelectedChildrenListActivity"
+            android:label="@string/childFollowup"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".ui.sections.Section01CS2Activity"
-            android:label="Growth Monitoring Screening Log for U5"
+            android:label="@string/childScreening"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".ui.sections.Section02CSFPActivity"
-            android:label="Growth Monitoring Follow-up for U5"
+            android:label="@string/childFollowup"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".ui.sections.Section03WSActivity"
-            android:label="Growth Monitoring Screening Log for WRAs/PWs/LWs"
+            android:label="@string/wraScreening"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish" />
         <activity
             android:name=".ui.sections.Section04WSFPActivity"
-            android:label="Growth Monitoring Follow-up for WRAs/PWs/LWs"
+            android:label="@string/wraFollowup"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish" />
         <activity

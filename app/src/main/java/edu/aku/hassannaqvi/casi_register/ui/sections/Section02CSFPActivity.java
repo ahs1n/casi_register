@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -21,16 +20,17 @@ import java.util.Locale;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection02CsfpBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
-import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
+import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 
 public class Section02CSFPActivity extends AppCompatActivity {
 
@@ -117,6 +117,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         SaveDraft();
         if (UpdateDB()) {
             finish();
+            gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
@@ -130,7 +131,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.set_ID(String.valueOf(rowid));
         if (rowid > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
-            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
+            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_LUID, form.get_UID());
             if (count > 0) {
                 db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CSFP, form.cSFPtoString());
                 return true;
@@ -331,23 +332,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        AppUtilsKt.contextEndActivity(this);
+        AppUtilsKt.openSectionEndingActivity(this, false);
     }
-
-    /*@Override
-    public void endSecActivity(boolean flag) {
-        SaveDraft();
-        if (UpdateDB()) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
-/*    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
-    }*/
 
 }

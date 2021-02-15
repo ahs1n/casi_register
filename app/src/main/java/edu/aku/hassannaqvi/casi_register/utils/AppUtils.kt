@@ -78,7 +78,7 @@ fun dbBackup(context: Context) {
 
 }
 
-fun AppCompatActivity.openSectionEndingActivity() {
+fun AppCompatActivity.openSectionEndingActivity(flag: Boolean = true) {
     val dialog = Dialog(this)
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
     dialog.setContentView(R.layout.item_dialog_2)
@@ -91,9 +91,7 @@ fun AppCompatActivity.openSectionEndingActivity() {
     dialog.window!!.attributes = params
     dialog.findViewById<View>(R.id.btnOk).setOnClickListener { view: View? ->
         this.finish()
-        val intent = Intent(this, EndingActivity::class.java)
-                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        this.startActivity(intent)
+        this.startActivity(Intent(this, EndingActivity::class.java).putExtra("complete", flag))
     }
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { view: View? -> dialog.dismiss() }
 }

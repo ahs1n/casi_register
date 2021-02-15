@@ -3,7 +3,7 @@ package edu.aku.hassannaqvi.casi_register.core
 import android.content.Context
 import android.content.pm.PackageManager
 import android.provider.Settings
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper
 import org.apache.commons.lang3.StringUtils
 import java.text.SimpleDateFormat
 import java.util.*

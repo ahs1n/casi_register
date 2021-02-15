@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,13 +11,15 @@ import androidx.databinding.DataBindingUtil;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs2Binding;
-import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
+import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivity;
+import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 
 public class Section01CS2Activity extends AppCompatActivity {
 
@@ -49,6 +50,7 @@ public class Section01CS2Activity extends AppCompatActivity {
         saveDraft();
         if (updateDB()) {
             finish();
+            gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
@@ -163,7 +165,7 @@ public class Section01CS2Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        AppUtilsKt.contextEndActivity(this);
+        AppUtilsKt.openSectionEndingActivity(this, false);
     }
 
 

@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,7 +34,7 @@ import java.util.Objects;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.core.ZScore;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs1Binding;
@@ -81,7 +80,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
-            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
+            long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_LUID, form.get_UID());
             if (count > 0)
                 count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CS, form.cStoString());
             if (count > 0) {
@@ -114,6 +113,11 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setFormType(CHILD_TYPE);
 
         form.setLocalDate(localDate);
+
+        form.setCountryCode(MainApp.mainInfo.getCountry_code());
+        form.setDistrictCode(MainApp.mainInfo.getDistrict_code());
+        form.setUcCode(MainApp.mainInfo.getUc_code());
+        form.setVillageCode(MainApp.mainInfo.getVillage_code());
 
         form.setCs01(MainApp.mainInfo.getCountry_code());
         form.setCs01a(MainApp.mainInfo.getRegion_code());

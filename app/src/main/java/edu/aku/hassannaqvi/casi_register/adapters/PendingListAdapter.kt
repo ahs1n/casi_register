@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.casi_register.adapter
+package edu.aku.hassannaqvi.casi_register.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

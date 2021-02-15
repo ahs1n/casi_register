@@ -34,10 +34,10 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import edu.aku.hassannaqvi.casi_register.R;
-import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
+import edu.aku.hassannaqvi.casi_register.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySyncBinding;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;

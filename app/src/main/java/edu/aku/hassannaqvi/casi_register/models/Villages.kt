@@ -10,16 +10,16 @@ import org.json.JSONObject
  * @author aliazaz.
  */
 class Villages {
-    var region: String = StringUtils.EMPTY
-    var district: String = StringUtils.EMPTY
-    var uc: String = StringUtils.EMPTY
-    var village: String = StringUtils.EMPTY
-    var country_code: String = StringUtils.EMPTY
-    var country: String = StringUtils.EMPTY
-    var district_code: String = StringUtils.EMPTY
-    var uc_code: String = StringUtils.EMPTY
-    var village_code: String = StringUtils.EMPTY
-    var region_code: String = StringUtils.EMPTY
+    var region = StringUtils.EMPTY
+    var district = StringUtils.EMPTY
+    var uc = StringUtils.EMPTY
+    var village = StringUtils.EMPTY
+    var country_code = StringUtils.EMPTY
+    var country = StringUtils.EMPTY
+    var district_code = StringUtils.EMPTY
+    var uc_code = StringUtils.EMPTY
+    var village_code = StringUtils.EMPTY
+    var region_code = StringUtils.EMPTY
 
     @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): Villages {

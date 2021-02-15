@@ -7,11 +7,11 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class HealthFacility {
-    var country_code: String = StringUtils.EMPTY
-    var region_code: String = StringUtils.EMPTY
-    var hf_code: String = StringUtils.EMPTY
-    var health_facility: String = StringUtils.EMPTY
-    var facility_type: String = StringUtils.EMPTY
+    var country_code = StringUtils.EMPTY
+    var region_code = StringUtils.EMPTY
+    var hf_code = StringUtils.EMPTY
+    var health_facility = StringUtils.EMPTY
+    var facility_type = StringUtils.EMPTY
 
     @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): HealthFacility {

@@ -21,7 +21,7 @@ import edu.aku.hassannaqvi.casi_register.base.repository.GeneralRepository
 import edu.aku.hassannaqvi.casi_register.base.repository.ResponseStatus.*
 import edu.aku.hassannaqvi.casi_register.base.viewmodel.LoginViewModel
 import edu.aku.hassannaqvi.casi_register.core.MainApp
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityLoginBinding
 import edu.aku.hassannaqvi.casi_register.models.Users
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity

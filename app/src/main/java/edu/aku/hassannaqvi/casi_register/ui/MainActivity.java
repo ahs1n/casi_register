@@ -49,6 +49,7 @@ import edu.aku.hassannaqvi.casi_register.ui.sections.Section01CS1Activity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section02CSFPActivity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section03WSActivity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section04WSFPActivity;
+import edu.aku.hassannaqvi.casi_register.ui.sections.SelectedChildrenListActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable;
@@ -248,7 +249,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             case R.id.formCSFP:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
                 SaveDraft();
-                oF = new Intent(this, Section02CSFPActivity.class);
+                oF = new Intent(this, SelectedChildrenListActivity.class);
                 break;
             case R.id.formWS:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;

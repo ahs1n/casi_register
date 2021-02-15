@@ -15,8 +15,8 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.casi_register.R;
-import edu.aku.hassannaqvi.casi_register.adapter.FormsAdapter;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
+import edu.aku.hassannaqvi.casi_register.adapters.FormsAdapter;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 
 public class FormsReportCluster extends AppCompatActivity {

@@ -363,7 +363,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:background="@color/colorPrimaryDark"
                                     android:drawablePadding="12dp"
-                                    android:text="@string/ChildFollowup"
+                                    android:text="@string/childFollowup"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                                     android:textColor="@color/white"
                                     app:drawableStartCompat="@drawable/open_form" />

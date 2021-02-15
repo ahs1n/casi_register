@@ -26,7 +26,7 @@
     <string name="uc">UC</string>
     <string name="cityVillage">City / Village</string>
     <string name="childScreening">Child Screening</string>
-    <string name="ChildFollowup">Child Follow-up</string>
+    <string name="childFollowup">Child Follow-up</string>
     <string name="wraScreening">WRAs Screening</string>
     <string name="wraFollowup">WRAs Follow-up</string>
     <string name="btnSave">Save</string>
