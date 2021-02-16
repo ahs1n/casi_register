@@ -159,9 +159,11 @@ public class Section03WSActivity extends AppCompatActivity {
                 : bi.ws0605.isChecked() ? "5"
                 : bi.ws0696.isChecked() ? "96"
                 : "-1");
-
         form.setWs0696x(bi.ws0696x.getText().toString());
-        form.setWs07(bi.ws07.getText().toString());
+
+        form.setWs07(bi.ws07.getText().toString().trim().isEmpty() ? "-1" : bi.ws07.getText().toString());
+
+        form.setWs07User(bi.ws07User.isChecked() ? form.getUsername() : "98");
 
         form.setWs0801(bi.ws0801.getText().toString());
         form.setWs0802(bi.ws0802.getText().toString());

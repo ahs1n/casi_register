@@ -161,6 +161,7 @@ public class Form extends LiveData<Form> {
     private String fc06;
     private String fc0696x;
     private String fc07;
+    private String fc07User;
     private String fc08;
     private String fc0801;
     private String fc0802;
@@ -237,6 +238,7 @@ public class Form extends LiveData<Form> {
     private String ws06;
     private String ws0696x;
     private String ws07;
+    private String ws07User;
     private String ws08;
     private String ws0801;
     private String ws0802;
@@ -296,6 +298,7 @@ public class Form extends LiveData<Form> {
     private String fw06;
     private String fw0696x;
     private String fw07;
+    private String fw07User;
     private String fw08;
     private String fw0801;
     private String fw0802;
@@ -1239,6 +1242,14 @@ public class Form extends LiveData<Form> {
         this.fc07 = fc07;
     }
 
+    public String getFc07User() {
+        return fc07User;
+    }
+
+    public void setFc07User(String fc07User) {
+        this.fc07User = fc07User;
+    }
+
     public String getFc08() {
         return fc08;
     }
@@ -1825,6 +1836,14 @@ public class Form extends LiveData<Form> {
         this.ws07 = ws07;
     }
 
+    public String getWs07User() {
+        return ws07User;
+    }
+
+    public void setWs07User(String ws07User) {
+        this.ws07User = ws07User;
+    }
+
     public String getWs08() {
         return ws08;
     }
@@ -2272,6 +2291,14 @@ public class Form extends LiveData<Form> {
 
     public void setFw07(String fw07) {
         this.fw07 = fw07;
+    }
+
+    public String getFw07User() {
+        return fw07User;
+    }
+
+    public void setFw07User(String fw07User) {
+        this.fw07User = fw07User;
     }
 
     public String getFw08() {
@@ -3186,6 +3213,7 @@ public class Form extends LiveData<Form> {
                     .put("fc06", fc06)
                     .put("fc0696x", fc0696x)
                     .put("fc07", fc07)
+                    .put("fc07User", fc07User)
                     .put("fc08", fc08)
                     .put("fc0801", fc0801)
                     .put("fc0802", fc0802)
@@ -3273,6 +3301,7 @@ public class Form extends LiveData<Form> {
                     .put("ws06", ws06)
                     .put("ws0696x", ws0696x)
                     .put("ws07", ws07)
+                    .put("ws07User", ws07User)
                     .put("ws08", ws08)
                     .put("ws0801", ws0801)
                     .put("ws0802", ws0802)
@@ -3341,6 +3370,7 @@ public class Form extends LiveData<Form> {
                     .put("fw06", fw06)
                     .put("fw0696x", fw0696x)
                     .put("fw07", fw07)
+                    .put("fw07User", fw07User)
                     .put("fw08", fw08)
                     .put("fw0801", fw0801)
                     .put("fw0802", fw0802)
@@ -3576,6 +3606,7 @@ public class Form extends LiveData<Form> {
                 this.fc06 = json.getString("fc06");
                 this.fc0696x = json.getString("fc0696x");
                 this.fc07 = json.getString("fc07");
+                this.fc07User = json.getString("fc07User");
                 this.fc08 = json.getString("fc08");
                 this.fc0801 = json.getString("fc0801");
                 this.fc0802 = json.getString("fc0802");
@@ -3666,6 +3697,7 @@ public class Form extends LiveData<Form> {
                 this.ws06 = json.getString("ws06");
                 this.ws0696x = json.getString("ws0696x");
                 this.ws07 = json.getString("ws07");
+                this.ws07User = json.getString("ws07User");
                 this.ws08 = json.getString("ws08");
                 this.ws0801 = json.getString("ws0801");
                 this.ws0802 = json.getString("ws0802");
@@ -3737,6 +3769,7 @@ public class Form extends LiveData<Form> {
                 this.fw06 = json.getString("fw06");
                 this.fw0696x = json.getString("fw0696x");
                 this.fw07 = json.getString("fw07");
+                this.fw07User = json.getString("fw07User");
                 this.fw08 = json.getString("fw08");
                 this.fw0801 = json.getString("fw0801");
                 this.fw0802 = json.getString("fw0802");

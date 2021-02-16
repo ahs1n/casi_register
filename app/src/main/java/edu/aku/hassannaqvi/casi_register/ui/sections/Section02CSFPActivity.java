@@ -126,6 +126,14 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         bi.fc34.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc3401));
 
+        bi.fc07User.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.fc07.setEnabled(false);
+                bi.fc07.setText(null);
+            } else
+                bi.fc07.setEnabled(true);
+        });
+
     }
 
 
@@ -248,9 +256,11 @@ public class Section02CSFPActivity extends AppCompatActivity {
                 : bi.fc0605.isChecked() ? "5"
                 : bi.fc0696.isChecked() ? "96"
                 : "-1");
-
         form.setFc0696x(bi.fc0696x.getText().toString());
-        form.setFc07(bi.fc07.getText().toString());
+
+        form.setFc07(bi.fc07.getText().toString().trim().isEmpty() ? "-1" : bi.fc07.getText().toString());
+
+        form.setFc07User(bi.fc07User.isChecked() ? form.getUsername() : "98");
 
         form.setFc0801(bi.fc0801.getText().toString());
         form.setFc0802(bi.fc0802.getText().toString());
