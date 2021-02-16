@@ -1347,6 +1347,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25a" />
 
                                 <RadioButton
@@ -1376,6 +1377,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25b" />
 
                                 <RadioButton
@@ -1405,6 +1407,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25c" />
 
                                 <RadioButton
@@ -1434,6 +1437,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25d" />
 
                                 <RadioButton
@@ -1463,6 +1467,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25e" />
 
                                 <RadioButton
@@ -1492,6 +1497,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25f" />
 
                                 <RadioButton
@@ -1521,6 +1527,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25g" />
 
                                 <RadioButton
@@ -1550,6 +1557,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25h" />
 
                                 <RadioButton
@@ -1579,6 +1587,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25i" />
 
                                 <RadioButton
@@ -1608,6 +1617,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/ws25j" />
 
                                 <RadioButton
@@ -1679,7 +1689,7 @@
                     android:layout_marginStart="12dp"
                     android:background="@color/redOverlay"
                     android:onClick="@{() -> callback.BtnEnd()}"
-                    android:text="Cancel"
+                    android:text="@string/btnEnd"
                     android:textColor="@color/white"
                     android:visibility="gone" />
 

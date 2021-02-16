@@ -63,6 +63,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1.5"
+                            android:background="@color/colorPrimaryLight"
                             android:text="@string/cs28a" />
 
                         <RadioButton
@@ -93,6 +94,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1.5"
+                            android:background="@color/colorPrimaryLight"
                             android:text="@string/cs28b" />
 
                         <RadioButton
@@ -122,6 +124,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1.5"
+                            android:background="@color/colorPrimaryLight"
                             android:text="@string/cs28c" />
 
                         <RadioButton
@@ -151,6 +154,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1.5"
+                            android:background="@color/colorPrimaryLight"
                             android:text="@string/cs28d" />
 
                         <RadioButton
@@ -180,6 +184,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1.5"
+                            android:background="@color/colorPrimaryLight"
                             android:text="@string/cs28e" />
 
                         <RadioButton
@@ -347,6 +352,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/cs30a" />
 
                                 <RadioButton
@@ -376,6 +382,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/cs30b" />
 
                                 <RadioButton
@@ -405,6 +412,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/cs30c" />
 
                                 <RadioButton
@@ -434,6 +442,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/cs30d" />
 
                                 <RadioButton
@@ -463,6 +472,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.5"
+                                    android:background="@color/colorPrimaryLight"
                                     android:text="@string/cs30e" />
 
                                 <RadioButton
@@ -625,6 +635,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
+                                android:background="@color/colorPrimaryLight"
                                 android:text="@string/cs32a" />
 
                             <RadioButton
@@ -654,6 +665,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
+                                android:background="@color/colorPrimaryLight"
                                 android:text="@string/cs32b" />
 
                             <RadioButton
@@ -683,6 +695,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
+                                android:background="@color/colorPrimaryLight"
                                 android:text="@string/cs32c" />
 
                             <RadioButton
@@ -712,6 +725,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
+                                android:background="@color/colorPrimaryLight"
                                 android:text="@string/cs32d" />
 
                             <RadioButton
@@ -741,6 +755,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
+                                android:background="@color/colorPrimaryLight"
                                 android:text="@string/cs32e" />
 
                             <RadioButton
@@ -770,6 +785,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
+                                android:background="@color/colorPrimaryLight"
                                 android:text="@string/cs32f" />
 
                             <RadioButton
@@ -799,6 +815,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
+                                android:background="@color/colorPrimaryLight"
                                 android:text="@string/cs32g" />
 
                             <RadioButton
@@ -865,15 +882,15 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:visibility="gone"
                     android:id="@+id/btn_End"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:background="@color/redOverlay"
                     android:onClick="@{() -> callback.BtnEnd()}"
-                    android:text="Cancel"
-                    android:textColor="@color/white" />
+                    android:text="@string/btnEnd"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/btn_Continue"

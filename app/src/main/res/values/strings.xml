@@ -30,6 +30,7 @@
     <string name="wraScreening">WRAs Screening</string>
     <string name="wraFollowup">WRAs Follow-up</string>
     <string name="btnSave">Save</string>
+    <string name="btnEnd">Cancel</string>
     <string name="signin">SIGN IN</string>
     <string name="username">Username</string>
     <string name="password">Password</string>

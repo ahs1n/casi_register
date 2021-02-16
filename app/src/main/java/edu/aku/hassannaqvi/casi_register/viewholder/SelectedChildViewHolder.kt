@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import edu.aku.hassannaqvi.casi_register.databinding.SelectedChildViewBinding
 import edu.aku.hassannaqvi.casi_register.R
+import edu.aku.hassannaqvi.casi_register.databinding.ItemChildLayoutBinding
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
 import edu.aku.hassannaqvi.casi_register.utils.convertStringToUpperCase
 import edu.aku.hassannaqvi.casi_register.utils.shortStringLength
@@ -16,7 +17,7 @@ import edu.aku.hassannaqvi.casi_register.utils.shortStringLength
 /*
 * @author Ali Azaz Alam dt. 01.14.21
 * */
-class SelectedChildViewHolder(private val bi: SelectedChildViewBinding) :
+class SelectedChildViewHolder(private val bi: ItemChildLayoutBinding) :
         RecyclerView.ViewHolder(bi.root) {
 
     @SuppressLint("SetTextI18n")
@@ -24,8 +25,8 @@ class SelectedChildViewHolder(private val bi: SelectedChildViewBinding) :
         bi.childId.text = "ID-".plus(item.cs10)
         bi.resName.text = item.cs11a.convertStringToUpperCase().shortStringLength()
         bi.name.text = item.cs11.convertStringToUpperCase().shortStringLength()
-//        bi.age.text = String.format("Age: [%d]M", item.cs11.toInt().times(12).plus(item.cb0502.toInt()))
         val imageRes: Int = if (item.cs13 == "1") R.drawable.ctr_childboy else R.drawable.ctr_childgirl
+        bi.scrDate.text = "Screening Date: ".plus(item.cs08)
         val flagImage: Int
         if (item.childTableDataExist) {
             bi.parentLayout.isEnabled = false
@@ -48,8 +49,8 @@ class SelectedChildViewHolder(private val bi: SelectedChildViewBinding) :
     companion object {
         fun create(viewGroup: ViewGroup): SelectedChildViewHolder {
             val view = LayoutInflater.from(viewGroup.context)
-                    .inflate(R.layout.selected_child_view, viewGroup, false)
-            val binding = SelectedChildViewBinding.bind(view)
+                    .inflate(R.layout.item_child_layout, viewGroup, false)
+            val binding = ItemChildLayoutBinding.bind(view)
             return SelectedChildViewHolder(binding)
         }
     }
