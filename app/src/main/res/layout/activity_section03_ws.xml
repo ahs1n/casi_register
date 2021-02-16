@@ -1151,17 +1151,62 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/ws2201" />
 
+                                <com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/ws2301"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:hint="##"
+                                    android:inputType="number"
+                                    android:maxLength="2"
+                                    android:tag="ws2201"
+                                    android:text='@{ws2201.checked ? ws2301.getText().toString() : ""}'
+                                    android:visibility='@{ws2201.checked? View.VISIBLE : View.GONE}'
+                                    app:maxValue="90"
+                                    app:minValue="10"
+                                    app:type="range" />
+
                                 <CheckBox
                                     android:id="@+id/ws2202"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/ws2202" />
 
+                                <com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/ws2302"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:hint="##"
+                                    android:inputType="number"
+                                    android:maxLength="2"
+                                    android:tag="ws2202"
+                                    android:text='@{ws2202.checked ? ws2302.getText().toString() : ""}'
+                                    android:visibility='@{ws2202.checked? View.VISIBLE : View.GONE}'
+                                    app:maxValue="90"
+                                    app:minValue="10"
+                                    app:type="range" />
+
                                 <CheckBox
                                     android:id="@+id/ws2203"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/ws2203" />
+
+                                <com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/ws2303"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:hint="##"
+                                    android:inputType="number"
+                                    android:maxLength="2"
+                                    android:tag="ws2203"
+                                    android:text='@{ws2203.checked ? ws2303.getText().toString() : ""}'
+                                    android:visibility='@{ws2203.checked? View.VISIBLE : View.GONE}'
+                                    app:maxValue="90"
+                                    app:minValue="10"
+                                    app:type="range" />
 
                                 <CheckBox
                                     android:id="@+id/ws2296"
@@ -1183,122 +1228,89 @@
                     </androidx.cardview.widget.CardView>
 
                     <!-- ws23  Title   -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/fldGrpCVws23"
-                        style="@style/cardView">
+                    <!--                    <androidx.cardview.widget.CardView-->
+                    <!--                        android:id="@+id/fldGrpCVws23"-->
+                    <!--                        style="@style/cardView">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:orientation="vertical">-->
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/bottom">
+                    <!--                            <RelativeLayout-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:background="@drawable/bottom">-->
 
-                                <TextView
-                                    android:id="@+id/qtxt_ws23"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_toEndOf="@id/q_ws23"
-                                    android:text="@string/ws23" />
+                    <!--                                <TextView-->
+                    <!--                                    android:id="@+id/qtxt_ws23"-->
+                    <!--                                    android:layout_width="match_parent"-->
+                    <!--                                    android:layout_height="wrap_content"-->
+                    <!--                                    android:layout_toEndOf="@id/q_ws23"-->
+                    <!--                                    android:text="@string/ws23" />-->
 
-                                <TextView
-                                    android:id="@+id/q_ws23"
-                                    style="@style/quesNum"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignTop="@id/qtxt_ws23"
-                                    android:layout_alignBottom="@id/qtxt_ws23"
-                                    android:text="@string/Q_ws23" />
-                            </RelativeLayout>
+                    <!--                                <TextView-->
+                    <!--                                    android:id="@+id/q_ws23"-->
+                    <!--                                    style="@style/quesNum"-->
+                    <!--                                    android:layout_width="wrap_content"-->
+                    <!--                                    android:layout_height="wrap_content"-->
+                    <!--                                    android:layout_alignTop="@id/qtxt_ws23"-->
+                    <!--                                    android:layout_alignBottom="@id/qtxt_ws23"-->
+                    <!--                                    android:text="@string/Q_ws23" />-->
+                    <!--                            </RelativeLayout>-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                    <!--                            <LinearLayout-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:orientation="vertical">-->
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                    <!--                                <LinearLayout-->
+                    <!--                                    android:layout_width="match_parent"-->
+                    <!--                                    android:layout_height="wrap_content"-->
+                    <!--                                    android:orientation="horizontal">-->
 
-                                    <TextView
-                                        style="@style/textView"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="3"
-                                        android:text="@string/ws2301" />
+                    <!--                                    <TextView-->
+                    <!--                                        style="@style/textView"-->
+                    <!--                                        android:layout_width="0dp"-->
+                    <!--                                        android:layout_height="wrap_content"-->
+                    <!--                                        android:layout_weight="3"-->
+                    <!--                                        android:text="@string/ws2301" />-->
 
-                                    <com.edittextpicker.aliazaz.EditTextPicker
-                                        android:id="@+id/ws2301"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="2"
-                                        android:gravity="center"
-                                        android:hint="##"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        app:maxValue="90"
-                                        app:minValue="10"
-                                        app:type="range" />
-                                </LinearLayout>
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                    <!--                                </LinearLayout>-->
 
-                                    <TextView
-                                        style="@style/textView"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="3"
-                                        android:text="@string/ws2302" />
+                    <!--                                <LinearLayout-->
+                    <!--                                    android:layout_width="match_parent"-->
+                    <!--                                    android:layout_height="wrap_content"-->
+                    <!--                                    android:orientation="horizontal">-->
 
-                                    <com.edittextpicker.aliazaz.EditTextPicker
-                                        android:id="@+id/ws2302"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="2"
-                                        android:gravity="center"
-                                        android:hint="##"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        app:maxValue="90"
-                                        app:minValue="10"
-                                        app:type="range" />
-                                </LinearLayout>
+                    <!--                                    <TextView-->
+                    <!--                                        style="@style/textView"-->
+                    <!--                                        android:layout_width="0dp"-->
+                    <!--                                        android:layout_height="wrap_content"-->
+                    <!--                                        android:layout_weight="3"-->
+                    <!--                                        android:text="@string/ws2302" />-->
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
 
-                                    <TextView
-                                        style="@style/textView"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="3"
-                                        android:text="@string/ws2303" />
+                    <!--                                </LinearLayout>-->
 
-                                    <com.edittextpicker.aliazaz.EditTextPicker
-                                        android:id="@+id/ws2303"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="2"
-                                        android:gravity="center"
-                                        android:hint="##"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        app:maxValue="90"
-                                        app:minValue="10"
-                                        app:type="range" />
-                                </LinearLayout>
-                            </LinearLayout>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    <!--                                <LinearLayout-->
+                    <!--                                    android:layout_width="match_parent"-->
+                    <!--                                    android:layout_height="wrap_content"-->
+                    <!--                                    android:orientation="horizontal">-->
+
+                    <!--                                    <TextView-->
+                    <!--                                        style="@style/textView"-->
+                    <!--                                        android:layout_width="0dp"-->
+                    <!--                                        android:layout_height="wrap_content"-->
+                    <!--                                        android:layout_weight="3"-->
+                    <!--                                        android:text="@string/ws2303" />-->
+
+
+                    <!--                                </LinearLayout>-->
+                    <!--                            </LinearLayout>-->
+                    <!--                        </LinearLayout>-->
+                    <!--                    </androidx.cardview.widget.CardView>-->
                 </LinearLayout>
 
                 <!-- ws25  Title   -->
