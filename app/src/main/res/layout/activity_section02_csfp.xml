@@ -9,6 +9,10 @@
             name="callback"
             type="edu.aku.hassannaqvi.casi_register.ui.sections.Section02CSFPActivity" />
 
+        <variable
+            name="childInformation"
+            type="edu.aku.hassannaqvi.casi_register.models.ChildFollowup" />
+
     </data>
 
     <ScrollView
@@ -106,10 +110,10 @@
                     </LinearLayout>
 
                     <EditText
-                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:id="@+id/fc03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:hint="@string/fc03" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -428,12 +432,10 @@
                         android:id="@+id/fc09"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:hint="###"
                         android:inputType="number"
-                        android:maxLength="3"
-                        app:maxValue="300"
-                        app:minValue="0"
-                        app:type="range" />
+                        android:text="@{childInformation.cs09}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -466,16 +468,13 @@
                             android:text="@string/fc10" />
                     </LinearLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <EditText
                         android:id="@+id/fc10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:hint="#####"
-                        android:inputType="number"
-                        android:maxLength="5"
-                        app:maxValue="99999"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:text="@{childInformation.cs10}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -508,14 +507,14 @@
                             android:text="@string/fc10a" />
                     </LinearLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <EditText
                         android:id="@+id/fc10a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:gravity="center"
                         android:hint="###-##-##"
-                        android:inputType="number"
-                        app:mask="###-##-##" />
+                        android:text="@{childInformation.cs10a}" />
 
                 </LinearLayout>
 
@@ -556,7 +555,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/fc15" />
+                        android:enabled="false"
+                        android:hint="@string/fc15"
+                        android:text="@{childInformation.cs11}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -594,7 +595,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/fc15a" />
+                        android:enabled="false"
+                        android:hint="@string/fc15a"
+                        android:text="@{childInformation.cs11a}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -632,7 +635,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/fc16" />
+                        android:enabled="false"
+                        android:hint="@string/fc16"
+                        android:text="@{childInformation.cs12}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -2241,7 +2246,6 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:visibility="gone"
                     android:id="@+id/btn_End"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -2249,7 +2253,8 @@
                     android:background="@color/redOverlay"
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="Cancel"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/btn_Continue"

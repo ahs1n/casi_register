@@ -7,9 +7,9 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class VersionApp {
-    var versioncode: String = StringUtils.EMPTY
-    var versionname: String = StringUtils.EMPTY
-    var pathname: String = StringUtils.EMPTY
+    var versioncode= StringUtils.EMPTY
+    var versionname= StringUtils.EMPTY
+    var pathname= StringUtils.EMPTY
 
     @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): VersionApp {

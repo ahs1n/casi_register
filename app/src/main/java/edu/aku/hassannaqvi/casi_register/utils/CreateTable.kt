@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.casi_register.utils
 
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility
 import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable
 import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable
@@ -23,7 +24,7 @@ object CreateTable {
             + FormsTable.COLUMN_UID + " TEXT,"
             + FormsTable.COLUMN_USERNAME + " TEXT,"
             + FormsTable.COLUMN_COUNTRY_CODE + " TEXT,"
-            + FormsTable.COLUMN_COUNTRY + " TEXT,"
+            + FormsTable.COLUMN_REG_NO + " TEXT,"
             + FormsTable.COLUMN_DISTRICT_CODE + " TEXT,"
             + FormsTable.COLUMN_DISTRICT + " TEXT,"
             + FormsTable.COLUMN_UC_CODE + " TEXT,"
@@ -88,5 +89,23 @@ object CreateTable {
             HealthFacility.HealthFacilityTable.COLUMN_HF_CODE + " TEXT, " +
             HealthFacility.HealthFacilityTable.COLUMN_HEALTH_FACILITY + " TEXT, " +
             HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE + " TEXT " +
+            ");"
+
+    const val SQL_CREATE_FOLLOW_UP_LIST = "CREATE TABLE " + ChildFollowup.ChildTable.TABLE_NAME + " (" +
+            ChildFollowup.ChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            ChildFollowup.ChildTable.COLUMN_LUID + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS01 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS01A + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS01B + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS09 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS04 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS05 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS08 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS10 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS10A + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS11 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS11A + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS12 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_CS13 + " TEXT " +
             ");"
 }

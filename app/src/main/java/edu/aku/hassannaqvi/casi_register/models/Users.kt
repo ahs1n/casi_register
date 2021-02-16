@@ -10,10 +10,10 @@ import org.json.JSONObject
  */
 class Users {
     var userID: Long = 0
-    var userName: String = StringUtils.EMPTY
-    var password: String = StringUtils.EMPTY
-    var fullname: String = StringUtils.EMPTY
-    var country_code: String = StringUtils.EMPTY
+    var userName = StringUtils.EMPTY
+    var password = StringUtils.EMPTY
+    var fullname = StringUtils.EMPTY
+    var country_code = StringUtils.EMPTY
 
     constructor() {
         // Default Constructor

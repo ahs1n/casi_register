@@ -34,6 +34,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
+
 public class AndroidDatabaseManager extends Activity implements OnItemClickListener {
 
     //in the below line Change the text 'yourCustomSqlHelper' with your custom sqlitehelper class name.

@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -10,24 +9,23 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
-import org.json.JSONException;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection04WsfpBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
-import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
+import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 
 public class Section04WSFPActivity extends AppCompatActivity {
 
@@ -49,13 +47,10 @@ public class Section04WSFPActivity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (!formValidation()) return;
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        SaveDraft();
         if (UpdateDB()) {
             finish();
+            gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
@@ -84,7 +79,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
     }
 
 
-    private void SaveDraft() throws JSONException {
+    private void SaveDraft() {
 
         form = new Form();
         form.setSysdate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
@@ -93,7 +88,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCountry(item.getCountry());
+        form.setReg_no(item.getCountry());
         form.setDistrict(item.getDistrict());
         form.setUc(item.getUc());
         form.setVillage(item.getVillage());
@@ -278,7 +273,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        AppUtilsKt.contextEndActivity(this);
+        AppUtilsKt.openSectionEndingActivity(this, false);
     }
 
 
@@ -292,19 +287,4 @@ public class Section04WSFPActivity extends AppCompatActivity {
 
     }
 
-    /*@Override
-    public void endSecActivity(boolean flag) {
-        SaveDraft();
-        if (UpdateDB()) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
-/*    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
-    }*/
 }

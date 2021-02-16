@@ -18,6 +18,18 @@
         android:background="@drawable/app_bg_gray"
         android:orientation="vertical">
 
+        <!-- CUSTOM TOOLBAR -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:layoutDirection="ltr"
+            android:textAlignment="center"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/white" />
+
         <TextView
             android:id="@+id/testing"
             android:layout_width="match_parent"
@@ -363,7 +375,7 @@
                                     android:layout_gravity="center_horizontal"
                                     android:background="@color/colorPrimaryDark"
                                     android:drawablePadding="12dp"
-                                    android:text="@string/ChildFollowup"
+                                    android:text="@string/childFollowup"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                                     android:textColor="@color/white"
                                     app:drawableStartCompat="@drawable/open_form" />

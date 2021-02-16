@@ -23,8 +23,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 
-import edu.aku.hassannaqvi.casi_register.adapter.SyncListAdapter;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
+import edu.aku.hassannaqvi.casi_register.adapters.SyncListAdapter;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.models.SyncModel;
 
 import static android.content.Context.MODE_PRIVATE;

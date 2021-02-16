@@ -28,7 +28,11 @@ interface GeneralDataSource {
     /*
     * For Section Selected ChildList
     * */
-//    suspend fun getSelectedChildList(cluster: String, hhno: String, uuid: String): ArrayList<ChildInformation>
+    suspend fun getSelectedServerChildList(country: String, identification: Identification): ArrayList<ChildFollowup>
+
+    suspend fun getSelectedChildLocalFormList(country: String, identification: Identification): ArrayList<ChildFollowup>
+
+    suspend fun getLocalDBFollowupFormList(country: String, identification: Identification,reg_no:String, followupType: String): Form?
     /*
     * For SectionH1 End
     * */

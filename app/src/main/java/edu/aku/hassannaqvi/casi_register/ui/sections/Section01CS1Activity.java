@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,13 +34,13 @@ import java.util.Objects;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.core.ZScore;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs1Binding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
-import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
+import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
 import edu.aku.hassannaqvi.casi_register.utils.datecollection.AgeModel;
@@ -105,8 +104,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setDeviceID(MainApp.appInfo.getDeviceID());
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
+        form.setReg_no(bi.cs10.getText().toString());
 
-        form.setCountry(MainApp.mainInfo.getCountry());
         form.setDistrict(MainApp.mainInfo.getDistrict());
         form.setUc(MainApp.mainInfo.getUc());
         form.setVillage(MainApp.mainInfo.getVillage());
@@ -114,6 +113,11 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setFormType(CHILD_TYPE);
 
         form.setLocalDate(localDate);
+
+        form.setCountryCode(MainApp.mainInfo.getCountry_code());
+        form.setDistrictCode(MainApp.mainInfo.getDistrict_code());
+        form.setUcCode(MainApp.mainInfo.getUc_code());
+        form.setVillageCode(MainApp.mainInfo.getVillage_code());
 
         form.setCs01(MainApp.mainInfo.getCountry_code());
         form.setCs01a(MainApp.mainInfo.getRegion_code());
@@ -499,7 +503,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         saveDraft();
         if (updateDB()) {
             finish();
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, EndingActivity.class));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }

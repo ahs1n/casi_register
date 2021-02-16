@@ -21,7 +21,7 @@ import edu.aku.hassannaqvi.casi_register.base.repository.GeneralRepository
 import edu.aku.hassannaqvi.casi_register.base.repository.ResponseStatus.*
 import edu.aku.hassannaqvi.casi_register.base.viewmodel.LoginViewModel
 import edu.aku.hassannaqvi.casi_register.core.MainApp
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityLoginBinding
 import edu.aku.hassannaqvi.casi_register.models.Users
 import edu.aku.hassannaqvi.casi_register.ui.MainActivity
@@ -62,6 +62,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
                     approval = true
                     MainApp.user = it.data
                     MainApp.admin = it.data!!.userName.contains("@")
+                    finish()
                     gotoActivity(MainActivity::class.java)
                 }
                 ERROR -> {
@@ -204,8 +205,9 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * */
     override fun settingCountryCode() {
 
-        if (SharedStorage.getCountryCode(this) == 0 || SharedStorage.getCountryCode(this) == 1)
-            bi.countrySwitch.isChecked = true
+        bi.countrySwitch.isChecked = SharedStorage.getCountryCode(this) == 0 || SharedStorage.getCountryCode(this) == 1
+        if (SharedStorage.getCountryCode(this) == 0)
+            SharedStorage.setCountryCode(this@LoginActivity, 1)
 
         bi.countrySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) 1 else 3)

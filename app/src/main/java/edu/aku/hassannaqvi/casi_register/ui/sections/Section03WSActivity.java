@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -23,12 +22,12 @@ import java.util.Map;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection03WsBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
-import edu.aku.hassannaqvi.casi_register.ui.MainActivity;
+import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
@@ -36,6 +35,7 @@ import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
+import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 
 public class Section03WSActivity extends AppCompatActivity {
 
@@ -86,6 +86,7 @@ public class Section03WSActivity extends AppCompatActivity {
         SaveDraft();
         if (UpdateDB()) {
             finish();
+            gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
@@ -124,7 +125,7 @@ public class Section03WSActivity extends AppCompatActivity {
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
 
-        form.setCountry(MainApp.mainInfo.getCountry());
+        form.setReg_no(MainApp.mainInfo.getCountry());
         form.setDistrict(MainApp.mainInfo.getDistrict());
         form.setUc(MainApp.mainInfo.getUc());
         form.setVillage(MainApp.mainInfo.getVillage());
@@ -137,11 +138,10 @@ public class Section03WSActivity extends AppCompatActivity {
         form.setWs04(MainApp.mainInfo.getUc_code());
         form.setWs05(MainApp.mainInfo.getVillage_code());
 
-        /*form.setWs01(bi.ws01.getText().toString());
-
-        form.setWs01a(bi.ws01a.getText().toString());
-
-        form.setWs01b(bi.ws01b.getText().toString());*/
+        form.setCountryCode(MainApp.mainInfo.getCountry_code());
+        form.setDistrictCode(MainApp.mainInfo.getDistrict_code());
+        form.setUcCode(MainApp.mainInfo.getUc_code());
+        form.setVillageCode(MainApp.mainInfo.getVillage_code());
 
         form.setWs02(bi.ws0201.isChecked() ? "1"
                 : bi.ws0202.isChecked() ? "2"
@@ -149,10 +149,6 @@ public class Section03WSActivity extends AppCompatActivity {
                 : "-1");
 
         form.setWs03(facilityMap.get(bi.ws03.getSelectedItem().toString()));
-
-        /*form.setWs04(bi.ws04.getText().toString());
-
-        form.setWs05(bi.ws05.getText().toString());*/
 
         form.setWs05a(bi.ws05a.getText().toString());
 
@@ -284,7 +280,7 @@ public class Section03WSActivity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        AppUtilsKt.contextEndActivity(this);
+        AppUtilsKt.openSectionEndingActivity(this, false);
     }
 
 
@@ -299,19 +295,4 @@ public class Section03WSActivity extends AppCompatActivity {
 
     }
 
-    /*@Override
-    public void endSecActivity(boolean flag) {
-        SaveDraft();
-        if (UpdateDB()) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
-/*    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
-    }*/
 }

@@ -26,7 +26,7 @@
     <string name="uc">UC</string>
     <string name="cityVillage">City / Village</string>
     <string name="childScreening">Child Screening</string>
-    <string name="ChildFollowup">Child Follow-up</string>
+    <string name="childFollowup">Child Follow-up</string>
     <string name="wraScreening">WRAs Screening</string>
     <string name="wraFollowup">WRAs Follow-up</string>
     <string name="btnSave">Save</string>
@@ -40,25 +40,10 @@
     <string name="btnDownloadData">Download Data</string>
 
     <!--EndActivity Strings-->
-    <string name="elc7">گھراڻي جي انٽريو جو نتيجو (جيڪڏھن انٽريو مڪمل نه  ٿيو ھجي ته  صحيع آپشن لاءِ سپروائزر سان مشورو ڪريو)</string>
-    <string name="elc701">مڪمل ٿيو </string>
-    <string name="elc702">گھر ۾ ڪوبه ماڻھو يا صحيع انٽريو ڏيڻ وارو ماڻھو موجود نه  آھي </string>
-    <string name="elc703">گھراڻي جا فرد ڊگھي عرصي لاءِ گھر مان غير حاضر ھئا </string>
-    <string name="elc704">انٽرويو ڏيڻ کان انڪار ڪيو ويو </string>
-    <string name="elc705">گھر خالي آھي غير رھائشي آھي </string>
-    <string name="elc706">گھر نه  مليو </string>
-    <string name="elc707">5 سالن کان گهٽ عمر جو ٻار نه آهي </string>
-    <string name="elc708">گھر عارضي طور بند آھي </string>
-    <string name="elc796"> ٻيو ڪجهه (وضاحت ڪريو)</string>
-    <string name="elc801">گھر ڀاتين جو ٽوٽل تعداد</string>
-    <string name="elc802">مرد</string>
-    <string name="elc803">عورتون</string>
-    <string name="elc804"> 0 کان 28 ڏينهن جا نوان ڄاول ٻار </string>
-    <string name="elc805">هڪ مهيني کان 5 سالن جا ٻار </string>
-    <string name="elc806"> 5 کان 14 سالن جا ٻار </string>
-    <string name="elc807"> 15 کان 49 سالن  واريون غير شادي شده عورتون </string>
-    <string name="elc808"> 15 کان 49 سالن  واريون شادي شده عورتون </string>
-
+    <string name="elc7"> Note: Interview Status </string>
+    <string name="elc701"> Complete </string>
+    <string name="elc702"> Refused </string>
+    <string name="elc796"> Other (Specify) </string>
 
     <string name="cr_tittle">Central Asia Stunting Initiative
 Growth Monitoring - Screening Log for Children Under 5

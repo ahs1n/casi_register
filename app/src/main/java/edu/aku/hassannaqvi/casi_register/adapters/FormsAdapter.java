@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.casi_register.adapter;
+package edu.aku.hassannaqvi.casi_register.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 import edu.aku.hassannaqvi.casi_register.R;
-import edu.aku.hassannaqvi.casi_register.core.DatabaseHelper;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 
 /**

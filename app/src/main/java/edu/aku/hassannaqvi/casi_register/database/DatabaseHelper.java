@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.casi_register.core;
+package edu.aku.hassannaqvi.casi_register.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,11 +18,16 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
+import edu.aku.hassannaqvi.casi_register.core.MainApp;
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup.ChildTable;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
+import edu.aku.hassannaqvi.casi_register.models.Identification;
 import edu.aku.hassannaqvi.casi_register.models.Users;
 import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
@@ -33,6 +39,7 @@ import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FOLLOW_UP_LIST;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
@@ -57,6 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ZSTANDARD);
         db.execSQL(SQL_CREATE_HEALTHFACILITY);
+        db.execSQL(SQL_CREATE_FOLLOW_UP_LIST);
     }
 
     @Override
@@ -235,7 +243,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_USERNAME, form.getUsername());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysdate());
         values.put(FormsTable.COLUMN_COUNTRY_CODE, form.getCountryCode());
-        values.put(FormsTable.COLUMN_COUNTRY, form.getCountry());
+        values.put(FormsTable.COLUMN_REG_NO, form.getReg_no());
         values.put(FormsTable.COLUMN_DISTRICT_CODE, form.getDistrictCode());
         values.put(FormsTable.COLUMN_DISTRICT, form.getDistrict());
         values.put(FormsTable.COLUMN_UC_CODE, form.getUcCode());
@@ -339,7 +347,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_REG_NO,
                 FormsTable.COLUMN_DISTRICT_CODE,
                 FormsTable.COLUMN_DISTRICT,
                 FormsTable.COLUMN_UC_CODE,
@@ -404,7 +412,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_REG_NO,
                 FormsTable.COLUMN_DISTRICT_CODE,
                 FormsTable.COLUMN_DISTRICT,
                 FormsTable.COLUMN_UC_CODE,
@@ -471,7 +479,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_REG_NO,
                 FormsTable.COLUMN_DISTRICT_CODE,
                 FormsTable.COLUMN_DISTRICT,
                 FormsTable.COLUMN_UC_CODE,
@@ -514,7 +522,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
                 form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
-                form.setCountry(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY)));
+                form.setReg_no(c.getString(c.getColumnIndex(FormsTable.COLUMN_REG_NO)));
                 form.setDistrictCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE)));
                 form.setDistrict(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT)));
                 form.setUcCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC_CODE)));
@@ -692,7 +700,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_REG_NO,
                 FormsTable.COLUMN_DISTRICT_CODE,
                 FormsTable.COLUMN_DISTRICT,
                 FormsTable.COLUMN_UC_CODE,
@@ -734,7 +742,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
                 form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
-                form.setCountry(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY)));
+                form.setReg_no(c.getString(c.getColumnIndex(FormsTable.COLUMN_REG_NO)));
                 form.setDistrictCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE)));
                 form.setDistrict(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT)));
                 form.setUcCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC_CODE)));
@@ -768,7 +776,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_REG_NO,
                 FormsTable.COLUMN_DISTRICT_CODE,
                 FormsTable.COLUMN_DISTRICT,
                 FormsTable.COLUMN_UC_CODE,
@@ -806,7 +814,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
                 form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
-                form.setCountry(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY)));
+                form.setReg_no(c.getString(c.getColumnIndex(FormsTable.COLUMN_REG_NO)));
                 form.setDistrictCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE)));
                 form.setDistrict(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT)));
                 form.setUcCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC_CODE)));
@@ -898,13 +906,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Get UC, DISTRICT, ENUMBLOCK and COUNTRY
      * */
 
-    public List<Villages> getCountry() {
+    public List<Villages> getCountry(String country_id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
-        String whereClause = null;
-        String[] whereArgs = null;
+        String whereClause = VillagesTable.COLUMN_COUNTRY_CODE + "=?";
+        String[] whereArgs = new String[]{country_id};
         String groupBy = null;
         String having = null;
 
@@ -981,7 +989,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_REG_NO,
                 FormsTable.COLUMN_DISTRICT_CODE,
                 FormsTable.COLUMN_DISTRICT,
                 FormsTable.COLUMN_UC_CODE,
@@ -1052,7 +1060,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_REG_NO,
                 FormsTable.COLUMN_DISTRICT_CODE,
                 FormsTable.COLUMN_DISTRICT,
                 FormsTable.COLUMN_UC_CODE,
@@ -1150,7 +1158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_USERNAME,
                 FormsTable.COLUMN_SYSDATE,
                 FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_COUNTRY,
+                FormsTable.COLUMN_REG_NO,
                 FormsTable.COLUMN_DISTRICT_CODE,
                 FormsTable.COLUMN_DISTRICT,
                 FormsTable.COLUMN_UC_CODE,
@@ -1299,17 +1307,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<String> getWHLMS(Double height, int gender, String catA) {
         SQLiteDatabase db = this.getReadableDatabase();
-
         Cursor c = db.rawQuery("SELECT l,m,s " +
-                        "FROM " + ZScoreTable.TABLE_NAME + " " +
-                        "WHERE " + ZScoreTable.COLUMN_MEASURE + "=? " +
-                        "AND "
-                        + ZScoreTable.COLUMN_SEX + "=?" +
-                        "AND "
-                        + ZScoreTable.COLUMN_CAT + "=?"
+                        "FROM " + ZScoreTable.TABLE_NAME +
+                        " WHERE " + ZScoreTable.COLUMN_MEASURE + "=?" +
+                        " AND " + ZScoreTable.COLUMN_SEX + "=?" +
+                        " AND " + ZScoreTable.COLUMN_CAT + "=?"
                 ,
                 new String[]{String.valueOf(height), String.valueOf(gender), catA});
-        List<String> whlms = null;
+        List<String> whlms = new ArrayList<>();
         Log.d(TAG, "getWHLMS: height " + height);
         Log.d(TAG, "getWHLMS: " + c.getCount());
         while (c.moveToNext()) {
@@ -1319,6 +1324,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             whlms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_S)));
 
         }
+        c.close();
         return whlms;
     }
 
@@ -1450,5 +1456,107 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             mCursor.close();
         }
         return count;
+    }
+
+    public ArrayList<ChildFollowup> getChildrenFollowUpFromDB(@NotNull String country, @NotNull Identification identification) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = ChildTable.COLUMN_CS01 + "=? AND " +
+                ChildTable.COLUMN_CS01A + "=? AND " +
+                ChildTable.COLUMN_CS01B + "=? AND " +
+                ChildTable.COLUMN_CS04 + "=? AND " +
+                ChildTable.COLUMN_CS05 + "=? ";
+        String[] whereArgs = {country, identification.getRegion(), identification.getDistrict(), identification.getUc(), identification.getVillage()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = ChildTable.COLUMN_CS01 + " ASC";
+        ArrayList<ChildFollowup> allEB = new ArrayList<>();
+        try {
+            c = db.query(
+                    ChildTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allEB.add(new ChildFollowup().hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                if (!db.isOpen()) db.close();
+            }
+        }
+        return allEB;
+    }
+
+    public ArrayList<ChildFollowup> getChildrenFollowupFromFormDB(@NotNull String country, @NotNull Identification identification) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = FormsTable.COLUMN_COUNTRY_CODE + "=? AND " +
+//                FormsTable.COLUMN_REGION_CODE + "=? AND " +
+                FormsTable.COLUMN_DISTRICT_CODE + "=? AND " +
+                FormsTable.COLUMN_UC_CODE + "=? AND " +
+                FormsTable.COLUMN_VILLAGE_CODE + "=? AND " +
+                FormsTable.COLUMN_FORM_TYPE + "=? AND " +
+                FormsTable.COLUMN_ISTATUS + "=? ";
+        String[] whereArgs = {country, identification.getDistrict(), identification.getUc(), identification.getVillage(), CONSTANTS.CHILD_TYPE, "1"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsTable.COLUMN_VILLAGE_CODE + " ASC";
+        ArrayList<ChildFollowup> allEB = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allEB.add(new ChildFollowup().hydrateForm(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                if (!db.isOpen()) db.close();
+            }
+        }
+        return allEB;
+    }
+
+    public Form getFollowUpFormStatus(@NotNull String country, @NotNull Identification identification, String reg_no, String followUpType) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Form form = null;
+        Cursor mCursor = db.rawQuery(
+                String.format("select * from %s WHERE %s =? AND %s =? AND %s =? AND %s =? AND %s =? AND %s =? AND %s =?",
+                        FormsTable.TABLE_NAME,
+                        FormsTable.COLUMN_COUNTRY_CODE,
+                        FormsTable.COLUMN_DISTRICT_CODE,
+                        FormsTable.COLUMN_UC_CODE,
+                        FormsTable.COLUMN_VILLAGE_CODE,
+                        FormsTable.COLUMN_REG_NO,
+                        FormsTable.COLUMN_FORM_TYPE,
+                        FormsTable.COLUMN_ISTATUS
+                ),
+                new String[]{country, identification.getDistrict(), identification.getUc(), identification.getVillage(), reg_no, followUpType, "1"}, null);
+        if (mCursor != null && mCursor.moveToFirst()) {
+            form = new Form().Hydrate(mCursor);
+            mCursor.close();
+        }
+        return form;
     }
 }
