@@ -595,16 +595,11 @@
                             android:text="@string/Q_fw12a" />
                     </RelativeLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <EditText
                         android:id="@+id/fw12a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/fw12a"
-                        android:inputType="number"
-                        android:maxLength="11"
-                        app:maxValue="99999999999"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:maxLength="11" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

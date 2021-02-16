@@ -675,16 +675,11 @@
                             android:text="@string/fc16a" />
                     </LinearLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <EditText
                         android:id="@+id/fc16a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/fc16a"
-                        android:inputType="number"
-                        android:maxLength="11"
-                        app:maxValue="99999999999"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:maxLength="11" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

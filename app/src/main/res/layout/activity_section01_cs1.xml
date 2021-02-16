@@ -724,16 +724,12 @@
                             android:text="@string/Q_cs12a" />
                     </RelativeLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <EditText
                         android:id="@+id/cs12a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/cs12a"
-                        android:inputType="number"
-                        android:maxLength="11"
-                        app:maxValue="99999999999"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:maxLength="11" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
