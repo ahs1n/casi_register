@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -14,9 +15,15 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
@@ -26,17 +33,23 @@ import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection02CsfpBinding;
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
 import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 
 public class Section02CSFPActivity extends AppCompatActivity {
 
     ActivitySection02CsfpBinding bi;
     ChildFollowup item;
+    List<String> facilityName;
+    Map<String, String> facilityMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         item = (ChildFollowup) getIntent().getSerializableExtra(CONSTANTS.ITEM_DATA);
         bi.setChildInformation(item);
         setupSkips();
+        setUIContent();
     }
 
 
@@ -149,6 +163,36 @@ public class Section02CSFPActivity extends AppCompatActivity {
     }
 
 
+    private void setUIContent() {
+
+        /*
+         * Populating HealthFacilities
+         * */
+        facilityName = new ArrayList<String>() {
+            {
+                add("....");
+            }
+        };
+        facilityMap = new HashMap<>();
+        for (HealthFacility item : appInfo.dbHelper.getFacility(mainInfo.getRegion_code())) {
+            facilityName.add(item.getHealth_facility());
+            facilityMap.put(item.getHealth_facility(), item.getHf_code());
+        }
+        bi.fc03.setAdapter(new ArrayAdapter<>(Section02CSFPActivity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
+
+        /*
+         * Implementing child registration no
+         * */
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
+        if (!regID.equals(StringUtils.EMPTY)) {
+            String substring = regID.substring(regID.length() - 4);
+            String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
+            bi.fc10.setText(result);
+        } else bi.fc10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
+
+    }
+
+
     private void SaveDraft() {
 
         form = new Form();
@@ -189,7 +233,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
                 : bi.fc0203.isChecked() ? "3"
                 : "-1");
 
-        form.setFc03(bi.fc03.getText().toString());
+        form.setFc03(facilityMap.get(bi.fc03.getSelectedItem().toString()));
 
         /*form.setFc04(bi.fc04.getText().toString());
 
