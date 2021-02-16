@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,9 +10,15 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
@@ -19,18 +26,24 @@ import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection04WsfpBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
 import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 
 public class Section04WSFPActivity extends AppCompatActivity {
 
     ActivitySection04WsfpBinding bi;
     Villages item;
+    List<String> facilityName;
+    Map<String, String> facilityMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +51,36 @@ public class Section04WSFPActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section04_wsfp);
         bi.setCallback(this);
         setListeners();
-        setupContent();
+        setUIContent();
     }
 
-    private void setupContent() {
+    private void setUIContent() {
+
+        /*
+         * Populating HealthFacilities
+         * */
+        facilityName = new ArrayList<String>() {
+            {
+                add("....");
+            }
+        };
+        facilityMap = new HashMap<>();
+        for (HealthFacility item : appInfo.dbHelper.getFacility(mainInfo.getRegion_code())) {
+            facilityName.add(item.getHealth_facility());
+            facilityMap.put(item.getHealth_facility(), item.getHf_code());
+        }
+        bi.fw03.setAdapter(new ArrayAdapter<>(Section04WSFPActivity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
+
+        /*
+         * Implementing child registration no
+         * */
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
+        if (!regID.equals(StringUtils.EMPTY)) {
+            String substring = regID.substring(regID.length() - 4);
+            String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
+            bi.fw10.setText(result);
+        } else bi.fw10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
+
     }
 
 
@@ -113,7 +152,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
                 : bi.fw0203.isChecked() ? "3"
                 : "-1");
 
-        form.setFw03(bi.fw03.getText().toString());
+        form.setFw03(facilityMap.get(bi.fw03.getSelectedItem().toString()));
 
         /*form.setFw04(bi.fw04.getText().toString());
 
