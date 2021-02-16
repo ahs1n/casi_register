@@ -394,6 +394,31 @@ public class Section02CSFPActivity extends AppCompatActivity {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
+    /*
+     * Click events
+     * */
+/*    public void CheckZScore(View view) {
+        if (!bi.fc1701.getText().toString().equals("")
+                && !bi.fc1702.getText().toString().equals("")
+                && !bi.fc22.getText().toString().equals("")
+                && !bi.fc23.getText().toString().equals("")
+                && (bi.cs1301.isChecked() || bi.cs1302.isChecked())
+        ) {
+            int ageinmonths = Integer.parseInt(bi.fc1702.getText().toString()) + Integer.parseInt(bi.fc1701.getText().toString());
+            int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
+            int gender = bi.cs1301.isChecked() ? 1 : bi.cs1302.isChecked() ? 2 : 0;
+
+            ZScore zs = new ZScore(ageindays, gender);
+            double HLAZ = zs.getZScore_HLAZ(bi.fc22.getText().toString());
+            double WAZ = zs.getZScore_WAZ(bi.fc23.getText().toString());
+            double WHZ = zs.getZScore_WHZ(bi.fc23.getText().toString(), bi.fc22.getText().toString());
+
+            bi.ZScore.setText("HLAZ: " + HLAZ + " \r\nWAZ: " + WAZ + " \r\nWHZ: " + WHZ);
+        } else {
+
+            Toast.makeText(this, "Z-Score cannot be evaluated with missing values.", Toast.LENGTH_SHORT).show();
+        }
+    }*/
 
     public void BtnEnd() {
         AppUtilsKt.openSectionEndingActivity(this, false);
