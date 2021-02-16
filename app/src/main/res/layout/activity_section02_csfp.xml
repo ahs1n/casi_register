@@ -1323,11 +1323,41 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/fc2601" />
 
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/fc2701"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:tag="fc2601"
+                                android:text='@{fc2601.checked ? fc2701.getText().toString() : ""}'
+                                android:visibility='@{fc2601.checked? View.VISIBLE : View.GONE}'
+                                app:maxValue="90"
+                                app:minValue="10"
+                                app:type="range" />
+
                             <CheckBox
                                 android:id="@+id/fc2602"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/fc2602" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/fc2702"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:tag="fc2602"
+                                android:text='@{fc2602.checked ? fc2702.getText().toString() : ""}'
+                                android:visibility='@{fc2602.checked? View.VISIBLE : View.GONE}'
+                                app:maxValue="90"
+                                app:minValue="10"
+                                app:type="range" />
 
                             <CheckBox
                                 android:id="@+id/fc2603"
@@ -1335,11 +1365,41 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/fc2603" />
 
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/fc2704"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:tag="fc2603"
+                                android:text='@{fc2603.checked ? fc2704.getText().toString() : ""}'
+                                android:visibility='@{fc2603.checked? View.VISIBLE : View.GONE}'
+                                app:maxValue="90"
+                                app:minValue="10"
+                                app:type="range" />
+
                             <CheckBox
                                 android:id="@+id/fc2604"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/fc2604" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/fc2703"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:tag="fc2604"
+                                android:text='@{fc2604.checked ? fc2703.getText().toString() : ""}'
+                                android:visibility='@{fc2604.checked? View.VISIBLE : View.GONE}'
+                                app:maxValue="90"
+                                app:minValue="10"
+                                app:type="range" />
 
                         </LinearLayout>
 
@@ -1354,145 +1414,101 @@
                 </androidx.cardview.widget.CardView>
 
                 <!-- fc27  Title   -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVfc27"
-                    style="@style/cardView">
+                <!--                <androidx.cardview.widget.CardView
+                                    android:id="@+id/fldGrpCVfc27"
+                                    style="@style/cardView">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/bottom"
+                                            android:orientation="horizontal">
 
-                            <TextView
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/Q_fc27" />
+                                            <TextView
+                                                style="@style/quesNum"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:text="@string/Q_fc27" />
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/fc27" />
-                        </LinearLayout>
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="1"
+                                                android:text="@string/fc27" />
+                                        </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
 
-                                <TextView
-                                    style="@style/textView"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="3"
-                                    android:text="@string/fc2701" />
+                                                <TextView
+                                                    style="@style/textView"
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="3"
+                                                    android:text="@string/fc2701" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/fc2701"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:hint="##"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="90"
-                                    app:minValue="10"
-                                    app:type="range" />
-                            </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                            </LinearLayout>
 
-                                <TextView
-                                    style="@style/textView"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="3"
-                                    android:text="@string/fc2702" />
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/fc2702"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:hint="##"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="90"
-                                    app:minValue="10"
-                                    app:type="range" />
-                            </LinearLayout>
+                                                <TextView
+                                                    style="@style/textView"
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="3"
+                                                    android:text="@string/fc2702" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <TextView
-                                    style="@style/textView"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="3"
-                                    android:text="@string/fc2703" />
+                                            </LinearLayout>
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/fc2703"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:hint="##"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="90"
-                                    app:minValue="10"
-                                    app:type="range" />
-                            </LinearLayout>
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                                <TextView
+                                                    style="@style/textView"
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="3"
+                                                    android:text="@string/fc2703" />
 
-                                <TextView
-                                    style="@style/textView"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="3"
-                                    android:text="@string/fc2704" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/fc2704"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:hint="##"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="90"
-                                    app:minValue="10"
-                                    app:type="range" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
+
+                                                <TextView
+                                                    style="@style/textView"
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="3"
+                                                    android:text="@string/fc2704" />
+
+
+                                            </LinearLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>-->
 
                 <!-- fc28  Radio   -->
                 <androidx.cardview.widget.CardView
