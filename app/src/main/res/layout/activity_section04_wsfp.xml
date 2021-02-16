@@ -283,6 +283,13 @@
                         android:layout_height="wrap_content"
                         android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:hint="@string/fw07" />
+
+                    <CheckBox
+                        android:id="@+id/fw07User"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="-1"
+                        android:text="Same as Login user" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
