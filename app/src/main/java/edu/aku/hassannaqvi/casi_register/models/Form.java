@@ -3679,7 +3679,7 @@ public class Form extends LiveData<Form> {
         }
     }
 
-    private void wSHydrate(String string) {
+    public void wSHydrate(String string) {
         if (string != null) {
 
             try {

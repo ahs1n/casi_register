@@ -31,7 +31,7 @@ import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.MWRA_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
@@ -130,7 +130,7 @@ public class Section03WSActivity extends AppCompatActivity {
         form.setUc(MainApp.mainInfo.getUc());
         form.setVillage(MainApp.mainInfo.getVillage());
 
-        form.setFormType(MWRA_TYPE);
+        form.setFormType(WRA_TYPE);
 
         form.setWs01(MainApp.mainInfo.getCountry_code());
         form.setWs01a(MainApp.mainInfo.getRegion_code());

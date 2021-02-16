@@ -24,6 +24,8 @@ import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup.ChildTable;
+import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
+import edu.aku.hassannaqvi.casi_register.models.WraFollowup.WraTable;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
@@ -39,12 +41,13 @@ import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FOLLOW_UP_LIST;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_CHILD_FOLLOW_UP_LIST;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_WRA_FOLLOW_UP_LIST;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZSTANDARD;
 
 
@@ -64,7 +67,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ZSTANDARD);
         db.execSQL(SQL_CREATE_HEALTHFACILITY);
-        db.execSQL(SQL_CREATE_FOLLOW_UP_LIST);
+        db.execSQL(SQL_CREATE_CHILD_FOLLOW_UP_LIST);
+        db.execSQL(SQL_CREATE_WRA_FOLLOW_UP_LIST);
     }
 
     @Override
@@ -1497,6 +1501,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allEB;
     }
 
+    public ArrayList<WraFollowup> getWraFollowUpFromDB(@NotNull String country, @NotNull Identification identification) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = WraTable.COLUMN_WS01 + "=? AND " +
+                WraTable.COLUMN_WS01A + "=? AND " +
+                WraTable.COLUMN_WS01B + "=? AND " +
+                WraTable.COLUMN_WS04 + "=? AND " +
+                WraTable.COLUMN_WS05 + "=? ";
+        String[] whereArgs = {country, identification.getRegion(), identification.getDistrict(), identification.getUc(), identification.getVillage()};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = WraTable.COLUMN_WS01 + " ASC";
+        ArrayList<WraFollowup> allEB = new ArrayList<>();
+        try {
+            c = db.query(
+                    WraTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allEB.add(new WraFollowup().hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                if (!db.isOpen()) db.close();
+            }
+        }
+        return allEB;
+    }
+
     public ArrayList<ChildFollowup> getChildrenFollowupFromFormDB(@NotNull String country, @NotNull Identification identification) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1526,6 +1569,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 allEB.add(new ChildFollowup().hydrateForm(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                if (!db.isOpen()) db.close();
+            }
+        }
+        return allEB;
+    }
+
+    public ArrayList<WraFollowup> getWraFollowupFromFormDB(@NotNull String country, @NotNull Identification identification) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = FormsTable.COLUMN_COUNTRY_CODE + "=? AND " +
+//                FormsTable.COLUMN_REGION_CODE + "=? AND " +
+                FormsTable.COLUMN_DISTRICT_CODE + "=? AND " +
+                FormsTable.COLUMN_UC_CODE + "=? AND " +
+                FormsTable.COLUMN_VILLAGE_CODE + "=? AND " +
+                FormsTable.COLUMN_FORM_TYPE + "=? AND " +
+                FormsTable.COLUMN_ISTATUS + "=? ";
+        String[] whereArgs = {country, identification.getDistrict(), identification.getUc(), identification.getVillage(), CONSTANTS.WRA_TYPE, "1"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsTable.COLUMN_VILLAGE_CODE + " ASC";
+        ArrayList<WraFollowup> allEB = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allEB.add(new WraFollowup().hydrateForm(c));
             }
         } finally {
             if (c != null) {

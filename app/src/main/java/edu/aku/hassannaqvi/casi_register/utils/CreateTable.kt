@@ -7,6 +7,7 @@ import edu.aku.hassannaqvi.casi_register.models.HealthFacility
 import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable
 import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable
 import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable
+import edu.aku.hassannaqvi.casi_register.models.WraFollowup
 
 object CreateTable {
     const val DATABASE_NAME = "casi_register.db"
@@ -91,7 +92,7 @@ object CreateTable {
             HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE + " TEXT " +
             ");"
 
-    const val SQL_CREATE_FOLLOW_UP_LIST = "CREATE TABLE " + ChildFollowup.ChildTable.TABLE_NAME + " (" +
+    const val SQL_CREATE_CHILD_FOLLOW_UP_LIST = "CREATE TABLE " + ChildFollowup.ChildTable.TABLE_NAME + " (" +
             ChildFollowup.ChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             ChildFollowup.ChildTable.COLUMN_LUID + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS01 + " TEXT, " +
@@ -107,5 +108,20 @@ object CreateTable {
             ChildFollowup.ChildTable.COLUMN_CS11A + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS12 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS13 + " TEXT " +
+            ");"
+
+    const val SQL_CREATE_WRA_FOLLOW_UP_LIST = "CREATE TABLE " + WraFollowup.WraTable.TABLE_NAME + " (" +
+            WraFollowup.WraTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            WraFollowup.WraTable.COLUMN_LUID + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS01 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS01A + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS01B + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS09 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS04 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS05 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS08 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS10 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS11 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS12 + " TEXT " +
             ");"
 }

@@ -19,9 +19,9 @@ class CONSTANTS {
         const val FSTATUS_END_FLAG = "fstatus_end_flag"
 
         //TYPE_COUNTERS
-        const val MWRA_TYPE = "M101"
+        const val WRA_TYPE = "M101"
         const val CHILD_TYPE = "C101"
-        const val MWRA_FOLLOWUP_TYPE = "M102"
+        const val WRA_FOLLOWUP_TYPE = "M102"
         const val CHILD_FOLLOWUP_TYPE = "C102"
 
     }
