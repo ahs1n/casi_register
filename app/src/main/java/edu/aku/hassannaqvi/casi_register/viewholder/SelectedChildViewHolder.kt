@@ -25,7 +25,7 @@ class SelectedChildViewHolder(private val bi: ItemChildLayoutBinding) :
         bi.childId.text = "ID-".plus(item.cs10)
         bi.resName.text = item.cs11a.convertStringToUpperCase().shortStringLength()
         bi.name.text = item.cs11.convertStringToUpperCase().shortStringLength()
-        val imageRes: Int = if (item.cs13 == "1") R.drawable.ctr_childboy else R.drawable.ctr_childgirl
+        val imageRes: Int = if (item.cs13 == "1") R.drawable.ic_boy else R.drawable.ic_girl
         bi.scrDate.text = item.cs08
         val flagImage: Int
         if (item.childTableDataExist) {

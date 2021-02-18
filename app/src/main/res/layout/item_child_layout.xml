@@ -55,19 +55,21 @@
                             android:paddingStart="@dimen/_12sdp"
                             android:paddingEnd="@dimen/_1sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ctr_childboy" />
+                            android:src="@drawable/ic_boy" />
 
                         <TextView
                             android:id="@+id/childId"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/childImg"
-                            android:layout_marginTop="-22dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginTop="-11dp"
+                            android:layout_marginBottom="5dp"
                             android:padding="@dimen/_2sdp"
                             android:text="ID-1000001"
                             android:textAlignment="textEnd"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorPrimaryLight"
                             android:textSize="21sp"
                             android:textStyle="bold" />
                     </RelativeLayout>
