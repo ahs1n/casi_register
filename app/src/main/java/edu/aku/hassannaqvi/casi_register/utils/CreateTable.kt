@@ -107,7 +107,8 @@ object CreateTable {
             ChildFollowup.ChildTable.COLUMN_CS11 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS11A + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS12 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS13 + " TEXT " +
+            ChildFollowup.ChildTable.COLUMN_CS13 + " TEXT, " +
+            ChildFollowup.ChildTable.COLUMN_FUPDT + " TEXT " +
             ");"
 
     const val SQL_CREATE_WRA_FOLLOW_UP_LIST = "CREATE TABLE " + WraFollowup.WraTable.TABLE_NAME + " (" +
@@ -122,6 +123,7 @@ object CreateTable {
             WraFollowup.WraTable.COLUMN_WS08 + " TEXT, " +
             WraFollowup.WraTable.COLUMN_WS10 + " TEXT, " +
             WraFollowup.WraTable.COLUMN_WS11 + " TEXT, " +
-            WraFollowup.WraTable.COLUMN_WS12 + " TEXT " +
+            WraFollowup.WraTable.COLUMN_WS12 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_FUPDT + " TEXT " +
             ");"
 }

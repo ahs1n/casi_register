@@ -10,7 +10,7 @@ import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.adapters.SelectedChildListAdapter
 import edu.aku.hassannaqvi.casi_register.base.repository.GeneralRepository
 import edu.aku.hassannaqvi.casi_register.base.repository.ResponseStatus
-import edu.aku.hassannaqvi.casi_register.base.viewmodel.SelectedChildrenListViewModel
+import edu.aku.hassannaqvi.casi_register.base.viewmodel.FollowupViewModel
 import edu.aku.hassannaqvi.casi_register.core.MainApp
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
@@ -25,12 +25,12 @@ import java.util.*
 class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
 
     lateinit var adapter: SelectedChildListAdapter
-    lateinit var viewModel: SelectedChildrenListViewModel
+    lateinit var viewModel: FollowupViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        viewModel = obtainViewModel(activity as SelectedChildrenListActivity, SelectedChildrenListViewModel::class.java, GeneralRepository(DatabaseHelper(activity)))
+        viewModel = obtainViewModel(activity as SelectedChildrenListActivity, FollowupViewModel::class.java, GeneralRepository(DatabaseHelper(activity)))
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 

@@ -13,6 +13,7 @@ import edu.aku.hassannaqvi.casi_register.databinding.ItemChildLayoutBinding
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
 import edu.aku.hassannaqvi.casi_register.utils.convertStringToUpperCase
 import edu.aku.hassannaqvi.casi_register.utils.shortStringLength
+import org.apache.commons.lang3.StringUtils
 
 /*
 * @author Ali Azaz Alam
@@ -28,8 +29,8 @@ class SelectedChildViewHolder(private val bi: ItemChildLayoutBinding) :
         val imageRes: Int = if (item.cs13 == "1") R.drawable.ic_boy else R.drawable.ic_girl
         bi.scrDate.text = item.cs08
         val flagImage: Int
-        if (item.childTableDataExist) {
-            bi.parentLayout.isEnabled = false
+        if (item.fupDt != StringUtils.EMPTY) {
+//            bi.parentLayout.isEnabled = false
             flagImage = R.drawable.ic_complete_star
         } else {
             flagImage = R.drawable.ic_incomplete_star

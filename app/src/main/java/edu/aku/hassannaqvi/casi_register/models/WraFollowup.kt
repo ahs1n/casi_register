@@ -24,6 +24,7 @@ class WraFollowup : Serializable {
     var ws10 = StringUtils.EMPTY //wra reg
     var ws11 = StringUtils.EMPTY //wra name
     var ws12 = StringUtils.EMPTY //father name
+    var fupDt = StringUtils.EMPTY //fupDT
 
     //Not saving in DB
     var wraTableDataExist = false //already exist followup form
@@ -41,6 +42,7 @@ class WraFollowup : Serializable {
         ws10 = jsonObject.getString(WraTable.COLUMN_WS10)
         ws11 = jsonObject.getString(WraTable.COLUMN_WS11)
         ws12 = jsonObject.getString(WraTable.COLUMN_WS12)
+        fupDt = jsonObject.getString(WraTable.COLUMN_FUPDT)
         return this
     }
 
@@ -56,6 +58,7 @@ class WraFollowup : Serializable {
         ws10 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS10))
         ws11 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS11))
         ws12 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS12))
+        fupDt = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_FUPDT))
         return this
     }
 
@@ -69,6 +72,7 @@ class WraFollowup : Serializable {
         val form = Form()
         form.wSHydrate(cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_WS)))
 
+        ws08 = form.ws08
         ws09 = form.ws09
         ws10 = form.ws10
         ws11 = form.ws11
@@ -90,5 +94,6 @@ class WraFollowup : Serializable {
         const val COLUMN_WS10 = "ws10"
         const val COLUMN_WS11 = "ws11"
         const val COLUMN_WS12 = "ws12"
+        const val COLUMN_FUPDT = "fupdt"
     }
 }

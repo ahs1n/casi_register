@@ -100,6 +100,8 @@ public class Section03WSActivity extends AppCompatActivity {
         if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
             long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
+            if (count > 0)
+                count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_WS, form.wStoString());
             if (count > 0) {
                 SharedStorage.INSTANCE.setLastRegistrationID(this, "w-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.ws10.getText().toString());
                 return true;

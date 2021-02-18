@@ -162,7 +162,7 @@ fun Fragment.openWarningFragment(
     activity?.let { activityFrag ->
         val dialog = Dialog(activityFrag)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(activityFrag), R.layout.child_end_dialog, null, false)
+        val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(activityFrag), R.layout.end_section_dialog, null, false)
         dialog.setContentView(bi.root)
         bi.alertTitle.text = title
         bi.alertTitle.setTextColor(ContextCompat.getColor(activityFrag, R.color.green))

@@ -49,6 +49,10 @@ import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 import edu.aku.hassannaqvi.casi_register.workers.DataDownWorkerALL;
 import edu.aku.hassannaqvi.casi_register.workers.DataUpWorkerALL;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt.isNetworkConnected;
 import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.dbBackup;
 
@@ -125,10 +129,13 @@ public class SyncActivity extends AppCompatActivity {
                 uploadTables.clear();
                 MainApp.uploadData.clear();
                 // Set tables to UPLOAD
-                // Forms
-                uploadTables.add(new SyncModel(FormsContract.FormsTable.TABLE_NAME));
-                MainApp.uploadData.add(db.getUnsyncedForms());
 
+                String[][] tables = {{"WScreening", WRA_TYPE}, {"CScreening", CHILD_TYPE}, {"WFollowup", WRA_FOLLOWUP_TYPE}, {"CFollowup", CHILD_FOLLOWUP_TYPE}};
+
+                for (String[] table : tables) {
+                    uploadTables.add(new SyncModel(table[0]));
+                    MainApp.uploadData.add(db.getUnsyncedForms(table[1]));
+                }
 
                 setAdapter(uploadTables);
                 BeginUpload();
@@ -391,10 +398,10 @@ public class SyncActivity extends AppCompatActivity {
                                             JSONObject jsonObject = new JSONObject(json.getString(i));
                                             Log.d(TAG, "onChanged: " + json.getString(i));
                                             if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
-                                                method.invoke(db, jsonObject.getString("_ID"));
+                                                method.invoke(db, jsonObject.getString("id"));
                                                 sSynced++;
                                             } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
-                                                method.invoke(db, jsonObject.getString("_ID"));
+                                                method.invoke(db, jsonObject.getString("id"));
                                                 sDuplicate++;
                                             } else {
                                                 sSyncedError.append("\nError: ").append(jsonObject.getString("message"));

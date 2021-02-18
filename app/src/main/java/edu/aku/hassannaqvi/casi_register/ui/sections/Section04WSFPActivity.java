@@ -105,6 +105,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
             form.set_UID(form.getDeviceID() + form.get_ID());
             long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             if (count > 0) {
+                db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_WSFP, form.wSFPtoString());
                 return true;
             } else {
                 Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();

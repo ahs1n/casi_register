@@ -81,6 +81,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
             long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
+            if (count > 0)
+                count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CS, form.cStoString());
             if (count > 0) {
                 SharedStorage.INSTANCE.setLastRegistrationID(this, "c-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.cs10.getText().toString());
                 return true;

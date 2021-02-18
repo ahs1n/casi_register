@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.casi_register.base.repository
 
 import edu.aku.hassannaqvi.casi_register.models.*
-import kotlin.collections.ArrayList
 
 interface GeneralDataSource {
 
@@ -36,7 +35,7 @@ interface GeneralDataSource {
 
     suspend fun getSelectedWraLocalFormList(country: String, identification: Identification): ArrayList<WraFollowup>
 
-    suspend fun getLocalDBFollowupFormList(country: String, identification: Identification,reg_no:String, followupType: String): Form?
+    suspend fun getLocalDBFollowupFormList(country: String, identification: Identification, reg_no: String, followupType: String): Form?
     /*
     * For SectionH1 End
     * */

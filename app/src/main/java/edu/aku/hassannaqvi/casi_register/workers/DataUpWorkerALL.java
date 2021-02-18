@@ -6,6 +6,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.work.Data;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,31 +25,29 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
-import androidx.work.Data;
-import androidx.work.Worker;
-import androidx.work.WorkerParameters;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
+
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.PROJECT_NAME;
 
 
 public class DataUpWorkerALL extends Worker {
 
+    private static final Object APP_NAME = PROJECT_NAME;
     private final String TAG = "DataWorkerEN()";
 
     // to be initialised by workParams
     private final Context mContext;
     private final String uploadTable;
+    HttpURLConnection urlConnection;
     private final JSONArray uploadData;
     private final URL serverURL = null;
-    private final String nTitle = "Naunehal: Data Upload";
-    private final int position;
-    private final String uploadWhere;
-    HttpURLConnection urlConnection;
     private ProgressDialog pd;
     private int length;
     private Data data;
+    private final String nTitle = "Naunehal: Data Upload";
+    private final int position;
+    private final String uploadWhere;
 
 
     public DataUpWorkerALL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -91,7 +95,11 @@ public class DataUpWorkerALL extends Worker {
 
         URL url = null;
         try {
-            url = new URL(MainApp._HOST_URL + MainApp._SERVER_URL);
+            if (serverURL == null) {
+                url = new URL(MainApp._HOST_URL + MainApp._SERVER_URL);
+            } else {
+                url = serverURL;
+            }
             Log.d(TAG, "doWork: Connecting...");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(100000 /* milliseconds */);

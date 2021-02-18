@@ -2,9 +2,7 @@ package edu.aku.hassannaqvi.casi_register.base.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
-import edu.aku.hassannaqvi.casi_register.CONSTANTS
 import edu.aku.hassannaqvi.casi_register.base.repository.GeneralRepository
 import edu.aku.hassannaqvi.casi_register.base.repository.ResponseStatusCallbacks
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
@@ -14,7 +12,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SelectedChildrenListViewModel(internal val repository: GeneralRepository) : ViewModel() {
+class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel() {
 
     private val _childResponse: MutableLiveData<ResponseStatusCallbacks<List<ChildFollowup>>> = MutableLiveData()
 
@@ -35,14 +33,21 @@ class SelectedChildrenListViewModel(internal val repository: GeneralRepository) 
                 val children: ArrayList<ChildFollowup> = ArrayList()
 
                 val first = async { children.addAll(repository.getSelectedServerChildList(country, identification)) }
-                val second = async { children.addAll(repository.getSelectedChildLocalFormList(country, identification)) }
-
                 first.await()
-                second.await()
+
+                val localChildren: ArrayList<ChildFollowup> = ArrayList()
+                val second = async { repository.getSelectedChildLocalFormList(country, identification) }
+                second.await().let { it ->
+                    it.forEach {
+                        if (children.find { item -> item.cs10 == it.cs10 } == null)
+                            localChildren.add(it)
+                    }
+                }
+                children.addAll(localChildren)
 
                 _childResponse.value = if (children.size > 0) {
 
-                    val third = launch {
+                    /*val third = launch {
                         children.forEachIndexed { index, item ->
                             val form = repository.getLocalDBFollowupFormList(country, identification, item.cs10, CONSTANTS.CHILD_FOLLOWUP_TYPE)
                             form?.let {
@@ -51,7 +56,7 @@ class SelectedChildrenListViewModel(internal val repository: GeneralRepository) 
                             }
                         }
                     }
-                    third.join()
+                    third.join()*/
 
                     val childList = ArrayList<ChildFollowup>(children.sortedBy { it.cs11 })
                     ResponseStatusCallbacks.success(data = childList, message = "Child list found")
@@ -74,14 +79,21 @@ class SelectedChildrenListViewModel(internal val repository: GeneralRepository) 
                 val wra: ArrayList<WraFollowup> = ArrayList()
 
                 val first = async { wra.addAll(repository.getSelectedServerWraList(country, identification)) }
-                val second = async { wra.addAll(repository.getSelectedWraLocalFormList(country, identification)) }
-
                 first.await()
-                second.await()
+
+                val localWra: ArrayList<WraFollowup> = ArrayList()
+                val second = async { repository.getSelectedWraLocalFormList(country, identification) }
+                second.await().let { it ->
+                    it.forEach {
+                        if (wra.find { item -> item.ws10 == it.ws10 } == null)
+                            localWra.add(it)
+                    }
+                }
+                wra.addAll(localWra)
 
                 _wraResponse.value = if (wra.size > 0) {
 
-                    val third = launch {
+                    /*val third = launch {
                         wra.forEachIndexed { index, item ->
                             val form = repository.getLocalDBFollowupFormList(country, identification, item.ws10, CONSTANTS.WRA_FOLLOWUP_TYPE)
                             form?.let {
@@ -90,7 +102,7 @@ class SelectedChildrenListViewModel(internal val repository: GeneralRepository) 
                             }
                         }
                     }
-                    third.join()
+                    third.join()*/
 
                     val wraList = ArrayList<WraFollowup>(wra.sortedBy { it.ws11 })
                     ResponseStatusCallbacks.success(data = wraList, message = "Wra list found")

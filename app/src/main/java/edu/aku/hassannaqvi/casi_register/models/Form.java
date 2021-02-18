@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 
+import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
 
 /**
@@ -2917,7 +2918,7 @@ public class Form extends LiveData<Form> {
 
     }
 
-    public Form Hydrate(Cursor cursor) {
+    public Form Hydrate(Cursor cursor, String type) {
         this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
         this.username = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USERNAME));
@@ -2942,10 +2943,20 @@ public class Form extends LiveData<Form> {
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
         this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORM_TYPE));
 
-        cSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CS)));
-        cSFPHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CSFP)));
-        wSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_WS)));
-        wSFPHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_WSFP)));
+        switch (type) {
+            case CONSTANTS.WRA_TYPE:
+                wSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_WS)));
+                break;
+            case CONSTANTS.WRA_FOLLOWUP_TYPE:
+                wSFPHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_WSFP)));
+                break;
+            case CONSTANTS.CHILD_TYPE:
+                cSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CS)));
+                break;
+            case CONSTANTS.CHILD_FOLLOWUP_TYPE:
+                cSFPHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CSFP)));
+                break;
+        }
         return this;
     }
 
@@ -3316,7 +3327,7 @@ public class Form extends LiveData<Form> {
     }
 
 
-    public JSONObject toJSONObject() {
+    public JSONObject toJSONObject(String type) {
 
         JSONObject json = new JSONObject();
 
@@ -3326,28 +3337,29 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_USERNAME, this.username == null ? JSONObject.NULL : this.username);
             json.put(FormsTable.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
 
-            json.put(FormsTable.COLUMN_CS, new JSONObject(cStoString()));
-            json.put(FormsTable.COLUMN_CSFP, new JSONObject(cSFPtoString()));
-            json.put(FormsTable.COLUMN_WS, new JSONObject(wStoString()));
-            json.put(FormsTable.COLUMN_WSFP, new JSONObject(wSFPtoString()));
 
-
-            if (this.cS != null && !this.cS.equals("")) {
-                json.put(FormsTable.COLUMN_CS, new JSONObject(this.cS));
+            switch (type) {
+                case CONSTANTS.WRA_TYPE:
+                    if (this.wS != null && !this.wS.equals("")) {
+                        json.put(FormsTable.COLUMN_WS, new JSONObject(this.wS));
+                    }
+                    break;
+                case CONSTANTS.WRA_FOLLOWUP_TYPE:
+                    if (this.wSFP != null && !this.wSFP.equals("")) {
+                        json.put(FormsTable.COLUMN_WSFP, new JSONObject(this.wSFP));
+                    }
+                    break;
+                case CONSTANTS.CHILD_TYPE:
+                    if (this.cS != null && !this.cS.equals("")) {
+                        json.put(FormsTable.COLUMN_CS, new JSONObject(this.cS));
+                    }
+                    break;
+                case CONSTANTS.CHILD_FOLLOWUP_TYPE:
+                    if (this.cSFP != null && !this.cSFP.equals("")) {
+                        json.put(FormsTable.COLUMN_CSFP, new JSONObject(this.cSFP));
+                    }
+                    break;
             }
-
-            if (this.cSFP != null && !this.cSFP.equals("")) {
-                json.put(FormsTable.COLUMN_CSFP, new JSONObject(this.cSFP));
-            }
-
-            if (this.wS != null && !this.wS.equals("")) {
-                json.put(FormsTable.COLUMN_WS, new JSONObject(this.wS));
-            }
-
-            if (this.wSFP != null && !this.wSFP.equals("")) {
-                json.put(FormsTable.COLUMN_WSFP, new JSONObject(this.wSFP));
-            }
-
 
             json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
             json.put(FormsTable.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);

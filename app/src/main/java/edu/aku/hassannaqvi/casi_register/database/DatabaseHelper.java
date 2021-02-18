@@ -254,10 +254,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UC, form.getUc());
         values.put(FormsTable.COLUMN_VILLAGE_CODE, form.getVillageCode());
         values.put(FormsTable.COLUMN_VILLAGE, form.getVillage());
-        values.put(FormsTable.COLUMN_CS, form.cStoString());
-        values.put(FormsTable.COLUMN_CSFP, form.cSFPtoString());
-        values.put(FormsTable.COLUMN_WS, form.wStoString());
-        values.put(FormsTable.COLUMN_WSFP, form.wSFPtoString());
 
         values.put(FormsTable.COLUMN_ISTATUS, form.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getIstatus96x());
@@ -394,7 +390,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 Form form = new Form();
-                allForms.add(form.Hydrate(c));
+                allForms.add(form.Hydrate(c, null));
             }
         } finally {
             if (c != null) {
@@ -459,7 +455,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 Form form = new Form();
-                allForms.add(form.Hydrate(c));
+                allForms.add(form.Hydrate(c, null));
             }
         } finally {
             if (c != null) {
@@ -984,43 +980,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //Synced functions
-    public JSONArray getUnsyncedForms() {
+    public JSONArray getUnsyncedForms(String type) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                FormsTable._ID,
-                FormsTable.COLUMN_UID,
-                FormsTable.COLUMN_USERNAME,
-                FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_REG_NO,
-                FormsTable.COLUMN_DISTRICT_CODE,
-                FormsTable.COLUMN_DISTRICT,
-                FormsTable.COLUMN_UC_CODE,
-                FormsTable.COLUMN_UC,
-                FormsTable.COLUMN_VILLAGE_CODE,
-                FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CS,
-                FormsTable.COLUMN_CSFP,
-                FormsTable.COLUMN_WS,
-                FormsTable.COLUMN_WSFP,
-                FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_ISTATUS96x,
-                FormsTable.COLUMN_ENDINGDATETIME,
-                FormsTable.COLUMN_GPSLAT,
-                FormsTable.COLUMN_GPSLNG,
-                FormsTable.COLUMN_GPSDATE,
-                FormsTable.COLUMN_GPSACC,
-                FormsTable.COLUMN_DEVICETAGID,
-                FormsTable.COLUMN_DEVICEID,
-                FormsTable.COLUMN_APPVERSION,
-        };
+        String[] columns = null;
 
-        String whereClause;
-        String[] whereArgs;
-
-        whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = ''";
-        whereArgs = null;
+        String whereClause = FormsTable.COLUMN_FORM_TYPE + " =? AND " + FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = ''";
+        String[] whereArgs = {type};
 
         String groupBy = null;
         String having = null;
@@ -1038,9 +1004,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
-                Form form = new Form();
-                allForms.put(form.Hydrate(c).toJSONObject());
+                allForms.put(new Form().Hydrate(c, type).toJSONObject(type));
             }
         } finally {
             if (c != null) {
@@ -1105,7 +1069,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allForms = new Form().Hydrate(c);
+                allForms = new Form().Hydrate(c, null);
             }
         } finally {
             if (c != null) {
@@ -1205,7 +1169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allForms = new Form().Hydrate(c);
+                allForms = new Form().Hydrate(c, null);
             }
         } finally {
             if (c != null) {
@@ -1267,15 +1231,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //Generic Un-Synced Forms
-    public void updateSyncedforms(String id) {
+    public void updateSyncedWScreening(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
+        // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_SYNCED, true);
         values.put(FormsTable.COLUMN_SYNCED_DATE, new Date().toString());
 
-// Which row to update, based on the title
+        // Which row to update, based on the title
+        String where = FormsTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedCScreening(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_SYNCED, true);
+        values.put(FormsTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+        // Which row to update, based on the title
+        String where = FormsTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedWFollowup(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_SYNCED, true);
+        values.put(FormsTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+        // Which row to update, based on the title
+        String where = FormsTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedCFollowup(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_SYNCED, true);
+        values.put(FormsTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+        // Which row to update, based on the title
         String where = FormsTable.COLUMN_ID + " = ?";
         String[] whereArgs = {id};
 
@@ -1638,7 +1655,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ),
                 new String[]{country, identification.getDistrict(), identification.getUc(), identification.getVillage(), reg_no, followUpType, "1"}, null);
         if (mCursor != null && mCursor.moveToFirst()) {
-            form = new Form().Hydrate(mCursor);
+            form = new Form().Hydrate(mCursor, followUpType);
             mCursor.close();
         }
         return form;

@@ -15,7 +15,7 @@ class ViewModelFactory(private val repository: GeneralRepository) : ViewModelPro
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(repository) as T
             modelClass.isAssignableFrom(MainViewModel::class.java) -> MainViewModel(repository) as T
-            modelClass.isAssignableFrom(SelectedChildrenListViewModel::class.java) -> SelectedChildrenListViewModel(repository) as T
+            modelClass.isAssignableFrom(FollowupViewModel::class.java) -> FollowupViewModel(repository) as T
             else -> throw IllegalArgumentException("Unknown viewModel class $modelClass")
         }
     }

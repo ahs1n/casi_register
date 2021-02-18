@@ -261,9 +261,8 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         form.setFc07User(bi.fc07User.isChecked() ? form.getUsername() : "98");
 
-        form.setFc0801(bi.fc0801.getText().toString());
-        form.setFc0802(bi.fc0802.getText().toString());
-        form.setFc0803(bi.fc0803.getText().toString());
+        form.setFc08(bi.fc08.getText().toString());
+
         form.setFc09(bi.fc09.getText().toString());
 
         form.setFc10(bi.fc10.getText().toString());

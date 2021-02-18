@@ -27,6 +27,7 @@ class ChildFollowup : Serializable {
     var cs11a = StringUtils.EMPTY //mother name
     var cs12 = StringUtils.EMPTY //father name
     var cs13 = StringUtils.EMPTY //gender
+    var fupDt = StringUtils.EMPTY //fupDt
 
     //Not saving in DB
     var childTableDataExist = false //already exist followup form
@@ -47,6 +48,7 @@ class ChildFollowup : Serializable {
         cs11a = jsonObject.getString(ChildTable.COLUMN_CS11A)
         cs12 = jsonObject.getString(ChildTable.COLUMN_CS12)
         cs13 = jsonObject.getString(ChildTable.COLUMN_CS13)
+        fupDt = jsonObject.getString(ChildTable.COLUMN_FUPDT)
         return this
     }
 
@@ -64,6 +66,7 @@ class ChildFollowup : Serializable {
         cs11a = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS11A))
         cs12 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS12))
         cs13 = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_CS13))
+        fupDt = cursor.getString(cursor.getColumnIndex(ChildTable.COLUMN_FUPDT))
         return this
     }
 
@@ -105,5 +108,6 @@ class ChildFollowup : Serializable {
         const val COLUMN_CS11A = "cs11a"
         const val COLUMN_CS12 = "cs12"
         const val COLUMN_CS13 = "cs13"
+        const val COLUMN_FUPDT = "fupdt"
     }
 }
