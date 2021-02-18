@@ -48,9 +48,6 @@ public class Form extends LiveData<Form> {
     private String cs07;
     private String cs07User;
     private String cs08;
-    private String cs0801;
-    private String cs0802;
-    private String cs0803;
     private String cs09;
     private String cs10;
     private String cs10a;
@@ -163,9 +160,6 @@ public class Form extends LiveData<Form> {
     private String fc07;
     private String fc07User;
     private String fc08;
-    private String fc0801;
-    private String fc0802;
-    private String fc0803;
     private String fc09;
     private String fc10;
     private String fc10a;
@@ -240,9 +234,6 @@ public class Form extends LiveData<Form> {
     private String ws07;
     private String ws07User;
     private String ws08;
-    private String ws0801;
-    private String ws0802;
-    private String ws0803;
     private String ws09;
     private String ws10;
     private String ws11;
@@ -300,9 +291,6 @@ public class Form extends LiveData<Form> {
     private String fw07;
     private String fw07User;
     private String fw08;
-    private String fw0801;
-    private String fw0802;
-    private String fw0803;
     private String fw09;
     private String fw10;
     private String fw11;
@@ -568,30 +556,6 @@ public class Form extends LiveData<Form> {
         this.cs08 = cs08;
     }
 
-
-    public String getCs0801() {
-        return cs0801;
-    }
-
-    public void setCs0801(String cs0801) {
-        this.cs0801 = cs0801;
-    }
-
-    public String getCs0802() {
-        return cs0802;
-    }
-
-    public void setCs0802(String cs0802) {
-        this.cs0802 = cs0802;
-    }
-
-    public String getCs0803() {
-        return cs0803;
-    }
-
-    public void setCs0803(String cs0803) {
-        this.cs0803 = cs0803;
-    }
 
     public String getCs09() {
         return cs09;
@@ -1258,30 +1222,6 @@ public class Form extends LiveData<Form> {
         this.fc08 = fc08;
     }
 
-    public String getFc0801() {
-        return fc0801;
-    }
-
-    public void setFc0801(String fc0801) {
-        this.fc0801 = fc0801;
-    }
-
-    public String getFc0802() {
-        return fc0802;
-    }
-
-    public void setFc0802(String fc0802) {
-        this.fc0802 = fc0802;
-    }
-
-    public String getFc0803() {
-        return fc0803;
-    }
-
-    public void setFc0803(String fc0803) {
-        this.fc0803 = fc0803;
-    }
-
     public String getFc09() {
         return fc09;
     }
@@ -1852,29 +1792,6 @@ public class Form extends LiveData<Form> {
         this.ws08 = ws08;
     }
 
-    public String getWs0801() {
-        return ws0801;
-    }
-
-    public void setWs0801(String ws0801) {
-        this.ws0801 = ws0801;
-    }
-
-    public String getWs0802() {
-        return ws0802;
-    }
-
-    public void setWs0802(String ws0802) {
-        this.ws0802 = ws0802;
-    }
-
-    public String getWs0803() {
-        return ws0803;
-    }
-
-    public void setWs0803(String ws0803) {
-        this.ws0803 = ws0803;
-    }
 
     public String getWs09() {
         return ws09;
@@ -2309,29 +2226,6 @@ public class Form extends LiveData<Form> {
         this.fw08 = fw08;
     }
 
-    public String getFw0801() {
-        return fw0801;
-    }
-
-    public void setFw0801(String fw0801) {
-        this.fw0801 = fw0801;
-    }
-
-    public String getFw0802() {
-        return fw0802;
-    }
-
-    public void setFw0802(String fw0802) {
-        this.fw0802 = fw0802;
-    }
-
-    public String getFw0803() {
-        return fw0803;
-    }
-
-    public void setFw0803(String fw0803) {
-        this.fw0803 = fw0803;
-    }
 
     public String getFw09() {
         return fw09;
@@ -3079,9 +2973,6 @@ public class Form extends LiveData<Form> {
                     .put("cs07", cs07)
                     .put("cs07User", cs07User)
                     .put("cs08", cs08)
-                    .put("cs0801", cs0801)
-                    .put("cs0802", cs0802)
-                    .put("cs0803", cs0803)
                     .put("cs09", cs09)
                     .put("cs10", cs10)
                     .put("cs10a", cs10a)
@@ -3215,9 +3106,6 @@ public class Form extends LiveData<Form> {
                     .put("fc07", fc07)
                     .put("fc07User", fc07User)
                     .put("fc08", fc08)
-                    .put("fc0801", fc0801)
-                    .put("fc0802", fc0802)
-                    .put("fc0803", fc0803)
                     .put("fc09", fc09)
                     .put("fc10", fc10)
                     .put("fc10a", fc10a)
@@ -3302,9 +3190,7 @@ public class Form extends LiveData<Form> {
                     .put("ws0696x", ws0696x)
                     .put("ws07", ws07)
                     .put("ws07User", ws07User)
-                    .put("ws0801", ws0801)
-                    .put("ws0802", ws0802)
-                    .put("ws0803", ws0803)
+                    .put("ws08", ws08)
                     .put("ws09", ws09)
                     .put("ws10", ws10)
                     .put("ws11", ws11)
@@ -3371,9 +3257,6 @@ public class Form extends LiveData<Form> {
                     .put("fw07", fw07)
                     .put("fw07User", fw07User)
                     .put("fw08", fw08)
-                    .put("fw0801", fw0801)
-                    .put("fw0802", fw0802)
-                    .put("fw0803", fw0803)
                     .put("fw09", fw09)
                     .put("fw10", fw10)
                     .put("fw11", fw11)
@@ -3505,9 +3388,6 @@ public class Form extends LiveData<Form> {
                 this.cs07 = json.getString("cs07");
                 this.cs07User = json.getString("cs07User");
                 this.cs08 = json.getString("cs08");
-                this.cs0801 = json.getString("cs0801");
-                this.cs0802 = json.getString("cs0802");
-                this.cs0803 = json.getString("cs0803");
                 this.cs09 = json.getString("cs09");
                 this.cs10 = json.getString("cs10");
                 this.cs10a = json.getString("cs10a");
@@ -3607,9 +3487,6 @@ public class Form extends LiveData<Form> {
                 this.fc07 = json.getString("fc07");
                 this.fc07User = json.getString("fc07User");
                 this.fc08 = json.getString("fc08");
-                this.fc0801 = json.getString("fc0801");
-                this.fc0802 = json.getString("fc0802");
-                this.fc0803 = json.getString("fc0803");
                 this.fc09 = json.getString("fc09");
                 this.fc10 = json.getString("fc10");
                 this.fc10a = json.getString("fc10a");
@@ -3697,9 +3574,7 @@ public class Form extends LiveData<Form> {
                 this.ws0696x = json.getString("ws0696x");
                 this.ws07 = json.getString("ws07");
                 this.ws07User = json.getString("ws07User");
-                this.ws0801 = json.getString("ws0801");
-                this.ws0802 = json.getString("ws0802");
-                this.ws0803 = json.getString("ws0803");
+                this.ws08 = json.getString("ws08");
                 this.ws09 = json.getString("ws09");
                 this.ws10 = json.getString("ws10");
                 this.ws11 = json.getString("ws11");
@@ -3769,9 +3644,6 @@ public class Form extends LiveData<Form> {
                 this.fw07 = json.getString("fw07");
                 this.fw07User = json.getString("fw07User");
                 this.fw08 = json.getString("fw08");
-                this.fw0801 = json.getString("fw0801");
-                this.fw0802 = json.getString("fw0802");
-                this.fw0803 = json.getString("fw0803");
                 this.fw09 = json.getString("fw09");
                 this.fw10 = json.getString("fw10");
                 this.fw11 = json.getString("fw11");

@@ -163,9 +163,8 @@ public class Section03WSActivity extends AppCompatActivity {
 
         form.setWs07User(bi.ws07User.isChecked() ? form.getUsername() : "98");
 
-        form.setWs0801(bi.ws0801.getText().toString());
-        form.setWs0802(bi.ws0802.getText().toString());
-        form.setWs0803(bi.ws0803.getText().toString());
+        form.setWs08(bi.ws08.getText().toString());
+
         form.setWs09(bi.ws09.getText().toString());
 
         form.setWs10(bi.ws10.getText().toString());

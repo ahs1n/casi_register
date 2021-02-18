@@ -27,13 +27,11 @@ import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection04WsfpBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
-import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
@@ -181,9 +179,8 @@ public class Section04WSFPActivity extends AppCompatActivity {
 
         form.setFw07User(bi.fw07User.isChecked() ? form.getUsername() : "98");
 
-        form.setFw0801(bi.fw0801.getText().toString());
-        form.setFw0802(bi.fw0802.getText().toString());
-        form.setFw0803(bi.fw0803.getText().toString());
+        form.setFw08(bi.fw08.getText().toString());
+
         form.setFw09(bi.fw09.getText().toString());
 
         form.setFw10(bi.fw10.getText().toString());

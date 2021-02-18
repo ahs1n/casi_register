@@ -147,12 +147,6 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         form.setCs08(bi.cs08.getText().toString());
 
-        form.setCs0801(bi.cs0801.getText().toString());
-
-        form.setCs0802(bi.cs0802.getText().toString());
-
-        form.setCs0803(bi.cs0803.getText().toString());
-
         form.setCs09(bi.cs09.getText().toString());
 
         form.setCs10(bi.cs10.getText().toString());
