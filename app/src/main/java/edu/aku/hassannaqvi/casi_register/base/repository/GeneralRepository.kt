@@ -16,6 +16,14 @@ open class GeneralRepository(private val db: DatabaseHelper) : GeneralDataSource
         db.getChildrenFollowupFromFormDB(country, identification)
     }
 
+    override suspend fun getSelectedServerWraList(country: String, identification: Identification): ArrayList<WraFollowup> = withContext(Dispatchers.IO) {
+        db.getWraFollowUpFromDB(country, identification)
+    }
+
+    override suspend fun getSelectedWraLocalFormList(country: String, identification: Identification): ArrayList<WraFollowup> = withContext(Dispatchers.IO) {
+        db.getWraFollowupFromFormDB(country, identification)
+    }
+
     override suspend fun getLocalDBFollowupFormList(country: String, identification: Identification, reg_no: String, followupType: String): Form? = withContext(Dispatchers.IO) {
         db.getFollowUpFormStatus(country, identification, reg_no, followupType)
     }

@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
-import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.FSTATUS_END_FLAG
 import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo
 import edu.aku.hassannaqvi.casi_register.core.MainApp.form

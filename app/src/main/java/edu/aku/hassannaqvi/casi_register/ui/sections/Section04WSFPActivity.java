@@ -28,10 +28,12 @@ import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection04WsfpBindin
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
+import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
@@ -41,7 +43,7 @@ import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivity
 public class Section04WSFPActivity extends AppCompatActivity {
 
     ActivitySection04WsfpBinding bi;
-    Villages item;
+    WraFollowup item;
     List<String> facilityName;
     Map<String, String> facilityMap;
 
@@ -105,7 +107,6 @@ public class Section04WSFPActivity extends AppCompatActivity {
             form.set_UID(form.getDeviceID() + form.get_ID());
             long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             if (count > 0) {
-                db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_WSFP, form.wSFPtoString());
                 return true;
             } else {
                 Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
@@ -126,19 +127,26 @@ public class Section04WSFPActivity extends AppCompatActivity {
         form.setDeviceID(MainApp.appInfo.getDeviceID());
         form.setDevicetagID(MainApp.appInfo.getTagName());
         form.setAppversion(MainApp.appInfo.getAppVersion());
+        form.setReg_no(bi.fw10.getText().toString());
 
-        form.setReg_no(item.getCountry());
-        form.setDistrict(item.getDistrict());
-        form.setUc(item.getUc());
-        form.setVillage(item.getVillage());
+        form.setDistrict(MainApp.mainInfo.getDistrict());
+        form.setUc(MainApp.mainInfo.getUc());
+        form.setVillage(MainApp.mainInfo.getVillage());
 
         form.setFormType(WRA_FOLLOWUP_TYPE);
 
-        form.setFw01(item.getCountry_code());
-        form.setFw01a(item.getRegion_code());
-        form.setFw01b(item.getDistrict_code());
-        form.setFw04(item.getUc_code());
-        form.setFw05(item.getVillage_code());
+        form.setCountryCode(MainApp.mainInfo.getCountry_code());
+        form.setDistrictCode(MainApp.mainInfo.getDistrict_code());
+        form.setUcCode(MainApp.mainInfo.getUc_code());
+        form.setVillageCode(MainApp.mainInfo.getVillage_code());
+
+        form.setFw01(item.getWs01());
+        form.setFw01a(item.getWs01a());
+        form.setFw01b(item.getWs01b());
+        form.setFw04(item.getWs04());
+        form.setFw05(item.getWs05());
+        form.setScr_date(item.getWs08());
+        form.set_luid(item.getLUID());
 
 
         /*form.setFw01(bi.fw01.getText().toString());

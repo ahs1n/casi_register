@@ -8,7 +8,7 @@ import edu.aku.hassannaqvi.casi_register.viewholder.SelectedChildViewHolder
 import kotlinx.android.synthetic.main.selected_child_view.view.*
 
 /*
- * @author Ali Azaz Alam dt. 01.14.21
+ * @author Ali Azaz Alam
  * */
 class SelectedChildListAdapter(private val clickListener: OnItemClickListener) : RecyclerView.Adapter<SelectedChildViewHolder>() {
 

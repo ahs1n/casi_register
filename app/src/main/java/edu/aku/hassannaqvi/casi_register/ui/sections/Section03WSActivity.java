@@ -75,8 +75,8 @@ public class Section03WSActivity extends AppCompatActivity {
         if (!regID.equals(StringUtils.EMPTY)) {
             String substring = regID.substring(regID.length() - 4);
             String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
-            bi.ws11.setText(result);
-        } else bi.ws11.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
+            bi.ws10.setText(result);
+        } else bi.ws10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
 
     }
 
@@ -100,10 +100,8 @@ public class Section03WSActivity extends AppCompatActivity {
         if (updcount > 0) {
             form.set_UID(form.getDeviceID() + form.get_ID());
             long count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
-            if (count > 0)
-                count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_WS, form.wStoString());
             if (count > 0) {
-                SharedStorage.INSTANCE.setLastRegistrationID(this, "w-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.ws11.getText().toString());
+                SharedStorage.INSTANCE.setLastRegistrationID(this, "w-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.ws10.getText().toString());
                 return true;
             } else {
                 Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();

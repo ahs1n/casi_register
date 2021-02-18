@@ -21,12 +21,12 @@ class WraFollowup : Serializable {
     var ws05 = StringUtils.EMPTY //village
     var ws08 = StringUtils.EMPTY //Screening Date
     var ws09 = StringUtils.EMPTY //LHW No
-    var ws10 = StringUtils.EMPTY //child reg
-    var ws11 = StringUtils.EMPTY //child name
+    var ws10 = StringUtils.EMPTY //wra reg
+    var ws11 = StringUtils.EMPTY //wra name
     var ws12 = StringUtils.EMPTY //father name
 
     //Not saving in DB
-    var childTableDataExist = false //already exist followup form
+    var wraTableDataExist = false //already exist followup form
 
     @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): WraFollowup {
@@ -70,7 +70,6 @@ class WraFollowup : Serializable {
         form.wSHydrate(cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_WS)))
 
         ws09 = form.ws09
-        ws08 = form.ws08
         ws10 = form.ws10
         ws11 = form.ws11
         ws12 = form.ws12

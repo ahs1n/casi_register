@@ -516,7 +516,6 @@
                         android:id="@+id/fc10a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
                         android:gravity="center"
                         android:hint="###-##-##"
                         android:text="@{childInformation.cs10a}" />
@@ -679,6 +678,7 @@
                         android:id="@+id/fc16a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="number"
                         android:maxLength="11" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

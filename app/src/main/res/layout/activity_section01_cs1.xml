@@ -729,6 +729,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/cs12a"
+                        android:inputType="number"
                         android:maxLength="11" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

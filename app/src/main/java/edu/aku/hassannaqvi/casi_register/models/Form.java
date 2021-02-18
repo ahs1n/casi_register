@@ -3302,7 +3302,6 @@ public class Form extends LiveData<Form> {
                     .put("ws0696x", ws0696x)
                     .put("ws07", ws07)
                     .put("ws07User", ws07User)
-                    .put("ws08", ws08)
                     .put("ws0801", ws0801)
                     .put("ws0802", ws0802)
                     .put("ws0803", ws0803)
@@ -3698,7 +3697,6 @@ public class Form extends LiveData<Form> {
                 this.ws0696x = json.getString("ws0696x");
                 this.ws07 = json.getString("ws07");
                 this.ws07User = json.getString("ws07User");
-                this.ws08 = json.getString("ws08");
                 this.ws0801 = json.getString("ws0801");
                 this.ws0802 = json.getString("ws0802");
                 this.ws0803 = json.getString("ws0803");

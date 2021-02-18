@@ -8,6 +8,10 @@
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.casi_register.ui.sections.Section04WSFPActivity" />
+
+        <variable
+            name="wraInformation"
+            type="edu.aku.hassannaqvi.casi_register.models.WraFollowup" />
     </data>
 
     <ScrollView
@@ -282,7 +286,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
-                        android:hint="@string/fw07" />
+                        android:enabled='@{fw07User.checked ? false : true}'
+                        android:hint="@string/fw07"
+                        android:text='@{fw07User.checked ? "" : fw07.getText().toString()}' />
 
                     <CheckBox
                         android:id="@+id/fw07User"
@@ -428,11 +434,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="###"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        app:maxValue="300"
-                        app:minValue="0"
-                        app:type="range" />
+                        android:enabled="false"
+                        android:text="@{wraInformation.ws09}"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -473,11 +476,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="#####"
-                        android:inputType="number"
-                        android:maxLength="5"
-                        app:maxValue="99999"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:enabled="false"
+                        android:text="@{wraInformation.ws10}"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -518,6 +518,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
+                        android:enabled="false"
+                        android:text="@{wraInformation.ws11}"
                         android:hint="@string/fw11" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -557,6 +559,8 @@
                     <EditText
                         android:id="@+id/fw12"
                         android:layout_width="match_parent"
+                        android:enabled="false"
+                        android:text="@{wraInformation.ws12}"
                         android:layout_height="wrap_content"
                         android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:hint="@string/fw12" />
@@ -599,6 +603,7 @@
                         android:id="@+id/fw12a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="number"
                         android:maxLength="11" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

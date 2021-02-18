@@ -16,7 +16,7 @@ class CONSTANTS {
 
         //SubInfo
         const val ITEM_DATA = "item_data"
-        const val FSTATUS_END_FLAG = "fstatus_end_flag"
+        const val FOLLOWUP_FLAG = "followup_flag"
 
         //TYPE_COUNTERS
         const val WRA_TYPE = "M101"

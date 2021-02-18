@@ -40,16 +40,13 @@ import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.casi_register.models.Identification;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
 import edu.aku.hassannaqvi.casi_register.ui.login_activity.LoginActivity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section01CS1Activity;
-import edu.aku.hassannaqvi.casi_register.ui.sections.Section02CSFPActivity;
 import edu.aku.hassannaqvi.casi_register.ui.sections.Section03WSActivity;
-import edu.aku.hassannaqvi.casi_register.ui.sections.Section04WSFPActivity;
-import edu.aku.hassannaqvi.casi_register.ui.sections.SelectedChildrenListActivity;
+import edu.aku.hassannaqvi.casi_register.ui.sections.followup.SelectedChildrenListActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable;
@@ -61,6 +58,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.FOLLOWUP_FLAG;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 
 public class MainActivity extends AppCompatActivity implements WarningActivityInterface {
@@ -248,20 +246,20 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 SaveDraft();
                 oF = new Intent(this, Section01CS1Activity.class);
                 break;
-            case R.id.formCSFP:
-                if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
-                SaveDraft();
-                oF = new Intent(this, SelectedChildrenListActivity.class);
-                break;
             case R.id.formWS:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
                 SaveDraft();
                 oF = new Intent(this, Section03WSActivity.class);
                 break;
+            case R.id.formCSFP:
+                if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
+                SaveDraft();
+                oF = new Intent(this, SelectedChildrenListActivity.class).putExtra(FOLLOWUP_FLAG, true);
+                break;
             case R.id.formWSFP:
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
                 SaveDraft();
-                oF = new Intent(this, Section04WSFPActivity.class);
+                oF = new Intent(this, SelectedChildrenListActivity.class).putExtra(FOLLOWUP_FLAG, false);
                 break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);

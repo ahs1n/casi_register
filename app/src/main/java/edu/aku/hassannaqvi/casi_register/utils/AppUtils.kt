@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.databinding.EndSectionDialogBinding
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity
@@ -146,6 +147,45 @@ fun AppCompatActivity.openWarningActivity(
     }
     bi.btnNo.setOnClickListener {
         dialog.dismiss()
+    }
+}
+
+@JvmOverloads
+fun Fragment.openWarningFragment(
+        id: Int,
+        item: Any? = null,
+        title: String = "WARNING!",
+        message: String = "Are you sure, you want to exit without saving?",
+        btnYesTxt: String = "YES",
+        btnNoTxt: String = "NO") {
+
+    activity?.let { activityFrag ->
+        val dialog = Dialog(activityFrag)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(activityFrag), R.layout.child_end_dialog, null, false)
+        dialog.setContentView(bi.root)
+        bi.alertTitle.text = title
+        bi.alertTitle.setTextColor(ContextCompat.getColor(activityFrag, R.color.green))
+        bi.content.text = message
+        bi.btnOk.text = btnYesTxt
+        bi.btnOk.setBackgroundColor(ContextCompat.getColor(activityFrag, R.color.green))
+        bi.btnNo.text = btnNoTxt
+        bi.btnNo.setBackgroundColor(ContextCompat.getColor(activityFrag, R.color.gray))
+        dialog.setCancelable(false)
+        val params = WindowManager.LayoutParams()
+        params.copyFrom(dialog.window!!.attributes)
+        params.width = WindowManager.LayoutParams.WRAP_CONTENT
+        params.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.window!!.attributes = params
+        dialog.show()
+        bi.btnOk.setOnClickListener {
+            val warningActivity = activity as WarningActivityInterface
+            warningActivity.callWarningActivity(id, item)
+            dialog.dismiss()
+        }
+        bi.btnNo.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 }
 

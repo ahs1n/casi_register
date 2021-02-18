@@ -32,6 +32,10 @@ interface GeneralDataSource {
 
     suspend fun getSelectedChildLocalFormList(country: String, identification: Identification): ArrayList<ChildFollowup>
 
+    suspend fun getSelectedServerWraList(country: String, identification: Identification): ArrayList<WraFollowup>
+
+    suspend fun getSelectedWraLocalFormList(country: String, identification: Identification): ArrayList<WraFollowup>
+
     suspend fun getLocalDBFollowupFormList(country: String, identification: Identification,reg_no:String, followupType: String): Form?
     /*
     * For SectionH1 End

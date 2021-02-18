@@ -254,10 +254,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UC, form.getUc());
         values.put(FormsTable.COLUMN_VILLAGE_CODE, form.getVillageCode());
         values.put(FormsTable.COLUMN_VILLAGE, form.getVillage());
-        values.put(FormsTable.COLUMN_CS, form.getcS());
-        values.put(FormsTable.COLUMN_CSFP, form.getcSFP());
-        values.put(FormsTable.COLUMN_WS, form.getwS());
-        values.put(FormsTable.COLUMN_WSFP, form.getwSFP());
+        values.put(FormsTable.COLUMN_CS, form.cStoString());
+        values.put(FormsTable.COLUMN_CSFP, form.cSFPtoString());
+        values.put(FormsTable.COLUMN_WS, form.wStoString());
+        values.put(FormsTable.COLUMN_WSFP, form.wSFPtoString());
 
         values.put(FormsTable.COLUMN_ISTATUS, form.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getIstatus96x());
