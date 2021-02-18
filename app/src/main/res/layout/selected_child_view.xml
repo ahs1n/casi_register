@@ -34,7 +34,7 @@
                 android:layout_height="@dimen/_80sdp"
                 android:layout_gravity="center_vertical"
                 android:paddingTop="@dimen/_2sdp"
-                android:src="@drawable/ctr_childboy"
+                android:src="@drawable/ic_boy"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
