@@ -29,6 +29,7 @@ import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
+import edu.aku.hassannaqvi.casi_register.core.ZScore;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection02CsfpBinding;
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
@@ -39,6 +40,7 @@ import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
@@ -395,16 +397,16 @@ public class Section02CSFPActivity extends AppCompatActivity {
     /*
      * Click events
      * */
-/*    public void CheckZScore(View view) {
+    public void CheckZScore(View view) {
         if (!bi.fc1701.getText().toString().equals("")
                 && !bi.fc1702.getText().toString().equals("")
                 && !bi.fc22.getText().toString().equals("")
                 && !bi.fc23.getText().toString().equals("")
-                && (bi.cs1301.isChecked() || bi.cs1302.isChecked())
+                && (item.getCs13().equals("1") || item.getCs13().equals("2"))
         ) {
             int ageinmonths = Integer.parseInt(bi.fc1702.getText().toString()) + Integer.parseInt(bi.fc1701.getText().toString());
             int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
-            int gender = bi.cs1301.isChecked() ? 1 : bi.cs1302.isChecked() ? 2 : 0;
+            int gender = item.getCs13().equals("1") ? 1 : item.getCs13().equals("2") ? 2 : 0;
 
             ZScore zs = new ZScore(ageindays, gender);
             double HLAZ = zs.getZScore_HLAZ(bi.fc22.getText().toString());
@@ -416,7 +418,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Z-Score cannot be evaluated with missing values.", Toast.LENGTH_SHORT).show();
         }
-    }*/
+    }
 
     public void BtnEnd() {
         AppUtilsKt.openSectionEndingActivity(this, false);
