@@ -476,6 +476,10 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
     }
 
+    public void ZScoreOnTextChanged(CharSequence s, int start, int before, int count) {
+        bi.ZScore.setText(null);
+    }
+
     public void BtnEnd() {
         AppUtilsKt.contextEndActivity(this);
     }
