@@ -452,6 +452,10 @@ public class Section02CSFPActivity extends AppCompatActivity {
         }
     }
 
+    public void ZScoreOnTextChanged(CharSequence s, int start, int before, int count) {
+        bi.ZScore.setText(null);
+    }
+
     public void BtnEnd() {
         AppUtilsKt.openSectionEndingActivity(this, false);
     }
