@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -109,9 +108,14 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         bi.fc16b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc16b));
 
-        CompoundButton.OnCheckedChangeListener compound = (compoundButton, b) -> {
-            if (!bi.fc2501.isChecked() && !bi.fc2502.isChecked() && !bi.fc2503.isChecked()) {
+/*        CompoundButton.OnCheckedChangeListener compound = (compoundButton, b) -> {
+            if (bi.fc2501.isChecked()) {
                 Clear.clearAllFields(bi.fc25check, false);
+                Clear.clearAllFields(bi.fldGrpCVfc29);
+                bi.fldGrpCVfc29.setVisibility(View.GONE);
+            }
+            else if (!bi.fc2502.isChecked() && !bi.fc2503.isChecked()) {
+                Clear.clearAllFields(bi.fc25check, true);
                 Clear.clearAllFields(bi.fldGrpCVfc29);
                 bi.fldGrpCVfc29.setVisibility(View.GONE);
             } else {
@@ -122,7 +126,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         bi.fc2501.setOnCheckedChangeListener(compound);
         bi.fc2502.setOnCheckedChangeListener(compound);
-        bi.fc2503.setOnCheckedChangeListener(compound);
+        bi.fc2503.setOnCheckedChangeListener(compound);*/
 
         bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc26check, !b));
 
@@ -134,6 +138,33 @@ public class Section02CSFPActivity extends AppCompatActivity {
                 bi.fc07.setText(null);
             } else
                 bi.fc07.setEnabled(true);
+        });
+
+        bi.fc2501.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                Clear.clearAllFields(bi.fc25check, false);
+                Clear.clearAllFields(bi.fldGrpCVfc29);
+                bi.fldGrpCVfc29.setVisibility(View.GONE);
+            } else {
+                Clear.clearAllFields(bi.fc25check, true);
+                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
+            }
+        });
+        bi.fc2502.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                Clear.clearAllFields(bi.fldGrpCVfc29);
+                bi.fldGrpCVfc29.setVisibility(View.GONE);
+            } else {
+                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
+            }
+        });
+        bi.fc2503.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                Clear.clearAllFields(bi.fldGrpCVfc29);
+                bi.fldGrpCVfc29.setVisibility(View.GONE);
+            } else {
+                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
+            }
         });
 
     }

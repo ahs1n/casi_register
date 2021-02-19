@@ -1514,8 +1514,7 @@
                 <!-- fc29  CheckBox   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVfc29"
-                    style="@style/cardView"
-                    android:visibility='@{fc2501.checked || fc2502.checked || fc2503.checked? View.GONE : View.VISIBLE}'>
+                    style="@style/cardView">
 
                     <LinearLayout
                         android:layout_width="match_parent"
