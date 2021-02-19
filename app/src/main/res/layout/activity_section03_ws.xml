@@ -926,18 +926,19 @@
                             android:text="@string/Q_ws20" />
                     </RelativeLayout>
 
+                    <CheckBox
+                        android:id="@+id/ws2001"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="-1"
+                        android:text="@string/ws2001" />
+
                     <LinearLayout
                         android:id="@+id/ws20check"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:tag="0">
-
-                        <CheckBox
-                            android:id="@+id/ws2001"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ws2001" />
 
                         <CheckBox
                             android:id="@+id/ws2002"
