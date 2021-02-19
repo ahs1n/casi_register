@@ -20,11 +20,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection04WsfpBinding;
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
@@ -50,6 +52,8 @@ public class Section04WSFPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section04_wsfp);
         bi.setCallback(this);
+        item = (WraFollowup) getIntent().getSerializableExtra(CONSTANTS.ITEM_DATA);
+        bi.setWraInformation(item);
         setListeners();
         setUIContent();
     }

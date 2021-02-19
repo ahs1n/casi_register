@@ -3135,14 +3135,14 @@ public class Form extends LiveData<Form> {
                     .put("fc22", fc22)
                     .put("fc23", fc23)
                     .put("fc24", fc24)
-                    .put("fc25", fc25)
+//                    .put("fc25", fc25)
                     .put("fc2501", fc2501)
                     .put("fc2502", fc2502)
                     .put("fc2503", fc2503)
                     .put("fc2504", fc2504)
                     .put("fc2505", fc2505)
                     .put("fc2506", fc2506)
-                    .put("fc26", fc26)
+//                    .put("fc26", fc26)
                     .put("fc2601", fc2601)
                     .put("fc2602", fc2602)
                     .put("fc2603", fc2603)
@@ -3153,7 +3153,7 @@ public class Form extends LiveData<Form> {
                     .put("fc2703", fc2703)
                     .put("fc2704", fc2704)
                     .put("fc28", fc28)
-                    .put("fc29", fc29)
+//                    .put("fc29", fc29)
                     .put("fc2901", fc2901)
                     .put("fc2902", fc2902)
                     .put("fc2903", fc2903)
@@ -3340,21 +3340,25 @@ public class Form extends LiveData<Form> {
 
             switch (type) {
                 case CONSTANTS.WRA_TYPE:
+                    json.put(FormsTable.COLUMN_WS, new JSONObject(wStoString()));
                     if (this.wS != null && !this.wS.equals("")) {
                         json.put(FormsTable.COLUMN_WS, new JSONObject(this.wS));
                     }
                     break;
                 case CONSTANTS.WRA_FOLLOWUP_TYPE:
+                    json.put(FormsTable.COLUMN_WSFP, new JSONObject(wSFPtoString()));
                     if (this.wSFP != null && !this.wSFP.equals("")) {
                         json.put(FormsTable.COLUMN_WSFP, new JSONObject(this.wSFP));
                     }
                     break;
                 case CONSTANTS.CHILD_TYPE:
+                    json.put(FormsTable.COLUMN_CS, new JSONObject(cStoString()));
                     if (this.cS != null && !this.cS.equals("")) {
                         json.put(FormsTable.COLUMN_CS, new JSONObject(this.cS));
                     }
                     break;
                 case CONSTANTS.CHILD_FOLLOWUP_TYPE:
+                    json.put(FormsTable.COLUMN_CSFP, new JSONObject(cSFPtoString()));
                     if (this.cSFP != null && !this.cSFP.equals("")) {
                         json.put(FormsTable.COLUMN_CSFP, new JSONObject(this.cSFP));
                     }
@@ -3423,7 +3427,7 @@ public class Form extends LiveData<Form> {
                 this.cs21 = json.getString("cs21");
                 this.cs22 = json.getString("cs22");
                 this.cs23 = json.getString("cs23");
-                this.cs24 = json.getString("cs24");
+//                this.cs24 = json.getString("cs24");
                 this.cs2401 = json.getString("cs2401");
                 this.cs2402 = json.getString("cs2402");
                 this.cs2403 = json.getString("cs2403");
@@ -3435,7 +3439,7 @@ public class Form extends LiveData<Form> {
                 this.cs25b01 = json.getString("cs25b01");
                 this.cs25c = json.getString("cs25c");
                 this.cs25c096x = json.getString("cs25c096x");
-                this.cs26 = json.getString("cs26");
+//                this.cs26 = json.getString("cs26");
                 this.cs2601 = json.getString("cs2601");
                 this.cs2602 = json.getString("cs2602");
                 this.cs2603 = json.getString("cs2603");
@@ -3517,14 +3521,14 @@ public class Form extends LiveData<Form> {
                 this.fc22 = json.getString("fc22");
                 this.fc23 = json.getString("fc23");
                 this.fc24 = json.getString("fc24");
-                this.fc25 = json.getString("fc25");
+//                this.fc25 = json.getString("fc25");
                 this.fc2501 = json.getString("fc2501");
                 this.fc2502 = json.getString("fc2502");
                 this.fc2503 = json.getString("fc2503");
                 this.fc2504 = json.getString("fc2504");
                 this.fc2505 = json.getString("fc2505");
                 this.fc2506 = json.getString("fc2506");
-                this.fc26 = json.getString("fc26");
+//                this.fc26 = json.getString("fc26");
                 this.fc2601 = json.getString("fc2601");
                 this.fc2602 = json.getString("fc2602");
                 this.fc2603 = json.getString("fc2603");
@@ -3535,7 +3539,7 @@ public class Form extends LiveData<Form> {
                 this.fc2703 = json.getString("fc2703");
                 this.fc2704 = json.getString("fc2704");
                 this.fc28 = json.getString("fc28");
-                this.fc29 = json.getString("fc29");
+//                this.fc29 = json.getString("fc29");
                 this.fc2901 = json.getString("fc2901");
                 this.fc2902 = json.getString("fc2902");
                 this.fc2903 = json.getString("fc2903");
@@ -3599,7 +3603,7 @@ public class Form extends LiveData<Form> {
                 this.ws17 = json.getString("ws17");
                 this.ws18 = json.getString("ws18");
                 this.ws19 = json.getString("ws19");
-                this.ws20 = json.getString("ws20");
+//                this.ws20 = json.getString("ws20");
                 this.ws2001 = json.getString("ws2001");
                 this.ws2002 = json.getString("ws2002");
                 this.ws2003 = json.getString("ws2003");
@@ -3607,7 +3611,7 @@ public class Form extends LiveData<Form> {
                 this.ws2005 = json.getString("ws2005");
                 this.ws2006 = json.getString("ws2006");
                 this.ws21 = json.getString("ws21");
-                this.ws22 = json.getString("ws22");
+//                this.ws22 = json.getString("ws22");
                 this.ws2201 = json.getString("ws2201");
                 this.ws2202 = json.getString("ws2202");
                 this.ws2203 = json.getString("ws2203");
@@ -3668,7 +3672,7 @@ public class Form extends LiveData<Form> {
                 this.fw15 = json.getString("fw15");
                 this.fw16 = json.getString("fw16");
                 this.fw17 = json.getString("fw17");
-                this.fw18 = json.getString("fw18");
+//                this.fw18 = json.getString("fw18");
                 this.fw1801 = json.getString("fw1801");
                 this.fw1802 = json.getString("fw1802");
                 this.fw1803 = json.getString("fw1803");
@@ -3684,7 +3688,7 @@ public class Form extends LiveData<Form> {
                 this.fw25 = json.getString("fw25");
                 this.fw26 = json.getString("fw26");
                 this.fw27 = json.getString("fw27");
-                this.fw28 = json.getString("fw28");
+//                this.fw28 = json.getString("fw28");
                 this.fw2801 = json.getString("fw2801");
                 this.fw2802 = json.getString("fw2802");
                 this.fw2803 = json.getString("fw2803");
