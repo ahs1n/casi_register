@@ -26,7 +26,6 @@ import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection04WsfpBinding;
-import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
@@ -335,6 +334,10 @@ public class Section04WSFPActivity extends AppCompatActivity {
         bi.fw14.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVfw19));
 
         bi.fw21.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVfw22));
+
+        bi.fw1801.setOnCheckedChangeListener((compoundButton, b) -> {
+            Clear.clearAllFields(bi.fw18check, !b);
+        });
 
     }
 
