@@ -262,6 +262,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.setFc05(item.getCs05());
         form.setScr_date(item.getCs08());
         form.set_luid(item.getLUID());
+        form.setFupno(item.getFupNo());
 
         /*form.setFc01(bi.fc01.getText().toString());
 

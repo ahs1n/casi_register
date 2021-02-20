@@ -142,6 +142,7 @@ public class Form extends LiveData<Form> {
     private String cS = "";
     private String cSFP = "";
     private String _luid = "";
+    private String fupno = "";
     private String wS = "";
     private String wSFP = "";
     private String scr_date = "";
@@ -2633,6 +2634,14 @@ public class Form extends LiveData<Form> {
     }
 
 
+    public String getFupno() {
+        return fupno;
+    }
+
+    public void setFupno(String fupno) {
+        this.fupno = fupno;
+    }
+
     public String getwS() {
         return wS;
     }
@@ -3176,7 +3185,8 @@ public class Form extends LiveData<Form> {
                     .put("fc3796x", fc3796x)
                     .put("fc38", fc38)
                     .put("scr_date", scr_date)
-                    .put("_luid", _luid);
+                    .put("_luid", _luid)
+                    .put("fupno", fupno);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -3316,7 +3326,8 @@ public class Form extends LiveData<Form> {
                     .put("fw29k", fw29k)
                     .put("fw29k96x", fw29k96x)
                     .put("scr_date", scr_date)
-                    .put("_luid", _luid);
+                    .put("_luid", _luid)
+                    .put("fupno", fupno);
 
 
         } catch (JSONException e) {
@@ -3563,6 +3574,7 @@ public class Form extends LiveData<Form> {
                 this.fc38 = json.getString("fc38");
                 this.scr_date = json.getString("scr_date");
                 this._luid = json.getString("_luid");
+                this.fupno = json.getString("fupno");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -3709,6 +3721,7 @@ public class Form extends LiveData<Form> {
                 this.fw29k96x = json.getString("fw29k96x");
                 this.scr_date = json.getString("scr_date");
                 this._luid = json.getString("_luid");
+                this.fupno = json.getString("fupno");
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -29,11 +29,11 @@ class SelectedChildViewHolder(private val bi: ItemChildLayoutBinding) :
         val imageRes: Int = if (item.cs13 == "1") R.drawable.ic_boy else R.drawable.ic_girl
         bi.scrDate.text = item.cs08
         val flagImage: Int
-        if (item.fupDt != StringUtils.EMPTY) {
-//            bi.parentLayout.isEnabled = false
-            flagImage = R.drawable.ic_complete_star
-        } else {
+        if (item.fupDt == StringUtils.EMPTY) {
+            bi.parentLayout.isEnabled = false
             flagImage = R.drawable.ic_incomplete_star
+        } else {
+            flagImage = R.drawable.ic_complete_star
         }
         Glide.with(this.itemView.context)
                 .asBitmap()

@@ -25,6 +25,7 @@ class WraFollowup : Serializable {
     var ws11 = StringUtils.EMPTY //wra name
     var ws12 = StringUtils.EMPTY //father name
     var fupDt = StringUtils.EMPTY //fupDT
+    var fupNo = StringUtils.EMPTY //fupNo
 
     //Not saving in DB
     var wraTableDataExist = false //already exist followup form
@@ -43,6 +44,7 @@ class WraFollowup : Serializable {
         ws11 = jsonObject.getString(WraTable.COLUMN_WS11)
         ws12 = jsonObject.getString(WraTable.COLUMN_WS12)
         fupDt = jsonObject.getString(WraTable.COLUMN_FUPDT)
+        fupNo = jsonObject.getString(WraTable.COLUMN_FUPNO)
         return this
     }
 
@@ -59,6 +61,7 @@ class WraFollowup : Serializable {
         ws11 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS11))
         ws12 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS12))
         fupDt = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_FUPDT))
+        fupNo = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_FUPNO))
         return this
     }
 
@@ -95,5 +98,6 @@ class WraFollowup : Serializable {
         const val COLUMN_WS11 = "ws11"
         const val COLUMN_WS12 = "ws12"
         const val COLUMN_FUPDT = "fupdt"
+        const val COLUMN_FUPNO = "fupNo"
     }
 }

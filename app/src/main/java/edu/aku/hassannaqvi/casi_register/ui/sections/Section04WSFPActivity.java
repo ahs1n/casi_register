@@ -149,6 +149,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
         form.setFw05(item.getWs05());
         form.setScr_date(item.getWs08());
         form.set_luid(item.getLUID());
+        form.setFupno(item.getFupNo());
 
 
         /*form.setFw01(bi.fw01.getText().toString());
