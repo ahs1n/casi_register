@@ -347,6 +347,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             } else
                 bi.cs07.setEnabled(true);
         });
+
+        bi.cs13.setOnCheckedChangeListener((radioGroup, i) -> bi.ZScore.setText(""));
     }
 
     public void cs15yOnTextChanged(CharSequence s, int start, int before, int count) {
