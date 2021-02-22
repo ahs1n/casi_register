@@ -95,7 +95,7 @@ class ChildFollowup : Serializable {
     }
 
     object ChildTable : BaseColumns {
-        const val TABLE_NAME = "childFollowup"
+        const val TABLE_NAME = "childFollowups"
         const val _ID = "_id"
         const val COLUMN_LUID = "_uid"
         const val COLUMN_CS01 = "cs01"

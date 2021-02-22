@@ -40,6 +40,7 @@ import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySyncBinding;
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.models.SyncModel;
 import edu.aku.hassannaqvi.casi_register.models.Users;
@@ -51,6 +52,7 @@ import edu.aku.hassannaqvi.casi_register.workers.DataUpWorkerALL;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.FOLLOWUP_FLAG;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt.isNetworkConnected;
@@ -149,12 +151,15 @@ public class SyncActivity extends AppCompatActivity {
                 bi.pBar.setVisibility(View.GONE);
                 downloadTables.clear();
 
-
-                downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
-                downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
-                downloadTables.add(new SyncModel(HealthFacility.HealthFacilityTable.TABLE_NAME));
-                downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
-                downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
+                if (getIntent().getBooleanExtra(FOLLOWUP_FLAG, false)) {
+                    downloadTables.add(new SyncModel(ChildFollowup.ChildTable.TABLE_NAME));
+                } else {
+                    downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
+                    downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
+                    downloadTables.add(new SyncModel(HealthFacility.HealthFacilityTable.TABLE_NAME));
+                    downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
+                    downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
+                }
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
@@ -177,8 +182,15 @@ public class SyncActivity extends AppCompatActivity {
                     //.putString("columns", "_id, sysdate")
                     // .putString("where", where)
                     ;
-            if (!downloadTables.get(i).gettableName().equals(ZStandardContract.ZScoreTable.TABLE_NAME))
-                data.putString("where", Users.UsersTable.COLUMN_COUNTRY_CODE + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "'");
+            if (!downloadTables.get(i).gettableName().equals(ZStandardContract.ZScoreTable.TABLE_NAME)) {
+                if (downloadTables.get(i).gettableName().equals(ChildFollowup.ChildTable.TABLE_NAME))
+                    data.putString("where",
+                            ChildFollowup.ChildTable.COLUMN_CS01 + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "' AND " +
+                                    ChildFollowup.ChildTable.COLUMN_CS04 + "='" + MainApp.mainInfo.getUc_code() + "'"
+                    );
+                else
+                    data.putString("where", Users.UsersTable.COLUMN_COUNTRY_CODE + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "'");
+            }
 
             /*if (downloadTables.get(i).gettableName().equals(Clusters.TableClusters.TABLE_NAME)) {
                 data.putString("where", Clusters.TableClusters.COLUMN_DIST_CODE + "='" + distCode + "'");
@@ -249,6 +261,11 @@ public class SyncActivity extends AppCompatActivity {
                                     case HealthFacility.HealthFacilityTable.TABLE_NAME:
                                         jsonArray = new JSONArray(result);
                                         insertCount = db.syncHF(jsonArray);
+                                        Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
+                                        break;
+                                    case ChildFollowup.ChildTable.TABLE_NAME:
+                                        jsonArray = new JSONArray(result);
+                                        insertCount = db.syncChildFollowups(jsonArray);
                                         Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
                                         break;
 

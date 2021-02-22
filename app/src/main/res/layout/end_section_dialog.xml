@@ -7,13 +7,12 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:background="@android:color/white"
         android:orientation="vertical"
-        android:padding="24dp"
->
+        android:padding="24dp">
 
         <TextView
             android:id="@+id/alertTitle"
             android:layout_width="wrap_content"
-            android:layout_height="64dp"
+            android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_stop"
             android:drawablePadding="12dp"
             android:gravity="center_vertical"

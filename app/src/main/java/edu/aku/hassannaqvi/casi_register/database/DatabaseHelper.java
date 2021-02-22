@@ -233,6 +233,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+    public int syncChildFollowups(JSONArray chList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ChildFollowup.ChildTable.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+            for (int i = 0; i < chList.length(); i++) {
+
+                ChildFollowup chFollowup = new ChildFollowup();
+                chFollowup.sync(chList.getJSONObject(i));
+                ContentValues values = new ContentValues();
+
+                values.put(ChildFollowup.ChildTable.COLUMN_LUID, chFollowup.getLUID());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS01, chFollowup.getCs01());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS01A, chFollowup.getCs01a());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS01B, chFollowup.getCs01b());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS09, chFollowup.getCs09());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS04, chFollowup.getCs04());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS05, chFollowup.getCs05());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS08, chFollowup.getCs08());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS10, chFollowup.getCs10());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS10A, chFollowup.getCs10a());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS11, chFollowup.getCs11());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS11A, chFollowup.getCs11a());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS12, chFollowup.getCs12());
+                values.put(ChildFollowup.ChildTable.COLUMN_CS13, chFollowup.getCs13());
+                values.put(ChildFollowup.ChildTable.COLUMN_FUPDT, chFollowup.getFupDt());
+                values.put(ChildFollowup.ChildTable.COLUMN_FUPNO, chFollowup.getFupNo());
+                long rowID = db.insert(ChildFollowup.ChildTable.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncHF(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
 
     //Add Functions
     public Long addForm(Form form) {
