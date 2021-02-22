@@ -36,6 +36,7 @@ import androidx.databinding.DataBindingUtil;
 
 import org.jetbrains.annotations.NotNull;
 
+import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
@@ -271,6 +272,15 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 }
                 oF = new Intent(this, SyncActivity.class);
                 break;
+            case R.id.btn_download_followup:
+                if (!AndroidUtilityKt.isNetworkConnected(this)) {
+                    Toast.makeText(this, "No network connection available!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
+                SaveDraft();
+                oF = new Intent(this, SyncActivity.class).putExtra(FOLLOWUP_FLAG, true);
+                break;
 
             default:
                 oF = new Intent();
@@ -393,6 +403,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         AppUtilsKt.openWarningActivity(
                 this,
                 1,
+                null,
                 getString(R.string.app_name) + " APP is available!",
                 getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\nInstall new version to use this app.",
                 "Install",

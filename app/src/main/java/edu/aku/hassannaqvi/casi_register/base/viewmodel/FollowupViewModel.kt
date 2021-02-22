@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.casi_register.base.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import edu.aku.hassannaqvi.casi_register.CONSTANTS
 import edu.aku.hassannaqvi.casi_register.base.repository.GeneralRepository
 import edu.aku.hassannaqvi.casi_register.base.repository.ResponseStatusCallbacks
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
@@ -47,7 +48,7 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
 
                 _childResponse.value = if (children.size > 0) {
 
-                    /*val third = launch {
+                    val third = launch {
                         children.forEachIndexed { index, item ->
                             val form = repository.getLocalDBFollowupFormList(country, identification, item.cs10, CONSTANTS.CHILD_FOLLOWUP_TYPE)
                             form?.let {
@@ -56,7 +57,7 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                             }
                         }
                     }
-                    third.join()*/
+                    third.join()
 
                     val childList = ArrayList<ChildFollowup>(children.sortedBy { it.cs11 })
                     ResponseStatusCallbacks.success(data = childList, message = "Child list found")

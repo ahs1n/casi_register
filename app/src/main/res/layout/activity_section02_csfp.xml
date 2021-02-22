@@ -431,13 +431,15 @@
                             android:text="@string/fc10a" />
                     </LinearLayout>
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/fc10a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:hint="###-##-##"
-                        android:text="@{childInformation.cs10a}" />
+                        android:inputType="number"
+                        android:text="@{childInformation.cs10a}"
+                        app:mask="###-##-##" />
 
                 </LinearLayout>
 
