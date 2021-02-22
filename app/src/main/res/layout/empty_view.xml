@@ -5,5 +5,5 @@
     android:layout_gravity="center"
     android:layout_marginTop="10dp"
     android:orientation="vertical"
-    android:text="No Data Found"
+    android:text="No Child Found"
     android:textSize="20sp" />

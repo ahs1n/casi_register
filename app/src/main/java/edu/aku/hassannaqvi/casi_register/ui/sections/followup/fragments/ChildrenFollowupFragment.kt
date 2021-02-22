@@ -1,6 +1,9 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections.followup.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,12 +23,19 @@ import edu.aku.hassannaqvi.casi_register.utils.*
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
 import kotlinx.android.synthetic.main.fragment_children_followup.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
 
     lateinit var adapter: SelectedChildListAdapter
     lateinit var viewModel: FollowupViewModel
+    val country: String by lazy {
+        context?.let { SharedStorage.getCountryCode(it).toString() } ?: "0"
+    }
+    private val identification: Identification by lazy {
+        Identification(MainApp.mainInfo.region_code, MainApp.mainInfo.district_code, MainApp.mainInfo.uc_code, MainApp.mainInfo.village_code)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -60,6 +70,23 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
             }
         })
 
+        /*
+        * Filter listener
+        * */
+        txtFilter.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s == null) viewModel.getChildDataFromDB(country, identification)
+                else viewModel.getChildDataFromDB(country, identification, txtFilter.text.toString())
+            }
+
+        })
+
 
     }
 
@@ -87,8 +114,6 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
     override fun onResume() {
         super.onResume()
 
-        val villageItem = MainApp.mainInfo
-        val country = context?.let { SharedStorage.getCountryCode(it).toString() } ?: "0"
-        viewModel.getChildDataFromDB(country, Identification(villageItem.region_code, villageItem.district_code, villageItem.uc_code, villageItem.village_code))
+        viewModel.getChildDataFromDB(country, identification)
     }
 }

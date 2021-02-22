@@ -235,8 +235,8 @@ fun String.shortStringLength(): String {
      * convert fist letter into uppercase
      */
     var calStr = this
-    if (this.length > 15)
-        calStr = this.substring(15).plus("...")
+    if (this.length > 20)
+        calStr = this.substring(0, 20).plus("...")
     return calStr
 }
 

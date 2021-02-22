@@ -26,7 +26,7 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
         get() = _wraResponse
 
 
-    fun getChildDataFromDB(country: String, identification: Identification) {
+    fun getChildDataFromDB(country: String, identification: Identification, filterName: String? = null) {
         _childResponse.value = ResponseStatusCallbacks.loading(null)
         viewModelScope.launch {
             try {
@@ -59,8 +59,18 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                     }
                     third.join()
 
-                    val childList = ArrayList<ChildFollowup>(children.sortedBy { it.cs11 })
-                    ResponseStatusCallbacks.success(data = childList, message = "Child list found")
+                    val childList = ArrayList<ChildFollowup>(
+                            {
+                                val child = children.sortedBy { it.cs11 }
+                                if (filterName != null)
+                                    child.filter {
+                                        it.cs11.startsWith(filterName)
+                                    }
+                                else child
+                            }())
+
+                    if (childList.size> 0) ResponseStatusCallbacks.success(data = childList, message = "Child list found")
+                    else ResponseStatusCallbacks.error(data = null, message = "No child found!")
                 } else
                     ResponseStatusCallbacks.error(data = null, message = "No child found!")
             } catch (e: Exception) {
