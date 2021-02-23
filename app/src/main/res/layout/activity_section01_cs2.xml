@@ -889,8 +889,7 @@
                     android:background="@color/redOverlay"
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="@string/btnEnd"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/btn_Continue"

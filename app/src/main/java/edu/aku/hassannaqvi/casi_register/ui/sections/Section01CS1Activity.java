@@ -257,13 +257,22 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     }
 
     private boolean formValidation() {
+
         if (!Validator.emptyCheckingContainer(this, bi.GrpName))
             return false;
+
         if (!dtFlag) {
             return Validator.emptyCustomTextBox(this, bi.cs1403, "Invalid date!");
         }
+
         if (Integer.parseInt(bi.cs1502.getText().toString()) == 0 && Integer.parseInt(bi.cs1501.getText().toString()) == 0)
             return Validator.emptyCustomTextBox(this, bi.cs1501, "Both Month & Year don't be zero!!", false);
+
+        if (bi.ZScore.getText().toString().equals(StringUtils.EMPTY)) {
+            Toast.makeText(this, "Please click on Z-Score Button", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 
@@ -470,12 +479,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
             bi.ZScore.setText("HLAZ: " + HLAZ + " \r\nWAZ: " + WAZ + " \r\nWHZ: " + WHZ);
         } else {
-
             Toast.makeText(this, "Z-Score cannot be evaluated with missing values.", Toast.LENGTH_SHORT).show();
-
         }
-
-
     }
 
     public void ZScoreOnTextChanged(CharSequence s, int start, int before, int count) {

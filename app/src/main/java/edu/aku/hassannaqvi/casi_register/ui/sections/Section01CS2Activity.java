@@ -3,25 +3,23 @@ package edu.aku.hassannaqvi.casi_register.ui.sections;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.validatorcrawler.aliazaz.Clear;
-import com.validatorcrawler.aliazaz.Validator;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
+import com.validatorcrawler.aliazaz.Clear;
+import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
-import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
+import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs2Binding;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
-import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
-import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivity;
 import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 import static edu.aku.hassannaqvi.casi_register.utils.JSONUtilsKt.mergeJSONObjects;
 
@@ -175,7 +173,7 @@ public class Section01CS2Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        AppUtilsKt.openSectionEndingActivity(this, false);
+        gotoActivityWithSerializable(this, EndingActivity.class, "complete", false);
     }
 
 
