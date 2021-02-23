@@ -73,110 +73,94 @@ public class DataDownWorkerALL extends Worker {
         Data data;
 
 
-        if (!uploadTable.equals(ZStandardContract.ZScoreTable.TABLE_NAME)) {
+        try {
+            url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
+            Log.d(TAG, "doWork: Connecting...");
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setReadTimeout(100000 /* milliseconds */);
+            urlConnection.setConnectTimeout(150000 /* milliseconds */);
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoOutput(true);
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("charset", "utf-8");
+            urlConnection.setUseCaches(false);
+            urlConnection.connect();
+            Log.d(TAG, "downloadURL: " + url);
 
-            try {
-                url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                Log.d(TAG, "doWork: Connecting...");
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setReadTimeout(100000 /* milliseconds */);
-                urlConnection.setConnectTimeout(150000 /* milliseconds */);
-                urlConnection.setRequestMethod("POST");
-                urlConnection.setDoOutput(true);
-                urlConnection.setDoInput(true);
-                urlConnection.setRequestProperty("Content-Type", "application/json");
-                urlConnection.setRequestProperty("charset", "utf-8");
-                urlConnection.setUseCaches(false);
-                urlConnection.connect();
-                Log.d(TAG, "downloadURL: " + url);
+            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
 
-                DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
+            JSONObject jsonTable = new JSONObject();
+            JSONArray jsonParam = new JSONArray();
 
-                JSONObject jsonTable = new JSONObject();
-                JSONArray jsonParam = new JSONArray();
+            jsonTable.put("table", uploadTable);
+            //jsonTable.put("select", uploadColumns);
+            jsonTable.put("filter", uploadWhere);
+            //jsonTable.put("limit", "3");
+            //jsonTable.put("orderby", "rand()");
+            //jsonSync.put(uploadData);
+            jsonParam.put(jsonTable);
 
-                jsonTable.put("table", uploadTable);
-                //jsonTable.put("select", uploadColumns);
-                jsonTable.put("filter", uploadWhere);
-                //jsonTable.put("limit", "3");
-                //jsonTable.put("orderby", "rand()");
-                //jsonSync.put(uploadData);
-                jsonParam.put(jsonTable);
-
-                Log.d(TAG, "Upload Begins: " + jsonTable.toString());
+            Log.d(TAG, "Upload Begins: " + jsonTable.toString());
 
 
-                wr.writeBytes(String.valueOf(jsonTable));
-                wr.flush();
-                wr.close();
+            wr.writeBytes(String.valueOf(jsonTable));
+            wr.flush();
+            wr.close();
 
-                Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
+            Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
 
-                if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    Log.d(TAG, "Connection Response: " + urlConnection.getResponseCode());
-                    //displayNotification(nTitle, "Connection Established");
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                Log.d(TAG, "Connection Response: " + urlConnection.getResponseCode());
+                //displayNotification(nTitle, "Connection Established");
 
-                    length = urlConnection.getContentLength();
-                    Log.d(TAG, "Content Length: " + length);
+                length = urlConnection.getContentLength();
+                Log.d(TAG, "Content Length: " + length);
 
-                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
+                }
 
-                    if (result.equals("[]")) {
-                        Log.d(TAG, "No data received from server: " + result);
-                        data = new Data.Builder()
-                                .putString("error", "No data received from server: " + result)
-                                .putInt("position", this.position)
-                                .build();
-                        return Result.failure(data);
-                    }
-                    //displayNotification(nTitle, "Received Data");
-                    Log.d(TAG, "doWork(EN): " + result.toString());
-                } else {
-                    Log.d(TAG, "Connection Response (Server Failure): " + urlConnection.getResponseCode());
+                if (result.equals("[]")) {
+                    Log.d(TAG, "No data received from server: " + result);
                     data = new Data.Builder()
-                            .putString("error", String.valueOf(urlConnection.getResponseCode()))
+                            .putString("error", "No data received from server: " + result)
                             .putInt("position", this.position)
                             .build();
                     return Result.failure(data);
                 }
-            } catch (java.net.SocketTimeoutException e) {
-                Log.d(TAG, "doWork (Timeout): " + e.getMessage());
-                //displayNotification(nTitle, "Timeout Error: " + e.getMessage());
+                //displayNotification(nTitle, "Received Data");
+                Log.d(TAG, "doWork(EN): " + result.toString());
+            } else {
+                Log.d(TAG, "Connection Response (Server Failure): " + urlConnection.getResponseCode());
                 data = new Data.Builder()
-                        .putString("error", String.valueOf(e.getMessage()))
+                        .putString("error", String.valueOf(urlConnection.getResponseCode()))
                         .putInt("position", this.position)
                         .build();
                 return Result.failure(data);
-
-            } catch (IOException | JSONException e) {
-                Log.d(TAG, "doWork (IO Error): " + e.getMessage());
-                //displayNotification(nTitle, "IO Error: " + e.getMessage());
-                data = new Data.Builder()
-                        .putString("error", String.valueOf(e.getMessage()))
-                        .putInt("position", this.position)
-                        .build();
-
-                return Result.failure(data);
-
             }
+        } catch (java.net.SocketTimeoutException e) {
+            Log.d(TAG, "doWork (Timeout): " + e.getMessage());
+            //displayNotification(nTitle, "Timeout Error: " + e.getMessage());
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(e.getMessage()))
+                    .putInt("position", this.position)
+                    .build();
+            return Result.failure(data);
 
-        } else {
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getApplicationContext().getAssets().open("zStandardJson.json")));
-                String eachline = bufferedReader.readLine();
-                while (eachline != null) {
-                    result.append(eachline);
-                    eachline = bufferedReader.readLine();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException | JSONException e) {
+            Log.d(TAG, "doWork (IO Error): " + e.getMessage());
+            //displayNotification(nTitle, "IO Error: " + e.getMessage());
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(e.getMessage()))
+                    .putInt("position", this.position)
+                    .build();
+
+            return Result.failure(data);
 
         }
 

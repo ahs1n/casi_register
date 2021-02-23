@@ -16,6 +16,7 @@ class ViewModelFactory(private val repository: GeneralRepository) : ViewModelPro
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(repository) as T
             modelClass.isAssignableFrom(MainViewModel::class.java) -> MainViewModel(repository) as T
             modelClass.isAssignableFrom(FollowupViewModel::class.java) -> FollowupViewModel(repository) as T
+            modelClass.isAssignableFrom(SplashscreenViewModel::class.java) -> SplashscreenViewModel(repository) as T
             else -> throw IllegalArgumentException("Unknown viewModel class $modelClass")
         }
     }

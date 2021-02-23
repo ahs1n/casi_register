@@ -28,12 +28,13 @@ class SelectedWraViewHolder(private val bi: ItemChildLayoutBinding) :
         bi.scrDate.text = item.ws08
         bi.icon2.setImageResource(R.drawable.ic_husband)
         val flagImage: Int
-        if (item.fupDt != StringUtils.EMPTY) {
-//            bi.parentLayout.isEnabled = false
+
+        if (item.fupDt == StringUtils.EMPTY) bi.parentLayout.isEnabled = false else bi.followupDT.text = item.fupDt
+        if (item.wraTableDataExist) {
+            bi.parentLayout.isEnabled = false
             flagImage = R.drawable.ic_complete_star
-        } else {
-            flagImage = R.drawable.ic_incomplete_star
-        }
+        } else flagImage = R.drawable.ic_incomplete_star
+
         Glide.with(this.itemView.context)
                 .asBitmap()
                 .load(imageRes)

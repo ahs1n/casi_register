@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.kennyc.view.MultiStateView
 import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.adapters.SelectedChildListAdapter
@@ -22,6 +23,8 @@ import edu.aku.hassannaqvi.casi_register.ui.sections.followup.SelectedChildrenLi
 import edu.aku.hassannaqvi.casi_register.utils.*
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
 import kotlinx.android.synthetic.main.fragment_children_followup.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -36,6 +39,7 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
     private val identification: Identification by lazy {
         Identification(MainApp.mainInfo.region_code, MainApp.mainInfo.district_code, MainApp.mainInfo.uc_code, MainApp.mainInfo.village_code)
     }
+    lateinit var items: ArrayList<ChildFollowup>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -49,6 +53,8 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
 
         callingRecyclerView()
 
+        viewModel.getChildDataFromDB(country, identification)
+
         /*
        * Fetch child list
        * */
@@ -58,6 +64,7 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
                 when (it.status) {
                     ResponseStatus.SUCCESS -> {
                         adapter.childItems = it.data as ArrayList<ChildFollowup>
+                        items = adapter.childItems
                         multiStateView.viewState = MultiStateView.ViewState.CONTENT
                     }
                     ResponseStatus.ERROR -> {
@@ -78,11 +85,28 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                multiStateView.viewState = MultiStateView.ViewState.LOADING
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if (s == null) viewModel.getChildDataFromDB(country, identification)
-                else viewModel.getChildDataFromDB(country, identification, txtFilter.text.toString())
+                if (s == null) {
+                    lifecycleScope.launch {
+                        delay(1000)
+                        adapter.childItems = items
+                        multiStateView.viewState = MultiStateView.ViewState.CONTENT
+                    }
+                } else {
+                    lifecycleScope.launch {
+                        delay(1000)
+                        val cropItem = items
+                        adapter.childItems = cropItem.sortedBy { it.cs11 }.filter { it.cs11.startsWith(s.toString()) } as ArrayList<ChildFollowup>
+                        if (adapter.childItems.size > 0)
+                            multiStateView.viewState = MultiStateView.ViewState.CONTENT
+                        else
+                            multiStateView.viewState = MultiStateView.ViewState.EMPTY
+
+                    }
+                }
             }
 
         })
@@ -113,6 +137,10 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
     * */
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
 
         viewModel.getChildDataFromDB(country, identification)
     }

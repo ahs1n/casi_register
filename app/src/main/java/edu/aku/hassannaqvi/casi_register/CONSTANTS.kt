@@ -12,7 +12,7 @@ class CONSTANTS {
 
         //Login Result Code
         const val COUNTRY_CODE = "country_code"
-        const val LOGIN_SPLASH_FLAG = "splash_flag"
+        const val FIRST_TIME_INSTALL = "first_time_install"
 
         //SubInfo
         const val ITEM_DATA = "item_data"

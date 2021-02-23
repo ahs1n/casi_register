@@ -4,6 +4,7 @@ import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper
 import edu.aku.hassannaqvi.casi_register.models.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.json.JSONArray
 import kotlin.collections.ArrayList
 
 open class GeneralRepository(private val db: DatabaseHelper) : GeneralDataSource {
@@ -42,5 +43,9 @@ open class GeneralRepository(private val db: DatabaseHelper) : GeneralDataSource
 
     override suspend fun getFormStatus(date: String): FormIndicatorsModel = withContext(Dispatchers.IO) {
         db.getFormStatusCount(date)
+    }
+
+    override suspend fun insertZScore(date: JSONArray): Int = withContext(Dispatchers.IO) {
+        db.syncZStandard(date)
     }
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +34,8 @@ import androidx.work.WorkContinuation;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import com.google.gson.JsonObject;
+
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
@@ -49,12 +52,18 @@ import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 import edu.aku.hassannaqvi.casi_register.workers.DataDownWorkerALL;
 import edu.aku.hassannaqvi.casi_register.workers.DataUpWorkerALL;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.FOLLOWUP_FLAG;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.utils.AndroidUtilityKt.isNetworkConnected;
 import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.dbBackup;
 
@@ -158,7 +167,7 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
                     downloadTables.add(new SyncModel(HealthFacility.HealthFacilityTable.TABLE_NAME));
                     downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
-                    downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
+//                    downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
                 }
 
                 MainApp.downloadData = new String[downloadTables.size()];
@@ -239,6 +248,7 @@ public class SyncActivity extends AppCompatActivity {
                             try {
                                 JSONArray jsonArray = new JSONArray();
                                 int insertCount = 0;
+
                                 switch (tableName) {
                                     case Users.UsersTable.TABLE_NAME:
                                         jsonArray = new JSONArray(result);
@@ -253,11 +263,6 @@ public class SyncActivity extends AppCompatActivity {
                                         insertCount = db.syncVillages(jsonArray);
                                         Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
                                         break;
-                                    case ZStandardContract.ZScoreTable.TABLE_NAME:
-                                        jsonArray = new JSONArray(result);
-                                        insertCount = db.syncZStandard(jsonArray);
-                                        Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
-                                        break;
                                     case HealthFacility.HealthFacilityTable.TABLE_NAME:
                                         jsonArray = new JSONArray(result);
                                         insertCount = db.syncHF(jsonArray);
@@ -268,13 +273,13 @@ public class SyncActivity extends AppCompatActivity {
                                         insertCount = db.syncChildFollowups(jsonArray);
                                         Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
                                         break;
-
                                 }
 
                                 downloadTables.get(position).setmessage("Received: " + jsonArray.length() + ", Saved: " + insertCount);
                                 downloadTables.get(position).setstatus(insertCount == 0 ? "Unsuccessful" : "Successful");
                                 downloadTables.get(position).setstatusID(insertCount == 0 ? 1 : 3);
                                 syncListAdapter.updatesyncList(downloadTables);
+
 
 //                    pd.show();
                             } catch (JSONException e) {
@@ -495,5 +500,4 @@ public class SyncActivity extends AppCompatActivity {
         });
 
     }
-
 }

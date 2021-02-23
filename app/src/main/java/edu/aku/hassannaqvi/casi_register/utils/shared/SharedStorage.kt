@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.casi_register.utils.shared
 
 import android.content.Context
 import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.COUNTRY_CODE
+import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.FIRST_TIME_INSTALL
 import org.apache.commons.lang3.StringUtils
 
 /*
@@ -23,6 +24,14 @@ object SharedStorage : SharedStorageBase() {
 
     fun getCountryCode(context: Context): Int {
         return get(context, COUNTRY_CODE, 0) as Int
+    }
+
+    fun setFirstInstallFlag(context: Context, flag: Boolean) {
+        put(context, FIRST_TIME_INSTALL, flag)
+    }
+
+    fun getFirstInstallFlag(context: Context): Boolean {
+        return get(context, FIRST_TIME_INSTALL, true) as Boolean
     }
 
 }
