@@ -424,7 +424,14 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName))
+            return false;
+
+        if (bi.ZScore.getText().toString().equals(StringUtils.EMPTY)) {
+            Toast.makeText(this, "Please click on Z-Score Button", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     /*
