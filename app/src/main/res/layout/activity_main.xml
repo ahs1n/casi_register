@@ -259,21 +259,6 @@
                                     android:layout_margin="10dp"
                                     android:layout_weight="2" />
 
-
-                                <ImageButton
-                                    android:id="@+id/btn_download_followup"
-                                    android:layout_width="@dimen/_23sdp"
-                                    android:layout_height="@dimen/_23sdp"
-                                    android:layout_gravity="center"
-                                    android:elevation="1dp"
-                                    android:onClick="@{callback::openSpecificActivity}"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/ic_download"
-                                    android:visibility="visible"
-                                    app:cornerRadius="@dimen/_50sdp"
-                                    tools:ignore="ContentDescription"
-                                    tools:visibility="visible" />
-
                             </LinearLayout>
 
                         </androidx.cardview.widget.CardView>
@@ -308,6 +293,21 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
                                 android:layout_weight="2" />
+
+
+                            <ImageButton
+                                android:id="@+id/btn_download_followup"
+                                android:layout_width="@dimen/_23sdp"
+                                android:layout_height="@dimen/_23sdp"
+                                android:layout_gravity="center"
+                                android:elevation="1dp"
+                                android:onClick="@{callback::openSpecificActivity}"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_download"
+                                android:visibility="visible"
+                                app:cornerRadius="@dimen/_50sdp"
+                                tools:ignore="ContentDescription"
+                                tools:visibility="visible" />
 
                         </LinearLayout>
 

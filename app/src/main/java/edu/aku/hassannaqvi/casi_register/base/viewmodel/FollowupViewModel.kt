@@ -36,7 +36,7 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                 val first = async { children.addAll(repository.getSelectedServerChildList(country, identification)) }
                 first.await()
 
-                val localChildren: ArrayList<ChildFollowup> = ArrayList()
+                /*val localChildren: ArrayList<ChildFollowup> = ArrayList()
                 val second = async { repository.getSelectedChildLocalFormList(country, identification) }
                 second.await().let { it ->
                     it.forEach {
@@ -44,7 +44,7 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                             localChildren.add(it)
                     }
                 }
-                children.addAll(localChildren)
+                children.addAll(localChildren)*/
 
                 _childResponse.value = if (children.size > 0) {
 
@@ -92,7 +92,7 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                 val first = async { wra.addAll(repository.getSelectedServerWraList(country, identification)) }
                 first.await()
 
-                val localWra: ArrayList<WraFollowup> = ArrayList()
+                /*val localWra: ArrayList<WraFollowup> = ArrayList()
                 val second = async { repository.getSelectedWraLocalFormList(country, identification) }
                 second.await().let { it ->
                     it.forEach {
@@ -100,11 +100,11 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                             localWra.add(it)
                     }
                 }
-                wra.addAll(localWra)
+                wra.addAll(localWra)*/
 
                 _wraResponse.value = if (wra.size > 0) {
 
-                    /*val third = launch {
+                    val third = launch {
                         wra.forEachIndexed { index, item ->
                             val form = repository.getLocalDBFollowupFormList(country, identification, item.ws10, CONSTANTS.WRA_FOLLOWUP_TYPE)
                             form?.let {
@@ -113,7 +113,7 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                             }
                         }
                     }
-                    third.join()*/
+                    third.join()
 
                     val wraList = ArrayList<WraFollowup>(wra.sortedBy { it.ws11 })
                     ResponseStatusCallbacks.success(data = wraList, message = "Wra list found")
