@@ -351,8 +351,8 @@
                         android:hint="DD/MM/YYYY"
                         android:onTextChanged="@{callback::cs08OnTextChanged}"
                         app:dateFormat="dd-MM-yyyy"
-                        app:minDate="01/11/2020"
-                        app:maxDate="CR_DATE" />
+                        app:maxDate="CR_DATE"
+                        app:minDate="01/11/2020" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -917,6 +917,7 @@
                                 android:enabled="false"
                                 android:gravity="center"
                                 android:hint="##"
+                                android:onTextChanged="@{callback.cs15mOnTextChanged}"
                                 android:inputType="number"
                                 android:maxLength="2"
                                 app:maxValue="11"
@@ -970,12 +971,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:enabled="@{cs1698.checked ? false : true}"
                             android:gravity="center"
                             android:hint="#.#"
                             android:inputType="number"
                             android:maxLength="3"
-                            android:text='@{cs1698.checked ? cs16.getText().toString() : ""}'
                             app:mask="#.#"
                             app:maxValue="9.9"
                             app:minValue="0.9"

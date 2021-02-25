@@ -177,7 +177,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         form.setCs1502(bi.cs1502.getText().toString());
 
-        form.setCs16(bi.cs16.getText().toString());
+        form.setCs16(bi.cs16.getText().toString().trim().isEmpty() ? "-1" : bi.cs16.getText().toString());
 
         form.setCs1698(bi.cs1698.isChecked() ? "98" : "-1");
 
@@ -358,6 +358,18 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         });
 
         bi.cs13.setOnCheckedChangeListener((radioGroup, i) -> bi.ZScore.setText(""));
+
+        bi.cs1698.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.cs16.setEnabled(false);
+                bi.cs16.setText(null);
+            } else
+                bi.cs16.setEnabled(true);
+        });
+    }
+
+    public void cs15mOnTextChanged(CharSequence s, int start, int before, int count) {
+        bi.cs1501.setText(null);
     }
 
     public void cs15yOnTextChanged(CharSequence s, int start, int before, int count) {
@@ -428,7 +440,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             dtFlag = true;
             return;
         }
-        int day = bi.cs1401.getText().toString().equals("00") ? 0 : Integer.parseInt(bi.cs1401.getText().toString());
+        int day = bi.cs1401.getText().toString().equals("98") ? 15 : Integer.parseInt(bi.cs1401.getText().toString());
         int month = Integer.parseInt(bi.cs1402.getText().toString());
         int year = Integer.parseInt(bi.cs1403.getText().toString());
 
