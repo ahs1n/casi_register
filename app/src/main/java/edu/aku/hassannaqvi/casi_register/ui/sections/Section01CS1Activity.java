@@ -291,7 +291,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             facilityName.add(item.getHealth_facility());
             facilityMap.put(item.getHealth_facility(), item.getHf_code());
         }
-        bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
+         bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
 
         /*
          * Implementing child registration no

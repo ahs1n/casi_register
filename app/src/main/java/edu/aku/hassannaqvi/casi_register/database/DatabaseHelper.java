@@ -24,8 +24,6 @@ import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup.ChildTable;
-import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
-import edu.aku.hassannaqvi.casi_register.models.WraFollowup.WraTable;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.FormIndicatorsModel;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
@@ -36,6 +34,8 @@ import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable;
+import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
+import edu.aku.hassannaqvi.casi_register.models.WraFollowup.WraTable;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 
 import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
@@ -992,7 +992,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
 
-        String orderBy = HealthFacility.HealthFacilityTable._ID + " ASC";
+        String orderBy = HealthFacility.HealthFacilityTable.COLUMN_HEALTH_FACILITY + " ASC";
         List<HealthFacility> allEB = new ArrayList<>();
         try {
             c = db.query(
