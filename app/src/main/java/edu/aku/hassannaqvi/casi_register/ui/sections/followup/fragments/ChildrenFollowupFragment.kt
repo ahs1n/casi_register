@@ -39,7 +39,7 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
     private val identification: Identification by lazy {
         Identification(MainApp.mainInfo.region_code, MainApp.mainInfo.district_code, MainApp.mainInfo.uc_code, MainApp.mainInfo.village_code)
     }
-    lateinit var items: ArrayList<ChildFollowup>
+    var items: ArrayList<ChildFollowup> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
