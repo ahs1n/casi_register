@@ -83,7 +83,6 @@ public class Section04WSFPActivity extends AppCompatActivity {
             String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
             bi.fw10.setText(result);
         } else bi.fw10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
-
     }
 
 
