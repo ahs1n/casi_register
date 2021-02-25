@@ -2,13 +2,13 @@ package edu.aku.hassannaqvi.casi_register.ui.sections.followup.fragments
 
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import com.kennyc.view.MultiStateView
 import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.adapters.SelectedChildListAdapter
@@ -20,13 +20,13 @@ import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
 import edu.aku.hassannaqvi.casi_register.models.Identification
 import edu.aku.hassannaqvi.casi_register.ui.sections.followup.SelectedChildrenListActivity
-import edu.aku.hassannaqvi.casi_register.utils.*
+import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
+import edu.aku.hassannaqvi.casi_register.utils.openWarningFragment
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
 import kotlinx.android.synthetic.main.fragment_children_followup.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
@@ -131,13 +131,6 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
         childList.adapter = adapter
     }
 
-
-    /*
-    * Get childList on resume event
-    * */
-    override fun onResume() {
-        super.onResume()
-    }
 
     override fun onPause() {
         super.onPause()
