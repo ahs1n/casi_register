@@ -63,12 +63,14 @@ Growth Monitoring - Screening Log for Children Under 5
     <string name='cr06x'>Other</string>
     <string name='cr06xx'>Other Specify</string>
     <string name='cr07'>Assessor Name</string>
+    <string name='cs07User'>Same as Login user</string>
     <string name='cr08'>Date of Screening</string>
     <string name='cr08d'> Date </string>
     <string name='cr08m'> Month </string>
     <string name='cr08y'> Year </string>
     <string name='cr09'>Khandan Number</string>
     <string name='cr10'>Child Registration Number</string>
+    <string name='cr10a98'>MR is not Available</string>
     <string name='cr11'>Name</string>
     <string name='cr12'>Father Name</string>
     <string name='cr13'>Child gender</string>

@@ -302,7 +302,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:tag="-1"
-                            android:text="Same as Login user" />
+                            android:text="@string/cs07User" />
 
                     </LinearLayout>
 
@@ -482,6 +482,13 @@
                         android:hint="###-##-##"
                         android:inputType="number"
                         app:mask="###-##-##" />
+
+                    <CheckBox
+                        android:id="@+id/cs10a98"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="-1"
+                        android:text="@string/cr10a98" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
