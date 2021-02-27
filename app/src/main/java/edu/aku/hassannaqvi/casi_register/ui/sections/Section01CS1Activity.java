@@ -362,6 +362,14 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 bi.cs07.setEnabled(true);
         });
 
+        bi.cs10a98.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.cs10a.setEnabled(false);
+                bi.cs10a.setText(null);
+            } else
+                bi.cs10a.setEnabled(true);
+        });
+
         bi.cs13.setOnCheckedChangeListener((radioGroup, i) -> bi.ZScore.setText(""));
 
         bi.cs1698.setOnCheckedChangeListener((compoundButton, b) -> {

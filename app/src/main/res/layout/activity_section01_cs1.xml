@@ -888,6 +888,33 @@
                                 style="@style/sub_labels"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:text="@string/cs1502" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/cs1502"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:maxLength="2"
+                                android:inputType="number"
+                                android:onTextChanged="@{callback.cs15mOnTextChanged}"
+                                app:maxValue="11"
+                                app:minValue="0"
+                                app:type="range" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:text="@string/cs1501" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -905,32 +932,6 @@
                                 app:type="range" />
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/sub_labels"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/cs1502" />
-
-                            <com.edittextpicker.aliazaz.EditTextPicker
-                                android:id="@+id/cs1502"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:enabled="false"
-                                android:gravity="center"
-                                android:hint="##"
-                                android:onTextChanged="@{callback.cs15mOnTextChanged}"
-                                android:inputType="number"
-                                android:maxLength="2"
-                                app:maxValue="11"
-                                app:minValue="0"
-                                app:type="range" />
-                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
