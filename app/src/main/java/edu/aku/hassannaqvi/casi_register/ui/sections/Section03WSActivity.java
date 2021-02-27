@@ -42,6 +42,7 @@ public class Section03WSActivity extends AppCompatActivity {
     ActivitySection03WsBinding bi;
     List<String> facilityName;
     Map<String, String> facilityMap;
+    String concatID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +72,14 @@ public class Section03WSActivity extends AppCompatActivity {
         /*
          * Implementing child registration no
          * */
-        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "w-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
+        concatID = MainApp.mainInfo.getCountry_code() + MainApp.mainInfo.getDistrict_code() + MainApp.mainInfo.getUc_code() + mainInfo.getVillage_code();
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "w-" + concatID);
         if (!regID.equals(StringUtils.EMPTY)) {
             String substring = regID.substring(regID.length() - 4);
             String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
             bi.ws10.setText(result);
-        } else bi.ws10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
+        } else
+            bi.ws10.setText(concatID.concat("0001"));
 
     }
 
@@ -103,7 +106,7 @@ public class Section03WSActivity extends AppCompatActivity {
             if (count > 0)
                 count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_WS, form.wStoString());
             if (count > 0) {
-                SharedStorage.INSTANCE.setLastRegistrationID(this, "w-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.ws10.getText().toString());
+                SharedStorage.INSTANCE.setLastRegistrationID(this, "w-" + concatID, bi.ws10.getText().toString());
                 return true;
             } else {
                 Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();

@@ -221,16 +221,6 @@ public class Section02CSFPActivity extends AppCompatActivity {
         }
         bi.fc03.setAdapter(new ArrayAdapter<>(Section02CSFPActivity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
 
-        /*
-         * Implementing child registration no
-         * */
-        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + MainApp.mainInfo.getCountry_code() + MainApp.mainInfo.getDistrict_code() + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
-        if (!regID.equals(StringUtils.EMPTY)) {
-            String substring = regID.substring(regID.length() - 4);
-            String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
-            bi.fc10.setText(result);
-        } else bi.fc10.setText(MainApp.mainInfo.getVillage_code().concat("0001"));
-
     }
 
 
