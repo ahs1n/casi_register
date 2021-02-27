@@ -84,7 +84,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             if (count > 0)
                 count = db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CS, form.cStoString());
             if (count > 0) {
-                SharedStorage.INSTANCE.setLastRegistrationID(this, "c-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.cs10.getText().toString());
+                SharedStorage.INSTANCE.setLastRegistrationID(this, "c-" + MainApp.mainInfo.getCountry_code() + MainApp.mainInfo.getDistrict_code() + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code(), bi.cs10.getText().toString());
                 return true;
             } else {
                 Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
@@ -293,12 +293,12 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             facilityName.add(item.getHealth_facility());
             facilityMap.put(item.getHealth_facility(), item.getHf_code());
         }
-         bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
+        bi.cs03.setAdapter(new ArrayAdapter<>(Section01CS1Activity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
 
         /*
          * Implementing child registration no
          * */
-        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
+        String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + MainApp.mainInfo.getCountry_code() + MainApp.mainInfo.getDistrict_code() + MainApp.mainInfo.getUc_code() + MainApp.mainInfo.getVillage_code());
         if (!regID.equals(StringUtils.EMPTY)) {
             String substring = regID.substring(regID.length() - 4);
             String result = regID.replace(substring, String.format(Locale.ENGLISH, "%04d", Integer.parseInt(substring) + 1));
