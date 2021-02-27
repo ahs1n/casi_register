@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -300,6 +301,46 @@ public class Section03WSActivity extends AppCompatActivity {
             Clear.clearAllFields(bi.ws20check, !b);
         });
 
+    }
+
+    public void ws16OnTextChanged(CharSequence s, int start, int before, int count) {
+        if (TextUtils.isEmpty(bi.ws16.getText().toString()))
+            return;
+
+        double weight = Double.parseDouble(bi.ws16.getText().toString());
+
+        if (weight < 45) {
+            if (bi.ws2001.isChecked()) {
+                bi.ws2001.setChecked(false);
+            }
+            bi.ws2002.setChecked(true);
+            bi.ws2001.setEnabled(false);
+        } else {
+            if (!bi.ws2004.isChecked()) {
+                bi.ws2001.setEnabled(true);
+            }
+            bi.ws2002.setChecked(false);
+        }
+    }
+
+    public void ws17OnTextChanged(CharSequence s, int start, int before, int count) {
+        if (TextUtils.isEmpty(bi.ws17.getText().toString()))
+            return;
+
+        double mauc = Double.parseDouble(bi.ws17.getText().toString());
+
+        if (mauc < 23) {
+            if (bi.ws2001.isChecked()) {
+                bi.ws2001.setChecked(false);
+            }
+            bi.ws2004.setChecked(true);
+            bi.ws2001.setEnabled(false);
+        } else {
+            if (!bi.ws2002.isChecked()) {
+                bi.ws2001.setEnabled(true);
+            }
+            bi.ws2004.setChecked(false);
+        }
     }
 
 }
