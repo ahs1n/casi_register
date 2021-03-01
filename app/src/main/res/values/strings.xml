@@ -2,8 +2,6 @@
 <resources>
 
     <string name="app_name"> Casi Register </string>
-    <string name="sectionn_mainheading">Section N: Section N</string>
-
     <string name="btnSync">Download Data</string>
     <string name="btnUpload">Upload Data</string>
     <string name="prompt_email">Email</string>
@@ -47,36 +45,6 @@
     <string name="elc796"> Other (Specify) </string>
 
 
-    <string name="growthmonitoringscreeninglogforchildrenunder5_mainheading">Growth Monitoring - Screening Log for Children Under 5: Growth Monitoring  Screening Log for Children Under 5</string>
-    <string name="casifollowupschu5_mainheading">casi follow-up S CHU5: casi followup S CHU5</string>
-    <string name="growthmonitoringscreeninglogforwraspwslws_mainheading">Growth Monitoring - Screening Log for WRAs / PWs /LWs: Growth Monitoring  Screening Log for WRAs / PWs /LWs</string>
-    <string name="growthmonitoringfollowupforwraspwslws_mainheading">Growth Monitoring - Follow-up for WRAs / PWs / LWs: Growth Monitoring  Followup for WRAs / PWs / LWs</string>
-    <string name="no"> No </string>
-    <string name="dkn"> Don’t Know </string>
-    <string name="none"> No one </string>
-    <string name="never"> Never</string>
-    <string name="na"> Applicable /Not Available  </string>
-    <string name="nap"> Not Applicable </string>
-    <string name="nav">Not Available </string>
-    <string name="ref"> Refused </string>
-    <string name="other"> Other </string>
-    <string name="specify"> Please explain </string>
-    <string name="year"> Year </string>
-    <string name="month"> Month </string>
-    <string name="weeks"> Week </string>
-    <string name="days"> Day </string>
-    <string name="hours"> Hour </string>
-    <string name="minutes"> Minutes </string>
-    <string name="kg"> Kilograms </string>
-    <string name="km"> Kilometers </string>
-    <string name="cm"> cm </string>
-    <string name="in"> Inch </string>
-    <string name="rupees">  Rupees </string>
-    <string name="num"> Number </string>
-    <string name="name"> Name </string>
-    <string name="contactnum">Contact Number </string>
-    <string name="checkHHpresent"> The name of head of the household corresponds to the line listing data.</string>
-    <string name="newHHheadname"> Name of new head of the household </string>
     <string name="cs01">Region (Drop down)</string>
     <string name="cs01a">District (Drop down)</string>
     <string name="cs01b">Tehsil (Drop down)</string>
@@ -121,6 +89,7 @@
     <string name="cs1502">Age in completed Months </string>
     <string name="cs16">Birth weight (in Kilo grams) Record 99.9 if birth weight is not available</string>
     <string name="cs1698">Dont know</string>
+    <string name="cs16a"> </string>
     <string name="cs17">Have you ever exclusively breast fed your child?</string>
     <string name="cs1701">YES</string>
     <string name="cs1702">NO</string>
@@ -560,37 +529,6 @@
     <string name="fw29k">Other Specify</string>
     <string name="fw29k96">Yes</string>
     <string name="fw29k02">No</string>
-
-
-    <string name='Q_cr01'>cr01</string>
-    <string name='Q_cr02'>cr02</string>
-    <string name='Q_cr03'>cr03</string>
-    <string name='Q_cr04'>cr04</string>
-    <string name='Q_cr05'>cr05</string>
-    <string name='Q_cr06'>cr06</string>
-    <string name='Q_cr07'>cr07</string>
-    <string name='Q_cr08'>cr08</string>
-    <string name='Q_cr09'>cr09</string>
-    <string name='Q_cr10'>cr10</string>
-    <string name='Q_cr11'>cr11</string>
-    <string name='Q_cr12'>cr12</string>
-    <string name='Q_cr13'>cr13</string>
-    <string name='Q_cr14'>cr14</string>
-    <string name='Q_cr15'>cr15</string>
-    <string name='Q_cr16'>cr16</string>
-    <string name='Q_cr17'>cr17</string>
-    <string name='Q_cr18'>cr18</string>
-    <string name='Q_cr19'>cr19</string>
-    <string name='Q_cr20'>cr20</string>
-    <string name='Q_cr21'>cr21</string>
-    <string name='Q_cr22'>cr22</string>
-    <string name='Q_cr23'>cr23</string>
-    <string name='Q_cr24'>cr24</string>
-    <string name='Q_cr25'>cr25</string>
-    <string name='Q_cr26'>cr26</string>
-    <string name='Q_cr27'>cr27</string>
-    <string name='Q_cr28'>cr28</string>
-
     <string name='Q_elc7'>elc7</string>
 
     <string name='Q_cs01'>cs01</string>

@@ -70,6 +70,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         bi.setCallback(this);
         setListeners();
         setUIContent();
+        int country = SharedStorage.INSTANCE.getCountryCode(this);
     }
 
     /*
