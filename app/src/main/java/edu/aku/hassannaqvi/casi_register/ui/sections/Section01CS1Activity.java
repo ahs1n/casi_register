@@ -70,7 +70,32 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         bi.setCallback(this);
         setListeners();
         setUIContent();
+
         int country = SharedStorage.INSTANCE.getCountryCode(this);
+
+        if (country == 3) {
+            bi.cs25c03.setVisibility(View.VISIBLE);
+            bi.cs0602.setVisibility(View.GONE);
+            bi.cs0603.setVisibility(View.GONE);
+            bi.cs0604.setVisibility(View.GONE);
+            bi.cs0605.setVisibility(View.GONE);
+            bi.fldGrpCVcs09.setVisibility(View.GONE);
+            bi.fldGrpCVcs16a.setVisibility(View.VISIBLE);
+            bi.cs25c03.setVisibility(View.VISIBLE);
+            bi.cs2602.setVisibility(View.GONE);
+            bi.cs2604.setVisibility(View.GONE);
+        } else {
+            bi.cs25c03.setVisibility(View.GONE);
+            bi.cs0602.setVisibility(View.VISIBLE);
+            bi.cs0603.setVisibility(View.VISIBLE);
+            bi.cs0604.setVisibility(View.VISIBLE);
+            bi.cs0605.setVisibility(View.VISIBLE);
+            bi.fldGrpCVcs09.setVisibility(View.VISIBLE);
+            bi.fldGrpCVcs16a.setVisibility(View.GONE);
+            bi.cs25c03.setVisibility(View.GONE);
+            bi.cs2602.setVisibility(View.VISIBLE);
+            bi.cs2604.setVisibility(View.VISIBLE);
+        }
     }
 
     /*
@@ -183,6 +208,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         form.setCs16(bi.cs16.getText().toString().trim().isEmpty() ? "-1" : bi.cs16.getText().toString());
 
+        form.setCs16a(bi.cs16a.getText().toString());
+
         form.setCs1698(bi.cs1698.isChecked() ? "98" : "-1");
 
 
@@ -236,6 +263,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
         form.setCs25c(bi.cs25c01.isChecked() ? "1"
                 : bi.cs25c02.isChecked() ? "2"
+                : bi.cs25c03.isChecked() ? "3"
                 : bi.cs25c096.isChecked() ? "96"
                 : "-1");
         form.setCs25c096x(bi.cs25c096x.getText().toString());

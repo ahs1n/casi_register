@@ -127,6 +127,7 @@
     <string name="cs25c">Treatment provided at referred HF</string>
     <string name="cs25c01">Start RUTF for MAM</string>
     <string name="cs25c02">Hospitalization for SAM</string>
+    <string name="cs25c03"> </string>
     <string name="cs25c096">Specify other</string>
     <string name="cs26">Supplementation provided</string>
     <string name="cs2601">ACHA MUM Roshan</string>
@@ -553,6 +554,7 @@
     <string name='Q_cs14'>cs14</string>
     <string name='Q_cs15'>cs15</string>
     <string name='Q_cs16'>cs16</string>
+    <string name='Q_cs16a'>cs16a</string>
     <string name='Q_cs17'>cs17</string>
     <string name='Q_cs18'>cs18</string>
     <string name='Q_cs19'>cs19</string>

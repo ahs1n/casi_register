@@ -124,6 +124,7 @@
     <string name="cs25c">Табобат дар муассисаи тиббие, ки кудак роҳиткардашуда</string>
     <string name="cs25c01">АЧА МАМ барои НШМҒ</string>
     <string name="cs25c02">Бистари шуд барои НШВҒ</string>
+    <string name="cs25c03">БП барои НШВҒ</string>
     <string name="cs25c096">Дигар аниқ кунед</string>
     <string name="cs26">Ғизои иловаги таъмин карда шуд</string>
     <string name="cs2601">АЧА MUM Roshan</string>
@@ -554,6 +555,7 @@
     <string name='Q_cs14'>cs14</string>
     <string name='Q_cs15'>cs15</string>
     <string name='Q_cs16'>cs16</string>
+    <string name='Q_cs16a'>cs16a</string>
     <string name='Q_cs17'>cs17</string>
     <string name='Q_cs18'>cs18</string>
     <string name='Q_cs19'>cs19</string>

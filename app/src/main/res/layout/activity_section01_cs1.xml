@@ -897,8 +897,8 @@
                                 android:enabled="false"
                                 android:gravity="center"
                                 android:hint="##"
-                                android:maxLength="2"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 android:onTextChanged="@{callback.cs15mOnTextChanged}"
                                 app:maxValue="11"
                                 app:minValue="0"
@@ -1000,6 +1000,52 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- cs16a  Input-Numeric   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVcs16a"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_cs16a"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_cs16a"
+                            android:text="@string/cs16a" />
+
+                        <TextView
+                            android:id="@+id/q_cs16a"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_cs16a"
+                            android:layout_alignBottom="@id/qtxt_cs16a"
+                            android:text="@string/Q_cs16a" />
+                    </RelativeLayout>
+
+                    <com.edittextpicker.aliazaz.EditTextPicker
+                        android:id="@+id/cs16a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="##.#"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        app:mask="##.#"
+                        app:maxValue="80"
+                        app:minValue="30"
+                        app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
+                        app:type="range" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!-- cs17  Radio   -->
             <androidx.cardview.widget.CardView
@@ -1754,6 +1800,12 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/cs25c02" />
+
+                                <RadioButton
+                                    android:id="@+id/cs25c03"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/cs25c03" />
 
                                 <RadioButton
                                     android:id="@+id/cs25c096"
