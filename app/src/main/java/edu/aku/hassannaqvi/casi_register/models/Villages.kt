@@ -53,15 +53,15 @@ class Villages {
     object VillagesTable : BaseColumns {
         const val TABLE_NAME = "villages"
         const val _ID = "_id"
-        const val COLUMN_REGION = "region"
-        const val COLUMN_DISTRICT = "district"
-        const val COLUMN_UC = "uc"
-        const val COLUMN_VILLAGE = "village"
         const val COLUMN_COUNTRY_CODE = "country_code"
         const val COLUMN_COUNTRY = "country_name"
-        const val COLUMN_DISTRICT_CODE = "district_code"
-        const val COLUMN_UC_CODE = "uc_code"
-        const val COLUMN_VILLLAGE_CODE = "village_code"
         const val COLUMN_REGION_CODE = "region_code"
+        const val COLUMN_REGION = "region"
+        const val COLUMN_DISTRICT_CODE = "district_code"
+        const val COLUMN_DISTRICT = "district"
+        const val COLUMN_UC_CODE = "uc_code"
+        const val COLUMN_UC = "uc"
+        const val COLUMN_VILLLAGE_CODE = "village_code"
+        const val COLUMN_VILLAGE = "village"
     }
 }
