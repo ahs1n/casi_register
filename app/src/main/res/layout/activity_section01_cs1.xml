@@ -488,7 +488,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:tag="-1"
-                        android:text="@string/cr10a98" />
+                        android:text="@string/cs10a98" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
