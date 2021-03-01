@@ -64,6 +64,7 @@ public class Form extends LiveData<Form> {
     private String cs1501;
     private String cs1502;
     private String cs16;
+    private String cs16a;
     private String cs1698;
     private String cs17;
     private String cs18;
@@ -678,6 +679,14 @@ public class Form extends LiveData<Form> {
 
     public void setCs16(String cs16) {
         this.cs16 = cs16;
+    }
+
+    public String getCs16a() {
+        return cs16a;
+    }
+
+    public void setCs16a(String cs16a) {
+        this.cs16a = cs16a;
     }
 
     public String getCs1698() {
@@ -3017,6 +3026,7 @@ public class Form extends LiveData<Form> {
                     .put("cs1501", cs1501)
                     .put("cs1502", cs1502)
                     .put("cs16", cs16)
+                    .put("cs16a", cs16a)
                     .put("cs1698", cs1698)
                     .put("cs17", cs17)
                     .put("cs18", cs18)
@@ -3440,6 +3450,7 @@ public class Form extends LiveData<Form> {
                 this.cs1501 = json.getString("cs1501");
                 this.cs1502 = json.getString("cs1502");
                 this.cs16 = json.getString("cs16");
+                this.cs16a = json.getString("cs16a");
                 this.cs1698 = json.getString("cs1698");
                 this.cs17 = json.getString("cs17");
                 this.cs18 = json.getString("cs18");

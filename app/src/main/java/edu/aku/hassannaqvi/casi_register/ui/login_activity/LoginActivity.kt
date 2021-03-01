@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import com.github.amlcurran.showcaseview.ShowcaseView
 import com.github.amlcurran.showcaseview.targets.ViewTarget
 import com.nabinbhandari.android.permissions.PermissionHandler
@@ -28,10 +29,12 @@ import edu.aku.hassannaqvi.casi_register.ui.MainActivity
 import edu.aku.hassannaqvi.casi_register.ui.SyncActivity
 import edu.aku.hassannaqvi.casi_register.ui.login_activity.login_view.LoginUISource
 import edu.aku.hassannaqvi.casi_register.utils.gotoActivity
-import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
 import edu.aku.hassannaqvi.casi_register.utils.isNetworkConnected
+import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
-import kotlinx.coroutines.*
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class LoginActivity : AppCompatActivity(), LoginUISource {
