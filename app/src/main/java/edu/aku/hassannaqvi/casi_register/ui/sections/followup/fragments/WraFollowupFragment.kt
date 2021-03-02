@@ -1,10 +1,11 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections.followup.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
 import com.kennyc.view.MultiStateView
 import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.adapters.SelectedWraListAdapter
@@ -16,7 +17,8 @@ import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper
 import edu.aku.hassannaqvi.casi_register.models.Identification
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup
 import edu.aku.hassannaqvi.casi_register.ui.sections.followup.SelectedChildrenListActivity
-import edu.aku.hassannaqvi.casi_register.utils.*
+import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
+import edu.aku.hassannaqvi.casi_register.utils.openWarningFragment
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
 import kotlinx.android.synthetic.main.fragment_children_followup.multiStateView
 import kotlinx.android.synthetic.main.fragment_wra_followup.*

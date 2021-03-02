@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.observe
 import com.google.android.material.snackbar.Snackbar
 import com.roger.catloadinglibrary.CatLoadingView
 import edu.aku.hassannaqvi.casi_register.R
@@ -16,7 +17,6 @@ import edu.aku.hassannaqvi.casi_register.ui.login_activity.LoginActivity
 import edu.aku.hassannaqvi.casi_register.utils.gotoActivity
 import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
-import kotlinx.android.synthetic.main.activity_splashscreen.*
 import kotlinx.coroutines.*
 import java.io.InputStreamReader
 

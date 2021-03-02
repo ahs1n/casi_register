@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -9,8 +10,6 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
-
-import org.apache.commons.lang3.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,6 +54,17 @@ public class Section04WSFPActivity extends AppCompatActivity {
         bi.setWraInformation(item);
         setListeners();
         setUIContent();
+        int country = SharedStorage.INSTANCE.getCountryCode(this);
+
+        if (country == 3) {
+            bi.fw0602.setVisibility(View.GONE);
+            bi.fw0604.setVisibility(View.GONE);
+            bi.fldGrpCVfw09.setVisibility(View.GONE);
+        } else {
+            bi.fw0602.setVisibility(View.VISIBLE);
+            bi.fw0604.setVisibility(View.VISIBLE);
+            bi.fldGrpCVfw09.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setUIContent() {

@@ -64,8 +64,9 @@ public class Form extends LiveData<Form> {
     private String cs1501;
     private String cs1502;
     private String cs16;
-    private String cs16a;
     private String cs1698;
+    private String cs16a;
+    private String cs16a98;
     private String cs17;
     private String cs18;
     private String cs19;
@@ -681,6 +682,14 @@ public class Form extends LiveData<Form> {
         this.cs16 = cs16;
     }
 
+    public String getCs1698() {
+        return cs1698;
+    }
+
+    public void setCs1698(String cs1698) {
+        this.cs1698 = cs1698;
+    }
+
     public String getCs16a() {
         return cs16a;
     }
@@ -689,13 +698,14 @@ public class Form extends LiveData<Form> {
         this.cs16a = cs16a;
     }
 
-    public String getCs1698() {
-        return cs1698;
+    public String getCs16a98() {
+        return cs16a98;
     }
 
-    public void setCs1698(String cs1698) {
-        this.cs1698 = cs1698;
+    public void setCs16a98(String cs16a98) {
+        this.cs16a98 = cs16a98;
     }
+
 
     public String getCs17() {
         return cs17;
@@ -3026,8 +3036,9 @@ public class Form extends LiveData<Form> {
                     .put("cs1501", cs1501)
                     .put("cs1502", cs1502)
                     .put("cs16", cs16)
-                    .put("cs16a", cs16a)
                     .put("cs1698", cs1698)
+                    .put("cs16a", cs16a)
+                    .put("cs16a98", cs16a98)
                     .put("cs17", cs17)
                     .put("cs18", cs18)
                     .put("cs19", cs19)
@@ -3450,8 +3461,9 @@ public class Form extends LiveData<Form> {
                 this.cs1501 = json.getString("cs1501");
                 this.cs1502 = json.getString("cs1502");
                 this.cs16 = json.getString("cs16");
-                this.cs16a = json.getString("cs16a");
                 this.cs1698 = json.getString("cs1698");
+                this.cs16a = json.getString("cs16a");
+                this.cs16a98 = json.getString("cs16a98");
                 this.cs17 = json.getString("cs17");
                 this.cs18 = json.getString("cs18");
                 this.cs19 = json.getString("cs19");
