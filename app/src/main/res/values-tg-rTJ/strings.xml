@@ -19,10 +19,10 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="region">REGION</string>
-    <string name="district">DISTRICT</string>
-    <string name="uc">UC</string>
-    <string name="cityVillage">City / Village</string>
+    <string name="region">Вилоят</string>
+    <string name="district">Ноҳия</string>
+    <string name="uc">Ҷамоат</string>
+    <string name="cityVillage">Шаҳр / Деҳа</string>
     <string name="childScreening">Child Screening</string>
     <string name="childFollowup">Child Follow-up</string>
     <string name="wraScreening">WRAs Screening</string>
