@@ -173,6 +173,7 @@ public class Section01CS2Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
+        finish();
         gotoActivityWithSerializable(this, EndingActivity.class, "complete", false);
     }
 

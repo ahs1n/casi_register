@@ -318,6 +318,7 @@
     <string name="fc37">Treatment provided at referred HF</string>
     <string name="fc3701">Start RUTF for MAM</string>
     <string name="fc3702">Hospitalization for SAM</string>
+    <string name="fc3703">Start BP for SAM</string>
     <string name="fc3796">Specify other</string>
     <string name="fc38">Treatment completed</string>
     <string name="fc3801">YES</string>

@@ -61,6 +61,32 @@ public class Section02CSFPActivity extends AppCompatActivity {
         bi.setChildInformation(item);
         setupSkips();
         setUIContent();
+        int country = SharedStorage.INSTANCE.getCountryCode(this);
+
+        if (country == 3) {
+            bi.fc0602.setVisibility(View.GONE);
+            bi.fc0604.setVisibility(View.GONE);
+            bi.fldGrpCVfc09.setVisibility(View.GONE);
+            bi.fc2602.setVisibility(View.GONE);
+            bi.fc2604.setVisibility(View.GONE);
+            bi.fc3202.setVisibility(View.GONE);
+            bi.fc3203.setVisibility(View.GONE);
+            bi.fc3302.setVisibility(View.GONE);
+            bi.fc3303.setVisibility(View.GONE);
+            bi.fc3703.setVisibility(View.VISIBLE);
+
+        } else {
+            bi.fc0602.setVisibility(View.VISIBLE);
+            bi.fc0604.setVisibility(View.VISIBLE);
+            bi.fldGrpCVfc09.setVisibility(View.VISIBLE);
+            bi.fc2602.setVisibility(View.VISIBLE);
+            bi.fc2604.setVisibility(View.VISIBLE);
+            bi.fc3202.setVisibility(View.VISIBLE);
+            bi.fc3203.setVisibility(View.VISIBLE);
+            bi.fc3302.setVisibility(View.VISIBLE);
+            bi.fc3303.setVisibility(View.VISIBLE);
+            bi.fc3703.setVisibility(View.GONE);
+        }
     }
 
 
@@ -402,6 +428,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.setFc3601(bi.fc3601.getText().toString());
         form.setFc37(bi.fc3701.isChecked() ? "1"
                 : bi.fc3702.isChecked() ? "2"
+                : bi.fc3703.isChecked() ? "3"
                 : bi.fc3796.isChecked() ? "96"
                 : "-1");
 

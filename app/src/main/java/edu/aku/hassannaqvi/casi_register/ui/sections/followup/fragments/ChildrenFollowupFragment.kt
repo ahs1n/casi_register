@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import com.kennyc.view.MultiStateView
 import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.adapters.SelectedChildListAdapter
