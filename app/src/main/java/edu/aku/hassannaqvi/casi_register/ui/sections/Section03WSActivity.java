@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -52,6 +53,17 @@ public class Section03WSActivity extends AppCompatActivity {
         bi.setCallback(this);
         setListeners();
         setUIContent();
+        int country = SharedStorage.INSTANCE.getCountryCode(this);
+
+        if (country == 3) {
+            bi.ws0602.setVisibility(View.GONE);
+            bi.ws0604.setVisibility(View.GONE);
+            bi.fldGrpCVws09.setVisibility(View.GONE);
+        } else {
+            bi.ws0602.setVisibility(View.VISIBLE);
+            bi.ws0604.setVisibility(View.VISIBLE);
+            bi.fldGrpCVws09.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setUIContent() {
