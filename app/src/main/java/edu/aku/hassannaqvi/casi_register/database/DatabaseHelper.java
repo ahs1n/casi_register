@@ -956,7 +956,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
 
-        String orderBy = VillagesTable._ID + " ASC";
+        String orderBy = VillagesTable.COLUMN_REGION + " ASC";
         List<Villages> allEB = new ArrayList<>();
         try {
             c = db.query(

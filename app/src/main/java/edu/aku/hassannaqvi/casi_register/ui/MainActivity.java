@@ -8,13 +8,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,8 +30,10 @@ import com.validatorcrawler.aliazaz.Validator;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -319,6 +325,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         districtName.add(item.getDistrict());
                     }
                 }
+                Collections.sort(districtName);
                 bi.spDistrict.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, districtName));
             }
 
@@ -345,6 +352,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         ucMap.put(item.getUc(), item);
                     }
                 }
+                Collections.sort(ucName);
                 bi.spUC.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, ucName));
             }
 
@@ -371,6 +379,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         villageMap.put(item.getVillage(), item);
                     }
                 }
+                Collections.sort(villageName);
                 bi.spVillage.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, villageName));
             }
 
@@ -512,11 +521,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
      * Setting identification data in variables
      * */
     private void SaveDraft() {
-        /*MainApp.mainInfo = new Identification(
-                item.getRegion_code(),
-                item.getDistrict_code(),
-                item.getUc_code(),
-                item.getVillage_code());*/
         MainApp.mainInfo = villageMap.get(bi.spVillage.getSelectedItem().toString());
     }
 

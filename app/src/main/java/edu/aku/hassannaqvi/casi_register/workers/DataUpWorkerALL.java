@@ -45,7 +45,7 @@ public class DataUpWorkerALL extends Worker {
     private ProgressDialog pd;
     private int length;
     private Data data;
-    private final String nTitle = "Naunehal: Data Upload";
+    private final String nTitle = "Casi Register: Data Upload";
     private final int position;
     private final String uploadWhere;
 

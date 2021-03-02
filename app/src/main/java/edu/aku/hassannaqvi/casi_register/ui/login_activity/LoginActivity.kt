@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.casi_register.ui.login_activity
 import android.Manifest
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
@@ -12,7 +13,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.observe
 import com.github.amlcurran.showcaseview.ShowcaseView
 import com.github.amlcurran.showcaseview.targets.ViewTarget
 import com.nabinbhandari.android.permissions.PermissionHandler
@@ -32,9 +32,11 @@ import edu.aku.hassannaqvi.casi_register.utils.gotoActivity
 import edu.aku.hassannaqvi.casi_register.utils.isNetworkConnected
 import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage.getCountryCode
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class LoginActivity : AppCompatActivity(), LoginUISource {
@@ -208,12 +210,16 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * */
     override fun settingCountryCode() {
 
-        bi.countrySwitch.isChecked = SharedStorage.getCountryCode(this) == 0 || SharedStorage.getCountryCode(this) == 1
-        if (SharedStorage.getCountryCode(this) == 0)
+        val countryCode = getCountryCode(this)
+        bi.countrySwitch.isChecked = countryCode == 0 || countryCode == 1
+        changeLanguage(countryCode)
+        if (countryCode == 0) {
             SharedStorage.setCountryCode(this@LoginActivity, 1)
+        }
 
         bi.countrySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) 1 else 3)
+            changeLanguage(if (isChecked) 1 else 3)
         }
     }
 
@@ -252,6 +258,26 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
                 permissionFlag = true
             }
         })
+    }
+
+    /*
+    * Change langugage accroding to country
+    * */
+    private fun changeLanguage(countryCode: Int) {
+        val lang: String
+        val country: String
+        if (countryCode == 3) {
+            lang = "tg"
+            country = "TJ"
+        } else {
+            lang = "en"
+            country = "US"
+        }
+        val locale = Locale(lang, country)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        this.resources.updateConfiguration(config, this.resources.displayMetrics)
     }
 
 }

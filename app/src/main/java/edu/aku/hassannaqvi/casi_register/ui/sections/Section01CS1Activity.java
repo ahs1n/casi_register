@@ -328,7 +328,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         /*
          * Implementing child registration no
          * */
-        concatID = MainApp.mainInfo.getCountry_code() + MainApp.mainInfo.getDistrict_code() + MainApp.mainInfo.getUc_code() + mainInfo.getVillage_code();
+        concatID = MainApp.mainInfo.getCountry_code() + MainApp.mainInfo.getDistrict_code() + String.format(Locale.ENGLISH, "%02d", Integer.parseInt(MainApp.mainInfo.getUc_code())) + String.format(Locale.ENGLISH, "%02d", Integer.parseInt(MainApp.mainInfo.getVillage_code()));
         String regID = SharedStorage.INSTANCE.getLastRegistrationID(this, "c-" + concatID);
         if (!regID.equals(StringUtils.EMPTY)) {
             String substring = regID.substring(regID.length() - 4);

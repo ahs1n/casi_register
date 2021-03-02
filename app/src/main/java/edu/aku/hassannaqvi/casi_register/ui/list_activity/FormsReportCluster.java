@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.adapters.FormsAdapter;
@@ -22,7 +23,7 @@ import edu.aku.hassannaqvi.casi_register.models.Form;
 public class FormsReportCluster extends AppCompatActivity {
     DatabaseHelper db;
     Collection<Form> form;
-    String sysdateToday = new SimpleDateFormat("dd-MM-yy").format(new Date());
+    String sysdateToday = new SimpleDateFormat("dd-MM-yy", Locale.ENGLISH).format(new Date());
     TextView dtFilter;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter formsAdapter;
