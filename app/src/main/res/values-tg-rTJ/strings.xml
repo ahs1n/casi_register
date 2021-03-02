@@ -79,9 +79,9 @@
     <string name="cs1301">Мард</string>
     <string name="cs1302">Зан</string>
     <string name="cs14">Рузи таваллуди кудак? Эзоҳ: Агар модар/парастор рузи аниқи таваллуди кудакро донад рузро низ қайд намоед, дар сурати надонистани рузи аники таваллуд ба чои руз 98 монед. Моҳ ва сол бояд аниқ кайд шавад</string>
-    <string name="cs1401"></string>
-    <string name="cs1402"></string>
-    <string name="cs1403"></string>
+    <string name="cs1401">рӯз</string>
+    <string name="cs1402">Моҳ</string>
+    <string name="cs1403">Соли</string>
     <string name="cs15">(Кудак) чондсола?  Синну соли аниқи кудак дар сол ва моҷ қайд шавад.</string>
     <string name="cs1501">Синну соли кудак  </string>
     <string name="cs1502">Синну моҳи кудак </string>

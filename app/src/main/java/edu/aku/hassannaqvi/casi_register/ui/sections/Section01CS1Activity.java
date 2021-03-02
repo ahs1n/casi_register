@@ -207,10 +207,10 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setCs1502(bi.cs1502.getText().toString());
 
         form.setCs16(bi.cs16.getText().toString().trim().isEmpty() ? "-1" : bi.cs16.getText().toString());
-
-        form.setCs16a(bi.cs16a.getText().toString());
-
         form.setCs1698(bi.cs1698.isChecked() ? "98" : "-1");
+
+        form.setCs16a(bi.cs16a.getText().toString().trim().isEmpty() ? "-1" : bi.cs16a.getText().toString());
+        form.setCs16a98(bi.cs16a98.isChecked() ? "98" : "-1");
 
 
         form.setCs17(bi.cs1701.isChecked() ? "1"
