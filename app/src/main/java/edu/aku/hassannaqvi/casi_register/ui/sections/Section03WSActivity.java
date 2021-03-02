@@ -57,10 +57,12 @@ public class Section03WSActivity extends AppCompatActivity {
 
         if (country == 3) {
             bi.ws0602.setVisibility(View.GONE);
+            bi.ws0603.setVisibility(View.GONE);
             bi.ws0604.setVisibility(View.GONE);
             bi.fldGrpCVws09.setVisibility(View.GONE);
         } else {
             bi.ws0602.setVisibility(View.VISIBLE);
+            bi.ws0603.setVisibility(View.VISIBLE);
             bi.ws0604.setVisibility(View.VISIBLE);
             bi.fldGrpCVws09.setVisibility(View.VISIBLE);
         }

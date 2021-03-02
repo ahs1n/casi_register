@@ -65,6 +65,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         if (country == 3) {
             bi.fc0602.setVisibility(View.GONE);
+            bi.fc0603.setVisibility(View.GONE);
             bi.fc0604.setVisibility(View.GONE);
             bi.fldGrpCVfc09.setVisibility(View.GONE);
             bi.fc2602.setVisibility(View.GONE);
@@ -77,6 +78,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         } else {
             bi.fc0602.setVisibility(View.VISIBLE);
+            bi.fc0603.setVisibility(View.VISIBLE);
             bi.fc0604.setVisibility(View.VISIBLE);
             bi.fldGrpCVfc09.setVisibility(View.VISIBLE);
             bi.fc2602.setVisibility(View.VISIBLE);

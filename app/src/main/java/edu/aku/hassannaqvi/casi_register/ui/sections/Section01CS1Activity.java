@@ -76,6 +76,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         if (country == 3) {
             bi.cs25c03.setVisibility(View.VISIBLE);
             bi.cs0602.setVisibility(View.GONE);
+            bi.cs0603.setVisibility(View.GONE);
             bi.cs0604.setVisibility(View.GONE);
             bi.fldGrpCVcs09.setVisibility(View.GONE);
             bi.fldGrpCVcs16a.setVisibility(View.VISIBLE);
@@ -85,6 +86,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         } else {
             bi.cs25c03.setVisibility(View.GONE);
             bi.cs0602.setVisibility(View.VISIBLE);
+            bi.cs0603.setVisibility(View.VISIBLE);
             bi.cs0604.setVisibility(View.VISIBLE);
             bi.fldGrpCVcs09.setVisibility(View.VISIBLE);
             bi.fldGrpCVcs16a.setVisibility(View.GONE);
@@ -403,6 +405,14 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 bi.cs16.setText(null);
             } else
                 bi.cs16.setEnabled(true);
+        });
+
+        bi.cs16a98.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.cs16a.setEnabled(false);
+                bi.cs16a.setText(null);
+            } else
+                bi.cs16a.setEnabled(true);
         });
     }
 
