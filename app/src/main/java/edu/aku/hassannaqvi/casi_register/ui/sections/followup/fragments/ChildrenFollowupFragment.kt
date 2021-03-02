@@ -132,8 +132,8 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
     }
 
 
-    override fun onPause() {
-        super.onPause()
+    override fun onResume() {
+        super.onResume()
 
         viewModel.getChildDataFromDB(country, identification)
     }
