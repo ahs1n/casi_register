@@ -113,6 +113,10 @@ public class Section02CSFPActivity extends AppCompatActivity {
                 bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
                 bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
 
+                if (age == 0) {
+                    bi.fc1701.setError("Month and year both cannot be zero");
+                }
+
                 if (age >= 6) {
                     bi.fldGrpCVfc19.setVisibility(View.GONE);
                 } else bi.fldGrpCVfc19.setVisibility(View.VISIBLE);

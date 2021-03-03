@@ -1314,14 +1314,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:hint="##"
+                                android:hint="#"
                                 android:inputType="number"
-                                android:maxLength="2"
+                                android:maxLength="1"
                                 android:tag="fc2603"
                                 android:text='@{fc2603.checked ? fc2704.getText().toString() : ""}'
                                 android:visibility='@{fc2603.checked? View.VISIBLE : View.GONE}'
-                                app:maxValue="90"
-                                app:minValue="10"
+                                app:maxValue="5"
+                                app:minValue="1"
                                 app:type="range" />
 
                             <CheckBox
@@ -1638,7 +1638,7 @@
                             android:inputType="number"
                             android:maxLength="2"
                             app:maxValue="90"
-                            app:minValue="1"
+                            app:minValue="0"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -1992,7 +1992,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility='@{fc3401.checked? View.GONE : View.VISIBLE}'>
+                    android:visibility='@{fc3401.checked? View.VISIBLE : View.GONE}'>
 
                     <!-- fc35  Title   -->
                     <androidx.cardview.widget.CardView
