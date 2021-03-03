@@ -55,10 +55,10 @@ class SplashscreenActivity : AppCompatActivity() {
                     catLoad.dismiss()
                 }
                 ResponseStatus.LOADING -> {
-                    catLoad.show(supportFragmentManager, "")
                     catLoad.setText("PROCESSING..")
                     catLoad.setClickCancelAble(false)
                     catLoad.setBackgroundColor(R.color.colorPrimaryDark)
+                    catLoad.show(supportFragmentManager, "")
 
                     /*progressSplashscreen.visibility = View.VISIBLE
                     progressTxt.visibility = View.VISIBLE
