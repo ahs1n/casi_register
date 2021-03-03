@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.observe
 import com.google.android.material.snackbar.Snackbar
 import com.roger.catloadinglibrary.CatLoadingView
 import edu.aku.hassannaqvi.casi_register.R
@@ -104,5 +103,9 @@ class SplashscreenActivity : AppCompatActivity() {
 
     companion object {
         private const val SPLASH_TIME_OUT = 1000
+    }
+
+    override fun onBackPressed() {
+
     }
 }
