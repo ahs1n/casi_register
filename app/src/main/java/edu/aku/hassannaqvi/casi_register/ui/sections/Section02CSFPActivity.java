@@ -67,26 +67,28 @@ public class Section02CSFPActivity extends AppCompatActivity {
             bi.fc0602.setVisibility(View.GONE);
             bi.fc0603.setVisibility(View.GONE);
             bi.fc0604.setVisibility(View.GONE);
+            bi.fc0605.setVisibility(View.GONE);
             bi.fldGrpCVfc09.setVisibility(View.GONE);
             bi.fc2602.setVisibility(View.GONE);
             bi.fc2604.setVisibility(View.GONE);
-            bi.fc3202.setVisibility(View.GONE);
-            bi.fc3203.setVisibility(View.GONE);
-            bi.fc3302.setVisibility(View.GONE);
-            bi.fc3303.setVisibility(View.GONE);
+            bi.fldGrpcs3202.setVisibility(View.GONE);
+            bi.fldGrpcs3203.setVisibility(View.GONE);
+            bi.fldGrpcs3302.setVisibility(View.GONE);
+            bi.fldGrpcs3303.setVisibility(View.GONE);
             bi.fc3703.setVisibility(View.VISIBLE);
 
         } else {
             bi.fc0602.setVisibility(View.VISIBLE);
             bi.fc0603.setVisibility(View.VISIBLE);
             bi.fc0604.setVisibility(View.VISIBLE);
+            bi.fc0605.setVisibility(View.VISIBLE);
             bi.fldGrpCVfc09.setVisibility(View.VISIBLE);
             bi.fc2602.setVisibility(View.VISIBLE);
             bi.fc2604.setVisibility(View.VISIBLE);
-            bi.fc3202.setVisibility(View.VISIBLE);
-            bi.fc3203.setVisibility(View.VISIBLE);
-            bi.fc3302.setVisibility(View.VISIBLE);
-            bi.fc3303.setVisibility(View.VISIBLE);
+            bi.fldGrpcs3202.setVisibility(View.VISIBLE);
+            bi.fldGrpcs3203.setVisibility(View.VISIBLE);
+            bi.fldGrpcs3302.setVisibility(View.VISIBLE);
+            bi.fldGrpcs3303.setVisibility(View.VISIBLE);
             bi.fc3703.setVisibility(View.GONE);
         }
     }

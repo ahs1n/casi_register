@@ -60,11 +60,13 @@ public class Section04WSFPActivity extends AppCompatActivity {
             bi.fw0602.setVisibility(View.GONE);
             bi.fw0603.setVisibility(View.GONE);
             bi.fw0604.setVisibility(View.GONE);
+            bi.fw0605.setVisibility(View.GONE);
             bi.fldGrpCVfw09.setVisibility(View.GONE);
         } else {
             bi.fw0602.setVisibility(View.VISIBLE);
             bi.fw0603.setVisibility(View.VISIBLE);
             bi.fw0604.setVisibility(View.VISIBLE);
+            bi.fw0605.setVisibility(View.VISIBLE);
             bi.fldGrpCVfw09.setVisibility(View.VISIBLE);
         }
     }
