@@ -745,17 +745,17 @@
                                     style="@style/sub_labels"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/fc1702" />
+                                    android:text="@string/fc1701" />
 
                                 <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/fc1702"
+                                    android:id="@+id/fc1701"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:hint="##"
+                                    android:hint="#"
                                     android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="11"
+                                    android:maxLength="1"
+                                    app:maxValue="4"
                                     app:minValue="0"
                                     app:type="range" />
                             </LinearLayout>
@@ -770,17 +770,17 @@
                                     style="@style/sub_labels"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/fc1701" />
+                                    android:text="@string/fc1702" />
 
                                 <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/fc1701"
+                                    android:id="@+id/fc1702"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:hint="#"
+                                    android:hint="##"
                                     android:inputType="number"
-                                    android:maxLength="1"
-                                    app:maxValue="4"
+                                    android:maxLength="2"
+                                    app:maxValue="11"
                                     app:minValue="0"
                                     app:type="range" />
                             </LinearLayout>

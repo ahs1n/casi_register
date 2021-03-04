@@ -104,7 +104,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                bi.fc1701.setText(null);
+//                bi.fc1701.setText(null);
 
                 if (TextUtils.isEmpty(bi.fc1702.getText()) || TextUtils.isEmpty(bi.fc1701.getText()))
                     return;
@@ -464,7 +464,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         if (!Validator.emptyCheckingContainer(this, bi.GrpName))
             return false;
 
-        if (bi.ZScore.getText().toString().equals(StringUtils.EMPTY)) {
+        if (bi.ZScore.getText().toString().equals(StringUtils.EMPTY) && bi.fc16b01.isChecked()) {
             Toast.makeText(this, "Please click on Z-Score Button", Toast.LENGTH_SHORT).show();
             return false;
         }
