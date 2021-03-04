@@ -1,9 +1,7 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -96,76 +94,11 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        bi.fc1702.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                bi.fc1701.setText(null);
-
-                if (TextUtils.isEmpty(bi.fc1702.getText()) || TextUtils.isEmpty(bi.fc1701.getText()))
-                    return;
-
-                int age = Integer.parseInt(bi.fc1702.getText().toString()) + (Integer.parseInt(bi.fc1701.getText().toString()) * 12);
-
-                bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
-                bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
-                bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
-
-                if (age == 0) {
-                    bi.fc1701.setError("Month and year both cannot be zero");
-                }
-
-                if (age >= 6) {
-                    bi.fldGrpCVfc19.setVisibility(View.GONE);
-                } else bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
-
-                if (age < 6 || age >= 24) {
-                    bi.fldGrpCVfc20.setVisibility(View.GONE);
-                } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
-
-                if (age >= 24) {
-                    bi.fldGrpCVfc20.setVisibility(View.GONE);
-                } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
-
-                if (age >= 24) {
-                    bi.fldGrpCVfc21.setVisibility(View.GONE);
-                } else bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
         bi.fc16b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc16b));
 
-/*        CompoundButton.OnCheckedChangeListener compound = (compoundButton, b) -> {
-            if (bi.fc2501.isChecked()) {
-                Clear.clearAllFields(bi.fc25check, false);
-                Clear.clearAllFields(bi.fldGrpCVfc29);
-                bi.fldGrpCVfc29.setVisibility(View.GONE);
-            }
-            else if (!bi.fc2502.isChecked() && !bi.fc2503.isChecked()) {
-                Clear.clearAllFields(bi.fc25check, true);
-                Clear.clearAllFields(bi.fldGrpCVfc29);
-                bi.fldGrpCVfc29.setVisibility(View.GONE);
-            } else {
-                Clear.clearAllFields(bi.fc25check, true);
-                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
-            }
-        };
-
-        bi.fc2501.setOnCheckedChangeListener(compound);
-        bi.fc2502.setOnCheckedChangeListener(compound);
-        bi.fc2503.setOnCheckedChangeListener(compound);*/
-
         bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc26check, !b));
+
+        bi.fc28.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVfc29));
 
         bi.fc34.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc3401));
 
@@ -178,32 +111,46 @@ public class Section02CSFPActivity extends AppCompatActivity {
         });
 
         bi.fc2501.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (b) {
-                Clear.clearAllFields(bi.fc25check, false);
-                Clear.clearAllFields(bi.fldGrpCVfc29);
-                bi.fldGrpCVfc29.setVisibility(View.GONE);
-            } else {
-                Clear.clearAllFields(bi.fc25check, true);
-                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
-            }
-        });
-        bi.fc2502.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (b) {
-                Clear.clearAllFields(bi.fldGrpCVfc29);
-                bi.fldGrpCVfc29.setVisibility(View.GONE);
-            } else {
-                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
-            }
-        });
-        bi.fc2503.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (b) {
-                Clear.clearAllFields(bi.fldGrpCVfc29);
-                bi.fldGrpCVfc29.setVisibility(View.GONE);
-            } else {
-                bi.fldGrpCVfc29.setVisibility(View.VISIBLE);
-            }
+            Clear.clearAllFields(bi.fc25check, !b);
         });
 
+    }
+
+    public void fc17mOnTextChanged(CharSequence s, int start, int before, int count) {
+        bi.fc1701.setText(null);
+    }
+
+    public void cs17yOnTextChanged(CharSequence s, int i, int i1, int i2) {
+
+        if (TextUtils.isEmpty(bi.fc1702.getText()) || TextUtils.isEmpty(bi.fc1701.getText()))
+            return;
+
+        int age = Integer.parseInt(bi.fc1702.getText().toString()) + (Integer.parseInt(bi.fc1701.getText().toString()) * 12);
+
+        if (age != 0) {
+            bi.fldGrpCVfc19.setVisibility(View.GONE);
+            bi.fldGrpCVfc20.setVisibility(View.GONE);
+            bi.fldGrpCVfc21.setVisibility(View.GONE);
+
+            if (age == 0) {
+                bi.fc1701.setError("Month and year both cannot be zero");
+            }
+
+            if (age >= 6) {
+                bi.fldGrpCVfc19.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVfc19);
+            } else bi.fldGrpCVfc19.setVisibility(View.VISIBLE);
+
+            if (age < 6 || age >= 24) {
+                bi.fldGrpCVfc20.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVfc20);
+            } else bi.fldGrpCVfc20.setVisibility(View.VISIBLE);
+
+            if (age >= 24) {
+                bi.fldGrpCVfc21.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVfc21);
+            } else bi.fldGrpCVfc21.setVisibility(View.VISIBLE);
+        }
     }
 
 

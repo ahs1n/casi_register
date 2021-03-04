@@ -310,7 +310,7 @@
                             android:text="@string/fc08" />
                     </LinearLayout>
 
-                    <!--                    android:onTextChanged="@{callback::cs08OnTextChanged}"-->
+
                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                         android:id="@+id/fc08"
                         android:layout_width="match_parent"
@@ -745,17 +745,18 @@
                                     style="@style/sub_labels"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/fc1701" />
+                                    android:text="@string/fc1702" />
 
                                 <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/fc1701"
+                                    android:id="@+id/fc1702"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:hint="#"
+                                    android:hint="##"
                                     android:inputType="number"
-                                    android:maxLength="1"
-                                    app:maxValue="4"
+                                    android:maxLength="2"
+                                    android:onTextChanged="@{callback.fc17mOnTextChanged}"
+                                    app:maxValue="11"
                                     app:minValue="0"
                                     app:type="range" />
                             </LinearLayout>
@@ -770,17 +771,18 @@
                                     style="@style/sub_labels"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/fc1702" />
+                                    android:text="@string/fc1701" />
 
                                 <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/fc1702"
+                                    android:id="@+id/fc1701"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:hint="##"
+                                    android:hint="#"
                                     android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="11"
+                                    android:maxLength="1"
+                                    android:onTextChanged="@{callback.cs17yOnTextChanged}"
+                                    app:maxValue="4"
                                     app:minValue="0"
                                     app:type="range" />
                             </LinearLayout>
@@ -1526,7 +1528,8 @@
                 <!-- fc29  CheckBox   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVfc29"
-                    style="@style/cardView">
+                    style="@style/cardView"
+                    android:visibility='@{fc2804.checked? View.VISIBLE : View.GONE}'>
 
                     <LinearLayout
                         android:layout_width="match_parent"

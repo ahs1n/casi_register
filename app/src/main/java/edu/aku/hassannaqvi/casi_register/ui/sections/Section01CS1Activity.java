@@ -440,11 +440,14 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
             if (age >= 6) {
                 bi.fldGrpCVcs18.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVcs18);
             } else bi.fldGrpCVcs18.setVisibility(View.VISIBLE);
 
             if (age < 6 || age >= 24) {
                 bi.fldGrpCVcs19.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVcs19);
                 bi.fldGrpCVcs20b.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVcs20b);
             } else {
                 bi.fldGrpCVcs19.setVisibility(View.VISIBLE);
                 bi.fldGrpCVcs20b.setVisibility(View.VISIBLE);
@@ -452,6 +455,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
             if (age >= 24) {
                 bi.fldGrpCVcs20a.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVcs20a);
             } else bi.fldGrpCVcs20a.setVisibility(View.VISIBLE);
         }
     }

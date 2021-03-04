@@ -355,6 +355,7 @@
                         app:minDate="01/11/2020" />
 
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
