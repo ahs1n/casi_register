@@ -26,7 +26,7 @@ fun monthsBetweenDates(startDate: Date, endDate: Date): Int {
     return monthsBetween
 }
 
-fun ageInYears(day: Int, month: Int, year: Int, minYear:Int): String {
+fun ageInYears(day: Int, month: Int, year: Int, minYear: Int): String {
     val dob = Calendar.getInstance()
     val today = Calendar.getInstance()
     if (year < minYear) return "0"
@@ -55,14 +55,26 @@ fun convertDateFormat(dateStr: String): String {
     return ""
 }
 
-fun getDateFormat(dateStr: String): Date? {
-    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+fun getDateFormat(dtFormat: String, dateStr: String): Date {
+    val sdf = SimpleDateFormat(dtFormat, Locale.ENGLISH)
     try {
-        return sdf.parse(dateStr)
+        val parse = sdf.parse(dateStr)
+        parse?.let { return it } ?: Date()
     } catch (ex: ParseException) {
         ex.printStackTrace()
     }
-    return null
+    return Date()
+}
+
+fun getMonthAndYearFromStr(start: String, end: String): Pair<Int, Int> {
+    val totalMonths = monthsBetweenDates(
+            getDateFormat("dd/MM/yyyy", start),
+            getDateFormat("dd/MM/yyyy", end)
+    )
+    val years = totalMonths / 12
+    val months = totalMonths - years * 12
+
+    return Pair(years, months)
 }
 
 fun getYearsBack(format: String, year: Int): String {

@@ -38,6 +38,7 @@ import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
+import kotlin.Pair;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
@@ -99,7 +100,13 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        bi.fc16b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc16b));
+        bi.fc16b.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.fldGrpfc16b);
+
+            if (bi.fc16b01.getId() == i) {
+                populateDate();
+            }
+        });
 
         bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc26check, !b));
 
@@ -125,20 +132,15 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().length() == 0) return;
-
-                int totalMonths = DateUtilsKt.monthsBetweenDates(DateUtilsKt.getDateFormat(item.getDob()), DateUtilsKt.getDateFormat(s.toString()));
-                int years = totalMonths / 12;
-                int months = totalMonths - (years * 12);
-                bi.fc1701.setText(String.valueOf(years));
-                bi.fc1702.setText(String.valueOf(months));
+                if (s.toString().isEmpty()) return;
+                populateDate();
             }
         });
-
     }
 
     public void fc17mOnTextChanged(CharSequence s, int start, int before, int count) {
@@ -475,6 +477,12 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         AppUtilsKt.openSectionEndingActivity(this, false);
+    }
+
+    private void populateDate() {
+        Pair<Integer, Integer> dt = DateUtilsKt.getMonthAndYearFromStr(item.getDob(), bi.fc08.getText().toString().replace("-", "/"));
+        bi.fc1702.setText(String.valueOf(dt.getSecond()));
+        bi.fc1701.setText(String.valueOf(dt.getFirst()));
     }
 
 }
