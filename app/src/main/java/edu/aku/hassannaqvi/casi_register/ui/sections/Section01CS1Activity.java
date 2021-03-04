@@ -74,20 +74,16 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         int country = SharedStorage.INSTANCE.getCountryCode(this);
 
         if (country == 3) {
-            bi.cs25c03.setVisibility(View.VISIBLE);
             bi.cs0602.setVisibility(View.GONE);
             bi.cs0603.setVisibility(View.GONE);
             bi.cs0604.setVisibility(View.GONE);
             bi.cs0605.setVisibility(View.GONE);
-
-
             bi.fldGrpCVcs09.setVisibility(View.GONE);
             bi.fldGrpCVcs16a.setVisibility(View.VISIBLE);
             bi.cs25c03.setVisibility(View.VISIBLE);
             bi.cs2602.setVisibility(View.GONE);
             bi.cs2604.setVisibility(View.GONE);
         } else {
-            bi.cs25c03.setVisibility(View.GONE);
             bi.cs0602.setVisibility(View.VISIBLE);
             bi.cs0603.setVisibility(View.VISIBLE);
             bi.cs0604.setVisibility(View.VISIBLE);

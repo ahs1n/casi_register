@@ -109,7 +109,7 @@ object CreateTable {
             ChildFollowup.ChildTable.COLUMN_CS12 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_CS13 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_FUPDT + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_FUPNO + " TEXT " +
+            ChildFollowup.ChildTable.COLUMN_FUPNO + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_DOB + " TEXT " +
             ");"
 
