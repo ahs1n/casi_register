@@ -104,6 +104,8 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                bi.fc1701.setText(null);
+
                 if (TextUtils.isEmpty(bi.fc1702.getText()) || TextUtils.isEmpty(bi.fc1701.getText()))
                     return;
 
@@ -139,6 +141,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
             }
         });
+
 
         bi.fc16b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfc16b));
 
@@ -255,6 +258,13 @@ public class Section02CSFPActivity extends AppCompatActivity {
         }
         bi.fc03.setAdapter(new ArrayAdapter<>(Section02CSFPActivity.this, android.R.layout.simple_spinner_dropdown_item, facilityName));
 
+        bi.fc10a98.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.fc10a.setEnabled(false);
+                bi.fc10a.setText(null);
+            } else
+                bi.fc10a.setEnabled(true);
+        });
     }
 
 
@@ -326,7 +336,9 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         form.setFc10(bi.fc10.getText().toString());
 
-        form.setFc10a(bi.fc10a.getText().toString());
+        form.setCs10a(bi.fc10a.getText().toString().trim().isEmpty() ? "-1" : bi.fc10a.getText().toString());
+
+        form.setFc10a98(bi.fc10a98.isChecked() ? "98" : "-1");
 
         form.setFc15(bi.fc15.getText().toString());
 

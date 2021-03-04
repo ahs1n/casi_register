@@ -236,6 +236,7 @@
     <string name="fc09">LHW Khandan Number</string>
     <string name="fc10">Child Registration Number</string>
     <string name="fc10a">Child MR Number</string>
+    <string name="fc10a98">MR is not Available</string>
     <string name="fc15">Child Name</string>
     <string name="fc15a">Mother Name</string>
     <string name="fc16">Father’s Name</string>

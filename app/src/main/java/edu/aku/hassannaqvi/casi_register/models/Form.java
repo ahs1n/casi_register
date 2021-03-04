@@ -168,6 +168,7 @@ public class Form extends LiveData<Form> {
     private String fc09;
     private String fc10;
     private String fc10a;
+    private String fc10a98;
     private String fc15;
     private String fc15a;
     private String fc16;
@@ -1274,6 +1275,14 @@ public class Form extends LiveData<Form> {
 
     public void setFc10a(String fc10a) {
         this.fc10a = fc10a;
+    }
+
+    public String getFc10a98() {
+        return fc10a98;
+    }
+
+    public void setFc10a98(String fc10a98) {
+        this.fc10a98 = fc10a98;
     }
 
     public String getFc15() {
@@ -3160,6 +3169,7 @@ public class Form extends LiveData<Form> {
                     .put("fc09", fc09)
                     .put("fc10", fc10)
                     .put("fc10a", fc10a)
+                    .put("fc10a98", fc10a98)
                     .put("fc15", fc15)
                     .put("fc15a", fc15a)
                     .put("fc16", fc16)
@@ -3551,6 +3561,7 @@ public class Form extends LiveData<Form> {
                 this.fc09 = json.getString("fc09");
                 this.fc10 = json.getString("fc10");
                 this.fc10a = json.getString("fc10a");
+                this.fc10a98 = json.getString("fc10a98");
                 this.fc15 = json.getString("fc15");
                 this.fc15a = json.getString("fc15a");
                 this.fc16 = json.getString("fc16");
