@@ -89,6 +89,8 @@ public class Section02CSFPActivity extends AppCompatActivity {
             bi.fldGrpcs3303.setVisibility(View.VISIBLE);
             bi.fc3703.setVisibility(View.GONE);
         }
+
+        bi.fc08.setMinDate(item.getCs08());
     }
 
 
