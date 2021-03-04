@@ -1,7 +1,9 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -34,6 +36,7 @@ import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
+import edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
@@ -112,8 +115,28 @@ public class Section02CSFPActivity extends AppCompatActivity {
                 bi.fc07.setEnabled(true);
         });
 
-        bi.fc2501.setOnCheckedChangeListener((compoundButton, b) -> {
-            Clear.clearAllFields(bi.fc25check, !b);
+        bi.fc2501.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc25check, !b));
+
+        bi.fc08.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() == 0) return;
+
+                int totalMonths = DateUtilsKt.monthsBetweenDates(DateUtilsKt.getDateFormat(item.getDob()), DateUtilsKt.getDateFormat(s.toString()));
+                int years = totalMonths / 12;
+                int months = totalMonths - (years * 12);
+                bi.fc1701.setText(String.valueOf(years));
+                bi.fc1702.setText(String.valueOf(months));
+            }
         });
 
     }

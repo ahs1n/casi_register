@@ -55,6 +55,16 @@ fun convertDateFormat(dateStr: String): String {
     return ""
 }
 
+fun getDateFormat(dateStr: String): Date? {
+    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+    try {
+        return sdf.parse(dateStr)
+    } catch (ex: ParseException) {
+        ex.printStackTrace()
+    }
+    return null
+}
+
 fun getYearsBack(format: String, year: Int): String {
     val cal = Calendar.getInstance()
     cal.time = cal.time

@@ -755,10 +755,8 @@
                                     android:hint="##"
                                     android:inputType="number"
                                     android:maxLength="2"
-                                    android:onTextChanged="@{callback.fc17mOnTextChanged}"
-                                    app:maxValue="11"
-                                    app:minValue="0"
-                                    app:type="range" />
+                                    android:enabled="false"
+                                    android:onTextChanged="@{callback.fc17mOnTextChanged}" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -782,9 +780,7 @@
                                     android:inputType="number"
                                     android:maxLength="1"
                                     android:onTextChanged="@{callback.cs17yOnTextChanged}"
-                                    app:maxValue="4"
-                                    app:minValue="0"
-                                    app:type="range" />
+                                    android:enabled="false" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
