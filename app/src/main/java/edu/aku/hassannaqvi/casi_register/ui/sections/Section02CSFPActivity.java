@@ -90,7 +90,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
             bi.fc3703.setVisibility(View.GONE);
         }
 
-        bi.fc08.setMinDate(item.getCs08());
+        bi.fc08.setMinDate(item.getCs08().replace("-", "/"));
     }
 
 
