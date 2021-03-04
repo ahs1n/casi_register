@@ -110,6 +110,7 @@ object CreateTable {
             ChildFollowup.ChildTable.COLUMN_CS13 + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_FUPDT + " TEXT, " +
             ChildFollowup.ChildTable.COLUMN_FUPNO + " TEXT " +
+            ChildFollowup.ChildTable.COLUMN_DOB + " TEXT " +
             ");"
 
     const val SQL_CREATE_WRA_FOLLOW_UP_LIST = "CREATE TABLE " + WraFollowup.WraTable.TABLE_NAME + " (" +

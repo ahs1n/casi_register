@@ -260,6 +260,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(ChildFollowup.ChildTable.COLUMN_CS13, chFollowup.getCs13());
                 values.put(ChildFollowup.ChildTable.COLUMN_FUPDT, chFollowup.getFupDt());
                 values.put(ChildFollowup.ChildTable.COLUMN_FUPNO, chFollowup.getFupNo());
+                values.put(ChildTable.COLUMN_DOB, chFollowup.getDob());
                 long rowID = db.insert(ChildFollowup.ChildTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
