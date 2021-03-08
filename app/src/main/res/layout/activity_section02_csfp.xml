@@ -2088,7 +2088,7 @@
                                 android:hint="@string/fc3601" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
-                </LinearLayout>
+
 
                 <!-- fc37  Radio   -->
                 <androidx.cardview.widget.CardView
@@ -2160,6 +2160,7 @@
                         </RadioGroup>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
                 <!-- fc38  Radio   -->
                 <androidx.cardview.widget.CardView
