@@ -7,18 +7,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,23 +21,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Validator;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
-import org.jetbrains.annotations.NotNull;
-
-import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
@@ -72,8 +65,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
 
     static File file;
     ActivityMainBinding bi;
-    SharedPreferences sharedPrefDownload;
-    SharedPreferences.Editor editorDownload;
     DownloadManager downloadManager;
     String preVer = "", newVer = "";
     VersionApp versionApp;
@@ -89,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
 
                 DownloadManager.Query query = new DownloadManager.Query();
-                query.setFilterById(sharedPrefDownload.getLong("refID", 0));
+                query.setFilterById(SharedStorage.INSTANCE.getDownloadFileRefID(MainActivity.this));
 
                 downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                 assert downloadManager != null;
@@ -97,9 +88,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 if (cursor.moveToFirst()) {
                     int colIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
                     if (DownloadManager.STATUS_SUCCESSFUL == cursor.getInt(colIndex)) {
-
-                        editorDownload.putBoolean("flag", true);
-                        editorDownload.commit();
 
                         Toast.makeText(context, "New App downloaded!!", Toast.LENGTH_SHORT).show();
                         bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Downloaded"));
@@ -130,8 +118,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         }
 
         // Auto download app
-        sharedPrefDownload = getSharedPreferences("appDownload", MODE_PRIVATE);
-        editorDownload = sharedPrefDownload.edit();
         versionApp = appInfo.getDbHelper().getVersionApp();
 
         if (versionApp != null) {
@@ -157,11 +143,9 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
                                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                                 .setTitle("Downloading " + getString(R.string.app_name) + " App new App ver." + newVer);
-                        refID = downloadManager.enqueue(request);
 
-                        editorDownload.putLong("refID", refID);
-                        editorDownload.putBoolean("flag", false);
-                        editorDownload.apply();
+                        refID = downloadManager.enqueue(request);
+                        SharedStorage.INSTANCE.setDownloadFileRefID(this, refID);
 
                     } else {
                         bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Available..\n(Can't download.. Internet connectivity issue!!)"));

@@ -22,17 +22,15 @@ import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_COPY
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME
 import edu.aku.hassannaqvi.casi_register.utils.CreateTable.PROJECT_NAME
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 fun dbBackup(context: Context) {
-    val sharedPref = context.getSharedPreferences("listingHHSMK", Context.MODE_PRIVATE)
-    val editor = sharedPref.edit()
-    val dt: String = sharedPref.getString("dt", "").toString()
+    val dt: String = SharedStorage.getBackUpDTFolder(context)
     if (dt != SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Date())) {
-        editor.putString("dt", SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Date()))
-        editor.apply()
+        SharedStorage.setBackUpDTFolder(context, SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Date()))
     }
 
     var folder: File
@@ -46,7 +44,7 @@ fun dbBackup(context: Context) {
         success = folder.mkdirs()
     }
     if (success) {
-        val directoryName = folder.path + File.separator + sharedPref.getString("dt", "")
+        val directoryName = folder.path + File.separator + dt
         folder = File(directoryName)
         if (!folder.exists()) {
             success = folder.mkdirs()

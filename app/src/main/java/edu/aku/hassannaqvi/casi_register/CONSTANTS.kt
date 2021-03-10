@@ -24,5 +24,10 @@ class CONSTANTS {
         const val WRA_FOLLOWUP_TYPE = "M102"
         const val CHILD_FOLLOWUP_TYPE = "C102"
 
+        //MainActivity
+        const val DOWNLOAD_FILE_REFID = "downloadFileRefID"
+        const val TAG_NAME = "tagName"
+        const val BACKUP_DT = "backupDT"
+
     }
 }

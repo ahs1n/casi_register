@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.casi_register.sync;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -27,24 +26,24 @@ import edu.aku.hassannaqvi.casi_register.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.models.SyncModel;
 
-import static android.content.Context.MODE_PRIVATE;
-
 /**
  * @author ali.azaz on 3/14/2018.
  */
 
 public class SyncAllData extends AsyncTask<Void, Integer, String> {
 
-    SharedPreferences sharedPref;
-    private SyncListAdapter adapter;
-    private List<SyncModel> uploadlist;
-    private int position;
-    private String TAG;
-    private Context mContext;
+    private final SyncListAdapter adapter;
+    private final List<SyncModel> uploadlist;
+    private final int position;
+    private final String TAG;
+    private final Context mContext;
     private ProgressDialog pd;
-    private String syncClass, url, tableName, updateSyncClass;
-    private Class<?> contractClass;
-    private Collection<?> dbData;
+    private final String syncClass;
+    private final String url;
+    private final String tableName;
+    private final String updateSyncClass;
+    private final Class<?> contractClass;
+    private final Collection<?> dbData;
 
     public SyncAllData(Context mContext, String syncClass, String updateSyncClass, Class<?> contractClass, String url,
                        String tableName, Collection<?> dbData, int position, SyncListAdapter adapter, List<SyncModel> uploadlist) {
@@ -72,7 +71,6 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
         uploadlist.get(position).setstatusID(2);
         uploadlist.get(position).setmessage("");
         adapter.updatesyncList(uploadlist);
-        sharedPref = mContext.getSharedPreferences("src", MODE_PRIVATE);
     }
 
 

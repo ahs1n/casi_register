@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.casi_register.sync;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -22,8 +21,7 @@ import java.nio.charset.StandardCharsets;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
-
-import static android.content.Context.MODE_PRIVATE;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 public class SyncDevice extends AsyncTask<Void, Integer, String> {
     private final SyncDevicInterface delegate;
@@ -130,10 +128,8 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                     JSONObject jsonObject = new JSONObject(json.getString(i));
                     if (!jsonObject.equals("")) {
                         String tag = jsonObject.getString("tag");
-                        SharedPreferences sharedPref = context.getSharedPreferences("tagName", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putString("tagName", tag);
-                        editor.apply();
+
+                        SharedStorage.INSTANCE.setTagName(context, tag);
 
                         if (flag) {
                             delegate.processFinish(true);

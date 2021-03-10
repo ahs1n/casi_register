@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.provider.Settings
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
 import org.apache.commons.lang3.StringUtils
 import java.text.SimpleDateFormat
 import java.util.*
@@ -49,9 +50,8 @@ class AppInfo {
         this.versionCode = versionCode
     }
 
-    private fun getTagName(mContext: Context): String? {
-        val sharedPref = mContext.getSharedPreferences("tagName", Context.MODE_PRIVATE)
-        return sharedPref.getString("tagName", null)
+    private fun getTagName(mContext: Context): String {
+        return SharedStorage.getTagName(mContext)
     }
 
     fun updateTagName(mContext: Context) {

@@ -1,8 +1,11 @@
 package edu.aku.hassannaqvi.casi_register.utils.shared
 
 import android.content.Context
+import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.BACKUP_DT
 import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.COUNTRY_CODE
+import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.DOWNLOAD_FILE_REFID
 import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.FIRST_TIME_INSTALL
+import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.TAG_NAME
 import org.apache.commons.lang3.StringUtils
 
 /*
@@ -32,6 +35,30 @@ object SharedStorage : SharedStorageBase() {
 
     fun getFirstInstallFlag(context: Context): Boolean {
         return get(context, FIRST_TIME_INSTALL, true) as Boolean
+    }
+
+    fun setTagName(context: Context, tag: String) {
+        put(context, TAG_NAME, tag)
+    }
+
+    fun getTagName(context: Context): String {
+        return get(context, TAG_NAME, true) as String
+    }
+
+    fun setBackUpDTFolder(context: Context, tag: String) {
+        put(context, BACKUP_DT, tag)
+    }
+
+    fun getBackUpDTFolder(context: Context): String {
+        return get(context, BACKUP_DT, true) as String
+    }
+
+    fun setDownloadFileRefID(context: Context, refID: Long) {
+        put(context, DOWNLOAD_FILE_REFID, refID)
+    }
+
+    fun getDownloadFileRefID(context: Context): Long {
+        return get(context, DOWNLOAD_FILE_REFID, 0) as Long
     }
 
 }
