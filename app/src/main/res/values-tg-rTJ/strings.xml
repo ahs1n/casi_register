@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name"> Casi Register </string>
-    <string name="btnSync">Download Data</string>
-    <string name="btnUpload">Upload Data</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Login</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="app_name"> CASI Регистр </string>
+    <string name="btnSync">Скачать данные</string>
+    <string name="btnUpload">Загрузить данные</string>
+    <string name="prompt_email">Электронное письмо</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="action_sign_in">Авторизовать</string>
+    <string name="action_sign_in_short">Войти</string>
     <string name="splashText"> </string>
     <string name="splashText2">  </string>
-    <string name="check_pending_forms">CHECK PENDING FORMS</string>
-    <string name="open_new_form">OPEN NEW FORM</string>
-    <string name="records_summary">Records Summary</string>
-    <string name="main_menu">Main Menu</string>
-    <string name="only_for_testing">ONLY FOR TESTING</string>
-    <string name="database">Database</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="check_pending_forms">Проверить незаконченные формы</string>
+    <string name="open_new_form">Открыть новую форму</string>
+    <string name="records_summary">Сводка записей</string>
+    <string name="main_menu">Главное меню</string>
+    <string name="only_for_testing">Только для тестирования</string>
+    <string name="database">База данных</string>
+    <string name="error_invalid_password">Этот пароль слишком короткий</string>
+    <string name="error_field_required">Это поле обязательно к заполнению</string>
+    <string name="error_incorrect_password">Этот пароль неверен</string>
     <string name="region">Вилоят</string>
     <string name="district">Ноҳия</string>
     <string name="uc">Ҷамоат</string>
     <string name="cityVillage">Шаҳр / Деҳа</string>
-    <string name="childScreening">Child Screening</string>
-    <string name="childFollowup">Child Follow-up</string>
-    <string name="wraScreening">WRAs Screening</string>
-    <string name="wraFollowup">WRAs Follow-up</string>
-    <string name="btnSave">Save</string>
-    <string name="btnEnd">Cancel</string>
-    <string name="signin">SIGN IN</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="country">Country (Click to change)</string>
+    <string name="childScreening">Детский скрининг</string>
+    <string name="childFollowup">Наблюдение за ребенком</string>
+    <string name="wraScreening">ЖРВ скрининг</string>
+    <string name="wraFollowup">Наблюдение за ЖРВ</string>
+    <string name="btnSave">Сохранить</string>
+    <string name="btnEnd">Отмена</string>
+    <string name="signin">Войти</string>
+    <string name="username">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="country">Страна (нажмите, чтобы изменить)</string>
     <string name="pakistan">Pakistan</string>
-    <string name="tajikistan">Tajikistan</string>
-    <string name="btnLogin">Login</string>
-    <string name="btnDownloadData">Download Data</string>
+    <string name="tajikistan">Тоҷикистон</string>
+    <string name="btnLogin">Авторизовать</string>
+    <string name="btnDownloadData">Скачать данные</string>
 
     <!--EndActivity Strings-->
-    <string name="elc7"> Note: Interview Status </string>
-    <string name="elc701"> Complete </string>
-    <string name="elc702"> Refused </string>
-    <string name="elc796"> Other (Specify) </string>
+    <string name="elc7"> Примечание: статус интервью </string>
+    <string name="elc701"> Завершить </string>
+    <string name="elc702"> Отказалась </string>
+    <string name="elc796"> Другое (указать) </string>
 
 
     <string name="cs01">Вилоят</string>
@@ -64,6 +64,7 @@
     <string name="cs0605"> </string>
     <string name="cs06096">Дигар (аниқ кунед)</string>
     <string name="cs07">Номи Ташхискунанда</string>
+    <string name="cs07User">Ҳамонгуна корбари вуруд</string>
     <string name="cs08">Рузи ташхис</string>
     <string name="cs0801">рӯз</string>
     <string name="cs0802">Моҳ</string>
@@ -71,6 +72,7 @@
     <string name="cs09"> </string>
     <string name="cs10">Рақами сабти кудак</string>
     <string name="cs10a">Рақами MR кӯдак</string>
+    <string name="cs10a98">MR дастрас нест</string>
     <string name="cs11">Номи кудак</string>
     <string name="cs11a">Номи Модар</string>
     <string name="cs12">Номи Падар</string>
@@ -86,7 +88,9 @@
     <string name="cs1501">Синну соли кудак  </string>
     <string name="cs1502">Синну моҳи кудак </string>
     <string name="cs16">Вазни кудак дар рузи таваллуд ( кг,гр) Агар вазни кудак дар рузи таваллуд дасрас нест 99.9 кайд кунед</string>
+    <string name="cs1698">Намедонам</string>
     <string name="cs16a">Дарозии кудак дар рузи таваллуд (см) Агар дарозии кудак дар рузи таваллуд дасрас нест 99.9 кайд кунед</string>
+    <string name="cs16a98">Намедонам</string>
     <string name="cs17">Оё Шумо кудакро танҳо бо шири модар хурондаед?</string>
     <string name="cs1701">Ҳа</string>
     <string name="cs1702">Не</string>
@@ -226,13 +230,15 @@
     <string name="fc0605"></string>
     <string name="fc0696">Дигар (аниқ кунед)</string>
     <string name="fc07">Номи Ташхискунанда</string>
+    <string name="fc07User">Ҳамонгуна корбари вуруд</string>
     <string name="fc08">Рузи ташхис</string>
     <string name="fc0801"></string>
     <string name="fc0802"></string>
     <string name="fc0803"></string>
     <string name="fc09"></string>
     <string name="fc10">Рақами сабти кудак</string>
-    <string name="fc10a"></string>
+    <string name="fc10a">Рақами MR-и кӯдак</string>
+    <string name="fc10a98">MR дастрас нест</string>
     <string name="fc15">Номи кудак</string>
     <string name="fc15a">Номи Модар</string>
     <string name="fc16">Номи Падар</string>

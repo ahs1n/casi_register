@@ -90,6 +90,7 @@
     <string name="cs16">Birth weight (in Kilo grams) Record 99.9 if birth weight is not available</string>
     <string name="cs1698">Dont know</string>
     <string name="cs16a"> </string>
+    <string name="cs16a98">Dont know</string>
     <string name="cs17">Have you ever exclusively breast fed your child?</string>
     <string name="cs1701">YES</string>
     <string name="cs1702">NO</string>
@@ -228,6 +229,7 @@
     <string name="fc0605">CMW</string>
     <string name="fc0696">Other (Specify)</string>
     <string name="fc07">Assessor’s Name</string>
+    <string name="fc07User">Same as Login user</string>
     <string name="fc08">Date of Assessment</string>
     <string name="fc0801">DAY</string>
     <string name="fc0802">MONTH</string>
@@ -235,6 +237,7 @@
     <string name="fc09">LHW Khandan Number</string>
     <string name="fc10">Child Registration Number</string>
     <string name="fc10a">Child MR Number</string>
+    <string name="fc10a98">MR is not Available</string>
     <string name="fc15">Child Name</string>
     <string name="fc15a">Mother Name</string>
     <string name="fc16">Father’s Name</string>
@@ -318,6 +321,7 @@
     <string name="fc37">Treatment provided at referred HF</string>
     <string name="fc3701">Start RUTF for MAM</string>
     <string name="fc3702">Hospitalization for SAM</string>
+    <string name="fc3703">Start BP for SAM</string>
     <string name="fc3796">Specify other</string>
     <string name="fc38">Treatment completed</string>
     <string name="fc3801">YES</string>

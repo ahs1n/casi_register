@@ -229,6 +229,7 @@
     <string name="fc0605">CMW</string>
     <string name="fc0696">Other (Specify)</string>
     <string name="fc07">Assessor’s Name</string>
+    <string name="fc07User">Same as Login user</string>
     <string name="fc08">Date of Assessment</string>
     <string name="fc0801">DAY</string>
     <string name="fc0802">MONTH</string>
