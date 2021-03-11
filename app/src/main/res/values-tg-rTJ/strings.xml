@@ -38,6 +38,14 @@
     <string name="btnLogin">Авторизовать</string>
     <string name="btnDownloadData">Скачать данные</string>
 
+    <string name="netwrok">Сетевое подключение недоступно!</string>
+    <string name="invalidpass">Неправильный пароль</string>
+    <string name="unameRequired">Имя пользователя требуется.</string>
+    <string name="incorrcetPass">Неверный пароль</string>
+    <string name="downData">Пожалуйста, загрузите данные перед входом</string>
+    <string name="permission">Требуются разрешения</string>
+    <string name="warning">Предупреждение</string>
+
     <!--EndActivity Strings-->
     <string name="elc7"> Примечание: статус интервью </string>
     <string name="elc701"> Завершить </string>

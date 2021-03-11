@@ -38,6 +38,15 @@
     <string name="btnLogin">Login</string>
     <string name="btnDownloadData">Download Data</string>
 
+    <string name="netwrok">Network connection not available!</string>
+    <string name="invalidpass">Invalid Password</string>
+    <string name="unameRequired">Username is required.</string>
+    <string name="incorrcetPass">Incorrect Password</string>
+    <string name="downData">Please download data before login</string>
+    <string name="permission">Permissions Required</string>
+    <string name="warning">Warning</string>
+
+
     <!--EndActivity Strings-->
     <string name="elc7"> Note: Interview Status </string>
     <string name="elc701"> Complete </string>

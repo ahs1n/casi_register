@@ -88,7 +88,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * */
     fun onSyncDataClick(v: View) {
         if (!isNetworkConnected(this)) {
-            Toast.makeText(this, "Network connection not available!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.netwrok), Toast.LENGTH_SHORT).show()
             return
         }
         gotoActivity(SyncActivity::class.java)
@@ -168,14 +168,14 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     override fun formValidation(username: String, password: String): Boolean {
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            bi.password.error = "Invalid Password"
+            bi.password.error = getString(R.string.invalidpass)
             bi.password.requestFocus()
             return false
         }
 
         // Check for a valid username address.
         if (TextUtils.isEmpty(username)) {
-            bi.username.error = "Username is required."
+            bi.username.error = getString(R.string.unameRequired)
             bi.username.requestFocus()
             return false
         }
@@ -187,7 +187,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * Set error on password
     * */
     override fun setPasswordIncorrect(error: String?) {
-        bi.password.error = error ?: "Incorrect Password"
+        bi.password.error = error ?: getString(R.string.incorrcetPass)
         bi.password.requestFocus()
     }
 
@@ -230,7 +230,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
         ShowcaseView.Builder(this)
                 .setTarget(ViewTarget(bi.syncData.id, this))
                 .setStyle(R.style.CustomShowcaseTheme)
-                .setContentText("\n\nPlease download data before login")
+                .setContentText("\n\n  ${getString(R.string.downData)}")
                 .singleShot(42)
                 .build()
     }
@@ -251,8 +251,8 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
         val options: Permissions.Options = Permissions.Options()
-                .setRationaleDialogTitle("Permissions Required")
-                .setSettingsDialogTitle("Warning")
+                .setRationaleDialogTitle(getString(R.string.permission))
+                .setSettingsDialogTitle(getString(R.string.warning))
         Permissions.check(this, permissions, null, options, object : PermissionHandler() {
             override fun onGranted() {
                 permissionFlag = true
