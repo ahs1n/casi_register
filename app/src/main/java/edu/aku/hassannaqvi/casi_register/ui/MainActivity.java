@@ -111,11 +111,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi.setCallback(this);
         setSupportActionBar(bi.toolbar);
 
-        if (MainApp.admin) {
-            bi.databaseBtn.setVisibility(View.VISIBLE);
-        } else {
-            bi.databaseBtn.setVisibility(View.GONE);
-        }
+        bi.databaseBtn.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
 
         // Auto download app
         versionApp = appInfo.getDbHelper().getVersionApp();
