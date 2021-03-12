@@ -184,14 +184,12 @@ public class Form extends LiveData<Form> {
     private String fc22;
     private String fc23;
     private String fc24;
-    private String fc25;
     private String fc2501;
     private String fc2502;
     private String fc2503;
     private String fc2504;
     private String fc2505;
     private String fc2506;
-    private String fc26;
     private String fc2601;
     private String fc2602;
     private String fc2603;
@@ -202,7 +200,6 @@ public class Form extends LiveData<Form> {
     private String fc2703;
     private String fc2704;
     private String fc28;
-    private String fc29;
     private String fc2901;
     private String fc2902;
     private String fc2903;
@@ -1405,14 +1402,6 @@ public class Form extends LiveData<Form> {
         this.fc24 = fc24;
     }
 
-    public String getFc25() {
-        return fc25;
-    }
-
-    public void setFc25(String fc25) {
-        this.fc25 = fc25;
-    }
-
     public String getFc2501() {
         return fc2501;
     }
@@ -1459,14 +1448,6 @@ public class Form extends LiveData<Form> {
 
     public void setFc2506(String fc2506) {
         this.fc2506 = fc2506;
-    }
-
-    public String getFc26() {
-        return fc26;
-    }
-
-    public void setFc26(String fc26) {
-        this.fc26 = fc26;
     }
 
     public String getFc2601() {
@@ -1547,14 +1528,6 @@ public class Form extends LiveData<Form> {
 
     public void setFc28(String fc28) {
         this.fc28 = fc28;
-    }
-
-    public String getFc29() {
-        return fc29;
-    }
-
-    public void setFc29(String fc29) {
-        this.fc29 = fc29;
     }
 
     public String getFc2901() {
@@ -3185,14 +3158,12 @@ public class Form extends LiveData<Form> {
                     .put("fc22", fc22)
                     .put("fc23", fc23)
                     .put("fc24", fc24)
-//                    .put("fc25", fc25)
                     .put("fc2501", fc2501)
                     .put("fc2502", fc2502)
                     .put("fc2503", fc2503)
                     .put("fc2504", fc2504)
                     .put("fc2505", fc2505)
                     .put("fc2506", fc2506)
-//                    .put("fc26", fc26)
                     .put("fc2601", fc2601)
                     .put("fc2602", fc2602)
                     .put("fc2603", fc2603)
@@ -3203,7 +3174,6 @@ public class Form extends LiveData<Form> {
                     .put("fc2703", fc2703)
                     .put("fc2704", fc2704)
                     .put("fc28", fc28)
-//                    .put("fc29", fc29)
                     .put("fc2901", fc2901)
                     .put("fc2902", fc2902)
                     .put("fc2903", fc2903)

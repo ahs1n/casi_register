@@ -52,7 +52,8 @@ object CreateTable {
             + UsersTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.COLUMN_USERNAME + " TEXT,"
             + UsersTable.COLUMN_PASSWORD + " TEXT,"
-            + UsersTable.COLUMN_FULLNAME + " TEXT"
+            + UsersTable.COLUMN_FULLNAME + " TEXT,"
+            + UsersTable.COLUMN_COUNTRY_CODE + " TEXT"
             + " );")
     const val SQL_CREATE_VILLAGES = ("CREATE TABLE " + VillagesTable.TABLE_NAME + "("
             + VillagesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"

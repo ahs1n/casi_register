@@ -94,6 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(UsersTable.COLUMN_USERNAME, user.getUserName());
                 values.put(UsersTable.COLUMN_PASSWORD, user.getPassword());
                 values.put(UsersTable.COLUMN_FULLNAME, user.getFullname());
+                values.put(UsersTable.COLUMN_COUNTRY_CODE, user.getCountry_code());
                 long rowID = db.insert(UsersTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
@@ -360,7 +361,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allVC;
     }
 
-
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -589,148 +589,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
-
-    public Collection<ZStandard> getZStandard() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                ZStandardContract.ZScoreTable.COLUMN_SEX,
-                ZStandardContract.ZScoreTable.COLUMN_AGE,
-                ZStandardContract.ZScoreTable.COLUMN_MEASURE,
-                ZStandardContract.ZScoreTable.COLUMN_L,
-                ZStandardContract.ZScoreTable.COLUMN_M,
-                ZStandardContract.ZScoreTable.COLUMN_S,
-                ZStandardContract.ZScoreTable.COLUMN_CAT
-        };
-
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                ZStandardContract.ZScoreTable.COLUMN_SEX + " ASC";
-
-        Collection<ZStandard> allZs = new ArrayList<ZStandard>();
-        try {
-            c = db.query(
-                    ZScoreTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                ZStandard zs = new ZStandard();
-                allZs.add(zs.Hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allZs;
-    }
-
-
-    public Collection<ZStandard> getZStandardL() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                "DISTINCT " + ZStandardContract.ZScoreTable.COLUMN_SEX,
-                ZStandardContract.ZScoreTable.COLUMN_AGE,
-                ZStandardContract.ZScoreTable.COLUMN_MEASURE,
-                ZStandardContract.ZScoreTable.COLUMN_L,
-                ZStandardContract.ZScoreTable.COLUMN_M,
-                ZStandardContract.ZScoreTable.COLUMN_S,
-                ZStandardContract.ZScoreTable.COLUMN_CAT
-        };
-
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = ZStandardContract.ZScoreTable.COLUMN_SEX;
-        String having = null;
-
-        String orderBy =
-                ZStandardContract.ZScoreTable.COLUMN_SEX + " ASC";
-
-        Collection<ZStandard> allzs = new ArrayList<ZStandard>();
-        try {
-            c = db.query(
-                    ZScoreTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                ZStandard zs = new ZStandard();
-                allzs.add(zs.Hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allzs;
-    }
-
-
-    public Collection<ZStandard> getZStandardByL(String uc) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                ZStandardContract.ZScoreTable.COLUMN_SEX,
-                ZStandardContract.ZScoreTable.COLUMN_MEASURE
-        };
-
-        String whereClause = ZStandardContract.ZScoreTable.COLUMN_SEX + "=?";
-        String[] whereArgs = new String[]{uc};
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                ZStandardContract.ZScoreTable.COLUMN_SEX + " ASC";
-
-        Collection<ZStandard> allzs = new ArrayList<ZStandard>();
-        try {
-            c = db.query(
-                    ZScoreTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                ZStandard zs = new ZStandard();
-                allzs.add(zs.Hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allzs;
-    }
-
-
-    //TODO: Commented for TESTING APP
-
     public Collection<Form> getFormsByCluster(String cluster) {
 
         // String sysdate =  spDateT.substring(0, 8).trim()
@@ -809,79 +667,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
-    public ArrayList<Form> getUnclosedForms() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                FormsTable._ID,
-                FormsTable.COLUMN_UID,
-                FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_COUNTRY_CODE,
-                FormsTable.COLUMN_REG_NO,
-                FormsTable.COLUMN_DISTRICT_CODE,
-                FormsTable.COLUMN_DISTRICT,
-                FormsTable.COLUMN_UC_CODE,
-                FormsTable.COLUMN_UC,
-                FormsTable.COLUMN_VILLAGE_CODE,
-                FormsTable.COLUMN_VILLAGE,
-                FormsTable.COLUMN_CS,
-                FormsTable.COLUMN_CSFP,
-                FormsTable.COLUMN_WS,
-                FormsTable.COLUMN_WSFP,
-                FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_SYNCED,
-                FormsTable.COLUMN_FORM_TYPE
-        };
-        String whereClause = FormsTable.COLUMN_ISTATUS + " = ''";
-        String[] whereArgs = null;
-//        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
-        String groupBy = null;
-        String having = null;
-        String orderBy = FormsTable.COLUMN_ID + " ASC";
-        ArrayList<Form> allForms = new ArrayList<>();
-        try {
-            c = db.query(
-                    FormsTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                Form form = new Form();
-                form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
-                form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
-                form.setReg_no(c.getString(c.getColumnIndex(FormsTable.COLUMN_REG_NO)));
-                form.setDistrictCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE)));
-                form.setDistrict(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT)));
-                form.setUcCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC_CODE)));
-                form.setUc(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC)));
-                form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
-                form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
-                form.setcS(c.getString(c.getColumnIndex(FormsTable.COLUMN_CS)));
-                form.setcSFP(c.getString(c.getColumnIndex(FormsTable.COLUMN_CSFP)));
-                form.setwS(c.getString(c.getColumnIndex(FormsTable.COLUMN_WS)));
-                form.setwSFP(c.getString(c.getColumnIndex(FormsTable.COLUMN_WSFP)));
-                form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
-                form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
-                allForms.add(form);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allForms;
-    }
-
-
     public int updateEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -899,47 +684,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 selection,
                 selectionArgs);
-    }
-
-
-    public Collection<Users> getUsers() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                UsersTable.COLUMN_USERNAME,
-                UsersTable.COLUMN_FULLNAME
-        };
-
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = UsersTable.COLUMN_USERNAME + " ASC";
-
-        Collection<Users> alluser = new ArrayList<>();
-        try {
-            c = db.query(
-                    Users.UsersTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                alluser.add(new Users().hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return alluser;
     }
 
 
@@ -1397,13 +1141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Users getLoginUser(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                UsersTable.COLUMN_ID,
-                UsersTable.COLUMN_USERNAME,
-                UsersTable.COLUMN_PASSWORD,
-                UsersTable.COLUMN_FULLNAME,
-                UsersTable.COLUMN_COUNTRY_CODE,
-        };
+        String[] columns = null;
         String whereClause = UsersTable.COLUMN_USERNAME + "=? AND " + UsersTable.COLUMN_PASSWORD + "=?";
         String[] whereArgs = {username, password};
         String groupBy = null;

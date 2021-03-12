@@ -310,7 +310,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
         form.setFc10(bi.fc10.getText().toString());
 
-        form.setCs10a(bi.fc10a.getText().toString().trim().isEmpty() ? "-1" : bi.fc10a.getText().toString());
+        form.setFc10a(bi.fc10a.getText().toString().trim().isEmpty() ? "-1" : bi.fc10a.getText().toString());
 
         form.setFc10a98(bi.fc10a98.isChecked() ? "98" : "-1");
 

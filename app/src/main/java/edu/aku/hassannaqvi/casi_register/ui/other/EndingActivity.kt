@@ -20,7 +20,7 @@ class EndingActivity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending)
         bi.callback = this
 
-        val check = intent.getBooleanExtra(getString(R.string.complete), false)
+        val check = intent.getBooleanExtra("complete", false)
         if (check) {
             bi.istatusa.isEnabled = true
             bi.istatusb.isEnabled = false
