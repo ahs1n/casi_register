@@ -116,7 +116,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 return false;
             }
         } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -543,7 +543,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
             bi.ZScore.setText(String.format(Locale.ENGLISH, "HLAZ: %.2f \r\nWAZ: %.2f \r\nWHZ: %.2f", HLAZ, WAZ, WHZ));
         } else {
-            Toast.makeText(this, "Z-Score cannot be evaluated with missing values.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.zScoreEmpty), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -562,7 +562,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             finish();
             startActivity(new Intent(this, Section01CS2Activity.class));
         } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
         }
     }
 

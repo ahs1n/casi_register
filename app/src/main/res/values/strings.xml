@@ -62,7 +62,8 @@
     <string name="cancel">Cancel</string>
     <string name="complete">complete</string>
     <string name="updatingError">Error in updating db!!</string>
-    <string name="updateDbError">"Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)"</string>
+    <string name="updateDbError1">"Sorry. You can't go further."</string>
+    <string name="updateDbError2">"Please contact IT Team (Failed to update DB)"</string>
     <string name="bckBtn">You Cant go back</string>
     <string name="processing">Processing</string>
     <string name="confirmation">Confirmation!</string>
