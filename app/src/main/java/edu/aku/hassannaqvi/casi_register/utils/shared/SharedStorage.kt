@@ -42,7 +42,7 @@ object SharedStorage : SharedStorageBase() {
     }
 
     fun getTagName(context: Context): String {
-        return get(context, TAG_NAME, true) as String
+        return get(context, TAG_NAME, StringUtils.EMPTY) as String
     }
 
     fun setBackUpDTFolder(context: Context, tag: String) {
@@ -50,7 +50,7 @@ object SharedStorage : SharedStorageBase() {
     }
 
     fun getBackUpDTFolder(context: Context): String {
-        return get(context, BACKUP_DT, true) as String
+        return get(context, BACKUP_DT, StringUtils.EMPTY) as String
     }
 
     fun setDownloadFileRefID(context: Context, refID: Long) {

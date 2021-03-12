@@ -464,9 +464,8 @@ public class Section02CSFPActivity extends AppCompatActivity {
             double WAZ = zs.getZScore_WAZ(bi.fc23.getText().toString());
             double WHZ = zs.getZScore_WHZ(bi.fc23.getText().toString(), bi.fc22.getText().toString());
 
-            bi.ZScore.setText("HLAZ: " + HLAZ + " \r\nWAZ: " + WAZ + " \r\nWHZ: " + WHZ);
+            bi.ZScore.setText(String.format(Locale.ENGLISH, "HLAZ: %.2f \r\nWAZ: %.2f \r\nWHZ: %.2f", HLAZ, WAZ, WHZ));
         } else {
-
             Toast.makeText(this, "Z-Score cannot be evaluated with missing values.", Toast.LENGTH_SHORT).show();
         }
     }

@@ -541,7 +541,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             double WAZ = zs.getZScore_WAZ(bi.cs22.getText().toString());
             double WHZ = zs.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
 
-            bi.ZScore.setText("HLAZ: " + HLAZ + " \r\nWAZ: " + WAZ + " \r\nWHZ: " + WHZ);
+            bi.ZScore.setText(String.format(Locale.ENGLISH, "HLAZ: %.2f \r\nWAZ: %.2f \r\nWHZ: %.2f", HLAZ, WAZ, WHZ));
         } else {
             Toast.makeText(this, "Z-Score cannot be evaluated with missing values.", Toast.LENGTH_SHORT).show();
         }
