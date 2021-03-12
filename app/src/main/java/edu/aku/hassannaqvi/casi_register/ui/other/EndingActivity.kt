@@ -62,7 +62,7 @@ class EndingActivity : AppCompatActivity() {
         return if (updcount == 1) {
             true
         } else {
-            Toast.makeText(this, getString(R.string.updateDbError), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show()
             false
         }
     }

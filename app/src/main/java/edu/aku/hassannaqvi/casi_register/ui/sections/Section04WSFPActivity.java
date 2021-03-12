@@ -97,7 +97,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
             finish();
             gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -114,11 +114,11 @@ public class Section04WSFPActivity extends AppCompatActivity {
                 db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_WSFP, form.wSFPtoString());
                 return true;
             } else {
-                Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.failedUpdateDb), Toast.LENGTH_SHORT).show();
                 return false;
             }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
             return false;
         }
     }

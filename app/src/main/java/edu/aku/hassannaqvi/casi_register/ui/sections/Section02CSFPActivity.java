@@ -188,7 +188,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
             finish();
             gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -205,11 +205,11 @@ public class Section02CSFPActivity extends AppCompatActivity {
                 db.updatesFormsColumn(FormsContract.FormsTable.COLUMN_CSFP, form.cSFPtoString());
                 return true;
             } else {
-                Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.failedUpdateDb), Toast.LENGTH_SHORT).show();
                 return false;
             }
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -466,7 +466,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
 
             bi.ZScore.setText(String.format(Locale.ENGLISH, "HLAZ: %.2f \r\nWAZ: %.2f \r\nWHZ: %.2f", HLAZ, WAZ, WHZ));
         } else {
-            Toast.makeText(this, "Z-Score cannot be evaluated with missing values.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.zScoreEmpty), Toast.LENGTH_SHORT).show();
         }
     }
 
