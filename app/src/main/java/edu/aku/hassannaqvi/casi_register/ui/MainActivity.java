@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     int colIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
                     if (DownloadManager.STATUS_SUCCESSFUL == cursor.getInt(colIndex)) {
 
-                        Toast.makeText(context, "New App downloaded!!", Toast.LENGTH_SHORT).show();
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Downloaded"));
+                        Toast.makeText(context, getString(R.string.newApp), Toast.LENGTH_SHORT).show();
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + "  " + getString(R.string.newVer)).append(newVer).append("  " + getString(R.string.downloaded)));
 
                         ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
                         List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
@@ -127,24 +127,24 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
 
                 if (file.exists()) {
-                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " New Version ").append(newVer).append("  Downloaded"));
+                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.newVer)).append(newVer).append("  " + getString(R.string.downloaded)));
                     showDialog(newVer, preVer);
                 } else {
                     NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
                     if (networkInfo != null && networkInfo.isConnected()) {
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Downloading.."));
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.appVer)).append(newVer).append("  " + getString(R.string.downloading) + ".."));
                         downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                         Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
                         DownloadManager.Request request = new DownloadManager.Request(uri);
                         request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
                                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                                .setTitle("Downloading " + getString(R.string.app_name) + " App new App ver." + newVer);
+                                .setTitle(getString(R.string.downloading) + getString(R.string.app_name) + getString(R.string.appVer) + newVer);
 
                         refID = downloadManager.enqueue(request);
                         SharedStorage.INSTANCE.setDownloadFileRefID(this, refID);
 
                     } else {
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + " App New Version ").append(newVer).append("  Available..\n(Can't download.. Internet connectivity issue!!)"));
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.appVer)).append(newVer).append(getString(R.string.available) + "..\n" + getString(R.string.downError)));
                     }
                 }
 
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         } else {
-            Toast.makeText(this, "Press Back again to Exit.",
+            Toast.makeText(this, getString(R.string.backBtn),
                     Toast.LENGTH_SHORT).show();
             exit = true;
             new Handler().postDelayed(new Runnable() {
@@ -253,14 +253,14 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 break;
             case R.id.uploadData:
                 if (!AndroidUtilityKt.isNetworkConnected(this)) {
-                    Toast.makeText(this, "No network connection available!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.noNetwork), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 oF = new Intent(this, SyncActivity.class);
                 break;
             case R.id.btn_download_followup:
                 if (!AndroidUtilityKt.isNetworkConnected(this)) {
-                    Toast.makeText(this, "No network connection available!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.noNetwork), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!Validator.emptyCheckingContainer(this, bi.fldGrpna10)) return;
@@ -393,10 +393,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 this,
                 1,
                 null,
-                getString(R.string.app_name) + " APP is available!",
-                getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\nInstall new version to use this app.",
-                "Install",
-                "Cancel"
+                getString(R.string.app_name) + getString(R.string.appAvailable),
+                getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\n" + getString(R.string.installNewApp),
+                getString(R.string.install),
+                getString(R.string.cancel)
         );
     }
 

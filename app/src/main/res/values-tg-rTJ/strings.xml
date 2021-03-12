@@ -45,6 +45,34 @@
     <string name="downData">Пожалуйста, загрузите данные перед входом</string>
     <string name="permission">Требуются разрешения</string>
     <string name="warning">Предупреждение</string>
+    <string name="newApp">Новое приложение скачано !!</string>
+    <string name="appVer">Новая версия приложения</string>
+    <string name="downloaded">Скачано</string>
+    <string name="appDownload">Скачать приложение</string>
+    <string name="newVer">Новая версия</string>
+    <string name="downloading">Скачивание</string>
+    <string name="available">Доступно</string>
+    <string name="downError">Невозможно скачать. Проблема с подключением к Интернету!</string>
+    <string name="backBtn">Снова нажмите Назад для выхода</string>
+    <string name="noNetwork">Нет подключения к сети!</string>
+    <string name="appAvailable">Приложение доступно!</string>
+    <string name="oldAppMsg">Версия приложения "+" теперь доступна. В настоящее время вы используете старую версию ".</string>
+    <string name="installNewApp">Установите новую версию, чтобы использовать это приложение</string>
+    <string name="install">Установить</string>
+    <string name="cancel">Отмена</string>
+    <string name="complete">Завершить</string>
+    <string name="updatingError">Ошибка при обновлении БД</string>
+    <string name="updateDbError">«Извините. Вы не можете пойти дальше. Обратитесь в ИТ-отдел (не удалось обновить БД)»</string>
+    <string name="bckBtn">Вы не можешь вернуться</string>
+    <string name="processing">Обработка</string>
+    <string name="confirmation">Подтверждение</string>
+    <string name="cntBtn">Вы уверены, что хотите продолжить интервью</string>
+    <string name="failedUpdateDb">ИЗВИНИТЕ! Не удалось обновить БД)</string>
+    <string name="invalidDate">Недействительная дата!</string>
+    <string name="ageCalc">"Месяц и год не равны нулю !!"</string>
+    <string name="zScoreMsg">«Пожалуйста, нажмите кнопку Z-Score»</string>
+    <string name="zScoreEmpty">«Z-Score не может быть оценен с пропущенными значениями».</string>
+
 
     <!--EndActivity Strings-->
     <string name="elc7"> Примечание: статус интервью </string>
