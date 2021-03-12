@@ -115,7 +115,7 @@
                             android:gravity="center"
                             android:onClick="toggleSummary"
                             android:padding="20dp"
-                            android:text="Records Summary"
+                            android:text="@string/records_summary"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             android:typeface="monospace" />
