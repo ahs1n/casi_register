@@ -45,6 +45,33 @@
     <string name="downData">Please download data before login</string>
     <string name="permission">Permissions Required</string>
     <string name="warning">Warning</string>
+    <string name="newApp">New App downloaded!!</string>
+    <string name="appVer">App New Version</string>
+    <string name="downloaded">Downloaded</string>
+    <string name="appDownload">appDownload</string>
+    <string name="newVer"> New Version </string>
+    <string name="downloading">Downloading</string>
+    <string name="available">Available</string>
+    <string name="downError">Cant download.. Internet connectivity issue!</string>
+    <string name="backBtn">Press Back again to Exit</string>
+    <string name="noNetwork">No network connection available!</string>
+    <string name="appAvailable">APP is available!</string>
+    <string name="oldAppMsg">App Ver." + " is now available. Your are currently using older Ver."</string>
+    <string name="installNewApp">Install new version to use this app</string>
+    <string name="install">Install</string>
+    <string name="cancel">Cancel</string>
+    <string name="complete">complete</string>
+    <string name="updatingError">Error in updating db</string>
+    <string name="updateDbError">"Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)"</string>
+    <string name="bckBtn">You Cant go back</string>
+    <string name="processing">Processing</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="cntBtn">Are you sure, you want to continue "" interview</string>
+    <string name="failedUpdateDb">SORRY! Failed to update DB)</string>
+    <string name="invalidDate">Invalid date!</string>
+    <string name="ageCalc">"Both Month and Year don't be zero!!"</string>
+    <string name="zScoreMsg">"Please click on Z-Score Button"</string>
+    <string name="zScoreEmpty">"Z-Score cannot be evaluated with missing values."</string>
 
 
     <!--EndActivity Strings-->
