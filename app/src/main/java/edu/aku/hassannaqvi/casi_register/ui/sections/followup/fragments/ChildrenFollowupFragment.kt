@@ -122,7 +122,7 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
             override fun onItemClick(item: ChildFollowup, position: Int) {
                 openWarningFragment(
                         id = 1,
-                        title = "CONFIRMATION!",
+                        title = getString(R.string.confirmation),
                         message = "Are you sure, you want to continue ${item.cs11.toUpperCase(Locale.ENGLISH)} interview?",
                         item = item)
             }

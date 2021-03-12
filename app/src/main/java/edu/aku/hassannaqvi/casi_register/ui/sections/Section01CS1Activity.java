@@ -112,7 +112,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 SharedStorage.INSTANCE.setLastRegistrationID(this, "c-" + concatID, bi.cs10.getText().toString());
                 return true;
             } else {
-                Toast.makeText(this, "SORRY! Failed to update DB)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.failedUpdateDb), Toast.LENGTH_SHORT).show();
                 return false;
             }
         } else {

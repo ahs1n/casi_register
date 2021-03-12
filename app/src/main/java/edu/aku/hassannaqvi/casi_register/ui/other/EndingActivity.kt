@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.casi_register.ui.other
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +9,6 @@ import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo
 import edu.aku.hassannaqvi.casi_register.core.MainApp.form
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityEndingBinding
-import edu.aku.hassannaqvi.casi_register.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,7 +20,7 @@ class EndingActivity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending)
         bi.callback = this
 
-        val check = intent.getBooleanExtra("complete", false)
+        val check = intent.getBooleanExtra(getString(R.string.complete), false)
         if (check) {
             bi.istatusa.isEnabled = true
             bi.istatusb.isEnabled = false
@@ -40,7 +38,7 @@ class EndingActivity : AppCompatActivity() {
         if (updateDB()) {
             finish()
         } else {
-            Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.updatingError), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -64,7 +62,7 @@ class EndingActivity : AppCompatActivity() {
         return if (updcount == 1) {
             true
         } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.updateDbError), Toast.LENGTH_SHORT).show()
             false
         }
     }
@@ -74,6 +72,6 @@ class EndingActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        Toast.makeText(this, "You Can't go back", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.bckBtn), Toast.LENGTH_LONG).show()
     }
 }

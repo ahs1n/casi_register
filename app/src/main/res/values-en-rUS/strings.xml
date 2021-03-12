@@ -61,13 +61,13 @@
     <string name="install">Install</string>
     <string name="cancel">Cancel</string>
     <string name="complete">complete</string>
-    <string name="updatingError">Error in updating db</string>
+    <string name="updatingError">Error in updating db!!</string>
     <string name="updateDbError">"Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)"</string>
     <string name="bckBtn">You Cant go back</string>
     <string name="processing">Processing</string>
-    <string name="confirmation">Confirmation</string>
+    <string name="confirmation">Confirmation!</string>
     <string name="cntBtn">Are you sure, you want to continue "" interview</string>
-    <string name="failedUpdateDb">SORRY! Failed to update DB)</string>
+    <string name="failedUpdateDb">SORRY! Failed to update DB</string>
     <string name="invalidDate">Invalid date!</string>
     <string name="ageCalc">"Both Month and Year don't be zero!!"</string>
     <string name="zScoreMsg">"Please click on Z-Score Button"</string>
