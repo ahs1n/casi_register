@@ -12,5 +12,4 @@ interface LoginUISource {
 
     suspend fun isLoginApproved(username: String, password: String)
 
-    fun settingCountryCode()
 }

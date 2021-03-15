@@ -201,10 +201,6 @@ public class SyncActivity extends AppCompatActivity {
                     data.putString("where", Users.UsersTable.COLUMN_COUNTRY_CODE + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "'");
             }
 
-            /*if (downloadTables.get(i).gettableName().equals(Clusters.TableClusters.TABLE_NAME)) {
-                data.putString("where", Clusters.TableClusters.COLUMN_DIST_CODE + "='" + distCode + "'");
-            }*/
-
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DataDownWorkerALL.class)
                     .addTag(String.valueOf(i))
                     .setInputData(data.build()).build();
@@ -486,8 +482,7 @@ public class SyncActivity extends AppCompatActivity {
                         }
                     }
                     //mTextView1.append("\n" + workInfo.getState().name());
-                    if (workInfo.getState() != null &&
-                            workInfo.getState() == WorkInfo.State.FAILED) {
+                    if (workInfo.getState() == WorkInfo.State.FAILED) {
                         String message = workInfo.getOutputData().getString("error");
                         uploadTables.get(position).setstatus("Process Failed");
                         uploadTables.get(position).setstatusID(1);

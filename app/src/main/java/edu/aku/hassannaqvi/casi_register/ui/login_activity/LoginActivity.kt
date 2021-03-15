@@ -206,16 +206,16 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     }
 
     /*
-    * Setting country code in Shared Preferenmce
+    * Setting country code in Shared Preference
     * */
-    override fun settingCountryCode() {
+    private fun settingCountryCode() {
 
         val countryCode = getCountryCode(this)
         bi.countrySwitch.isChecked = countryCode == 0 || countryCode == 1
-        changeLanguage(countryCode)
         if (countryCode == 0) {
             SharedStorage.setCountryCode(this@LoginActivity, 1)
         }
+        changeLanguage(countryCode)
 
         bi.countrySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) 1 else 3)
