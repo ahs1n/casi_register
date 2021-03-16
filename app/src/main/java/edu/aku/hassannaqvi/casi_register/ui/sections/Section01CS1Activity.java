@@ -526,11 +526,11 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
      * Click events
      * */
     public void CheckZScore(View view) {
-        if (!bi.cs1501.getText().toString().equals("")
-                && !bi.cs1502.getText().toString().equals("")
-                && !bi.cs21.getText().toString().equals("")
-                && !bi.cs22.getText().toString().equals("")
-                && (bi.cs1301.isChecked() || bi.cs1302.isChecked())
+        if (Validator.emptyRadioButton(this, bi.cs13, bi.cs1301)
+                && Validator.emptyTextBox(this, bi.cs1501)
+                && Validator.emptyTextBox(this, bi.cs1502)
+                && Validator.emptyTextBox(this, bi.cs21)
+                && Validator.emptyTextBox(this, bi.cs22)
         ) {
             int ageinmonths = Integer.parseInt(bi.cs1502.getText().toString()) + Integer.parseInt(bi.cs1501.getText().toString());
             int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
