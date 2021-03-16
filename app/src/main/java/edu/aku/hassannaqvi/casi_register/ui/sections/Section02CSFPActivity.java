@@ -449,11 +449,11 @@ public class Section02CSFPActivity extends AppCompatActivity {
      * Click events
      * */
     public void CheckZScore(View view) {
-        if (!bi.fc1701.getText().toString().equals("")
-                && !bi.fc1702.getText().toString().equals("")
-                && !bi.fc22.getText().toString().equals("")
-                && !bi.fc23.getText().toString().equals("")
-                && (item.getCs13().equals("1") || item.getCs13().equals("2"))
+        if (item.getCs13().equals("1") || item.getCs13().equals("2")
+                && Validator.emptyTextBox(this, bi.fc1701)
+                && Validator.emptyTextBox(this, bi.fc1702)
+                && Validator.emptyTextBox(this, bi.fc22)
+                && Validator.emptyTextBox(this, bi.fc23)
         ) {
             int ageinmonths = Integer.parseInt(bi.fc1702.getText().toString()) + Integer.parseInt(bi.fc1701.getText().toString());
             int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
