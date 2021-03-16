@@ -449,7 +449,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
      * Click events
      * */
     public void CheckZScore(View view) {
-        if (item.getCs13().equals("1") || item.getCs13().equals("2")
+        if ((item.getCs13().equals("1") || item.getCs13().equals("2"))
                 && Validator.emptyTextBox(this, bi.fc1701)
                 && Validator.emptyTextBox(this, bi.fc1702)
                 && Validator.emptyTextBox(this, bi.fc22)
