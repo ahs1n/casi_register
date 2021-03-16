@@ -87,7 +87,7 @@ class SplashscreenActivity : AppCompatActivity() {
     private fun launchSplashScope() =
             CoroutineScope(Dispatchers.Main).launch {
                 delay(SPLASH_TIME_OUT.toLong())
-                /*if (SharedStorage.getFirstInstallFlag(this@SplashscreenActivity)) {
+                if (SharedStorage.getFirstInstallFlag(this@SplashscreenActivity)) {
                     SharedStorage.setFirstInstallFlag(this@SplashscreenActivity, false)
                     var streamReader: InputStreamReader? = null
                     val job = async(Dispatchers.IO) {
@@ -98,9 +98,7 @@ class SplashscreenActivity : AppCompatActivity() {
                 } else {
                     finish()
                     gotoActivity(LoginActivity::class.java)
-                }*/
-                finish()
-                gotoActivity(LoginActivity::class.java)
+                }
             }
 
     companion object {
