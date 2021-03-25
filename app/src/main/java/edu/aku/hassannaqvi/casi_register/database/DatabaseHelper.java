@@ -322,12 +322,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                VersionAppTable._ID,
-                VersionAppTable.COLUMN_VERSION_CODE,
-                VersionAppTable.COLUMN_VERSION_NAME,
-                VersionAppTable.COLUMN_PATH_NAME
-        };
+        String[] columns = null;
 
         String whereClause = null;
         String[] whereArgs = null;

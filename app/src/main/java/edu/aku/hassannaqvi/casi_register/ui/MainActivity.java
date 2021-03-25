@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         versionApp = appInfo.getDbHelper().getVersionApp();
 
         if (versionApp != null) {
-            versionApp.getVersioncode();
             preVer = appInfo.getVersionName() + "." + appInfo.getVersionCode();
             newVer = versionApp.getVersionname() + "." + versionApp.getVersioncode();
             if (appInfo.getVersionCode() < Integer.parseInt(versionApp.getVersioncode())) {

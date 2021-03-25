@@ -158,7 +158,7 @@
                         android:id="@+id/fw05a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,.-/ "
+                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,.-/ "
                         android:hint="@string/fw05a" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
