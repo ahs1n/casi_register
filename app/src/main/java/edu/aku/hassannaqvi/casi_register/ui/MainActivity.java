@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     if (DownloadManager.STATUS_SUCCESSFUL == cursor.getInt(colIndex)) {
 
                         Toast.makeText(context, getString(R.string.newApp), Toast.LENGTH_SHORT).show();
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + "  " + getString(R.string.newVer)).append(newVer).append("  " + getString(R.string.downloaded)));
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + "  " + getString(R.string.newVer)).append(newVer).append("  ").append(getString(R.string.downloaded)));
 
                         ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
                         List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
@@ -126,12 +126,12 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
 
                 if (file.exists()) {
-                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.newVer)).append(newVer).append("  " + getString(R.string.downloaded)));
+                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.newVer)).append(newVer).append("  ").append(getString(R.string.downloaded)));
                     showDialog(newVer, preVer);
                 } else {
                     NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
                     if (networkInfo != null && networkInfo.isConnected()) {
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.appVer)).append(newVer).append("  " + getString(R.string.downloading) + ".."));
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.appVer)).append(newVer).append("  ").append(getString(R.string.downloading)).append(".."));
                         downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                         Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
                         DownloadManager.Request request = new DownloadManager.Request(uri);

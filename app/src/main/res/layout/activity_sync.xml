@@ -35,7 +35,7 @@
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="2"
-                android:text="DATA SYNC ACTIVITY"
+                android:text="@string/data_sync_activity"
                 android:textColor="@color/colorPrimary" />
 
             <LinearLayout
@@ -197,7 +197,6 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="12dp"
                             android:layout_marginBottom="1dp"
-
                             android:background="@color/whiteOverlay"
                             android:elevation="1dp"
                             android:gravity="center_horizontal"
@@ -206,10 +205,12 @@
                             android:shadowDx="1"
                             android:shadowDy="1"
                             android:shadowRadius="1"
-                            android:text="Download Data" />
+                            android:text="Download Data"
+                            android:visibility="gone" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_upload_list"
+                            android:padding="@dimen/_5sdp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:visibility="visible"
@@ -223,7 +224,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
-                            android:text="No Activty"
+                            android:text="@string/no_activty"
                             android:textColor="@color/red"
                             android:visibility="gone" />
                     </LinearLayout>

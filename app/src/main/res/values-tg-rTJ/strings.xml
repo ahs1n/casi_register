@@ -765,5 +765,8 @@
     <string name='Q_ws25i'>ws25i</string>
     <string name='Q_ws25j'>ws25j</string>
     <string name='Q_ws25k'>ws25k</string>
+    <string name="data_sync_activity">Синхронизация данных</string>
+    <string name="no_activty">Нет активности</string>
+    <string name="get_zscore">Получить Z-балл</string>
 
 </resources>

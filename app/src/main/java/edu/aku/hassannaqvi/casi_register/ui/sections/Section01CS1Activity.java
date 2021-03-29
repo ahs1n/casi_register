@@ -83,6 +83,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             bi.cs25c03.setVisibility(View.VISIBLE);
             bi.cs2602.setVisibility(View.GONE);
             bi.cs2604.setVisibility(View.GONE);
+            bi.cs10.setVisibility(View.GONE);
         } else {
             bi.cs0602.setVisibility(View.VISIBLE);
             bi.cs0603.setVisibility(View.VISIBLE);

@@ -223,15 +223,15 @@
                                         <ToggleButton
                                             android:id="@+id/countrySwitch"
                                             android:layout_width="0dp"
-                                            android:layout_height="match_parent"
+                                            android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:checked="true"
-                                            android:padding="12dp"
+                                            android:padding="10dp"
                                             android:radius="2dp"
                                             android:textColor="@color/colorSecondaryDark"
                                             android:textOff="@string/tajikistan"
                                             android:textOn="@string/pakistan"
-                                            android:textSize="20sp" />
+                                            android:textSize="18sp" />
 
                                     </LinearLayout>
 

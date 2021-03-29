@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.casi_register.ui.login_activity
 import android.Manifest
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
@@ -48,6 +49,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initializingCountry()
         bi = DataBindingUtil.setContentView(this, R.layout.activity_login)
         bi.callback = this
         bi.txtinstalldate.text = MainApp.appInfo.getAppInfo()
@@ -208,18 +210,25 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     /*
     * Setting country code in Shared Preference
     * */
-    private fun settingCountryCode() {
-
+    private fun initializingCountry() {
         val countryCode = getCountryCode(this)
-        bi.countrySwitch.isChecked = countryCode == 0 || countryCode == 1
         if (countryCode == 0) {
             SharedStorage.setCountryCode(this@LoginActivity, 1)
         }
         changeLanguage(countryCode)
+    }
+
+    private fun settingCountryCode() {
+
+        val countryCode = getCountryCode(this)
+        bi.countrySwitch.isChecked = countryCode == 0 || countryCode == 1
 
         bi.countrySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) 1 else 3)
             changeLanguage(if (isChecked) 1 else 3)
+            val intent = Intent(this@LoginActivity, LoginActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
     }
 
