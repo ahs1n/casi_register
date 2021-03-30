@@ -4,22 +4,12 @@
 
     <item
         android:id="@+id/onSync"
-        android:title="Sync Data"
+        android:title="@string/btnSync"
         app:showAsAction="collapseActionView" />
-
-    <!--  <item
-          android:id="@+id/checkOpenForms"
-          android:title="Unfinished Forms"
-          app:showAsAction="collapseActionView" />-->
     <item
         android:id="@+id/formsReportDate"
-        android:title="Forms Report by Date"
+        android:title="@string/forms_report_by_date"
         android:titleCondensed="List of all forms by date"
         app:showAsAction="collapseActionView" />
-    <!--   <item
-           android:id="@+id/formsReportCluster"
-           android:title="Forms Report by Cluster"
-           android:titleCondensed="List of all forms by date"
-           app:showAsAction="collapseActionView" />-->
 
 </menu>

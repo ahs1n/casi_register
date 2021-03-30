@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         bi.setCallback(this);
+        bi.toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(bi.toolbar);
 
         bi.databaseBtn.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);

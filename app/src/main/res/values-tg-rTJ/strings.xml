@@ -768,5 +768,7 @@
     <string name="data_sync_activity">Синхронизация данных</string>
     <string name="no_activty">Нет активности</string>
     <string name="get_zscore">Получить Z-балл</string>
+    <string name="forms_report_by_date">Формы отчета по дате</string>
+    <string name="same_as_login_user">Ҳамонгуна корбари вуруд</string>
 
 </resources>

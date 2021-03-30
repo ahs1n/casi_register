@@ -240,7 +240,7 @@
                             android:id="@+id/fw0696x"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/fw0696"
                             android:tag="fw0696"
                             android:text='@{fw0696.checked ? fw0696x.getText().toString() : ""}'
@@ -285,7 +285,7 @@
                         android:id="@+id/fw07"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
+                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:enabled='@{fw07User.checked ? false : true}'
                         android:hint="@string/fw07"
                         android:text='@{fw07User.checked ? "" : fw07.getText().toString()}' />
@@ -463,7 +463,7 @@
                         android:id="@+id/fw11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
+                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:enabled="false"
                         android:text="@{wraInformation.ws11}"
                         android:hint="@string/fw11" />
@@ -508,7 +508,7 @@
                         android:enabled="false"
                         android:text="@{wraInformation.ws12}"
                         android:layout_height="wrap_content"
-                        android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
+                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:hint="@string/fw12" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -631,7 +631,7 @@
                             android:id="@+id/fw12b96x"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/fw12b96"
                             android:tag="fw12b96"
                             android:text='@{fw12b96.checked ? fw12b96x.getText().toString() : ""}'
@@ -1520,7 +1520,7 @@
                                 android:id="@+id/fw2896x"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                 android:hint="@string/fw2896"
                                 android:tag="fw2896"
                                 android:text='@{fw2896.checked ? fw2896x.getText().toString() : ""}'
@@ -1880,7 +1880,7 @@
                                 android:id="@+id/fw29k96x"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                 android:hint="@string/fw29k96"
                                 android:tag="fw29k96"
                                 android:text='@{fw29k96.checked ? fw29k96x.getText().toString() : ""}'

@@ -225,7 +225,7 @@
                             android:id="@+id/cs28f01x"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/cs28f"
                             android:tag="cs28f01"
                             android:text='@{cs28f01.checked ? cs28f01x.getText().toString() : ""}'
@@ -513,7 +513,7 @@
                                     android:id="@+id/cs30f096x"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:hint="@string/cs30f"
                                     android:tag="cs30f096"
                                     android:text='@{cs30f096.checked ? cs30f096x.getText().toString() : ""}'
@@ -856,7 +856,7 @@
                                 android:id="@+id/cs32h096x"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                 android:hint="@string/cs32h"
                                 android:tag="cs32h096"
                                 android:text='@{cs32h096.checked ? cs32h096x.getText().toString() : ""}'

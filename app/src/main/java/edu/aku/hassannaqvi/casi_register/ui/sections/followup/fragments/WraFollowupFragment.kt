@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
 import com.kennyc.view.MultiStateView
 import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.adapters.SelectedWraListAdapter
@@ -75,7 +74,7 @@ class WraFollowupFragment : Fragment(R.layout.fragment_wra_followup) {
             override fun onItemClick(item: WraFollowup, position: Int) {
                 openWarningFragment(
                         id = 2,
-                        title = "CONFIRMATION!",
+                        title = getString(R.string.confirmation),
                         message = "Are you sure, you want to continue ${item.ws11.toUpperCase(Locale.ENGLISH)} interview?",
                         item = item)
             }

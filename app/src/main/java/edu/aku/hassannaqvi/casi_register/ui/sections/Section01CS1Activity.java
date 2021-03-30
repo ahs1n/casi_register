@@ -68,6 +68,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_cs1);
         bi.setCallback(this);
+        this.setTitle(getString(R.string.childScreening));
         setListeners();
         setUIContent();
 
@@ -83,7 +84,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             bi.cs25c03.setVisibility(View.VISIBLE);
             bi.cs2602.setVisibility(View.GONE);
             bi.cs2604.setVisibility(View.GONE);
-            bi.cs10.setVisibility(View.GONE);
+            bi.fldGrpCVcs10a.setVisibility(View.GONE);
         } else {
             bi.cs0602.setVisibility(View.VISIBLE);
             bi.cs0603.setVisibility(View.VISIBLE);
@@ -575,7 +576,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             finish();
             startActivity(new Intent(this, EndingActivity.class));
         } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -59,6 +59,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section02_csfp);
         bi.setCallback(this);
+        this.setTitle(getString(R.string.childFollowup));
         item = (ChildFollowup) getIntent().getSerializableExtra(CONSTANTS.ITEM_DATA);
         bi.setChildInformation(item);
         setupSkips();
@@ -78,6 +79,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
             bi.fldGrpcs3302.setVisibility(View.GONE);
             bi.fldGrpcs3303.setVisibility(View.GONE);
             bi.fc3703.setVisibility(View.VISIBLE);
+            bi.fldGrpCVfc10a.setVisibility(View.GONE);
 
         } else {
             bi.fc0602.setVisibility(View.VISIBLE);

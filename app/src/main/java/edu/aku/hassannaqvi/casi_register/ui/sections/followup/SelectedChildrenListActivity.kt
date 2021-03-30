@@ -41,7 +41,7 @@ class SelectedChildrenListActivity : AppCompatActivity(), WarningActivityInterfa
         * */
         bi.toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.black))
         bi.toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.black))
-        bi.toolbarLayout.title = if (followupFlag) "Children Followup" else "WRAs / PWs /LWs Followup"
+        bi.toolbarLayout.title = if (followupFlag) getString(R.string.childFollowup) else getString(R.string.wraFollowup)
 
 
         if (savedInstanceState == null) {

@@ -51,6 +51,7 @@ public class Section03WSActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section03_ws);
         bi.setCallback(this);
+        this.setTitle(getString(R.string.wraScreening));
         setListeners();
         setUIContent();
         int country = SharedStorage.INSTANCE.getCountryCode(this);

@@ -32,6 +32,7 @@ public class Section01CS2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_cs2);
         bi.setCallback(this);
+        this.setTitle(getString(R.string.childScreening));
         setupContent();
         setListeners();
     }
@@ -54,7 +55,7 @@ public class Section01CS2Activity extends AppCompatActivity {
             finish();
             gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
-            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -180,7 +181,7 @@ public class Section01CS2Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.backBtn), Toast.LENGTH_SHORT).show();
     }
 
 }

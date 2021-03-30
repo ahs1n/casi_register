@@ -50,6 +50,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section04_wsfp);
         bi.setCallback(this);
+        this.setTitle(getString(R.string.wraFollowup));
         item = (WraFollowup) getIntent().getSerializableExtra(CONSTANTS.ITEM_DATA);
         bi.setWraInformation(item);
         setListeners();
