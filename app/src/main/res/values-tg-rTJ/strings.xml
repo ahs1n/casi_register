@@ -67,12 +67,15 @@
     <string name="bckBtn">Вы не можешь вернуться</string>
     <string name="processing">Обработка</string>
     <string name="confirmation">Подтверждение!</string>
-    <string name="cntBtn">Вы уверены, что хотите продолжить интервью</string>
+    <string name="cntBtn">Вы уверены, что хотите продолжить интервью?</string>
     <string name="failedUpdateDb">ИЗВИНИТЕ! Не удалось обновить БД</string>
     <string name="invalidDate">Недействительная дата!</string>
-    <string name="ageCalc">"Месяц и год не равны нулю !!"</string>
-    <string name="zScoreMsg">«Пожалуйста, нажмите кнопку Z-Score»</string>
+    <string name="ageCalc">Месяц и год не могут быть равны нулю !!</string>
+    <string name="zScoreMsg">Пожалуйста, нажмите кнопку Z-Балл</string>
     <string name="zScoreEmpty">«Z-Score не может быть оценен с пропущенными значениями».</string>
+    <string name="hlaz">ДСZ</string>
+    <string name="waz">ВСZ</string>
+    <string name="whz">ВДZ</string>
 
 
     <!--EndActivity Strings-->

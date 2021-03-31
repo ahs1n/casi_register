@@ -73,6 +73,9 @@
     <string name="ageCalc">"Both Month and Year don't be zero!!"</string>
     <string name="zScoreMsg">"Please click on Z-Score Button"</string>
     <string name="zScoreEmpty">"Z-Score cannot be evaluated with missing values."</string>
+    <string name="hlaz">HLAZ</string>
+    <string name="waz">WAZ</string>
+    <string name="whz">WHZ</string>
 
 
     <!--EndActivity Strings-->

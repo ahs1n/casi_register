@@ -543,7 +543,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             double WAZ = zs.getZScore_WAZ(bi.cs22.getText().toString());
             double WHZ = zs.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
 
-            bi.ZScore.setText(String.format(Locale.ENGLISH, "HLAZ: %.2f \r\nWAZ: %.2f \r\nWHZ: %.2f", HLAZ, WAZ, WHZ));
+            bi.ZScore.setText(String.format(Locale.ENGLISH, "%s %.2f \r\n%s %.2f \r\n%s %.2f", getString(R.string.hlaz), HLAZ, getString(R.string.waz), WAZ, getString(R.string.whz), WHZ));
         } else {
             Toast.makeText(this, getString(R.string.zScoreEmpty), Toast.LENGTH_SHORT).show();
         }

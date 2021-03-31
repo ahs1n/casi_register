@@ -221,6 +221,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(HealthFacility.HealthFacilityTable.COLUMN_HF_CODE, facility.getHf_code());
                 values.put(HealthFacility.HealthFacilityTable.COLUMN_HEALTH_FACILITY, facility.getHealth_facility());
                 values.put(HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE, facility.getFacility_type());
+                values.put(HealthFacility.HealthFacilityTable.COLUMN_DIST_CODE, facility.getDist_code());
+                values.put(HealthFacility.HealthFacilityTable.COLUMN_UC_CODE, facility.getUc_code());
                 long rowID = db.insert(HealthFacility.HealthFacilityTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }

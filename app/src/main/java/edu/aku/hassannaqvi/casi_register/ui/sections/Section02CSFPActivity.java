@@ -145,9 +145,11 @@ public class Section02CSFPActivity extends AppCompatActivity {
         });
     }
 
+
     public void fc17mOnTextChanged(CharSequence s, int start, int before, int count) {
         bi.fc1701.setText(null);
     }
+
 
     public void cs17yOnTextChanged(CharSequence s, int i, int i1, int i2) {
 
@@ -472,18 +474,20 @@ public class Section02CSFPActivity extends AppCompatActivity {
         }
     }
 
+
     public void ZScoreOnTextChanged(CharSequence s, int start, int before, int count) {
         bi.ZScore.setText(null);
     }
 
+
     public void BtnEnd() {
         AppUtilsKt.openSectionEndingActivity(this, false);
     }
+
 
     private void populateDate() {
         Pair<Integer, Integer> dt = DateUtilsKt.getMonthAndYearFromStr(item.getDob(), bi.fc08.getText().toString().replace("-", "/"));
         bi.fc1702.setText(String.valueOf(dt.getSecond()));
         bi.fc1701.setText(String.valueOf(dt.getFirst()));
     }
-
 }
