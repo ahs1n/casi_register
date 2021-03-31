@@ -44,6 +44,8 @@ import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSI
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_CHILD_FOLLOW_UP_LIST;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY01;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY02;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
@@ -52,7 +54,7 @@ import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZST
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private final String TAG = "DatabaseHelper";
+    private final String TAG = DatabaseHelper.class.getName();
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -73,7 +75,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        switch (oldVersion) {
+            case 1:
+                db.execSQL(SQL_CREATE_HEALTHFACILITY01);
+                db.execSQL(SQL_CREATE_HEALTHFACILITY02);
+        }
     }
 
 
