@@ -81,7 +81,12 @@ public class Section03WSActivity extends AppCompatActivity {
             }
         };
         facilityMap = new HashMap<>();
-        for (HealthFacility item : appInfo.dbHelper.getFacility(mainInfo.getRegion_code())) {
+        for (HealthFacility item : appInfo.dbHelper.getFacility(
+                mainInfo.getCountry_code(),
+                mainInfo.getRegion_code(),
+                mainInfo.getDistrict_code(),
+                mainInfo.getUc_code()
+        )) {
             facilityName.add(item.getHealth_facility());
             facilityMap.put(item.getHealth_facility(), item.getHf_code());
         }

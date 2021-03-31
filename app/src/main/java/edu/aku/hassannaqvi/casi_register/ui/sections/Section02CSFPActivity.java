@@ -230,7 +230,12 @@ public class Section02CSFPActivity extends AppCompatActivity {
             }
         };
         facilityMap = new HashMap<>();
-        for (HealthFacility item : appInfo.dbHelper.getFacility(mainInfo.getRegion_code())) {
+        for (HealthFacility item : appInfo.dbHelper.getFacility(
+                mainInfo.getCountry_code(),
+                mainInfo.getRegion_code(),
+                mainInfo.getDistrict_code(),
+                mainInfo.getUc_code()
+        )) {
             facilityName.add(item.getHealth_facility());
             facilityMap.put(item.getHealth_facility(), item.getHf_code());
         }
@@ -468,7 +473,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
             double WAZ = zs.getZScore_WAZ(bi.fc23.getText().toString());
             double WHZ = zs.getZScore_WHZ(bi.fc23.getText().toString(), bi.fc22.getText().toString());
 
-            bi.ZScore.setText(String.format(Locale.ENGLISH, "HLAZ: %.2f \r\nWAZ: %.2f \r\nWHZ: %.2f", HLAZ, WAZ, WHZ));
+            bi.ZScore.setText(String.format(Locale.ENGLISH, "%s %.2f \r\n%s %.2f \r\n%s %.2f", getString(R.string.hlaz), HLAZ, getString(R.string.waz), WAZ, getString(R.string.whz), WHZ));
         } else {
             Toast.makeText(this, getString(R.string.zScoreEmpty), Toast.LENGTH_SHORT).show();
         }

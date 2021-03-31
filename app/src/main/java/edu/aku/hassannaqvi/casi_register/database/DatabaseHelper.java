@@ -730,13 +730,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allEB;
     }
 
-    public List<HealthFacility> getFacility(String region) {
+    public List<HealthFacility> getFacility(String country, String region, String district, String uc) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
-        String whereClause = HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE + "=?";
-        String[] whereArgs = {region};
+        String whereClause;
+        String[] whereArgs;
+        if (country.equals("1")) {
+            whereClause = HealthFacility.HealthFacilityTable.COLUMN_COUNTRY_CODE + "=? AND " +
+                    HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE + "=? AND " +
+                    HealthFacility.HealthFacilityTable.COLUMN_DIST_CODE + "=? AND " +
+                    HealthFacility.HealthFacilityTable.COLUMN_UC_CODE + "=?";
+            whereArgs = new String[]{country, region, district, uc};
+        } else {
+            whereClause = HealthFacility.HealthFacilityTable.COLUMN_COUNTRY_CODE + "=? AND " +
+                    HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE + "=? ";
+            whereArgs = new String[]{country, region};
+        }
         String groupBy = null;
         String having = null;
 
