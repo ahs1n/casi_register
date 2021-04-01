@@ -737,7 +737,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = null;
         String whereClause;
         String[] whereArgs;
-        if (country.equals("1")) {
+        if (country.equals("3")) {
             whereClause = HealthFacility.HealthFacilityTable.COLUMN_COUNTRY_CODE + "=? AND " +
                     HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE + "=? AND " +
                     HealthFacility.HealthFacilityTable.COLUMN_DIST_CODE + "=? AND " +
