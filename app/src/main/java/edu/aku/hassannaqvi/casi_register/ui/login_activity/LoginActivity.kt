@@ -18,6 +18,8 @@ import com.github.amlcurran.showcaseview.ShowcaseView
 import com.github.amlcurran.showcaseview.targets.ViewTarget
 import com.nabinbhandari.android.permissions.PermissionHandler
 import com.nabinbhandari.android.permissions.Permissions
+import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.PAKISTAN
+import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.TAJIKISTAN
 import edu.aku.hassannaqvi.casi_register.R
 import edu.aku.hassannaqvi.casi_register.base.repository.GeneralRepository
 import edu.aku.hassannaqvi.casi_register.base.repository.ResponseStatus.*
@@ -213,7 +215,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     private fun initializingCountry() {
         val countryCode = getCountryCode(this)
         if (countryCode == 0) {
-            SharedStorage.setCountryCode(this@LoginActivity, 1)
+            SharedStorage.setCountryCode(this@LoginActivity, PAKISTAN)
         }
         changeLanguage(countryCode)
     }
@@ -221,10 +223,10 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     private fun settingCountryCode() {
 
         val countryCode = getCountryCode(this)
-        bi.countrySwitch.isChecked = countryCode == 0 || countryCode == 1
+        bi.countrySwitch.isChecked = countryCode == 0 || countryCode == PAKISTAN
 
         bi.countrySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
-            SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) 1 else 3)
+            SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) PAKISTAN else TAJIKISTAN)
             changeLanguage(if (isChecked) 1 else 3)
             val intent = Intent(this@LoginActivity, LoginActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
@@ -275,7 +277,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     private fun changeLanguage(countryCode: Int) {
         val lang: String
         val country: String
-        if (countryCode == 3) {
+        if (countryCode == TAJIKISTAN) {
             lang = "tg"
             country = "TJ"
         } else {

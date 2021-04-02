@@ -29,5 +29,9 @@ class CONSTANTS {
         const val TAG_NAME = "tagName"
         const val BACKUP_DT = "backupDT"
 
+        //COUNTRIES
+        const val PAKISTAN = 1
+        const val TAJIKISTAN = 3
+
     }
 }

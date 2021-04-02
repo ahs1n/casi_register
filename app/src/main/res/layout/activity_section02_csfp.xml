@@ -1033,7 +1033,7 @@
                             android:onTextChanged="@{callback::ZScoreOnTextChanged}"
                             app:mask="###.#"
                             app:maxValue="120"
-                            app:minValue="45"
+                            app:minValue="25"
                             app:pattern="^(\\d{3,3}\\.\\d{1,1})$"
                             app:type="range" />
                     </LinearLayout>
@@ -1078,7 +1078,7 @@
                             android:onTextChanged="@{callback::ZScoreOnTextChanged}"
                             app:mask="##.#"
                             app:maxValue="25"
-                            app:minValue="3"
+                            app:minValue="0.8"
                             app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
                             app:type="range" />
                     </LinearLayout>

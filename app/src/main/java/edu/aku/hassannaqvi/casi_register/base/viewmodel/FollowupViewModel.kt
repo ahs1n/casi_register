@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.aku.hassannaqvi.casi_register.CONSTANTS
+import edu.aku.hassannaqvi.casi_register.CONSTANTS.Companion.TAJIKISTAN
 import edu.aku.hassannaqvi.casi_register.base.repository.GeneralRepository
 import edu.aku.hassannaqvi.casi_register.base.repository.ResponseStatusCallbacks
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
@@ -52,8 +53,10 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                         children.forEachIndexed { index, item ->
                             val form = repository.getLocalDBFollowupFormList(country, identification, item.cs10, CONSTANTS.CHILD_FOLLOWUP_TYPE)
                             form?.let {
-                                item.childTableDataExist = true
-                                children[index] = item
+                                if (item.cs01 != TAJIKISTAN.toString()) {
+                                    item.childTableDataExist = true
+                                    children[index] = item
+                                }
                             }
                         }
                     }
@@ -69,7 +72,7 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                                 else child
                             }())
 
-                    if (childList.size> 0) ResponseStatusCallbacks.success(data = childList, message = "Child list found")
+                    if (childList.size > 0) ResponseStatusCallbacks.success(data = childList, message = "Child list found")
                     else ResponseStatusCallbacks.error(data = null, message = "No child found!")
                 } else
                     ResponseStatusCallbacks.error(data = null, message = "No child found!")

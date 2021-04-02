@@ -19,6 +19,7 @@ class EndingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending)
         bi.callback = this
+        this.title = getString(R.string.app_name)
 
         val check = intent.getBooleanExtra("complete", false)
         if (check) {
