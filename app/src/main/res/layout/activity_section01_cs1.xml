@@ -986,7 +986,7 @@
                             android:maxLength="3"
                             app:mask="#.#"
                             app:maxValue="9.9"
-                            app:minValue="0.9"
+                            app:minValue="0.8"
                             app:pattern="^(\\d{1,1}\\.\\d{1,1})$"
                             app:type="range" />
 
@@ -1049,7 +1049,7 @@
                             android:maxLength="2"
                             app:mask="##.#"
                             app:maxValue="80"
-                            app:minValue="30"
+                            app:minValue="25"
                             app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
                             app:type="range" />
 
