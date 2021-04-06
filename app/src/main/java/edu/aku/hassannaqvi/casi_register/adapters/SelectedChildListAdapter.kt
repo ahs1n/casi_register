@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
 import edu.aku.hassannaqvi.casi_register.viewholder.SelectedChildViewHolder
 import kotlinx.android.synthetic.main.selected_child_view.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 /*
  * @author Ali Azaz Alam
@@ -37,6 +39,7 @@ class SelectedChildListAdapter(private val clickListener: OnItemClickListener) :
 
     override fun onBindViewHolder(holder: SelectedChildViewHolder, i: Int) {
         val item = filteredChildItems[i]
+        item.cs11.toLowerCase(Locale.ENGLISH)
         holder.bind(item)
         holder.itemView.parentLayout.setOnClickListener {
             clickListener.onItemClick(item, i)

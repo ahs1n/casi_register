@@ -10,6 +10,7 @@ import edu.aku.hassannaqvi.casi_register.base.repository.ResponseStatusCallbacks
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
 import edu.aku.hassannaqvi.casi_register.models.Identification
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -37,15 +38,17 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                 val first = async { children.addAll(repository.getSelectedServerChildList(country, identification)) }
                 first.await()
 
-                /*val localChildren: ArrayList<ChildFollowup> = ArrayList()
-                val second = async { repository.getSelectedChildLocalFormList(country, identification) }
-                second.await().let { it ->
-                    it.forEach {
-                        if (children.find { item -> item.cs10 == it.cs10 } == null)
-                            localChildren.add(it)
+                if (country == TAJIKISTAN.toString()) {
+                    val localChildren: ArrayList<ChildFollowup> = ArrayList()
+                    val second = async { repository.getSelectedChildLocalFormList(country, identification) }
+                    second.await().let { it ->
+                        it.forEach {
+                            if (children.find { item -> item.cs10 == it.cs10 } == null)
+                                localChildren.add(it)
+                        }
                     }
+                    children.addAll(localChildren)
                 }
-                children.addAll(localChildren)*/
 
                 _childResponse.value = if (children.size > 0) {
 

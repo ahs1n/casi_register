@@ -98,7 +98,7 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
                     lifecycleScope.launch {
                         delay(1000)
                         val cropItem = items
-                        adapter.childItems = cropItem.sortedBy { it.cs11 }.filter { it.cs11.startsWith(s.toString()) } as ArrayList<ChildFollowup>
+                        adapter.childItems = cropItem.sortedBy { it.cs11 }.filter { it.cs11.startsWith(s.toString().toLowerCase(Locale.ENGLISH)) } as ArrayList<ChildFollowup>
                         if (adapter.childItems.size > 0)
                             multiStateView.viewState = MultiStateView.ViewState.CONTENT
                         else
