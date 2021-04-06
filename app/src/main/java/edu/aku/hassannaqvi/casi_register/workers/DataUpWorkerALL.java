@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
@@ -132,8 +133,8 @@ public class DataUpWorkerALL extends Worker {
             Log.d(TAG, "Upload Begins: " + jsonParam);
 
 
-            //wr.writeBytes(URLEncoder.encode(jsonParam.toString(), "utf-8"));
-            wr.writeBytes(jsonParam.toString());
+            wr.writeBytes(URLEncoder.encode(jsonParam.toString(), "utf-8"));
+//            wr.writeBytes(jsonParam.toString());
             wr.flush();
             wr.close();
 
