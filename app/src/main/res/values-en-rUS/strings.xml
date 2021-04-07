@@ -308,6 +308,7 @@
     <string name="fc22">Height in cms.</string>
     <string name="fc23">Weight in Kgs.</string>
     <string name="fc24">MUAC in cms.</string>
+    <string name="fc2498">MUAC is not Taken</string>
     <string name="fc25">Assessment Outcome</string>
     <string name="fc2501">Normal Growth</string>
     <string name="fc2502">Stunted (H/LAZ below –2 z- score)Growth faltering</string>
