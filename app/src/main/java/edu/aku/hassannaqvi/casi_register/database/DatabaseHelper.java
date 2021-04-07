@@ -37,6 +37,8 @@ import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup.WraTable;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
+import edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt;
+import io.blackbox_vision.datetimepickeredittext.internal.utils.DateUtils;
 
 import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
@@ -1381,6 +1383,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ChildFollowup ch = new ChildFollowup().hydrateForm(c);
                 ch.setFupDt("0");
                 ch.setFupNo("0");
+
+                Form fm = new Form().Hydrate(c, CONSTANTS.CHILD_TYPE);
+                if (fm.getCs1403().equals("9999")) {
+                    String dt = DateUtilsKt.getDOB("yyyy-MM-dd", Integer.parseInt(fm.getCs1501()), Integer.parseInt(fm.getCs1502()), 15);
+                    ch.setDob(dt);
+                } else {
+                    ch.setDob(
+                            fm.getCs1403() + "-" + fm.getCs1402() + "-" + fm.getCs1401()
+                    );
+                }
                 allEB.add(ch);
             }
         } finally {

@@ -2,7 +2,9 @@ package edu.aku.hassannaqvi.casi_register.models
 
 import android.database.Cursor
 import android.provider.BaseColumns
+import edu.aku.hassannaqvi.casi_register.CONSTANTS
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract
+import edu.aku.hassannaqvi.casi_register.utils.getDOB
 import org.apache.commons.lang3.StringUtils
 import org.json.JSONException
 import org.json.JSONObject
@@ -34,6 +36,36 @@ class ChildFollowup : Serializable {
     //Not saving in DB
     var childTableDataExist = false //already exist followup form
 
+
+    constructor(form: Form) {
+        this.lUID = form._UID
+        this.cs01 = form.cs01
+        this.cs01a = form.cs01a
+        this.cs01b = form.cs01b
+        this.cs04 = form.cs04
+        this.cs05 = form.cs05
+        this.cs08 = form.cs08
+        this.cs09 = form.cs09
+        this.cs10 = form.cs10
+        this.cs10a = form.cs10a
+        this.cs11 = form.cs11
+        this.cs11a = form.cs11a
+        this.cs12 = form.cs12
+        this.cs13 = form.cs13
+        this.fupDt = "0"
+        this.fupNo = "0"
+
+        if (form.cs1403 == "9999") {
+            val dt = getDOB("yyyy-MM-dd", form.cs1501.toInt(), form.cs1502.toInt(), 15)
+            this.dob = dt
+        } else {
+            this.dob = form.cs1403 + "-" + form.cs1402 + "-" + form.cs1401
+        }
+    }
+
+    constructor()
+
+
     @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): ChildFollowup {
         cs01 = jsonObject.getString(ChildTable.COLUMN_CS01)
@@ -52,7 +84,7 @@ class ChildFollowup : Serializable {
         cs13 = jsonObject.getString(ChildTable.COLUMN_CS13)
         fupDt = jsonObject.getString(ChildTable.COLUMN_FUPDT)
         fupNo = jsonObject.getString(ChildTable.COLUMN_FUPNO)
-        dob = jsonObject.getString(ChildTable.COLUMN_DOB)
+        dob = JSONObject(jsonObject.getString(ChildTable.COLUMN_DOB)).getString("date").substring(0, "yyyy-mm-dd".length)
         return this
     }
 

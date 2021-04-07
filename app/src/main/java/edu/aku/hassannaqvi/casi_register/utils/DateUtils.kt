@@ -68,7 +68,7 @@ fun getDateFormat(dtFormat: String, dateStr: String): Date {
 
 fun getMonthAndYearFromStr(start: String, end: String): Pair<Int, Int> {
     val totalMonths = monthsBetweenDates(
-            getDateFormat("dd/MM/yyyy", start),
+            getDateFormat("yyyy-MM-dd", start),
             getDateFormat("dd/MM/yyyy", end)
     )
     val years = totalMonths / 12

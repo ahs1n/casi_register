@@ -12,20 +12,26 @@ import com.validatorcrawler.aliazaz.Validator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs2Binding;
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
+import edu.aku.hassannaqvi.casi_register.utils.EndSectionInterface;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
+import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.contextEndActivity;
 import static edu.aku.hassannaqvi.casi_register.utils.JSONUtilsKt.mergeJSONObjects;
 
-public class Section01CS2Activity extends AppCompatActivity {
+public class Section01CS2Activity extends AppCompatActivity implements EndSectionInterface {
 
     ActivitySection01Cs2Binding bi;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,7 @@ public class Section01CS2Activity extends AppCompatActivity {
         this.setTitle(getString(R.string.childScreening));
         setupContent();
         setListeners();
+        db = MainApp.appInfo.getDbHelper();
     }
 
     private void setupContent() {
@@ -53,7 +60,10 @@ public class Section01CS2Activity extends AppCompatActivity {
         saveDraft();
         if (updateDB()) {
             finish();
-            gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
+
+            if (SharedStorage.INSTANCE.getCountryCode(this) == 3) {
+                contextEndActivity(this);
+            } else gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
             Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
         }
@@ -62,7 +72,6 @@ public class Section01CS2Activity extends AppCompatActivity {
 
     private boolean updateDB() {
         try {
-            DatabaseHelper db = MainApp.appInfo.getDbHelper();
             JSONObject merge = mergeJSONObjects(new JSONObject(form.cStoString()), new JSONObject(form.cS02toString()));
             int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_CS, String.valueOf(merge));
             return updcount == 1;
@@ -184,4 +193,9 @@ public class Section01CS2Activity extends AppCompatActivity {
         Toast.makeText(this, getString(R.string.backBtn), Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void endSecActivity(boolean flag) {
+        ChildFollowup fup = new ChildFollowup(form);
+        gotoActivityWithSerializable(this, Section02CSFPActivity.class, CONSTANTS.ITEM_DATA, fup);
+    }
 }

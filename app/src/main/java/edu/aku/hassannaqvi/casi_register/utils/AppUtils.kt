@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.casi_register.utils
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -95,8 +94,8 @@ fun AppCompatActivity.openSectionEndingActivity(flag: Boolean = true) {
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { view: View? -> dialog.dismiss() }
 }
 
-fun contextEndActivity(activity: Activity) {
-    val dialog = Dialog(activity)
+fun AppCompatActivity.contextEndActivity() {
+    val dialog = Dialog(this)
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
     dialog.setContentView(R.layout.item_dialog_2)
     dialog.setCancelable(false)
@@ -106,8 +105,8 @@ fun contextEndActivity(activity: Activity) {
     params.height = WindowManager.LayoutParams.WRAP_CONTENT
     dialog.show()
     dialog.window!!.attributes = params
-    val endSecAActivity = activity as EndSectionActivity
-    dialog.findViewById<View>(R.id.btnOk).setOnClickListener { view: View? -> endSecAActivity.endSecActivity(true) }
+    val endSecInterface = this as EndSectionInterface
+    dialog.findViewById<View>(R.id.btnOk).setOnClickListener { view: View? -> endSecInterface.endSecActivity(true) }
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { view: View? -> dialog.dismiss() }
 }
 
@@ -210,7 +209,7 @@ fun AppCompatActivity.openWarningDialog(title: String, message: String, btnYesTx
     }
 }
 
-interface EndSectionActivity {
+interface EndSectionInterface {
     fun endSecActivity(flag: Boolean)
 }
 

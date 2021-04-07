@@ -42,7 +42,7 @@ import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
-import edu.aku.hassannaqvi.casi_register.utils.EndSectionActivity;
+import edu.aku.hassannaqvi.casi_register.utils.EndSectionInterface;
 import edu.aku.hassannaqvi.casi_register.utils.datecollection.AgeModel;
 import edu.aku.hassannaqvi.casi_register.utils.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
@@ -53,7 +53,7 @@ import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
 
-public class Section01CS1Activity extends AppCompatActivity implements EndSectionActivity {
+public class Section01CS1Activity extends AppCompatActivity implements EndSectionInterface {
 
     ActivitySection01Cs1Binding bi;
     boolean dtFlag = false;
