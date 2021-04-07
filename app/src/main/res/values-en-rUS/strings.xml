@@ -149,6 +149,7 @@
     <string name="cs20b02">No</string>
     <string name="cs22">Weight in Kgs.</string>
     <string name="cs23">MUAC in cms.</string>
+    <string name="cs2398">MUAC is not Taken</string>
     <string name="cs24">Assessment Outcome (Multiple Selection)</string>
     <string name="cs2401">Normal Growth</string>
     <string name="cs2402">Stunted (H/LAZ below –2 z score)	2 Growth faltering </string>
