@@ -238,6 +238,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         form.setCs22(bi.cs22.getText().toString());
 
         form.setCs23(bi.cs23.getText().toString());
+        form.setCs2398(bi.cs2398.isChecked() ? "98" : "-1");
 
         form.setCs2401(bi.cs2401.isChecked() ? "1" : "-1");
 
@@ -420,6 +421,14 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 bi.cs16a.setText(null);
             } else
                 bi.cs16a.setEnabled(true);
+        });
+
+        bi.cs2398.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.cs23.setEnabled(false);
+                bi.cs23.setText(null);
+            } else
+                bi.cs23.setEnabled(true);
         });
     }
 

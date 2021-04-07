@@ -149,6 +149,7 @@
     <string name="cs20b02">Не</string>
     <string name="cs22">Вазн бо кг.гр</string>
     <string name="cs23">MUAC бо см.</string>
+    <string name="cs2398">MUAC гирифта нашудааст</string>
     <string name="cs24">Натиҷаи ташхис (Интихоби чандкарата)</string>
     <string name="cs2401">Афзоиши муқаррарӣ</string>
     <string name="cs2402">Қадпастӣ (ДСZ аз –2 z хол боло)</string>
@@ -308,6 +309,7 @@
     <string name="fc22">Дарози бо см.</string>
     <string name="fc23">Вазн бо кг.гр</string>
     <string name="fc24">MUAC бо см.</string>
+    <string name="fc2498">MUAC гирифта нашудааст</string>
     <string name="fc25">Натиҷаи ташхис</string>
     <string name="fc2501">Афзоиши муқаррарӣ</string>
     <string name="fc2502">Қадпастӣ (ДСZ аз –2 z хол боло)</string>

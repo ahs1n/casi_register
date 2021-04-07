@@ -248,6 +248,14 @@ public class Section02CSFPActivity extends AppCompatActivity {
             } else
                 bi.fc10a.setEnabled(true);
         });
+
+        bi.fc2498.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.fc24.setEnabled(false);
+                bi.fc24.setText(null);
+            } else
+                bi.fc24.setEnabled(true);
+        });
     }
 
 
@@ -363,6 +371,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.setFc23(bi.fc23.getText().toString());
 
         form.setFc24(bi.fc24.getText().toString());
+        form.setFc2498(bi.fc2498.isChecked() ? "98" : "-1");
 
         form.setFc2501(bi.fc2501.isChecked() ? "1" : "-1");
 

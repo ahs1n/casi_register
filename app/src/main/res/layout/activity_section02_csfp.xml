@@ -751,11 +751,11 @@
                                     android:id="@+id/fc1702"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:enabled="false"
                                     android:gravity="center"
                                     android:hint="##"
                                     android:inputType="number"
                                     android:maxLength="2"
-                                    android:enabled="false"
                                     android:onTextChanged="@{callback.fc17mOnTextChanged}" />
                             </LinearLayout>
 
@@ -775,12 +775,12 @@
                                     android:id="@+id/fc1701"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:enabled="false"
                                     android:gravity="center"
                                     android:hint="#"
                                     android:inputType="number"
                                     android:maxLength="1"
-                                    android:onTextChanged="@{callback.cs17yOnTextChanged}"
-                                    android:enabled="false" />
+                                    android:onTextChanged="@{callback.cs17yOnTextChanged}" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -1113,19 +1113,32 @@
                                 android:text="@string/fc24" />
                         </LinearLayout>
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/fc24"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="##.#"
-                            android:inputType="number"
-                            android:maxLength="3"
-                            android:onTextChanged="@{callback::ZScoreOnTextChanged}"
-                            app:mask="##.#"
-                            app:maxValue="22"
-                            app:minValue="10"
-                            app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
-                            app:type="range" />
+                            android:orientation="vertical">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/fc24"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="##.#"
+                                android:inputType="number"
+                                android:maxLength="3"
+                                android:onTextChanged="@{callback::ZScoreOnTextChanged}"
+                                app:mask="##.#"
+                                app:maxValue="22"
+                                app:minValue="10"
+                                app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
+                                app:type="range" />
+
+                            <CheckBox
+                                android:id="@+id/fc2498"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:tag="-1"
+                                android:text="@string/fc2498" />
+                        </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -2090,76 +2103,76 @@
                     </androidx.cardview.widget.CardView>
 
 
-                <!-- fc37  Radio   -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVfc37"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                    <!-- fc37  Radio   -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fldGrpCVfc37"
+                        style="@style/cardView">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <TextView
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/Q_fc37" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bottom"
+                                android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="@string/fc37" />
+                                <TextView
+                                    style="@style/quesNum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/Q_fc37" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/fc37" />
+                            </LinearLayout>
+
+                            <RadioGroup
+                                android:id="@+id/fc37"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <RadioButton
+                                    android:id="@+id/fc3701"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/fc3701" />
+
+                                <RadioButton
+                                    android:id="@+id/fc3702"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/fc3702" />
+
+                                <RadioButton
+                                    android:id="@+id/fc3703"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/fc3703" />
+
+                                <RadioButton
+                                    android:id="@+id/fc3796"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/fc3796" />
+
+                                <EditText
+                                    android:id="@+id/fc3796x"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzАБВГҒДЕЁЖЗИӢЙКҚЛМНОПРСТУӮФХҲЧҶШЪЭЮЯабвгғдеёжзиӣйкқлмнопрстуӯфхҳчҷшъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789,. "
+                                    android:hint="@string/fc3796"
+                                    android:tag="fc3796"
+                                    android:text='@{fc3796.checked ? fc3796x.getText().toString() : ""}'
+                                    android:visibility='@{fc3796.checked? View.VISIBLE : View.GONE}' />
+                            </RadioGroup>
                         </LinearLayout>
-
-                        <RadioGroup
-                            android:id="@+id/fc37"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <RadioButton
-                                android:id="@+id/fc3701"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/fc3701" />
-
-                            <RadioButton
-                                android:id="@+id/fc3702"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/fc3702" />
-
-                            <RadioButton
-                                android:id="@+id/fc3703"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/fc3703" />
-
-                            <RadioButton
-                                android:id="@+id/fc3796"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/fc3796" />
-
-                            <EditText
-                                android:id="@+id/fc3796x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzАБВГҒДЕЁЖЗИӢЙКҚЛМНОПРСТУӮФХҲЧҶШЪЭЮЯабвгғдеёжзиӣйкқлмнопрстуӯфхҳчҷшъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789,. "
-                                android:hint="@string/fc3796"
-                                android:tag="fc3796"
-                                android:text='@{fc3796.checked ? fc3796x.getText().toString() : ""}'
-                                android:visibility='@{fc3796.checked? View.VISIBLE : View.GONE}' />
-                        </RadioGroup>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
                 <!-- fc38  Radio   -->
