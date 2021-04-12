@@ -59,11 +59,12 @@ public class Section01CS2Activity extends AppCompatActivity implements EndSectio
         if (!formValidation()) return;
         saveDraft();
         if (updateDB()) {
-            finish();
-
             if (SharedStorage.INSTANCE.getCountryCode(this) == 3) {
                 contextEndActivity(this);
-            } else gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
+            } else {
+                finish();
+                gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
+            }
         } else {
             Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
         }
@@ -195,6 +196,7 @@ public class Section01CS2Activity extends AppCompatActivity implements EndSectio
 
     @Override
     public void endSecActivity(boolean flag) {
+        finish();
         ChildFollowup fup = new ChildFollowup(form);
         gotoActivityWithSerializable(this, Section02CSFPActivity.class, CONSTANTS.ITEM_DATA, fup);
     }
