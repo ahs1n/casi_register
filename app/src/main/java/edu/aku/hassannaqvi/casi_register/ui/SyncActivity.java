@@ -49,6 +49,7 @@ import edu.aku.hassannaqvi.casi_register.models.SyncModel;
 import edu.aku.hassannaqvi.casi_register.models.Users;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
+import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 import edu.aku.hassannaqvi.casi_register.workers.DataDownWorkerALL;
 import edu.aku.hassannaqvi.casi_register.workers.DataUpWorkerALL;
@@ -162,12 +163,12 @@ public class SyncActivity extends AppCompatActivity {
 
                 if (getIntent().getBooleanExtra(FOLLOWUP_FLAG, false)) {
                     downloadTables.add(new SyncModel(ChildFollowup.ChildTable.TABLE_NAME));
+                    downloadTables.add(new SyncModel(WraFollowup.WraTable.TABLE_NAME));
                 } else {
                     downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
                     downloadTables.add(new SyncModel(Villages.VillagesTable.TABLE_NAME));
                     downloadTables.add(new SyncModel(HealthFacility.HealthFacilityTable.TABLE_NAME));
                     downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
-//                    downloadTables.add(new SyncModel(ZStandardContract.ZScoreTable.TABLE_NAME));
                 }
 
                 MainApp.downloadData = new String[downloadTables.size()];
@@ -185,21 +186,20 @@ public class SyncActivity extends AppCompatActivity {
 
         List<OneTimeWorkRequest> workRequests = new ArrayList<>();
         for (int i = 0; i < downloadTables.size(); i++) {
+            String downloadTable = downloadTables.get(i).gettableName();
             Data.Builder data = new Data.Builder()
-                    .putString("table", downloadTables.get(i).gettableName())
+                    .putString("table", downloadTable)
                     .putInt("position", i)
                     //.putString("columns", "_id, sysdate")
                     // .putString("where", where)
                     ;
-            if (!downloadTables.get(i).gettableName().equals(ZStandardContract.ZScoreTable.TABLE_NAME)) {
-                if (downloadTables.get(i).gettableName().equals(ChildFollowup.ChildTable.TABLE_NAME))
-                    data.putString("where",
-                            ChildFollowup.ChildTable.COLUMN_CS01 + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "' AND " +
-                                    ChildFollowup.ChildTable.COLUMN_CS04 + "='" + MainApp.mainInfo.getUc_code() + "'"
-                    );
-                else
-                    data.putString("where", Users.UsersTable.COLUMN_COUNTRY_CODE + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "'");
-            }
+            if (downloadTable.equals(ChildFollowup.ChildTable.TABLE_NAME) || downloadTable.equals(WraFollowup.WraTable.TABLE_NAME))
+                data.putString("where",
+                        ChildFollowup.ChildTable.COLUMN_CS01 + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "' AND " +
+                                ChildFollowup.ChildTable.COLUMN_CS04 + "='" + MainApp.mainInfo.getUc_code() + "'"
+                );
+            else
+                data.putString("where", Users.UsersTable.COLUMN_COUNTRY_CODE + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "'");
 
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DataDownWorkerALL.class)
                     .addTag(String.valueOf(i))
@@ -267,6 +267,11 @@ public class SyncActivity extends AppCompatActivity {
                                     case ChildFollowup.ChildTable.TABLE_NAME:
                                         jsonArray = new JSONArray(result);
                                         insertCount = db.syncChildFollowups(jsonArray);
+                                        Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
+                                        break;
+                                    case WraFollowup.WraTable.TABLE_NAME:
+                                        jsonArray = new JSONArray(result);
+                                        insertCount = db.wraFollowups(jsonArray);
                                         Log.d(TAG, "onChanged: " + tableName + " " + workItem.getOutputData().getInt("position", 0));
                                         break;
                                 }

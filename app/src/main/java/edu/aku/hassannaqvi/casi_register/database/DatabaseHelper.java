@@ -38,7 +38,6 @@ import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup.WraTable;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 import edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt;
-import io.blackbox_vision.datetimepickeredittext.internal.utils.DateUtils;
 
 import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
@@ -52,6 +51,7 @@ import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USE
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_WRA_FOLLOW_UP_LIST;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_ALTER_WRA_FOLLOW_UP_LIST02;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZSTANDARD;
 
 
@@ -81,6 +81,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case 1:
                 db.execSQL(SQL_CREATE_HEALTHFACILITY01);
                 db.execSQL(SQL_CREATE_HEALTHFACILITY02);
+            case 2:
+                db.execSQL(SQL_ALTER_WRA_FOLLOW_UP_LIST02);
         }
     }
 
@@ -273,6 +275,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(ChildFollowup.ChildTable.COLUMN_FUPNO, chFollowup.getFupNo());
                 values.put(ChildTable.COLUMN_DOB, chFollowup.getDob());
                 long rowID = db.insert(ChildFollowup.ChildTable.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncHF(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+    public int wraFollowups(JSONArray wraList) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(WraTable.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+            for (int i = 0; i < wraList.length(); i++) {
+
+                WraFollowup wraFollowup = new WraFollowup();
+                wraFollowup.sync(wraList.getJSONObject(i));
+                ContentValues values = new ContentValues();
+
+                values.put(WraTable.COLUMN_LUID, wraFollowup.getLUID());
+                values.put(WraTable.COLUMN_WS01, wraFollowup.getWs01());
+                values.put(WraTable.COLUMN_WS01A, wraFollowup.getWs01a());
+                values.put(WraTable.COLUMN_WS01B, wraFollowup.getWs01b());
+                values.put(WraTable.COLUMN_WS09, wraFollowup.getWs09());
+                values.put(WraTable.COLUMN_WS04, wraFollowup.getWs04());
+                values.put(WraTable.COLUMN_WS05, wraFollowup.getWs05());
+                values.put(WraTable.COLUMN_WS08, wraFollowup.getWs08());
+                values.put(WraTable.COLUMN_WS10, wraFollowup.getWs10());
+                values.put(WraTable.COLUMN_WS11, wraFollowup.getWs11());
+                values.put(WraTable.COLUMN_WS12, wraFollowup.getWs12());
+                values.put(WraTable.COLUMN_WS13, wraFollowup.getWs13());
+                values.put(WraTable.COLUMN_FUPDT, wraFollowup.getFupDt());
+                values.put(WraTable.COLUMN_FUPNO, wraFollowup.getFupNo());
+                long rowID = db.insert(WraTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
 

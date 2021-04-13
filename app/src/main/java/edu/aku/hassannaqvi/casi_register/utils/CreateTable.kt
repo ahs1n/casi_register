@@ -13,7 +13,7 @@ object CreateTable {
     const val DATABASE_NAME = "casi_register.db"
     const val DATABASE_COPY = "casi_register_copy.db"
     const val PROJECT_NAME = "casi_register"
-    const val DATABASE_VERSION = 2
+    const val DATABASE_VERSION = 3
     const val SQL_CREATE_FORMS = ("CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -136,7 +136,12 @@ object CreateTable {
             WraFollowup.WraTable.COLUMN_WS10 + " TEXT, " +
             WraFollowup.WraTable.COLUMN_WS11 + " TEXT, " +
             WraFollowup.WraTable.COLUMN_WS12 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS13 + " TEXT, " +
             WraFollowup.WraTable.COLUMN_FUPDT + " TEXT, " +
             WraFollowup.WraTable.COLUMN_FUPNO + " TEXT " +
             ");"
+
+    const val SQL_ALTER_WRA_FOLLOW_UP_LIST02 = "ALTER TABLE " +
+            WraFollowup.WraTable.TABLE_NAME + " ADD COLUMN " +
+            WraFollowup.WraTable.COLUMN_WS13 + " TEXT;"
 }
