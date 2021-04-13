@@ -55,7 +55,7 @@ class ChildFollowup : Serializable {
         this.fupDt = "0"
         this.fupNo = "0"
 
-        if (form.cs1403 == "9999") {
+        if (form.cs1403 == "9998") {
             val dt = getDOB("yyyy-MM-dd", form.cs1501.toInt(), form.cs1502.toInt(), 15)
             this.dob = dt
         } else {
