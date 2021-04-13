@@ -775,5 +775,7 @@
     <string name="get_zscore">Получить Z-балл</string>
     <string name="forms_report_by_date">Формы отчета по дате</string>
     <string name="same_as_login_user">Ҳамонгуна корбари вуруд</string>
+    <string name="yes">Ҳа</string>
+    <string name="no">Не</string>
 
 </resources>

@@ -773,6 +773,8 @@
     <string name="get_zscore">GET ZScore</string>
     <string name="forms_report_by_date">Forms Report by Date</string>
     <string name="same_as_login_user">Same as Login user</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 
 </resources>

@@ -9,8 +9,13 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.R;
@@ -21,14 +26,17 @@ import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs2Binding
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionInterface;
+import edu.aku.hassannaqvi.casi_register.utils.WarningActivityInterface;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.contextEndActivity;
+import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.openWarningActivity;
+import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.openWarningActivity02;
 import static edu.aku.hassannaqvi.casi_register.utils.JSONUtilsKt.mergeJSONObjects;
 
-public class Section01CS2Activity extends AppCompatActivity implements EndSectionInterface {
+public class Section01CS2Activity extends AppCompatActivity implements WarningActivityInterface {
 
     ActivitySection01Cs2Binding bi;
     DatabaseHelper db;
@@ -60,7 +68,7 @@ public class Section01CS2Activity extends AppCompatActivity implements EndSectio
         saveDraft();
         if (updateDB()) {
             if (SharedStorage.INSTANCE.getCountryCode(this) == 3) {
-                contextEndActivity(this);
+                openWarningActivity02(this, 1, new ChildFollowup(form), getString(R.string.warning), getString(R.string.cntBtn), getString(R.string.yes), getString(R.string.no));
             } else {
                 finish();
                 gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
@@ -195,9 +203,25 @@ public class Section01CS2Activity extends AppCompatActivity implements EndSectio
     }
 
     @Override
-    public void endSecActivity(boolean flag) {
-        finish();
-        ChildFollowup fup = new ChildFollowup(form);
-        gotoActivityWithSerializable(this, Section02CSFPActivity.class, CONSTANTS.ITEM_DATA, fup);
+    public void callWarningActivity(int id, @Nullable Object item) {
+        if (item == null) {
+            finish();
+            gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
+        } else {
+            if (saveDraft02() > 0) {
+                finish();
+                ChildFollowup fup = (ChildFollowup) item;
+                gotoActivityWithSerializable(this, Section02CSFPActivity.class, CONSTANTS.ITEM_DATA, fup);
+            } else {
+                Toast.makeText(this, getString(R.string.updateDbError1) + "/n" + getString(R.string.updateDbError2), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private int saveDraft02() {
+        form.setIstatus("1");
+        form.setIstatus96x("-1");
+        form.setEndingdatetime(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH).format(new Date().getTime()));
+        return db.updateEnding();
     }
 }

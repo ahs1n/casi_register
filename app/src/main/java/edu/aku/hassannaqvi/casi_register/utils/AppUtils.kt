@@ -148,6 +148,45 @@ fun AppCompatActivity.openWarningActivity(
 }
 
 @JvmOverloads
+fun AppCompatActivity.openWarningActivity02(
+        id: Int,
+        item: Any? = null,
+        title: String = "WARNING!",
+        message: String = "Are you sure, you want to exit without saving?",
+        btnYesTxt: String = "YES",
+        btnNoTxt: String = "NO") {
+    val dialog = Dialog(this)
+
+    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+    val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
+    dialog.setContentView(bi.root)
+    bi.alertTitle.text = title
+    bi.alertTitle.setTextColor(ContextCompat.getColor(this, R.color.redDark))
+    bi.content.text = message
+    bi.btnOk.text = btnYesTxt
+    bi.btnOk.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+    bi.btnNo.text = btnNoTxt
+    bi.btnNo.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+    dialog.setCancelable(false)
+    val params = WindowManager.LayoutParams()
+    params.copyFrom(dialog.window!!.attributes)
+    params.width = WindowManager.LayoutParams.WRAP_CONTENT
+    params.height = WindowManager.LayoutParams.WRAP_CONTENT
+    dialog.window!!.attributes = params
+    dialog.show()
+    bi.btnOk.setOnClickListener {
+        dialog.dismiss()
+        val warningActivity = this as WarningActivityInterface
+        warningActivity.callWarningActivity(id, item)
+    }
+    bi.btnNo.setOnClickListener {
+        dialog.dismiss()
+        val warningActivity = this as WarningActivityInterface
+        warningActivity.callWarningActivity(id, null)
+    }
+}
+
+@JvmOverloads
 fun Fragment.openWarningFragment(
         id: Int,
         item: Any? = null,

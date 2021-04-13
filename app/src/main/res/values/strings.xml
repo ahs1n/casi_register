@@ -45,6 +45,8 @@
     <string name="downData">Please download data before login</string>
     <string name="permission">Permissions Required</string>
     <string name="warning">Warning</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="newApp">New App downloaded!!</string>
     <string name="appVer">App New Version</string>
     <string name="downloaded">Downloaded</string>
