@@ -379,9 +379,9 @@
                         android:id="@+id/fw09"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="###"
                         android:enabled="false"
-                        android:text="@{wraInformation.ws09}"/>
+                        android:hint="###"
+                        android:text="@{wraInformation.ws09}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -421,9 +421,9 @@
                         android:id="@+id/fw10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="#####"
                         android:enabled="false"
-                        android:text="@{wraInformation.ws10}"/>
+                        android:hint="#####"
+                        android:text="@{wraInformation.ws10}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -465,8 +465,8 @@
                         android:layout_height="wrap_content"
                         android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzАБВГҒДЕЁЖЗИӢЙКҚЛМНОПРСТУӮФХҲЧҶШЪЭЮЯабвгғдеёжзиӣйкқлмнопрстуӯфхҳчҷшъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя "
                         android:enabled="false"
-                        android:text="@{wraInformation.ws11}"
-                        android:hint="@string/fw11" />
+                        android:hint="@string/fw11"
+                        android:text="@{wraInformation.ws11}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -505,11 +505,11 @@
                     <EditText
                         android:id="@+id/fw12"
                         android:layout_width="match_parent"
-                        android:enabled="false"
-                        android:text="@{wraInformation.ws12}"
                         android:layout_height="wrap_content"
                         android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzАБВГҒДЕЁЖЗИӢЙКҚЛМНОПРСТУӮФХҲЧҶШЪЭЮЯабвгғдеёжзиӣйкқлмнопрстуӯфхҳчҷшъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя "
-                        android:hint="@string/fw12" />
+                        android:enabled="false"
+                        android:hint="@string/fw12"
+                        android:text="@{wraInformation.ws12}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -683,9 +683,11 @@
                             android:id="@+id/fw13"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:enabled="false"
                             android:hint="##"
                             android:inputType="number"
                             android:maxLength="2"
+                            android:text="@{wraInformation.ws13}"
                             app:maxValue="49"
                             app:minValue="14"
                             app:type="range" />

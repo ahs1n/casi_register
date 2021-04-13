@@ -13,7 +13,7 @@ object CreateTable {
     const val DATABASE_NAME = "casi_register.db"
     const val DATABASE_COPY = "casi_register_copy.db"
     const val PROJECT_NAME = "casi_register"
-    const val DATABASE_VERSION = 3
+    const val DATABASE_VERSION = 1
     const val SQL_CREATE_FORMS = ("CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -47,6 +47,7 @@ object CreateTable {
             + FormsTable.COLUMN_SYNCED_DATE + " TEXT,"
             + FormsTable.COLUMN_FORM_TYPE + " TEXT"
             + " );")
+
     const val SQL_CREATE_USERS = ("CREATE TABLE " + UsersTable.TABLE_NAME + "("
             + UsersTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.COLUMN_USERNAME + " TEXT,"
@@ -54,6 +55,7 @@ object CreateTable {
             + UsersTable.COLUMN_FULLNAME + " TEXT,"
             + UsersTable.COLUMN_COUNTRY_CODE + " TEXT"
             + " );")
+
     const val SQL_CREATE_VILLAGES = ("CREATE TABLE " + VillagesTable.TABLE_NAME + "("
             + VillagesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + VillagesTable.COLUMN_REGION + " TEXT,"
@@ -66,6 +68,7 @@ object CreateTable {
             + VillagesTable.COLUMN_UC_CODE + " TEXT,"
             + VillagesTable.COLUMN_VILLLAGE_CODE + " TEXT,"
             + VillagesTable.COLUMN_REGION_CODE + " TEXT );")
+
     const val SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
@@ -93,14 +96,6 @@ object CreateTable {
             HealthFacility.HealthFacilityTable.COLUMN_HEALTH_FACILITY + " TEXT, " +
             HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE + " TEXT " +
             ");"
-
-    const val SQL_CREATE_HEALTHFACILITY01 = "ALTER TABLE " +
-            HealthFacility.HealthFacilityTable.TABLE_NAME + " ADD COLUMN " +
-            HealthFacility.HealthFacilityTable.COLUMN_UC_CODE + " TEXT;"
-
-    const val SQL_CREATE_HEALTHFACILITY02 = "ALTER TABLE " +
-            HealthFacility.HealthFacilityTable.TABLE_NAME + " ADD COLUMN " +
-            HealthFacility.HealthFacilityTable.COLUMN_DIST_CODE + " TEXT;"
 
     const val SQL_CREATE_CHILD_FOLLOW_UP_LIST = "CREATE TABLE " + ChildFollowup.ChildTable.TABLE_NAME + " (" +
             ChildFollowup.ChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -141,7 +136,4 @@ object CreateTable {
             WraFollowup.WraTable.COLUMN_FUPNO + " TEXT " +
             ");"
 
-    const val SQL_ALTER_WRA_FOLLOW_UP_LIST02 = "ALTER TABLE " +
-            WraFollowup.WraTable.TABLE_NAME + " ADD COLUMN " +
-            WraFollowup.WraTable.COLUMN_WS13 + " TEXT;"
 }

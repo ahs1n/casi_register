@@ -108,7 +108,7 @@ class WraFollowup : Serializable {
     }
 
     object WraTable : BaseColumns {
-        const val TABLE_NAME = "wraFollowup"
+        const val TABLE_NAME = "mwraFollowups"
         const val _ID = "_id"
         const val COLUMN_LUID = "_uid"
         const val COLUMN_WS01 = "ws01"

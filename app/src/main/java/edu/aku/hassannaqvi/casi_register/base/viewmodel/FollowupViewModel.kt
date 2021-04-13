@@ -98,15 +98,17 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                 val first = async { wra.addAll(repository.getSelectedServerWraList(country, identification)) }
                 first.await()
 
-                /*val localWra: ArrayList<WraFollowup> = ArrayList()
-                val second = async { repository.getSelectedWraLocalFormList(country, identification) }
-                second.await().let { it ->
-                    it.forEach {
-                        if (wra.find { item -> item.ws10 == it.ws10 } == null)
-                            localWra.add(it)
+                if (country == TAJIKISTAN.toString()) {
+                    val localWra: ArrayList<WraFollowup> = ArrayList()
+                    val second = async { repository.getSelectedWraLocalFormList(country, identification) }
+                    second.await().let { it ->
+                        it.forEach {
+                            if (wra.find { item -> item.ws10 == it.ws10 } == null)
+                                localWra.add(it)
+                        }
                     }
+                    wra.addAll(localWra)
                 }
-                wra.addAll(localWra)*/
 
                 _wraResponse.value = if (wra.size > 0) {
 
@@ -114,17 +116,19 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                         wra.forEachIndexed { index, item ->
                             val form = repository.getLocalDBFollowupFormList(country, identification, item.ws10, CONSTANTS.WRA_FOLLOWUP_TYPE)
                             form?.let {
-                                item.wraTableDataExist = true
-                                wra[index] = item
+                                if (item.ws01 != TAJIKISTAN.toString()) {
+                                    item.wraTableDataExist = true
+                                    wra[index] = item
+                                }
                             }
                         }
                     }
                     third.join()
 
                     val wraList = ArrayList<WraFollowup>(wra.sortedBy { it.ws11 })
-                    ResponseStatusCallbacks.success(data = wraList, message = "Wra list found")
+                    ResponseStatusCallbacks.success(data = wraList, message = "MWra list found")
                 } else
-                    ResponseStatusCallbacks.error(data = null, message = "No wra found!")
+                    ResponseStatusCallbacks.error(data = null, message = "No mwra found!")
             } catch (e: Exception) {
                 _wraResponse.value =
                         ResponseStatusCallbacks.error(data = null, message = e.message.toString())

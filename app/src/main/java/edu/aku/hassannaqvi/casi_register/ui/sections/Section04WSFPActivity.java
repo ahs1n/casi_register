@@ -339,7 +339,12 @@ public class Section04WSFPActivity extends AppCompatActivity {
 
     private void setListeners() {
 
-        bi.fw12b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfw12b));
+        bi.fw12b.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.fldGrpfw12b);
+            if (bi.fw12b01.isChecked()) {
+                bi.fw13.setText(item.getWs13());
+            }
+        });
 
         bi.fw14.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVfw19));
 

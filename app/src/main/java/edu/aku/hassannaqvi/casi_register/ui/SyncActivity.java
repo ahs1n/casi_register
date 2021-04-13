@@ -193,10 +193,15 @@ public class SyncActivity extends AppCompatActivity {
                     //.putString("columns", "_id, sysdate")
                     // .putString("where", where)
                     ;
-            if (downloadTable.equals(ChildFollowup.ChildTable.TABLE_NAME) || downloadTable.equals(WraFollowup.WraTable.TABLE_NAME))
+            if (downloadTable.equals(ChildFollowup.ChildTable.TABLE_NAME))
                 data.putString("where",
                         ChildFollowup.ChildTable.COLUMN_CS01 + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "' AND " +
                                 ChildFollowup.ChildTable.COLUMN_CS04 + "='" + MainApp.mainInfo.getUc_code() + "'"
+                );
+            else if (downloadTable.equals(WraFollowup.WraTable.TABLE_NAME))
+                data.putString("where",
+                        WraFollowup.WraTable.COLUMN_WS01 + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "' AND " +
+                                WraFollowup.WraTable.COLUMN_WS04 + "='" + MainApp.mainInfo.getUc_code() + "'"
                 );
             else
                 data.putString("where", Users.UsersTable.COLUMN_COUNTRY_CODE + "='" + SharedStorage.INSTANCE.getCountryCode(this) + "'");

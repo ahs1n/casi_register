@@ -45,13 +45,10 @@ import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSI
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_CHILD_FOLLOW_UP_LIST;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY01;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY02;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_WRA_FOLLOW_UP_LIST;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_ALTER_WRA_FOLLOW_UP_LIST02;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZSTANDARD;
 
 
@@ -64,7 +61,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_VILLAGES);
@@ -77,13 +73,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        switch (oldVersion) {
+        /*switch (oldVersion) {
             case 1:
                 db.execSQL(SQL_CREATE_HEALTHFACILITY01);
                 db.execSQL(SQL_CREATE_HEALTHFACILITY02);
             case 2:
                 db.execSQL(SQL_ALTER_WRA_FOLLOW_UP_LIST02);
-        }
+        }*/
     }
 
 
