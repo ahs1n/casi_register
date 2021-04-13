@@ -134,7 +134,7 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
                 openWarningFragment(
                         id = 1,
                         title = getString(R.string.confirmation),
-                        message = "Are you sure, you want to continue ${item.cs11.toUpperCase(Locale.ENGLISH)} interview?",
+                        message = resources.getString(R.string.cntBtn).replace("-", item.cs11.toUpperCase(Locale.ENGLISH)),
                         item = item)
             }
         })
