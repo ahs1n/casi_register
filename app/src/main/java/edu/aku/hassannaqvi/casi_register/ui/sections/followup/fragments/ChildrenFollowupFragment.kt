@@ -22,10 +22,12 @@ import edu.aku.hassannaqvi.casi_register.ui.sections.followup.SelectedChildrenLi
 import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
 import edu.aku.hassannaqvi.casi_register.utils.openWarningFragment
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
+import kotlinx.android.synthetic.main.activity_section01_cs1.*
 import kotlinx.android.synthetic.main.fragment_children_followup.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
@@ -38,7 +40,7 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
     private val identification: Identification by lazy {
         Identification(MainApp.mainInfo.region_code, MainApp.mainInfo.district_code, MainApp.mainInfo.uc_code, MainApp.mainInfo.village_code)
     }
-    var items: ArrayList<ChildFollowup> = arrayListOf()
+    var items: List<ChildFollowup> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -62,9 +64,18 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
             it?.let {
                 when (it.status) {
                     ResponseStatus.SUCCESS -> {
-                        adapter.childItems = it.data as ArrayList<ChildFollowup>
-                        items = adapter.childItems
-                        multiStateView.viewState = MultiStateView.ViewState.CONTENT
+                        it.data?.let { item ->
+                            val rootItem = arrayListOf<ChildFollowup>()
+                            item.forEach { root ->
+                                root.cs11 = root.cs11.toLowerCase(Locale.ENGLISH)
+                                rootItem.add(root)
+                            }
+                            items = rootItem
+                            adapter.childItems = it.data as ArrayList<ChildFollowup>
+                            multiStateView.viewState = MultiStateView.ViewState.CONTENT
+                        } ?: run {
+                            multiStateView.viewState = MultiStateView.ViewState.EMPTY
+                        }
                     }
                     ResponseStatus.ERROR -> {
                         multiStateView.viewState = MultiStateView.ViewState.EMPTY
@@ -91,14 +102,14 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
                 if (s == null) {
                     lifecycleScope.launch {
                         delay(1000)
-                        adapter.childItems = items
+                        adapter.childItems = items as ArrayList<ChildFollowup>
                         multiStateView.viewState = MultiStateView.ViewState.CONTENT
                     }
                 } else {
                     lifecycleScope.launch {
                         delay(1000)
                         val cropItem = items
-                        adapter.childItems = cropItem.sortedBy { it.cs11 }.filter { it.cs11.startsWith(s.toString().toLowerCase(Locale.ENGLISH)) } as ArrayList<ChildFollowup>
+                        adapter.childItems = cropItem.sortedBy { it.cs11 }.filter { it.cs11.contains(s.toString().toLowerCase(Locale.ENGLISH)) } as ArrayList<ChildFollowup>
                         if (adapter.childItems.size > 0)
                             multiStateView.viewState = MultiStateView.ViewState.CONTENT
                         else
