@@ -22,12 +22,10 @@ import edu.aku.hassannaqvi.casi_register.ui.sections.followup.SelectedChildrenLi
 import edu.aku.hassannaqvi.casi_register.utils.obtainViewModel
 import edu.aku.hassannaqvi.casi_register.utils.openWarningFragment
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage
-import kotlinx.android.synthetic.main.activity_section01_cs1.*
 import kotlinx.android.synthetic.main.fragment_children_followup.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
@@ -120,8 +118,6 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup) {
             }
 
         })
-
-
     }
 
 
