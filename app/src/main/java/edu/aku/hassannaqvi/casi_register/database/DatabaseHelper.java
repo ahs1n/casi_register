@@ -1421,7 +1421,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ch.setFupNo("0");
 
                 Form fm = new Form().Hydrate(c, CONSTANTS.CHILD_TYPE);
-                if (fm.getCs1403().equals("9999")) {
+                if (fm.getCs1403().equals("9998")) {
                     String dt = DateUtilsKt.getDOB("yyyy-MM-dd", Integer.parseInt(fm.getCs1501()), Integer.parseInt(fm.getCs1502()), 15);
                     ch.setDob(dt);
                 } else {
