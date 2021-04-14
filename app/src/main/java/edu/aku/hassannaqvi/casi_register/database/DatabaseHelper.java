@@ -1470,7 +1470,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allEB.add(new WraFollowup().hydrateForm(c));
+                WraFollowup wra = new WraFollowup().hydrateForm(c);
+                wra.setFupDt("0");
+                wra.setFupNo("0");
+                allEB.add(wra);
             }
         } finally {
             if (c != null) {

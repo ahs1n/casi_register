@@ -131,7 +131,7 @@ class WraFollowupFragment : Fragment(R.layout.fragment_wra_followup) {
                 openWarningFragment(
                         id = 2,
                         title = getString(R.string.confirmation),
-                        message = "Are you sure, you want to continue ${item.ws11.toUpperCase(Locale.ENGLISH)} interview?",
+                        message = resources.getString(R.string.cntBtn).replace("-", item.ws11.toUpperCase(Locale.ENGLISH)),
                         item = item)
             }
         })
