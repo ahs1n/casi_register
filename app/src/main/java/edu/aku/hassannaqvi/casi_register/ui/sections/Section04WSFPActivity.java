@@ -347,9 +347,13 @@ public class Section04WSFPActivity extends AppCompatActivity {
             }
         });
 
-        bi.fw14.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVfw19));
+        bi.fw14.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfw1403));
+
+        bi.fw19.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpfw19));
 
         bi.fw21.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVfw22));
+
+        bi.fw26.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVfw27));
 
         bi.fw1801.setOnCheckedChangeListener((compoundButton, b) -> {
             Clear.clearAllFields(bi.fw18check, !b);
