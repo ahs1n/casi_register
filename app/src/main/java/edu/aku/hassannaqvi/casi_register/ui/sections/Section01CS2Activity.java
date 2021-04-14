@@ -68,7 +68,7 @@ public class Section01CS2Activity extends AppCompatActivity implements WarningAc
         saveDraft();
         if (updateDB()) {
             if (SharedStorage.INSTANCE.getCountryCode(this) == 3) {
-                openWarningActivity02(this, 1, new ChildFollowup(form), getString(R.string.warning), getString(R.string.cntBtn), getString(R.string.yes), getString(R.string.no));
+                openWarningActivity02(this, 1, new ChildFollowup(form), getString(R.string.warning), getString(R.string.followUpStartFromScreening), getString(R.string.yes), getString(R.string.no));
             } else {
                 finish();
                 gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);

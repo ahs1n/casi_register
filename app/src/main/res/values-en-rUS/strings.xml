@@ -775,6 +775,7 @@
     <string name="same_as_login_user">Same as Login user</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="followUpStartFromScreening">Do you want to enter child follow-up of this child, please confirm.</string>
 
 
 </resources>
