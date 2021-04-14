@@ -329,6 +329,7 @@ public class Form extends LiveData<Form> {
     private String fw2802;
     private String fw2803;
     private String fw2804;
+    private String fw2805;
     private String fw2896;
     private String fw2896x;
     private String fw29a;
@@ -2523,6 +2524,14 @@ public class Form extends LiveData<Form> {
         this.fw2804 = fw2804;
     }
 
+    public String getFw2805() {
+        return fw2805;
+    }
+
+    public void setFw2805(String fw2805) {
+        this.fw2805 = fw2805;
+    }
+
     public String getFw2896() {
         return fw2896;
     }
@@ -3344,6 +3353,7 @@ public class Form extends LiveData<Form> {
                     .put("fw2802", fw2802)
                     .put("fw2803", fw2803)
                     .put("fw2804", fw2804)
+                    .put("fw2805", fw2805)
                     .put("fw2896", fw2896)
                     .put("fw2896x", fw2896x)
                     .put("fw29a", fw29a)
@@ -3744,6 +3754,7 @@ public class Form extends LiveData<Form> {
                 this.fw2802 = json.getString("fw2802");
                 this.fw2803 = json.getString("fw2803");
                 this.fw2804 = json.getString("fw2804");
+                this.fw2805 = json.getString("fw2805");
                 this.fw2896 = json.getString("fw2896");
                 this.fw2896x = json.getString("fw2896x");
                 this.fw29a = json.getString("fw29a");

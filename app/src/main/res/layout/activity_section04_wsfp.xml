@@ -1545,6 +1545,13 @@
                                 android:text='@{fw2896.checked ? fw2896x.getText().toString() : ""}'
                                 android:visibility='@{fw2896.checked? View.VISIBLE : View.GONE}' />
                         </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/fw2805"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:tag="-1"
+                            android:text="@string/fw2805" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

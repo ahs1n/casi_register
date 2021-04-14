@@ -544,6 +544,7 @@
     <string name="fw2802">Cough/Flu</string>
     <string name="fw2803">Fever</string>
     <string name="fw2804">Abdominal Pain</string>
+    <string name="fw2805">None</string>
     <string name="fw2896">Any other complication Specify</string>
     <string name="fw29">Any medical complication</string>
     <string name="fw29a">Typhoid</string>

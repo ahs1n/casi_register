@@ -276,6 +276,8 @@ public class Section04WSFPActivity extends AppCompatActivity {
 
         form.setFw2804(bi.fw2804.isChecked() ? "4" : "-1");
 
+        form.setFw2805(bi.fw2805.isChecked() ? "5" : "-1");
+
         form.setFw2896(bi.fw2896.isChecked() ? "96" : "-1");
 
         form.setFw2896x(bi.fw2896x.getText().toString());
@@ -358,6 +360,8 @@ public class Section04WSFPActivity extends AppCompatActivity {
         bi.fw1801.setOnCheckedChangeListener((compoundButton, b) -> {
             Clear.clearAllFields(bi.fw18check, !b);
         });
+
+        bi.fw2805.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fw28check, !b));
 
     }
 
