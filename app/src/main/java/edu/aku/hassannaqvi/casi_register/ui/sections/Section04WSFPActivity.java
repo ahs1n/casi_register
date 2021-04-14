@@ -70,6 +70,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
             bi.fw0605.setVisibility(View.VISIBLE);
             bi.fldGrpCVfw09.setVisibility(View.VISIBLE);
         }
+        bi.fw08.setMinDate(item.getWs08().replace("-", "/"));
     }
 
     private void setUIContent() {
