@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -363,6 +364,46 @@ public class Section04WSFPActivity extends AppCompatActivity {
 
         bi.fw2805.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fw28check, !b));
 
+    }
+
+    public void fw16OnTextChanged(CharSequence s, int start, int before, int count) {
+        if (TextUtils.isEmpty(bi.fw16.getText().toString()))
+            return;
+
+        double weight = Double.parseDouble(bi.fw16.getText().toString());
+
+        if (weight < 45) {
+            if (bi.fw1801.isChecked()) {
+                bi.fw1801.setChecked(false);
+            }
+            bi.fw1802.setChecked(true);
+            bi.fw1801.setEnabled(false);
+        } else {
+            if (!bi.fw1804.isChecked()) {
+                bi.fw1801.setEnabled(true);
+            }
+            bi.fw1802.setChecked(false);
+        }
+    }
+
+    public void fw17OnTextChanged(CharSequence s, int start, int before, int count) {
+        if (TextUtils.isEmpty(bi.fw17.getText().toString()))
+            return;
+
+        double mauc = Double.parseDouble(bi.fw17.getText().toString());
+
+        if (mauc < 23) {
+            if (bi.fw1801.isChecked()) {
+                bi.fw1801.setChecked(false);
+            }
+            bi.fw1804.setChecked(true);
+            bi.fw1801.setEnabled(false);
+        } else {
+            if (!bi.fw1802.isChecked()) {
+                bi.fw1801.setEnabled(true);
+            }
+            bi.fw1804.setChecked(false);
+        }
     }
 
 }
