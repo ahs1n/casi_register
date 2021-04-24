@@ -2002,6 +2002,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/fc3404" />
+
+                            <RadioButton
+                                android:id="@+id/fc3405"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/fc3405" />
                         </RadioGroup>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

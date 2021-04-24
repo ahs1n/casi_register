@@ -334,7 +334,6 @@
                         android:gravity="center"
                         android:hint="DD/MM/YYYY"
                         app:dateFormat="dd-MM-yyyy"
-                        app:minDate="01/11/2020"
                         app:maxDate="CR_DATE" />
 
                 </LinearLayout>
@@ -1036,6 +1035,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/ws2104" />
+
+                        <RadioButton
+                            android:id="@+id/ws2105"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ws2105" />
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

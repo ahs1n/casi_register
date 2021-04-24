@@ -359,6 +359,7 @@
     <string name="fc3402">Requires Counselling</string>
     <string name="fc3403">Requires Supplementation</string>
     <string name="fc3404">Refuse Referral</string>
+    <string name="fc3405">No Action taken</string>
     <string name="fc35">Reason for Referral</string>
     <string name="fc3501">Specify</string>
     <string name="fc36">Place where referred </string>
@@ -423,6 +424,7 @@
     <string name="ws2102">Requires Counselling</string>
     <string name="ws2103">Requires Supplementation</string>
     <string name="ws2104">Refuse </string>
+    <string name="ws2105">No Action taken </string>
     <string name="ws22">Supplementation provided </string>
     <string name="ws2201">MAMTA (Afzaish)</string>
     <string name="ws2202">Folic Acid</string>
@@ -485,6 +487,7 @@
     <string name="fw0605">CMW</string>
     <string name="fw0696">Other (Specify)</string>
     <string name="fw07">Assessor’s Name</string>
+    <string name="fw07User">Same as Login user</string>
     <string name="fw08">Date of Screening</string>
     <string name="fw0801">Day</string>
     <string name="fw0802">Months</string>

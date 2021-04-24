@@ -95,7 +95,7 @@
     <string name="cs03">Муассиса Дар ҳолати ташрифи хонаги ё мулоқот бо ҷомеа муассисаи наздиктаринро интихоб намоед</string>
     <string name="cs04">Ҷамоат</string>
     <string name="cs05">Шаҳр / Деҳа</string>
-    <string name="cs05a">Суроға / Нашонии назиктарин</string>
+    <string name="cs05a">Суроға / Нишонии назиктарин</string>
     <string name="cs06">Шахсияти ташхискунанда</string>
     <string name="cs0601">Корманди Муассиса</string>
     <string name="cs0602"> </string>
@@ -357,6 +357,7 @@
     <string name="fc3402">Ниёз ба машварат</string>
     <string name="fc3403">Ниёз ба ғизои иловаги</string>
     <string name="fc3404">Рохат рад карда шуд </string>
+    <string name="fc3405">Ягон амал ичро нашуд</string>
     <string name="fc35">Мақсади рохат</string>
     <string name="fc3501">Аниқ кунед</string>
     <string name="fc36">Ба маконе, ки рохат дода шуд</string>
@@ -422,6 +423,7 @@
     <string name="ws2102">Ниёз ба машварат</string>
     <string name="ws2103">Ниёз ба ғизои иловаги</string>
     <string name="ws2104">Рохат рад карда шуд </string>
+    <string name="ws2105">Ягон амал ичро нашуд </string>
     <string name="ws22">Ғизои иловаги таъмин карда шуд</string>
     <string name="ws2201">Супер Сериал</string>
     <string name="ws2202">Кислотаи Фолат</string>
@@ -485,6 +487,7 @@
     <string name="fw0605"></string>
     <string name="fw0696">Дигар (аниқ кунед)</string>
     <string name="fw07">Номи Ташхискунанда</string>
+    <string name="fw07User">Ҳамонгуна корбари вуруд</string>
     <string name="fw08">Рузи ташхис</string>
     <string name="fw0801"></string>
     <string name="fw0802"></string>

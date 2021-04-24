@@ -91,6 +91,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             bi.cs2602.setVisibility(View.GONE);
             bi.cs2604.setVisibility(View.GONE);
             bi.fldGrpCVcs10a.setVisibility(View.GONE);
+            bi.cs08.setMinDate("01/09/2019");
         } else {
             bi.cs0602.setVisibility(View.VISIBLE);
             bi.cs0603.setVisibility(View.VISIBLE);
@@ -101,6 +102,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             bi.cs25c03.setVisibility(View.GONE);
             bi.cs2602.setVisibility(View.VISIBLE);
             bi.cs2604.setVisibility(View.VISIBLE);
+            bi.cs08.setMinDate("01/11/2020");
         }
     }
 
