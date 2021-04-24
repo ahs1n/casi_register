@@ -14,6 +14,7 @@ class HealthFacility {
     var facility_type = StringUtils.EMPTY
     var dist_code = StringUtils.EMPTY
     var uc_code = StringUtils.EMPTY
+    var username = StringUtils.EMPTY
 
     @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): HealthFacility {
@@ -24,6 +25,7 @@ class HealthFacility {
         facility_type = jsonObject.getString(HealthFacilityTable.COLUMN_FACILITY_TYPE)
         dist_code = jsonObject.getString(HealthFacilityTable.COLUMN_DIST_CODE)
         uc_code = jsonObject.getString(HealthFacilityTable.COLUMN_UC_CODE)
+        username = jsonObject.getString(HealthFacilityTable.COLUMN_USERNAME)
         return this
     }
 
@@ -35,6 +37,7 @@ class HealthFacility {
         facility_type = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_FACILITY_TYPE))
         dist_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_DIST_CODE))
         uc_code = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_UC_CODE))
+        username = cursor.getString(cursor.getColumnIndex(HealthFacilityTable.COLUMN_USERNAME))
         return this
     }
 
@@ -48,5 +51,6 @@ class HealthFacility {
         const val COLUMN_FACILITY_TYPE = "facility_type"
         const val COLUMN_DIST_CODE = "dist_code"
         const val COLUMN_UC_CODE = "uc_code"
+        const val COLUMN_USERNAME = "username"
     }
 }

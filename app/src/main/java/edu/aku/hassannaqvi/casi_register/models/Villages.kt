@@ -20,6 +20,7 @@ class Villages {
     var uc_code = StringUtils.EMPTY
     var village_code = StringUtils.EMPTY
     var region_code = StringUtils.EMPTY
+    var username = StringUtils.EMPTY
 
     @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): Villages {
@@ -33,6 +34,7 @@ class Villages {
         uc_code = jsonObject.getString(VillagesTable.COLUMN_UC_CODE)
         village_code = jsonObject.getString(VillagesTable.COLUMN_VILLLAGE_CODE)
         region_code = jsonObject.getString(VillagesTable.COLUMN_REGION_CODE)
+        username = jsonObject.getString(VillagesTable.COLUMN_USERNAME)
         return this
     }
 
@@ -47,6 +49,7 @@ class Villages {
         uc_code = cursor.getString(cursor.getColumnIndex(VillagesTable.COLUMN_UC_CODE))
         village_code = cursor.getString(cursor.getColumnIndex(VillagesTable.COLUMN_VILLLAGE_CODE))
         region_code = cursor.getString(cursor.getColumnIndex(VillagesTable.COLUMN_REGION_CODE))
+        username = cursor.getString(cursor.getColumnIndex(VillagesTable.COLUMN_USERNAME))
         return this
     }
 
@@ -63,5 +66,6 @@ class Villages {
         const val COLUMN_UC = "uc"
         const val COLUMN_VILLLAGE_CODE = "village_code"
         const val COLUMN_VILLAGE = "village"
+        const val COLUMN_USERNAME = "username"
     }
 }

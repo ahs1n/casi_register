@@ -42,6 +42,8 @@ import edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt;
 import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_ALTER_HEALTHFACILITY;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_ALTER_VILLAGES;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_CHILD_FOLLOW_UP_LIST;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY;
@@ -73,13 +75,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        /*switch (oldVersion) {
+        switch (oldVersion) {
             case 1:
-                db.execSQL(SQL_CREATE_HEALTHFACILITY01);
-                db.execSQL(SQL_CREATE_HEALTHFACILITY02);
-            case 2:
-                db.execSQL(SQL_ALTER_WRA_FOLLOW_UP_LIST02);
-        }*/
+                db.execSQL(SQL_ALTER_VILLAGES);
+                db.execSQL(SQL_ALTER_HEALTHFACILITY);
+        }
     }
 
 
@@ -163,6 +163,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(VillagesTable.COLUMN_UC_CODE, villages.getUc_code());
                 values.put(VillagesTable.COLUMN_VILLLAGE_CODE, villages.getVillage_code());
                 values.put(VillagesTable.COLUMN_REGION_CODE, villages.getRegion_code());
+                values.put(VillagesTable.COLUMN_USERNAME, villages.getUsername());
                 long rowID = db.insert(VillagesTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
@@ -732,13 +733,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Get UC, DISTRICT, ENUMBLOCK and COUNTRY
      * */
 
-    public List<Villages> getCountry(String country_id) {
+    public List<Villages> getCountry(String country_id, Users user) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
-        String whereClause = VillagesTable.COLUMN_COUNTRY_CODE + "=?";
-        String[] whereArgs = new String[]{country_id};
+        String whereClause;
+        String[] whereArgs;
+
+        if (country_id.equals("3")) {
+            whereClause = VillagesTable.COLUMN_COUNTRY_CODE + "=? AND " + VillagesTable.COLUMN_USERNAME + "=?";
+            whereArgs = new String[]{country_id, user.getUserName()};
+        } else {
+            whereClause = VillagesTable.COLUMN_COUNTRY_CODE + "=?";
+            whereArgs = new String[]{country_id};
+        }
+
+
         String groupBy = null;
         String having = null;
 
@@ -768,7 +779,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allEB;
     }
 
-    public List<HealthFacility> getFacility(String country, String region, String district, String uc) {
+    public List<HealthFacility> getFacility(String country, String region, String district, String uc, String username) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -779,8 +790,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             whereClause = HealthFacility.HealthFacilityTable.COLUMN_COUNTRY_CODE + "=? AND " +
                     HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE + "=? AND " +
                     HealthFacility.HealthFacilityTable.COLUMN_DIST_CODE + "=? AND " +
-                    HealthFacility.HealthFacilityTable.COLUMN_UC_CODE + "=?";
-            whereArgs = new String[]{country, region, district, uc};
+                    HealthFacility.HealthFacilityTable.COLUMN_UC_CODE + "=? AND " +
+                    HealthFacility.HealthFacilityTable.COLUMN_USERNAME + "=? ";
+            whereArgs = new String[]{country, region, district, uc, username};
         } else {
             whereClause = HealthFacility.HealthFacilityTable.COLUMN_COUNTRY_CODE + "=? AND " +
                     HealthFacility.HealthFacilityTable.COLUMN_REGION_CODE + "=? ";

@@ -455,7 +455,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
      * */
     private Observable<List<Villages>> getAreas() {
         return Observable.create(emitter -> {
-            emitter.onNext(appInfo.getDbHelper().getCountry(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this))));
+            emitter.onNext(appInfo.getDbHelper().getCountry(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this)),MainApp.user));
             emitter.onComplete();
         });
     }

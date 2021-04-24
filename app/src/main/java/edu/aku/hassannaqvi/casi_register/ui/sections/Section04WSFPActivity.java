@@ -89,7 +89,8 @@ public class Section04WSFPActivity extends AppCompatActivity {
                 mainInfo.getCountry_code(),
                 mainInfo.getRegion_code(),
                 mainInfo.getDistrict_code(),
-                mainInfo.getUc_code()
+                mainInfo.getUc_code(),
+                MainApp.user.getUserName()
         )) {
             facilityName.add(item.getHealth_facility());
             facilityMap.put(item.getHealth_facility(), item.getHf_code());

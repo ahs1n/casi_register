@@ -3,17 +3,19 @@ package edu.aku.hassannaqvi.casi_register.utils
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable
 import edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup
+import edu.aku.hassannaqvi.casi_register.models.ChildFollowup.ChildTable
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility
 import edu.aku.hassannaqvi.casi_register.models.Users.UsersTable
 import edu.aku.hassannaqvi.casi_register.models.VersionApp.VersionAppTable
 import edu.aku.hassannaqvi.casi_register.models.Villages.VillagesTable
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup
 
+
 object CreateTable {
     const val DATABASE_NAME = "casi_register.db"
     const val DATABASE_COPY = "casi_register_copy.db"
     const val PROJECT_NAME = "casi_register"
-    const val DATABASE_VERSION = 1
+    const val DATABASE_VERSION = 2
     const val SQL_CREATE_FORMS = ("CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -67,7 +69,17 @@ object CreateTable {
             + VillagesTable.COLUMN_DISTRICT_CODE + " TEXT,"
             + VillagesTable.COLUMN_UC_CODE + " TEXT,"
             + VillagesTable.COLUMN_VILLLAGE_CODE + " TEXT,"
-            + VillagesTable.COLUMN_REGION_CODE + " TEXT );")
+            + VillagesTable.COLUMN_REGION_CODE + " TEXT,"
+            + VillagesTable.COLUMN_USERNAME + " TEXT" +
+            " );")
+
+    const val SQL_ALTER_VILLAGES = "ALTER TABLE " +
+            VillagesTable.TABLE_NAME + " ADD COLUMN " +
+            VillagesTable.COLUMN_USERNAME + " TEXT"
+
+    const val SQL_ALTER_HEALTHFACILITY = "ALTER TABLE " +
+            HealthFacility.HealthFacilityTable.TABLE_NAME + " ADD COLUMN " +
+            HealthFacility.HealthFacilityTable.COLUMN_USERNAME + " TEXT"
 
     const val SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppTable.TABLE_NAME + " (" +
             VersionAppTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -94,7 +106,8 @@ object CreateTable {
             HealthFacility.HealthFacilityTable.COLUMN_DIST_CODE + " TEXT, " +
             HealthFacility.HealthFacilityTable.COLUMN_UC_CODE + " TEXT, " +
             HealthFacility.HealthFacilityTable.COLUMN_HEALTH_FACILITY + " TEXT, " +
-            HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE + " TEXT " +
+            HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE + " TEXT, " +
+            HealthFacility.HealthFacilityTable.COLUMN_USERNAME + " TEXT " +
             ");"
 
     const val SQL_CREATE_CHILD_FOLLOW_UP_LIST = "CREATE TABLE " + ChildFollowup.ChildTable.TABLE_NAME + " (" +
