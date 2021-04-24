@@ -62,12 +62,14 @@ public class Section03WSActivity extends AppCompatActivity {
             bi.ws0604.setVisibility(View.GONE);
             bi.ws0605.setVisibility(View.GONE);
             bi.fldGrpCVws09.setVisibility(View.GONE);
+            bi.ws08.setMinDate("01/09/2019");
         } else {
             bi.ws0602.setVisibility(View.VISIBLE);
             bi.ws0603.setVisibility(View.VISIBLE);
             bi.ws0604.setVisibility(View.VISIBLE);
             bi.ws0605.setVisibility(View.VISIBLE);
             bi.fldGrpCVws09.setVisibility(View.VISIBLE);
+            bi.ws08.setMinDate("01/11/2020");
         }
     }
 
