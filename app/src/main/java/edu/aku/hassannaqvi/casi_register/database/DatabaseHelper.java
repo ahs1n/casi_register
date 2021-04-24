@@ -827,6 +827,72 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allEB;
     }
 
+    public Integer getExistForm(Form filledForm) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause = FormsTable.COLUMN_FORM_TYPE + " =? AND " +
+                FormsTable.COLUMN_COUNTRY_CODE + "=? AND " +
+                FormsTable.COLUMN_DISTRICT_CODE + "=? AND " +
+                FormsTable.COLUMN_UC_CODE + "=? AND " +
+                FormsTable.COLUMN_VILLAGE_CODE + "=? AND ";
+
+        String[] whereArgs = {
+                filledForm.getFormType(),
+                filledForm.getCountryCode(),
+                filledForm.getDistrictCode(),
+                filledForm.getUcCode(),
+                filledForm.getVillageCode()
+        };
+
+        String groupBy = null;
+        String having = null;
+        String orderBy = FormsTable.COLUMN_ID + " ASC";
+
+        int allForms = 0;
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                Form form = new Form().Hydrate(c, filledForm.getFormType());
+                if (
+                        form.getCs11().equals(filledForm.getCs11()) &&
+                                form.getCs12().equals(filledForm.getCs12()) &&
+                                form.getCs1401().equals(filledForm.getCs1401()) &&
+                                form.getCs1402().equals(filledForm.getCs1402()) &&
+                                form.getCs1403().equals(filledForm.getCs1403()) &&
+                                form.getCs1501().equals(filledForm.getCs1501()) &&
+                                form.getCs1502().equals(filledForm.getCs1502())
+                ){
+                    allForms = 1;
+                    break;
+                }else if (
+                        form.getCs11().equals(filledForm.getCs11()) &&
+                                form.getCs12().equals(filledForm.getCs12())
+                ){
+                    allForms = 2;
+                    break;
+                }
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allForms;
+    }
+
 
     //Synced functions
     public JSONArray getUnsyncedForms(String type) {

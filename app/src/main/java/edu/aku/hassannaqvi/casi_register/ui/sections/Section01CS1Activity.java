@@ -17,6 +17,7 @@ import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.Nullable;
 import org.threeten.bp.Instant;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.LocalDateTime;
@@ -43,6 +44,7 @@ import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.EndSectionInterface;
+import edu.aku.hassannaqvi.casi_register.utils.WarningActivityInterface;
 import edu.aku.hassannaqvi.casi_register.utils.datecollection.AgeModel;
 import edu.aku.hassannaqvi.casi_register.utils.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
@@ -53,7 +55,7 @@ import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
 
-public class Section01CS1Activity extends AppCompatActivity implements EndSectionInterface {
+public class Section01CS1Activity extends AppCompatActivity implements EndSectionInterface, WarningActivityInterface {
 
     ActivitySection01Cs1Binding bi;
     boolean dtFlag = false;
@@ -62,6 +64,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     List<String> facilityName;
     Map<String, String> facilityMap;
     String concatID;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,9 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         this.setTitle(getString(R.string.childScreening));
         setListeners();
         setUIContent();
+
+        //DB
+        db = MainApp.appInfo.getDbHelper();
 
         int country = SharedStorage.INSTANCE.getCountryCode(this);
 
@@ -98,11 +104,11 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         }
     }
 
+
     /*
      * Save functions
      * */
     private boolean updateDB() {
-        DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addForm(form);
         form.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
@@ -346,6 +352,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
 
     }
 
+
     /*
      * Watch listeners
      * */
@@ -575,6 +582,18 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
     public void BtnContinue() {
         if (!formValidation()) return;
         saveDraft();
+        int filled = db.getExistForm(form);
+        if (filled == 1) {
+            AppUtilsKt.openWarningDialog(this, getString(R.string.warning),
+                    String.format("%s already exist", form.getCs11()));
+        } else if (filled == 2) {
+            AppUtilsKt.openWarningActivity(this, 1, null, getString(R.string.warning),
+                    String.format("%s might be already exist", form.getCs11()),
+                    getString(R.string.yes), getString(R.string.cancel));
+        } else routeToNextActivity();
+    }
+
+    private void routeToNextActivity() {
         if (updateDB()) {
             finish();
             startActivity(new Intent(this, Section01CS2Activity.class));
@@ -595,4 +614,8 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         }
     }
 
+    @Override
+    public void callWarningActivity(int id, @Nullable Object item) {
+        routeToNextActivity();
+    }
 }
