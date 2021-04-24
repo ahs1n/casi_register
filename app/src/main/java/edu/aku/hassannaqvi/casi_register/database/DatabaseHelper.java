@@ -230,6 +230,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(HealthFacility.HealthFacilityTable.COLUMN_FACILITY_TYPE, facility.getFacility_type());
                 values.put(HealthFacility.HealthFacilityTable.COLUMN_DIST_CODE, facility.getDist_code());
                 values.put(HealthFacility.HealthFacilityTable.COLUMN_UC_CODE, facility.getUc_code());
+                values.put(HealthFacility.HealthFacilityTable.COLUMN_USERNAME, facility.getUsername());
                 long rowID = db.insert(HealthFacility.HealthFacilityTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
@@ -836,7 +837,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_COUNTRY_CODE + "=? AND " +
                 FormsTable.COLUMN_DISTRICT_CODE + "=? AND " +
                 FormsTable.COLUMN_UC_CODE + "=? AND " +
-                FormsTable.COLUMN_VILLAGE_CODE + "=? AND ";
+                FormsTable.COLUMN_VILLAGE_CODE + "=?";
 
         String[] whereArgs = {
                 filledForm.getFormType(),
@@ -866,18 +867,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if (
                         form.getCs11().equals(filledForm.getCs11()) &&
                                 form.getCs12().equals(filledForm.getCs12()) &&
+                                form.getCs13().equals(filledForm.getCs13()) &&
                                 form.getCs1401().equals(filledForm.getCs1401()) &&
                                 form.getCs1402().equals(filledForm.getCs1402()) &&
                                 form.getCs1403().equals(filledForm.getCs1403()) &&
                                 form.getCs1501().equals(filledForm.getCs1501()) &&
                                 form.getCs1502().equals(filledForm.getCs1502())
-                ){
+                ) {
                     allForms = 1;
                     break;
-                }else if (
+                } else if (
                         form.getCs11().equals(filledForm.getCs11()) &&
-                                form.getCs12().equals(filledForm.getCs12())
-                ){
+                                form.getCs12().equals(filledForm.getCs12()) &&
+                                form.getCs13().equals(filledForm.getCs13())
+                ) {
                     allForms = 2;
                     break;
                 }
