@@ -241,6 +241,7 @@ public class Section03WSActivity extends AppCompatActivity {
                 : bi.ws2102.isChecked() ? "2"
                 : bi.ws2103.isChecked() ? "3"
                 : bi.ws2104.isChecked() ? "4"
+                : bi.ws2105.isChecked() ? "5"
                 : "-1");
 
         form.setWs2201(bi.ws2201.isChecked() ? "1" : "-1");

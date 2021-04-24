@@ -435,6 +435,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
                 : bi.fc3402.isChecked() ? "2"
                 : bi.fc3403.isChecked() ? "3"
                 : bi.fc3404.isChecked() ? "4"
+                : bi.fc3405.isChecked() ? "5"
                 : "-1");
 
         form.setFc3501(bi.fc3501.getText().toString());
