@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -29,10 +30,14 @@ import com.validatorcrawler.aliazaz.Validator;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -40,6 +45,7 @@ import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.casi_register.core.MainApp;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.VersionApp;
 import edu.aku.hassannaqvi.casi_register.models.Villages;
 import edu.aku.hassannaqvi.casi_register.ui.list_activity.FormsReportDate;
@@ -74,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     Map<String, Villages> ucMap, villageMap;
     List<Villages> areaList;
     Boolean exit = false;
+    private final String sysdateToday = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(new Date());
+    private final String dtToday = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).format(new Date());
+
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -111,6 +120,66 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi.setCallback(this);
         bi.toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(bi.toolbar);
+
+        /*
+         * Summary
+         * */
+        Collection<Form> todaysForms = appInfo.getDbHelper().getTodayForms(sysdateToday);
+        Collection<Form> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
+
+        StringBuilder rSumText = new StringBuilder()
+                .append("TODAY'S RECORDS SUMMARY\r\n")
+                .append("=======================\r\n")
+                .append("\r\n")
+                .append("Total Forms Today" + "(").append(dtToday).append("): ").append(todaysForms.size()).append("\r\n");
+        if (todaysForms.size() > 0) {
+            String iStatus;
+            rSumText.append("-------------------------------------------------------------------------\r\n")
+                    .append("[Type]\t\t[Country]\t\t[Village]\t\t[Reg-No]\t\t[Form Status]\t\t[Sync Status]\r\n")
+                    .append("-------------------------------------------------------------------------\r\n");
+
+            for (Form fc : todaysForms) {
+                switch (fc.getIstatus()) {
+                    case "1":
+                        iStatus = getString(R.string.elc701);
+                        break;
+                    case "2":
+                        iStatus = getString(R.string.elc702);
+                        break;
+                    case "96":
+                        iStatus = getString(R.string.elc796);
+                        break;
+                    default:
+                        iStatus = "\t\tN/A" + fc.getIstatus();
+                }
+
+                rSumText.append(
+                        fc.getFormType())
+                        .append("  \t\t")
+                        .append(fc.getCountryCode().equals("1") ? getString(R.string.pakistan) : getString(R.string.tajikistan))
+                        .append("  \t\t")
+                        .append(fc.getVillage())
+                        .append("  \t\t")
+                        .append(fc.getReg_no())
+                        .append("  \t\t")
+                        .append(iStatus)
+                        .append("  \t\t")
+                        .append(fc.getSynced() == null ? "Not Synced" : "Synced")
+                        .append("\r\n")
+                        .append("---------------------------------------------------------\r\n");
+            }
+        }
+        rSumText.append("\r\nDEVICE INFORMATION\r\n")
+                .append("  ========================================================\r\n")
+                .append("\tUnsynced Forms: \t\t\t\t").append(String.format(Locale.ENGLISH, "%02d", unsyncedForms.size()))
+                .append("\t\t\t\t\t\t\r\n")
+                .append("\t========================================================\r\n");
+        bi.recordSummary.setText(rSumText);
+
+        /*
+         * Summary end
+         * */
+
 
         bi.databaseBtn.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
 
@@ -455,7 +524,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
      * */
     private Observable<List<Villages>> getAreas() {
         return Observable.create(emitter -> {
-            emitter.onNext(appInfo.getDbHelper().getCountry(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this)),MainApp.user));
+            emitter.onNext(appInfo.getDbHelper().getCountry(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this)), MainApp.user));
             emitter.onComplete();
         });
     }

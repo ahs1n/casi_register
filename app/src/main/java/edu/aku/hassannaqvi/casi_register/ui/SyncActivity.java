@@ -53,11 +53,6 @@ import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 import edu.aku.hassannaqvi.casi_register.workers.DataDownWorkerALL;
 import edu.aku.hassannaqvi.casi_register.workers.DataUpWorkerALL;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
