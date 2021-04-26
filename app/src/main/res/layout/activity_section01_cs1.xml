@@ -305,9 +305,7 @@
                             android:text="@string/cs07User" />
 
                     </LinearLayout>
-
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
 
@@ -354,7 +352,6 @@
                         app:maxDate="CR_DATE" />
 
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
 

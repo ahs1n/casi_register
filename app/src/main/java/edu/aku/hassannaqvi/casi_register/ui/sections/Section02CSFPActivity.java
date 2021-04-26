@@ -110,7 +110,29 @@ public class Section02CSFPActivity extends AppCompatActivity {
             }
         });
 
-        bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fc26check, !b));
+        bi.fc2605.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                Clear.clearAllFields(bi.fc26check, false);
+                Clear.clearAllFields(bi.fc2606, false);
+            } else {
+                Clear.clearAllFields(bi.fc26check, true);
+                Clear.clearAllFields(bi.fc2606, true);
+            }
+        });
+
+        bi.fc2606.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                Clear.clearAllFields(bi.fc26check, false);
+                Clear.clearAllFields(bi.fc2605, false);
+                bi.fldGrpfc2606.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpfc2606, false);
+            } else {
+                Clear.clearAllFields(bi.fc26check, true);
+                Clear.clearAllFields(bi.fc2605, true);
+                bi.fldGrpfc2606.setVisibility(View.VISIBLE);
+                Clear.clearAllFields(bi.fldGrpfc2606, true);
+            }
+        });
 
         bi.fc28.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVfc29));
 
@@ -395,6 +417,8 @@ public class Section02CSFPActivity extends AppCompatActivity {
         form.setFc2604(bi.fc2604.isChecked() ? "4" : "-1");
 
         form.setFc2605(bi.fc2605.isChecked() ? "5" : "-1");
+
+        form.setFc2606(bi.fc2606.isChecked() ? "6" : "-1");
 
         form.setFc2701(bi.fc2701.getText().toString());
         form.setFc2702(bi.fc2702.getText().toString());

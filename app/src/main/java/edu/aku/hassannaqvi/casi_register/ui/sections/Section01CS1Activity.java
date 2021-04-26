@@ -590,7 +590,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                     String.format("%s already exist", form.getCs11()));
         } else if (filled == 2) {
             AppUtilsKt.openWarningActivity(this, 1, null, getString(R.string.warning),
-                    String.format("%s might be already exist", form.getCs11()),
+                    String.format("%s %s ", getString(R.string.cs_MAexist), form.getCs11()),
                     getString(R.string.yes), getString(R.string.cancel));
         } else routeToNextActivity();
     }
