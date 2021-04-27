@@ -19,6 +19,7 @@ import edu.aku.hassannaqvi.casi_register.R;
 import edu.aku.hassannaqvi.casi_register.adapters.FormsAdapter;
 import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.models.Form;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 
 public class FormsReportDate extends AppCompatActivity {
@@ -28,7 +29,6 @@ public class FormsReportDate extends AppCompatActivity {
     TextView dtFilter;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter formsAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
 
     @Override
@@ -42,11 +42,11 @@ public class FormsReportDate extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         dtFilter = findViewById(R.id.dtFilter);
         db = new DatabaseHelper(this);
-        form = db.getTodayForms(sysdateToday);
+        form = db.getTodayForms(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this)), sysdateToday);
 
         // specify an adapter (see also next example)
         formsAdapter = new FormsAdapter((List<Form>) form, this);
@@ -56,7 +56,7 @@ public class FormsReportDate extends AppCompatActivity {
 
     public void filterForms(View view) {
         Toast.makeText(this, "updated", Toast.LENGTH_SHORT).show();
-        form = db.getTodayForms(dtFilter.getText().toString());
+        form = db.getTodayForms(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this)), dtFilter.getText().toString());
         formsAdapter = new FormsAdapter((List<Form>) form, this);
         formsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(formsAdapter);

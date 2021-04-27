@@ -345,6 +345,17 @@ public class Form extends LiveData<Form> {
     private String fw29k;
     private String fw29k96x;
 
+    //Only for population in DB
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     //Date Settings
     private LocalDate localDate = null, calculatedDOB = null;

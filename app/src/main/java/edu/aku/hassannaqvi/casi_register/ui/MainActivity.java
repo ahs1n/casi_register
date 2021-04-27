@@ -64,7 +64,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.FOLLOWUP_FLAG;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 
 public class MainActivity extends AppCompatActivity implements WarningActivityInterface {
@@ -124,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         /*
          * Summary
          * */
-        Collection<Form> todaysForms = appInfo.getDbHelper().getTodayForms(sysdateToday);
+        Collection<Form> todaysForms = appInfo.getDbHelper().getTodayForms(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this)), sysdateToday);
         Collection<Form> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
 
         StringBuilder rSumText = new StringBuilder()
@@ -134,11 +138,13 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 .append("Total Forms Today" + "(").append(dtToday).append("): ").append(todaysForms.size()).append("\r\n");
         if (todaysForms.size() > 0) {
             String iStatus;
+            String formType;
             rSumText.append("-------------------------------------------------------------------------\r\n")
-                    .append("[Type]\t\t[Country]\t\t[Village]\t\t[Reg-No]\t\t[Form Status]\t\t[Sync Status]\r\n")
+                    .append("[Type]\t\t[Village]\t\t[Reg-No]\\t\\t[Name]\t\t[Form Status]\t\t[Sync Status]\r\n")
                     .append("-------------------------------------------------------------------------\r\n");
 
             for (Form fc : todaysForms) {
+
                 switch (fc.getIstatus()) {
                     case "1":
                         iStatus = getString(R.string.elc701);
@@ -153,14 +159,31 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         iStatus = "\t\tN/A" + fc.getIstatus();
                 }
 
-                rSumText.append(
-                        fc.getFormType())
-                        .append("  \t\t")
-                        .append(fc.getCountryCode().equals("1") ? getString(R.string.pakistan) : getString(R.string.tajikistan))
+                switch (fc.getFormType()) {
+                    case WRA_TYPE:
+                        formType = "WScreening";
+                        break;
+                    case CHILD_TYPE:
+                        formType = "CScreening";
+                        break;
+                    case WRA_FOLLOWUP_TYPE:
+                        formType = "WFollowup";
+                        break;
+                    case CHILD_FOLLOWUP_TYPE:
+                        formType = "CFollowup";
+                        break;
+                    default:
+                        formType = "NA";
+                        break;
+                }
+
+                rSumText.append(formType)
                         .append("  \t\t")
                         .append(fc.getVillage())
                         .append("  \t\t")
                         .append(fc.getReg_no())
+                        .append("  \t\t")
+                        .append(fc.getName())
                         .append("  \t\t")
                         .append(iStatus)
                         .append("  \t\t")

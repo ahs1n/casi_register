@@ -38,7 +38,12 @@ import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup.WraTable;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 import edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt;
+import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
@@ -647,13 +652,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
-    public Collection<Form> getTodayForms(String sysdate) {
+    public Collection<Form> getTodayForms(String countryCode, String sysdate) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = null;
-        String whereClause = FormsTable.COLUMN_SYSDATE + " Like ? ";
-        String[] whereArgs = new String[]{"%" + sysdate + " %"};
+        String whereClause = FormsTable.COLUMN_COUNTRY_CODE + " =? AND " + FormsTable.COLUMN_SYSDATE + " Like ? ";
+        String[] whereArgs = {countryCode, "%" + sysdate + " %"};
         String groupBy = null;
         String having = null;
         String orderBy = FormsTable.COLUMN_ID + " ASC";
@@ -669,22 +674,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                Form form = new Form();
-                form.set_ID(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                form.set_UID(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
-                form.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
-                form.setSysdate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                form.setCountryCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_COUNTRY_CODE)));
-                form.setReg_no(c.getString(c.getColumnIndex(FormsTable.COLUMN_REG_NO)));
-                form.setDistrictCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE)));
-                form.setDistrict(c.getString(c.getColumnIndex(FormsTable.COLUMN_DISTRICT)));
-                form.setUcCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC_CODE)));
-                form.setUc(c.getString(c.getColumnIndex(FormsTable.COLUMN_UC)));
-                form.setVillageCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE_CODE)));
-                form.setVillage(c.getString(c.getColumnIndex(FormsTable.COLUMN_VILLAGE)));
-                form.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
-                form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
-                form.setFormType(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORM_TYPE)));
+                Form form = new Form().Hydrate(c, c.getString(c.getColumnIndex(FormsTable.COLUMN_FORM_TYPE)));
+
+                switch (form.getFormType()) {
+                    case WRA_TYPE:
+                        form.setName(form.getWs11());
+                        break;
+                    case CHILD_TYPE:
+                        form.setName(form.getCs11());
+                        break;
+                    case WRA_FOLLOWUP_TYPE:
+                        form.setName(form.getFw11());
+                        break;
+                    case CHILD_FOLLOWUP_TYPE:
+                        form.setName(form.getFc15());
+                        break;
+                    default:
+                        form.setName("");
+                        break;
+                }
+
                 allForms.add(form);
             }
         } finally {
