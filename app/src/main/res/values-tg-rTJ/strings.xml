@@ -37,6 +37,7 @@
     <string name="tajikistan">Тоҷикистон</string>
     <string name="btnLogin">Авторизовать</string>
     <string name="btnDownloadData">Скачать данные</string>
+    <string name="cs_MAexist">шояд аллакай вуҷуд дошта бошад</string>
 
     <string name="netwrok">Сетевое подключение недоступно!</string>
     <string name="invalidpass">Неправильный пароль</string>
@@ -323,6 +324,7 @@
     <string name="fc2603">Сулфати охан дода шуд</string>
     <string name="fc2604"></string>
     <string name="fc2605">Ҳеч кадом</string>
+    <string name="fc2606">татбиқ карда намешавад</string>
     <string name="fc27">Миқдори ғизои иловагии таъминкардашуда</string>
     <string name="fc2701">АЧА Mum Roshan пакет</string>
     <string name="fc2702"></string>

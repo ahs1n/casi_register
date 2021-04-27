@@ -37,6 +37,7 @@
     <string name="tajikistan">Tajikistan</string>
     <string name="btnLogin">Login</string>
     <string name="btnDownloadData">Download Data</string>
+    <string name="cs_MAexist">might be already exist</string>
 
     <string name="netwrok">Network connection not available!</string>
     <string name="invalidpass">Invalid Password</string>
@@ -325,6 +326,7 @@
     <string name="fc2603">Iron supplement Bottles</string>
     <string name="fc2604">RUTF</string>
     <string name="fc2605">None</string>
+    <string name="fc2606">Not applicable</string>
     <string name="fc27">Quantity of Supplement provided Number of Sachets</string>
     <string name="fc2701">Sachet Acha Mum Roshan</string>
     <string name="fc2702">Sachet Wahwa-Mum Ronaq</string>
