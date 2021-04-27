@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             String iStatus;
             String formType;
             rSumText.append("-------------------------------------------------------------------------\r\n")
-                    .append("[Type]\t\t[Village]\t\t[Reg-No]\\t\\t[Name]\t\t[Form Status]\t\t[Sync Status]\r\n")
+                    .append("[Type]\t[Village]\t[Reg-No]\t[Name]\t[Form Status]\t[Sync Status]\r\n")
                     .append("-------------------------------------------------------------------------\r\n");
 
             for (Form fc : todaysForms) {
@@ -178,15 +178,15 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 }
 
                 rSumText.append(formType)
-                        .append("  \t\t")
+                        .append("  \t")
                         .append(fc.getVillage())
-                        .append("  \t\t")
+                        .append("  \t")
                         .append(fc.getReg_no())
-                        .append("  \t\t")
+                        .append("  \t")
                         .append(fc.getName())
-                        .append("  \t\t")
+                        .append("  \t")
                         .append(iStatus)
-                        .append("  \t\t")
+                        .append("  \t")
                         .append(fc.getSynced() == null ? "Not Synced" : "Synced")
                         .append("\r\n")
                         .append("---------------------------------------------------------\r\n");
