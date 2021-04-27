@@ -784,5 +784,15 @@
     <string name="yes">Ҳа</string>
     <string name="no">Не</string>
     <string name="followUpStartFromScreening">Хотите ли вы пройти в часть наблюдение за этим ребенком, пожалуйста, подтвердите</string>
+    <string name="todays_record_summary">"Хулосаи сабтҳои имрӯза "</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_forms_today">Шакли имрӯз</string>
+    <string name="type">Намуди</string>
+    <string name="village">Деҳа</string>
+    <string name="reg_no">Рақами сабти</string>
+    <string name="name">Номи</string>
+    <string name="form_status">Статуси шакл</string>
+    <string name="device_info">Маълумот дар бораи дастгоҳ</string>
+    <string name="unsynced_form">Шаклҳои ҳамоҳангнашуда</string>
 
 </resources>

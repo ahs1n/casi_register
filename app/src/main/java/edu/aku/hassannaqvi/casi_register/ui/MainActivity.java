@@ -132,15 +132,26 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         Collection<Form> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
 
         StringBuilder rSumText = new StringBuilder()
-                .append("TODAY'S RECORDS SUMMARY\r\n")
+                .append(getString(R.string.todays_record_summary))
+                .append("\r\n")
                 .append("=======================\r\n")
                 .append("\r\n")
-                .append("Total Forms Today" + "(").append(dtToday).append("): ").append(todaysForms.size()).append("\r\n");
+                .append(getString(R.string.total_forms_today))
+                .append("(").append(dtToday).append("): ").append(todaysForms.size()).append("\r\n");
         if (todaysForms.size() > 0) {
             String iStatus;
             String formType;
             rSumText.append("-------------------------------------------------------------------------\r\n")
-                    .append("[Type]\t[Village]\t[Reg-No]\t[Name]\t[Form Status]\r\n")
+                    .append(getString(R.string.type))
+                    .append("\t")
+                    .append(getString(R.string.village))
+                    .append("\t")
+                    .append(getString(R.string.reg_no))
+                    .append("\t")
+                    .append(getString(R.string.name))
+                    .append("\t")
+                    .append(getString(R.string.form_status))
+                    .append("\r\n")
                     .append("-------------------------------------------------------------------------\r\n");
 
             for (Form fc : todaysForms) {
@@ -190,13 +201,15 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         .append("---------------------------------------------------------\r\n");
             }
         }
-        rSumText.append("\r\nDEVICE INFORMATION\r\n")
-                .append("  ========================================================\r\n")
-                .append("\tUnsynced Forms: \t\t\t\t").append(String.format(Locale.ENGLISH, "%02d", unsyncedForms.size()))
+        rSumText.append("\r\n").append(getString(R.string.device_info)).append("\r\n")
+                .append("========================================================\r\n")
+                .append("\t")
+                .append(getString(R.string.unsynced_form))
+                .append("\t\t\t\t")
+                .append(String.format(Locale.ENGLISH, "%02d", unsyncedForms.size()))
                 .append("\t\t\t\t\t\t\r\n")
                 .append("\t========================================================\r\n");
         bi.recordSummary.setText(rSumText);
-
         /*
          * Summary end
          * */

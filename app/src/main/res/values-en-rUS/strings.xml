@@ -782,6 +782,15 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="followUpStartFromScreening">Do you want to enter child follow-up of this child, please confirm.</string>
+    <string name="todays_record_summary">TODAY\'S RECORDS SUMMARY</string>
+    <string name="total_forms_today">Total Forms Today</string>
+    <string name="type">Type</string>
+    <string name="village">Village</string>
+    <string name="reg_no">Reg No</string>
+    <string name="name">Name</string>
+    <string name="form_status">Form Status</string>
+    <string name="device_info">Device Information</string>
+    <string name="unsynced_form">Unsynced Forms</string>
 
 
 </resources>

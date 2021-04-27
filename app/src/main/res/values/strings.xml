@@ -782,6 +782,15 @@
     <string name="get_zscore">GET ZScore</string>
     <string name="forms_report_by_date">Forms Report by Date</string>
     <string name="same_as_login_user">Same as Login user</string>
+    <string name="todays_record_summary">TODAY\'S RECORDS SUMMARY</string>
+    <string name="total_forms_today">Total Forms Today</string>
+    <string name="type">Type</string>
+    <string name="village">Village</string>
+    <string name="reg_no">Reg No</string>
+    <string name="name">Name</string>
+    <string name="form_status">Form Status</string>
+    <string name="device_info">Device Information</string>
+    <string name="unsynced_form">Unsynced Forms</string>
 
 
 </resources>
