@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -142,12 +141,13 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             String iStatus;
             String formType;
             rSumText.append("-------------------------------------------------------------------------\r\n")
+                    .append("\t")
                     .append(getString(R.string.type))
-                    .append("\t")
+                    .append("\t\t\t")
                     .append(getString(R.string.village))
-                    .append("\t")
+                    .append("\t\t\t")
                     .append(getString(R.string.reg_no))
-                    .append("\t")
+                    .append("\t\t")
                     .append(getString(R.string.name))
                     .append("\t")
                     .append(getString(R.string.form_status))
