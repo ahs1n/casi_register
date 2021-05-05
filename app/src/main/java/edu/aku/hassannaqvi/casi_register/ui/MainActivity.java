@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         if (todaysForms.size() > 0) {
             String iStatus;
             String formType;
-            rSumText.append("-------------------------------------------------------------------------\r\n")
+            rSumText.append("------------------------------------------------------------------\r\n")
                     .append("\t")
                     .append(getString(R.string.type))
                     .append("\t\t\t")
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     .append("\t")
                     .append(getString(R.string.form_status))
                     .append("\r\n")
-                    .append("-------------------------------------------------------------------------\r\n");
+                    .append("------------------------------------------------------------------\r\n");
 
             for (Form fc : todaysForms) {
 
