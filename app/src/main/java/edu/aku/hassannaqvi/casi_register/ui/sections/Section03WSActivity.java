@@ -346,6 +346,14 @@ public class Section03WSActivity extends AppCompatActivity {
             Clear.clearAllFields(bi.ws2303, !b);
         });
 
+        bi.ws1798.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.ws17.setEnabled(false);
+                bi.ws17.setText(null);
+            } else
+                bi.ws17.setEnabled(true);
+        });
+
     }
 
     public void ws16OnTextChanged(CharSequence s, int start, int before, int count) {

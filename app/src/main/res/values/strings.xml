@@ -410,6 +410,7 @@
     <string name="ws15">Height in cms.</string>
     <string name="ws16">Weight in Kgs</string>
     <string name="ws17">MUAC in cms</string>
+    <string name="ws1798">Not taken</string>
     <string name="ws18">Haemoglobin test done? (Ask only for PLWs)</string>
     <string name="ws1801">Yes</string>
     <string name="ws1802">No</string>
@@ -515,6 +516,7 @@
     <string name="fw15">Height in cms.</string>
     <string name="fw16">Weight in KGS.</string>
     <string name="fw17">MUAC in cms.</string>
+    <string name="fw1798">Not taken</string>
     <string name="fw18">Assessment Outcome</string>
     <string name="fw1801">Normal</string>
     <string name="fw1802">Weight &lt; 45kg</string>

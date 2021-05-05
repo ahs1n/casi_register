@@ -72,6 +72,8 @@ public class Section04WSFPActivity extends AppCompatActivity {
             bi.fldGrpCVfw09.setVisibility(View.VISIBLE);
         }
         bi.fw08.setMinDate(item.getWs08().replace("-", "/"));
+
+        bi.fw12a.setText(item.getWs12a());
     }
 
     private void setUIContent() {
@@ -364,6 +366,14 @@ public class Section04WSFPActivity extends AppCompatActivity {
         });
 
         bi.fw2805.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fw28check, !b));
+
+        bi.fw1798.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.fw17.setEnabled(false);
+                bi.fw17.setText(null);
+            } else
+                bi.fw17.setEnabled(true);
+        });
     }
 
     public void fw16OnTextChanged(CharSequence s, int start, int before, int count) {

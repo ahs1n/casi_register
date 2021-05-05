@@ -24,6 +24,7 @@ class WraFollowup : Serializable {
     var ws10 = StringUtils.EMPTY //wra reg
     var ws11 = StringUtils.EMPTY //wra name
     var ws12 = StringUtils.EMPTY //father name
+    var ws12a = StringUtils.EMPTY // Contact Number
     var ws13 = StringUtils.EMPTY //Age
     var fupDt = StringUtils.EMPTY //fupDT
     var fupNo = StringUtils.EMPTY //fupNo
@@ -43,6 +44,7 @@ class WraFollowup : Serializable {
         this.ws10 = form.ws10
         this.ws11 = form.ws11
         this.ws12 = form.ws12
+        this.ws12a = form.ws12a
         this.ws13 = form.ws13
         this.fupDt = "0"
         this.fupNo = "0"
@@ -64,6 +66,7 @@ class WraFollowup : Serializable {
         ws10 = jsonObject.getString(WraTable.COLUMN_WS10)
         ws11 = jsonObject.getString(WraTable.COLUMN_WS11)
         ws12 = jsonObject.getString(WraTable.COLUMN_WS12)
+        ws12a = jsonObject.getString(WraTable.COLUMN_WS12A)
         ws13 = jsonObject.getString(WraTable.COLUMN_WS13)
         fupDt = jsonObject.getString(WraTable.COLUMN_FUPDT)
         fupNo = jsonObject.getString(WraTable.COLUMN_FUPNO)
@@ -82,6 +85,7 @@ class WraFollowup : Serializable {
         ws10 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS10))
         ws11 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS11))
         ws12 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS12))
+        ws12a = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS12A))
         ws13 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS13))
         fupDt = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_FUPDT))
         fupNo = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_FUPNO))
@@ -103,6 +107,7 @@ class WraFollowup : Serializable {
         ws10 = form.ws10
         ws11 = form.ws11
         ws12 = form.ws12
+        ws12a = form.ws12a
         ws13 = form.ws13
         return this
     }
@@ -121,6 +126,7 @@ class WraFollowup : Serializable {
         const val COLUMN_WS10 = "ws10"
         const val COLUMN_WS11 = "ws11"
         const val COLUMN_WS12 = "ws12"
+        const val COLUMN_WS12A = "ws12a"
         const val COLUMN_WS13 = "ws13"
         const val COLUMN_FUPDT = "fupdt"
         const val COLUMN_FUPNO = "fupNo"
