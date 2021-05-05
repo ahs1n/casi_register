@@ -250,6 +250,7 @@ public class Form extends LiveData<Form> {
     private String ws15;
     private String ws16;
     private String ws17;
+    private String ws1798;
     private String ws18;
     private String ws19;
     private String ws20;
@@ -312,6 +313,7 @@ public class Form extends LiveData<Form> {
     private String fw15;
     private String fw16;
     private String fw17;
+    private String fw1798;
     private String fw18;
     private String fw1801;
     private String fw1802;
@@ -1929,6 +1931,15 @@ public class Form extends LiveData<Form> {
         this.ws17 = ws17;
     }
 
+
+    public String getWs1798() {
+        return ws1798;
+    }
+
+    public void setWs1798(String ws1798) {
+        this.ws1798 = ws1798;
+    }
+
     public String getWs18() {
         return ws18;
     }
@@ -2403,6 +2414,14 @@ public class Form extends LiveData<Form> {
 
     public void setFw17(String fw17) {
         this.fw17 = fw17;
+    }
+
+    public String getFw1798() {
+        return fw1798;
+    }
+
+    public void setFw1798(String fw1798) {
+        this.fw1798 = fw1798;
     }
 
     public String getFw18() {
@@ -3314,6 +3333,7 @@ public class Form extends LiveData<Form> {
                     .put("ws15", ws15)
                     .put("ws16", ws16)
                     .put("ws17", ws17)
+                    .put("ws1798", ws1798)
                     .put("ws18", ws18)
                     .put("ws19", ws19)
                     .put("ws20", ws20)
@@ -3385,6 +3405,7 @@ public class Form extends LiveData<Form> {
                     .put("fw15", fw15)
                     .put("fw16", fw16)
                     .put("fw17", fw17)
+                    .put("fw1798", fw1798)
                     .put("fw18", fw18)
                     .put("fw1801", fw1801)
                     .put("fw1802", fw1802)
@@ -3716,6 +3737,7 @@ public class Form extends LiveData<Form> {
                 this.ws15 = json.getString("ws15");
                 this.ws16 = json.getString("ws16");
                 this.ws17 = json.getString("ws17");
+                this.ws1798 = json.getString("ws1798");
                 this.ws18 = json.getString("ws18");
                 this.ws19 = json.getString("ws19");
 //                this.ws20 = json.getString("ws20");
@@ -3790,6 +3812,7 @@ public class Form extends LiveData<Form> {
                 this.fw15 = json.getString("fw15");
                 this.fw16 = json.getString("fw16");
                 this.fw17 = json.getString("fw17");
+                this.fw1798 = json.getString("fw1798");
 //                this.fw18 = json.getString("fw18");
                 this.fw1801 = json.getString("fw1801");
                 this.fw1802 = json.getString("fw1802");

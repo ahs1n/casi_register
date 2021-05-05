@@ -231,6 +231,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
         form.setFw16(bi.fw16.getText().toString());
 
         form.setFw17(bi.fw17.getText().toString());
+        form.setFw1798(bi.fw1798.isChecked() ? "98" : "-1");
 
         form.setFw1801(bi.fw1801.isChecked() ? "1" : "-1");
 
