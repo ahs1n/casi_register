@@ -267,8 +267,11 @@ public class Form extends LiveData<Form> {
     private String ws2296;
     private String ws2296x;
     private String ws2301;
+    private String ws230198;
     private String ws2302;
+    private String ws230298;
     private String ws2303;
+    private String ws230398;
     private String ws25a;
     private String ws25b;
     private String ws25c;
@@ -2078,6 +2081,32 @@ public class Form extends LiveData<Form> {
         this.ws2303 = ws2303;
     }
 
+
+    public String getWs230198() {
+        return ws230198;
+    }
+
+    public void setWs230198(String ws230198) {
+        this.ws230198 = ws230198;
+    }
+
+    public String getWs230298() {
+        return ws230298;
+    }
+
+    public void setWs230298(String ws230298) {
+        this.ws230298 = ws230298;
+    }
+
+    public String getWs230398() {
+        return ws230398;
+    }
+
+    public void setWs230398(String ws230398) {
+        this.ws230398 = ws230398;
+    }
+
+
     public String getWs25a() {
         return ws25a;
     }
@@ -3302,8 +3331,11 @@ public class Form extends LiveData<Form> {
                     .put("ws2296", ws2296)
                     .put("ws2296x", ws2296x)
                     .put("ws2301", ws2301)
+                    .put("ws230198", ws230198)
                     .put("ws2302", ws2302)
+                    .put("ws230298", ws230298)
                     .put("ws2303", ws2303)
+                    .put("ws230398", ws230398)
                     .put("ws25a", ws25a)
                     .put("ws25b", ws25b)
                     .put("ws25c", ws25c)
@@ -3701,8 +3733,11 @@ public class Form extends LiveData<Form> {
                 this.ws2296 = json.getString("ws2296");
                 this.ws2296x = json.getString("ws2296x");
                 this.ws2301 = json.getString("ws2301");
+                this.ws230198 = json.getString("ws230198");
                 this.ws2302 = json.getString("ws2302");
+                this.ws230298 = json.getString("ws230298");
                 this.ws2303 = json.getString("ws2303");
+                this.ws230398 = json.getString("ws230398");
                 this.ws25a = json.getString("ws25a");
                 this.ws25b = json.getString("ws25b");
                 this.ws25c = json.getString("ws25c");

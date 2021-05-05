@@ -364,7 +364,6 @@ public class Section04WSFPActivity extends AppCompatActivity {
         });
 
         bi.fw2805.setOnCheckedChangeListener((compoundButton, b) -> Clear.clearAllFields(bi.fw28check, !b));
-
     }
 
     public void fw16OnTextChanged(CharSequence s, int start, int before, int count) {

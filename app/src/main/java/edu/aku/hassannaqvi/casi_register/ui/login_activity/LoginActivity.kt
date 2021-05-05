@@ -230,7 +230,7 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
             changeLanguage(if (isChecked) 1 else 3)
             val intent = Intent(this@LoginActivity, LoginActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
     }
 
@@ -290,5 +290,4 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
         config.locale = locale
         this.resources.updateConfiguration(config, this.resources.displayMetrics)
     }
-
 }

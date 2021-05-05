@@ -253,9 +253,16 @@ public class Section03WSActivity extends AppCompatActivity {
         form.setWs2296(bi.ws2296.isChecked() ? "96" : "-1");
 
         form.setWs2296x(bi.ws2296x.getText().toString());
+
         form.setWs2301(bi.ws2301.getText().toString());
+        form.setWs230198(bi.ws230198.isChecked() ? "98" : "-1");
+
         form.setWs2302(bi.ws2302.getText().toString());
+        form.setWs230298(bi.ws230298.isChecked() ? "98" : "-1");
+
         form.setWs2303(bi.ws2303.getText().toString());
+        form.setWs230398(bi.ws230398.isChecked() ? "98" : "-1");
+
         form.setWs25a(bi.ws25a01.isChecked() ? "1"
                 : bi.ws25a02.isChecked() ? "2"
                 : "-1");
@@ -325,6 +332,18 @@ public class Section03WSActivity extends AppCompatActivity {
 
         bi.ws2001.setOnCheckedChangeListener((compoundButton, b) -> {
             Clear.clearAllFields(bi.ws20check, !b);
+        });
+
+        bi.ws230198.setOnCheckedChangeListener((compoundButton, b) -> {
+            Clear.clearAllFields(bi.ws2301, !b);
+        });
+
+        bi.ws230298.setOnCheckedChangeListener((compoundButton, b) -> {
+            Clear.clearAllFields(bi.ws2302, !b);
+        });
+
+        bi.ws230398.setOnCheckedChangeListener((compoundButton, b) -> {
+            Clear.clearAllFields(bi.ws2303, !b);
         });
 
     }
