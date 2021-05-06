@@ -1121,7 +1121,7 @@
                                         android:id="@+id/ws2301"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="2"
+                                        android:layout_weight="1"
                                         android:enabled='@{ws230198.checked? false : true}'
                                         android:gravity="center"
                                         android:hint="##"
@@ -1137,7 +1137,7 @@
                                         android:id="@+id/ws230198"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="1"
+                                        android:layout_weight="2"
                                         android:checked="@{ws2201.checked ? false : false}"
                                         android:text="@string/ws2398" />
 
@@ -1159,7 +1159,7 @@
                                         android:id="@+id/ws2302"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="2"
+                                        android:layout_weight="1"
                                         android:enabled='@{ws230298.checked? false : true}'
                                         android:gravity="center"
                                         android:hint="##"
@@ -1175,7 +1175,7 @@
                                         android:id="@+id/ws230298"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="1"
+                                        android:layout_weight="2"
                                         android:checked="@{ws2202.checked ? false : false}"
                                         android:text="@string/ws2398" />
 
@@ -1197,7 +1197,7 @@
                                         android:id="@+id/ws2303"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="2"
+                                        android:layout_weight="1"
                                         android:enabled='@{ws230398.checked? false : true}'
                                         android:gravity="center"
                                         android:hint="##"
@@ -1213,7 +1213,7 @@
                                         android:id="@+id/ws230398"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="1"
+                                        android:layout_weight="2"
                                         android:checked="@{ws2203.checked ? false : false}"
                                         android:text="@string/ws2398" />
 
