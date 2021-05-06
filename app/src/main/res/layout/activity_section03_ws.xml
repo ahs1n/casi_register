@@ -733,10 +733,10 @@
                         android:id="@+id/ws16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:onTextChanged="@{callback.ws16OnTextChanged}"
                         android:hint="###.#"
                         android:inputType="number"
                         android:maxLength="4"
+                        android:onTextChanged="@{callback.ws16OnTextChanged}"
                         app:mask="###.#"
                         app:maxValue="130"
                         app:minValue="25"
@@ -781,10 +781,10 @@
                         android:id="@+id/ws17"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:onTextChanged="@{callback.ws17OnTextChanged}"
                         android:hint="##.#"
                         android:inputType="number"
                         android:maxLength="3"
+                        android:onTextChanged="@{callback.ws17OnTextChanged}"
                         app:mask="##.#"
                         app:maxValue="40"
                         app:minValue="15"
@@ -1114,20 +1114,21 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:visibility="@{ws2201.checked? View.VISIBLE : View.GONE}">
 
                                     <com.edittextpicker.aliazaz.EditTextPicker
                                         android:id="@+id/ws2301"
                                         android:layout_width="0dp"
-                                        android:layout_weight="2"
                                         android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:enabled='@{ws230198.checked? false : true}'
                                         android:gravity="center"
                                         android:hint="##"
                                         android:inputType="number"
                                         android:maxLength="2"
                                         android:tag="ws2201"
-                                        android:text='@{ws2201.checked ? ws2301.getText().toString() : ""}'
-                                        android:visibility='@{ws2201.checked? View.VISIBLE : View.GONE}'
+                                        android:text='@{ws230198.checked || ws2201.checked ? "" : ws2301.getText().toString()}'
                                         app:maxValue="90"
                                         app:minValue="10"
                                         app:type="range" />
@@ -1137,6 +1138,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
+                                        android:checked="@{ws2201.checked ? false : false}"
                                         android:text="@string/ws2398" />
 
                                 </LinearLayout>
@@ -1150,20 +1152,21 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:visibility="@{ws2202.checked? View.VISIBLE : View.GONE}">
 
                                     <com.edittextpicker.aliazaz.EditTextPicker
                                         android:id="@+id/ws2302"
                                         android:layout_width="0dp"
-                                        android:layout_weight="2"
                                         android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:enabled='@{ws230298.checked? false : true}'
                                         android:gravity="center"
                                         android:hint="##"
                                         android:inputType="number"
                                         android:maxLength="2"
                                         android:tag="ws2202"
-                                        android:text='@{ws2202.checked ? ws2302.getText().toString() : ""}'
-                                        android:visibility='@{ws2202.checked? View.VISIBLE : View.GONE}'
+                                        android:text='@{ws230298.checked || ws2202.checked? "" : ws2302.getText().toString()}'
                                         app:maxValue="90"
                                         app:minValue="10"
                                         app:type="range" />
@@ -1173,6 +1176,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
+                                        android:checked="@{ws2202.checked ? false : false}"
                                         android:text="@string/ws2398" />
 
                                 </LinearLayout>
@@ -1186,20 +1190,21 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:visibility="@{ws2203.checked? View.VISIBLE : View.GONE}">
 
                                     <com.edittextpicker.aliazaz.EditTextPicker
                                         android:id="@+id/ws2303"
                                         android:layout_width="0dp"
-                                        android:layout_weight="2"
                                         android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:enabled='@{ws230398.checked? false : true}'
                                         android:gravity="center"
                                         android:hint="##"
                                         android:inputType="number"
                                         android:maxLength="2"
                                         android:tag="ws2203"
-                                        android:text='@{ws2203.checked ? ws2303.getText().toString() : ""}'
-                                        android:visibility='@{ws2203.checked? View.VISIBLE : View.GONE}'
+                                        android:text='@{ws230398.checked || ws2203.checked? "" : ws2303.getText().toString()}'
                                         app:maxValue="90"
                                         app:minValue="10"
                                         app:type="range" />
@@ -1209,7 +1214,9 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
+                                        android:checked="@{ws2203.checked ? false : false}"
                                         android:text="@string/ws2398" />
+
                                 </LinearLayout>
 
                                 <CheckBox

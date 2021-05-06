@@ -548,6 +548,8 @@
                     <EditText
                         android:id="@+id/fw12a"
                         android:layout_width="match_parent"
+                        android:text="@{wraInformation.ws12a}"
+                        android:enabled="false"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:maxLength="11" />

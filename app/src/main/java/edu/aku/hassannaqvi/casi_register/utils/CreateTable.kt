@@ -110,25 +110,25 @@ object CreateTable {
             HealthFacility.HealthFacilityTable.COLUMN_USERNAME + " TEXT " +
             ");"
 
-    const val SQL_CREATE_CHILD_FOLLOW_UP_LIST = "CREATE TABLE " + ChildFollowup.ChildTable.TABLE_NAME + " (" +
-            ChildFollowup.ChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            ChildFollowup.ChildTable.COLUMN_LUID + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS01 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS01A + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS01B + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS09 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS04 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS05 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS08 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS10 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS10A + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS11 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS11A + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS12 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_CS13 + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_FUPDT + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_FUPNO + " TEXT, " +
-            ChildFollowup.ChildTable.COLUMN_DOB + " TEXT " +
+    const val SQL_CREATE_CHILD_FOLLOW_UP_LIST = "CREATE TABLE " + ChildTable.TABLE_NAME + " (" +
+            ChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            ChildTable.COLUMN_LUID + " TEXT, " +
+            ChildTable.COLUMN_CS01 + " TEXT, " +
+            ChildTable.COLUMN_CS01A + " TEXT, " +
+            ChildTable.COLUMN_CS01B + " TEXT, " +
+            ChildTable.COLUMN_CS09 + " TEXT, " +
+            ChildTable.COLUMN_CS04 + " TEXT, " +
+            ChildTable.COLUMN_CS05 + " TEXT, " +
+            ChildTable.COLUMN_CS08 + " TEXT, " +
+            ChildTable.COLUMN_CS10 + " TEXT, " +
+            ChildTable.COLUMN_CS10A + " TEXT, " +
+            ChildTable.COLUMN_CS11 + " TEXT, " +
+            ChildTable.COLUMN_CS11A + " TEXT, " +
+            ChildTable.COLUMN_CS12 + " TEXT, " +
+            ChildTable.COLUMN_CS13 + " TEXT, " +
+            ChildTable.COLUMN_FUPDT + " TEXT, " +
+            ChildTable.COLUMN_FUPNO + " TEXT, " +
+            ChildTable.COLUMN_DOB + " TEXT " +
             ");"
 
     const val SQL_CREATE_WRA_FOLLOW_UP_LIST = "CREATE TABLE " + WraFollowup.WraTable.TABLE_NAME + " (" +
@@ -144,6 +144,7 @@ object CreateTable {
             WraFollowup.WraTable.COLUMN_WS10 + " TEXT, " +
             WraFollowup.WraTable.COLUMN_WS11 + " TEXT, " +
             WraFollowup.WraTable.COLUMN_WS12 + " TEXT, " +
+            WraFollowup.WraTable.COLUMN_WS12A + " TEXT, " +
             WraFollowup.WraTable.COLUMN_WS13 + " TEXT, " +
             WraFollowup.WraTable.COLUMN_FUPDT + " TEXT, " +
             WraFollowup.WraTable.COLUMN_FUPNO + " TEXT " +

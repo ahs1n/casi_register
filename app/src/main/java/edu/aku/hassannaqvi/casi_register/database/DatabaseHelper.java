@@ -312,6 +312,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(WraTable.COLUMN_WS10, wraFollowup.getWs10());
                 values.put(WraTable.COLUMN_WS11, wraFollowup.getWs11());
                 values.put(WraTable.COLUMN_WS12, wraFollowup.getWs12());
+                values.put(WraTable.COLUMN_WS12A, wraFollowup.getWs12a());
                 values.put(WraTable.COLUMN_WS13, wraFollowup.getWs13());
                 values.put(WraTable.COLUMN_FUPDT, wraFollowup.getFupDt());
                 values.put(WraTable.COLUMN_FUPNO, wraFollowup.getFupNo());
