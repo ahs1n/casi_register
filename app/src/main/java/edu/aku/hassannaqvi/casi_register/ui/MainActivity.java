@@ -124,9 +124,66 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi.toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(bi.toolbar);
 
-        /*
-         * Summary
-         * */
+
+        bi.databaseBtn.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
+
+        // Auto download app
+        versionApp = appInfo.getDbHelper().getVersionApp();
+
+        if (versionApp != null) {
+            preVer = appInfo.getVersionName() + "." + appInfo.getVersionCode();
+            newVer = versionApp.getVersionname() + "." + versionApp.getVersioncode();
+            if (appInfo.getVersionCode() < Integer.parseInt(versionApp.getVersioncode())) {
+                bi.lblAppVersion.setVisibility(View.VISIBLE);
+
+                String fileName = CreateTable.DATABASE_NAME.replace(".db", "-New-Apps");
+                file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
+
+                if (file.exists()) {
+                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.newVer)).append(newVer).append("  ").append(getString(R.string.downloaded)));
+                    showDialog(newVer, preVer);
+                } else {
+                    NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
+                    if (networkInfo != null && networkInfo.isConnected()) {
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.appVer)).append(newVer).append("  ").append(getString(R.string.downloading)).append(".."));
+                        downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                        Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
+                        DownloadManager.Request request = new DownloadManager.Request(uri);
+                        request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
+                                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                                .setTitle(getString(R.string.downloading) + getString(R.string.app_name) + getString(R.string.appVer) + newVer);
+
+                        refID = downloadManager.enqueue(request);
+                        SharedStorage.INSTANCE.setDownloadFileRefID(this, refID);
+
+                    } else {
+                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.appVer)).append(newVer).append(getString(R.string.available) + "..\n" + getString(R.string.downError)));
+                    }
+                }
+
+            } else {
+                bi.lblAppVersion.setVisibility(View.GONE);
+                bi.lblAppVersion.setText(null);
+            }
+            registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        }
+
+//        Testing visibility
+        if (Integer.parseInt(appInfo.getVersionName().split("\\.")[0]) > 0) {
+            bi.testing.setVisibility(View.GONE);
+        } else {
+            bi.testing.setVisibility(View.VISIBLE);
+        }
+
+        setUIContent();
+        gettingRegionData();
+    }
+
+    /*
+     * Summary
+     * */
+    private void summaryPopulation() {
+
         Collection<Form> todaysForms = appInfo.getDbHelper().getTodayForms(String.valueOf(SharedStorage.INSTANCE.getCountryCode(this)), sysdateToday);
         Collection<Form> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
 
@@ -210,63 +267,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 .append("\t\t\t\t\t\t\r\n")
                 .append("\t========================================================\r\n");
         bi.recordSummary.setText(rSumText);
-        /*
-         * Summary end
-         * */
-
-
-        bi.databaseBtn.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
-
-        // Auto download app
-        versionApp = appInfo.getDbHelper().getVersionApp();
-
-        if (versionApp != null) {
-            preVer = appInfo.getVersionName() + "." + appInfo.getVersionCode();
-            newVer = versionApp.getVersionname() + "." + versionApp.getVersioncode();
-            if (appInfo.getVersionCode() < Integer.parseInt(versionApp.getVersioncode())) {
-                bi.lblAppVersion.setVisibility(View.VISIBLE);
-
-                String fileName = CreateTable.DATABASE_NAME.replace(".db", "-New-Apps");
-                file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
-
-                if (file.exists()) {
-                    bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.newVer)).append(newVer).append("  ").append(getString(R.string.downloaded)));
-                    showDialog(newVer, preVer);
-                } else {
-                    NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
-                    if (networkInfo != null && networkInfo.isConnected()) {
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.appVer)).append(newVer).append("  ").append(getString(R.string.downloading)).append(".."));
-                        downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                        Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
-                        DownloadManager.Request request = new DownloadManager.Request(uri);
-                        request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
-                                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                                .setTitle(getString(R.string.downloading) + getString(R.string.app_name) + getString(R.string.appVer) + newVer);
-
-                        refID = downloadManager.enqueue(request);
-                        SharedStorage.INSTANCE.setDownloadFileRefID(this, refID);
-
-                    } else {
-                        bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.appVer)).append(newVer).append(getString(R.string.available) + "..\n" + getString(R.string.downError)));
-                    }
-                }
-
-            } else {
-                bi.lblAppVersion.setVisibility(View.GONE);
-                bi.lblAppVersion.setText(null);
-            }
-            registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-        }
-
-//        Testing visibility
-        if (Integer.parseInt(appInfo.getVersionName().split("\\.")[0]) > 0) {
-            bi.testing.setVisibility(View.GONE);
-        } else {
-            bi.testing.setVisibility(View.VISIBLE);
-        }
-
-        setUIContent();
-        gettingRegionData();
     }
 
     @Override
@@ -607,4 +607,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         MainApp.mainInfo = villageMap.get(bi.spVillage.getSelectedItem().toString());
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        summaryPopulation();
+    }
 }
