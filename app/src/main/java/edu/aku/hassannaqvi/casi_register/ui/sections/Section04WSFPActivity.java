@@ -371,6 +371,7 @@ public class Section04WSFPActivity extends AppCompatActivity {
                 bi.fw17.setEnabled(false);
                 bi.fw17.setText(null);
                 bi.fw1801.setEnabled(true);
+                bi.fw1804.setChecked(false);
             } else
                 bi.fw17.setEnabled(true);
         });

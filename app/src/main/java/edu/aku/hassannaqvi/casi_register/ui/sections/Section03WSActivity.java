@@ -352,6 +352,7 @@ public class Section03WSActivity extends AppCompatActivity {
                 bi.ws17.setEnabled(false);
                 bi.ws17.setText(null);
                 bi.ws2001.setEnabled(true);
+                bi.ws2004.setChecked(false);
             } else
                 bi.ws17.setEnabled(true);
         });

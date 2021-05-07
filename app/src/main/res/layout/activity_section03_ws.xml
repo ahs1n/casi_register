@@ -1115,6 +1115,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
+                                    android:tag="ws2201"
                                     android:visibility="@{ws2201.checked? View.VISIBLE : View.GONE}">
 
                                     <com.edittextpicker.aliazaz.EditTextPicker
@@ -1153,6 +1154,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
+                                    android:tag="ws2202"
                                     android:visibility="@{ws2202.checked? View.VISIBLE : View.GONE}">
 
                                     <com.edittextpicker.aliazaz.EditTextPicker
@@ -1191,6 +1193,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
+                                    android:tag="ws2203"
                                     android:visibility="@{ws2203.checked? View.VISIBLE : View.GONE}">
 
                                     <com.edittextpicker.aliazaz.EditTextPicker
