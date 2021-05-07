@@ -1128,7 +1128,6 @@
                                         android:hint="##"
                                         android:inputType="number"
                                         android:maxLength="2"
-                                        android:tag="ws2201"
                                         android:text='@{ws230198.checked || ws2201.checked ? "" : ws2301.getText().toString()}'
                                         app:maxValue="90"
                                         app:minValue="10"
@@ -1138,6 +1137,7 @@
                                         android:id="@+id/ws230198"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
+                                        android:tag="-1"
                                         android:layout_weight="2"
                                         android:checked="@{ws2201.checked ? false : false}"
                                         android:text="@string/ws2398" />
@@ -1148,6 +1148,7 @@
                                     android:id="@+id/ws2202"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:tag="-1"
                                     android:text="@string/ws2202" />
 
                                 <LinearLayout
@@ -1167,7 +1168,6 @@
                                         android:hint="##"
                                         android:inputType="number"
                                         android:maxLength="2"
-                                        android:tag="ws2202"
                                         android:text='@{ws230298.checked || ws2202.checked? "" : ws2302.getText().toString()}'
                                         app:maxValue="90"
                                         app:minValue="10"
@@ -1179,6 +1179,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:checked="@{ws2202.checked ? false : false}"
+                                        android:tag="-1"
                                         android:text="@string/ws2398" />
 
                                 </LinearLayout>
@@ -1206,7 +1207,6 @@
                                         android:hint="##"
                                         android:inputType="number"
                                         android:maxLength="2"
-                                        android:tag="ws2203"
                                         android:text='@{ws230398.checked || ws2203.checked? "" : ws2303.getText().toString()}'
                                         app:maxValue="90"
                                         app:minValue="10"
@@ -1218,6 +1218,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:checked="@{ws2203.checked ? false : false}"
+                                        android:tag="-1"
                                         android:text="@string/ws2398" />
 
                                 </LinearLayout>
