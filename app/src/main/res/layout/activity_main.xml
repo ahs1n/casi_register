@@ -160,108 +160,108 @@
                     style="@style/vlinearlayout"
                     android:layout_margin="20dp">
 
-                        <!--region-->
-                        <androidx.cardview.widget.CardView
+                    <!--region-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="match_parent"
+                            android:layoutDirection="ltr"
+                            android:orientation="horizontal">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layoutDirection="ltr"
-                                android:orientation="horizontal">
+                                android:layout_weight="1"
+                                android:background="@color/colorPrimaryDark"
+                                android:gravity="center"
+                                android:text="@string/region"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimaryDark"
-                                    android:gravity="center"
-                                    android:text="@string/region"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    android:textStyle="bold" />
+                            <Spinner
+                                android:id="@+id/spRegion"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="2" />
 
-                                <Spinner
-                                    android:id="@+id/spRegion"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:layout_weight="2" />
+                        </LinearLayout>
 
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
 
-                        <!--spDistrict-->
-                        <androidx.cardview.widget.CardView
+                    <!--spDistrict-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp">
+                            android:layout_height="match_parent"
+                            android:layoutDirection="ltr"
+                            android:orientation="horizontal">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layoutDirection="ltr"
-                                android:orientation="horizontal">
+                                android:layout_weight="1"
+                                android:background="@color/colorPrimaryDark"
+                                android:gravity="center"
+                                android:text="@string/district"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimaryDark"
-                                    android:gravity="center"
-                                    android:text="@string/district"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    android:textStyle="bold" />
+                            <Spinner
+                                android:id="@+id/spDistrict"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="2" />
 
-                                <Spinner
-                                    android:id="@+id/spDistrict"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:layout_weight="2" />
+                        </LinearLayout>
 
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
 
-                        <!--spUC-->
-                        <androidx.cardview.widget.CardView
+                    <!--spUC-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp">
+                            android:layout_height="match_parent"
+                            android:layoutDirection="ltr"
+                            android:orientation="horizontal">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layoutDirection="ltr"
-                                android:orientation="horizontal">
+                                android:layout_weight="1"
+                                android:background="@color/colorPrimaryDark"
+                                android:gravity="center"
+                                android:text="@string/uc"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:background="@color/colorPrimaryDark"
-                                    android:gravity="center"
-                                    android:text="@string/uc"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    android:textStyle="bold" />
+                            <Spinner
+                                android:id="@+id/spUC"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="2" />
 
-                                <Spinner
-                                    android:id="@+id/spUC"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:layout_weight="2" />
+                        </LinearLayout>
 
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
 
                     <!--spVillages-->
@@ -504,7 +504,8 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:onClick='@{callback::openSpecificActivity}'>
+                        android:onClick='@{callback::openSpecificActivity}'
+                        android:visibility="gone">
 
                         <RelativeLayout
                             android:layout_width="match_parent"

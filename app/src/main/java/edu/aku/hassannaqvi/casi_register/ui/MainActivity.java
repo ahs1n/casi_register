@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -69,6 +70,7 @@ import static edu.aku.hassannaqvi.casi_register.CONSTANTS.FOLLOWUP_FLAG;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.PROJECT_NAME;
 
 public class MainActivity extends AppCompatActivity implements WarningActivityInterface {
 
@@ -137,7 +139,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 bi.lblAppVersion.setVisibility(View.VISIBLE);
 
                 String fileName = CreateTable.DATABASE_NAME.replace(".db", "-New-Apps");
-                file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    file = new File(this.getExternalFilesDir("").getAbsolutePath() + File.separator + PROJECT_NAME);
+                else
+                    file = new File(Environment.getExternalStorageDirectory() + File.separator + PROJECT_NAME);
 
                 if (file.exists()) {
                     bi.lblAppVersion.setText(new StringBuilder(getString(R.string.app_name) + getString(R.string.newVer)).append(newVer).append("  ").append(getString(R.string.downloaded)));
@@ -149,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                         Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
                         DownloadManager.Request request = new DownloadManager.Request(uri);
-                        request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
+                        request.setDestinationInExternalPublicDir(file.getAbsolutePath(), versionApp.getPathname())
                                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                                 .setTitle(getString(R.string.downloading) + getString(R.string.app_name) + getString(R.string.appVer) + newVer);
 
