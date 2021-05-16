@@ -1130,7 +1130,7 @@
                                         android:maxLength="2"
                                         android:text='@{ws230198.checked || ws2201.checked ? "" : ws2301.getText().toString()}'
                                         app:maxValue="90"
-                                        app:minValue="10"
+                                        app:minValue="5"
                                         app:type="range" />
 
                                     <CheckBox
@@ -1170,7 +1170,7 @@
                                         android:maxLength="2"
                                         android:text='@{ws230298.checked || ws2202.checked? "" : ws2302.getText().toString()}'
                                         app:maxValue="90"
-                                        app:minValue="10"
+                                        app:minValue="5"
                                         app:type="range" />
 
                                     <CheckBox
@@ -1209,7 +1209,7 @@
                                         android:maxLength="2"
                                         android:text='@{ws230398.checked || ws2203.checked? "" : ws2303.getText().toString()}'
                                         app:maxValue="90"
-                                        app:minValue="10"
+                                        app:minValue="5"
                                         app:type="range" />
 
                                     <CheckBox

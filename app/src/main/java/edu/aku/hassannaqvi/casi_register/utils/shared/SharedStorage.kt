@@ -60,5 +60,4 @@ object SharedStorage : SharedStorageBase() {
     fun getDownloadFileRefID(context: Context): Long {
         return get(context, DOWNLOAD_FILE_REFID, 0) as Long
     }
-
 }

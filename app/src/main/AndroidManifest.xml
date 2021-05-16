@@ -67,6 +67,7 @@
             android:name=".ui.MainActivity"
             android:exported="false"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.sections.Section01CS1Activity"
