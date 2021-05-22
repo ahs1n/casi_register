@@ -38,7 +38,6 @@ import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup.WraTable;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 import edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt;
-import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
@@ -1046,7 +1045,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<String> getLMS(int age, int gender, String catA, String catB) {
         SQLiteDatabase db = this.getReadableDatabase();
-
+        Log.d(TAG, "getLMS: " + age + " | " + gender + " | " + catA + " | " + catB);
         Cursor c = db.rawQuery("SELECT l,m,s " +
                         "FROM " + ZScoreTable.TABLE_NAME + " " +
                         "WHERE " + ZScoreTable.COLUMN_AGE + "=? " +
@@ -1060,8 +1059,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (c.moveToNext()) {
             lms = new ArrayList<>();
             lms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_L)));
+            Log.d(TAG, "getLMS: L -> " + c.getString(c.getColumnIndex(ZScoreTable.COLUMN_L)));
             lms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_M)));
+            Log.d(TAG, "getLMS: M -> " + c.getString(c.getColumnIndex(ZScoreTable.COLUMN_M)));
             lms.add(c.getString(c.getColumnIndex(ZScoreTable.COLUMN_S)));
+            Log.d(TAG, "getLMS: S -> " + c.getString(c.getColumnIndex(ZScoreTable.COLUMN_S)));
 
         }
         return lms;

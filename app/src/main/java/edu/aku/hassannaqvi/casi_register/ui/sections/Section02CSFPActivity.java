@@ -499,7 +499,7 @@ public class Section02CSFPActivity extends AppCompatActivity {
                 && Validator.emptyTextBox(this, bi.fc22)
                 && Validator.emptyTextBox(this, bi.fc23)
         ) {
-            int ageinmonths = Integer.parseInt(bi.fc1702.getText().toString()) + Integer.parseInt(bi.fc1701.getText().toString());
+            int ageinmonths = Integer.parseInt(bi.fc1702.getText().toString()) + (Integer.parseInt(bi.fc1701.getText().toString()) * 12);
             int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
             int gender = item.getCs13().equals("1") ? 1 : item.getCs13().equals("2") ? 2 : 0;
 

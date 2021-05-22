@@ -50,10 +50,10 @@ import edu.aku.hassannaqvi.casi_register.utils.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
 
 import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
 import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
+import static edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt.ageInDaysByDOB;
 
 public class Section01CS1Activity extends AppCompatActivity implements EndSectionInterface, WarningActivityInterface {
 
@@ -525,8 +525,7 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
         AgeModel age;
         if (localDate != null)
             age = DateRepository.Companion.getCalculatedAge(localDate, year, month, day);
-        else
-            age = DateRepository.Companion.getCalculatedAge(year, month, day);
+        else age = DateRepository.Companion.getCalculatedAge(year, month, day);
         if (age == null) {
             bi.cs1403.setError("Invalid date!");
             dtFlag = false;
@@ -558,11 +557,17 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
                 && Validator.emptyTextBox(this, bi.cs21)
                 && Validator.emptyTextBox(this, bi.cs22)
         ) {
-            int ageinmonths = Integer.parseInt(bi.cs1502.getText().toString()) + Integer.parseInt(bi.cs1501.getText().toString());
+           /* int ageinmonths = Integer.parseInt(bi.cs1502.getText().toString()) + (Integer.parseInt(bi.cs1501.getText().toString())*12);
+            Log.d("TAG", "CheckZScore: "+ ageinmonths);
             int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
+            Log.d("TAG", "CheckZScore: "+ ageindays);*/
+
             int gender = bi.cs1301.isChecked() ? 1 : bi.cs1302.isChecked() ? 2 : 0;
 
-            ZScore zs = new ZScore(ageindays, gender);
+            //DOB(format): dd-MM-yyyy
+            long ageindays = ageInDaysByDOB(bi.cs1401.getText().toString() + "-" + bi.cs1402.getText().toString() + "-" + bi.cs1403.getText().toString());
+
+            ZScore zs = new ZScore((int) ageindays, gender);
             double HLAZ = zs.getZScore_HLAZ(bi.cs21.getText().toString());
             double WAZ = zs.getZScore_WAZ(bi.cs22.getText().toString());
             double WHZ = zs.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
