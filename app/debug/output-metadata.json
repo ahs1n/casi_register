@@ -1,19 +1,17 @@
 {
-  "version": 1,
+  "version": 2,
   "artifactType": {
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "edu.aku.hassannaqvi.uen_tmk_el",
-  "variantName": "debug",
+  "applicationId": "edu.aku.hassannaqvi.casi_register",
+  "variantName": "processDebugResources",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "properties": [],
-      "versionCode": 344,
-      "versionName": "0.1",
-      "enabled": true,
+      "versionCode": 1056,
+      "versionName": "1.39",
       "outputFile": "app-debug.apk"
     }
   ]

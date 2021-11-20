@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/casi_register/app/src/main/res/layout/activity_followup.xml" value="0.37552083333333336" />
+        <entry key="..\:/Android/casi_register/app/src/main/res/layout/activity_main.xml" value="0.37552083333333336" />
+        <entry key="..\:/Android/casi_register/app/src/main/res/layout/activity_section01_cs1.xml" value="0.3566666666666667" />
+        <entry key="..\:/Android/casi_register/app/src/main/res/layout/activity_section01_cs2.xml" value="0.37552083333333336" />
+        <entry key="..\:/Android/casi_register/app/src/main/res/layout/activity_section02_csfp.xml" value="0.3566666666666667" />
+        <entry key="..\:/Android/casi_register/app/src/main/res/layout/activity_section04_wsfp.xml" value="0.17135416666666667" />
+        <entry key="..\:/Android/casi_register/app/src/main/res/layout/fragment_children_followup.xml" value="0.37552083333333336" />
+        <entry key="..\:/Android/casi_register/app/src/main/res/menu/item_menu.xml" value="0.37552083333333336" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

@@ -1,5 +1,11 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.DAYS_IN_A_MONTH;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -48,12 +54,6 @@ import edu.aku.hassannaqvi.casi_register.utils.WarningActivityInterface;
 import edu.aku.hassannaqvi.casi_register.utils.datecollection.AgeModel;
 import edu.aku.hassannaqvi.casi_register.utils.datecollection.DateRepository;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
-
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
-import static edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt.ageInDaysByDOB;
 
 public class Section01CS1Activity extends AppCompatActivity implements EndSectionInterface, WarningActivityInterface {
 
@@ -565,9 +565,11 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             int gender = bi.cs1301.isChecked() ? 1 : bi.cs1302.isChecked() ? 2 : 0;
 
             //DOB(format): dd-MM-yyyy
-            long ageindays = ageInDaysByDOB(bi.cs1401.getText().toString() + "-" + bi.cs1402.getText().toString() + "-" + bi.cs1403.getText().toString());
+            //long ageindays = ageInDaysByDOB(bi.cs1401.getText().toString() + "-" + bi.cs1402.getText().toString() + "-" + bi.cs1403.getText().toString());
+            long ageinmonths = Integer.parseInt(bi.cs1501.getText().toString()) * 12 + Integer.parseInt(bi.cs1502.getText().toString());
+            int ageindays = (int) Math.floor(ageinmonths * DAYS_IN_A_MONTH);
 
-            ZScore zs = new ZScore((int) ageindays, gender);
+            ZScore zs = new ZScore(ageindays, gender);
             double HLAZ = zs.getZScore_HLAZ(bi.cs21.getText().toString());
             double WAZ = zs.getZScore_WAZ(bi.cs22.getText().toString());
             double WHZ = zs.getZScore_WHZ(bi.cs22.getText().toString(), bi.cs21.getText().toString());
