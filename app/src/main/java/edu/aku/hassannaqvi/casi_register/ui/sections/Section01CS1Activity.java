@@ -32,6 +32,7 @@ import org.threeten.bp.ZoneId;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -351,6 +352,12 @@ public class Section01CS1Activity extends AppCompatActivity implements EndSectio
             bi.cs10.setText(result);
         } else
             bi.cs10.setText(concatID.concat("0001"));
+
+
+        // Set max year for current year
+        Calendar cal = Calendar.getInstance();
+        // cal.add(Calendar.MONTH, -6);
+        bi.cs1403.setMaxvalue(Float.parseFloat(String.valueOf(cal.get(Calendar.YEAR))));
 
     }
 
