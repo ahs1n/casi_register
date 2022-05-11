@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import edu.aku.hassannaqvi.casi_register.R
+import edu.aku.hassannaqvi.casi_register.core.MainApp
 import edu.aku.hassannaqvi.casi_register.databinding.ItemChildLayoutBinding
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup
 import edu.aku.hassannaqvi.casi_register.utils.convertStringToUpperCase
@@ -27,16 +28,19 @@ class SelectedWraViewHolder(private val bi: ItemChildLayoutBinding) :
         val imageRes: Int = R.drawable.ic_mother
         bi.scrDate.text = item.ws08
         bi.icon2.setImageResource(R.drawable.ic_husband)
+        val db = MainApp.appInfo.dbHelper
+        bi.fDate.text = db.getMWRALastFollowup(item.ws10) ?: "No follow-up done"
         val flagImage: Int
 
-        if (item.fupDt == StringUtils.EMPTY) bi.parentLayout.isEnabled = false else bi.followupDT.text = item.fupDt
+        if (item.fupDt == StringUtils.EMPTY) bi.parentLayout.isEnabled =
+            false else bi.followupDT.text = item.fupDt
         if (item.wraTableDataExist) {
             bi.parentLayout.isEnabled = false
             flagImage = R.drawable.ic_complete_star
         } else flagImage = R.drawable.ic_incomplete_star
 
         Glide.with(this.itemView.context)
-                .asBitmap()
+            .asBitmap()
                 .load(imageRes)
                 .into(bi.childImg)
         Glide.with(this.itemView.context)

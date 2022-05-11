@@ -1,5 +1,23 @@
 package edu.aku.hassannaqvi.casi_register.database;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
+import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_ALTER_HEALTHFACILITY;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_ALTER_VILLAGES;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_CHILD_FOLLOW_UP_LIST;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_WRA_FOLLOW_UP_LIST;
+import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZSTANDARD;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -13,10 +31,15 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.casi_register.CONSTANTS;
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract.FormsTable;
@@ -38,24 +61,6 @@ import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.models.WraFollowup.WraTable;
 import edu.aku.hassannaqvi.casi_register.models.ZStandard;
 import edu.aku.hassannaqvi.casi_register.utils.DateUtilsKt;
-
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_FOLLOWUP_TYPE;
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.CHILD_TYPE;
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_FOLLOWUP_TYPE;
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
-import static edu.aku.hassannaqvi.casi_register.contracts.ZStandardContract.ZScoreTable;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_NAME;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.DATABASE_VERSION;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_ALTER_HEALTHFACILITY;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_ALTER_VILLAGES;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_CHILD_FOLLOW_UP_LIST;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_FORMS;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_HEALTHFACILITY;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_USERS;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VERSIONAPP;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_VILLAGES;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_WRA_FOLLOW_UP_LIST;
-import static edu.aku.hassannaqvi.casi_register.utils.CreateTable.SQL_CREATE_ZSTANDARD;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -1412,5 +1417,100 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             mCursor.close();
         }
         return form;
+    }
+
+
+    public String getChildLastFollowup(String cs10) throws ParseException {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = FormsTable.COLUMN_REG_NO + "=? AND " +
+                FormsTable.COLUMN_FORM_TYPE + "=? AND " +
+                FormsTable.COLUMN_ISTATUS + "=? ";
+        String[] whereArgs = {cs10, CONSTANTS.CHILD_FOLLOWUP_TYPE, "1"};
+        String groupBy = null;
+        String having = null;
+        Form fm;
+        String orderBy = FormsTable.COLUMN_ID + " DESC";
+        ArrayList<String> fupDates = new ArrayList<>();
+        fupDates.add("00-00-0000");
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+
+            );
+            while (c.moveToNext()) {
+                fm = new Form().Hydrate(c, CHILD_FOLLOWUP_TYPE);
+
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+                cal.setTime(sdf.parse(fm.getFc08()));// all done
+                sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                fupDates.add(sdf.format(cal.getTime()));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                if (!db.isOpen()) db.close();
+            }
+        }
+        Collections.sort(fupDates);
+        return fupDates.get(fupDates.size() - 1);
+
+    }
+
+    public String getMWRALastFollowup(String ws10) throws ParseException {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = FormsTable.COLUMN_REG_NO + "=? AND " +
+                FormsTable.COLUMN_FORM_TYPE + "=? AND " +
+                FormsTable.COLUMN_ISTATUS + "=? ";
+        String[] whereArgs = {ws10, CONSTANTS.WRA_FOLLOWUP_TYPE, "1"};
+        String groupBy = null;
+        String having = null;
+        Form fm;
+        String orderBy = FormsTable.COLUMN_ID + " DESC";
+        ArrayList<String> fupDates = new ArrayList<>();
+        fupDates.add("00-00-0000");
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+
+            );
+            while (c.moveToNext()) {
+                fm = new Form().Hydrate(c, WRA_FOLLOWUP_TYPE);
+
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+                cal.setTime(sdf.parse(fm.getFw08()));// all done
+                sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                fupDates.add(sdf.format(cal.getTime()));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                if (!db.isOpen()) db.close();
+            }
+        }
+        Collections.sort(fupDates);
+        return fupDates.get(fupDates.size() - 1);
+
     }
 }

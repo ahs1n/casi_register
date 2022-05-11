@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -44,20 +45,20 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/_2sdp">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="@dimen/_65sdp"
                         android:layout_height="match_parent">
 
                         <ImageView
                             android:id="@+id/childImg"
-                            android:layout_width="@dimen/_65sdp"
-                            android:layout_height="@dimen/_55sdp"
-                            android:paddingStart="@dimen/_12sdp"
-                            android:paddingEnd="@dimen/_1sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:padding="12dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/ic_boy" />
 
-                        <TextView
+                        <!--         <TextView
                             android:id="@+id/childId"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -71,8 +72,8 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@color/colorPrimaryLight"
                             android:textSize="21sp"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
+                            android:textStyle="bold" />-->
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -83,30 +84,108 @@
                         android:paddingStart="@dimen/_3sdp"
                         android:paddingEnd="@dimen/_1sdp">
 
-                        <TextView
-                            android:id="@+id/name"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_2sdp"
-                            android:padding="@dimen/_2sdp"
-                            android:text="Name"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="18sp" />
+                            android:layout_gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_1sdp"
+                            android:paddingStart="@dimen/_3sdp"
+                            android:paddingEnd="@dimen/_1sdp">
+
+                            <TextView
+                                android:id="@+id/name"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_2sdp"
+                                android:padding="@dimen/_2sdp"
+                                android:text="Name"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/childId"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/childImg"
+                                android:layout_marginBottom="@dimen/_2sdp"
+                                android:layout_weight="1"
+                                android:padding="@dimen/_2sdp"
+                                android:text="ID-1000001"
+                                android:textAlignment="textEnd"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/colorPrimaryLight"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_27sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
                             android:gravity="center"
+                            android:background="@color/grayLight"
                             android:orientation="horizontal"
                             android:padding="@dimen/_2sdp">
+
+                            <TextView
+                                android:id="@+id/fRound"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorPrimary"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:text="01"
+                                android:textColor="#7fFFFFFF"
+                                android:textSize="32sp"
+                                android:visibility="gone"
+                                tools:visibility="gone" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:background="@color/white"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:includeFontPadding="false"
+                                    android:text="@string/last_followup"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="@dimen/_7sdp" />
+
+                                <TextView
+                                    android:id="@+id/fDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:textColor="#7f000051"
+                                    android:includeFontPadding="false"
+                                    android:textSize="24sp" />
+
+
+                            </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:paddingStart="4dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/screening"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="@dimen/_7sdp">
+
+                                </TextView>
 
                                 <TextView
                                     android:id="@+id/scrDate"
@@ -114,16 +193,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="01-02-2021"
                                     android:textColor="#7f000051"
-                                    android:textSize="18sp">
-
-                                </TextView>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Screening"
-                                    android:textColor="@color/colorPrimaryDark"
-                                    android:textSize="@dimen/_7sdp">
+                                    android:textSize="13sp">
 
                                 </TextView>
 
@@ -132,24 +202,20 @@
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="  /  "
-                                android:textColor="#FF000000"
-                                android:textSize="@dimen/_20sdp" />
+                                android:layout_height="match_parent"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:includeFontPadding="false"
+                                android:text=" | "
+                                android:textColor="#7f000000"
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="gone" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
+                                android:visibility="gone"
                                 android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/followupDT"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Not yet done"
-                                    android:textColor="#7f000051"
-                                    android:textSize="18sp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -157,6 +223,15 @@
                                     android:text="Followup"
                                     android:textColor="@color/colorPrimaryDark"
                                     android:textSize="@dimen/_7sdp" />
+
+                                <TextView
+                                    android:id="@+id/followupDT"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Not yet done"
+                                    android:textColor="#7f000051"
+                                    android:textSize="13sp" />
+
 
                             </LinearLayout>
                         </LinearLayout>

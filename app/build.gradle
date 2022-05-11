@@ -43,6 +43,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            resValue("string", "DB_PASSWORD_casi_register.db", "VaLu@b1ePeRcE!V3")
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -137,4 +140,7 @@ dependencies {
 
     //Cat loading bar for saving ZScore
     implementation 'com.roger.catloadinglibrary:catloadinglibrary:1.0.9'
+
+    // Android Database Browser
+    debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
 }

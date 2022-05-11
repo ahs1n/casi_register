@@ -797,5 +797,9 @@
     <string name="form_status">Статуси шакл</string>
     <string name="device_info">Маълумот дар бораи дастгоҳ</string>
     <string name="unsynced_form">Шаклҳои ҳамоҳангнашуда</string>
+    <string name="last_followup">Последнее последующее наблюдение</string>
+    <string name="screening">Скриниг</string>
+    <string name="enter_mwra_name_to_filter">Введите имя ЖРВ для фильтрации</string>
+    <string name="enter_child_name_to_filter">Введите имя ребенка для фильтрации</string>
 
 </resources>
