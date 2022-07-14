@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.casi_register.models
 
 import android.database.Cursor
 import android.provider.BaseColumns
-import edu.aku.hassannaqvi.casi_register.CONSTANTS
 import edu.aku.hassannaqvi.casi_register.contracts.FormsContract
 import edu.aku.hassannaqvi.casi_register.utils.getDOB
 import org.apache.commons.lang3.StringUtils
@@ -84,7 +83,29 @@ class ChildFollowup : Serializable {
         cs13 = jsonObject.getString(ChildTable.COLUMN_CS13)
         fupDt = jsonObject.getString(ChildTable.COLUMN_FUPDT)
         fupNo = jsonObject.getString(ChildTable.COLUMN_FUPNO)
-        dob = JSONObject(jsonObject.getString(ChildTable.COLUMN_DOB)).getString("date").substring(0, "yyyy-mm-dd".length)
+        dob = JSONObject(jsonObject.getString(ChildTable.COLUMN_DOB)).getString("date")
+            .substring(0, "yyyy-mm-dd".length)
+        return this
+    }
+
+    fun add(fup: ChildFollowup): ChildFollowup {
+        cs01 = fup.cs01
+        lUID = fup.lUID
+        cs01a = fup.cs01a
+        cs01b = fup.cs01b
+        cs04 = fup.cs04
+        cs05 = fup.cs05
+        cs08 = fup.cs08
+        cs09 = fup.cs09
+        cs10 = fup.cs10
+        cs10a = fup.cs10a
+        cs11 = fup.cs11
+        cs11a = fup.cs11a
+        cs12 = fup.cs12
+        cs13 = fup.cs13
+        fupDt = fup.fupDt
+        fupNo = fup.fupNo
+        dob = fup.dob
         return this
     }
 

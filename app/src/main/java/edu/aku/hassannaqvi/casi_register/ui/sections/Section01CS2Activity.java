@@ -1,5 +1,10 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
+import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.openWarningActivity02;
+import static edu.aku.hassannaqvi.casi_register.utils.JSONUtilsKt.mergeJSONObjects;
+
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -25,16 +30,8 @@ import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection01Cs2Binding;
 import edu.aku.hassannaqvi.casi_register.models.ChildFollowup;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
-import edu.aku.hassannaqvi.casi_register.utils.EndSectionInterface;
 import edu.aku.hassannaqvi.casi_register.utils.WarningActivityInterface;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
-
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
-import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
-import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.contextEndActivity;
-import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.openWarningActivity;
-import static edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt.openWarningActivity02;
-import static edu.aku.hassannaqvi.casi_register.utils.JSONUtilsKt.mergeJSONObjects;
 
 public class Section01CS2Activity extends AppCompatActivity implements WarningActivityInterface {
 
@@ -68,7 +65,9 @@ public class Section01CS2Activity extends AppCompatActivity implements WarningAc
         saveDraft();
         if (updateDB()) {
             if (SharedStorage.INSTANCE.getCountryCode(this) == 3) {
-                openWarningActivity02(this, 1, new ChildFollowup(form), getString(R.string.warning), getString(R.string.followUpStartFromScreening), getString(R.string.yes), getString(R.string.no));
+                ChildFollowup fup = new ChildFollowup(form);
+                db.addChildFollowups(fup);
+                openWarningActivity02(this, 1, fup, getString(R.string.warning), getString(R.string.followUpStartFromScreening), getString(R.string.yes), getString(R.string.no));
             } else {
                 finish();
                 gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);

@@ -1,5 +1,11 @@
 package edu.aku.hassannaqvi.casi_register.ui.sections;
 
+import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
+import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
+import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -29,15 +35,10 @@ import edu.aku.hassannaqvi.casi_register.database.DatabaseHelper;
 import edu.aku.hassannaqvi.casi_register.databinding.ActivitySection03WsBinding;
 import edu.aku.hassannaqvi.casi_register.models.Form;
 import edu.aku.hassannaqvi.casi_register.models.HealthFacility;
+import edu.aku.hassannaqvi.casi_register.models.WraFollowup;
 import edu.aku.hassannaqvi.casi_register.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.casi_register.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.casi_register.utils.shared.SharedStorage;
-
-import static edu.aku.hassannaqvi.casi_register.CONSTANTS.WRA_TYPE;
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo;
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.form;
-import static edu.aku.hassannaqvi.casi_register.core.MainApp.mainInfo;
-import static edu.aku.hassannaqvi.casi_register.utils.ActivityExtKt.gotoActivityWithSerializable;
 
 public class Section03WSActivity extends AppCompatActivity {
 
@@ -45,12 +46,16 @@ public class Section03WSActivity extends AppCompatActivity {
     List<String> facilityName;
     Map<String, String> facilityMap;
     String concatID;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section03_ws);
         bi.setCallback(this);
+        db = MainApp.appInfo.getDbHelper();
+
+
         this.setTitle(getString(R.string.wraScreening));
         setListeners();
         setUIContent();
@@ -114,6 +119,8 @@ public class Section03WSActivity extends AppCompatActivity {
         if (!formValidation()) return;
         SaveDraft();
         if (UpdateDB()) {
+            WraFollowup fup = new WraFollowup(form);
+            db.addWraFollowups(fup);
             finish();
             gotoActivityWithSerializable(this, EndingActivity.class, "complete", true);
         } else {
@@ -123,7 +130,6 @@ public class Section03WSActivity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-        DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addForm(form);
         form.set_ID(String.valueOf(updcount));
         if (updcount > 0) {

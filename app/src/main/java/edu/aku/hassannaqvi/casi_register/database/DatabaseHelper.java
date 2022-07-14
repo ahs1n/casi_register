@@ -294,6 +294,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+    public int addChildFollowups(ChildFollowup fup) throws SQLException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int insertCount = 0;
+
+
+        ChildFollowup chFollowup = new ChildFollowup();
+        chFollowup.add(fup);
+        ContentValues values = new ContentValues();
+
+        values.put(ChildFollowup.ChildTable.COLUMN_LUID, chFollowup.getLUID());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS01, chFollowup.getCs01());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS01A, chFollowup.getCs01a());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS01B, chFollowup.getCs01b());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS09, chFollowup.getCs09());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS04, chFollowup.getCs04());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS05, chFollowup.getCs05());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS08, chFollowup.getCs08());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS10, chFollowup.getCs10());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS10A, chFollowup.getCs10a());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS11, chFollowup.getCs11());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS11A, chFollowup.getCs11a());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS12, chFollowup.getCs12());
+        values.put(ChildFollowup.ChildTable.COLUMN_CS13, chFollowup.getCs13());
+        values.put(ChildFollowup.ChildTable.COLUMN_FUPDT, chFollowup.getFupDt());
+        values.put(ChildFollowup.ChildTable.COLUMN_FUPNO, chFollowup.getFupNo());
+        values.put(ChildTable.COLUMN_DOB, chFollowup.getDob());
+        long rowID = db.insertOrThrow(ChildFollowup.ChildTable.TABLE_NAME, null, values);
+        if (rowID != -1) insertCount++;
+
+
+        db.close();
+
+        return insertCount;
+    }
+
     public int wraFollowups(JSONArray wraList) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(WraTable.TABLE_NAME, null, null);
@@ -333,6 +368,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+    public int addWraFollowups(WraFollowup fup) throws SQLException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int insertCount = 0;
+
+        WraFollowup wraFollowup = new WraFollowup();
+        wraFollowup.add(fup);
+        ContentValues values = new ContentValues();
+
+        values.put(WraTable.COLUMN_LUID, wraFollowup.getLUID());
+        values.put(WraTable.COLUMN_WS01, wraFollowup.getWs01());
+        values.put(WraTable.COLUMN_WS01A, wraFollowup.getWs01a());
+        values.put(WraTable.COLUMN_WS01B, wraFollowup.getWs01b());
+        values.put(WraTable.COLUMN_WS09, wraFollowup.getWs09());
+        values.put(WraTable.COLUMN_WS04, wraFollowup.getWs04());
+        values.put(WraTable.COLUMN_WS05, wraFollowup.getWs05());
+        values.put(WraTable.COLUMN_WS08, wraFollowup.getWs08());
+        values.put(WraTable.COLUMN_WS10, wraFollowup.getWs10());
+        values.put(WraTable.COLUMN_WS11, wraFollowup.getWs11());
+        values.put(WraTable.COLUMN_WS12, wraFollowup.getWs12());
+        values.put(WraTable.COLUMN_WS12A, wraFollowup.getWs12a());
+        values.put(WraTable.COLUMN_WS13, wraFollowup.getWs13());
+        values.put(WraTable.COLUMN_FUPDT, wraFollowup.getFupDt());
+        values.put(WraTable.COLUMN_FUPNO, wraFollowup.getFupNo());
+        long rowID = db.insertOrThrow(WraTable.TABLE_NAME, null, values);
+        if (rowID != -1) insertCount++;
+
+
+        return insertCount;
+    }
 
     //Add Functions
     public Long addForm(Form form) {

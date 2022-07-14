@@ -182,6 +182,7 @@ fun AppCompatActivity.openWarningActivity02(
     bi.btnNo.setOnClickListener {
         dialog.dismiss()
         val warningActivity = this as WarningActivityInterface
+
         warningActivity.callWarningActivity(id, null)
     }
 }

@@ -73,6 +73,26 @@ class WraFollowup : Serializable {
         return this
     }
 
+    fun add(fup: WraFollowup): WraFollowup {
+
+        ws01 = fup.ws01
+        lUID = fup.lUID
+        ws01a = fup.ws01a
+        ws01b = fup.ws01b
+        ws04 = fup.ws04
+        ws05 = fup.ws05
+        ws08 = fup.ws08
+        ws09 = fup.ws09
+        ws10 = fup.ws10
+        ws11 = fup.ws11
+        ws12 = fup.ws12
+        ws12a = fup.ws12a
+        ws13 = fup.ws13
+        fupDt = fup.fupDt
+        fupNo = fup.fupNo
+        return this
+    }
+
     fun hydrate(cursor: Cursor): WraFollowup {
         lUID = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_LUID))
         ws01 = cursor.getString(cursor.getColumnIndex(WraTable.COLUMN_WS01))
