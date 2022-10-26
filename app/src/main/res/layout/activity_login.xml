@@ -123,7 +123,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="?attr/actionBarSize"
                                     android:layout_gravity="center_horizontal"
-
+                                    android:text="конунова"
                                     android:background="@color/white"
                                     android:drawableStart="@drawable/ic_username"
                                     android:drawablePadding="8dp"
@@ -163,6 +163,7 @@
 
                                         <EditText
                                             android:id="@+id/password"
+                                            android:text="конун465"
                                             android:layout_width="0dp"
                                             android:layout_height="match_parent"
                                             android:layout_gravity="center_horizontal"
