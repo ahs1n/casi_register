@@ -801,5 +801,8 @@
     <string name="screening">Скриниг</string>
     <string name="enter_mwra_name_to_filter">Введите имя ЖРВ для фильтрации</string>
     <string name="enter_child_name_to_filter">Введите имя ребенка для фильтрации</string>
+    <string name="load_more">Бештар бор кунед</string>
+    <string name="min_length_error">Дарозии ҳадди аққал %d аломат</string>
+    <string name="enter_search_text_error">Лутфан матнро барои ҷустуҷӯ ворид кунед</string>
 
 </resources>

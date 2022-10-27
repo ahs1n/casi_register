@@ -39,6 +39,8 @@ public class MainApp extends Application {
     public static String[] downloadData;
     public static Villages mainInfo;
 
+    public static boolean IS_RECORD_SAVE;
+
 
     @Override
     public void onCreate() {

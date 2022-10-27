@@ -798,6 +798,9 @@
     <string name="screening">Screening</string>
     <string name="enter_mwra_name_to_filter">Enter MWRA name to filter</string>
     <string name="enter_child_name_to_filter">Enter Child name to filter</string>
+    <string name="load_more">Load more</string>
+    <string name="min_length_error">Minimum length %d characters</string>
+    <string name="enter_search_text_error">Please enter text to search</string>
 
 
 </resources>

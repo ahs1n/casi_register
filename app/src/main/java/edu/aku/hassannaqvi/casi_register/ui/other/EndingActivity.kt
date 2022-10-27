@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.casi_register.R
+import edu.aku.hassannaqvi.casi_register.core.MainApp
 import edu.aku.hassannaqvi.casi_register.core.MainApp.appInfo
 import edu.aku.hassannaqvi.casi_register.core.MainApp.form
 import edu.aku.hassannaqvi.casi_register.databinding.ActivityEndingBinding
@@ -15,13 +16,15 @@ import java.util.*
 class EndingActivity : AppCompatActivity() {
 
     lateinit var bi: ActivityEndingBinding
+    var check : Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending)
         bi.callback = this
         this.title = getString(R.string.app_name)
 
-        val check = intent.getBooleanExtra("complete", false)
+//        val check = intent.getBooleanExtra("complete", false)
+        check = intent.getBooleanExtra("complete", false)
         if (check) {
             bi.istatusa.isEnabled = true
             bi.istatusb.isEnabled = false
@@ -37,6 +40,10 @@ class EndingActivity : AppCompatActivity() {
         if (!formValidation()) return
         saveDraft()
         if (updateDB()) {
+
+            if(check)
+                MainApp.IS_RECORD_SAVE = true
+
             finish()
         } else {
             Toast.makeText(this, getString(R.string.updatingError), Toast.LENGTH_SHORT).show()

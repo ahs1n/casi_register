@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "57987842645",
+    "project_id": "casi-register",
+    "storage_bucket": "casi-register.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57987842645:android:48326c008ee68585c3cadc",
+        "android_client_info": {
+          "package_name": "edu.aku.hassannaqvi.casi_register"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57987842645-i3eg1e9sdi25o1l052ggqj1on9sjf1tb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv28mVCuDo0UzSVbmJ-9gYR8mQAWJcchQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57987842645-i3eg1e9sdi25o1l052ggqj1on9sjf1tb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

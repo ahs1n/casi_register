@@ -1464,7 +1464,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Form getFollowUpFormStatus(@NotNull String country, @NotNull Identification identification, String reg_no, String followUpType) {
         SQLiteDatabase db = this.getReadableDatabase();
         Form form = null;
-        Cursor mCursor = db.rawQuery(
+        try (Cursor mCursor = db.rawQuery(
                 String.format("select * from %s WHERE %s =? AND %s =? AND %s =? AND %s =? AND %s =? AND %s =? AND %s =?",
                         FormsTable.TABLE_NAME,
                         FormsTable.COLUMN_COUNTRY_CODE,
@@ -1475,10 +1475,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         FormsTable.COLUMN_FORM_TYPE,
                         FormsTable.COLUMN_ISTATUS
                 ),
-                new String[]{country, identification.getDistrict(), identification.getUc(), identification.getVillage(), reg_no, followUpType, "1"}, null);
-        if (mCursor != null && mCursor.moveToFirst()) {
-            form = new Form().Hydrate(mCursor, followUpType);
-            mCursor.close();
+                new String[]{country, identification.getDistrict(), identification.getUc(), identification.getVillage(), reg_no, followUpType, "1"}, null)) {
+
+            while (mCursor.moveToNext()) {
+                form = new Form().Hydrate(mCursor, followUpType);
+            }
+        } finally {
+            if (!db.isOpen()) db.close();
         }
         return form;
     }

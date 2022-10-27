@@ -10,9 +10,9 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 1136,
+      "versionCode": 1308,
       "versionName": "1.39",
-      "outputFile": "app-release.apk"
+      "outputFile": "casi_register.apk"
     }
   ]
 }
