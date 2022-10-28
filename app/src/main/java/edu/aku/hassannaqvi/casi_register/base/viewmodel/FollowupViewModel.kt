@@ -56,7 +56,8 @@ class FollowupViewModel(internal val repository: GeneralRepository) : ViewModel(
                         children.forEachIndexed { index, item ->
                             val form = repository.getLocalDBFollowupFormList(country, identification, item.cs10, CONSTANTS.CHILD_FOLLOWUP_TYPE)
                             form?.let {
-                                if (item.cs01 != TAJIKISTAN.toString()) {
+//                                if (item.cs01 != TAJIKISTAN.toString()) {
+                                if (item.cs01 == TAJIKISTAN.toString()) {
                                     item.childTableDataExist = true
                                     children[index] = item
                                 }
