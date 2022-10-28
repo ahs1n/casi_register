@@ -4,6 +4,7 @@ import android.content.Context
 import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -48,7 +49,7 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup),
 
     private var minimumSearchLength: Int = 3
     private var loadItemsCount: Int = 10
-
+    private var handler = Handler(Looper.getMainLooper())
     val country: String by lazy {
         context?.let { SharedStorage.getCountryCode(it).toString() } ?: "0"
     }
@@ -139,7 +140,9 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup),
             R.id.resetSearchIV -> {
                 hideKeyboard()
                 txtFilter.text = null
-                adapter.filteredChildItems.clear()
+                adapter.childItems = arrayListOf()
+                adapter.childItems = arrayListOf()
+                adapter.filteredChildItems = arrayListOf()
                 initList()
                 resetSearchIV.visibility = View.INVISIBLE
             }
@@ -167,6 +170,8 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup),
 //                            val count: Int = ((it.data as ArrayList<ChildFollowup>).chunked(20)).count()
 //                            Log.e("CFF", count.toString());
 //                            listItems = it.data as ArrayList<ChildFollowup>
+                            if (items.count() < loadItemsCount)
+                                loadItemsCount = items.count()
                             adapter.childItems =
                                 items.slice(0 until loadItemsCount) as ArrayList<ChildFollowup>
 //                            adapter.childItems = it.data as ArrayList<ChildFollowup>
@@ -233,18 +238,37 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup),
 
     // Load more items
     private fun loadMore(start: Int, count: Int) {
-        adapter.filteredChildItems.addAll(items.slice(start..count))
+        var countTemp: Int = count
+        if (countTemp >= items.count())
+            countTemp =
+                count + (items.count() - (adapter.filteredChildItems.count() + loadItemsCount))
+        adapter.filteredChildItems.addAll(items.slice(start..countTemp))
+//        adapter.notifyItemRangeChanged(
+//            adapter.filteredChildItems.size,
+//            adapter.filteredChildItems.size
+//        )
         adapter.notifyItemRangeChanged(
-            adapter.filteredChildItems.size,
-            adapter.filteredChildItems.size
+            start,
+            countTemp
         )
+
+        if (countTemp == items.count() - 1)
+            loadMoreBtn.visibility = View.GONE
+        else
+            loadMoreBtn.visibility = View.VISIBLE
+        Log.e("COUNT:", countTemp.toString())
     }
 
     // Show load more button - Delay is intentional
+    private val loadMoreBtnRunnable = Runnable {
+        loadMoreBtn.visibility = View.VISIBLE
+    }
+
     private fun showLoadMoreBtn() {
-        Handler().postDelayed({
-            loadMoreBtn.visibility = View.VISIBLE
-        }, 1000)
+        if (items.count() > loadItemsCount)
+            handler.postDelayed(
+                loadMoreBtnRunnable, 1000
+            )
     }
 
     private fun Fragment.hideKeyboard() {
@@ -256,5 +280,10 @@ class ChildrenFollowupFragment : Fragment(R.layout.fragment_children_followup),
         val inputMethodManager =
             getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(loadMoreBtnRunnable)
     }
 }

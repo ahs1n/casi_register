@@ -38,7 +38,10 @@ class SelectedChildViewHolder(private val bi: ItemChildLayoutBinding) :
         if (item.childTableDataExist) {
             bi.parentLayout.isEnabled = false
             flagImage = R.drawable.ic_complete_star
-        } else flagImage = R.drawable.ic_incomplete_star
+        } else {
+            bi.parentLayout.isEnabled = true
+            flagImage = R.drawable.ic_incomplete_star
+        }
 
         Glide.with(this.itemView.context)
             .asBitmap()

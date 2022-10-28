@@ -765,6 +765,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 allForms.add(form);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -815,6 +817,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allForms.add(form);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();

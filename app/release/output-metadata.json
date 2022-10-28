@@ -10,9 +10,9 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 1311,
+      "versionCode": 1351,
       "versionName": "1.39",
-      "outputFile": "casi_gm_2022_04_05_v1311.apk"
+      "outputFile": "app-release.apk"
     }
   ]
 }
