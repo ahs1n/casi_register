@@ -801,6 +801,7 @@
     <string name="load_more">Load more</string>
     <string name="min_length_error">Minimum length %d characters</string>
     <string name="enter_search_text_error">Please enter text to search</string>
+    <string name="unregistered">NOT REGISTERED</string>
 
 
 </resources>

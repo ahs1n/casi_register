@@ -36,10 +36,11 @@ class SelectedChildViewHolder(private val bi: ItemChildLayoutBinding) :
         if (item.fupDt == StringUtils.EMPTY) bi.parentLayout.isEnabled =
             false else bi.followupDT.text = item.fupDt
         if (item.childTableDataExist) {
-            bi.parentLayout.isEnabled = false
+//            bi.parentLayout.isEnabled = false
+            bi.parentLayout.isEnabled = true
             flagImage = R.drawable.ic_complete_star
         } else {
-            bi.parentLayout.isEnabled = true
+//            bi.parentLayout.isEnabled = true
             flagImage = R.drawable.ic_incomplete_star
         }
 

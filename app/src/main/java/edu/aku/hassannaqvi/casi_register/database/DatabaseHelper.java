@@ -467,6 +467,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allVC = new VersionApp().hydrate(c);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -555,6 +557,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allEB.add(new Villages().hydrate(c));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -603,6 +607,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allEB.add(new HealthFacility().hydrate(c));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -671,6 +677,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     break;
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -710,6 +718,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allForms.put(new Form().Hydrate(c, type).toJSONObject(type));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -884,6 +894,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allForms = new Form().Hydrate(c, null);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -984,6 +996,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allForms = new Form().Hydrate(c, null);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1193,6 +1207,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allForms = new Users().hydrate(c);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1244,6 +1260,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 forms.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
                 allForms.add(forms);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1317,6 +1335,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allEB.add(new ChildFollowup().hydrate(c));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1356,6 +1376,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 allEB.add(new WraFollowup().hydrate(c));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1410,6 +1432,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 allEB.add(ch);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1454,6 +1478,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 wra.setFupNo("0");
                 allEB.add(wra);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();
@@ -1484,6 +1510,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (mCursor.moveToNext()) {
                 form = new Form().Hydrate(mCursor, followUpType);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (!db.isOpen()) db.close();
         }
@@ -1504,7 +1532,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Form fm;
         String orderBy = FormsTable.COLUMN_ID + " DESC";
         ArrayList<String> fupDates = new ArrayList<>();
-        fupDates.add("00-00-0000");
+//        fupDates.add("00-00-0000");
         try {
             c = db.query(
                     FormsTable.TABLE_NAME,  // The table to query
@@ -1525,7 +1553,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                 fupDates.add(sdf.format(cal.getTime()));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
+            if (fupDates.size() == 0)
+                fupDates.add("РАЙД НАШУДААСТ");
+
             if (c != null) {
                 c.close();
             }
@@ -1572,6 +1605,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                 fupDates.add(sdf.format(cal.getTime()));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (c != null) {
                 c.close();

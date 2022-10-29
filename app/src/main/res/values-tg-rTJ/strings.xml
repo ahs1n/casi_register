@@ -804,5 +804,6 @@
     <string name="load_more">Бештар бор кунед</string>
     <string name="min_length_error">Дарозии ҳадди аққал %d аломат</string>
     <string name="enter_search_text_error">Лутфан матнро барои ҷустуҷӯ ворид кунед</string>
+    <string name="unregistered">РАЙД НАШУДААСТ</string>
 
 </resources>
