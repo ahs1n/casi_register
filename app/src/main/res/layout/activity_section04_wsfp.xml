@@ -548,11 +548,11 @@
                     <EditText
                         android:id="@+id/fw12a"
                         android:layout_width="match_parent"
-                        android:text="@{wraInformation.ws12a}"
-                        android:enabled="false"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:inputType="number"
-                        android:maxLength="11" />
+                        android:maxLength="11"
+                        android:text="@{wraInformation.ws12a}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -1942,28 +1942,49 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="24dp"
-                android:orientation="horizontal">
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:padding="@dimen/_5sdp"
+                android:weightSum="1">
 
                 <Button
                     android:id="@+id/btn_End"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:background="@color/redOverlay"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_3sdp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bg_rounded_white"
+                    android:backgroundTint="@color/redOverlay"
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="@string/btnEnd"
                     android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
                     android:visibility="gone" />
+
+                <!--                <Button-->
+                <!--                    android:id="@+id/btn_Continue"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="12dp"-->
+                <!--                    android:background="@color/greenOverlay"-->
+                <!--                    android:onClick="@{() -> callback.BtnContinue()}"-->
+                <!--                    android:text="@string/btnSave"-->
+                <!--                    android:textColor="@color/white" />-->
 
                 <Button
                     android:id="@+id/btn_Continue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:background="@color/greenOverlay"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bg_rounded_white"
+                    android:backgroundTint="@color/greenOverlay"
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="@string/btnSave"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp" />
+
             </LinearLayout>
 
 

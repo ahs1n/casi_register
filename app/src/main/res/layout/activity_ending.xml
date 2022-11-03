@@ -110,19 +110,29 @@
                 android:layout_marginTop="24dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnEnd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:background="@color/colorPrimary"
-                    android:onClick="@{() -> callback.BtnEnd()}"
-                    android:padding="10dp"
-                    android:text="End Interview"
-                    android:textColor="@color/white" />
+                <!--                <Button-->
+                <!--                    android:id="@+id/btnEnd"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="12dp"-->
+                <!--                    android:background="@color/colorPrimary"-->
+                <!--                    android:onClick="@{() -> callback.BtnEnd()}"-->
+                <!--                    android:padding="10dp"-->
+                <!--                    android:text="End Interview"-->
+                <!--                    android:textColor="@color/white" />-->
                 <!--'onClick' for btn_End will NOT change and always call 'endInterview'-->
 
-
+                <Button
+                    android:id="@+id/btnEnd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/bg_rounded_app_color_filled"
+                    android:onClick="@{() -> callback.BtnEnd()}"
+                    android:text="End Interview"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

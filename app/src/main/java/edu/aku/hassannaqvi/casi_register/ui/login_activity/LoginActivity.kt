@@ -3,15 +3,19 @@ package edu.aku.hassannaqvi.casi_register.ui.login_activity
 import android.Manifest
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.github.amlcurran.showcaseview.ShowcaseView
@@ -42,7 +46,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 
-class LoginActivity : AppCompatActivity(), LoginUISource {
+class LoginActivity : AppCompatActivity(), LoginUISource/*, View.OnTouchListener*/ {
 
     lateinit var bi: ActivityLoginBinding
     lateinit var viewModel: LoginViewModel
@@ -55,7 +59,8 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_login)
         bi.callback = this
         bi.txtinstalldate.text = MainApp.appInfo.getAppInfo()
-        viewModel = obtainViewModel(LoginViewModel::class.java, GeneralRepository(DatabaseHelper(this)))
+        viewModel =
+            obtainViewModel(LoginViewModel::class.java, GeneralRepository(DatabaseHelper(this)))
         showcaseBuilderView()
         checkPermissions()
         settingCountryCode()
@@ -85,6 +90,8 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
                 }
             }
         })
+
+//        bi.password.setOnTouchListener(this)
     }
 
     /*
@@ -101,13 +108,48 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     /*
     * Toggle password view
     * */
+//    fun onShowPasswordClick(v: View) {
+//        if (bi.password.transformationMethod == null) {
+//            bi.password.transformationMethod = PasswordTransformationMethod()
+////            bi.password.setCompoundDrawablesWithIntrinsicBounds(
+////                R.drawable.ic_lock_close,
+////                0,
+////                0,
+////                0
+////            )
+//            bi.password.setCompoundDrawablesWithIntrinsicBounds(
+//                0,
+//                0,
+//                R.drawable.ic_locked,
+//                0
+//            )
+//        } else {
+//            bi.password.transformationMethod = null
+////            bi.password.setCompoundDrawablesWithIntrinsicBounds(
+////                R.drawable.ic_lock_open,
+////                0,
+////                0,
+////                0
+////            )
+//            bi.password.setCompoundDrawablesWithIntrinsicBounds(
+//                0,
+//                0,
+//                R.drawable.ic_unlocked,
+//                0
+//            )
+//        }
+//    }
+
+    /*
+    * Toggle password view - NEW
+    * */
     fun onShowPasswordClick(v: View) {
         if (bi.password.transformationMethod == null) {
             bi.password.transformationMethod = PasswordTransformationMethod()
-            bi.password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_close, 0, 0, 0)
+            bi.passwordIV.background = ContextCompat.getDrawable(this, R.drawable.ic_locked)
         } else {
             bi.password.transformationMethod = null
-            bi.password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open, 0, 0, 0)
+            bi.passwordIV.background = ContextCompat.getDrawable(this, R.drawable.ic_unlocked)
         }
     }
 
@@ -149,17 +191,21 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     override fun showProgress(show: Boolean) {
         val shortAnimTime = resources.getInteger(android.R.integer.config_shortAnimTime)
 
-        bi.loginForm.visibility = if (show) View.GONE else View.VISIBLE
-        bi.loginForm.animate().setDuration(shortAnimTime.toLong()).alpha(
-                if (show) 0f else 1f).setListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator) {
-                bi.loginForm.visibility = if (show) View.GONE else View.VISIBLE
-            }
-        })
+//        bi.loginForm.visibility = if (show) View.GONE else View.VISIBLE
+//        bi.loginForm.animate().setDuration(shortAnimTime.toLong()).alpha(
+//                if (show) 0f else 1f).setListener(object : AnimatorListenerAdapter() {
+//            override fun onAnimationEnd(animation: Animator) {
+//                bi.loginForm.visibility = if (show) View.GONE else View.VISIBLE
+//            }
+//        })
+
+        bi.btnSignin.visibility = if (show) View.INVISIBLE else View.VISIBLE
+        bi.syncData.isEnabled = !show
 
         bi.loginProgress.visibility = if (show) View.VISIBLE else View.GONE
         bi.loginProgress.animate().setDuration(shortAnimTime.toLong()).alpha(
-                if (show) 1f else 0f).setListener(object : AnimatorListenerAdapter() {
+            if (show) 1f else 0f
+        ).setListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
                 bi.loginProgress.visibility = if (show) View.VISIBLE else View.GONE
             }
@@ -201,7 +247,8 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * */
     override suspend fun isLoginApproved(username: String, password: String) {
         if ((username == "dmu@aku" && password == "aku?dmu") ||
-                (username == "test1234" && password == "test1234")) {
+            (username == "test1234" && password == "test1234")
+        ) {
             MainApp.user = Users(username, "Test User")
             MainApp.admin = username.contains("@")
             approval = true
@@ -226,12 +273,39 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
         bi.countrySwitch.isChecked = countryCode == 0 || countryCode == PAKISTAN
 
         bi.countrySwitch.setOnCheckedChangeListener { buttonView, isChecked ->
-            SharedStorage.setCountryCode(this@LoginActivity, if (isChecked) PAKISTAN else TAJIKISTAN)
+            SharedStorage.setCountryCode(
+                this@LoginActivity,
+                if (isChecked) PAKISTAN else TAJIKISTAN
+            )
             changeLanguage(if (isChecked) 1 else 3)
-            val intent = Intent(this@LoginActivity, LoginActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            val intent = Intent(
+                this@LoginActivity,
+                LoginActivity::class.java
+            ).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
+//        if (countryCode == 0 || countryCode == PAKISTAN)
+//            bi.countrySwitchNew.buttons[0].isSelected = true
+//        else
+//            bi.countrySwitchNew.buttons[1].isSelected = true
+//        bi.countrySwitchNew.setOnSelectListener { button: ThemedButton ->
+//            var selectedCountry: Int
+//            if (button.text == getString(R.string.pakistan))
+//                selectedCountry = PAKISTAN
+//            else
+//                selectedCountry = TAJIKISTAN
+//
+//            SharedStorage.setCountryCode(this@LoginActivity, selectedCountry)
+//            changeLanguage(selectedCountry)
+//            val intent = Intent(
+//                this@LoginActivity,
+//                LoginActivity::class.java
+//            ).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//            startActivity(intent)
+//            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+//        }
+
     }
 
     /*
@@ -239,11 +313,11 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
     * */
     private fun showcaseBuilderView() {
         ShowcaseView.Builder(this)
-                .setTarget(ViewTarget(bi.syncData.id, this))
-                .setStyle(R.style.CustomShowcaseTheme)
-                .setContentText("\n\n  ${getString(R.string.downData)}")
-                .singleShot(42)
-                .build()
+            .setTarget(ViewTarget(bi.syncData.id, this))
+            .setStyle(R.style.CustomShowcaseTheme)
+            .setContentText("\n\n  ${getString(R.string.downData)}")
+            .singleShot(42)
+            .build()
     }
 
     /*
@@ -256,14 +330,14 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
             return
         }
         val permissions = arrayOf(
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.CAMERA,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
         val options: Permissions.Options = Permissions.Options()
-                .setRationaleDialogTitle(getString(R.string.permission))
-                .setSettingsDialogTitle(getString(R.string.warning))
+            .setRationaleDialogTitle(getString(R.string.permission))
+            .setSettingsDialogTitle(getString(R.string.warning))
         Permissions.check(this, permissions, null, options, object : PermissionHandler() {
             override fun onGranted() {
                 permissionFlag = true
@@ -290,4 +364,23 @@ class LoginActivity : AppCompatActivity(), LoginUISource {
         config.locale = locale
         this.resources.updateConfiguration(config, this.resources.displayMetrics)
     }
+
+//    @SuppressLint("ClickableViewAccessibility")
+//    override fun onTouch(view: View, event: MotionEvent?): Boolean {
+//        val DRAWABLE_LEFT: Int = 0
+//        val DRAWABLE_TOP: Int = 1
+//        val DRAWABLE_RIGHT: Int = 2
+//        val DRAWABLE_BOTTOM: Int = 3
+//
+//        when (event?.action) {
+//            MotionEvent.ACTION_DOWN ->
+//                if (event.getRawX() >= (bi.password.getRight() - bi.password.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds()
+//                        .width())
+//                ) {
+//                    onShowPasswordClick(view)
+//                    return true
+//                }
+//        }
+//        return false
+//    }
 }

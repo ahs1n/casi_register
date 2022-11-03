@@ -26,7 +26,7 @@
     <application
         android:name=".core.MainApp"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_logo_3"
         android:label="@string/app_name"
         android:logo="@drawable/app_icon"
         android:supportsRtl="true"
@@ -75,7 +75,8 @@
             android:exported="false"
             android:label="@string/childScreening"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish" />
+            android:theme="@style/AppThemeEnglish"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ui.sections.followup.SelectedChildrenListActivity"
             android:exported="false"
@@ -87,7 +88,8 @@
             android:exported="false"
             android:label="@string/childScreening"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish" />
+            android:theme="@style/AppThemeEnglish"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ui.sections.Section02CSFPActivity"
             android:exported="false"
@@ -100,13 +102,15 @@
             android:exported="false"
             android:label="@string/wraScreening"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish" />
+            android:theme="@style/AppThemeEnglish"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ui.sections.Section04WSFPActivity"
             android:exported="false"
             android:label="@string/wraFollowup"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeEnglish" />
+            android:theme="@style/AppThemeEnglish"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ui.other.EndingActivity"
             android:exported="false"

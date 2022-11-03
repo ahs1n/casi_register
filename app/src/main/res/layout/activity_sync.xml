@@ -12,225 +12,293 @@
             type="edu.aku.hassannaqvi.casi_register.ui.SyncActivity" />
     </data>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="false"
+        android:background="@drawable/bg_top"
+        android:layoutDirection="ltr"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
 
-        <LinearLayout
+        <!--            <TextView-->
+        <!--                style="@style/TextAppearance.AppCompat.Large"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="12dp"-->
+        <!--                android:gravity="center_horizontal"-->
+        <!--                android:padding="12dp"-->
+        <!--                android:shadowColor="@color/grayOverlay"-->
+        <!--                android:shadowDx="2"-->
+        <!--                android:shadowDy="2"-->
+        <!--                android:shadowRadius="2"-->
+        <!--                android:text="@string/data_sync_activity"-->
+        <!--                android:textColor="@color/colorPrimary" />-->
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:animateLayoutChanges="false"
-            android:gravity="center"
-            android:layoutDirection="ltr"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center_horizontal"
+            android:shadowColor="@color/grayOverlay"
+            android:text="@string/data_sync_activity"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_17sdp"
+            android:textStyle="bold" />
 
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="horizontal">-->
+
+
+        <!--                <Button-->
+        <!--                    android:id="@+id/btnSync"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginEnd="@dimen/_5sdp"-->
+        <!--                    android:background="@drawable/bg_rounded_corner_app_color_filled"-->
+        <!--                    android:elevation="@dimen/_2sdp"-->
+        <!--                    android:onClick="ProcessStart"-->
+        <!--                    android:paddingStart="@dimen/_10sdp"-->
+        <!--                    android:paddingTop="@dimen/_6sdp"-->
+        <!--                    android:paddingEnd="@dimen/_10sdp"-->
+        <!--                    android:paddingBottom="@dimen/_6sdp"-->
+        <!--                    android:text="@string/btnSync"-->
+        <!--                    android:textColor="@color/white"-->
+        <!--                    android:textSize="@dimen/_9ssp"-->
+        <!--                    android:textStyle="bold" />-->
+
+        <!--                <Button-->
+        <!--                    android:id="@+id/btnUpload"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginStart="@dimen/_5sdp"-->
+        <!--                    android:background="@drawable/bg_rounded_corner_app_color_filled"-->
+        <!--                    android:elevation="@dimen/_2sdp"-->
+        <!--                    android:onClick="ProcessStart"-->
+        <!--                    android:paddingStart="@dimen/_10sdp"-->
+        <!--                    android:paddingTop="@dimen/_6sdp"-->
+        <!--                    android:paddingEnd="@dimen/_10sdp"-->
+        <!--                    android:paddingBottom="@dimen/_6sdp"-->
+        <!--                    android:text="@string/btnUpload"-->
+        <!--                    android:textColor="@color/white"-->
+        <!--                    android:textSize="@dimen/_9ssp"-->
+        <!--                    android:textStyle="bold" />-->
+
+        <!--                <Button-->
+        <!--                    android:id="@+id/btnUploadPhotos"-->
+        <!--                    style="@style/TextAppearance.AppCompat.Small"-->
+        <!--                    android:layout_width="wrap_content"-->
+
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_margin="5dp"-->
+        <!--                    android:background="@color/colorPrimary"-->
+        <!--                    android:elevation="2dp"-->
+        <!--                    android:onClick="uploadPhotos"-->
+        <!--                    android:padding="16dp"-->
+        <!--                    android:text="Upload Photos"-->
+        <!--                    android:textColor="@color/white"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    android:visibility="gone" />-->
+        <!--            </LinearLayout>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/bg_rounded_app_color_bordered">
+
+            <!--         <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_weight="1"
+                         android:orientation="vertical">
+
+                         <TextView
+                             style="@style/labels"
+
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_margin="12dp"
+                             android:layout_marginBottom="1dp"
+                             android:background="@color/white_overlay"
+                             android:elevation="1dp"
+                             android:gravity="center_horizontal"
+                             android:paddingBottom="1dp"
+                             android:shadowColor="@color/gray_overlay"
+                             android:shadowDx="1"
+                             android:shadowDy="1"
+                             android:shadowRadius="1"
+                             android:text="Upload Data" />
+
+                         <androidx.recyclerview.widget.RecyclerView
+                             android:id="@+id/rv_sync_list"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="0dp"
+                             tools:listitem="@layout/sync_list_adapter" />
+
+
+                         <TextView
+                             android:id="@+id/no_item"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="10dp"
+                             android:gravity="center"
+                             android:text="No Activty"
+                             android:textColor="@color/red"
+                             android:visibility="gone" />
+                     </LinearLayout>
+ -->
             <TextView
-                style="@style/TextAppearance.AppCompat.Large"
+                android:id="@+id/mTextViewS"
+                style="@style/labels"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/whiteOverlay"
+                android:elevation="1dp"
                 android:gravity="center_horizontal"
-                android:padding="12dp"
-                android:shadowColor="@color/grayOverlay"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="2"
-                android:text="@string/data_sync_activity"
-                android:textColor="@color/colorPrimary" />
+                android:paddingBottom="1dp"
+                android:shadowColor="@color/grayLight"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:text="Upload Photo"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/pBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:indeterminate="false"
+                android:progress="1"
+                android:visibility="gone" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <Button
-                    android:id="@+id/btnSync"
-                    style="@style/TextAppearance.AppCompat.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
-                    android:elevation="2dp"
-                    android:onClick="ProcessStart"
-                    android:padding="16dp"
-                    android:text="@string/btnSync"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btnUpload"
-                    style="@style/TextAppearance.AppCompat.Small"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/colorPrimary"
-                    android:elevation="2dp"
-                    android:onClick="ProcessStart"
-                    android:padding="16dp"
-                    android:text="@string/btnUpload"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btnUploadPhotos"
-                    style="@style/TextAppearance.AppCompat.Small"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimary"
-                    android:elevation="2dp"
-                    android:onClick="uploadPhotos"
-                    android:padding="16dp"
-                    android:text="Upload Photos"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
+                android:id="@+id/photoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="2dp"
-                app:cardElevation="1dp">
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:visibility="gone">
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/dataLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/_15sdp">
 
                 <LinearLayout
+                    android:id="@+id/buttonsLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-                    <!--         <LinearLayout
-                                 android:layout_width="0dp"
-                                 android:layout_height="wrap_content"
-                                 android:layout_weight="1"
-                                 android:orientation="vertical">
-
-                                 <TextView
-                                     style="@style/labels"
-
-                                     android:layout_width="match_parent"
-                                     android:layout_height="wrap_content"
-                                     android:layout_margin="12dp"
-                                     android:layout_marginBottom="1dp"
-                                     android:background="@color/white_overlay"
-                                     android:elevation="1dp"
-                                     android:gravity="center_horizontal"
-                                     android:paddingBottom="1dp"
-                                     android:shadowColor="@color/gray_overlay"
-                                     android:shadowDx="1"
-                                     android:shadowDy="1"
-                                     android:shadowRadius="1"
-                                     android:text="Upload Data" />
-
-                                 <androidx.recyclerview.widget.RecyclerView
-                                     android:id="@+id/rv_sync_list"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="wrap_content"
-                                     android:layout_marginTop="0dp"
-                                     tools:listitem="@layout/sync_list_adapter" />
-
-
-                                 <TextView
-                                     android:id="@+id/no_item"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="wrap_content"
-                                     android:layout_marginTop="10dp"
-                                     android:gravity="center"
-                                     android:text="No Activty"
-                                     android:textColor="@color/red"
-                                     android:visibility="gone" />
-                             </LinearLayout>
-         -->
-                    <TextView
-                        android:id="@+id/mTextViewS"
-                        style="@style/labels"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
-                        android:layout_marginBottom="1dp"
-                        android:background="@color/whiteOverlay"
-                        android:elevation="1dp"
-                        android:gravity="center_horizontal"
-                        android:paddingBottom="1dp"
-                        android:shadowColor="@color/grayLight"
-                        android:shadowDx="1"
-                        android:shadowDy="1"
-                        android:shadowRadius="1"
-                        android:text="Upload Photo"
-                        android:visibility="gone" />
-
-                    <ProgressBar
-                        android:id="@+id/pBar"
-                        style="@android:style/Widget.ProgressBar.Horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:indeterminate="false"
-                        android:progress="1"
-                        android:visibility="gone" />
-
-                    <LinearLayout
-                        android:id="@+id/photoLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:animateLayoutChanges="true"
-                        android:orientation="vertical"
-                        android:padding="12dp"
-                        android:visibility="gone">
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/dataLayout"
+                    <Button
+                        android:id="@+id/btnSync"
                         android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/bg_rounded_orange_filled"
+                        android:elevation="@dimen/_2sdp"
+                        android:onClick="ProcessStart"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/btnSync"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_9ssp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnUpload"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/bg_rounded_app_color_filled"
+                        android:elevation="@dimen/_2sdp"
+                        android:onClick="ProcessStart"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/btnUpload"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_9ssp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnUploadPhotos"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/activityTitle"
-                            style="@style/labels"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="12dp"
-                            android:layout_marginBottom="1dp"
-                            android:background="@color/whiteOverlay"
-                            android:elevation="1dp"
-                            android:gravity="center_horizontal"
-                            android:paddingBottom="1dp"
-                            android:shadowColor="@color/grayOverlay"
-                            android:shadowDx="1"
-                            android:shadowDy="1"
-                            android:shadowRadius="1"
-                            android:text="Download Data"
-                            android:visibility="gone" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_upload_list"
-                            android:padding="@dimen/_5sdp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="visible"
-                            tools:listitem="@layout/sync_list_adapter">
-
-                        </androidx.recyclerview.widget.RecyclerView>
-
-                        <TextView
-                            android:id="@+id/no_data_item"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center"
-                            android:text="@string/no_activty"
-                            android:textColor="@color/red"
-                            android:visibility="gone" />
-                    </LinearLayout>
+                        android:layout_margin="5dp"
+                        android:background="@color/colorPrimary"
+                        android:elevation="2dp"
+                        android:onClick="uploadPhotos"
+                        android:padding="16dp"
+                        android:text="Upload Photos"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
+
+                <TextView
+                    android:id="@+id/activityTitle"
+                    style="@style/labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonsLayout"
+                    android:layout_margin="12dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/whiteOverlay"
+                    android:elevation="1dp"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="1dp"
+                    android:shadowColor="@color/grayOverlay"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+                    android:text="Download Data"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_upload_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonsLayout"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:visibility="visible"
+                    tools:listitem="@layout/sync_list_adapter" />
+
+                <TextView
+                    android:id="@+id/no_data_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/no_activty"
+                    android:textColor="@color/grayOverlay"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
 </layout>
 

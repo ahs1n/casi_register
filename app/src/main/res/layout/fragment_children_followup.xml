@@ -17,10 +17,12 @@
             android:layout_marginStart="@dimen/_30sdp"
             android:layout_marginTop="16dp"
             android:layout_toStartOf="@+id/resetSearchIV"
-            android:hint="@string/enter_child_name_to_filter"
             android:background="@drawable/rounded_corner_bordered"
+            android:hint="@string/enter_child_name_to_filter"
             android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_9sdp"
             android:paddingEnd="@dimen/_35sdp"
+            android:paddingBottom="@dimen/_9sdp"
             android:singleLine="true"
             android:textColor="@color/black" />
 
@@ -30,8 +32,8 @@
             android:layout_height="@dimen/_20sdp"
             android:layout_alignTop="@+id/txtFilter"
             android:layout_alignEnd="@+id/txtFilter"
-            android:layout_marginEnd="@dimen/_5sdp"
             android:layout_alignBottom="@+id/txtFilter"
+            android:layout_marginEnd="@dimen/_5sdp"
             android:src="@drawable/search" />
 
         <ImageView

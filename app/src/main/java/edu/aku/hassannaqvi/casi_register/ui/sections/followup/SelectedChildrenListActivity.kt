@@ -39,7 +39,7 @@ class SelectedChildrenListActivity : AppCompatActivity(), WarningActivityInterfa
         /*
         * Nested Toolbar
         * */
-        bi.toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.black))
+        bi.toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.white))
         bi.toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.black))
         bi.toolbarLayout.title = if (followupFlag) getString(R.string.childFollowup) else getString(R.string.wraFollowup)
 

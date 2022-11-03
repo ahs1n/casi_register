@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="ic_app_icon_background">#3B99DC</color>
+    <color name="ic_app_icon_background_dark">#2C71A2</color>
+    <color name="ic_app_icon_background_light">#123B99DC</color>
 </resources>

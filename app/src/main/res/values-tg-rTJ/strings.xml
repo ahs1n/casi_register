@@ -805,5 +805,7 @@
     <string name="min_length_error">Дарозии ҳадди аққал %d аломат</string>
     <string name="enter_search_text_error">Лутфан матнро барои ҷустуҷӯ ворид кунед</string>
     <string name="unregistered">РАЙД НАШУДААСТ</string>
+    <string name="select_country">Кишварро интихоб кунед</string>
+    <string name="downloadDataDesc">Лутфан пеш аз ворид шудан маълумотро зеркашӣ кунед</string>
 
 </resources>
