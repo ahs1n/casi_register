@@ -807,5 +807,9 @@
     <string name="unregistered">РАЙД НАШУДААСТ</string>
     <string name="select_country">Кишварро интихоб кунед</string>
     <string name="downloadDataDesc">Лутфан пеш аз ворид шудан маълумотро зеркашӣ кунед</string>
+    <string name="send_db">Дб фиристед</string>
+    <string name="file_not_found">Парванда дарёфт нашуд</string>
+    <string name="file_sent_successfully">Файл бомуваффақият фиристода шуд</string>
+    <string name="pick_email_provider">Провайдери почтаи электрониро интихоб кунед</string>
 
 </resources>

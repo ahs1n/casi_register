@@ -804,6 +804,10 @@
     <string name="unregistered">NOT REGISTERED</string>
     <string name="select_country">Select Country</string>
     <string name="downloadDataDesc">Please download the data before login</string>
+    <string name="send_db">Send DB</string>
+    <string name="file_not_found">File not found</string>
+    <string name="file_sent_successfully">File sent successfully</string>
+    <string name="pick_email_provider">Pick an Email provider</string>
 
 
 </resources>

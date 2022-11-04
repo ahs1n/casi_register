@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.casi_register.utils
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -26,10 +27,14 @@ import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun dbBackup(context: Context) {
+@SuppressLint("SetWorldReadable")
+fun dbBackup(context: Context): File? {
     val dt: String = SharedStorage.getBackUpDTFolder(context)
     if (dt != SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Date())) {
-        SharedStorage.setBackUpDTFolder(context, SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Date()))
+        SharedStorage.setBackUpDTFolder(
+            context,
+            SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).format(Date())
+        )
     }
 
     var folder: File
@@ -51,21 +56,34 @@ fun dbBackup(context: Context) {
         if (success) {
             val any = try {
                 val dbFile = File(context.getDatabasePath(DATABASE_NAME).path)
+                Log.e("DB_PATH", dbFile.path)
                 val fis = FileInputStream(dbFile)
                 val outFileName: String = directoryName + File.separator + DATABASE_COPY
                 // Open the empty db as the output stream
                 val output: OutputStream = FileOutputStream(outFileName)
+
+                // For Special case - Use when needed to extract database from local storage
+                val file = File(outFileName)
+                val outputTemp: OutputStream = FileOutputStream(file)
 
                 // Transfer bytes from the inputfile to the outputfile
                 val buffer = ByteArray(1024)
                 var length: Int
                 while (fis.read(buffer).also { length = it } > 0) {
                     output.write(buffer, 0, length)
+                    outputTemp.write(buffer, 0, length)
                 }
                 // Close the streams
                 output.flush()
                 output.close()
+
+                outputTemp.flush()
+                outputTemp.close()
+
                 fis.close()
+//                dbFile.setReadable(true, false);
+//                return dbFile
+                return file
             } catch (e: IOException) {
                 e.message?.let { Log.e("dbBackup:", it) }
             }
@@ -73,7 +91,7 @@ fun dbBackup(context: Context) {
     } else {
         Toast.makeText(context, "Not create folder", Toast.LENGTH_SHORT).show()
     }
-
+    return null
 }
 
 fun AppCompatActivity.openSectionEndingActivity(flag: Boolean = true) {
@@ -106,22 +124,25 @@ fun AppCompatActivity.contextEndActivity() {
     dialog.show()
     dialog.window!!.attributes = params
     val endSecInterface = this as EndSectionInterface
-    dialog.findViewById<View>(R.id.btnOk).setOnClickListener { view: View? -> endSecInterface.endSecActivity(true) }
+    dialog.findViewById<View>(R.id.btnOk)
+        .setOnClickListener { view: View? -> endSecInterface.endSecActivity(true) }
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { view: View? -> dialog.dismiss() }
 }
 
 @JvmOverloads
 fun AppCompatActivity.openWarningActivity(
-        id: Int,
-        item: Any? = null,
-        title: String = "WARNING!",
-        message: String = "Are you sure, you want to exit without saving?",
-        btnYesTxt: String = "YES",
-        btnNoTxt: String = "NO") {
+    id: Int,
+    item: Any? = null,
+    title: String = "WARNING!",
+    message: String = "Are you sure, you want to exit without saving?",
+    btnYesTxt: String = "YES",
+    btnNoTxt: String = "NO"
+) {
     val dialog = Dialog(this)
 
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-    val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
+    val bi: EndSectionDialogBinding =
+        DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
     dialog.setContentView(bi.root)
     bi.alertTitle.text = title
     bi.alertTitle.setTextColor(ContextCompat.getColor(this, R.color.redDark))
@@ -149,16 +170,18 @@ fun AppCompatActivity.openWarningActivity(
 
 @JvmOverloads
 fun AppCompatActivity.openWarningActivity02(
-        id: Int,
-        item: Any? = null,
-        title: String = "WARNING!",
-        message: String = "Are you sure, you want to exit without saving?",
-        btnYesTxt: String = "YES",
-        btnNoTxt: String = "NO") {
+    id: Int,
+    item: Any? = null,
+    title: String = "WARNING!",
+    message: String = "Are you sure, you want to exit without saving?",
+    btnYesTxt: String = "YES",
+    btnNoTxt: String = "NO"
+) {
     val dialog = Dialog(this)
 
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-    val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
+    val bi: EndSectionDialogBinding =
+        DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
     dialog.setContentView(bi.root)
     bi.alertTitle.text = title
     bi.alertTitle.setTextColor(ContextCompat.getColor(this, R.color.redDark))
@@ -189,17 +212,23 @@ fun AppCompatActivity.openWarningActivity02(
 
 @JvmOverloads
 fun Fragment.openWarningFragment(
-        id: Int,
-        item: Any? = null,
-        title: String = "WARNING!",
-        message: String = "Are you sure, you want to exit without saving?",
-        btnYesTxt: String = "YES",
-        btnNoTxt: String = "NO") {
+    id: Int,
+    item: Any? = null,
+    title: String = "WARNING!",
+    message: String = "Are you sure, you want to exit without saving?",
+    btnYesTxt: String = "YES",
+    btnNoTxt: String = "NO"
+) {
 
     activity?.let { activityFrag ->
         val dialog = Dialog(activityFrag)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(activityFrag), R.layout.end_section_dialog, null, false)
+        val bi: EndSectionDialogBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(activityFrag),
+            R.layout.end_section_dialog,
+            null,
+            false
+        )
         dialog.setContentView(bi.root)
         bi.alertTitle.text = title
         bi.alertTitle.setTextColor(ContextCompat.getColor(activityFrag, R.color.green))
@@ -230,7 +259,8 @@ fun Fragment.openWarningFragment(
 fun AppCompatActivity.openWarningDialog(title: String, message: String, btnYesTxt: String = "OK") {
     val dialog = Dialog(this)
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-    val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
+    val bi: EndSectionDialogBinding =
+        DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
     dialog.setContentView(bi.root)
     bi.alertTitle.text = title
     bi.alertTitle.setTextColor(ContextCompat.getColor(this, R.color.green))
