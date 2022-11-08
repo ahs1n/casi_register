@@ -18,11 +18,13 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Validator;
@@ -638,7 +640,20 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             return;
         }
 //        Uri uri =  FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", file);
-        Uri uri = Uri.fromFile(file);
+
+//        Uri uri = Uri.fromFile(file);
+
+//        MimeTypeMap mime = MimeTypeMap.getSingleton();
+//        String ext = file.getName().substring(file.getName().lastIndexOf(".") + 1);
+//        String type = mime.getMimeTypeFromExtension(ext);
+        Uri uri;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            emailIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            uri = FileProvider.getUriForFile(this, "edu.aku.hassannaqvi.casi_register.fileProvider", file);
+        }else{
+            uri = Uri.fromFile(file);
+        }
+//        emailIntent.setDataAndType(uri, type);
         emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
         emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(Intent.createChooser(emailIntent, getString(R.string.pick_email_provider)));
