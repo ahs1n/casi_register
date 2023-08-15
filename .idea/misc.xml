@@ -3,6 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/drawable-xxxhdpi/ic_incomplete_star.xml" value="0.1455" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/drawable/ic_download.xml" value="0.145" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/activity_followup.xml" value="0.5353075170842825" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/activity_main.xml" value="0.46" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/activity_section01_cs1.xml" value="0.1" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/activity_section01_cs2.xml" value="0.1510791366906475" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/activity_section02_csfp.xml" value="0.14" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/activity_section03_ws.xml" value="0.12" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/activity_section04_wsfp.xml" value="0.1" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/activity_z_score_calculator.xml" value="0.18307291666666667" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/fragment_children_followup.xml" value="0.4760820045558087" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/fragment_wra_followup.xml" value="0.54875" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/item_child_layout.xml" value="0.33" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/layout/sync_list_adapter.xml" value="0.3953125" />
+        <entry key="..\:/OmarShoaib/Android_Projects/casi_register/app/src/main/res/menu/item_menu.xml" value="0.1" />
+        <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/drawable-anydpi/ic_arroww.xml" value="0.1375" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/drawable/bg_circle_white_filled.xml" value="0.328125" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/drawable/bg_rounded_app_color_bordered.xml" value="0.57421875" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/drawable/bg_rounded_app_color_dark_filled.xml" value="0.57421875" />
@@ -25,21 +41,21 @@
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/drawable/summary.xml" value="0.57421875" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_ending.xml" value="0.55" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_followup.xml" value="0.55" />
-        <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_login.xml" value="0.55" />
+        <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_login.xml" value="0.3495440729483283" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_section01_cs1.xml" value="0.15721304153640017" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_section01_cs2.xml" value="0.55" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_section02_csfp.xml" value="0.1" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_section03_ws.xml" value="0.55" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_section04_wsfp.xml" value="0.1" />
-        <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_splashscreen.xml" value="0.55" />
+        <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_splashscreen.xml" value="0.3495440729483283" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/activity_sync.xml" value="0.33" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/fragment_children_followup.xml" value="0.55" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/fragment_wra_followup.xml" value="0.55" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/item_child_layout.xml" value="0.55" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/loading_view.xml" value="0.55" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/selected_child_view.xml" value="0.55" />
-        <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/sync_list_adapter.xml" value="0.55" />
+        <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/layout/sync_list_adapter.xml" value="0.33" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/menu/item_menu.xml" value="0.55" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.57421875" />
         <entry key="..\:/OmarShoaib/Projects/casi_register/app/src/main/res/xml/file_paths.xml" value="0.37578125" />

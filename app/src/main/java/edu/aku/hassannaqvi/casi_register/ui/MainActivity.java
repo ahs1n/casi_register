@@ -629,7 +629,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     private void sendEmail() {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"imran.ahmed@aku.edu"});
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"imran.ahmed@aku.edu", "omar.shoaib@aku.edu"});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "CASI GM Database - For Issue Monitoring");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "CASI GM database upload from the device which has issues while uploading the data." +
                 "This is just for testing/checking purpose.");
